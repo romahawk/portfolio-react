@@ -4,6 +4,7 @@
  import About from "./components/About.jsx";
  import TimelineSwitch from "./components/TimelineSwitch.jsx";
  import Skills from "./components/Skills.jsx"
+ import Projects from "./components/Projects.jsx";
 
  function App() {
    return (
@@ -14,6 +15,7 @@
          <About />
          <TimelineSwitch />
          <Skills />
+         <Projects />
        </main>
      </>
    );
