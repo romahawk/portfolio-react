@@ -3,6 +3,7 @@
  import Hero from "./components/Hero.jsx";
  import About from "./components/About.jsx";
  import TimelineSwitch from "./components/TimelineSwitch.jsx";
+ import Skills from "./components/Skills.jsx"
 
  function App() {
    return (
@@ -12,6 +13,7 @@
          <Hero />
          <About />
          <TimelineSwitch />
+         <Skills />
        </main>
      </>
    );
