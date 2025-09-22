@@ -179,3 +179,132 @@ main { padding-top: 72px; }
   font-size: clamp(22px, 3.2vw, 28px);
 }
 .section p { color: var(--muted); }
+
+/* -------- About section -------- */
+/* === About (consolidated & optimized) === */
+.about__container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.about__row { margin-bottom: 2rem; }
+
+.about__row--two-columns {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Photo */
+.about__photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about__photo-placeholder {
+  width: 150px; height: 150px;
+  border-radius: 50%;
+  display: flex; justify-content: center; align-items: center;
+  background: #e0e0e0;
+  color: #666;
+  font-size: 1rem; text-align: center;
+  box-shadow: 0 0 10px rgba(0, 221, 235, 0.3);
+  transition: transform .3s ease;
+}
+.about__photo-placeholder:hover { transform: scale(1.05); }
+
+/* Text + headings */
+.about__subtitle {
+  font-size: 1.5rem;
+  color: var(--brand);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(0,221,235,0.3);
+}
+.about__text {
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 0 0 .75rem 0; /* unified spacing */
+}
+.about__text p { margin: 0; }
+
+/* Interests */
+.about__list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: grid;
+  gap: .5rem;
+}
+.about__list li {
+  color: var(--muted);
+  line-height: 1.8;
+}
+.about__list .tech-icon {
+  margin-right: .5rem;
+  font-size: 1rem;
+  color: var(--brand);
+}
+.about__list .tech-icon i {
+  margin-right: .3rem;
+  font-size: 1.2rem;
+  color: var(--brand);
+  transition: color .3s ease;
+}
+.about__list li:hover .tech-icon i { color: #66e0ff; }
+
+/* Quote */
+.about__quote {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(16, 20, 28, 0.9);   /* uses panel tone */
+  border-left: 4px solid var(--brand);
+  border-radius: 4px;
+  font-style: italic;
+  color: var(--text);
+  box-shadow: 0 0 10px rgba(0,221,235,0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about__row--two-columns {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .about__photo-placeholder {
+    width: 120px; height: 120px;
+  }
+  .about__subtitle { font-size: 1.3rem; }
+}
+
+
+/* Toolbar + chip (shared) */
+.timeline__toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px; gap: 10px; flex-wrap: wrap;
+}
+.chip {
+  padding: 8px 12px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--panel); color: var(--muted);
+}
+.chip:hover { color: var(--text); background: #121824; border-color: #263046; }
+
+/* 3-card milestone layout */
+.milestones {
+  display: grid; gap: 14px;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 980px){ .milestones { grid-template-columns: 1fr; } }
+
+.milestone {
+  border: 1px solid #193447; border-radius: 14px; padding: 16px;
+  background: radial-gradient(600px 300px at 110% -10%, rgba(0,221,235,.08), transparent), #0f1520;
+  box-shadow: 0 6px 20px rgba(0,0,0,.35);
+}
+.milestone__head { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+.milestone__range { font-family: ui-monospace, monospace; color: var(--brand); }
+.milestone__icon { font-size: 22px; filter: drop-shadow(0 0 6px rgba(0,221,235,.5)); }
+.milestone__title { margin: 6px 0 4px 0; font-size: 18px; }
+.milestone__summary { color: var(--muted); margin: 0 0 6px 0; }
+.milestone__list { margin: 0; padding-left: 18px; color: var(--muted); }
+
+/* Full legacy timeline container/buttons — reuse your existing rules if already present */
