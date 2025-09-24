@@ -1,74 +1,117 @@
 import React from "react";
+import {
+  HeartPulse,
+  Rocket,
+  Target,
+  Users,
+  Dot,
+} from "lucide-react";
 
 const About = () => {
   return (
-    <section id="about" className="section">
-      <h2 className="section__title">&gt; About Me</h2>
+    <section id="about" className="section container about">
+      <h2 className="about__title">
+        <span className="about__chev">&gt;</span> About Me
+      </h2>
 
       <div className="about__container">
-        {/* Row 1: Photo and My MedTech Journey */}
+        {/* Row 1: Photo + Journey */}
         <div className="about__row about__row--two-columns">
           <div className="about__photo">
-            {/* Use your real image in public/assets/img/profile.jpg or keep the placeholder */}
-            <div className="about__photo-placeholder">Profile Image</div>
+            {/* Replace with your real photo path if available */}
+            <img
+              src="/assets/img/profile.jpg"
+              alt="Roman Mazuryk profile"
+              className="about__photo-img"
+            />
+            <span className="about__photo-caption">Profile Image</span>
           </div>
 
-          <div className="about__text">
-            <h3 className="about__subtitle">My MedTech Journey</h3>
-            <p>
-              For over a decade, I’ve been immersed in the MedTech industry, where I’ve worn many hats—driving sales for cutting-edge medical equipment, streamlining B2B and B2C supply chains, providing hands-on support to surgeons, and even prototyping innovative solutions for startups. That journey taught me how to solve real-world problems with precision and empathy, but it also sparked a new passion: technology.
+          <div className="about__panel">
+            <h3 className="about__heading">
+              <HeartPulse size={18} className="icon about__icon" />
+              My MedTech Journey
+            </h3>
+            <p className="about__text">
+              For over a decade, I’ve been immersed in the MedTech industry:
+              driving sales for advanced equipment, streamlining B2B/B2C supply,
+              supporting surgeons in the OR, and prototyping solutions for startups.
+              That work taught me to solve real problems with precision and empathy—and
+              sparked a new passion: technology.
             </p>
           </div>
         </div>
 
-        {/* Row 2 */}
+        {/* Row 2: Pivot */}
         <div className="about__row">
-          <h3 className="about__subtitle">Why I’m Pivoting to Tech</h3>
-          <p>
-            I’m now pivoting into the tech world, fueled by a desire to build solutions that bridge my MedTech expertise with the limitless possibilities of software. I’m motivated by the chance to create tools that not only solve problems but also transform lives—whether that’s through smarter analytics, seamless user experiences, or innovative platforms. Right now, I’m diving deep into Python, web development (HTML, CSS, JavaScript), data analytics, and project management, with plans to master React and Tailwind CSS next.
+          <h3 className="about__heading">
+            <Rocket size={18} className="icon about__icon" />
+            Why I’m Pivoting to Tech
+          </h3>
+          <p className="about__text">
+            I’m moving deeper into software to bridge MedTech expertise with code.
+            I’m building in React (JS/TS), Python, and data analytics—aiming for
+            practical, high-impact products with clean UX and measurable value.
           </p>
         </div>
 
-        {/* Row 3 */}
+        {/* Row 3: Values */}
         <div className="about__row">
-          <h3 className="about__subtitle">My Values &amp; Vision</h3>
-          <p>
-            My core values—innovation, education, and continuous growth—guide everything I do. I believe in pushing boundaries, learning every day, and evolving with the ever-changing tech landscape. Looking ahead, I envision a future where I combine my MedTech insights, tech skills, and startup mindset to create impactful solutions—think healthcare platforms powered by AI, data-driven MedTech innovations, or even my own tech startup.
+          <h3 className="about__heading">
+            <Target size={18} className="icon about__icon" />
+            My Values &amp; Vision
+          </h3>
+          <p className="about__text">
+            Innovation, education, and continuous growth guide everything I do.
+            I want to combine MedTech insight, engineering, and a startup mindset
+            to create impactful, data-driven healthcare solutions.
           </p>
         </div>
 
-        {/* Row 4 */}
+        {/* Row 4: Collaborate */}
         <div className="about__row">
-          <h3 className="about__subtitle">Let’s Collaborate</h3>
-          <p>
-            I’m driven, curious, and always open to collaboration. Whether you’re in MedTech, tech, or somewhere in between, I’d love to connect and explore how we can build something impactful together.
+          <h3 className="about__heading">
+            <Users size={18} className="icon about__icon" />
+            Let’s Collaborate
+          </h3>
+          <p className="about__text">
+            I’m open to collaboration—whether you’re in MedTech, tech, or both.
+            Let’s connect and build something meaningful.
           </p>
         </div>
 
         {/* Row 5: Interests */}
-        <div className="about__row about__item">
-          <h3 className="about__subtitle">Beyond Tech: What Drives Me</h3>
-          <p>Life isn’t just about code — here’s what energizes and inspires me:</p>
+        <div className="about__row">
+          <h3 className="about__heading">Beyond Tech: What Drives Me</h3>
+
           <ul className="about__list">
-            <li>
-              <span className="tech-icon"><i className="fas fa-basketball-ball"></i> Basketball</span> — My lifelong passion. Player, coach, and student of the game.
+            <li className="about__list-item">
+              <Dot size={16} className="icon about__bullet-icon" />
+              <strong>Basketball</strong> — player, coach, student of the game.
             </li>
-            <li>
-              <span className="tech-icon"><i className="fas fa-volleyball-ball"></i> Beach Volleyball</span> — Sand, sun, and strategy.
+            <li className="about__list-item">
+              <Dot size={16} className="icon about__bullet-icon" />
+              <strong>Beach Volleyball</strong> — sand, sun, and strategy.
             </li>
-            <li>
-              <span className="tech-icon"><i className="fas fa-hiking"></i> Hiking</span> — Love exploring new trails and staying grounded in nature.
+            <li className="about__list-item">
+              <Dot size={16} className="icon about__bullet-icon" />
+              <strong>Hiking</strong> — trails and staying grounded.
             </li>
-            <li>
-              <span className="tech-icon"><i className="fas fa-plane"></i> Travel</span> — Curious about new cultures, food, and ideas.
+            <li className="about__list-item">
+              <Dot size={16} className="icon about__bullet-icon" />
+              <strong>Travel</strong> — curious about new cultures, food, and ideas.
             </li>
-            <li>
-              <span className="tech-icon"><i className="fas fa-book"></i> Lifelong Learner</span> — Always building, improving, and growing.
+            <li className="about__list-item">
+              <Dot size={16} className="icon about__bullet-icon" />
+              <strong>Lifelong Learner</strong> — always improving and growing.
             </li>
           </ul>
 
           <blockquote className="about__quote">
-            “Basketball taught me teamwork, strategy, and discipline — qualities I now apply to building projects and collaborating in tech.”
+            <em>
+              “Basketball taught me teamwork, strategy, and discipline—qualities
+              I now apply to building projects and collaborating in tech.”
+            </em>
           </blockquote>
         </div>
       </div>

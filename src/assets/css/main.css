@@ -517,3 +517,7 @@ main { padding-top: 72px; }
 .icon { vertical-align: -2px; }
 .mr-1 { margin-right: 6px; }
 .ml-1 { margin-left: 6px; }
+
+/* About + lucide icon tweaks */
+.about__icon { color: var(--brand); margin-right: 8px; }
+.about__bullet-icon { color: var(--brand); margin-right: 10px; }
