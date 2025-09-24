@@ -521,3 +521,21 @@ main { padding-top: 72px; }
 /* About + lucide icon tweaks */
 .about__icon { color: var(--brand); margin-right: 8px; }
 .about__bullet-icon { color: var(--brand); margin-right: 10px; }
+
+/* Make primary CTA text white on hover/focus */
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  color: #fff !important;
+}
+
+/* If your button contains inner spans/icons, make them white too */
+.btn--primary:hover *,
+.btn--primary:focus-visible * {
+  color: #fff !important;
+}
+
+/* (Optional) smooth transition for color */
+.btn,
+.btn * {
+  transition: color .2s ease;
+}
