@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { techProjects, medtechProjects } from "../data/projects.js";
+import { Cpu, HeartPulse, ExternalLink } from "lucide-react";
 
 const CATEGORY = { TECH: "tech", MED: "medtech" };
 
@@ -32,7 +33,7 @@ const ProjectCard = ({ p, variant }) => (
 
     {p.link ? (
       <a className="project-card__link" href={p.link} target="_blank" rel="noreferrer">
-        View Project
+        View Project <ExternalLink size={14} className="icon ml-1" />
       </a>
     ) : null}
   </article>
@@ -50,7 +51,6 @@ const Projects = () => {
     return techProjects.filter(p => (p.tags || []).includes(tag));
   }, [tag]);
 
-  // For MedTech, split into two groups by "segment"
   const medIntegration = useMemo(
     () => medtechProjects.filter(p => p.segment !== "management"),
     []
@@ -64,7 +64,6 @@ const Projects = () => {
     <section id="projects" className="section container">
       <h2 className="section__title">&gt; Projects</h2>
 
-      {/* Category toggle + filters */}
       <div className="projects__toolbar">
         <div className="projects__tabs" role="tablist" aria-label="Project categories">
           <button
@@ -73,7 +72,7 @@ const Projects = () => {
             className={`tab ${cat === CATEGORY.TECH ? "tab--active" : ""}`}
             onClick={() => setCat(CATEGORY.TECH)}
           >
-            Tech
+            <Cpu size={16} className="icon mr-1" /> Tech
           </button>
           <button
             role="tab"
@@ -81,7 +80,7 @@ const Projects = () => {
             className={`tab ${cat === CATEGORY.MED ? "tab--active" : ""}`}
             onClick={() => setCat(CATEGORY.MED)}
           >
-            MedTech
+            <HeartPulse size={16} className="icon mr-1" /> MedTech
           </button>
         </div>
 
@@ -101,7 +100,6 @@ const Projects = () => {
         )}
       </div>
 
-      {/* Body */}
       {cat === CATEGORY.TECH ? (
         <>
           <h3 className="projects__section-title">💻 Tech Projects</h3>
@@ -126,7 +124,7 @@ const Projects = () => {
               <p className="projects__intro">Rollouts, tenders, vendor coordination, training.</p>
               <div className="projects__grid">
                 {medManagement.map((p) => (
-                  <ProjectCard key={p.id} p={p} variant="med mgmt" />
+                  <ProjectCard key={p.id} p={p} variant="mgmt" />
                 ))}
               </div>
             </>

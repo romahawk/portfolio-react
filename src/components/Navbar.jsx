@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { Braces } from "lucide-react";
+
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-
   const toggle = () => setOpen((v) => !v);
   const close = () => setOpen(false);
 
@@ -10,6 +11,7 @@ const Navbar = () => {
     <header className="site-header">
       <nav className="nav container">
         <a href="#home" className="nav__logo" onClick={close}>
+          <Braces size={18} className="icon mr-1" />
           ROMAN<span className="nav__logo-accent">.</span>
         </a>
 
@@ -25,21 +27,12 @@ const Navbar = () => {
         </button>
 
         <ul className={`nav__list ${open ? "nav__list--open" : ""}`}>
-          <li className="nav__item">
-            <a href="#home" className="nav__link" onClick={close}>Home</a>
-          </li>
-          <li className="nav__item">
-            <a href="#about" className="nav__link" onClick={close}>About</a>
-          </li>
+          <li className="nav__item"><a href="#home" className="nav__link" onClick={close}>Home</a></li>
+          <li className="nav__item"><a href="#about" className="nav__link" onClick={close}>About</a></li>
           <li className="nav__item"><a href="#timeline" className="nav__link" onClick={close}>Timeline</a></li>
-          <li className="nav__item">
-            <a href="#skills" className="nav__link" onClick={close}>Skills</a>
-          </li>
-          <li className="nav__item"><a href="#projects" className="nav__link" onClick={close}>Projects</a>
-          </li>
-          <li className="nav__item">
-            <a href="#contact" className="nav__link nav__cta" onClick={close}>Contact</a>
-          </li>
+          <li className="nav__item"><a href="#skills" className="nav__link" onClick={close}>Skills</a></li>
+          <li className="nav__item"><a href="#projects" className="nav__link" onClick={close}>Projects</a></li>
+          <li className="nav__item"><a href="#contact" className="nav__link nav__cta" onClick={close}>Contact</a></li>
         </ul>
       </nav>
     </header>
