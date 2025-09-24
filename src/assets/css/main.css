@@ -401,3 +401,26 @@ main { padding-top: 72px; }
   display: inline-block; margin-top: 6px;
   color: var(--brand); font-weight: 600; text-decoration: underline;
 }
+
+/* MedTech variants */
+.project-card--med {
+  border-color: #2a3552;
+  background:
+    radial-gradient(600px 300px at 110% -10%, rgba(91,157,255,.10), transparent),
+    linear-gradient(180deg, rgba(16,20,28,.95), rgba(16,20,28,.78));
+}
+.project-card--med:hover {
+  border-color: rgba(91,157,255,.55);
+  box-shadow: 0 12px 28px rgba(91,157,255,.20);
+}
+.project-card--mgmt { /* subtle gold accent for Sales/PM */
+  border-color: #3b2f1a;
+  background:
+    radial-gradient(600px 300px at 110% -10%, rgba(255,193,7,.10), transparent),
+    linear-gradient(180deg, rgba(16,20,28,.95), rgba(16,20,28,.78));
+}
+.project-card--mgmt .project-card__title { color: #ffd479; }
+.project-card__head {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+}
+.project-card__icon { font-size: 18px; filter: drop-shadow(0 0 6px rgba(255,255,255,.25)); }

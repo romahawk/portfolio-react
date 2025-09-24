@@ -9,9 +9,13 @@ const collectTags = (list) => {
   return ["All", ...Array.from(set)];
 };
 
-const ProjectCard = ({ p }) => (
-  <article className="project-card">
-    <h4 className="project-card__title">{p.title}</h4>
+const ProjectCard = ({ p, variant }) => (
+  <article className={`project-card ${variant ? `project-card--${variant}` : ""}`}>
+    <header className="project-card__head">
+      <h4 className="project-card__title">{p.title}</h4>
+      {p.icon ? <span className="project-card__icon" aria-hidden>{p.icon}</span> : null}
+    </header>
+
     <p className="project-card__summary">{p.summary}</p>
 
     {p.stack?.length ? (
@@ -38,20 +42,29 @@ const Projects = () => {
   const [cat, setCat] = useState(CATEGORY.TECH);
   const data = cat === CATEGORY.TECH ? techProjects : medtechProjects;
 
-  // Tags only for Tech (MedTech cards rarely need filtering)
   const tags = useMemo(() => (cat === CATEGORY.TECH ? collectTags(data) : []), [cat, data]);
   const [tag, setTag] = useState("All");
 
-  const visible = useMemo(() => {
-    if (cat !== CATEGORY.TECH || tag === "All") return data;
-    return data.filter(p => (p.tags || []).includes(tag));
-  }, [cat, tag, data]);
+  const visibleTech = useMemo(() => {
+    if (tag === "All") return techProjects;
+    return techProjects.filter(p => (p.tags || []).includes(tag));
+  }, [tag]);
+
+  // For MedTech, split into two groups by "segment"
+  const medIntegration = useMemo(
+    () => medtechProjects.filter(p => p.segment !== "management"),
+    []
+  );
+  const medManagement = useMemo(
+    () => medtechProjects.filter(p => p.segment === "management"),
+    []
+  );
 
   return (
     <section id="projects" className="section container">
       <h2 className="section__title">&gt; Projects</h2>
 
-      {/* Category toggle */}
+      {/* Category toggle + filters */}
       <div className="projects__toolbar">
         <div className="projects__tabs" role="tablist" aria-label="Project categories">
           <button
@@ -72,7 +85,6 @@ const Projects = () => {
           </button>
         </div>
 
-        {/* Tech-only tags */}
         {cat === CATEGORY.TECH && tags.length > 1 && (
           <div className="projects__filters" role="group" aria-label="Filter tags">
             {tags.map((t) => (
@@ -89,19 +101,38 @@ const Projects = () => {
         )}
       </div>
 
-      {/* Label line */}
-      <h3 className="projects__section-title">
-        {cat === CATEGORY.TECH ? "💻 Tech Projects" : "💙 MedTech Projects"}
-      </h3>
-      <p className="projects__intro">
-        {cat === CATEGORY.TECH
-          ? "Recent software projects (React, Python, data)."
-          : "Selected work from 10+ years in MedTech."}
-      </p>
+      {/* Body */}
+      {cat === CATEGORY.TECH ? (
+        <>
+          <h3 className="projects__section-title">💻 Tech Projects</h3>
+          <p className="projects__intro">Recent software projects (React, Python, data).</p>
+          <div className="projects__grid">
+            {visibleTech.map((p) => <ProjectCard key={p.id} p={p} />)}
+          </div>
+        </>
+      ) : (
+        <>
+          <h3 className="projects__section-title">💙 MedTech — Integration & Innovation</h3>
+          <p className="projects__intro">OR integrations, visualization, devices.</p>
+          <div className="projects__grid">
+            {medIntegration.map((p) => (
+              <ProjectCard key={p.id} p={p} variant="med" />
+            ))}
+          </div>
 
-      <div className="projects__grid">
-        {visible.map((p) => <ProjectCard key={p.id} p={p} />)}
-      </div>
+          {medManagement.length ? (
+            <>
+              <h3 className="projects__section-title">💼 MedTech — Sales & Project Management</h3>
+              <p className="projects__intro">Rollouts, tenders, vendor coordination, training.</p>
+              <div className="projects__grid">
+                {medManagement.map((p) => (
+                  <ProjectCard key={p.id} p={p} variant="med mgmt" />
+                ))}
+              </div>
+            </>
+          ) : null}
+        </>
+      )}
     </section>
   );
 };
