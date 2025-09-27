@@ -19,6 +19,7 @@ export const techProjects = [
     stack: ["Concept", "WebRTC", "Firebase", "React"],
     tags: ["Prototype", "MedTech"],
     link: "#",
+    caseStudy: "livesurgery",
   },
   {
     id: "supply-plan",
