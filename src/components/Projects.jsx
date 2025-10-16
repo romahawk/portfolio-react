@@ -3,6 +3,7 @@ import { techProjects, medtechProjects } from "../data/projects.js";
 import { Cpu, HeartPulse, ExternalLink, FileText } from "lucide-react";
 import CaseStudyModal from "./CaseStudyModal.jsx";
 import LivesurgeryCaseStudy from "./case-studies/LivesurgeryCaseStudy.jsx";
+import SmartShooterCaseStudy from "./case-studies/SmartShooterCaseStudy.jsx";
 
 const CATEGORY = { TECH: "tech", MED: "medtech" };
 
@@ -150,12 +151,24 @@ export default function Projects() {
       )}
 
       <CaseStudyModal
-        open={!!caseId}
-        onClose={closeCase}
-        title={caseId === "livesurgery" ? "Livesurgery — Case Study" : "Case Study"}
-      >
-        {caseId === "livesurgery" ? <LivesurgeryCaseStudy /> : <div>Coming soon…</div>}
-      </CaseStudyModal>
+      open={!!caseId}
+      onClose={closeCase}
+      title={
+        caseId === "livesurgery"
+          ? "Livesurgery — Case Study"
+          : caseId === "smartshooter"
+          ? "SmartShooter AI — Case Study"
+          : "Case Study"
+      }
+    >
+      {caseId === "livesurgery" ? (
+        <LivesurgeryCaseStudy />
+      ) : caseId === "smartshooter" ? (
+        <SmartShooterCaseStudy />
+      ) : (
+        <div>Coming soon…</div>
+      )}
+    </CaseStudyModal>
     </section>
   );
 }

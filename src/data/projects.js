@@ -22,21 +22,22 @@ export const techProjects = [
     caseStudy: "livesurgery",
   },
   {
+    id: "smartshooter",
+    title: "SmartShooter AI",
+    summary:
+      "AI-driven app that helps basketball players track performance, analyze shooting data, and stay engaged. Built with React, Tailwind, and Firebase (Firestore + Auth).",
+    stack: ["React", "Tailwind", "Firebase", "Firestore", "Auth"],
+    tags: ["SportsTech", "Analytics", "Gamification"],
+    link: "https://smartshooter.vercel.app",
+    caseStudy: "#smartshooter",
+  },
+  {
     id: "supply-plan",
     title: "Quarterly Supply Plan Tracker",
     summary:
       "Internal web tool (prototype) for visualizing pharmaceutical supply plans for PHA. CSV import, status tracker, timeline chart. Python (Pandas, Plotly) + Streamlit.",
     stack: ["Python", "Pandas", "Plotly", "Streamlit"],
     tags: ["Python", "Data viz"],
-    link: "#",
-  },
-  {
-    id: "smarthooper",
-    title: "Smarthooper AI",
-    summary:
-      "AI-driven app to support young basketball athletes with training recommendations and performance tracking. Future: Flask + ML.",
-    stack: ["Python", "OpenCV", "React (future)"],
-    tags: ["AI/ML", "Computer Vision"],
     link: "#",
   },
   {
