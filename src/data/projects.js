@@ -29,17 +29,19 @@ export const techProjects = [
     stack: ["React", "Tailwind", "Firebase", "Firestore", "Auth"],
     tags: ["SportsTech", "Analytics", "Gamification"],
     link: "https://smartshooter.vercel.app",
-    caseStudy: "#smartshooter",
+    caseStudy: "smartshooter",
   },
   {
-    id: "supply-plan",
-    title: "Quarterly Supply Plan Tracker",
+    id: "flowlogix",
+    title: "FlowLogix — Logistic Tracker",
     summary:
-      "Internal web tool (prototype) for visualizing pharmaceutical supply plans for PHA. CSV import, status tracker, timeline chart. Python (Pandas, Plotly) + Streamlit.",
-    stack: ["Python", "Pandas", "Plotly", "Streamlit"],
-    tags: ["Python", "Data viz"],
-    link: "#",
-  },
+      "Flask-based dashboard for supply planning and order tracking with RBAC, timeline visualization (ETD→ETA), CSV export, and dark-mode UI. Built with Flask, SQLite/SQLAlchemy, Tailwind, and Chart.js. Demo mode available.",
+    stack: ["Flask", "SQLite", "SQLAlchemy", "Tailwind", "Chart.js"],
+    tags: ["Logistics", "Dashboard", "Data viz"],
+    link: "#",              // replace with live demo or repo URL if you have one
+    caseStudy: "flowlogix"
+  }
+,
   {
     id: "osta",
     title: "OSTA Website Redesign",
