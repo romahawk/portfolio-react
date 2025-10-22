@@ -38,7 +38,7 @@ export const techProjects = [
       "Flask-based dashboard for supply planning and order tracking with RBAC, timeline visualization (ETD→ETA), CSV export, and dark-mode UI. Built with Flask, SQLite/SQLAlchemy, Tailwind, and Chart.js. Demo mode available.",
     stack: ["Flask", "SQLite", "SQLAlchemy", "Tailwind", "Chart.js"],
     tags: ["Logistics", "Dashboard", "Data viz"],
-    link: "#",              // replace with live demo or repo URL if you have one
+    link: "https://flowlogix.onrender.com/",              // replace with live demo or repo URL if you have one
     caseStudy: "flowlogix"
   }
 ,
