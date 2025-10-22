@@ -18,7 +18,7 @@ export const techProjects = [
       "Concept-stage MedTech EdTech platform for live surgical collaboration and case sharing. PoC accepted to an incubator. Future: WebRTC + Firebase + React.",
     stack: ["Concept", "WebRTC", "Firebase", "React"],
     tags: ["Prototype", "MedTech"],
-    link: "#",
+    link: "https://livesurgery.vercel.app/",
     caseStudy: "livesurgery",
   },
   {
