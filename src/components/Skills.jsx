@@ -1,9 +1,11 @@
 import React from "react";
 import { hardSkills, pmSkills, softSkills } from "../data/skillsCards.js";
 import {
-  Atom, Server, Wrench, Star, Code2, MessageSquare, Users, Lightbulb,
+  Laptop, ClipboardList, Users, Stethoscope, Package,
+  Atom, Server, Wrench, Star, Code2, MessageSquare, Lightbulb
 } from "lucide-react";
 
+/* Pick an icon for each inner skill-card by its title */
 const iconFor = (title) => {
   const t = title.toLowerCase();
   if (t.includes("react") || t.includes("frontend")) return Atom;
@@ -17,9 +19,16 @@ const iconFor = (title) => {
   return Code2;
 };
 
-const SkillsSection = ({ title, data }) => (
+const SectionTitle = ({ Icon, children }) => (
+  <h3 className="skills__subtitle" style={{ display: "flex", alignItems: "center", gap: 8 }}>
+    {Icon ? <Icon size={18} className="about__icon" /> : null}
+    {children}
+  </h3>
+);
+
+const SkillsGroup = ({ title, sectionIcon: SectionIcon, data }) => (
   <div className="skills__group">
-    <h3 className="skills__subtitle">{title}</h3>
+    <SectionTitle Icon={SectionIcon}>{title}</SectionTitle>
     <div className="skills__grid">
       {data.map((card) => {
         const Ico = iconFor(card.title);
@@ -44,16 +53,42 @@ const SkillsSection = ({ title, data }) => (
 const Skills = () => (
   <section id="skills" className="section container">
     <h2 className="section__title">&gt; Skills</h2>
-    <SkillsSection title="🛠 Hard Skills (React / Full-Stack Developer Path)" data={hardSkills} />
-    <SkillsSection title="📊 IT Project Manager Path" data={pmSkills} />
-    <SkillsSection title="🤝 Soft Skills (Professional)" data={softSkills} />
+
+    {/* Hard Skills */}
+    <SkillsGroup
+      title="Hard Skills (React / Full-Stack Developer Path)"
+      sectionIcon={Laptop}
+      data={hardSkills}
+    />
+
+    {/* IT Project Manager Path */}
+    <SkillsGroup
+      title="IT Project Manager Path"
+      sectionIcon={ClipboardList}
+      data={pmSkills}
+    />
+
+    {/* Soft Skills */}
+    <SkillsGroup
+      title="Soft Skills (Professional)"
+      sectionIcon={Users}
+      data={softSkills}
+    />
+
+    {/* MedTech Expertise */}
     <div className="skills__group">
-      <h3 className="skills__subtitle">🏥 MedTech Expertise</h3>
-      <p>10+ years in MedTech: equipment sales, installation, OR workflows, and clinician training.</p>
+      <SectionTitle Icon={Stethoscope}>MedTech Expertise</SectionTitle>
+      <p className="about__text">
+        10+ years in MedTech: equipment sales, installation, OR workflows, and clinician training.
+      </p>
     </div>
+
+    {/* Product Management */}
     <div className="skills__group">
-      <h3 className="skills__subtitle">📦 Product Management</h3>
-      <p>Lifecycle management from ideation to launch; introduced innovative products like SURGIRIS lights.</p>
+      <SectionTitle Icon={Package}>Product Management</SectionTitle>
+      <p className="about__text">
+        Lifecycle management from ideation to launch; introduced innovative products like SURGIRIS lights.
+      </p>
     </div>
   </section>
 );
