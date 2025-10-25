@@ -33,11 +33,7 @@ const About = () => {
               My MedTech Journey
             </h3>
             <p className="about__text">
-              For over a decade, I’ve been immersed in the MedTech industry:
-              driving sales for advanced equipment, streamlining B2B/B2C supply,
-              supporting surgeons in the OR, and prototyping solutions for startups.
-              That work taught me to solve real problems with precision and empathy—and
-              sparked a new passion: technology.
+              For over a decade, I’ve been immersed in the MedTech industry — leading sales of advanced equipment, streamlining B2B/B2C logistics, supporting surgeons in the OR, and collaborating with startups. That work shaped my problem-solving mindset and sparked a new passion: technology.
             </p>
           </div>
         </div>
@@ -49,9 +45,7 @@ const About = () => {
             Why I’m Pivoting to Tech
           </h3>
           <p className="about__text">
-            I’m moving deeper into software to bridge MedTech expertise with code.
-            I’m building in React (JS/TS), Python, and data analytics—aiming for
-            practical, high-impact products with clean UX and measurable value.
+            Today, I’m building full-stack solutions with React & TypeScript, Python (Flask/FastAPI), and SQL/NoSQL databases, applying Agile PM practices to move ideas from prototype to product. My focus is on creating clear UX, scalable architecture, and measurable value.
           </p>
         </div>
 
@@ -62,9 +56,7 @@ const About = () => {
             My Values &amp; Vision
           </h3>
           <p className="about__text">
-            Innovation, education, and continuous growth guide everything I do.
-            I want to combine MedTech insight, engineering, and a startup mindset
-            to create impactful, data-driven healthcare solutions.
+            Innovation, clarity, and continuous learning drive everything I do. I value teamwork, data-driven decision-making, and delivering solutions that truly help people. My vision is to merge MedTech precision with modern software engineering — o create reliable, intuitive, and scalable digital products across healthcare, SportTech, and FinTech.
           </p>
         </div>
 
@@ -75,7 +67,7 @@ const About = () => {
             Let’s Collaborate
           </h3>
           <p className="about__text">
-            I’m open to collaboration—whether you’re in MedTech, tech, or both.
+            I’m open to collaboration — whether you’re in MedTech, Tech, or both.
             Let’s connect and build something meaningful.
           </p>
         </div>
