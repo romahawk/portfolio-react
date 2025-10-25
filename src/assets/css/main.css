@@ -618,3 +618,129 @@ main { padding-top: 72px; }
 .project-card__actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
 .project-card__link--ghost { background: transparent; border: 1px dashed var(--border); color: var(--text); padding: 6px 10px; border-radius: 10px; }
 .project-card__link--ghost:hover { border-color: rgba(0,221,235,.5); color: var(--brand); }
+
+/* ===== Horizontal Journey Timeline ===== */
+.timeline {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.timeline__container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  gap: 12px;
+  padding: 10px 8px;
+  scrollbar-width: thin;
+}
+
+/* Firefox */
+.timeline__container {
+  scrollbar-width: thin;                       /* already there, keep */
+  scrollbar-color: rgba(0,221,235,.35) #0f1520;/* thumb / track */
+}
+
+/* Chromium/WebKit */
+.timeline__container::-webkit-scrollbar {
+  height: 8px;                 /* horizontal bar height */
+}
+.timeline__container::-webkit-scrollbar-track {
+  background: #0f1520;         /* subtle track (same family as panels) */
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+.timeline__container::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(0,221,235,.9), rgba(91,157,255,.9));
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.35);
+}
+.timeline__container::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(135deg, rgba(0,221,235,1), rgba(91,157,255,1));
+}
+
+
+.timeline__item {
+  flex: 0 0 auto;
+  width: clamp(220px, 26vw, 300px);
+  min-width: unset;
+  background: linear-gradient(180deg, rgba(16,20,28,.9), rgba(16,20,28,.75));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  padding: 14px;
+  color: var(--text);
+  position: relative;
+  transition: transform .2s ease, box-shadow .3s ease;
+}
+.timeline__item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(0,221,235,.25);
+}
+
+.timeline__year {
+  font-size: 1.4rem;
+  color: var(--brand);
+  margin: 0 0 8px 0;
+  margin-bottom: 6px;
+  display:flex; 
+  align-items:center; 
+  justify-content:space-between;
+}
+
+.timeline__icon { 
+  color: var(--brand); 
+  stroke: var(--brand); }
+
+.timeline__marker {
+  display: none; /* hide vertical marker line */
+}
+
+.timeline__content ul {
+  margin: 0;
+  padding-left: 18px;
+  list-style: disc;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* Scroll buttons - fixed spacing outside track */
+.timeline__scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  opacity: 0.8;
+  box-shadow: var(--shadow);
+  z-index: 3;                     /* ensures above scrollbar but below cards */
+  pointer-events: auto;
+  transition: opacity .2s, transform .2s, background .2s;
+}
+.timeline__scroll-btn:hover {
+  opacity: 1;
+  background: #121824;
+  border-color: #263046;
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* Shift them slightly outside the scroll container */
+.timeline__scroll-btn--left  { left: -48px; }  /* was 10px */
+.timeline__scroll-btn--right { right: -48px; } /* was 10px */
+
+/* Keep timeline container from hiding them */
+.timeline {
+  position: relative;
+  overflow: visible; /* allow arrows to extend beyond */
+}
