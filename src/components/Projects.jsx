@@ -5,7 +5,7 @@ import CaseStudyModal from "./CaseStudyModal.jsx";
 import LivesurgeryCaseStudy from "./case-studies/LivesurgeryCaseStudy.jsx";
 import SmartShooterCaseStudy from "./case-studies/SmartShooterCaseStudy.jsx";
 import FlowLogixCaseStudy from "./case-studies/FlowLogixCaseStudy.jsx";
-
+import AlphorythmCaseStudy from "./case-studies/AlphorythmCaseStudy.jsx";
 
 const CATEGORY = { TECH: "tech", MED: "medtech" };
 
@@ -162,6 +162,8 @@ export default function Projects() {
             ? "SmartShooter AI — Case Study"
             : caseId === "flowlogix"
             ? "FlowLogix — Case Study"
+            : caseId === "alphorythm"
+            ? "Alphorythm — Case Study"
             : "Case Study"
         }
       >
@@ -171,10 +173,13 @@ export default function Projects() {
           <SmartShooterCaseStudy />
         ) : caseId === "flowlogix" ? (
           <FlowLogixCaseStudy />
+        ) : caseId === "alphorythm" ? (
+          <AlphorythmCaseStudy />
         ) : (
           <div>Coming soon…</div>
         )}
       </CaseStudyModal>
+
     </section>
   );
 }

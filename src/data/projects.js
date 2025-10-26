@@ -2,15 +2,7 @@
 
 // ---------- Tech ----------
 export const techProjects = [
-  {
-    id: "portfolio",
-    title: "Developer Portfolio Website",
-    summary:
-      "Personal website to showcase my transition from MedTech to IT. Timeline, skills, MedTech projects, and contact form. Built with React + Vite.",
-    stack: ["HTML", "CSS", "JavaScript", "React", "Tailwind"],
-    tags: ["Web", "React"],
-    link: "#",
-  },
+  
   {
     id: "livesurgery",
     title: "Livesurgery (Startup Prototype)",
@@ -43,14 +35,35 @@ export const techProjects = [
   }
 ,
   {
-    id: "osta",
-    title: "OSTA Website Redesign",
+    id: "portfolio",
+    title: "Developer Portfolio Website",
     summary:
-      "Redesign of pharma distribution website. React conversion, CMS integration, multi-language support.",
-    stack: ["HTML", "CSS", "JS", "React"],
-    tags: ["Web", "Redesign"],
+      "Personal website to showcase my transition from MedTech to IT. Timeline, skills, MedTech projects, and contact form. Built with React + Vite.",
+    stack: ["HTML", "CSS", "JavaScript", "React", "Tailwind"],
+    tags: ["Web", "React"],
     link: "#",
   },
+  {
+    id: "medintegro",
+    title: "Medintegro Website Rebuild",
+    summary:
+      "Headless rebuild of a MedTech distributor site: React + Tailwind, CMS integration, multilingual (DE/EN/UA), SEO & accessibility.",
+    stack: ["React", "Next.js", "Tailwind", "Headless CMS"],
+    tags: ["Web", "Rebuild", "Headless", "i18n", "SEO"],
+    link: "#",
+  },
+  {
+    id: "alphorythm",
+    title: "Alphorythm — Strategy Analytics Platform",
+    summary:
+      "FinTech app unifying backtests and live trades in one dashboard — multi-strategy analytics, role-based access, real-time sync.",
+    stack: ["React", "Tailwind", "Flask", "Firebase", "Chart.js", "SQLite"],
+    tags: ["FinTech", "Analytics", "Dashboard", "MVP"],
+    link: "#",
+    caseStudy: "alphorythm"
+  }
+
+
 ];
 
 // ---------- MedTech ----------
