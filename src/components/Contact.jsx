@@ -5,7 +5,13 @@ const Contact = () => {
   const formRef = useRef(null);
   const [copied, setCopied] = useState(false);
 
-  const email = "your.email@example.com"; // change to your email
+  // ↓↓↓ EDIT THESE THREE LINES ↓↓↓
+  const email = "romazuryk@proton.me"; // your real email
+  const linkedinUrl = "https://www.linkedin.com/in/roman-mazuryk/"; // your LinkedIn
+  const githubUrl = "https://github.com/romahawk"; // your GitHub
+  const cvUrl = "/cv/Roman_Mazuryk_CV.pdf"; // (optional) local/public URL to your CV
+  // ↑↑↑ EDIT THESE THREE LINES ↑↑↑
+
   const location = "Germany (CET)";
 
   const copyEmail = async () => {
@@ -24,6 +30,7 @@ const Contact = () => {
     const message = fd.get("message") || "";
     const subject = encodeURIComponent(`Portfolio contact from ${name}`);
     const body = encodeURIComponent(`From: ${name} <${from}>\n\n${message}`);
+    // Opens user's mail client addressed to you:
     window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     formRef.current.reset();
   };
@@ -38,8 +45,8 @@ const Contact = () => {
         <div className="contact__panel">
           <h3 className="contact__subtitle">Let’s work together</h3>
           <p className="contact__text">
-            I’m open to React/Full-Stack roles and IT PM opportunities—especially
-            where tech meets healthcare. Reach out and I’ll reply quickly.
+            I’m open to React/Full-Stack roles and IT PM opportunities — especially
+            where tech meets medtech, sportstech and fintech. Reach out and I’ll reply quickly.
           </p>
 
           <div className="contact__info">
@@ -61,13 +68,13 @@ const Contact = () => {
             <div className="contact__row">
               <span className="contact__label">Social</span>
               <div className="contact__socials">
-                <a href="#" target="_blank" rel="noreferrer" className="contact__social">
+                <a href={linkedinUrl} target="_blank" rel="noreferrer" className="contact__social">
                   <Linkedin size={16} className="icon" /> LinkedIn
                 </a>
-                <a href="#" target="_blank" rel="noreferrer" className="contact__social">
+                <a href={githubUrl} target="_blank" rel="noreferrer" className="contact__social">
                   <Github size={16} className="icon" /> GitHub
                 </a>
-                <a href="#" target="_blank" rel="noreferrer" className="contact__social">
+                <a href={cvUrl} target="_blank" rel="noreferrer" className="contact__social">
                   <FileDown size={16} className="icon" /> Download CV
                 </a>
               </div>

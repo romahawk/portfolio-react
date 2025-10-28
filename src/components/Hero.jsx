@@ -8,7 +8,7 @@ const Hero = () => {
           <p className="hero__eyebrow">Portfolio / 2025</p>
           <h1 className="hero__title">Hi, I’m Roman Mazuryk</h1>
           <p className="hero__subtitle">
-            MedTech expert pivoting to Software & Data—building practical, high-impact solutions.
+            MedTech expert pivoting to Software & Data — building practical, high-impact fullstack solutions.
           </p>
           <div className="hero__actions">
             <a href="#projects" className="btn btn--primary">View Projects</a>
