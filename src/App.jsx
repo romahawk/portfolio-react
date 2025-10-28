@@ -5,6 +5,7 @@ import About from "./components/About.jsx";
 import TimelineSwitch from "./components/TimelineSwitch.jsx";
 import Skills from "./components/Skills.jsx"
 import Projects from "./components/Projects.jsx";
+import Certifications from "./components/Certifications.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import BackToTop from "./components/BackToTop.jsx";
@@ -19,6 +20,7 @@ import BackToTop from "./components/BackToTop.jsx";
          <TimelineSwitch />
          <Skills />
          <Projects />
+         <Certifications />
          <Contact />
        </main>
        <Footer />

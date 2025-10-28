@@ -181,39 +181,61 @@ main { padding-top: 72px; }
 .section p { color: var(--muted); }
 
 /* -------- About section -------- */
-/* === About (consolidated & optimized) === */
+/* === About (compact photo, tight wrap, aligned) === */
 .about__container {
   max-width: 1000px;
   margin: 0 auto;
 }
 .about__row { margin-bottom: 2rem; }
 
+/* Two columns — left column fixed to the photo’s responsive width */
 .about__row--two-columns {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 2rem;
-  align-items: center;
+  grid-template-columns: clamp(70px, 9vw, 120px) 1fr; /* ⬅ lock photo column size */
+  gap: 1.25rem;
+  align-items: start;
 }
+.about__row--two-columns > * { align-self: start; }
 
-/* Photo */
+/* Photo column */
 .about__photo {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  width: 100%;
 }
-.about__photo-placeholder {
-  width: 150px; height: 150px;
-  border-radius: 50%;
-  display: flex; justify-content: center; align-items: center;
-  background: #e0e0e0;
-  color: #666;
-  font-size: 1rem; text-align: center;
-  box-shadow: 0 0 10px rgba(0, 221, 235, 0.3);
-  transition: transform .3s ease;
-}
-.about__photo-placeholder:hover { transform: scale(1.05); }
 
-/* Text + headings */
+/* Photo fills its (fixed) column; stays small with rounded corners */
+.about__photo-img {
+  display: block;
+  width: 100%;                 /* fills the clamped column */
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 221, 235, 0.3);
+}
+
+/* Hide legacy elements if present */
+.about__photo-placeholder,
+.about__photo-caption { display: none !important; }
+
+/* Right column (text panel) */
+.about__panel {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  margin-top: 0;
+  padding-top: 2px;            /* tiny optical nudge */
+}
+.about__panel h1,
+.about__panel h2,
+.about__panel h3,
+.about__panel h4,
+.about__panel h5,
+.about__panel h6,
+.about__panel p:first-child { margin-top: 0; }
+
+/* Headings & text */
 .about__subtitle {
   font-size: 1.5rem;
   color: var(--brand);
@@ -223,40 +245,22 @@ main { padding-top: 72px; }
 .about__text {
   color: var(--muted);
   line-height: 1.8;
-  margin: 0 0 .75rem 0; /* unified spacing */
+  margin: 0 0 .75rem 0;
 }
 .about__text p { margin: 0; }
 
 /* Interests */
-.about__list {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0;
-  display: grid;
-  gap: .5rem;
-}
-.about__list li {
-  color: var(--muted);
-  line-height: 1.8;
-}
-.about__list .tech-icon {
-  margin-right: .5rem;
-  font-size: 1rem;
-  color: var(--brand);
-}
-.about__list .tech-icon i {
-  margin-right: .3rem;
-  font-size: 1.2rem;
-  color: var(--brand);
-  transition: color .3s ease;
-}
+.about__list { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: .5rem; }
+.about__list li { color: var(--muted); line-height: 1.8; }
+.about__list .tech-icon { margin-right: .5rem; font-size: 1rem; color: var(--brand); }
+.about__list .tech-icon i { margin-right: .3rem; font-size: 1.2rem; color: var(--brand); transition: color .3s ease; }
 .about__list li:hover .tech-icon i { color: #66e0ff; }
 
 /* Quote */
 .about__quote {
   margin-top: 1rem;
   padding: 1rem;
-  background: rgba(16, 20, 28, 0.9);   /* uses panel tone */
+  background: rgba(16, 20, 28, 0.9);
   border-left: 4px solid var(--brand);
   border-radius: 4px;
   font-style: italic;
@@ -267,11 +271,14 @@ main { padding-top: 72px; }
 /* Responsive */
 @media (max-width: 768px) {
   .about__row--two-columns {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;   /* stack on mobile */
     gap: 1rem;
   }
-  .about__photo-placeholder {
-    width: 120px; height: 120px;
+  .about__photo { justify-content: center; }
+  .about__photo-img {
+    width: min(40%, 160px);
+    aspect-ratio: 4 / 5;
+    border-radius: 10px;
   }
   .about__subtitle { font-size: 1.3rem; }
 }
@@ -752,3 +759,155 @@ main { padding-top: 72px; }
   overflow: visible; /* allow arrows to extend beyond */
 }
 
+/* ===== Certifications ===== */
+.certs__grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.cert-card {
+  background: linear-gradient(180deg, rgba(16,20,28,.9), rgba(16,20,28,.75));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  color: var(--muted);
+  transition: transform .18s ease, box-shadow .25s ease, border-color .2s ease;
+  display: flex;
+  flex-direction: column;
+}
+.cert-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0,221,235,.45);
+  box-shadow: 0 12px 26px rgba(0,221,235,.18);
+}
+
+/* --- Header block: ensure all titles occupy equal space --- */
+.cert-card__head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 8px;
+
+  /* Align image tops by reserving enough space for the longest header */
+  min-height: 96px; /* fits 3 lines comfortably at desktop width */
+  padding-bottom: 4px;
+}
+
+.cert-card__icon { color: var(--brand); }
+
+.cert-card__title {
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+/* Responsive tuning: less space when titles wrap into fewer lines */
+@media (max-width: 1280px) {
+  .cert-card__head { min-height: 84px; }  /* for 2 lines */
+}
+@media (max-width: 980px) {
+  .cert-card__head { min-height: 76px; }  /* for tablets */
+}
+@media (max-width: 720px) {
+  .cert-card__head { min-height: 68px; }  /* for phones */
+}
+
+/* --- Certificate image --- */
+.cert-card__img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 8px 0 10px;
+  border: 1px solid #1f2a3f;
+  background: #0d1320;
+}
+
+/* --- Meta & summary text --- */
+.cert-card__issuer {
+  font-size: 14px;
+  color: var(--brand);
+  margin-bottom: 6px;
+}
+.cert-card__summary {
+  color: var(--muted);
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* --- Tech chips --- */
+.cert-card__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: auto; /* ensures bottom alignment of chips */
+}
+.cert-card__stack li {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid #1f2a3f;
+  background: #0d1320;
+  color: var(--muted);
+}
+
+/* Gradient placeholder for upcoming certificates */
+.cert-card__ph {
+  /* keep the same spacing as images */
+  margin: 8px 0 10px;
+  border-radius: 12px;
+  border: 1px solid #1f2a3f;
+  position: relative;
+  overflow: hidden;
+
+  /* HEIGHT: mimic PM certificate proportions */
+  aspect-ratio: 4 / 5;            /* portrait like your PM image */
+  /* fallback for older browsers and fine control across viewports */
+  height: clamp(220px, 28vw, 360px);
+
+  /* on-brand layered gradient */
+  background:
+    radial-gradient(120% 120% at 100% 0%, rgba(0,221,235,.18), transparent 55%),
+    radial-gradient(120% 120% at 0% 100%, rgba(91,157,255,.16), transparent 55%),
+    linear-gradient(160deg, rgba(0,221,235,.18), rgba(91,157,255,.22) 60%, rgba(0,221,235,.18));
+  box-shadow: inset 0 0 0 1px rgba(0,221,235,.10);
+}
+
+/* soft animated sheen */
+.cert-card__ph::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(100deg, transparent 40%, rgba(255,255,255,.08) 50%, transparent 60%);
+  transform: translateX(-100%);
+  animation: certShine 3.5s ease-in-out infinite;
+}
+@keyframes certShine {
+  0%   { transform: translateX(-100%); }
+  50%  { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* center label */
+.cert-card__ph-label {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  opacity: .55;
+}
+
+/* optional hover lift to match images */
+.cert-card:hover .cert-card__ph {
+  box-shadow: inset 0 0 0 1px rgba(0,221,235,.20);
+}
+
+.badge--ongoing {
+  border-color: rgba(0,221,235,.45);
+  color: var(--brand);
+}

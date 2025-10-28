@@ -20,11 +20,10 @@ const About = () => {
           <div className="about__photo">
             {/* Replace with your real photo path if available */}
             <img
-              src="/assets/img/profile.jpg"
+              src="/images/profile.jpg"
               alt="Roman Mazuryk profile"
               className="about__photo-img"
             />
-            <span className="about__photo-caption">Profile Image</span>
           </div>
 
           <div className="about__panel">
