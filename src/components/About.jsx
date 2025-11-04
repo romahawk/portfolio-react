@@ -41,10 +41,10 @@ const About = () => {
         <div className="about__row">
           <h3 className="about__heading">
             <Rocket size={18} className="icon about__icon" />
-            Why I’m Pivoting to Tech
+            My Path in Tech
           </h3>
           <p className="about__text">
-            Today, I’m building full-stack solutions with React & TypeScript, Python (Flask/FastAPI), and SQL/NoSQL databases, applying Agile PM practices to move ideas from prototype to product. My focus is on creating clear UX, scalable architecture, and measurable value.
+            I’ve transitioned fully into tech, building full-stack and cross-platform solutions with React, React Native, TypeScript, Node.js, and Python (Flask/FastAPI), supported by SQL/NoSQL databases. Combining hands-on development with Agile product management, I turn ideas into scalable, user-centered products focused on clear UX, solid architecture, and measurable impact.
           </p>
         </div>
 
@@ -55,7 +55,7 @@ const About = () => {
             My Values &amp; Vision
           </h3>
           <p className="about__text">
-            Innovation, clarity, and continuous learning drive everything I do. I value teamwork, data-driven decision-making, and delivering solutions that truly help people. My vision is to merge MedTech precision with modern software engineering — o create reliable, intuitive, and scalable digital products across healthcare, SportTech, and FinTech.
+            Innovation, clarity, and continuous learning guide everything I build. I believe in teamwork, data-driven decision-making, and delivering products that make a real difference. My vision is to combine product thinking with modern software engineering to create reliable, intuitive, and scalable digital solutions across healthcare, SportTech, and FinTech.
           </p>
         </div>
 
@@ -66,8 +66,7 @@ const About = () => {
             Let’s Collaborate
           </h3>
           <p className="about__text">
-            I’m open to collaboration — whether you’re in MedTech, Tech, or both.
-            Let’s connect and build something meaningful.
+            Let’s turn ideas into working products. I love partnering with forward-thinking teams to build smart, human-centered digital experiences.
           </p>
         </div>
 

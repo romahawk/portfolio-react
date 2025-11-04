@@ -95,25 +95,46 @@ main { padding-top: 72px; }
 
 /* Mobile nav */
 @media (max-width: 800px) {
-  .nav { grid-template-columns: auto auto; }
-  .nav__toggle { display: inline-block; }
+  .nav { 
+    grid-template-columns: auto 1fr;
+    position: relative; 
+  }
+  .nav__toggle { 
+    display: inline-block; 
+    justify-self: end;
+  }
   .nav__list {
-    position: fixed;
-    top: 72px; right: 16px; left: 16px;
+    position: absolute;          /* ⬅ float it under the bar */
+    top: calc(100% + 1px); 
+    left: 16px;
+    right: 16px;                 /* ⬅ now it will stretch nicely */
     flex-direction: column;
-    padding: 12px;
+    padding: 12px 12px 18px;
     gap: 6px;
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 14px;
     transform: translateY(-8px);
-    opacity: 0; pointer-events: none;
+    opacity: 0;
+    pointer-events: none;
     transition: opacity .18s ease, transform .18s ease;
     box-shadow: var(--shadow);
   }
+
   .nav__list--open {
     transform: translateY(0);
-    opacity: 1; pointer-events: auto;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav__link {
+    width: 100%;
+  }
+
+  .nav__cta {
+    display: block;
+    text-align: center;
+    border-radius: 10px;
   }
 }
 
