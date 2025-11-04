@@ -95,13 +95,14 @@ main { padding-top: 72px; }
 
 /* Mobile nav */
 @media (max-width: 800px) {
-  .nav { grid-template-columns: auto auto; }
-  .nav__toggle { display: inline-block; }
+  .nav { grid-template-columns: auto 1fr; }
+  .nav__toggle { display: inline-block; justify-self: end;}
   .nav__list {
     position: fixed;
     top: 72px; right: 16px; left: 16px;
     flex-direction: column;
     padding: 12px;
+    padding-bottom: 18px; 
     gap: 6px;
     background: var(--panel);
     border: 1px solid var(--border);
@@ -114,6 +115,16 @@ main { padding-top: 72px; }
   .nav__list--open {
     transform: translateY(0);
     opacity: 1; pointer-events: auto;
+  }
+
+  .nav__link {
+    width: 100%;               /* cleaner tap targets in mobile menu */
+  }
+
+  .nav__cta {
+    display: block;
+    text-align: center;
+    border-radius: 10px;       /* so it doesn’t look “cut” by the parent border */
   }
 }
 
