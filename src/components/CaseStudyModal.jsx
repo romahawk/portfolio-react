@@ -21,7 +21,9 @@ export default function CaseStudyModal({ open, onClose, title, children }) {
             <X size={18} />
           </button>
         </header>
-        <div className="cs-modal__body">{children}</div>
+        <div className="cs-modal__body">
+          {children}
+        </div>
       </div>
     </div>
   );

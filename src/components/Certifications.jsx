@@ -101,55 +101,50 @@ const certifications = [
 ];
 
 const Certifications = () => (
-  <section id="certifications" className="section container">
-    <h2 className="section__title">&gt; Certifications</h2>
-
-    <div className="certs__grid">
-      {certifications.map((cert) => {
-        const isPlaceholder = cert.placeholder || !cert.image;
-
-        return (
-          <div key={cert.id} className="cert-card">
-            <div className="cert-card__head">
-              <span className="cert-card__icon">{cert.icon}</span>
-              <h3 className="cert-card__title">{cert.title}</h3>
-            </div>
-
-            {/* Image or gradient placeholder */}
-            {isPlaceholder ? (
-              <div className="cert-card__ph">
-                <span className="cert-card__ph-label">Coming soon</span>
+  <section id="certifications" className="section section-gradient">
+    <div className="container">
+      <h2 className="section__title">&gt; Certifications</h2>
+      <div className="certs__grid">
+        {certifications.map((cert) => {
+          const isPlaceholder = cert.placeholder || !cert.image;
+          return (
+            <div key={cert.id} className="cert-card">
+              <div className="cert-card__head">
+                <span className="cert-card__icon">{cert.icon}</span>
+                <h3 className="cert-card__title">{cert.title}</h3>
               </div>
-            ) : (
-              <img
-                src={cert.image}
-                alt={cert.title}
-                className="cert-card__img"
-                loading="lazy"
-              />
-            )}
-
-            <p className="cert-card__issuer">
-              {cert.issuer}
-              {cert.period ? ` (${cert.period})` : ""}
-            </p>
-
-            {cert.status === "ongoing" && (
-              <span className="badge badge--ongoing">Ongoing</span>
-            )}
-
-            <p className="cert-card__summary">{cert.summary}</p>
-
-            {Array.isArray(cert.stack) && cert.stack.length > 0 && (
-              <ul className="cert-card__stack">
-                {cert.stack.map((s, i) => (
-                  <li key={i}>{s}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        );
-      })}
+              {/* Image or gradient placeholder */}
+              {isPlaceholder ? (
+                <div className="cert-card__ph">
+                  <span className="cert-card__ph-label">Coming soon</span>
+                </div>
+              ) : (
+                <img
+                  src={cert.image}
+                  alt={cert.title}
+                  className="cert-card__img"
+                  loading="lazy"
+                />
+              )}
+              <p className="cert-card__issuer">
+                {cert.issuer}
+                {cert.period ? ` (${cert.period})` : ""}
+              </p>
+              {cert.status === "ongoing" && (
+                <span className="badge badge--ongoing">Ongoing</span>
+              )}
+              <p className="cert-card__summary">{cert.summary}</p>
+              {Array.isArray(cert.stack) && cert.stack.length > 0 && (
+                <ul className="cert-card__stack">
+                  {cert.stack.map((s, i) => (
+                    <li key={i}>{s}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   </section>
 );

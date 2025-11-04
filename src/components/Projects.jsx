@@ -79,106 +79,103 @@ export default function Projects() {
   const medManagement = useMemo(() => medtechProjects.filter((p) => p.segment === "management"), []);
 
   return (
-    <section id="projects" className="section container">
-      <h2 className="section__title">&gt; Projects</h2>
-
-      <div className="projects__toolbar">
-        <div className="projects__tabs" role="tablist" aria-label="Project categories">
-          <button
-            role="tab"
-            aria-selected={cat === CATEGORY.TECH}
-            className={`tab ${cat === CATEGORY.TECH ? "tab--active" : ""}`}
-            onClick={() => setCat(CATEGORY.TECH)}
-          >
-            <Cpu size={16} className="icon mr-1" /> Tech
-          </button>
-          <button
-            role="tab"
-            aria-selected={cat === CATEGORY.MED}
-            className={`tab ${cat === CATEGORY.MED ? "tab--active" : ""}`}
-            onClick={() => setCat(CATEGORY.MED)}
-          >
-            <HeartPulse size={16} className="icon mr-1" /> MedTech
-          </button>
+    <section id="projects" className="section section-gradient">
+      <div className="container">
+        <h2 className="section__title">&gt; Projects</h2>
+        <div className="projects__toolbar">
+          <div className="projects__tabs" role="tablist" aria-label="Project categories">
+            <button
+              role="tab"
+              aria-selected={cat === CATEGORY.TECH}
+              className={`tab ${cat === CATEGORY.TECH ? "tab--active" : ""}`}
+              onClick={() => setCat(CATEGORY.TECH)}
+            >
+              <Cpu size={16} className="icon mr-1" /> Tech
+            </button>
+            <button
+              role="tab"
+              aria-selected={cat === CATEGORY.MED}
+              className={`tab ${cat === CATEGORY.MED ? "tab--active" : ""}`}
+              onClick={() => setCat(CATEGORY.MED)}
+            >
+              <HeartPulse size={16} className="icon mr-1" /> MedTech
+            </button>
+          </div>
+          {cat === CATEGORY.TECH && tags.length > 1 && (
+            <div className="projects__filters" role="group" aria-label="Filter tags">
+              {tags.map((t) => (
+                <button
+                  key={t}
+                  className={`chip ${tag === t ? "chip--active" : ""}`}
+                  onClick={() => setTag(t)}
+                  aria-pressed={tag === t}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
-
-        {cat === CATEGORY.TECH && tags.length > 1 && (
-          <div className="projects__filters" role="group" aria-label="Filter tags">
-            {tags.map((t) => (
-              <button
-                key={t}
-                className={`chip ${tag === t ? "chip--active" : ""}`}
-                onClick={() => setTag(t)}
-                aria-pressed={tag === t}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {cat === CATEGORY.TECH ? (
-        <>
-          <h3 className="projects__section-title">💻 Tech Projects</h3>
-          <p className="projects__intro">Recent software projects (React, Python, data).</p>
-          <div className="projects__grid">
-            {visibleTech.map((p) => (
-              <ProjectCard key={p.id} p={p} onOpenCase={openCase} />
-            ))}
-          </div>
-        </>
-      ) : (
-        <>
-          <h3 className="projects__section-title">💙 MedTech — Integration & Innovation</h3>
-          <p className="projects__intro">OR integrations, visualization, devices.</p>
-          <div className="projects__grid">
-            {medIntegration.map((p) => (
-              <ProjectCard key={p.id} p={p} variant="med" onOpenCase={openCase} />
-            ))}
-          </div>
-
-          {medManagement.length ? (
-            <>
-              <h3 className="projects__section-title">💼 MedTech — Sales & Project Management</h3>
-              <p className="projects__intro">Rollouts, tenders, vendor coordination, training.</p>
-              <div className="projects__grid">
-                {medManagement.map((p) => (
-                  <ProjectCard key={p.id} p={p} variant="mgmt" onOpenCase={openCase} />
-                ))}
-              </div>
-            </>
-          ) : null}
-        </>
-      )}
-
-      <CaseStudyModal
-        open={!!caseId}
-        onClose={closeCase}
-        title={
-          caseId === "livesurgery"
-            ? "Livesurgery — Case Study"
-            : caseId === "smartshooter"
-            ? "SmartShooter AI — Case Study"
-            : caseId === "flowlogix"
-            ? "FlowLogix — Case Study"
-            : caseId === "alphorythm"
-            ? "Alphorythm — Case Study"
-            : "Case Study"
-        }
-      >
-        {caseId === "livesurgery" ? (
-          <LivesurgeryCaseStudy />
-        ) : caseId === "smartshooter" ? (
-          <SmartShooterCaseStudy />
-        ) : caseId === "flowlogix" ? (
-          <FlowLogixCaseStudy />
-        ) : caseId === "alphorythm" ? (
-          <AlphorythmCaseStudy />
+        {cat === CATEGORY.TECH ? (
+          <>
+            <h3 className="projects__section-title">💻 Tech Projects</h3>
+            <p className="projects__intro">Recent software projects (React, Python, data).</p>
+            <div className="projects__grid">
+              {visibleTech.map((p) => (
+                <ProjectCard key={p.id} p={p} onOpenCase={openCase} />
+              ))}
+            </div>
+          </>
         ) : (
-          <div>Coming soon…</div>
+          <>
+            <h3 className="projects__section-title">💙 MedTech — Integration & Innovation</h3>
+            <p className="projects__intro">OR integrations, visualization, devices.</p>
+            <div className="projects__grid">
+              {medIntegration.map((p) => (
+                <ProjectCard key={p.id} p={p} variant="med" onOpenCase={openCase} />
+              ))}
+            </div>
+            {medManagement.length ? (
+              <>
+                <h3 className="projects__section-title">💼 MedTech — Sales & Project Management</h3>
+                <p className="projects__intro">Rollouts, tenders, vendor coordination, training.</p>
+                <div className="projects__grid">
+                  {medManagement.map((p) => (
+                    <ProjectCard key={p.id} p={p} variant="mgmt" onOpenCase={openCase} />
+                  ))}
+                </div>
+              </>
+            ) : null}
+          </>
         )}
-      </CaseStudyModal>
+        <CaseStudyModal
+          open={!!caseId}
+          onClose={closeCase}
+          title={
+            caseId === "livesurgery"
+              ? "Livesurgery — Case Study"
+              : caseId === "smartshooter"
+              ? "SmartShooter AI — Case Study"
+              : caseId === "flowlogix"
+              ? "FlowLogix — Case Study"
+              : caseId === "alphorythm"
+              ? "Alphorythm — Case Study"
+              : "Case Study"
+          }
+        >
+          {caseId === "livesurgery" ? (
+            <LivesurgeryCaseStudy />
+          ) : caseId === "smartshooter" ? (
+            <SmartShooterCaseStudy />
+          ) : caseId === "flowlogix" ? (
+            <FlowLogixCaseStudy />
+          ) : caseId === "alphorythm" ? (
+            <AlphorythmCaseStudy />
+          ) : (
+            <div>Coming soon…</div>
+          )}
+        </CaseStudyModal>
+      </div>
 
     </section>
   );

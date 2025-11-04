@@ -76,6 +76,7 @@ export const softSkills = [
     items: [
       "10+ years running Medintegro",
       "Project delivery & client training",
+      "Building and leading cross-functional vendor–client teams"
     ],
   },
   {
@@ -84,6 +85,7 @@ export const softSkills = [
     items: [
       "Problem-solving under uncertainty",
       "Startup & remote-first readiness",
+      "Turning business constraints into technical solutions"
     ],
   },
 ];

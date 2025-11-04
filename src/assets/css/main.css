@@ -13,15 +13,13 @@
 
 /* -------- Reset / base -------- */
 * { box-sizing: border-box; }
-html, body, #root { height: 100%; }
+html, body, #root { height: 100%; overflow-x: hidden;}
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   color: var(--text);
-  background: radial-gradient(1200px 800px at 70% -10%, rgba(0,221,235,0.08), transparent),
-              radial-gradient(900px 600px at -10% 10%, rgba(91,157,255,0.08), transparent),
-              var(--bg);
+  background: var(--bg); /* only the solid color */
 }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
@@ -118,13 +116,13 @@ main { padding-top: 72px; }
   }
 
   .nav__link {
-    width: 100%;               /* cleaner tap targets in mobile menu */
+    width: 100%;             
   }
 
   .nav__cta {
     display: block;
     text-align: center;
-    border-radius: 10px;       /* so it doesn’t look “cut” by the parent border */
+    border-radius: 10px;       
   }
 }
 
@@ -565,37 +563,98 @@ main { padding-top: 72px; }
   transition: color .2s ease;
 }
 
-/* ---- Case Study modal ---- */
+/* ===== Case Study Modal ===== */
 .cs-modal {
-  position: fixed; inset: 0; z-index: 90;
+  position: fixed;
+  inset: 0;
+  z-index: 999;                  /* above navbar */
 }
+
 .cs-modal__backdrop {
-  position: absolute; inset: 0; background: rgba(0,0,0,.55);
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(2px);
 }
+
 .cs-modal__panel {
-  position: absolute; inset: 40px 20px;
-  max-width: 1100px; margin: 0 auto;
-  background: linear-gradient(180deg, rgba(16,20,28,.98), rgba(16,20,28,.95));
-  border: 1px solid var(--border); border-radius: 16px;
-  box-shadow: 0 30px 60px rgba(0,0,0,.45);
-  overflow: hidden; display: flex; flex-direction: column;
+  position: absolute;
+  /* offset from top so it doesn't hide under the navbar (your header is ~72px) */
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1100px, 96vw);
+  max-height: calc(100vh - 110px);   /* leaves room above & below */
+  background: rgba(10, 14, 18, 0.98);
+  border: 1px solid rgba(0, 221, 235, 0.15);
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.35);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;                 /* header stays fixed, body scrolls */
 }
-@media (max-width: 720px){ .cs-modal__panel { inset: 16px 10px; } }
 
+/* header stays visible */
 .cs-modal__header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 12px 14px; border-bottom: 1px solid var(--border);
-  background: rgba(255,255,255,.02);
-}
-.cs-modal__title { margin: 0; font-weight: 700; }
-.cs-modal__close {
-  width: 36px; height: 36px; border-radius: 10px;
-  border: 1px solid var(--border); background: var(--panel); color: var(--text);
-  display: grid; place-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 
-.cs-modal__body { padding: 16px; overflow: auto; }
+.cs-modal__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.cs-modal__close {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.02);
+  border-radius: 999px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* body scrolls */
+.cs-modal__body {
+  padding: 1rem 1.25rem 1.4rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 110px - 54px); /* panel height minus header */
+}
+
+/* ===== Scrollbar: match Timeline style ===== */
+.cs-modal__body::-webkit-scrollbar {
+  width: 6px;
+}
+.cs-modal__body::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.15);
+  border-radius: 999px;
+}
+.cs-modal__body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ddeb 0%, #0066ff 100%);
+  border-radius: 999px;
+}
+.cs-modal__body {
+  scrollbar-width: thin;
+  scrollbar-color: #00ddeb rgba(0,0,0,0.15);
+}
+
+/* mobile tweaks */
+@media (max-width: 640px) {
+  .cs-modal__panel {
+    top: 68px;
+    width: 96vw;
+  }
+  .cs-modal__body {
+    max-height: calc(100vh - 90px - 50px);
+  }
+}
 
 /* ---- Case Study content ---- */
 .cs { display: grid; gap: 14px; }
@@ -921,4 +980,41 @@ main { padding-top: 72px; }
 .badge--ongoing {
   border-color: rgba(0,221,235,.45);
   color: var(--brand);
+}
+
+/* --- Reusable background gradient for sections --- */
+.section-gradient {
+  position: relative;
+  background:
+    radial-gradient(1200px 800px at 70% -10%, rgba(0, 221, 235, 0.08), transparent),
+    radial-gradient(900px 600px at -10% 10%, rgba(91, 157, 255, 0.08), transparent),
+    var(--bg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
+}
+
+/* Optional: limit gradient height per section */
+.section-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  height: var(--gradient-height, 600px); /* adjustable per section */
+  background:
+    radial-gradient(1200px 800px at 70% -10%, rgba(0, 221, 235, 0.08), transparent),
+    radial-gradient(900px 600px at -10% 10%, rgba(91, 157, 255, 0.08), transparent);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* mobile fix for background band on the right */
+@media (max-width: 768px) {
+  body {
+    background:
+      radial-gradient(130% 80% at 50% -10%, rgba(0,221,235,0.08), transparent),
+      radial-gradient(110% 60% at 0% 10%, rgba(91,157,255,0.08), transparent),
+      var(--bg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }

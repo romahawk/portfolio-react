@@ -27,7 +27,7 @@ const SectionTitle = ({ Icon, children }) => (
 );
 
 const SkillsGroup = ({ title, sectionIcon: SectionIcon, data }) => (
-  <div className="skills__group">
+  <div className="skills__group ">
     <SectionTitle Icon={SectionIcon}>{title}</SectionTitle>
     <div className="skills__grid">
       {data.map((card) => {
@@ -51,44 +51,41 @@ const SkillsGroup = ({ title, sectionIcon: SectionIcon, data }) => (
 );
 
 const Skills = () => (
-  <section id="skills" className="section container">
-    <h2 className="section__title">&gt; Skills</h2>
-
-    {/* Hard Skills */}
-    <SkillsGroup
-      title="Hard Skills (React / Full-Stack Developer Path)"
-      sectionIcon={Laptop}
-      data={hardSkills}
-    />
-
-    {/* IT Project Manager Path */}
-    <SkillsGroup
-      title="IT Project Manager Path"
-      sectionIcon={ClipboardList}
-      data={pmSkills}
-    />
-
-    {/* Soft Skills */}
-    <SkillsGroup
-      title="Soft Skills (Professional)"
-      sectionIcon={Users}
-      data={softSkills}
-    />
-
-    {/* MedTech Expertise */}
-    <div className="skills__group">
-      <SectionTitle Icon={Stethoscope}>MedTech Expertise</SectionTitle>
-      <p className="about__text">
-        10+ years in MedTech: equipment sales, installation, OR workflows, and clinician training.
-      </p>
-    </div>
-
-    {/* Product Management */}
-    <div className="skills__group">
-      <SectionTitle Icon={Package}>Product Management</SectionTitle>
-      <p className="about__text">
-        Lifecycle management from ideation to launch; introduced innovative products like SURGIRIS lights.
-      </p>
+  <section id="skills" className="section section-gradient">
+    <div className="container">
+      <h2 className="section__title">&gt; Skills</h2>
+      {/* Hard Skills */}
+      <SkillsGroup
+        title="Hard Skills (React / Full-Stack Developer Path)"
+        sectionIcon={Laptop}
+        data={hardSkills}
+      />
+      {/* IT Project Manager Path */}
+      <SkillsGroup
+        title="IT Project Manager Path"
+        sectionIcon={ClipboardList}
+        data={pmSkills}
+      />
+      {/* Soft Skills */}
+      <SkillsGroup
+        title="Soft Skills (Professional)"
+        sectionIcon={Users}
+        data={softSkills}
+      />
+      {/* MedTech Expertise */}
+      <div className="skills__group">
+        <SectionTitle Icon={Stethoscope}>MedTech Expertise</SectionTitle>
+        <p className="about__text">
+          10+ years in MedTech: equipment sales, installation, OR workflows, and clinician training.
+        </p>
+      </div>
+      {/* Product Management */}
+      <div className="skills__group">
+        <SectionTitle Icon={Package}>Product Management</SectionTitle>
+        <p className="about__text">
+          Lifecycle management from ideation to launch; introduced innovative products like SURGIRIS lights.
+        </p>
+      </div>
     </div>
   </section>
 );
