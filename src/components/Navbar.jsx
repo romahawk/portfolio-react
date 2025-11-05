@@ -26,22 +26,25 @@ export default function Navbar() {
           <span className="nav__toggle-bar"></span>
         </button>
 
-        {/* links */}
         <ul className={`nav__list ${isOpen ? "nav__list--open" : ""}`}>
           <li><a href="#home" className="nav__link" onClick={() => setIsOpen(false)}>Home</a></li>
           <li><a href="#about" className="nav__link" onClick={() => setIsOpen(false)}>About</a></li>
           <li><a href="#timeline" className="nav__link" onClick={() => setIsOpen(false)}>Timeline</a></li>
           <li><a href="#skills" className="nav__link" onClick={() => setIsOpen(false)}>Skills</a></li>
           <li><a href="#projects" className="nav__link" onClick={() => setIsOpen(false)}>Projects</a></li>
-          <li><a href="#certs" className="nav__link" onClick={() => setIsOpen(false)}>Certifications</a></li>
+          <li><a href="#certifications" className="nav__link" onClick={() => setIsOpen(false)}>Certifications</a></li>
 
-          <button
-            className="nav__cta btn--primary"
-            onClick={() => setIsOpen(false)}
-          >
-            Contact
-          </button>
+          <li>
+            <a
+              href="#contact"
+              className="nav__cta btn--primary"
+              onClick={() => setIsOpen(false)}
+            >
+              Contact
+            </a>
+          </li>
         </ul>
+
       </nav>
     </header>
   );

@@ -133,7 +133,7 @@ main { padding-top: 72px; }
 }
 .nav__link:hover { color: var(--text); background: rgba(255,255,255,0.04); }
 .nav__link:active { transform: translateY(1px); }
-.nav__cta { color: var(--text); border: 1px solid var(--border); }
+.nav__cta { color: var(--text); border: 1px solid var(--border); border-radius: 4px; padding: 0px 8px}
 
 /* ===== MOBILE ===== */
 @media (max-width: 800px) {
@@ -707,6 +707,30 @@ main { padding-top: 72px; }
 .cs__sprint-sec { margin-top: 6px; }
 .cs__sprint-label { font-size: 12px; color: var(--muted); }
 .cs__sprint-retro { margin-top: 6px; font-size: 12px; color: var(--muted); border-top: 1px solid #152034; padding-top: 6px; }
+
+/* body scrolls */
+.cs-modal__body {
+  padding: 1rem 1.25rem 1.4rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 110px - 54px); /* panel height minus header */
+}
+
+/* ===== Scrollbar: match Timeline style ===== */
+.cs-modal__body::-webkit-scrollbar {
+  width: 6px;
+}
+.cs-modal__body::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.15);
+  border-radius: 999px;
+}
+.cs-modal__body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ddeb 0%, #0066ff 100%);
+  border-radius: 999px;
+}
+.cs-modal__body {
+  scrollbar-width: thin;
+  scrollbar-color: #00ddeb rgba(0,0,0,0.15);
+}
 
 /* project card actions row */
 .project-card__actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }

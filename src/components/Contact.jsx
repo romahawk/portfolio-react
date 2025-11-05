@@ -5,7 +5,7 @@ const Contact = () => {
   const formRef = useRef(null);
   const [copied, setCopied] = useState(false);
 
-  const email = "your.email@example.com"; // change to your email
+  const email = "romazuryk@proton.me"; // change to your email
   const location = "Germany (CET)";
 
   const copyEmail = async () => {
@@ -61,10 +61,10 @@ const Contact = () => {
             <div className="contact__row">
               <span className="contact__label">Social</span>
               <div className="contact__socials">
-                <a href="#" target="_blank" rel="noreferrer" className="contact__social">
+                <a href="https://www.linkedin.com/in/roman-mazuryk/" target="_blank" rel="noreferrer" className="contact__social">
                   <Linkedin size={16} className="icon" /> LinkedIn
                 </a>
-                <a href="#" target="_blank" rel="noreferrer" className="contact__social">
+                <a href="https://github.com/romahawk" target="_blank" rel="noreferrer" className="contact__social">
                   <Github size={16} className="icon" /> GitHub
                 </a>
                 <a href="#" target="_blank" rel="noreferrer" className="contact__social">
