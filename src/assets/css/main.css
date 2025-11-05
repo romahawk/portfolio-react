@@ -56,32 +56,74 @@ main { padding-top: 72px; }
   gap: 16px;
 }
 
+/* logo stays as you had it */
 .nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-weight: 800;
-  letter-spacing: 0.5px;
   font-size: 18px;
+  letter-spacing: 0.4px;
+  color: #fff;
 }
-.nav__logo-accent { color: var(--brand); }
+.nav__logo-brace { opacity: .85; }
+.nav__logo-text { text-transform: uppercase; }
+.nav__logo-accent {
+  width: 6px;
+  height: 6px;
+  background: #00ddeb;
+  border-radius: 999px;
+  display: inline-block;
+  margin-left: 2px;
+}
 
-/* Hamburger */
+/* ==== Hamburger (hidden by default) ==== */
 .nav__toggle {
-  display: none;
-  width: 44px; height: 44px;
+  display: none;              /* <— hide on desktop */
+  position: relative;
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--border);
   border-radius: 10px;
   background: var(--panel);
   box-shadow: var(--shadow);
-}
-.nav__toggle-bar {
-  display: block; width: 18px; height: 2px; margin: 5px auto;
-  background: var(--text);
-  border-radius: 2px;
+  cursor: pointer;
 }
 
-/* Links */
+.nav__toggle-bar {
+  position: absolute;
+  left: 50%;
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 999px;
+  transform: translateX(-50%);
+  transition: transform .25s ease, opacity .25s ease;
+}
+.nav__toggle-bar:nth-child(1) { top: 13px; }
+.nav__toggle-bar:nth-child(2) { top: 20px; }
+.nav__toggle-bar:nth-child(3) { top: 27px; }
+
+/* X state */
+.nav__toggle.x .nav__toggle-bar:nth-child(1) {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.nav__toggle.x .nav__toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+.nav__toggle.x .nav__toggle-bar:nth-child(3) {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* desktop links */
 .nav__list {
-  list-style: none; margin: 0; padding: 0;
-  display: flex; gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 18px;
 }
 .nav__link {
   padding: 10px 12px;
@@ -93,50 +135,67 @@ main { padding-top: 72px; }
 .nav__link:active { transform: translateY(1px); }
 .nav__cta { color: var(--text); border: 1px solid var(--border); }
 
-/* Mobile nav */
+/* ===== MOBILE ===== */
 @media (max-width: 800px) {
-  .nav { 
+  .nav {
     grid-template-columns: auto 1fr;
-    position: relative; 
+    position: relative;
   }
-  .nav__toggle { 
-    display: inline-block; 
+
+  .nav__toggle {
+    display: inline-block;    /* <— show only on mobile */
     justify-self: end;
   }
+
+  /* turn desktop row into sliding panel */
   .nav__list {
-    position: absolute;          /* ⬅ float it under the bar */
-    top: calc(100% + 1px); 
-    left: 16px;
-    right: 16px;                 /* ⬅ now it will stretch nicely */
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    height: calc(50vh - 72px);
+    background: radial-gradient(1200px 800px at 70% -10%, rgba(0,221,235,0.08), transparent),
+                radial-gradient(900px 600px at -10% 10%, rgba(91,157,255,0.08), transparent),
+                var(--bg);
+    display: flex;
     flex-direction: column;
-    padding: 12px 12px 18px;
-    gap: 6px;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    transform: translateY(-8px);
+    gap: 16px;
+    padding: 20px 18px 28px;
+    overflow-y: auto;
+    z-index: 40;
+    transform: translateX(100%);
     opacity: 0;
     pointer-events: none;
-    transition: opacity .18s ease, transform .18s ease;
-    box-shadow: var(--shadow);
+    transition: transform .2s ease-out, opacity .2s ease-out;
   }
 
   .nav__list--open {
-    transform: translateY(0);
+    transform: translateX(0);
     opacity: 1;
     pointer-events: auto;
   }
 
   .nav__link {
     width: 100%;
+    padding: 16px 12px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    border-radius: 0;
   }
 
   .nav__cta {
-    display: block;
+    margin-top: auto;
+    width: 100%;
     text-align: center;
-    border-radius: 10px;
+    padding: 6px 24px;
+    font-size: 1.2rem;
+    background: #8f93941c;
+    color: #fff;
+    border-radius: 12px;
+    border: 1px solid #15a8a865;
   }
 }
+
 
 /* -------- Hero -------- */
 .hero {

@@ -1,43 +1,48 @@
-import React, { useState } from "react";
-import { Braces } from "lucide-react";
+import { useState } from "react";
 
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
 
-const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  const toggle = () => setOpen((v) => !v);
-  const close = () => setOpen(false);
+  const toggleNav = () => setIsOpen((prev) => !prev);
 
   return (
     <header className="site-header">
       <nav className="nav container">
-        <a href="#home" className="nav__logo" onClick={close}>
-          <Braces size={18} className="icon mr-1" />
-          ROMAN<span className="nav__logo-accent">.</span>
-        </a>
+        {/* logo */}
+        <div className="nav__logo">
+          <span className="nav__logo-brace">{'{ }'}</span>
+          <span className="nav__logo-text">ROMAZ</span>
+          <span className="nav__logo-accent"></span>
+        </div>
 
+        {/* mobile toggle */}
         <button
-          className="nav__toggle"
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          onClick={toggle}
+          className={`nav__toggle ${isOpen ? "x" : ""}`}
+          onClick={toggleNav}
+          aria-label="Toggle navigation"
         >
-          <span className="nav__toggle-bar" />
-          <span className="nav__toggle-bar" />
-          <span className="nav__toggle-bar" />
+          <span className="nav__toggle-bar"></span>
+          <span className="nav__toggle-bar"></span>
+          <span className="nav__toggle-bar"></span>
         </button>
 
-        <ul className={`nav__list ${open ? "nav__list--open" : ""}`}>
-          <li className="nav__item"><a href="#home" className="nav__link" onClick={close}>Home</a></li>
-          <li className="nav__item"><a href="#about" className="nav__link" onClick={close}>About</a></li>
-          <li className="nav__item"><a href="#timeline" className="nav__link" onClick={close}>Timeline</a></li>
-          <li className="nav__item"><a href="#skills" className="nav__link" onClick={close}>Skills</a></li>
-          <li className="nav__item"><a href="#projects" className="nav__link" onClick={close}>Projects</a></li>
-          <li className="nav__item"><a href="#certifications" className="nav__link" onClick={close}>Certifications</a></li>
-          <li className="nav__item"><a href="#contact" className="nav__link nav__cta" onClick={close}>Contact</a></li>
+        {/* links */}
+        <ul className={`nav__list ${isOpen ? "nav__list--open" : ""}`}>
+          <li><a href="#home" className="nav__link" onClick={() => setIsOpen(false)}>Home</a></li>
+          <li><a href="#about" className="nav__link" onClick={() => setIsOpen(false)}>About</a></li>
+          <li><a href="#timeline" className="nav__link" onClick={() => setIsOpen(false)}>Timeline</a></li>
+          <li><a href="#skills" className="nav__link" onClick={() => setIsOpen(false)}>Skills</a></li>
+          <li><a href="#projects" className="nav__link" onClick={() => setIsOpen(false)}>Projects</a></li>
+          <li><a href="#certs" className="nav__link" onClick={() => setIsOpen(false)}>Certifications</a></li>
+
+          <button
+            className="nav__cta btn--primary"
+            onClick={() => setIsOpen(false)}
+          >
+            Contact
+          </button>
         </ul>
       </nav>
     </header>
   );
-};
-
-export default Navbar;
+}
