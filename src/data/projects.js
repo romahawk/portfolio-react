@@ -120,6 +120,15 @@ export const medtechProjects = [
 
   // Sales & Project Management (new group)
   {
+    id: "national-launches",
+    segment: "management",
+    title: "National Product Launches",
+    summary:
+      "Introduced various medical equipment brands nationwide: marketing, demos, KOL engagement, and training.",
+    stack: ["Go-to-Market", "Field Training", "KOLs"],
+    icon: "🚀",
+  },
+  {
     id: "or-lighting-rollout",
     segment: "management",
     title: "OR Lighting Upgrade Program (Multi-site)",
@@ -127,24 +136,6 @@ export const medtechProjects = [
       "Led multi-hospital rollout of SURGIRIS LED lights: budgeting, tenders, vendor coordination, installation scheduling, clinician onboarding.",
     stack: ["Sales & PM", "Procurement", "Training"],
     icon: "📈",
-  },
-  {
-    id: "ep-lab-install",
-    segment: "management",
-    title: "First EP Lab Installation (CR BARD)",
-    summary:
-      "Coordinated the first EP lab installation in Ukraine: stakeholder alignment, logistics, regulatory steps, and OR integration support.",
-    stack: ["Project Delivery", "Vendor Mgmt", "Regulatory"],
-    icon: "🏥",
-  },
-  {
-    id: "national-launches",
-    segment: "management",
-    title: "National Product Launches",
-    summary:
-      "Introduced ACCUVEIN vein visualization and R.WOLF shockwave therapy nationwide: marketing, demos, KOL engagement, and training.",
-    stack: ["Go-to-Market", "Field Training", "KOLs"],
-    icon: "🚀",
   },
   {
     id: "hyperbaric-deployment",

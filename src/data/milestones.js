@@ -22,9 +22,10 @@ const milestones = [
       "Founded Medintegro and led OR integration projects across Ukraine. Managed to sustain business through wartime while driving innovation in hospital technology.",
     points: [
       "2018 – founded Medintegro, installed Ukraine’s first compact SURGIMEDIA system",
-      "2019 – expanded to 40+ hospitals, achieved +35% YoY sales growth",
-      "2020–2022 – installed 8 integrated ORs; coordinated humanitarian deliveries during war",
-      "2023 – maintained business operations and client service despite the war",
+      "2019 – expanded to 20+ hospitals, achieved +35% YoY sales growth",
+      "2020–2021 – installed 8 integrated ORs", 
+      "2022 - coordinated humanitarian deliveries during war",
+      "2023 – maintained business operations and client service despite new challenges",
     ],
   },
   {
