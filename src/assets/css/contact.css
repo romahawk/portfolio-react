@@ -1,0 +1,47 @@
+/* ===== Contact ===== */
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 960px){ .contact__grid { grid-template-columns: 1fr; } }
+
+.contact__panel, .contact__form {
+  background: linear-gradient(180deg, rgba(16,20,28,.9), rgba(16,20,28,.75));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.contact__subtitle { color: var(--brand); margin: 0 0 8px; }
+.contact__text { color: var(--muted); margin: 0 0 12px; }
+
+.contact__info { display: grid; gap: 10px; }
+.contact__row { display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 8px; }
+.contact__label { color: var(--muted); }
+.contact__value { display: flex; align-items: center; gap: 10px; }
+.link-like { color: var(--brand); text-decoration: underline; background: none; border: 0; padding: 0; cursor: pointer; }
+.contact__copied { opacity: 0; transform: translateY(2px); transition: .2s; color: #7ed321; font-size: 12px; }
+.contact__copied.is-visible { opacity: 1; transform: translateY(0); }
+
+.contact__socials { display: flex; flex-wrap: wrap; gap: 8px; }
+.contact__social {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 10px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--panel); color: var(--text);
+}
+.contact__social:hover { background: #121824; border-color: #263046; }
+
+.field { display: grid; gap: 6px; margin-bottom: 12px; }
+.field label { color: var(--text); font-weight: 600; }
+.field input, .field textarea {
+  background: #0f1520; color: var(--text);
+  border: 1px solid #1f2a3f; border-radius: 10px;
+  padding: 10px 12px; outline: none;
+}
+.field input:focus, .field textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(0,221,235,.15); }
+.field--full { grid-column: 1 / -1; }
+
+.contact__actions { display: flex; gap: 10px; align-items: center; }
+.contact__hint { color: var(--muted); font-size: 12px; margin: 8px 0 0; }

@@ -1,0 +1,241 @@
+/* ==== Projects (toggle + cards) ==== */
+.projects__toolbar {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.projects__tabs {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.tab {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--muted);
+}
+
+.tab--active {
+  color: #001016;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  border-color: transparent;
+}
+
+.projects__filters {
+  display: inline-flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.projects__section-title {
+  color: var(--brand);
+  margin: 4px 0 2px;
+}
+
+.projects__intro {
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.projects__grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* ==== Card base ==== */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgba(16, 20, 28, 0.9), rgba(16, 20, 28, 0.75));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  color: var(--muted);
+  transition: transform 0.18s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 221, 235, 0.45);
+  box-shadow: 0 12px 26px rgba(0, 221, 235, 0.18);
+}
+
+.project-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-card__title {
+  color: var(--text);
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+
+.project-card__summary {
+  margin: 0 0 10px;
+  line-height: 1.6;
+}
+
+.project-card__stack {
+  margin: 0 0 8px;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.project-card__tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid #1f2a3f;
+  background: #0d1320;
+  color: var(--muted);
+}
+
+.project-card__icon {
+  font-size: 18px;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.25));
+}
+
+/* ==== MedTech variants ==== */
+.project-card--med {
+  border-color: #2a3552;
+  background:
+    radial-gradient(600px 300px at 110% -10%, rgba(91, 157, 255, 0.1), transparent),
+    linear-gradient(180deg, rgba(16, 20, 28, 0.95), rgba(16, 20, 28, 0.78));
+}
+
+.project-card--med:hover {
+  border-color: rgba(91, 157, 255, 0.55);
+  box-shadow: 0 12px 28px rgba(91, 157, 255, 0.2);
+}
+
+.project-card--mgmt {
+  border-color: #3b2f1a;
+  background:
+    radial-gradient(600px 300px at 110% -10%, rgba(255, 193, 7, 0.1), transparent),
+    linear-gradient(180deg, rgba(16, 20, 28, 0.95), rgba(16, 20, 28, 0.78));
+}
+
+.project-card--mgmt .project-card__title {
+  color: #ffd479;
+}
+
+/* ==== Bottom actions (aligned) ==== */
+.project-card__actions {
+  margin-top: auto;              /* stick actions to bottom of card */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;         /* align left + right on the same baseline */
+  gap: 12px;
+}
+
+.project-card__actions-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 70%;                /* so Render tip doesn’t push right button down */
+}
+
+.project-card__actions-right {
+  display: flex;
+  align-items: center;
+}
+
+.project-card__link-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.project-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--brand);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.project-card__link--ghost {
+  background: transparent;
+  border: 1px dashed var(--border);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.project-card__link--ghost:hover {
+  border-color: rgba(0, 221, 235, 0.5);
+  color: var(--brand);
+}
+
+.project-card__hint {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.3;
+  max-width: 240px;
+}
+
+/* ==== In development badge ==== */
+.dev-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.dev-status__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: radial-gradient(circle, #00ddeb 0%, #007d86 70%);
+  position: relative;
+}
+
+.dev-status__dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  border: 2px solid rgba(0, 221, 235, 0.35);
+  animation: dev-ping 1.4s ease-out infinite;
+}
+
+@keyframes dev-ping {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 540px) {
+  .project-card__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .project-card__actions-left {
+    max-width: 100%;
+  }
+}
