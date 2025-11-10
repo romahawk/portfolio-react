@@ -1,0 +1,24 @@
+main {
+  padding-top: calc(var(--nav-h) + 16px);
+}
+
+.container {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.section {
+  padding: 3.5rem 0 3rem;
+}
+
+.section__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+.section__title .about__chev {
+  color: var(--brand);
+}

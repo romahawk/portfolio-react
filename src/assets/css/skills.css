@@ -1,0 +1,53 @@
+/* === Skills Card Layout === */
+.skills__group { margin-bottom: 2.5rem; }
+.skills__subtitle { color: var(--brand); margin-bottom: 1rem; }
+
+.skills__grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.skill-card {
+  background: linear-gradient(180deg, rgba(16,20,28,.9), rgba(16,20,28,.75));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 18px;
+  color: var(--muted);
+  transition: transform .2s ease, box-shadow .3s ease, border-color .2s ease;
+}
+.skill-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0,221,235,.5);
+  box-shadow: 0 12px 26px rgba(0,221,235,.2);
+}
+
+.skill-card__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  color: var(--text);
+}
+.skill-card__icon {
+  color: var(--brand);
+  font-size: 1.2rem;
+  text-shadow: 0 0 8px rgba(0,221,235,.6);
+}
+
+.skill-card__list {
+  margin: 0;
+  padding-left: 18px;
+  list-style: disc;
+}
+.skill-card__list li {
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+.skills__group:nth-of-type(1) .skills__subtitle .about__icon { color: #b77aff; }
+.skills__group:nth-of-type(2) .skills__subtitle .about__icon { color: #b77aff; }
+.skills__group:nth-of-type(3) .skills__subtitle .about__icon { color: #b77aff; }
+.skills__group:nth-of-type(4) .skills__subtitle .about__icon { color: #b77aff; }
+.skills__group:nth-of-type(5) .skills__subtitle .about__icon { color: #b77aff; }

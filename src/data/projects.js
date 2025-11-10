@@ -27,11 +27,12 @@ export const techProjects = [
     id: "flowlogix",
     title: "FlowLogix — Logistic Tracker",
     summary:
-      "Flask-based dashboard for supply planning and order tracking with RBAC, timeline visualization (ETD→ETA), CSV export, and dark-mode UI. Built with Flask, SQLite/SQLAlchemy, Tailwind, and Chart.js. Demo mode available.",
+      "Flask-based dashboard for supply planning and order tracking with RBAC, timeline visualization (ETD→ETA), CSV export, and dark-mode UI.",
     stack: ["Flask", "SQLite", "SQLAlchemy", "Tailwind", "Chart.js"],
     tags: ["Logistics", "Dashboard", "Data viz"],
     link: "https://flowlogix.onrender.com/",              // replace with live demo or repo URL if you have one
-    caseStudy: "flowlogix"
+    caseStudy: "flowlogix",
+    warmupNote: "Tip: first load may take ~30s (free Render)."
   }
 ,
   {
@@ -42,6 +43,7 @@ export const techProjects = [
     stack: ["HTML", "CSS", "JavaScript", "React", "Tailwind"],
     tags: ["Web", "React"],
     link: "#",
+    caseStudy: "portfolio"
   },
   {
     id: "medintegro",
@@ -51,6 +53,8 @@ export const techProjects = [
     stack: ["React", "Next.js", "Tailwind", "Headless CMS"],
     tags: ["Web", "Rebuild", "Headless", "i18n", "SEO"],
     link: "#",
+    caseStudy: "medintegro",
+    inDevelopment: true
   },
   {
     id: "alphorythm",
@@ -60,10 +64,9 @@ export const techProjects = [
     stack: ["React", "Tailwind", "Flask", "Firebase", "Chart.js", "SQLite"],
     tags: ["FinTech", "Analytics", "Dashboard", "MVP"],
     link: "#",
-    caseStudy: "alphorythm"
+    caseStudy: "alphorythm",
+    inDevelopment: true
   }
-
-
 ];
 
 // ---------- MedTech ----------

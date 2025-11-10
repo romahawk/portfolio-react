@@ -6,6 +6,8 @@ import LivesurgeryCaseStudy from "./case-studies/LivesurgeryCaseStudy.jsx";
 import SmartShooterCaseStudy from "./case-studies/SmartShooterCaseStudy.jsx";
 import FlowLogixCaseStudy from "./case-studies/FlowLogixCaseStudy.jsx";
 import AlphorythmCaseStudy from "./case-studies/AlphorythmCaseStudy.jsx";
+import PortfolioCaseStudy from "./case-studies/PortfolioCaseStudy.jsx";
+import MedintegroCaseStudy from "./case-studies/MedintegroCaseStudy.jsx";
 
 const CATEGORY = { TECH: "tech", MED: "medtech" };
 
@@ -16,11 +18,19 @@ const collectTags = (list) => {
 };
 
 function ProjectCard({ p, variant, onOpenCase }) {
+  const inDev = p.inDevelopment;
+
   return (
-    <article className={`project-card ${variant ? `project-card--${variant}` : ""}`}>
+    <article
+      className={`project-card ${variant ? `project-card--${variant}` : ""}`}
+    >
       <header className="project-card__head">
         <h4 className="project-card__title">{p.title}</h4>
-        {p.icon ? <span className="project-card__icon" aria-hidden>{p.icon}</span> : null}
+        {p.icon ? (
+          <span className="project-card__icon" aria-hidden>
+            {p.icon}
+          </span>
+        ) : null}
       </header>
 
       <p className="project-card__summary">{p.summary}</p>
@@ -44,16 +54,39 @@ function ProjectCard({ p, variant, onOpenCase }) {
       ) : null}
 
       <div className="project-card__actions">
-        {p.link ? (
-          <a className="project-card__link" href={p.link} target="_blank" rel="noreferrer">
-            View Project <ExternalLink size={14} className="icon ml-1" />
-          </a>
-        ) : null}
-        {p.caseStudy ? (
-          <button className="project-card__link project-card__link--ghost" onClick={() => onOpenCase(p.caseStudy)}>
-            <FileText size={14} className="icon mr-1" /> Case Study
-          </button>
-        ) : null}
+        <div className="project-card__actions-left">
+          {inDev ? (
+            <div className="dev-status">
+              <span className="dev-status__dot" aria-hidden></span>
+              <span>In development</span>
+            </div>
+          ) : p.link ? (
+            <div className="project-card__link-wrap">
+              <a
+                className="project-card__link"
+                href={p.link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                View Project
+              </a>
+              {p.warmupNote ? (
+                <p className="project-card__hint">{p.warmupNote}</p>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+
+        <div className="project-card__actions-right">
+          {p.caseStudy ? (
+            <button
+              className="project-card__link project-card__link--ghost"
+              onClick={() => onOpenCase(p.caseStudy)}
+            >
+              Case Study
+            </button>
+          ) : null}
+        </div>
       </div>
     </article>
   );
@@ -164,6 +197,10 @@ export default function Projects() {
             ? "FlowLogix — Case Study"
             : caseId === "alphorythm"
             ? "Alphorythm — Case Study"
+            : caseId === "portfolio"
+            ? "Developer Portfolio Website — Case Study"
+            : caseId === "medintegro"
+            ? "Medintegro Website Rebuild — Case Study"
             : "Case Study"
         }
       >
@@ -175,11 +212,14 @@ export default function Projects() {
           <FlowLogixCaseStudy />
         ) : caseId === "alphorythm" ? (
           <AlphorythmCaseStudy />
+        ) : caseId === "portfolio" ? (
+          <PortfolioCaseStudy />
+        ) : caseId === "medintegro" ? (
+          <MedintegroCaseStudy />
         ) : (
           <div>Coming soon…</div>
         )}
       </CaseStudyModal>
-
     </section>
   );
 }

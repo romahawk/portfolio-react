@@ -95,7 +95,7 @@ export default function LivesurgeryCaseStudy() {
             <p className="cs__p">Starts sessions, shares streams, annotates key steps.</p>
           </li>
           <li>
-            <div className="cs__persona-name">Dr. Ivan Petrov</div>
+            <div className="cs__persona-name">Dr. Ivan Shevchenko</div>
             <div className="cs__persona-role">Observer</div>
             <p className="cs__p">Low-latency viewing, questions in chat, reviews archive.</p>
           </li>
