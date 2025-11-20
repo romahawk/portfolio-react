@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { techProjects, medtechProjects } from "../data/projects.js";
 import { Cpu, HeartPulse, ExternalLink, FileText } from "lucide-react";
 import CaseStudyModal from "./CaseStudyModal.jsx";
@@ -79,12 +79,16 @@ function ProjectCard({ p, variant, onOpenCase }) {
 
         <div className="project-card__actions-right">
           {p.caseStudy ? (
-            <button
+            <a
               className="project-card__link project-card__link--ghost"
-              onClick={() => onOpenCase(p.caseStudy)}
+              href={`#projects/${p.caseStudy}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onOpenCase && onOpenCase(p.caseStudy);
+              }}
             >
               Case Study
-            </button>
+            </a>
           ) : null}
         </div>
       </div>
@@ -96,8 +100,50 @@ export default function Projects() {
   const [cat, setCat] = useState(CATEGORY.TECH);
   const [caseId, setCaseId] = useState(null);
 
-  const openCase = (id) => setCaseId(id);
-  const closeCase = () => setCaseId(null);
+  const CASE_HASH_PREFIX = "#projects/";
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const syncFromHash = () => {
+      const hash = window.location.hash || "";
+
+      if (hash.startsWith(CASE_HASH_PREFIX)) {
+        const slug = hash.slice(CASE_HASH_PREFIX.length);
+        setCaseId(slug || null);
+      } else if (hash === "#projects") {
+        setCaseId(null);
+      } else {
+        setCaseId(null);
+      }
+    };
+
+    // Initial sync on load
+    syncFromHash();
+    // Sync on hash changes (back/forward, manual edits, etc.)
+    window.addEventListener("hashchange", syncFromHash);
+
+    return () => {
+      window.removeEventListener("hashchange", syncFromHash);
+    };
+  }, []);
+
+  const openCase = (id) => {
+    if (typeof window !== "undefined") {
+      window.location.hash = `projects/${id}`;
+    }
+  };
+
+  const closeCase = () => {
+    if (typeof window !== "undefined") {
+      const current = window.location.hash || "";
+      if (current.startsWith(CASE_HASH_PREFIX)) {
+        window.location.hash = "#projects";
+      } else {
+        window.location.hash = "";
+      }
+    }
+  };
 
   const data = cat === CATEGORY.TECH ? techProjects : medtechProjects;
   const tags = useMemo(() => (cat === CATEGORY.TECH ? collectTags(data) : []), [cat, data]);
