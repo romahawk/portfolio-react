@@ -1,12 +1,11 @@
-# Portfolio React
+# Roman Mazuryk — Portfolio & CV (React + Tailwind)
 
-Clean React + Vite starter for my CV/portfolio site.
+Showcases my **MedTech → IT transition** and current work in **Tech PM / Full-Stack / Data**.
 
-## Scripts
-- `npm run dev` — start dev server
-- `npm run build` — production build
-- `npm run preview` — preview built app
+- **Projects:** SmartShooter (SportsTech), FlowLogix (Logistics), Strategy Tracker (FinTech)
+- **Case studies:** problem → solution → stack → results
+- **Contact:** LinkedIn, email, location
 
-## Tech
-- React 18
-- Vite 5
+**Tech:** React (Vite), Tailwind, Router, Vercel deploy, SEO meta, social preview cards.
+
+> Live: https://roman-mazuryk.vercel.app/ • Last update: <11/2025>
