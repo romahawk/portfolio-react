@@ -5,14 +5,25 @@ const Hero = () => {
     <section id="home" className="hero">
       <div className="container hero__inner">
         <div className="hero__content">
-          <p className="hero__eyebrow">Portfolio / 2025</p>
-          <h1 className="hero__title">Hi, I’m Roman Mazuryk</h1>
+          <p className="hero__eyebrow">Technical Product Portfolio · {new Date().getFullYear()}</p>
+
+          <h1 className="hero__title">
+            Roman Mazuryk
+          </h1>
+
           <p className="hero__subtitle">
-            Full-Stack Developer & Product-minded Project Manager driving product innovation through technology, data, and user-focused design.
+            Technical Product Manager with deep MedTech & regulated B2B experience.
+            I lead complex products from problem framing to delivery — aligning stakeholders,
+            defining trade-offs, and shipping systems that work under real constraints.
           </p>
+
           <div className="hero__actions">
-            <a href="#projects" className="btn btn--primary">View Projects</a>
-            <a href="#about" className="btn btn--ghost">About Me</a>
+            <a href="#projects" className="btn btn--primary">
+              View Case Studies
+            </a>
+            <a href="#about" className="btn btn--ghost">
+              About My Work
+            </a>
           </div>
         </div>
       </div>
