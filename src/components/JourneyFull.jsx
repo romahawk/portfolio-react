@@ -31,17 +31,18 @@ const JourneyFull = () => {
     return () => el.removeEventListener("wheel", onWheel);
   }, []);
 
-  const scrollBy = (dx) =>
-    ref.current?.scrollBy({ left: dx, behavior: "smooth" });
+  const scrollBy = (dx) => ref.current?.scrollBy({ left: dx, behavior: "smooth" });
 
   return (
-    <div className="timeline">
+    <div className="timeline" aria-label="Experience narrative timeline">
       <div className="timeline__controls">
         <button
           className="timeline__sort-btn chip"
           onClick={() => setNewestFirst((v) => !v)}
+          aria-pressed={newestFirst}
+          title="Toggle sort order"
         >
-          Sort: {newestFirst ? "Newest First" : "Oldest First"}
+          Sort: {newestFirst ? "Newest → Oldest" : "Oldest → Newest"}
         </button>
       </div>
 
@@ -53,16 +54,15 @@ const JourneyFull = () => {
         ←
       </button>
 
-      <div className="timeline__container" ref={ref}>
+      <div className="timeline__container" ref={ref} role="list">
         {items.map((t) => {
           const Icon = Lucide[t.icon] || Lucide.Circle;
           return (
             <div
               key={t.year}
-              className={`timeline__item ${
-                t.highlight ? "timeline__item--highlight" : ""
-              }`}
+              className={`timeline__item ${t.highlight ? "timeline__item--highlight" : ""}`}
               data-year={toYear(t.year)}
+              role="listitem"
             >
               <h3 className="timeline__year">
                 <span className="timeline__year-text">{t.year}</span>
@@ -74,7 +74,7 @@ const JourneyFull = () => {
 
               <div className="timeline__content">
                 <ul className="timeline__highlights">
-                  {t.items.map((li, i) => (
+                  {(t.items || []).map((li, i) => (
                     <li key={i}>{li}</li>
                   ))}
                 </ul>
