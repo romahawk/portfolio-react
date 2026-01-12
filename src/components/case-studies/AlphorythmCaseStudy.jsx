@@ -5,66 +5,66 @@ const sprints = [
     id: 1,
     title: "Sprint 1 — Setup & Core Layout",
     goals: [
-      "React + Tailwind + Flask + Firebase scaffold",
-      "Routing & Dashboard structure",
-      "GitHub/Trello Agile setup",
+      "App scaffold and navigation structure",
+      "Dashboard information architecture (key views and flows)",
+      "Agile artifacts: backlog, definition of done, release notes",
     ],
-    outcome: "Working skeleton app with login and dashboard shell.",
-    retro: "Early CI setup reduced friction later.",
+    outcome: "Working skeleton with clear UX structure and delivery cadence.",
+    retro: "Front-loaded information architecture to reduce churn later.",
   },
   {
     id: 2,
     title: "Sprint 2 — Data Model & Upload",
     goals: [
-      "Define trade schema (SQLite/Firebase)",
-      "CSV upload + parsing validation",
-      "Interactive table component",
+      "Define trade schema and data validation rules",
+      "CSV import flow with guardrails",
+      "Interactive table view aligned with analytics needs",
     ],
-    outcome: "Uploaded trades render in synchronized table view.",
-    retro: "Added validation layer to avoid corrupt imports.",
+    outcome: "Validated upload and table view that prevents corrupt inputs.",
+    retro: "Validation rules prevented downstream analytics errors.",
   },
   {
     id: 3,
     title: "Sprint 3 — Analytics Dashboard",
     goals: [
-      "PnL %, Equity curve, Drawdown, Win rate",
-      "Chart.js integration",
-      "Dynamic data linking",
+      "Core metrics: equity curve, drawdown, win rate, expectancy proxies",
+      "Chart rendering and interactions",
+      "Consistent linking between table selections and charts",
     ],
-    outcome: "Full analytics dashboard with interactive charts.",
-    retro: "Modularize chart logic for scalability.",
+    outcome: "Usable analytics dashboard for review and decision support.",
+    retro: "Modular chart logic keeps future metrics additions cheap.",
   },
   {
     id: 4,
     title: "Sprint 4 — Multi-Strategy View",
     goals: [
-      "Tabs for Strategy 1–3",
-      "Parallel performance comparison",
-      "Color-coded metrics",
+      "Strategy tabs and comparison model",
+      "Consistent metric definitions across strategies",
+      "UX polish for fast scanning",
     ],
-    outcome: "Switchable strategies with synced data and visuals.",
-    retro: "Improve UX on mobile and light theme.",
+    outcome: "Switchable strategy views with comparable metrics.",
+    retro: "Need a stricter metric glossary to avoid ambiguity.",
   },
   {
     id: 5,
     title: "Sprint 5 — Auth & Roles",
-    goals: ["Firebase Auth", "Roles: Trader/Analyst/Admin", "Role-gated actions"],
-    outcome: "Multi-user access with secure CRUD.",
-    retro: "Early permissions logic prevented later bugs.",
+    goals: ["Auth baseline", "Roles: Trader/Analyst/Admin", "Role-gated actions"],
+    outcome: "Secure access model that supports multi-user workflows.",
+    retro: "Early permissions work reduced risk of later rework.",
   },
   {
     id: 6,
     title: "Sprint 6 — Live vs Backtest",
-    goals: ["Firestore sync", "Real-time strategy updates", "Performance auto-refresh"],
-    outcome: "Simulated live feed comparing real vs backtest data.",
-    retro: "Refactor for efficient Firestore reads.",
+    goals: ["Sync model for live vs backtest", "Auto-refresh patterns", "Read efficiency"],
+    outcome: "Comparable live vs backtest views for honest performance review.",
+    retro: "Optimize reads/writes to keep costs predictable.",
   },
   {
     id: 7,
     title: "Sprint 7 — Deploy & Demo",
-    goals: ["Deploy to Vercel/Render", "Demo scripts + docs", "Portfolio screenshots"],
-    outcome: "Shareable MVP with investor/demo-ready URL.",
-    retro: "Add UX onboarding and loading states.",
+    goals: ["Deploy", "Demo script and seeded data", "Case study artifacts"],
+    outcome: "Shareable MVP with clear walkthrough and documentation.",
+    retro: "Add onboarding hints and loading states for first-time users.",
   },
 ];
 
@@ -72,69 +72,67 @@ export default function AlphorythmCaseStudy() {
   return (
     <section className="cs">
       <header className="cs__hero">
-        <span className="cs__badge">Case Study • FinTech (Simulated MVP)</span>
+        <span className="cs__badge">Case Study • FinTech (MVP Concept)</span>
         <h1 className="cs__title">Alphorythm — Strategy Analytics Platform</h1>
         <p className="cs__lead">
-          Hybrid trading analytics app combining backtest and live tracking in one dashboard —
-          showcasing both full-stack engineering and Agile product management skills.
+          A decision-support dashboard that unifies backtests and live trading logs into one
+          consistent review workflow—built to reduce bias, improve strategy evaluation, and
+          make performance metrics actionable.
         </p>
       </header>
 
       <div className="cs__grid cs__grid--two">
         <div className="cs__card">
-          <h2 className="cs__h2">Problem</h2>
+          <h2 className="cs__h2">Problem & Context</h2>
           <p className="cs__p">
-            Traders and analysts struggle to unify backtested data and live performance insights
-            across multiple strategies. Tracking metrics manually leads to bias and errors.
+            Traders often review performance using fragmented tools (spreadsheets, screenshots,
+            separate journals). Metrics drift, definitions vary, and live results are hard to
+            compare against backtests—leading to biased decisions and inconsistent execution.
           </p>
         </div>
         <div className="cs__card">
-          <h2 className="cs__h2">Vision</h2>
-          <p className="cs__p">
-            A single, interactive dashboard where traders visualize, compare, and refine strategies
-            in real time — bridging manual journals and quantitative analytics.
-          </p>
+          <h2 className="cs__h2">Users / Stakeholders</h2>
+          <ul className="cs__list">
+            <li><strong>Active Trader</strong> — needs fast review and consistency checks.</li>
+            <li><strong>Analyst</strong> — needs comparable metrics and clean inputs.</li>
+            <li><strong>Admin</strong> — needs role controls and reliable data pipelines.</li>
+          </ul>
         </div>
       </div>
 
       <div className="cs__card">
-        <h2 className="cs__h2">Personas (Simulated)</h2>
-        <ul className="cs__personas">
-          <li>
-            <div className="cs__persona-name">Alex Rivera</div>
-            <div className="cs__persona-role">Active Trader</div>
-            <p className="cs__p">
-              Logs trades, uploads backtests, and tracks live equity curve vs historical results.
-            </p>
-          </li>
-          <li>
-            <div className="cs__persona-name">Maya Singh</div>
-            <div className="cs__persona-role">Quant Analyst</div>
-            <p className="cs__p">
-              Analyzes performance metrics, correlation between strategies, and optimization ideas.
-            </p>
-          </li>
-          <li>
-            <div className="cs__persona-name">Admin</div>
-            <div className="cs__persona-role">Product Owner / Developer</div>
-            <p className="cs__p">Oversees architecture, UX, data pipelines, and sprint delivery.</p>
-          </li>
+        <h2 className="cs__h2">Constraints</h2>
+        <ul className="cs__list">
+          <li>Data quality: imports must be validated to protect analytics.</li>
+          <li>Metric consistency: the same definition must apply across strategies.</li>
+          <li>Cost / performance: avoid inefficient reads and heavy recalculations.</li>
+          <li>Security: role-gated access for multi-user scenarios.</li>
         </ul>
       </div>
 
       <div className="cs__card">
-        <h2 className="cs__h2">Architecture (MVP)</h2>
+        <h2 className="cs__h2">Key Product Decisions I Owned</h2>
+        <ul className="cs__list">
+          <li>Prioritized a <strong>single review workflow</strong> (import → table → metrics) over feature breadth.</li>
+          <li>Introduced a <strong>validation layer</strong> early to prevent “garbage in, garbage out”.</li>
+          <li>Designed strategy comparison as <strong>tabs with shared metric definitions</strong> to reduce ambiguity.</li>
+          <li>Planned for roles early (Trader/Analyst/Admin) to avoid a hard refactor later.</li>
+        </ul>
+      </div>
+
+      <div className="cs__card">
+        <h2 className="cs__h2">Architecture (MVP, Supporting)</h2>
         <ul className="cs__list">
           <li>Frontend: React + Tailwind + Chart.js</li>
           <li>Backend: Flask + SQLite + REST API</li>
           <li>Auth & Data: Firebase Auth + Firestore</li>
-          <li>Deployment: Vercel (Frontend) + Render (Backend)</li>
-          <li>PM Tools: Trello, GitHub Projects, Notion Docs</li>
+          <li>Deployment: Vercel + Render</li>
+          <li>Delivery tools: Trello/GitHub/Docs</li>
         </ul>
       </div>
 
       <div className="cs__card">
-        <h2 className="cs__h2">Agile Sprints</h2>
+        <h2 className="cs__h2">Delivery (Agile Sprints)</h2>
         <div className="cs__grid cs__grid--two">
           {sprints.map((s) => (
             <article key={s.id} className="cs__sprint">
@@ -161,17 +159,18 @@ export default function AlphorythmCaseStudy() {
         <div className="cs__card">
           <h2 className="cs__h2">Outcomes (MVP)</h2>
           <ul className="cs__list">
-            <li>Unified dashboard for live and backtested data</li>
-            <li>Role-based Firebase Auth</li>
-            <li>Responsive charts and analytics</li>
-            <li>Deployed MVP with demo scripts and screenshots</li>
+            <li>Unified review workflow for backtest + live performance</li>
+            <li>Validated imports and consistent metric calculations</li>
+            <li>Multi-strategy views with comparable dashboards</li>
+            <li>Shareable demo with seeded data and walkthrough</li>
           </ul>
         </div>
         <div className="cs__card">
           <h2 className="cs__h2">My Role</h2>
           <p className="cs__p">
-            Full-stack Developer • Product Owner • PM — defined vision, roadmap, and iterative
-            delivery, leading technical execution and Agile process end-to-end.
+            Technical Product Manager: owned problem framing, workflow design, metric definitions,
+            prioritization, and delivery cadence. Used hands-on prototyping to validate UX and data
+            assumptions and to collaborate efficiently on technical decisions.
           </p>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { techProjects, medtechProjects } from "../data/projects.js";
-import { Cpu, HeartPulse, ExternalLink, FileText } from "lucide-react";
+import { Cpu, Shield, FileText } from "lucide-react";
 import CaseStudyModal from "./CaseStudyModal.jsx";
 import LivesurgeryCaseStudy from "./case-studies/LivesurgeryCaseStudy.jsx";
 import SmartShooterCaseStudy from "./case-studies/SmartShooterCaseStudy.jsx";
@@ -21,9 +21,7 @@ function ProjectCard({ p, variant, onOpenCase }) {
   const inDev = p.inDevelopment;
 
   return (
-    <article
-      className={`project-card ${variant ? `project-card--${variant}` : ""}`}
-    >
+    <article className={`project-card ${variant ? `project-card--${variant}` : ""}`}>
       <header className="project-card__head">
         <h4 className="project-card__title">{p.title}</h4>
         {p.icon ? (
@@ -35,6 +33,7 @@ function ProjectCard({ p, variant, onOpenCase }) {
 
       <p className="project-card__summary">{p.summary}</p>
 
+      {/* Keep stack, but it's supporting evidence */}
       {p.stack?.length ? (
         <ul className="project-card__stack">
           {p.stack.map((s, i) => (
@@ -58,21 +57,14 @@ function ProjectCard({ p, variant, onOpenCase }) {
           {inDev ? (
             <div className="dev-status">
               <span className="dev-status__dot" aria-hidden></span>
-              <span>In development</span>
+              <span>In progress</span>
             </div>
           ) : p.link ? (
             <div className="project-card__link-wrap">
-              <a
-                className="project-card__link"
-                href={p.link}
-                target="_blank"
-                rel="noreferrer"
-              >
-                View Project
+              <a className="project-card__link" href={p.link} target="_blank" rel="noreferrer">
+                View
               </a>
-              {p.warmupNote ? (
-                <p className="project-card__hint">{p.warmupNote}</p>
-              ) : null}
+              {p.warmupNote ? <p className="project-card__hint">{p.warmupNote}</p> : null}
             </div>
           ) : null}
         </div>
@@ -87,7 +79,7 @@ function ProjectCard({ p, variant, onOpenCase }) {
                 onOpenCase && onOpenCase(p.caseStudy);
               }}
             >
-              Case Study
+              <FileText size={14} className="icon mr-1" /> Case Study
             </a>
           ) : null}
         </div>
@@ -107,25 +99,17 @@ export default function Projects() {
 
     const syncFromHash = () => {
       const hash = window.location.hash || "";
-
       if (hash.startsWith(CASE_HASH_PREFIX)) {
         const slug = hash.slice(CASE_HASH_PREFIX.length);
         setCaseId(slug || null);
-      } else if (hash === "#projects") {
-        setCaseId(null);
       } else {
         setCaseId(null);
       }
     };
 
-    // Initial sync on load
     syncFromHash();
-    // Sync on hash changes (back/forward, manual edits, etc.)
     window.addEventListener("hashchange", syncFromHash);
-
-    return () => {
-      window.removeEventListener("hashchange", syncFromHash);
-    };
+    return () => window.removeEventListener("hashchange", syncFromHash);
   }, []);
 
   const openCase = (id) => {
@@ -137,11 +121,8 @@ export default function Projects() {
   const closeCase = () => {
     if (typeof window !== "undefined") {
       const current = window.location.hash || "";
-      if (current.startsWith(CASE_HASH_PREFIX)) {
-        window.location.hash = "#projects";
-      } else {
-        window.location.hash = "";
-      }
+      if (current.startsWith(CASE_HASH_PREFIX)) window.location.hash = "#projects";
+      else window.location.hash = "";
     }
   };
 
@@ -154,30 +135,37 @@ export default function Projects() {
     return techProjects.filter((p) => (p.tags || []).includes(tag));
   }, [tag]);
 
-  const medIntegration = useMemo(() => medtechProjects.filter((p) => p.segment !== "management"), []);
-  const medManagement = useMemo(() => medtechProjects.filter((p) => p.segment === "management"), []);
+  const medIntegration = useMemo(
+    () => medtechProjects.filter((p) => p.segment !== "management"),
+    []
+  );
+  const medManagement = useMemo(
+    () => medtechProjects.filter((p) => p.segment === "management"),
+    []
+  );
 
   return (
     <section id="projects" className="section container">
-      <h2 className="section__title">&gt; Projects</h2>
+      <h2 className="section__title">&gt; Case Studies & Delivery Portfolio</h2>
 
       <div className="projects__toolbar">
-        <div className="projects__tabs" role="tablist" aria-label="Project categories">
+        <div className="projects__tabs" role="tablist" aria-label="Portfolio categories">
           <button
             role="tab"
             aria-selected={cat === CATEGORY.TECH}
             className={`tab ${cat === CATEGORY.TECH ? "tab--active" : ""}`}
             onClick={() => setCat(CATEGORY.TECH)}
           >
-            <Cpu size={16} className="icon mr-1" /> Tech
+            <Cpu size={16} className="icon mr-1" /> Product Systems
           </button>
+
           <button
             role="tab"
             aria-selected={cat === CATEGORY.MED}
             className={`tab ${cat === CATEGORY.MED ? "tab--active" : ""}`}
             onClick={() => setCat(CATEGORY.MED)}
           >
-            <HeartPulse size={16} className="icon mr-1" /> MedTech
+            <Shield size={16} className="icon mr-1" /> Regulated Delivery (MedTech)
           </button>
         </div>
 
@@ -199,8 +187,11 @@ export default function Projects() {
 
       {cat === CATEGORY.TECH ? (
         <>
-          <h3 className="projects__section-title">💻 Tech Projects</h3>
-          <p className="projects__intro">Recent software projects (React, Python, data).</p>
+          <h3 className="projects__section-title">🧩 Product Systems & Prototypes</h3>
+          <p className="projects__intro">
+            Product case studies and working prototypes used to clarify requirements, de-risk decisions,
+            and collaborate effectively with engineering.
+          </p>
           <div className="projects__grid">
             {visibleTech.map((p) => (
               <ProjectCard key={p.id} p={p} onOpenCase={openCase} />
@@ -209,8 +200,11 @@ export default function Projects() {
         </>
       ) : (
         <>
-          <h3 className="projects__section-title">💙 MedTech — Integration & Innovation</h3>
-          <p className="projects__intro">OR integrations, visualization, devices.</p>
+          <h3 className="projects__section-title">🏥 MedTech — Integration & Delivery</h3>
+          <p className="projects__intro">
+            Real-world delivery programs in regulated environments: clinical stakeholders, multi-vendor systems,
+            installation governance, training, and lifecycle support.
+          </p>
           <div className="projects__grid">
             {medIntegration.map((p) => (
               <ProjectCard key={p.id} p={p} variant="med" onOpenCase={openCase} />
@@ -219,8 +213,10 @@ export default function Projects() {
 
           {medManagement.length ? (
             <>
-              <h3 className="projects__section-title">💼 MedTech — Sales & Project Management</h3>
-              <p className="projects__intro">Rollouts, tenders, vendor coordination, training.</p>
+              <h3 className="projects__section-title">📦 MedTech — Programs & Commercial Execution</h3>
+              <p className="projects__intro">
+                Multi-site rollouts, procurement/tenders, vendor coordination, and adoption enablement.
+              </p>
               <div className="projects__grid">
                 {medManagement.map((p) => (
                   <ProjectCard key={p.id} p={p} variant="mgmt" onOpenCase={openCase} />
@@ -236,17 +232,17 @@ export default function Projects() {
         onClose={closeCase}
         title={
           caseId === "livesurgery"
-            ? "Livesurgery — Case Study"
+            ? "LiveSurgery — Case Study"
             : caseId === "smartshooter"
-            ? "SmartShooter AI — Case Study"
+            ? "SmartShooter — Case Study"
             : caseId === "flowlogix"
             ? "FlowLogix — Case Study"
             : caseId === "alphorythm"
             ? "Alphorythm — Case Study"
             : caseId === "portfolio"
-            ? "Developer Portfolio Website — Case Study"
+            ? "Technical PM Portfolio — Case Study"
             : caseId === "medintegro"
-            ? "Medintegro Website Rebuild — Case Study"
+            ? "Medintegro Rebuild — Case Study"
             : "Case Study"
         }
       >
