@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="site-footer">
       <div className="container footer__inner">
-        <div className="footer__brand">ROMAN.</div>
+        <div className="footer__brand">ROMAZ.</div>
         <nav className="footer__nav">
           <a href="#home">Home</a>
           <a href="#about">About</a>
