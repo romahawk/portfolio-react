@@ -3,101 +3,87 @@ import React from "react";
 const sprints = [
   {
     id: 1,
-    title: "Sprint 1 — Project Initialization & Auth",
+    title: "Sprint 1 — Project Initialization & Access Control",
     goals: [
-      "Flask scaffold with Blueprint structure",
-      "SQLite + SQLAlchemy models (User, Order, WarehouseEntry, DeliveredEntry)",
-      "Auth with Flask-Login; basic RBAC (admin, user, viewer)",
-      "Environment config + initial deploy (Render/Railway) & .env secrets",
+      "App skeleton + baseline navigation",
+      "Core data model (orders + lifecycle entities)",
+      "Authentication and role-based access (admin/user/viewer)",
+      "Environment config + deploy baseline",
     ],
-    outcome:
-      "Users can sign in and reach a protected dashboard; DB migrations seeded.",
-    retro:
-      "Auth + RBAC baseline solid; next sprint focuses on Orders CRUD and table UX.",
+    outcome: "Secure foundation: users can sign in and access a protected dashboard.",
+    retro: "Early RBAC reduced later risk and rework.",
   },
   {
     id: 2,
-    title: "Sprint 2 — Orders CRUD & Dashboard Table",
+    title: "Sprint 2 — Orders Workflow & Table UX",
     goals: [
-      "Orders create/edit/delete + details drawer",
-      "Paginated table (cursor/offset) with key columns",
-      "Search & basic filters (company, status, incoterms, date)",
-      "Server-side validation + flash/toast feedback",
+      "Orders CRUD aligned with operational workflow",
+      "Paginated table with key columns",
+      "Search + basic filters (company, status, dates)",
+      "Validation + feedback states",
     ],
-    outcome:
-      "End-to-end Orders CRUD working with pagination and search on the dashboard.",
-    retro:
-      "Table performance OK; plan richer filters and timeline analytics next.",
+    outcome: "End-to-end order workflow working with search and stable table UX.",
+    retro: "Table baseline is strong; deeper filters can come later.",
   },
   {
     id: 3,
-    title: "Sprint 3 — Timeline & Analytics",
+    title: "Sprint 3 — Timeline & Risk Visibility",
     goals: [
-      "Chart.js timeline: ETD → ETA per order (+ status color)",
-      "Helpers for date normalization & shipping leg computation",
-      "KPI widgets (open orders, near-ETA, delayed)",
-      "Dashboard integration + responsive layout",
+      "ETD→ETA timeline visualization",
+      "Date normalization and fallback rules",
+      "KPI widgets: open, near-ETA, delayed",
+      "Responsive integration",
     ],
-    outcome:
-      "Managers can visualize pipeline timing and spot risk via timeline and KPIs.",
-    retro:
-      "Great visibility boost; document data assumptions for ETD/ETA fallbacks.",
+    outcome: "Operations can spot risk and timing drift early via timeline + KPIs.",
+    retro: "Document assumptions (ETD/ETA fallbacks) to avoid confusion.",
   },
   {
     id: 4,
-    title: "Sprint 4 — Warehouse & Delivered Tabs",
+    title: "Sprint 4 — Warehouse & Delivered Lifecycle Tabs",
     goals: [
-      "Warehouse tab: intake records + stock positions",
-      "Delivered tab: proof-of-delivery fields & history",
-      "Actions: move order → Warehouse/Delivered with permissions",
+      "Warehouse intake records + stock positions",
+      "Delivered tab + history",
+      "Role-gated transitions across lifecycle",
       "CSV export of filtered results",
     ],
-    outcome:
-      "Operations can transition orders across lifecycle and export filtered views.",
-    retro:
-      "Add guards for edge cases (double moves); queue heavy exports if needed.",
+    outcome: "Lifecycle transitions are controlled and trackable end-to-end.",
+    retro: "Add guardrails for edge cases (double moves).",
   },
   {
     id: 5,
-    title: "Sprint 5 — UI Polish, Dark Mode & UX States",
+    title: "Sprint 5 — UX Polish & Reliability States",
     goals: [
-      "Tailwind UI pass; consistent spacing, typography, cards",
-      "Dark mode (class-based) with legible tables & timeline",
-      "Loading skeletons, spinners, empty/error states",
-      "Form validation hints + toast notifications (success/error)",
+      "UI consistency pass (spacing, typography, cards)",
+      "Dark mode legibility for tables/timeline",
+      "Loading / empty / error states",
+      "Form validation hints",
     ],
-    outcome:
-      "A clean, responsive UI with clear feedback across slow/empty/error states.",
-    retro:
-      "Great UX uplift; standardize form components to reduce duplication.",
+    outcome: "Clear, resilient UI that behaves well under slow/empty/error conditions.",
+    retro: "Standardize shared UI components to reduce duplication.",
   },
   {
     id: 6,
     title: "Sprint 6 — Stockreport & Role Controls",
     goals: [
-      "Stockreport modal with 3 tabs (Arrived • Stocked • Delivered)",
-      "Full cargo tracking fields + totals per tab",
+      "Stockreport modal: Arrived / Stocked / Delivered",
+      "Cargo tracking fields + totals",
       "Refined RBAC: can_edit vs can_view_all; company scoping",
-      "Demo mode (read-only) toggle for public portfolio",
+      "Demo mode (read-only) for portfolio",
     ],
-    outcome:
-      "Deep operational visibility via Stockreport; safe demoable instance for portfolio.",
-    retro:
-      "RBAC rules clarified; add audit log & soft-delete in a hardening sprint.",
+    outcome: "Deeper operational visibility + safe public demo workflow.",
+    retro: "Next hardening: audit log + soft delete.",
   },
   {
     id: 7,
-    title: "Sprint 7 — Performance, Admin & Case Study Artifacts",
+    title: "Sprint 7 — Performance & Admin Hardening",
     goals: [
-      "Query optimization (indexes, n+1 checks) + pagination hardening",
-      "Admin tools: user roles, demo seeding, CSV import helper",
-      "Error boundaries & 404/500 pages",
-      "Create screenshots, data seeds, and case study materials",
+      "Query optimization and pagination hardening",
+      "Admin tools: user roles, seeding, imports",
+      "Error boundaries and 404/500 pages",
+      "Screenshots + case study assets",
     ],
-    outcome:
-      "Stable MVP with predictable performance and polished portfolio artifacts.",
-    retro:
-      "Ready for PostgreSQL migration & public beta feedback loop.",
+    outcome: "Stable MVP with predictable performance and portfolio-ready artifacts.",
+    retro: "Ready for PostgreSQL migration and beta feedback loop.",
   },
 ];
 
@@ -106,66 +92,79 @@ export default function FlowLogixCaseStudy() {
     <section className="cs">
       <header className="cs__hero">
         <span className="cs__badge">Case Study • Logistics (MVP • Mixed Users)</span>
-        <h1 className="cs__title">FlowLogix — Logistic Tracker Dashboard (MVP)</h1>
+        <h1 className="cs__title">FlowLogix — Supply Visibility Dashboard (MVP)</h1>
         <p className="cs__lead">
-          Flask-based dashboard that centralizes order management, warehouse intake, and delivery
-          tracking. Built with Flask, SQLite/SQLAlchemy, Tailwind, and Chart.js, featuring RBAC,
-          CSV export, and a timeline view from ETD to ETA. Demo-mode enabled for portfolio use.
+          A decision-support system that centralizes orders, warehouse intake, and deliveries into
+          one source of truth. Built to reduce status drift, improve ETA reliability, and enable
+          role-based operational workflows.
         </p>
       </header>
 
       <div className="cs__grid cs__grid--two">
         <div className="cs__card">
-          <h2 className="cs__h2">Problem</h2>
+          <h2 className="cs__h2">Problem & Context</h2>
           <p className="cs__p">
-            Teams were juggling spreadsheets and ad-hoc updates. Status drift and delayed
-            communication caused missed ETAs and manual reconciliation.
+            Teams were tracking shipments across spreadsheets and ad-hoc messages. Updates drifted,
+            ETAs were missed, and managers couldn’t see risk early—creating manual follow-ups and
+            firefighting.
           </p>
         </div>
         <div className="cs__card">
-          <h2 className="cs__h2">Vision</h2>
-          <p className="cs__p">
-            Provide a single source of truth for orders: live status, role-based workflows,
-            and visual timelines so operations can anticipate issues—not react to them.
-          </p>
+          <h2 className="cs__h2">Users / Stakeholders</h2>
+          <ul className="cs__personas">
+            <li>
+              <div className="cs__persona-name">Operations Manager</div>
+              <div className="cs__persona-role">Risk & timing visibility</div>
+              <p className="cs__p">Needs KPIs and a fast view of delays and near-ETA shipments.</p>
+            </li>
+            <li>
+              <div className="cs__persona-name">Warehouse Lead</div>
+              <div className="cs__persona-role">Intake and lifecycle execution</div>
+              <p className="cs__p">Wants fast intake, stock tracking, and delivery confirmations.</p>
+            </li>
+            <li>
+              <div className="cs__persona-name">Account Manager</div>
+              <div className="cs__persona-role">Reporting</div>
+              <p className="cs__p">Requires filtered exports and read-only visibility across accounts.</p>
+            </li>
+          </ul>
         </div>
       </div>
 
       <div className="cs__card">
-        <h2 className="cs__h2">Personas (Simulated + Early Real)</h2>
-        <ul className="cs__personas">
-          <li>
-            <div className="cs__persona-name">Olivia</div>
-            <div className="cs__persona-role">Operations Manager</div>
-            <p className="cs__p">Needs KPIs and a quick view of delays and near-ETA shipments.</p>
-          </li>
-          <li>
-            <div className="cs__persona-name">Mark</div>
-            <div className="cs__persona-role">Warehouse Lead</div>
-            <p className="cs__p">Wants fast intake, stock tracking, and delivery confirmations.</p>
-          </li>
-          <li>
-            <div className="cs__persona-name">Ivy</div>
-            <div className="cs__persona-role">Account Manager</div>
-            <p className="cs__p">Requires filtered exports and read-only access across companies.</p>
-          </li>
+        <h2 className="cs__h2">Constraints</h2>
+        <ul className="cs__list">
+          <li><strong>RBAC</strong>: company scoping + role-gated actions (view vs edit).</li>
+          <li><strong>Data quality</strong>: date fallbacks and validation to prevent misleading timelines.</li>
+          <li><strong>Adoption</strong>: non-technical users need clarity and speed.</li>
+          <li><strong>Public demo</strong>: safe portfolio mode without exposing real operational data.</li>
         </ul>
       </div>
 
       <div className="cs__card">
-        <h2 className="cs__h2">Architecture (MVP)</h2>
+        <h2 className="cs__h2">Key Product Decisions I Owned</h2>
+        <ul className="cs__list">
+          <li>Designed the product around <strong>daily decisions</strong> (risk, near-ETA, delays), not raw data dumps.</li>
+          <li>Introduced <strong>role-based transitions</strong> across lifecycle to prevent accidental workflow breaks.</li>
+          <li>Built <strong>timeline visualization</strong> as the primary risk signal (ETD→ETA), with clear fallbacks.</li>
+          <li>Added <strong>demo mode</strong> so the system is portfolio-safe while keeping functionality realistic.</li>
+        </ul>
+      </div>
+
+      <div className="cs__card">
+        <h2 className="cs__h2">Architecture (MVP, Supporting)</h2>
         <ul className="cs__list">
           <li>Backend: Flask + SQLite + SQLAlchemy (migrations, seeds)</li>
-          <li>Auth/RBAC: Flask-Login, role checks (admin/user/viewer), company scoping</li>
-          <li>UI: Tailwind (cards, tables, dark mode, responsive)</li>
+          <li>Auth/RBAC: Flask-Login; roles + company scoping</li>
+          <li>UI: Tailwind (tables, dark mode, responsive)</li>
           <li>Visualization: Chart.js timeline + KPI widgets</li>
-          <li>Features: Orders CRUD, Warehouse/Delivered tabs, CSV export</li>
-          <li>Deploy: Render/Railway + env-based config; demo mode toggle</li>
+          <li>Features: Orders workflow, Warehouse/Delivered tabs, CSV export</li>
+          <li>Deploy: Render/Railway; env-based config; demo mode toggle</li>
         </ul>
       </div>
 
       <div className="cs__card">
-        <h2 className="cs__h2">Agile Sprints</h2>
+        <h2 className="cs__h2">Delivery (Agile Sprints)</h2>
         <div className="cs__grid cs__grid--two">
           {sprints.map((s) => (
             <article key={s.id} className="cs__sprint">
@@ -192,19 +191,19 @@ export default function FlowLogixCaseStudy() {
         <div className="cs__card">
           <h2 className="cs__h2">Outcomes (MVP)</h2>
           <ul className="cs__list">
-            <li>Unified dashboard for orders with timeline & KPIs</li>
-            <li>Warehouse and Delivered tabs with role-based transitions</li>
-            <li>CSV export of filtered results for external reporting</li>
-            <li>Dark-mode responsive UI with robust empty/error states</li>
-            <li>Demo mode for portfolio + safe public walkthroughs</li>
+            <li>Single source of truth for order lifecycle with timeline + KPIs</li>
+            <li>Role-based transitions across Orders → Warehouse → Delivered</li>
+            <li>CSV export for external reporting workflows</li>
+            <li>Robust UX states and dark-mode support for daily use</li>
+            <li>Demo mode for safe public walkthroughs</li>
           </ul>
         </div>
         <div className="cs__card">
-          <h2 className="cs__h2">What I Did</h2>
+          <h2 className="cs__h2">My Role</h2>
           <p className="cs__p">
-            Product Owner, PM, and Full-stack developer. Drove roadmap, implemented backend models
-            and RBAC, built Tailwind UI, timeline visualizations, and shipped a stable MVP with
-            artifacts and demo data for case-study use.
+            Technical Product Manager: defined workflow, role model, success criteria, and delivery
+            plan. Used hands-on prototyping to validate the UI, data model, and timeline logic, and
+            to iterate quickly on stakeholder feedback.
           </p>
         </div>
       </div>

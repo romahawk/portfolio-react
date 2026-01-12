@@ -2,22 +2,21 @@
 
 // ---------- Tech ----------
 export const techProjects = [
-  
   {
     id: "livesurgery",
-    title: "Livesurgery (Startup Prototype)",
+    title: "LiveSurgery (Platform PoC)",
     summary:
-      "Concept-stage MedTech EdTech platform for live surgical collaboration and case sharing. PoC accepted to an incubator. Future: WebRTC + Firebase + React.",
+      "Concept-stage platform for live surgical collaboration and education. Explores session orchestration, multi-source video workflows, and real-time interaction patterns under high-stakes constraints.",
     stack: ["Concept", "WebRTC", "Firebase", "React"],
-    tags: ["Prototype", "MedTech"],
+    tags: ["Prototype", "MedTech", "Platform"],
     link: "https://livesurgery.vercel.app/",
     caseStudy: "livesurgery",
   },
   {
     id: "smartshooter",
-    title: "SmartShooter AI",
+    title: "SmartShooter",
     summary:
-      "AI-driven app that helps basketball players track performance, analyze shooting data, and stay engaged. Built with React, Tailwind, and Firebase (Firestore + Auth).",
+      "Performance tracking product for basketball players and coaches: structured training logs, accuracy analytics, and engagement mechanics for long-term improvement.",
     stack: ["React", "Tailwind", "Firebase", "Firestore", "Auth"],
     tags: ["SportsTech", "Analytics", "Gamification"],
     link: "https://smartshooter.vercel.app",
@@ -25,63 +24,59 @@ export const techProjects = [
   },
   {
     id: "flowlogix",
-    title: "FlowLogix — Logistic Tracker",
+    title: "FlowLogix — Supply Visibility Dashboard",
     summary:
-      "Flask-based dashboard for supply planning and order tracking with RBAC, timeline visualization (ETD→ETA), CSV export, and dark-mode UI.",
+      "Decision-support dashboard for logistics: role-based access, order tracking, ETD→ETA timeline visibility, and reporting to reduce manual coordination and improve reliability.",
     stack: ["Flask", "SQLite", "SQLAlchemy", "Tailwind", "Chart.js"],
-    tags: ["Logistics", "Dashboard", "Data viz"],
-    link: "https://flowlogix.onrender.com/",              // replace with live demo or repo URL if you have one
+    tags: ["Logistics", "Decision Support", "Data viz"],
+    link: "https://flowlogix.onrender.com/",
     caseStudy: "flowlogix",
-    warmupNote: "Tip: first load may take ~30s (free Render)."
-  }
-,
+    warmupNote: "Tip: first load may take ~30s (free Render).",
+  },
   {
     id: "portfolio",
-    title: "Developer Portfolio Website",
+    title: "Technical Product Manager Portfolio",
     summary:
-      "Personal website to showcase my transition from MedTech to IT. Timeline, skills, MedTech projects, and contact form. Built with React + Vite.",
-    stack: ["HTML", "CSS", "JavaScript", "React", "Tailwind"],
-    tags: ["Web", "React"],
+      "This website as a product: designed for recruiter clarity—PM-first positioning, case-study narrative, and evidence of system thinking and decision-making.",
+    stack: ["React", "Vite", "Tailwind"],
+    tags: ["Positioning", "Portfolio"],
     link: "#",
-    caseStudy: "portfolio"
+    caseStudy: "portfolio",
   },
   {
     id: "medintegro",
     title: "Medintegro Website Rebuild",
     summary:
-      "Headless rebuild of a MedTech distributor site: React + Tailwind, CMS integration, multilingual (DE/EN/UA), SEO & accessibility.",
-    stack: ["React", "Next.js", "Tailwind", "Headless CMS"],
-    tags: ["Web", "Rebuild", "Headless", "i18n", "SEO"],
+      "Product-led rebuild plan for a B2B MedTech distributor site: modular content structure, multilingual (DE/EN/UA), SEO/accessibility, and CMS integration.",
+    stack: ["React", "Next.js", "Tailwind"],
+    tags: ["B2B", "Rebuild", "SEO"],
     link: "#",
     caseStudy: "medintegro",
-    inDevelopment: true
+    inDevelopment: true,
   },
   {
     id: "alphorythm",
-    title: "Alphorythm — Strategy Analytics Platform",
+    title: "Alphorythm — Strategy Analytics",
     summary:
-      "FinTech app unifying backtests and live trades in one dashboard — multi-strategy analytics, role-based access, real-time sync.",
+      "Trading analytics platform concept unifying backtests and live trades—focused on decision quality, risk behavior, and repeatable evaluation of strategies.",
     stack: ["React", "Tailwind", "Flask", "Firebase", "Chart.js", "SQLite"],
     tags: ["FinTech", "Analytics", "Dashboard", "MVP"],
     link: "#",
     caseStudy: "alphorythm",
-    inDevelopment: true
-  }
+    inDevelopment: true,
+  },
 ];
 
 // ---------- MedTech ----------
-// Use segment to split UI into two groups inside the MedTech tab:
-//   - "integration" → technical integrations / installations
-//   - "management"  → sales, tenders, multi-site rollouts (PM focus)
 export const medtechProjects = [
   // Integration & Innovation
   {
     id: "surgiris-lights",
     segment: "integration",
-    title: "SURGIRIS LED Surgical Lights",
+    title: "SURGIRIS LED Surgical Lights (Multi-site Delivery)",
     summary:
-      "Delivered and installed advanced surgical lighting systems in 15+ ORs across Ukraine (incl. war-damaged hospital in Bucha). Integrated surgical field video, high CRI, energy efficiency.",
-    stack: ["MedTech Healthcare", "Surgical Lighting"],
+      "Delivered and deployed surgical lighting across 15+ ORs. Coordinated clinical requirements, installation, training, and lifecycle support—including deployments under wartime disruption.",
+    stack: ["Program Delivery", "Clinical Workflow", "Installation & Training"],
     icon: "💡",
   },
   {
@@ -89,64 +84,64 @@ export const medtechProjects = [
     segment: "integration",
     title: "SURGIMEDIA Integrated OR Systems",
     summary:
-      "Full-cycle deployment of modular OR integration (visualization, routing, documentation). Supported neurosurgery, diagnostics, and endoscopy.",
-    stack: ["MedTech Healthcare", "OR Integration"],
+      "End-to-end OR integration programs: visualization, routing, and documentation workflows. Coordinated multi-vendor components and clinical stakeholders across specialties.",
+    stack: ["System Integration", "Multi-vendor", "OR Workflow"],
     icon: "🖥️",
   },
   {
     id: "gas-pendants",
     segment: "integration",
-    title: "Medical Gas & Equipment Pendants",
+    title: "Medical Gas & Equipment Pendants (ICU/OR)",
     summary:
-      "Installed SURGIRIS ceiling pendants for ICU/ORs: ergonomic design, electrical safety, and efficient gas/device access.",
-    stack: ["MedTech", "Ergonomics"],
+      "Delivered ICU/OR pendant systems with a focus on safety, ergonomics, and operational reliability—aligning technical requirements with clinical usage and facility constraints.",
+    stack: ["Safety", "Ergonomics", "Deployment"],
     icon: "🛠️",
   },
   {
     id: "diagnostic-therapeutic",
     segment: "integration",
-    title: "New Diagnostic & Therapeutic Equipment",
+    title: "Diagnostic & Therapeutic Systems (Launch + Deployment)",
     summary:
-      "Introduced OxyHealth hyperbaric chamber, R.WOLF shockwave therapy, ACCUVEIN vein visualization, and portable densitometry.",
-    stack: ["MedTech Healthcare", "Diagnostics"],
+      "Introduced and deployed advanced systems (hyperbaric therapy, shockwave therapy, vein visualization, portable densitometry) through structured stakeholder adoption and training.",
+    stack: ["Go-to-Market", "Clinical Adoption", "Training"],
     icon: "🔎",
   },
   {
     id: "surgical-monitors",
     segment: "integration",
-    title: "Surgical Monitors & Recorders",
+    title: "Surgical Monitors & Recorders (Imaging Workflow)",
     summary:
-      "Supplied/integrated displays & recorders (NDS, FSN, ADVANTECH, Medicapture). Enabled real-time imaging and HD/4K routing.",
-    stack: ["MedTech Healthcare", "Surgical Imaging"],
+      "Integrated displays/recorders enabling real-time imaging and HD/4K routing. Owned vendor coordination, installation readiness, and clinician onboarding to ensure reliable workflows.",
+    stack: ["Imaging Workflow", "Integration", "Supportability"],
     icon: "📹",
   },
 
-  // Sales & Project Management (new group)
+  // Sales & Project Management
   {
     id: "national-launches",
     segment: "management",
-    title: "National Product Launches",
+    title: "National Product Launches (MedTech)",
     summary:
-      "Introduced various medical equipment brands nationwide: marketing, demos, KOL engagement, and training.",
-    stack: ["Go-to-Market", "Field Training", "KOLs"],
+      "Launched MedTech products nationwide: positioning, demos, KOL engagement, training, and early adoption—aligning vendor goals with hospital realities.",
+    stack: ["GTM", "Stakeholder Alignment", "Training"],
     icon: "🚀",
   },
   {
     id: "or-lighting-rollout",
     segment: "management",
-    title: "OR Lighting Upgrade Program (Multi-site)",
+    title: "OR Lighting Upgrade Program (Multi-hospital)",
     summary:
-      "Led multi-hospital rollout of SURGIRIS LED lights: budgeting, tenders, vendor coordination, installation scheduling, clinician onboarding.",
-    stack: ["Sales & PM", "Procurement", "Training"],
+      "Led multi-site rollout: budgeting, procurement/tenders, scheduling, vendor coordination, installation governance, and clinician onboarding.",
+    stack: ["Program Management", "Procurement", "Rollout"],
     icon: "📈",
   },
   {
     id: "hyperbaric-deployment",
     segment: "management",
-    title: "Hyperbaric Therapy Deployment",
+    title: "Hyperbaric Therapy Deployment (Turnkey)",
     summary:
-      "Delivered and installed OxyHealth Fortius 420 hyperbaric chamber; handled import, safety, clinical onboarding, and maintenance process.",
-    stack: ["Turnkey Delivery", "Safety", "Training"],
+      "Delivered and deployed a hyperbaric chamber program end-to-end: import, safety compliance, site readiness, clinical onboarding, and maintenance processes.",
+    stack: ["Turnkey Delivery", "Safety", "Operations"],
     icon: "🫧",
   },
 ];

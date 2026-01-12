@@ -3,93 +3,86 @@ import React from "react";
 const sprints = [
   {
     id: 1,
-    title: "Sprint 1 — Project Initialization & Auth",
+    title: "Sprint 1 — Initialization & Access",
     goals: [
-      "Initialize project with React + Firebase setup",
-      "Implement Auth (Google + Email/Password)",
-      "Add route protection for private pages",
-      "Deploy base version to Vercel",
+      "React + Firebase setup",
+      "Authentication + route protection",
+      "Deploy baseline with a simple dashboard shell",
     ],
-    outcome: "User can register/login and access a blank dashboard.",
-    retro: "Authentication and routing stable; next sprint focuses on session CRUD.",
+    outcome: "Users can sign in and access a protected dashboard.",
+    retro: "Stable access model enabled faster iteration later.",
   },
   {
     id: 2,
-    title: "Sprint 2 — Sessions CRUD & Dashboard",
+    title: "Sprint 2 — Training Log Workflow",
     goals: [
-      "User Story 2.1: Create a new session",
-      "User Story 2.2: Add rounds with directions & zones",
-      "User Story 2.3: Edit & delete session",
-      "User Story 2.4: List sessions in dashboard",
+      "Create session",
+      "Add rounds with zones",
+      "Edit/delete session",
+      "List sessions in dashboard",
     ],
-    outcome: "End‑to‑end Sessions CRUD flow implemented successfully.",
-    retro: "CRUD performance solid; plan analytics layer next.",
+    outcome: "End-to-end session logging workflow implemented.",
+    retro: "CRUD baseline solid; next step was turning data into insights.",
   },
   {
     id: 3,
     title: "Sprint 3 — Analytics & Visualization",
     goals: [
-      "User Story 3.1: Heatmap visualization",
-      "User Story 3.2: Accuracy trend over time",
-      "User Story 3.3: Attempts vs Made per training type",
-      "User Story 3.4: Filtering sessions",
-      "User Story 3.5: Display key KPIs (best %, average accuracy, volume)",
-      "Integrate analytics helpers and dashboard widgets",
+      "Zone heatmap",
+      "Accuracy trend over time",
+      "Attempts vs made by training type",
+      "Filtering sessions + KPIs",
     ],
-    outcome: "Analytics dashboard delivers visual heatmaps, trends, and KPIs.",
-    retro: "Add performance tuning for Firestore queries to handle larger datasets.",
+    outcome: "Actionable analytics: heatmaps, trends, and KPI widgets.",
+    retro: "Prepare query optimization for larger datasets.",
   },
   {
     id: 4,
     title: "Sprint 4 — Table Enhancements & Export",
     goals: [
-      "User Story 4.1: Create paginated TrainingLogTable (cursor‑based Firestore query)",
-      "User Story 4.2: Display table with key columns",
-      "User Story 4.3: Add Edit & Delete actions",
-      "User Story 4.4: Add sorting, filtering & pagination controls",
-      "User Story 4.5: Add CSV export of filtered results",
+      "Paginated training log table",
+      "Sorting + filtering controls",
+      "Edit/delete actions",
+      "CSV export of filtered results",
     ],
-    outcome: "TrainingLogTable stable with full filtering, pagination, and CSV export.",
-    retro: "Table UX clear; reduce Firestore reads via query optimization next sprint.",
+    outcome: "Stable table UX with export for coach/player workflows.",
+    retro: "Reduce reads and improve performance at scale.",
   },
   {
     id: 5,
-    title: "Sprint 5 — UI Polish, Responsiveness & Dark Mode",
+    title: "Sprint 5 — UI Polish, Responsiveness & States",
     goals: [
-      "User Story 5.1: Make UI responsive (mobile‑first)",
-      "User Story 5.2: Add toast notifications (success/error)",
-      "User Story 5.3: Improve form validation",
-      "User Story 5.4: Add loading spinners and skeleton screens",
-      "User Story 5.5: Implement Light/Dark mode support",
-      "User Story 5.6: Integrate Lucide icons",
-      "Enhance court image and Accuracy Trend readability",
+      "Mobile-first responsiveness",
+      "Toasts and validation hints",
+      "Loading/empty/error states",
+      "Light/Dark mode consistency",
     ],
-    outcome: "Responsive, polished UI with consistent theming and improved accessibility.",
-    retro: "Improved DX and UX; next step — gamification loop and player profile.",
+    outcome: "Polished UI with consistent theming and accessible feedback.",
+    retro: "UX coherence improved adoption potential.",
   },
   {
     id: 6,
-    title: "Sprint 6 — Gamification & Player Profile",
+    title: "Sprint 6 — Engagement Mechanics",
     goals: [
-      "Implement XP calculator and Level system",
-      "Add milestone Badges (bronze/silver/gold)",
-      "Build Player Profile (avatar, nickname, XP, key stats)",
-      "Synchronize XP and Level across dashboard and profile",
+      "XP + Level system",
+      "Badges (milestones)",
+      "Player profile summary",
+      "Sync progression across views",
     ],
-    outcome: "Gamified user progression loop fully operational.",
-    retro: "Gamification drives engagement; prepare challenge engine next.",
+    outcome: "Engagement loop implemented (progression + rewards).",
+    retro: "Engagement improves retention; next is challenge design refinement.",
   },
   {
     id: 7,
-    title: "Sprint 7 — Challenges, Streaks & Final Polish",
+    title: "Sprint 7 — Challenges & Final Polish",
     goals: [
-      "Add Weekly/Monthly Challenges (e.g., 300 shots/week, ≥75% accuracy ×3 sessions)",
-      "Implement Calendar Streak heatmap with streak counter",
-      "Optimize dark‑mode visuals (calendar cells, charts, cards)",
-      "Finalize Vercel deployment with demo data and persona flows",
+      "Weekly/monthly challenges",
+      "Streak tracking heatmap",
+      "Visual polish for charts/cards",
+      "Seeded demo flows",
     ],
-    outcome: "Shareable MVP deployed, including challenges and visual streak tracking.",
-    retro: "Stable MVP ready for promotion and case study publishing.",
+    outcome: "Shareable MVP with challenges and streaks for habit formation.",
+    retro: "Stable MVP ready for user feedback and iteration.",
   },
 ];
 
@@ -97,65 +90,77 @@ export default function SmartShooterCaseStudy() {
   return (
     <section className="cs">
       <header className="cs__hero">
-        <span className="cs__badge">Case Study • SportsTech (MVP • Mixed Users)</span>
-        <h1 className="cs__title">SmartShooter AI — Basketball Shooting Analytics MVP</h1>
+        <span className="cs__badge">Case Study • SportsTech (MVP)</span>
+        <h1 className="cs__title">SmartShooter — Training Log & Shooting Analytics</h1>
         <p className="cs__lead">
-          AI-driven app that supports young basketball athletes with training recommendations and performance tracking. Currently built with React, Tailwind, and Firebase (Firestore + Auth); future roadmap includes Flask backend with ML-powered analytics and extended mobile UI.
+          A product for players and coaches to log training sessions quickly, visualize accuracy by
+          zone, and build consistency through feedback loops (analytics, streaks, challenges).
         </p>
       </header>
 
       <div className="cs__grid cs__grid--two">
         <div className="cs__card">
-          <h2 className="cs__h2">Problem</h2>
+          <h2 className="cs__h2">Problem & Context</h2>
           <p className="cs__p">
-            Players often train alone without structured feedback. Tracking volume, accuracy by
-            zone, and consistency over time is tedious and fragmented across apps or paper.
+            Most players train without structured feedback. Logging shots is tedious, and it’s hard
+            to track accuracy by zone, progress over time, and consistency. Coaches lack a simple,
+            repeatable way to review training quality.
           </p>
         </div>
         <div className="cs__card">
-          <h2 className="cs__h2">Vision</h2>
-          <p className="cs__p">
-            Provide a lightweight, data‑driven companion for every practice session: quick logging,
-            clear insights, habit‑forming streaks, and gamified goals that keep athletes engaged.
-          </p>
+          <h2 className="cs__h2">Users / Stakeholders</h2>
+          <ul className="cs__personas">
+            <li>
+              <div className="cs__persona-name">Player</div>
+              <div className="cs__persona-role">Daily training</div>
+              <p className="cs__p">Wants fast logging, visible progress, and simple goals.</p>
+            </li>
+            <li>
+              <div className="cs__persona-name">Coach</div>
+              <div className="cs__persona-role">Review & feedback</div>
+              <p className="cs__p">Needs trends, accuracy by zone, and volume consistency.</p>
+            </li>
+            <li>
+              <div className="cs__persona-name">Parent</div>
+              <div className="cs__persona-role">Support</div>
+              <p className="cs__p">Wants clarity on progress and habit formation.</p>
+            </li>
+          </ul>
         </div>
       </div>
 
       <div className="cs__card">
-        <h2 className="cs__h2">Personas (Simulated + Early Real)</h2>
-        <ul className="cs__personas">
-          <li>
-            <div className="cs__persona-name">Alex</div>
-            <div className="cs__persona-role">Amateur Player</div>
-            <p className="cs__p">Wants simple logging, streaks, and visible progress.</p>
-          </li>
-          <li>
-            <div className="cs__persona-name">Coach Jordan</div>
-            <div className="cs__persona-role">Coach</div>
-            <p className="cs__p">Cares about volume targets and accuracy ≥75% across sessions.</p>
-          </li>
-          <li>
-            <div className="cs__persona-name">Sam</div>
-            <div className="cs__persona-role">Data‑Driven Hooper</div>
-            <p className="cs__p">Enjoys charts, zone heatmaps, and challenge leaderboards.</p>
-          </li>
-        </ul>
-      </div>
-
-      <div className="cs__card">
-        <h2 className="cs__h2">Architecture (MVP)</h2>
+        <h2 className="cs__h2">Constraints</h2>
         <ul className="cs__list">
-          <li>UI: React + Tailwind (card grid, dark mode, responsive)</li>
-          <li>State & Utils: selectors for XP/Level; date/zone aggregations</li>
-          <li>Data: Firebase Auth + Firestore (users, sessions, rounds, challenges)</li>
-          <li>Storage: optional screenshots/exports; seed data for demos</li>
-          <li>Analytics: Chart.js trend lines, zone heatmap, calendar streaks</li>
-          <li>Deploy: Vercel; environment‑based config; seeded demo profile</li>
+          <li><strong>Low friction</strong>: logging must be fast or users won’t stick.</li>
+          <li><strong>Meaningful metrics</strong>: insights must be coach-friendly and explainable.</li>
+          <li><strong>Data integrity</strong>: edits/reschedules should preserve consistency.</li>
+          <li><strong>Performance</strong>: Firestore queries must scale predictably.</li>
         </ul>
       </div>
 
       <div className="cs__card">
-        <h2 className="cs__h2">Agile Sprints</h2>
+        <h2 className="cs__h2">Key Product Decisions I Owned</h2>
+        <ul className="cs__list">
+          <li>Used <strong>round-based + zone-based</strong> tracking to match real training structure.</li>
+          <li>Prioritized <strong>analytics that inform behavior</strong> (heatmap, trends) over “AI” claims.</li>
+          <li>Added <strong>streaks and challenges</strong> to support habit formation and retention.</li>
+          <li>Designed table + export for <strong>coach workflows</strong>, not just app screenshots.</li>
+        </ul>
+      </div>
+
+      <div className="cs__card">
+        <h2 className="cs__h2">Architecture (MVP, Supporting)</h2>
+        <ul className="cs__list">
+          <li>UI: React + Tailwind (responsive, dark mode)</li>
+          <li>Data: Firebase Auth + Firestore (users, sessions, rounds, challenges)</li>
+          <li>Analytics: Chart.js trend lines, zone heatmap, streak tracking</li>
+          <li>Deploy: Vercel; environment-based config; seeded demo profile</li>
+        </ul>
+      </div>
+
+      <div className="cs__card">
+        <h2 className="cs__h2">Delivery (Agile Sprints)</h2>
         <div className="cs__grid cs__grid--two">
           {sprints.map((s) => (
             <article key={s.id} className="cs__sprint">
@@ -182,19 +187,18 @@ export default function SmartShooterCaseStudy() {
         <div className="cs__card">
           <h2 className="cs__h2">Outcomes (MVP)</h2>
           <ul className="cs__list">
-            <li>End‑to‑end Sessions CRUD and analytics dashboard</li>
-            <li>XP, Levels, and milestone Badges implemented</li>
-            <li>Calendar Streaks and Challenges gamification system</li>
-            <li>Responsive, themed UI with Lucide icons</li>
-            <li>Vercel deployment with seeded demo user</li>
+            <li>Complete training log workflow with edits and history</li>
+            <li>Analytics: zone heatmap, trends, volume/accuracy KPIs</li>
+            <li>Engagement loop: XP/levels, badges, streaks, challenges</li>
+            <li>Responsive UI and portfolio-ready demo flow</li>
           </ul>
         </div>
         <div className="cs__card">
-          <h2 className="cs__h2">What I Did</h2>
+          <h2 className="cs__h2">My Role</h2>
           <p className="cs__p">
-            Acted as Product Owner, PM, Full‑stack developer, and Designer — transformed a training
-            concept into a functional MVP with measurable engagement mechanics, analytics, and UX
-            polish, all built iteratively through seven Agile sprints.
+            Technical Product Manager: defined the workflow, metrics, and engagement mechanics,
+            prioritized features, and validated UX through prototyping. Hands-on implementation was
+            used to test assumptions quickly and keep iteration cycles short.
           </p>
         </div>
       </div>

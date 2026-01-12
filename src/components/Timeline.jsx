@@ -1,7 +1,8 @@
 import React, { useMemo, useRef, useState, useEffect } from "react";
 import data from "../data/timeline.js";
 
-const TAGS = ["All", "MedTech", "Tech"];
+const TAGS = ["All", "MedTech", "Tech", "Startup", "Design"];
+
 const sorters = {
   desc: (a, b) => b.year - a.year,
   asc: (a, b) => a.year - b.year,
@@ -36,8 +37,8 @@ const Timeline = () => {
   const onKey = (e) => {
     const el = scrollerRef.current;
     if (!el) return;
-    if (e.key === "ArrowRight") { el.scrollBy({ left: 300, behavior: "smooth" }); }
-    if (e.key === "ArrowLeft")  { el.scrollBy({ left: -300, behavior: "smooth" }); }
+    if (e.key === "ArrowRight") el.scrollBy({ left: 300, behavior: "smooth" });
+    if (e.key === "ArrowLeft") el.scrollBy({ left: -300, behavior: "smooth" });
   };
 
   const scrollBy = (dx) => {
@@ -47,7 +48,7 @@ const Timeline = () => {
   return (
     <section id="timeline" className="section container timeline">
       <h2 className="section__title">
-        <span className="about__chev">&gt;</span> Timeline
+        <span className="about__chev">&gt;</span> Experience Timeline
       </h2>
 
       {/* Controls */}
@@ -87,11 +88,7 @@ const Timeline = () => {
 
       {/* Track */}
       <div className="timeline__track-wrap">
-        <button
-          className="timeline__arrow"
-          aria-label="Scroll left"
-          onClick={() => scrollBy(-420)}
-        >
+        <button className="timeline__arrow" aria-label="Scroll left" onClick={() => scrollBy(-420)}>
           ‹
         </button>
 
@@ -107,7 +104,9 @@ const Timeline = () => {
             <article key={item.id} className="timeline__card" role="listitem">
               <header className="timeline__card-head">
                 <span className="timeline__year">{item.year}</span>
-                <span className="timeline__icon" aria-hidden>{item.icon || "•"}</span>
+                <span className="timeline__icon" aria-hidden>
+                  {item.icon || "•"}
+                </span>
               </header>
 
               <h3 className="timeline__title">{item.title}</h3>
@@ -118,24 +117,24 @@ const Timeline = () => {
 
               {item.highlights?.length ? (
                 <ul className="timeline__bullets">
-                  {item.highlights.map((h, i) => <li key={i}>{h}</li>)}
+                  {item.highlights.map((h, i) => (
+                    <li key={i}>{h}</li>
+                  ))}
                 </ul>
               ) : null}
 
               <footer className="timeline__tags">
                 {(item.tags || []).map((t) => (
-                  <span key={t} className="tag">{t}</span>
+                  <span key={t} className="tag">
+                    {t}
+                  </span>
                 ))}
               </footer>
             </article>
           ))}
         </div>
 
-        <button
-          className="timeline__arrow"
-          aria-label="Scroll right"
-          onClick={() => scrollBy(420)}
-        >
+        <button className="timeline__arrow" aria-label="Scroll right" onClick={() => scrollBy(420)}>
           ›
         </button>
       </div>

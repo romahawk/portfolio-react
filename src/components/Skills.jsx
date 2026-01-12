@@ -1,26 +1,35 @@
 import React from "react";
 import { hardSkills, pmSkills, softSkills } from "../data/skillsCards.js";
 import {
-  Laptop, ClipboardList, Users, Stethoscope, Package,
-  Atom, Server, Wrench, Star, Code2, MessageSquare, Lightbulb
+  Layers,
+  Workflow,
+  Wrench,
+  Shield,
+  Users,
+  Stethoscope,
+  Package,
+  Code2,
+  Lightbulb,
 } from "lucide-react";
 
 /* Pick an icon for each inner skill-card by its title */
 const iconFor = (title) => {
   const t = title.toLowerCase();
-  if (t.includes("react") || t.includes("frontend")) return Atom;
-  if (t.includes("backend")) return Server;
-  if (t.includes("devops") || t.includes("tools")) return Wrench;
-  if (t.includes("extras")) return Star;
-  if (t.includes("tech understanding")) return Code2;
-  if (t.includes("communication")) return MessageSquare;
-  if (t.includes("leadership")) return Users;
+  if (t.includes("product delivery")) return Workflow;
+  if (t.includes("technical collaboration")) return Layers;
+  if (t.includes("prototyping")) return Code2;
+  if (t.includes("tooling")) return Wrench;
+  if (t.includes("stakeholder")) return Users;
+  if (t.includes("ownership")) return Shield;
   if (t.includes("problem")) return Lightbulb;
-  return Code2;
+  return Layers;
 };
 
 const SectionTitle = ({ Icon, children }) => (
-  <h3 className="skills__subtitle" style={{ display: "flex", alignItems: "center", gap: 8 }}>
+  <h3
+    className="skills__subtitle"
+    style={{ display: "flex", alignItems: "center", gap: 8 }}
+  >
     {Icon ? <Icon size={18} className="about__icon" /> : null}
     {children}
   </h3>
@@ -54,40 +63,42 @@ const Skills = () => (
   <section id="skills" className="section container">
     <h2 className="section__title">&gt; Skills</h2>
 
-    {/* Hard Skills */}
+    {/* Product + Technical capabilities */}
     <SkillsGroup
-      title="Hard Skills (React / Full-Stack Developer Path)"
-      sectionIcon={Laptop}
+      title="Product & Technical Capabilities"
+      sectionIcon={Layers}
       data={hardSkills}
     />
 
-    {/* IT Project Manager Path */}
+    {/* Product execution toolkit */}
     <SkillsGroup
-      title="IT Project Manager Path"
-      sectionIcon={ClipboardList}
+      title="Product Execution Toolkit"
+      sectionIcon={Workflow}
       data={pmSkills}
     />
 
-    {/* Soft Skills */}
+    {/* Leadership / soft skills */}
     <SkillsGroup
-      title="Soft Skills (Professional)"
+      title="Leadership & Collaboration"
       sectionIcon={Users}
       data={softSkills}
     />
 
-    {/* MedTech Expertise */}
+    {/* Domain proof (not limitation) */}
     <div className="skills__group">
-      <SectionTitle Icon={Stethoscope}>MedTech Expertise</SectionTitle>
+      <SectionTitle Icon={Stethoscope}>Domain Experience (Evidence)</SectionTitle>
       <p className="about__text">
-        10+ years in MedTech: equipment sales, installation, OR workflows, and clinician training.
+        Proven experience in MedTech and regulated B2B environments: clinical workflows,
+        multi-stakeholder delivery, training, and operational execution under constraints.
       </p>
     </div>
 
-    {/* Product Management */}
+    {/* Product ownership */}
     <div className="skills__group">
-      <SectionTitle Icon={Package}>Product Management</SectionTitle>
+      <SectionTitle Icon={Package}>Product Ownership</SectionTitle>
       <p className="about__text">
-        Lifecycle management from ideation to launch; introduced innovative products like SURGIRIS lights.
+        End-to-end ownership from problem discovery to delivery: defining scope, aligning
+        stakeholders, making trade-offs, and driving outcomes.
       </p>
     </div>
   </section>

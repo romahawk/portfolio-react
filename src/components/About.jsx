@@ -1,7 +1,7 @@
 import React from "react";
 import {
   HeartPulse,
-  Rocket,
+  Layers,
   Target,
   Users,
   Dot,
@@ -11,14 +11,13 @@ const About = () => {
   return (
     <section id="about" className="section container about">
       <h2 className="about__title">
-        <span className="about__chev">&gt;</span> About Me
+        <span className="about__chev">&gt;</span> About
       </h2>
 
       <div className="about__container">
-        {/* Row 1: Photo + Journey */}
+        {/* Row 1: Photo + Identity */}
         <div className="about__row about__row--two-columns">
           <div className="about__photo">
-            {/* Replace with your real photo path if available */}
             <img
               src="/images/profile.jpg"
               alt="Roman Mazuryk profile"
@@ -28,79 +27,73 @@ const About = () => {
 
           <div className="about__panel">
             <h3 className="about__heading">
-              <HeartPulse size={18} className="icon about__icon" />
-              My MedTech Journey
+              <Layers size={18} className="icon about__icon" />
+              Product Leadership Across Complex Systems
             </h3>
             <p className="about__text">
-              For over a decade, I’ve been immersed in the MedTech industry — leading sales of advanced equipment, streamlining B2B/B2C logistics, supporting surgeons in the OR, and collaborating with startups. That work shaped my problem-solving mindset and sparked a new passion: technology.
+              I am a <strong>Technical Product Manager</strong> with over 10 years of experience
+              in MedTech and regulated B2B environments. I’ve owned complex product initiatives
+              involving clinical users, engineers, vendors, and business stakeholders — where
+              quality, safety, and coordination are non-negotiable.
             </p>
           </div>
         </div>
 
-        {/* Row 2: Pivot */}
-        <div className="about__row">
-          <h3 className="about__heading">
-            <Rocket size={18} className="icon about__icon" />
-            My Path in Tech
-          </h3>
-          <p className="about__text">
-            I’ve transitioned fully into tech, building full-stack and cross-platform solutions with React, React Native, TypeScript, Node.js, and Python (Flask/FastAPI), supported by SQL/NoSQL databases. Combining hands-on development with Agile product management, I turn ideas into scalable, user-centered products focused on clear UX, solid architecture, and measurable impact.
-          </p>
-        </div>
-
-        {/* Row 3: Values */}
+        {/* Row 2: How you work */}
         <div className="about__row">
           <h3 className="about__heading">
             <Target size={18} className="icon about__icon" />
-            My Values &amp; Vision
+            How I Work
           </h3>
           <p className="about__text">
-            Innovation, clarity, and continuous learning guide everything I build. I believe in teamwork, data-driven decision-making, and delivering products that make a real difference. My vision is to combine product thinking with modern software engineering to create reliable, intuitive, and scalable digital solutions across healthcare, SportTech, and FinTech.
+            I specialize in turning ambiguous problems into clear product direction.
+            My work spans discovery, requirements, prioritization, and delivery — balancing
+            technical feasibility, regulatory constraints, and business outcomes.
+          </p>
+          <p className="about__text">
+            I use hands-on technical prototyping when needed to de-risk decisions,
+            clarify system behavior, and collaborate effectively with engineering teams.
+            The goal is always better product outcomes, not technology for its own sake.
           </p>
         </div>
 
-        {/* Row 4: Collaborate */}
+        {/* Row 3: Stakeholders */}
         <div className="about__row">
           <h3 className="about__heading">
             <Users size={18} className="icon about__icon" />
-            Let’s Collaborate
+            Users & Stakeholders
           </h3>
           <p className="about__text">
-            Let’s turn ideas into working products. I love partnering with forward-thinking teams to build smart, human-centered digital experiences.
+            I’ve worked closely with surgeons, clinical staff, operations, logistics,
+            engineers, and leadership teams. I’m comfortable operating at the intersection
+            of domain expertise and technical execution — translating real-world needs into
+            scalable product solutions.
           </p>
         </div>
 
-        {/* Row 5: Interests */}
+        {/* Row 4: Personal but grounded */}
         <div className="about__row">
-          <h3 className="about__heading">Beyond Tech: What Drives Me</h3>
+          <h3 className="about__heading">Beyond Work</h3>
 
           <ul className="about__list">
             <li className="about__list-item">
               <Dot size={16} className="icon about__bullet-icon" />
-              <strong>Basketball</strong> — player, coach, student of the game.
+              <strong>Basketball</strong> — player, coach, systems thinker.
             </li>
             <li className="about__list-item">
               <Dot size={16} className="icon about__bullet-icon" />
-              <strong>Beach Volleyball</strong> — sand, sun, and strategy.
+              <strong>Sport & fitness</strong> — discipline, feedback loops, consistency.
             </li>
             <li className="about__list-item">
               <Dot size={16} className="icon about__bullet-icon" />
-              <strong>Hiking</strong> — trails and staying grounded.
-            </li>
-            <li className="about__list-item">
-              <Dot size={16} className="icon about__bullet-icon" />
-              <strong>Travel</strong> — curious about new cultures, food, and ideas.
-            </li>
-            <li className="about__list-item">
-              <Dot size={16} className="icon about__bullet-icon" />
-              <strong>Lifelong Learner</strong> — always improving and growing.
+              <strong>Travel</strong> — perspective, adaptability, curiosity.
             </li>
           </ul>
 
           <blockquote className="about__quote">
             <em>
-              “Basketball taught me teamwork, strategy, and discipline—qualities
-              I now apply to building projects and collaborating in tech.”
+              “Complex products are like team sports: success comes from clarity of roles,
+              trust, and disciplined execution.”
             </em>
           </blockquote>
         </div>

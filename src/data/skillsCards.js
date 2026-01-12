@@ -2,88 +2,81 @@
 
 export const hardSkills = [
   {
-    title: "React / Frontend",
-    icon: "fab fa-react",
+    title: "Product Delivery Systems",
     items: [
-      "Hooks, Context API",
-      "React Router, Redux / Zustand",
-      "TailwindCSS / Material UI",
-      "Jest & React Testing Library",
+      "Requirements → scope → delivery planning",
+      "Role-based workflows, status models, auditability",
+      "Dashboards & decision-support (metrics, visibility, reporting)",
     ],
   },
   {
-    title: "Backend Basics",
-    icon: "fas fa-server",
+    title: "Technical Collaboration",
     items: [
-      "Node.js + Express.js",
-      "REST APIs, GraphQL basics",
-      "PostgreSQL, MongoDB, SQLite",
+      "System thinking: APIs, data models, integrations",
+      "Architecture trade-offs (build vs buy, speed vs reliability)",
+      "Engineering collaboration (tickets, specs, PR review context)",
     ],
   },
   {
-    title: "DevOps / Tools",
-    icon: "fas fa-tools",
+    title: "Hands-on Prototyping (Supporting)",
     items: [
-      "Git/GitHub (branches, PRs, CI/CD basics)",
-      "Docker (basic usage)",
+      "React (Hooks, routing, state management) for rapid prototypes",
+      "Backend basics: REST APIs, Node/Express, Python (Flask/FastAPI)",
+      "Data: PostgreSQL, SQLite, MongoDB; Firebase Auth/Firestore",
+    ],
+  },
+  {
+    title: "Tooling & Delivery Ops",
+    items: [
+      "Git/GitHub workflows (branches, PRs, CI/CD familiarity)",
       "Deployment: Vercel, Render, Netlify",
-    ],
-  },
-  {
-    title: "Extras",
-    icon: "fas fa-star",
-    items: [
-      "Firebase (Auth + Firestore)",
-      "Chart.js / D3.js for dashboards",
+      "Docker (basic usage) and environment setup",
     ],
   },
 ];
 
 export const pmSkills = [
   {
-    title: "Agile & Tools",
-    icon: "fas fa-project-diagram",
+    title: "Product Management",
     items: [
-      "Scrum, Kanban (Trello, Jira, Confluence)",
-      "Waterfall basics (MedTech/regulated industries)",
-      "Risk management, backlog grooming, reporting",
+      "Problem framing, discovery, and prioritization",
+      "Backlog management, roadmap shaping, stakeholder alignment",
+      "Risk & dependency management in complex environments",
     ],
   },
   {
-    title: "Tech Understanding",
-    icon: "fas fa-code",
+    title: "Execution & Ways of Working",
     items: [
-      "HTML, JS, APIs, Git (basic coding knowledge)",
-      "CI/CD familiarity",
-      "Cloud (AWS/GCP/Azure high-level)",
+      "Scrum / Kanban (Jira, Confluence, Trello)",
+      "Planning, reporting, and delivery governance",
+      "Cross-functional execution with engineers, ops, and leadership",
     ],
   },
 ];
 
 export const softSkills = [
   {
-    title: "Communication",
-    icon: "fas fa-comments",
+    title: "Stakeholder Communication",
     items: [
-      "Cross-functional communication",
-      "Client-facing confidence",
-      "Cultural adaptability",
+      "Cross-functional communication and negotiation",
+      "Client-facing leadership (workshops, training, alignment)",
+      "Clear written specs and decision documentation",
     ],
   },
   {
-    title: "Leadership & Ownership",
-    icon: "fas fa-user-tie",
+    title: "Ownership & Leadership",
     items: [
-      "10+ years running Medintegro",
-      "Project delivery & client training",
+      "End-to-end ownership across delivery lifecycle",
+      "Operating under uncertainty and high constraints",
+      "Hands-on leadership: coordination, accountability, outcomes",
     ],
   },
   {
-    title: "Problem-Solving",
-    icon: "fas fa-lightbulb",
+    title: "Problem Solving",
     items: [
-      "Problem-solving under uncertainty",
-      "Startup & remote-first readiness",
+      "Structured problem-solving and trade-off thinking",
+      "Process design and continuous improvement mindset",
+      "Bias to action with disciplined execution",
     ],
   },
 ];
