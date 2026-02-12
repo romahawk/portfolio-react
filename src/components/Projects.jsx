@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { techProjects, medtechProjects } from "../data/projects.js";
-import { Cpu, Shield, FileText } from "lucide-react";
+import * as Lucide from "lucide-react";
+import { Cpu, Shield, FileText, Boxes, Stethoscope, BriefcaseBusiness } from "lucide-react";
 import CaseStudyModal from "./CaseStudyModal.jsx";
 import LivesurgeryCaseStudy from "./case-studies/LivesurgeryCaseStudy.jsx";
 import SmartShooterCaseStudy from "./case-studies/SmartShooterCaseStudy.jsx";
@@ -19,14 +20,15 @@ const collectTags = (list) => {
 
 function ProjectCard({ p, variant, onOpenCase }) {
   const inDev = p.inDevelopment;
+  const CardIcon = p.icon ? Lucide[p.icon] || Lucide.Circle : null;
 
   return (
     <article className={`project-card ${variant ? `project-card--${variant}` : ""}`}>
       <header className="project-card__head">
         <h4 className="project-card__title">{p.title}</h4>
-        {p.icon ? (
+        {CardIcon ? (
           <span className="project-card__icon" aria-hidden>
-            {p.icon}
+            <CardIcon size={18} strokeWidth={2} />
           </span>
         ) : null}
       </header>
@@ -146,7 +148,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="section container">
-      <h2 className="section__title">&gt; Case Studies & Delivery Portfolio</h2>
+      <h2 className="section__title">&gt; Product Systems</h2>
 
       <div className="projects__toolbar">
         <div className="projects__tabs" role="tablist" aria-label="Portfolio categories">
@@ -165,7 +167,7 @@ export default function Projects() {
             className={`tab ${cat === CATEGORY.MED ? "tab--active" : ""}`}
             onClick={() => setCat(CATEGORY.MED)}
           >
-            <Shield size={16} className="icon mr-1" /> Regulated Delivery (MedTech)
+            <Shield size={16} className="icon mr-1" /> Regulated Systems Delivery
           </button>
         </div>
 
@@ -187,10 +189,12 @@ export default function Projects() {
 
       {cat === CATEGORY.TECH ? (
         <>
-          <h3 className="projects__section-title">🧩 Product Systems & Prototypes</h3>
+          <h3 className="projects__section-title">
+            <Boxes size={18} className="icon" /> Product Systems
+          </h3>
           <p className="projects__intro">
-            Product case studies and working prototypes used to clarify requirements, de-risk decisions,
-            and collaborate effectively with engineering.
+            Systems I design and ship to convert operational complexity into scalable products —
+            from internal tools and data integrity layers to real-time interaction workflows.
           </p>
           <div className="projects__grid">
             {visibleTech.map((p) => (
@@ -200,10 +204,12 @@ export default function Projects() {
         </>
       ) : (
         <>
-          <h3 className="projects__section-title">🏥 MedTech — Integration & Delivery</h3>
+          <h3 className="projects__section-title">
+            <Stethoscope size={18} className="icon" /> MedTech — Integration & Delivery
+          </h3>
           <p className="projects__intro">
-            Real-world delivery programs in regulated environments: clinical stakeholders, multi-vendor systems,
-            installation governance, training, and lifecycle support.
+            Regulated delivery across clinical environments: multi-vendor integrations, workflow governance,
+            adoption enablement, and lifecycle reliability under real constraints.
           </p>
           <div className="projects__grid">
             {medIntegration.map((p) => (
@@ -212,17 +218,19 @@ export default function Projects() {
           </div>
 
           {medManagement.length ? (
-            <>
-              <h3 className="projects__section-title">📦 MedTech — Programs & Commercial Execution</h3>
+            <div className="projects__subsection">
+              <h3 className="projects__section-title">
+                <BriefcaseBusiness size={18} className="icon" /> MedTech — Programs & Commercial Execution
+              </h3>
               <p className="projects__intro">
-                Multi-site rollouts, procurement/tenders, vendor coordination, and adoption enablement.
+                Multi-site rollout governance, procurement/tenders, vendor orchestration, and adoption enablement.
               </p>
               <div className="projects__grid">
                 {medManagement.map((p) => (
                   <ProjectCard key={p.id} p={p} variant="mgmt" onOpenCase={openCase} />
                 ))}
               </div>
-            </>
+            </div>
           ) : null}
         </>
       )}
@@ -238,7 +246,7 @@ export default function Projects() {
             : caseId === "flowlogix"
             ? "FlowLogix — Case Study"
             : caseId === "alphorythm"
-            ? "Alphorythm — Case Study"
+            ? "AlphaRhythm — Case Study"
             : caseId === "portfolio"
             ? "Technical PM Portfolio — Case Study"
             : caseId === "medintegro"
