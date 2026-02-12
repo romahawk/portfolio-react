@@ -1,101 +1,58 @@
 import React from "react";
-import { GraduationCap, Code, Database, Projector } from "lucide-react";
+import { GraduationCap, Database, Projector } from "lucide-react";
 
 const certifications = [
   {
     id: 1,
-    title: "GoIT – Project Management Course",
+    title: "GoIT — Project Management Certificate",
     image: "/images/certs/goit-pm.jpg",
     icon: <Projector size={20} />,
     issuer: "GoIT (2025)",
-    // status: "completed", // optional: add if you show badges
     stack: [
-      "Agile",
-      "Scrum",
-      "Kanban",
-      "Jira",
-      "Confluence",
-      "WBS",
-      "SOW",
-      "Roadmap",
-      "Backlog",
-      "Risk Log",
-      "RACI",
-      "Gantt/EVM",
-      "Stakeholders",
+      "Agile Delivery",
+      "Scope & Roadmaps",
+      "Backlog & Prioritization",
+      "Risk & Dependencies",
+      "Stakeholder Management",
+      "Delivery Artifacts (SOW/WBS/RACI)",
     ],
     summary:
-      "End-to-end IT project management: scope, scheduling, budgeting, risk and communication. Built delivery artifacts (SOW, WBS, roadmap, backlog, risk register), ran sprints in Jira, documented in Confluence, and practiced reporting with Gantt/EVM and RACI for stakeholders.",
+      "End-to-end delivery governance: translating scope into roadmaps and execution plans, managing risks and dependencies, and maintaining stakeholder alignment through structured reporting and artifacts.",
   },
 
   {
     id: 2,
-    title:
-      "GoIT Neoversity – Master’s in Software Development & Data Analytics",
+    title: "Neoversity — Master’s in Software Development (Technical Deepening)",
     image: "/images/certs/goit-neoversity.jpg",
     icon: <GraduationCap size={20} />,
-    issuer: "Woolf University (in progress, 2024–2026)",
+    issuer: "Woolf University (2024–2026)",
     stack: [
-      "HTML",
-      "CSS",
-      "JS",
-      "React / React Native",
-      "Typescript",
-      "Git",
-      "CI/CD",
-      "Python",
-      "Heroku",
-      "Kubernetes",
-      "SQL",
-      "Docker",
-      "Jenkins",
-      "NoSQL",
-      "Redis",
-      "RestAPI",
-      "MongoDB",
+      "System Design",
+      "Data Modeling",
+      "Full-Stack Foundations",
+      "APIs",
+      "Cloud & DevOps Basics",
     ],
     summary:
-      "Comprehensive program covering full-stack, data analytics, and project management fundamentals.",
+      "Formal technical deepening to lead product systems with less abstraction — strengthening architecture fluency, data modeling, and engineering collaboration.",
     status: "ongoing",
   },
   {
     id: 3,
-    title: "Mate Academy – Full-Stack Developer Bootcamp",
-    placeholder: true,
-    icon: <Code size={20} />,
-    issuer: "Mate Academy (in progress, 2025)",
-    stack: [
-      "SASS",
-      "React",
-      "Redux",
-      "Typescript",
-      "Node.js",
-      "Webstorm",
-      "Npm",
-      "PostgreSqL",
-      "Firebase",
-      "Github",
-    ],
-    summary:
-      "Building production-ready full-stack apps while applying clean code, Git workflow, and deployment practices.",
-    status: "ongoing",
-  },
-  {
-    id: 4,
     title: "DataCamp – Associate AI Engineer for Developers",
     placeholder: true,
     icon: <Database size={20} />,
-    issuer: "DataCamp (in progress, 2025)",
+    issuer: "DataCamp (2025)",
     link: "https://app.datacamp.com/learn/career-tracks/associate-ai-engineer-for-developers",
     stack: [
-      "Python",
-      "OpenAI API",
-      "Prompt Engineering",
-      "LangChain",
       "AI Integration",
+      "OpenAI API",
+      "Prompting",
+      "Tooling Patterns",
+      "Productized AI Features",
     ],
     summary:
-      "Learn to integrate AI-powered applications using APIs and open-source libraries. Covers OpenAI API, prompting, and conversational AI development.",
+      "Applied AI integration track focused on building AI-powered product features using APIs and modern workflows — emphasizing practical implementation patterns over theory.",
     status: "ongoing",
   },
 ];
@@ -118,7 +75,7 @@ const Certifications = () => (
             {/* Image or gradient placeholder */}
             {isPlaceholder ? (
               <div className="cert-card__ph">
-                <span className="cert-card__ph-label">Coming soon</span>
+                <span className="cert-card__ph-label">In progress</span>
               </div>
             ) : (
               <img
@@ -129,10 +86,13 @@ const Certifications = () => (
               />
             )}
 
-            <p className="cert-card__issuer">
-              {cert.issuer}
-              {cert.period ? ` (${cert.period})` : ""}
-            </p>
+            <p className="cert-card__issuer">{cert.issuer}</p>
+
+            {cert.link ? (
+              <a href={cert.link} target="_blank" rel="noreferrer">
+                View credential
+              </a>
+            ) : null}
 
             {cert.status === "ongoing" && (
               <span className="badge badge--ongoing">Ongoing</span>
