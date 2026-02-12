@@ -28,13 +28,18 @@ const About = () => {
           <div className="about__panel">
             <h3 className="about__heading">
               <Layers size={18} className="icon about__icon" />
-              Product Leadership Across Complex Systems
+              Founder-Operator Building Product Systems
             </h3>
+            
             <p className="about__text">
-              I am a <strong>Technical Product Manager</strong> with over 10 years of experience
-              in MedTech and regulated B2B environments. I’ve owned complex product initiatives
-              involving clinical users, engineers, vendors, and business stakeholders — where
-              quality, safety, and coordination are non-negotiable.
+              With 10+ years across MedTech and regulated B2B environments, I’ve led complex
+              initiatives where compliance, uptime, and operational integrity are non-negotiable.
+              My work sits between executive decision-making and hands-on system architecture —
+              turning operational complexity into scalable digital platforms.
+            </p>
+            <p className="about__text">
+              I don’t just manage backlogs. I design systems, define boundaries, and drive
+              execution.
             </p>
           </div>
         </div>
@@ -43,17 +48,21 @@ const About = () => {
         <div className="about__row">
           <h3 className="about__heading">
             <Target size={18} className="icon about__icon" />
-            How I Work
+            How I Build
           </h3>
           <p className="about__text">
-            I specialize in turning ambiguous problems into clear product direction.
-            My work spans discovery, requirements, prioritization, and delivery — balancing
-            technical feasibility, regulatory constraints, and business outcomes.
+            I specialize in transforming messy, high-stakes environments into structured product
+            systems: clear ownership, clean state models, defined interfaces, and measurable
+            outcomes.
           </p>
           <p className="about__text">
-            I use hands-on technical prototyping when needed to de-risk decisions,
-            clarify system behavior, and collaborate effectively with engineering teams.
-            The goal is always better product outcomes, not technology for its own sake.
+            My approach is operator-driven: Start with real workflow constraints. Translate them
+            into system primitives (roles, states, data flows). De-risk architecture through fast
+            prototyping. Ship in disciplined increments.
+          </p>
+          <p className="about__text">
+            The objective is not features — it’s leverage. Reduce coordination overhead. Improve
+            decision velocity. Make complexity manageable.
           </p>
         </div>
 
@@ -61,39 +70,45 @@ const About = () => {
         <div className="about__row">
           <h3 className="about__heading">
             <Users size={18} className="icon about__icon" />
-            Users & Stakeholders
+            Where I Operate Best
           </h3>
           <p className="about__text">
-            I’ve worked closely with surgeons, clinical staff, operations, logistics,
-            engineers, and leadership teams. I’m comfortable operating at the intersection
-            of domain expertise and technical execution — translating real-world needs into
-            scalable product solutions.
+            I do my best work in regulated or compliance-heavy environments, multi-stakeholder
+            ecosystems, internal tools and operational platforms, and zero-to-one product
+            foundations.
+          </p>
+          <p className="about__text">
+            I am comfortable working directly with engineers on architecture decisions while
+            aligning with leadership on trade-offs and long-term system evolution.
+          </p>
+          <p className="about__text">
+            This is product ownership end-to-end — from ambiguity to delivery.
           </p>
         </div>
 
         {/* Row 4: Personal but grounded */}
         <div className="about__row">
-          <h3 className="about__heading">Beyond Work</h3>
+          <h3 className="about__heading">Outside the Platform</h3>
 
           <ul className="about__list">
             <li className="about__list-item">
               <Dot size={16} className="icon about__bullet-icon" />
-              <strong>Basketball</strong> — player, coach, systems thinker.
+              <strong>Basketball</strong> — systems thinking applied to team dynamics.
             </li>
             <li className="about__list-item">
               <Dot size={16} className="icon about__bullet-icon" />
-              <strong>Sport & fitness</strong> — discipline, feedback loops, consistency.
+              <strong>Training & discipline</strong> — feedback loops compound over time.
             </li>
             <li className="about__list-item">
               <Dot size={16} className="icon about__bullet-icon" />
-              <strong>Travel</strong> — perspective, adaptability, curiosity.
+              <strong>Travel</strong> — pattern recognition across environments.
             </li>
           </ul>
 
           <blockquote className="about__quote">
             <em>
-              “Complex products are like team sports: success comes from clarity of roles,
-              trust, and disciplined execution.”
+              “Strong products are not built by adding features — they’re built by removing
+              friction from complex systems.”
             </em>
           </blockquote>
         </div>

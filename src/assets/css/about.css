@@ -4,7 +4,8 @@
   max-width: 1000px;
   margin: 0 auto;
 }
-.about__row { margin-bottom: 2rem; }
+.about__row { margin-bottom: 1.25rem; }
+.about__row:last-child { margin-bottom: 0; }
 
 /* Two columns — left column fixed to the photo’s responsive width */
 .about__row--two-columns {
@@ -54,6 +55,12 @@
 .about__panel p:first-child { margin-top: 0; }
 
 /* Headings & text */
+.about__heading {
+  margin: 0 0 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .about__subtitle {
   font-size: 1.5rem;
   color: var(--brand);
