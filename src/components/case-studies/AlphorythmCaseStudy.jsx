@@ -1,4 +1,5 @@
 import React from "react";
+import CaseStudyLinks from "../CaseStudyLinks.jsx";
 
 const sprints = [
   {
@@ -174,6 +175,8 @@ export default function AlphorythmCaseStudy() {
           </p>
         </div>
       </div>
+
+      <CaseStudyLinks />
     </section>
   );
 }

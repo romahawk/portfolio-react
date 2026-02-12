@@ -1,4 +1,5 @@
 import React from "react";
+import CaseStudyLinks from "../CaseStudyLinks.jsx";
 
 export default function MedintegroCaseStudy() {
   return (
@@ -78,6 +79,8 @@ export default function MedintegroCaseStudy() {
           architecture and reduce ambiguity for future engineering work.
         </p>
       </div>
+
+      <CaseStudyLinks />
     </div>
   );
 }

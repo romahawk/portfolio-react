@@ -1,4 +1,5 @@
 import React from "react";
+import CaseStudyLinks from "../CaseStudyLinks.jsx";
 
 const sprints = [
   {
@@ -207,6 +208,8 @@ export default function FlowLogixCaseStudy() {
           </p>
         </div>
       </div>
+
+      <CaseStudyLinks />
     </section>
   );
 }

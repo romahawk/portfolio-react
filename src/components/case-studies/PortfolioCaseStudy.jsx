@@ -1,4 +1,5 @@
 import React from "react";
+import CaseStudyLinks from "../CaseStudyLinks.jsx";
 
 export default function PortfolioCaseStudy() {
   return (
@@ -34,7 +35,7 @@ export default function PortfolioCaseStudy() {
       <div className="cs__card">
         <h2 className="cs__h2">Key Product Decisions I Owned</h2>
         <ul className="cs__list">
-          <li>Made <strong>case studies</strong> the primary unit of value (not project screenshots).</li>
+          <li>Made <strong>systems</strong> the primary unit of value (not project screenshots).</li>
           <li>Separated <strong>Product Systems</strong> vs <strong>Regulated Delivery (MedTech)</strong> to show range without losing coherence.</li>
           <li>Reframed technical details as <strong>supporting proof</strong> rather than identity.</li>
           <li>Optimized copy and structure for a <strong>30-second scan</strong>.</li>
@@ -55,6 +56,8 @@ export default function PortfolioCaseStudy() {
         <h2 className="cs__h2">Stack (Supporting)</h2>
         <p className="cs__p">React + Vite, Tailwind/CSS, lucide-react icons.</p>
       </div>
+
+      <CaseStudyLinks />
     </div>
   );
 }

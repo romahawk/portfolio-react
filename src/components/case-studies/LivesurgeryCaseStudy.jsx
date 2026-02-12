@@ -1,4 +1,5 @@
 import React from "react";
+import CaseStudyLinks from "../CaseStudyLinks.jsx";
 
 const sprints = [
   {
@@ -171,6 +172,8 @@ export default function LivesurgeryCaseStudy() {
           </p>
         </div>
       </div>
+
+      <CaseStudyLinks pitchUrl="https://livesurgery-pitch-deck.vercel.app/" />
     </section>
   );
 }
