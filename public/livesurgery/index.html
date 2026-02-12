@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LiveSurgery | Product System</title>
+    <meta
+      name="description"
+      content="LiveSurgery: real-time MedTech collaboration system exploring multi-source video orchestration, workflow integrity, and regulated delivery constraints."
+    />
+    <link rel="canonical" href="https://www.mazuryk.dev/livesurgery" />
+    <style>
+      :root {
+        --bg: #060b16;
+        --panel: #0f1626;
+        --text: #eef4ff;
+        --muted: #9db0d1;
+        --brand: #00ddeb;
+        --brand-2: #4aa3ff;
+        --border: #25324b;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(900px 500px at 110% -10%, rgba(74, 163, 255, 0.2), transparent),
+          radial-gradient(900px 500px at -10% 120%, rgba(0, 221, 235, 0.12), transparent),
+          var(--bg);
+      }
+
+      .wrap {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .card {
+        width: min(760px, 100%);
+        background: linear-gradient(180deg, rgba(16, 24, 40, 0.94), rgba(10, 16, 30, 0.9));
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 28px;
+      }
+
+      .eyebrow {
+        color: var(--brand);
+        margin: 0 0 10px;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        line-height: 1.2;
+      }
+
+      p {
+        margin: 0 0 16px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 8px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 10px 14px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .btn--primary {
+        border: 0;
+        color: #001016;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      }
+
+      .btn:hover {
+        filter: brightness(1.08);
+      }
+
+      .hint {
+        margin-top: 16px;
+        font-size: 13px;
+        color: #7f94bb;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="card">
+        <p class="eyebrow">LiveSurgery | Product System</p>
+        <h1>Real-Time Clinical Collaboration Workflow (PoC)</h1>
+        <p>
+          LiveSurgery explores multi-source OR video orchestration, role-based collaboration, and
+          workflow integrity in regulated environments.
+        </p>
+        <div class="actions">
+          <a class="btn btn--primary" href="https://www.mazuryk.dev/#projects/livesurgery">
+            Open case study
+          </a>
+          <a class="btn" href="https://livesurgery-pitch-deck.vercel.app/" target="_blank" rel="noreferrer">
+            View pitch deck
+          </a>
+          <a class="btn" href="https://www.mazuryk.dev/#projects">Back to product systems</a>
+        </div>
+        <p class="hint">Canonical page: https://www.mazuryk.dev/livesurgery</p>
+      </section>
+    </main>
+  </body>
+</html>
