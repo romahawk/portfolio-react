@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Copy, Linkedin, Github, FileDown, Mail, MapPin } from "lucide-react";
+import { Copy, Linkedin, Github, Mail, MapPin } from "lucide-react";
 
 const Contact = () => {
   const formRef = useRef(null);
@@ -36,10 +36,13 @@ const Contact = () => {
 
       <div className="contact__grid">
         <div className="contact__panel">
-          <h3 className="contact__subtitle">Let’s work together</h3>
+          <h3 className="contact__subtitle">Product Systems Inquiries</h3>
           <p className="contact__text">
-            I’m open to React/Full-Stack roles and IT PM opportunities—especially
-            where tech meets healthcare. Reach out and I’ll reply quickly.
+            Open to Technical Product Manager and Product Owner roles, as well as selective founder/operator collaborations in complex, regulated environments.
+          </p>
+          <p className="contact__text">
+            <strong>Best for:</strong> internal tools, workflow automation, decision-support
+            dashboards, real-time PoCs, and MVP validation.
           </p>
 
           <div className="contact__info">
@@ -67,9 +70,6 @@ const Contact = () => {
                 <a href="https://github.com/romahawk" target="_blank" rel="noreferrer" className="contact__social">
                   <Github size={16} className="icon" /> GitHub
                 </a>
-                <a href="#" target="_blank" rel="noreferrer" className="contact__social">
-                  <FileDown size={16} className="icon" /> Download CV
-                </a>
               </div>
             </div>
           </div>
@@ -92,12 +92,12 @@ const Contact = () => {
           </div>
 
           <div className="contact__actions">
-            <button type="submit" className="btn btn--primary">Send</button>
-            <a className="btn btn--ghost" href={`mailto:${email}`}>Open mail app</a>
+            <button type="submit" className="btn btn--primary">Send inquiry</button>
+            <a className="btn btn--ghost" href={`mailto:${email}`}>Email directly</a>
           </div>
 
           <p className="contact__hint">
-            No server required—this form opens your email client with the message.
+            Opens your email client with your draft message. No contact form data is stored.
           </p>
         </form>
       </div>

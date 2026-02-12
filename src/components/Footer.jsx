@@ -11,8 +11,9 @@ const Footer = () => {
           <a href="#about">About</a>
           <a href="#timeline">Timeline</a>
           <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
+          <a href="#projects">Product Systems</a>
           <a href="#contact">Contact</a>
+          <a href="https://www.linkedin.com/in/roman-mazuryk/" target="_blank" rel="noreferrer">LinkedIn</a>
         </nav>
         <div className="footer__copy">© {year} Roman Mazuryk. All rights reserved.</div>
       </div>
