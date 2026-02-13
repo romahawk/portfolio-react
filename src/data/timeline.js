@@ -146,6 +146,25 @@ const timeline = [
     ],
     icon: "🏛️",
   },
+  {
+    id: "2005-2010-foundation",
+    year: 2005,
+    title: "Foundational Operational Experience (Pharma & Healthcare)",
+    role: "Operational Execution | Regulatory Coordination | Stakeholder Alignment",
+    company: "Pharma & Healthcare Operations - Kyiv, Ukraine",
+    tags: ["Pharma", "Healthcare", "Operations"],
+    summary:
+      "Built core operating discipline in high-compliance healthcare environments by coordinating supply and delivery workflows, aligning cross-functional stakeholders, and developing the execution mindset that now informs my product systems architecture.",
+    highlights: [
+      "Built 5 years of hands-on operational discipline in regulated supplier-to-end-user workflows",
+      "Built high-compliance execution foundations across 3 organizations in regulated settings",
+      "Strengthened customer-facing execution through account continuity and multi-stakeholder problem-solving",
+    ],
+    icon: "Gear",
+  },
 ];
 
 export default timeline;
+
+
+

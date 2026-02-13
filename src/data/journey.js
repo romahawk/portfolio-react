@@ -90,6 +90,17 @@ const journey = [
       "Built early operator discipline across compliance, commercial execution, and systems thinking",
     ],
   },
+  {
+    year: "2005-2010",
+    icon: "Pill",
+    items: [
+      "Foundational pharma and healthcare operations with high-compliance execution foundations across 3 organizations",
+      "Built 5 years of hands-on operational discipline in regulated supplier-to-end-user workflows",
+      "Strengthened customer-facing execution through multi-stakeholder coordination, account continuity, and delivery reliability",
+    ],
+  },
 ];
 
 export default journey;
+
+

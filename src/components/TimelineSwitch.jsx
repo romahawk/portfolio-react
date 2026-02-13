@@ -18,7 +18,7 @@ const TimelineSwitch = () => {
           <span className="about__chev">&gt;</span> Timeline
         </h2>
         <button className="chip" onClick={() => setFull(v => !v)}>
-          {full ? "Show 3 Milestones" : "View Full History (10)"}
+          {full ? "Show 3 Milestones" : "View Full History (11)"}
         </button>
       </header>
       {full ? <JourneyFull /> : <Milestones />}
