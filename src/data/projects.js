@@ -4,29 +4,19 @@
 export const techProjects = [
   {
     id: "livesurgery",
-    title: "LiveSurgery — Real-Time Collaboration System (PoC)",
+    title: "LiveSurgery - Real-Time Surgical Collaboration System",
     summary:
-      "Real-time MedTech workspace exploring multi-source video coordination and session orchestration. Designed to model low-latency interaction patterns and workflow integrity in high-stakes environments.",
+      "Founder-led MedTech product initiative unifying multi-source video, role-based interaction, and session governance into one OR workflow designed for reliability under clinical constraints.",
     stack: ["React", "WebRTC (planned)", "Firebase (planned)", "Architecture PoC"],
     tags: ["Real-time", "Platform", "PoC", "Regulated"],
     link: "https://livesurgery.vercel.app/",
     caseStudy: "livesurgery",
   },
   {
-    id: "smartshooter",
-    title: "SmartShooter — Performance Analytics System",
-    summary:
-      "Training analytics system for athletes and coaches: structured session logging, accuracy metrics, and engagement loops. Built to turn raw training activity into repeatable feedback and measurable improvement.",
-    stack: ["React", "Tailwind", "Firebase", "Firestore", "Auth"],
-    tags: ["Analytics", "Decision Support", "Platform"],
-    link: "https://smartshooter.vercel.app",
-    caseStudy: "smartshooter",
-  },
-  {
     id: "flowlogix",
-    title: "FlowLogix — Logistics Orchestration Dashboard",
+    title: "FlowLogix - Supply Visibility and Lifecycle Control",
     summary:
-      "Internal operations platform for pharma logistics: role-based access, delivery state tracking (ETD→ETA→ATA), and decision-support reporting designed to reduce coordination overhead and improve data integrity.",
+      "Decision-support system centralizing orders, warehouse intake, and delivery transitions with role-gated workflows and ETA risk visibility to reduce coordination drag and reporting drift.",
     stack: ["Flask", "SQLite", "SQLAlchemy", "Tailwind", "Chart.js"],
     tags: ["Internal Tools", "Decision Support", "Platform", "Regulated", "B2B"],
     link: "https://flowlogix.onrender.com/",
@@ -34,10 +24,20 @@ export const techProjects = [
     warmupNote: "Tip: first load may take ~30s (free Render).",
   },
   {
-    id: "portfolio",
-    title: "Portfolio — Product Narrative System",
+    id: "smartshooter",
+    title: "SmartShooter - Training Log and Shooting Analytics",
     summary:
-      "This site treated as a product artifact: clear positioning, evidence hierarchy, and case-study storytelling designed for executive scanability and technical credibility.",
+      "Player-coach performance system combining low-friction session logging, zone-based analytics, and habit loops (streaks/challenges) to improve training consistency and decision quality.",
+    stack: ["React", "Tailwind", "Firebase", "Firestore", "Auth"],
+    tags: ["Analytics", "Decision Support", "Platform"],
+    link: "https://smartshooter.vercel.app",
+    caseStudy: "smartshooter",
+  },
+  {
+    id: "portfolio",
+    title: "Portfolio - Product Narrative System",
+    summary:
+      "Product artifact designed around executive scanability: clear positioning, evidence hierarchy, and case-study storytelling that translates delivery depth into decision-ready narrative.",
     stack: ["React", "Vite", "Tailwind"],
     tags: ["Platform", "B2B", "Decision Support"],
     link: "#",
@@ -45,9 +45,9 @@ export const techProjects = [
   },
   {
     id: "medintegro",
-    title: "Medintegro — B2B Platform Rebuild (In Progress)",
+    title: "Medintegro - B2B Platform Rebuild (In Progress)",
     summary:
-      "Product-led rebuild of a MedTech distributor site: modular information architecture, multilingual content (DE/EN/UA), SEO/accessibility, and CMS-ready structure designed for scalable growth.",
+      "Product-led rebuild of a MedTech distributor platform with modular information architecture, multilingual content (DE/EN/UA), and CMS-ready structure for scalable growth.",
     stack: ["Next.js", "React", "Tailwind"],
     tags: ["B2B", "Platform", "Regulated"],
     link: "#",
@@ -56,9 +56,9 @@ export const techProjects = [
   },
   {
     id: "alphorythm",
-    title: "AlphaRhythm — Decision Quality Analytics (In Progress)",
+    title: "AlphaRhythm - Strategy Analytics Platform (In Progress)",
     summary:
-      "Trading execution analytics system unifying backtests and live trades to measure decision quality, risk behavior, and system adherence — turning discretionary execution into structured review loops.",
+      "Decision-support platform unifying imports, backtests, and live trading logs into one consistent review workflow to reduce metric ambiguity and improve execution discipline.",
     stack: ["React", "Tailwind", "Node/Flask (planned)", "Firebase", "Chart.js", "SQLite"],
     tags: ["Analytics", "Decision Support", "Platform", "PoC"],
     link: "#",
