@@ -38,13 +38,14 @@ const SectionTitle = ({ Icon, children }) => (
 );
 
 const SkillsGroup = ({ title, sectionIcon: SectionIcon, data }) => (
-  <div className="skills__group">
+  <div className="skills__group reveal">
     <SectionTitle Icon={SectionIcon}>{title}</SectionTitle>
     <div className="skills__grid">
-      {data.map((card) => {
+      {data.map((card, idx) => {
         const Ico = iconFor(card.title);
+        const delay = idx < 5 ? ` reveal--delay-${idx + 1}` : "";
         return (
-          <div key={card.title} className="skill-card">
+          <div key={card.title} className={`skill-card reveal${delay}`}>
             <h4 className="skill-card__title">
               <Ico size={18} className="icon skill-card__icon" />
               {card.title}
@@ -63,7 +64,7 @@ const SkillsGroup = ({ title, sectionIcon: SectionIcon, data }) => (
 
 const Skills = () => (
   <section id="skills" className="section container">
-    <h2 className="section__title">&gt; Skills & Leverage</h2>
+    <h2 className="section__title reveal">&gt; Skills & Leverage</h2>
 
     {/* Product leadership first */}
     <SkillsGroup title="Product Leadership" sectionIcon={Users} data={pmSkills} />
@@ -85,7 +86,7 @@ const Skills = () => (
     <SkillsGroup title="Collaboration" sectionIcon={Workflow} data={softSkills} />
 
     {/* Domain proof */}
-    <div className="skills__group">
+    <div className="skills__group reveal">
       <SectionTitle Icon={Stethoscope}>Regulated Domain Advantage</SectionTitle>
       <p className="about__text">
         MedTech and Pharma experience is an execution advantage: I build for environments where
@@ -95,7 +96,7 @@ const Skills = () => (
     </div>
 
     {/* Product ownership */}
-    <div className="skills__group">
+    <div className="skills__group reveal">
       <SectionTitle Icon={Package}>Ownership</SectionTitle>
       <p className="about__text">
         I own outcomes end-to-end: framing the problem, defining system boundaries, aligning

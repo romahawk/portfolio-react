@@ -93,6 +93,10 @@
   box-shadow: 0 0 10px rgba(0,221,235,0.3);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .about__list .tech-icon i { transition: none; }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .about__row--two-columns {

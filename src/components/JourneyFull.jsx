@@ -35,7 +35,7 @@ const JourneyFull = () => {
 
   return (
     <div className="timeline" aria-label="Experience narrative timeline">
-      <div className="timeline__controls">
+      <div className="timeline__controls reveal">
         <button
           className="timeline__sort-btn chip"
           onClick={() => setNewestFirst((v) => !v)}

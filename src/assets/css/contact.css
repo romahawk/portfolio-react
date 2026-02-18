@@ -44,4 +44,29 @@
 .field--full { grid-column: 1 / -1; }
 
 .contact__actions { display: flex; gap: 10px; align-items: center; }
-.contact__hint { color: var(--muted); font-size: 12px; margin: 8px 0 0; }
+.contact__hint {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 0 0 8px;
+}
+
+/* Submit confirmation feedback */
+.contact__submitted {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #5dd87e;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .3s ease, transform .3s ease;
+  pointer-events: none;
+}
+.contact__submitted.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

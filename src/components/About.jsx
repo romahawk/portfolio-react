@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  HeartPulse,
   Layers,
   Target,
   Users,
@@ -10,18 +9,20 @@ import {
 const About = () => {
   return (
     <section id="about" className="section container about">
-      <h2 className="about__title">
+      <h2 className="about__title reveal">
         <span className="about__chev">&gt;</span> About
       </h2>
 
       <div className="about__container">
-        {/* Row 1: Photo + Identity */}
-        <div className="about__row about__row--two-columns">
+        {/* Row 1: Photo + Identity — reveal as a unit */}
+        <div className="about__row about__row--two-columns reveal reveal--delay-1">
           <div className="about__photo">
             <img
               src="/images/profile.jpg"
               alt="Roman Mazuryk profile"
               className="about__photo-img"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -30,22 +31,22 @@ const About = () => {
               <Layers size={18} className="icon about__icon" />
               Founder-Operator Building Product Systems
             </h3>
-            
+
             <p className="about__text">
-              With 10+ years across MedTech and regulated B2B environments, I’ve led complex
+              With 10+ years across MedTech and regulated B2B environments, I've led complex
               initiatives where compliance, uptime, and operational integrity are non-negotiable.
               My work sits between executive decision-making and hands-on system architecture —
               turning operational complexity into scalable digital platforms.
             </p>
             <p className="about__text">
-              I don’t just manage backlogs. I design systems, define boundaries, and drive
+              I don't just manage backlogs. I design systems, define boundaries, and drive
               execution.
             </p>
           </div>
         </div>
 
-        {/* Row 2: How you work */}
-        <div className="about__row">
+        {/* Row 2 */}
+        <div className="about__row reveal">
           <h3 className="about__heading">
             <Target size={18} className="icon about__icon" />
             How I Build
@@ -61,13 +62,13 @@ const About = () => {
             prototyping. Ship in disciplined increments.
           </p>
           <p className="about__text">
-            The objective is not features — it’s leverage. Reduce coordination overhead. Improve
+            The objective is not features — it's leverage. Reduce coordination overhead. Improve
             decision velocity. Make complexity manageable.
           </p>
         </div>
 
-        {/* Row 3: Stakeholders */}
-        <div className="about__row">
+        {/* Row 3 */}
+        <div className="about__row reveal">
           <h3 className="about__heading">
             <Users size={18} className="icon about__icon" />
             Where I Operate Best
@@ -86,8 +87,8 @@ const About = () => {
           </p>
         </div>
 
-        {/* Row 4: Personal but grounded */}
-        <div className="about__row">
+        {/* Row 4 */}
+        <div className="about__row reveal">
           <h3 className="about__heading">Outside the Platform</h3>
 
           <ul className="about__list">
@@ -107,8 +108,8 @@ const About = () => {
 
           <blockquote className="about__quote">
             <em>
-              “Strong products are not built by adding features — they’re built by removing
-              friction from complex systems.”
+              "Strong products are not built by adding features — they're built by removing
+              friction from complex systems."
             </em>
           </blockquote>
         </div>

@@ -103,6 +103,11 @@ export default function Navbar() {
 
   return (
     <header className="site-header">
+      <div
+        className={`nav__backdrop ${isOpen ? "nav__backdrop--open" : ""}`}
+        onClick={() => setIsOpen(false)}
+        aria-hidden="true"
+      />
       <nav className="nav container">
         <div className="nav__logo">
           <span className="nav__logo-brace">{'{ }'}</span>
@@ -114,6 +119,7 @@ export default function Navbar() {
           className={`nav__toggle ${isOpen ? "x" : ""}`}
           onClick={() => setIsOpen((p) => !p)}
           aria-label="Toggle navigation"
+          aria-expanded={isOpen}
         >
           <span className="nav__toggle-bar" />
           <span className="nav__toggle-bar" />

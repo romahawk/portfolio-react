@@ -5,10 +5,11 @@ import milestones from "../data/milestones.js";
 const Milestones = () => {
   return (
     <div className="milestones" aria-label="Key milestones">
-      {(milestones || []).map((m) => {
+      {(milestones || []).map((m, idx) => {
         const Icon = Lucide[m.icon] || Lucide.Circle;
+        const delay = idx === 1 ? " reveal--delay-1" : idx === 2 ? " reveal--delay-2" : "";
         return (
-          <article key={m.id} className="milestone">
+          <article key={m.id} className={`milestone reveal${delay}`}>
             <header className="milestone__head">
               <span className="milestone__range">{m.range}</span>
               <span className="milestone__icon" aria-hidden>

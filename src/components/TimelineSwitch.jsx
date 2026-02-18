@@ -13,11 +13,16 @@ const TimelineSwitch = () => {
 
   return (
     <section id="timeline" className="section container">
-      <header className="timeline__toolbar">
+      <header className="timeline__toolbar reveal">
         <h2 className="section__title">
           <span className="about__chev">&gt;</span> Timeline
         </h2>
-        <button className="chip" onClick={() => setFull(v => !v)}>
+        <button
+          className="chip"
+          onClick={() => setFull(v => !v)}
+          aria-pressed={full}
+          aria-label={full ? "Switch to 3-milestone summary view" : "Switch to full history (11 entries)"}
+        >
           {full ? "Show 3 Milestones" : "View Full History (11)"}
         </button>
       </header>

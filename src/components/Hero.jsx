@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 const Hero = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <section id="home" className="hero">
       <div className="container hero__inner">
@@ -27,6 +36,11 @@ const Hero = () => {
             </a>
           </div>
         </div>
+      </div>
+
+      <div className={`hero__scroll-hint ${scrolled ? "hero__scroll-hint--hidden" : ""}`} aria-hidden="true">
+        <span>Scroll</span>
+        <ChevronDown size={18} className="hero__scroll-hint-icon" />
       </div>
     </section>
   );

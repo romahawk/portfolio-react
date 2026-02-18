@@ -1,4 +1,5 @@
 import React from "react";
+import { useScrollReveal } from "./hooks/useScrollReveal.js";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
@@ -11,6 +12,7 @@ import Footer from "./components/Footer.jsx";
 import BackToTop from "./components/BackToTop.jsx";
 
  function App() {
+   useScrollReveal();
    return (
      <>
        <Navbar />

@@ -12,7 +12,7 @@
 .btn--primary {
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
   border-color: transparent;
-  color: #001016;
+  color: #fff;
 }
 .btn--ghost {
   background: transparent;
@@ -32,6 +32,18 @@
 }
 .backtotop.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
 .backtotop:hover { background: #121824; border-color: #263046; }
+.backtotop:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+/* Global focus-visible ring for all interactive elements */
+.btn:focus-visible,
+.nav__link:focus-visible,
+.chip:focus-visible,
+.tab:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
 
 /* lucide helpers */
 .icon { vertical-align: -2px; }
@@ -42,20 +54,15 @@
 .about__icon { color: var(--brand); margin-right: 8px; }
 .about__bullet-icon { color: var(--brand); margin-right: 10px; }
 
-/* Make primary CTA text white on hover/focus */
-.btn--primary:hover,
-.btn--primary:focus-visible {
-  color: #fff !important;
-}
-
-/* If your button contains inner spans/icons, make them white too */
-.btn--primary:hover *,
-.btn--primary:focus-visible * {
-  color: #fff !important;
-}
-
-/* (Optional) smooth transition for color */
+/* Smooth transition for color */
 .btn,
 .btn * {
   transition: color .2s ease;
+}
+
+/* prefers-reduced-motion: kill button/backtotop transitions */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn * { transition: none; }
+  .backtotop { transition: none; }
 }

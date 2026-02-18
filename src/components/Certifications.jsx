@@ -59,14 +59,15 @@ const certifications = [
 
 const Certifications = () => (
   <section id="certifications" className="section container">
-    <h2 className="section__title">&gt; Certifications</h2>
+    <h2 className="section__title reveal">&gt; Certifications</h2>
 
     <div className="certs__grid">
-      {certifications.map((cert) => {
+      {certifications.map((cert, idx) => {
         const isPlaceholder = cert.placeholder || !cert.image;
+        const delay = idx === 1 ? " reveal--delay-1" : idx === 2 ? " reveal--delay-2" : "";
 
         return (
-          <div key={cert.id} className="cert-card">
+          <div key={cert.id} className={`cert-card reveal${delay}`}>
             <div className="cert-card__head">
               <span className="cert-card__icon">{cert.icon}</span>
               <h3 className="cert-card__title">{cert.title}</h3>
