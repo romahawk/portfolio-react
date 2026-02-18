@@ -18,15 +18,12 @@ const collectTags = (list) => {
   return ["All", ...Array.from(set)];
 };
 
-const STAGGER = ["", "reveal--delay-1", "reveal--delay-2", "reveal--delay-3", "reveal--delay-4", "reveal--delay-5"];
-
-function ProjectCard({ p, variant, onOpenCase, revealIdx = 0 }) {
+function ProjectCard({ p, variant, onOpenCase }) {
   const inDev = p.inDevelopment;
   const CardIcon = p.icon ? Lucide[p.icon] || Lucide.Circle : null;
-  const delay = STAGGER[revealIdx % STAGGER.length];
 
   return (
-    <article className={`project-card reveal ${delay}${variant ? ` project-card--${variant}` : ""}`}>
+    <article className={`project-card${variant ? ` project-card--${variant}` : ""}`}>
       <header className="project-card__head">
         <h4 className="project-card__title">{p.title}</h4>
         {CardIcon ? (
@@ -203,8 +200,8 @@ export default function Projects() {
             from internal tools and data integrity layers to real-time interaction workflows.
           </p>
           <div className="projects__grid">
-            {visibleTech.map((p, i) => (
-              <ProjectCard key={p.id} p={p} onOpenCase={openCase} revealIdx={i} />
+            {visibleTech.map((p) => (
+              <ProjectCard key={p.id} p={p} onOpenCase={openCase} />
             ))}
           </div>
         </>
@@ -218,8 +215,8 @@ export default function Projects() {
             adoption enablement, and lifecycle reliability under real constraints.
           </p>
           <div className="projects__grid">
-            {medIntegration.map((p, i) => (
-              <ProjectCard key={p.id} p={p} variant="med" onOpenCase={openCase} revealIdx={i} />
+            {medIntegration.map((p) => (
+              <ProjectCard key={p.id} p={p} variant="med" onOpenCase={openCase} />
             ))}
           </div>
 
@@ -232,8 +229,8 @@ export default function Projects() {
                 Multi-site rollout governance, procurement/tenders, vendor orchestration, and adoption enablement.
               </p>
               <div className="projects__grid">
-                {medManagement.map((p, i) => (
-                  <ProjectCard key={p.id} p={p} variant="mgmt" onOpenCase={openCase} revealIdx={i} />
+                {medManagement.map((p) => (
+                  <ProjectCard key={p.id} p={p} variant="mgmt" onOpenCase={openCase} />
                 ))}
               </div>
             </div>
