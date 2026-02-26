@@ -77,8 +77,8 @@ export const leverageSkills = [
   {
     title: "AI-Accelerated Product Ops",
     items: [
-      "Use LLM workflows for faster prototyping, documentation, and architecture exploration",
-      "Accelerate iteration with AI-assisted coding, review, and decision prep",
+      "Operate structured AI-augmented delivery loops: orient → scope → build → lint → ship → park",
+      "Use Claude Code and LLM workflows for architecture exploration, documentation, and rapid prototyping",
       "Build reusable prompting patterns for repeatable specs, audits, and delivery artifacts",
     ],
   },
@@ -121,8 +121,8 @@ export const techStack = [
     title: "Strategic Tools",
     items: [
       "Mermaid for system visualization, sequence logic, and architecture communication",
-      "GitHub Copilot for implementation speed in constrained, review-driven cycles",
-      "Linear and Trello for delivery governance, micro-scope planning, and execution visibility",
+      "Claude Code and Claude API for AI-accelerated delivery, implementation, and architecture review",
+      "Linear, Trello, and GitHub Actions for delivery governance, CI/CD, and execution visibility",
     ],
   },
 ];

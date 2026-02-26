@@ -77,3 +77,63 @@
   .hero__scroll-hint-icon { animation: none; }
   .hero__scroll-hint { transition: none; }
 }
+
+/* -------- Availability Banner -------- */
+.availability-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  background: linear-gradient(90deg, rgba(0, 221, 235, 0.08) 0%, rgba(0, 102, 255, 0.08) 100%);
+  border-bottom: 1px solid rgba(0, 221, 235, 0.18);
+  font-size: 13px;
+  color: var(--text);
+}
+.availability-banner__dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.7);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.45; }
+}
+.availability-banner__text {
+  flex: 1;
+  margin: 0;
+  color: var(--muted);
+}
+.availability-banner__cta {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand);
+  text-decoration: none;
+  border: 1px solid rgba(0, 221, 235, 0.35);
+  border-radius: 4px;
+  padding: 3px 10px;
+  transition: background 0.15s, color 0.15s;
+}
+.availability-banner__cta:hover {
+  background: rgba(0, 221, 235, 0.12);
+  color: var(--text);
+}
+.availability-banner__close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 2px;
+  line-height: 1;
+  opacity: 0.6;
+  transition: opacity 0.15s;
+}
+.availability-banner__close:hover { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .availability-banner__dot { animation: none; }
+}
