@@ -8,6 +8,7 @@ import {
   BarChart3,
   Globe,
   FileCheck,
+  ExternalLink,
 } from "lucide-react";
 
 const AIAugmentedSDLC = () => (
@@ -32,6 +33,17 @@ const AIAugmentedSDLC = () => (
       <span className="ai-sdlc__badge">
         <ShieldCheck size={13} /> EU / Global Market Ready
       </span>
+    </div>
+
+    <div className="ai-sdlc__cta reveal">
+      <a
+        href="https://ai-workflow-woad.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn btn--primary"
+      >
+        See the workflow in action <ExternalLink size={14} />
+      </a>
     </div>
 
     {/* Workflow diagram — drop your images in public/images/ and uncomment */}
