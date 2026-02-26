@@ -1,6 +1,11 @@
 import React, { useMemo, useRef, useEffect, useState } from "react";
-import * as Lucide from "lucide-react";
+import {
+  Layers, Building2, GraduationCap, Brain, Boxes,
+  TrendingUp, Wrench, PenTool, BriefcaseBusiness, Pill, Circle,
+} from "lucide-react";
 import journey from "../data/journey.js";
+
+const JOURNEY_ICONS = { Layers, Building2, GraduationCap, Brain, Boxes, TrendingUp, Wrench, PenTool, BriefcaseBusiness, Pill, Circle };
 
 const toYear = (y) => Number(String(y).match(/\d{4}/)?.[0] || 0);
 
@@ -56,7 +61,7 @@ const JourneyFull = () => {
 
       <div className="timeline__container" ref={ref} role="list">
         {items.map((t) => {
-          const Icon = Lucide[t.icon] || Lucide.Circle;
+          const Icon = JOURNEY_ICONS[t.icon] || Circle;
           return (
             <div
               key={t.year}

@@ -9,7 +9,15 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Performance
+- Replace all `import * as Lucide` wildcard imports with named imports + static lookup maps in `Projects.jsx`, `Milestones.jsx`, `JourneyFull.jsx` — enables tree-shaking, removes ~800 kB of unused icon code from bundle
+- Lazy-load all 6 case study components with `React.lazy` + `Suspense` — they are modal-only and never needed on initial page load
+- Add `manualChunks` to `vite.config.js` to split `react-vendor` into a separate cacheable chunk
+- Add `<link rel="preload">` for `/images/profile.jpg` with `fetchpriority="high"` — fixes LCP delay
+- Result: initial JS bundle (gzip) reduced from **242 kB → 78 kB** (68% reduction); no chunk size warnings
+
 ### Added
+- Vercel Analytics (`@vercel/analytics`) — privacy-respecting visitor tracking via `<Analytics />` in `App.jsx`
 - `docs/PRD.md` — product requirements, target user, MVP scope, acceptance criteria, risks
 - `docs/ARCHITECTURE.md` — system design, component map, data flow, key trade-offs, scaling notes
 - `docs/ROADMAP.md` — 12-week outcome-based roadmap with weekly DoD and demo artifacts

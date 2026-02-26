@@ -1,12 +1,14 @@
 import React from "react";
-import * as Lucide from "lucide-react";
+import { BriefcaseBusiness, Hospital, Compass, Circle } from "lucide-react";
 import milestones from "../data/milestones.js";
+
+const MILESTONE_ICONS = { BriefcaseBusiness, Hospital, Compass, Circle };
 
 const Milestones = () => {
   return (
     <div className="milestones" aria-label="Key milestones">
       {(milestones || []).map((m, idx) => {
-        const Icon = Lucide[m.icon] || Lucide.Circle;
+        const Icon = MILESTONE_ICONS[m.icon] || Circle;
         const delay = idx === 1 ? " reveal--delay-1" : idx === 2 ? " reveal--delay-2" : "";
         return (
           <article key={m.id} className={`milestone reveal${delay}`}>
