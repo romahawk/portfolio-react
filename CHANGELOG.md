@@ -10,6 +10,15 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 ## [Unreleased]
 
 ### Added
+- `AvailabilityBanner` component — dismissible "Open to Work" strip below navbar; green pulse indicator, LinkedIn CTA, dismissed state persisted to `localStorage` (`availability_banner_dismissed_v1`)
+- Timeline: new 2026 entry "AI-Augmented Delivery OS — Portfolio Production Hardening" with concrete metrics and methodology highlights
+- Skills: updated "AI-Accelerated Product Ops" to describe structured AI delivery loops; updated "Strategic Tools" to reflect Claude Code and GitHub Actions
+
+### Changed
+- `skillsCards.js` — replaced GitHub Copilot reference with Claude Code + Claude API; replaced Linear alone with "Linear, Trello, and GitHub Actions" in strategic tools
+- `timeline.js` — 2026 entry prepended as most recent; 2025-now entry unchanged
+
+### Added (previous sprint)
 - `vercel.json` — explicit build config + security headers (`X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy`); immutable cache headers for `/assets/`
 - `.github/workflows/lighthouse.yml` — Lighthouse CI on every push/PR to `main`; fails build if any category drops below 90
 - `.lighthouserc.json` — Lighthouse CI thresholds: Performance ≥ 90, Accessibility ≥ 90, Best Practices ≥ 90, SEO ≥ 90

@@ -1,6 +1,23 @@
 // src/data/timeline.js
 const timeline = [
   {
+    id: "2026-ai-production-os",
+    year: 2026,
+    title: "AI-Augmented Delivery OS — Portfolio Production Hardening",
+    role: "Technical Product Manager (Independent)",
+    company: "Self-Directed",
+    tags: ["Tech", "AI"],
+    summary:
+      "Applied a structured AI-augmented delivery OS to rebuild portfolio from development debt to production-grade discipline: Lighthouse CI gates, security headers, performance hardening, and proof-of-work artifacts for every shipped change.",
+    highlights: [
+      "Reduced initial JS bundle by 68% via tree-shaking and lazy-loading; Lighthouse Performance 38 → 99",
+      "Shipped CI/CD pipeline (Lighthouse CI), vercel.json security headers, and full docs scaffold in structured sprints",
+      "Operated orient → scope → build → lint → ship → park delivery loop using Claude Code for AI-accelerated execution",
+    ],
+    icon: "🤖",
+  },
+
+  {
     id: "2025-now",
     year: 2025,
     title: "Technical Product Management — Systems & Delivery (Independent)",
