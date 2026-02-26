@@ -1,6 +1,25 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
-const IDS = ["home", "about", "timeline", "skills", "projects", "certifications", "contact"];
+const IDS = [
+  "home",
+  "about",
+  "ai-sdlc",
+  "timeline",
+  "skills",
+  "projects",
+  "certifications",
+  "contact",
+];
+const NAV_LABELS = {
+  home: "Home",
+  about: "About",
+  "ai-sdlc": "AI SDLC",
+  timeline: "Timeline",
+  skills: "Skills",
+  projects: "Projects",
+  certifications: "Certifications",
+  contact: "Contact",
+};
 
 // tuning knobs
 const VIEWPORT_ANCHOR = 0.32; // 32% down the viewport for deciding active section
@@ -134,7 +153,7 @@ export default function Navbar() {
                 className={`nav__link ${active === id ? "nav__link--active" : ""}`}
                 onClick={() => handleClick(id)}
               >
-                {id[0].toUpperCase() + id.slice(1)}
+                {NAV_LABELS[id] || id}
               </a>
             </li>
           ))}

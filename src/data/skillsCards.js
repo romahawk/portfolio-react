@@ -39,7 +39,7 @@ export const pmSkills = [
   {
     title: "Execution & Delivery Operations",
     items: [
-      "Operate pragmatic Scrum/Kanban cadences using Jira, Confluence, and Trello",
+      "Operate pragmatic Scrum/Kanban cadences using Linear, Trello, Jira, and Confluence",
       "Orchestrate cross-functional delivery across operations, engineering, leadership, and vendors",
       "Control scope, map dependencies, and sequence releases for predictable execution",
     ],
@@ -102,27 +102,27 @@ export const leverageSkills = [
 
 export const techStack = [
   {
-    title: "Primary Implementation Stack",
+    title: "Core Engine",
     items: [
-      "React (Vite), JavaScript, Tailwind",
-      "Node.js (Express) for service and API design",
-      "REST architecture, role-based access control, and workflow-state modeling",
+      "React (Vite), JavaScript, and Node.js (Express) for production web systems",
+      "Python (Flask/FastAPI) for architecture validation, service prototypes, and automation",
+      "REST architecture, role-based access control, and workflow-state modeling as system primitives",
     ],
   },
   {
-    title: "Backend & Data Systems",
+    title: "Implementation Stack",
     items: [
       "PostgreSQL and SQLite for operational data modeling and query-driven workflows",
-      "Firebase (Auth, Firestore) for validated internal tooling and rapid iteration loops",
-      "Python (Flask/FastAPI) for service prototypes and architecture validation",
+      "Firebase (Auth, Firestore) for validated internal tooling and fast implementation loops",
+      "Git/GitHub PR discipline, Docker, Vercel, and Render for traceable delivery and deployment",
     ],
   },
   {
-    title: "Shipping & Tooling",
+    title: "Strategic Tools",
     items: [
-      "Git/GitHub workflows with PR discipline and release traceability",
-      "Deployments: Vercel, Render",
-      "Docker for environment consistency and reproducible delivery",
+      "Mermaid for system visualization, sequence logic, and architecture communication",
+      "GitHub Copilot for implementation speed in constrained, review-driven cycles",
+      "Linear and Trello for delivery governance, micro-scope planning, and execution visibility",
     ],
   },
 ];

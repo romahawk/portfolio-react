@@ -1,0 +1,18 @@
+.ai-sdlc__panel {
+  background: linear-gradient(180deg, rgba(16,20,28,.9), rgba(16,20,28,.75));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  margin-top: 1rem;
+}
+
+.ai-sdlc__stack {
+  display: grid;
+  gap: .25rem;
+}
+
+.ai-sdlc__stack-item {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}

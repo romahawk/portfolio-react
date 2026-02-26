@@ -74,6 +74,22 @@
 }
 .about__text p { margin: 0; }
 
+.about__principles {
+  margin: .25rem 0 1rem;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  display: grid;
+  gap: .45rem;
+}
+
+.about__principles li {
+  line-height: 1.65;
+}
+
+.about__framework-cta {
+  width: fit-content;
+}
+
 /* Interests */
 .about__list { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: .5rem; }
 .about__list li { color: var(--muted); line-height: 1.8; }

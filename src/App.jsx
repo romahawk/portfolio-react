@@ -3,6 +3,7 @@ import { useScrollReveal } from "./hooks/useScrollReveal.js";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
+import AIAugmentedSDLC from "./components/AIAugmentedSDLC.jsx";
 import TimelineSwitch from "./components/TimelineSwitch.jsx";
 import Skills from "./components/Skills.jsx"
 import Projects from "./components/Projects.jsx";
@@ -19,6 +20,7 @@ import BackToTop from "./components/BackToTop.jsx";
        <main id="main">
          <Hero />
          <About />
+         <AIAugmentedSDLC />
          <TimelineSwitch />
          <Skills />
          <Projects />
