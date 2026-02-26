@@ -29,6 +29,11 @@
   padding: .3rem .65rem;
 }
 
+/* CTA link */
+.ai-sdlc__cta {
+  margin-bottom: 1.25rem;
+}
+
 /* Diagram image slot */
 .ai-sdlc__diagram {
   margin: 1.25rem 0;
