@@ -6,6 +6,8 @@ import {
   Gauge,
   Bug,
   BarChart3,
+  Globe,
+  FileCheck,
 } from "lucide-react";
 
 const AIAugmentedSDLC = () => (
@@ -14,22 +16,56 @@ const AIAugmentedSDLC = () => (
       <span className="about__chev">&gt;</span> AI-Augmented SDLC
     </h2>
     <p className="about__text reveal">
-      Proprietary AI-Leverage Framework for production-grade delivery: trade-offs stay explicit,
-      decisions stay visible, and scope stays constrained to what can ship.
+      Proprietary AI-Leverage Framework for production-grade delivery. Trade-offs stay explicit,
+      decisions stay visible, scope stays constrained to what can ship. Built for
+      Remote-First Agile Environments targeting EU/Global B2B SaaS and regulated industries.
     </p>
+
+    {/* Remote-First + Compliance badges */}
+    <div className="ai-sdlc__badges reveal">
+      <span className="ai-sdlc__badge">
+        <Globe size={13} /> Remote-First Architecture
+      </span>
+      <span className="ai-sdlc__badge">
+        <FileCheck size={13} /> MedTech / Pharma Auditability
+      </span>
+      <span className="ai-sdlc__badge">
+        <ShieldCheck size={13} /> EU / Global Market Ready
+      </span>
+    </div>
+
+    {/* Workflow diagram — drop your images in public/images/ and uncomment */}
+    {/*
+    <div className="ai-sdlc__diagram reveal">
+      <img
+        src="/images/ai-workflow-diagram.png"
+        alt="AI-Augmented SDLC workflow diagram"
+        className="ai-sdlc__diagram-img"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    */}
 
     <article className="ai-sdlc__panel reveal reveal--delay-1">
       <h3 className="about__heading">
         <Scale size={18} className="icon about__icon" />
-        Strategy & Governance
+        Strategy &amp; Governance
       </h3>
       <p className="about__text">
-        Operating Rules: max 3 active projects, one outcome per week, and no refactor without
-        shipping impact.
+        <strong>Operating Rules:</strong> max 3 active projects, one outcome per week,
+        and a strict &ldquo;No refactor without shipping impact&rdquo; policy. Scope is
+        a decision, not a backlog.
       </p>
       <p className="about__text">
-        Decision Logs capture trade-off rationale, accepted risk, and system implications to
-        compound long-term leverage across releases.
+        <strong>Decision Logs</strong> capture trade-off rationale, accepted risk, and system
+        implications to compound long-term leverage across releases. Every architectural
+        decision has a record — no institutional knowledge locked in Slack threads.
+      </p>
+      <p className="about__text">
+        <strong>Compliance Edge:</strong> In regulated MedTech/Pharma environments, explicit
+        Operating Rules and Decision Logs satisfy audit requirements without adding delivery
+        overhead. Governance is built into the workflow, not bolted on.
       </p>
     </article>
 
@@ -39,16 +75,19 @@ const AIAugmentedSDLC = () => (
         The Daily Build Loop
       </h3>
       <p className="about__text">
-        Micro-Scope execution: select GitHub issues, define acceptance criteria and data schemas,
-        then implement through small daily PRs.
+        <strong>Micro-Scope execution:</strong> select a GitHub issue, define acceptance
+        criteria and data schemas before touching code, then implement through small
+        daily PRs. Scope is locked at issue-open — no mid-sprint expansion.
       </p>
       <p className="about__text">
-        The Manual Reasoning Pass is a hard gate: architecture logic, state transitions, and edge
-        cases are validated by the architect before implementation.
+        <strong>Manual Reasoning Pass</strong> is a hard gate before every implementation:
+        architecture logic, state transitions, and edge cases are validated by the architect.
+        AI assists — the architect decides.
       </p>
       <p className="about__text">
-        In regulated MedTech/Pharma contexts, Micro-Scope plus explicit acceptance criteria
-        provides auditability without slowing delivery.
+        <strong>Auditability in regulated contexts:</strong> Micro-Scope plus explicit
+        acceptance criteria provides a traceable paper trail for MedTech/Pharma delivery
+        without slowing cadence. Each PR maps directly to a scoped requirement.
       </p>
     </article>
 
@@ -59,21 +98,25 @@ const AIAugmentedSDLC = () => (
       </h3>
       <div className="ai-sdlc__stack">
         <p className="about__text ai-sdlc__stack-item">
-          <Gauge size={16} className="icon about__icon" /> Lighthouse for performance baselines
-          and release gating.
+          <Gauge size={16} className="icon about__icon" />
+          <span><strong>Lighthouse</strong> — performance baselines and release gating.
+          Score regression blocks merge.</span>
         </p>
         <p className="about__text ai-sdlc__stack-item">
-          <Bug size={16} className="icon about__icon" /> Sentry for runtime error visibility and
-          failure triage.
+          <Bug size={16} className="icon about__icon" />
+          <span><strong>Sentry</strong> — runtime error visibility and failure triage
+          with environment-scoped alerting.</span>
         </p>
         <p className="about__text ai-sdlc__stack-item">
-          <BarChart3 size={16} className="icon about__icon" /> PostHog for usage analytics and
-          post-release signal tracking.
+          <BarChart3 size={16} className="icon about__icon" />
+          <span><strong>PostHog</strong> — usage analytics and post-release signal
+          tracking to validate delivery impact.</span>
         </p>
       </div>
       <p className="about__text">
-        AI code reviews are a standard implementation gate before merge, alongside human approval
-        on architecture-critical changes.
+        <strong>AI code reviews</strong> are a standard implementation gate before merge,
+        alongside human approval on architecture-critical changes. Every PR passes
+        automated quality checks before it reaches the architect review layer.
       </p>
     </article>
   </section>
