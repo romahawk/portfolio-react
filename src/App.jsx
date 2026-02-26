@@ -1,4 +1,5 @@
 import React from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { useScrollReveal } from "./hooks/useScrollReveal.js";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
@@ -29,6 +30,7 @@ import BackToTop from "./components/BackToTop.jsx";
        </main>
        <Footer />
        <BackToTop />
+       <Analytics />
      </>
    );
  }

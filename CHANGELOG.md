@@ -10,6 +10,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 ## [Unreleased]
 
 ### Added
+- Vercel Analytics (`@vercel/analytics`) — privacy-respecting visitor tracking via `<Analytics />` in `App.jsx`
 - `docs/PRD.md` — product requirements, target user, MVP scope, acceptance criteria, risks
 - `docs/ARCHITECTURE.md` — system design, component map, data flow, key trade-offs, scaling notes
 - `docs/ROADMAP.md` — 12-week outcome-based roadmap with weekly DoD and demo artifacts
