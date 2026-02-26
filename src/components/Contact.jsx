@@ -14,7 +14,7 @@ const Contact = () => {
       await navigator.clipboard.writeText(email);
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
-    } catch {}
+    } catch { /* clipboard unavailable */ }
   };
 
   const onSubmit = (e) => {

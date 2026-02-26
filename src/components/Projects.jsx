@@ -1,14 +1,20 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { Suspense, useEffect, useMemo, useState } from "react";
 import { techProjects, medtechProjects } from "../data/projects.js";
-import * as Lucide from "lucide-react";
-import { Cpu, Shield, FileText, Boxes, Stethoscope, BriefcaseBusiness } from "lucide-react";
+import {
+  Cpu, Shield, FileText, Boxes, Stethoscope, BriefcaseBusiness,
+  Lightbulb, MonitorCog, Wrench, SearchCheck, Camera,
+  Rocket, TrendingUp, Waves, Circle,
+} from "lucide-react";
 import CaseStudyModal from "./CaseStudyModal.jsx";
-import LivesurgeryCaseStudy from "./case-studies/LivesurgeryCaseStudy.jsx";
-import SmartShooterCaseStudy from "./case-studies/SmartShooterCaseStudy.jsx";
-import FlowLogixCaseStudy from "./case-studies/FlowLogixCaseStudy.jsx";
-import AlphorythmCaseStudy from "./case-studies/AlphorythmCaseStudy.jsx";
-import PortfolioCaseStudy from "./case-studies/PortfolioCaseStudy.jsx";
-import MedintegroCaseStudy from "./case-studies/MedintegroCaseStudy.jsx";
+
+const CARD_ICONS = { Lightbulb, MonitorCog, Wrench, SearchCheck, Camera, Rocket, TrendingUp, Waves, Circle };
+
+const LivesurgeryCaseStudy  = React.lazy(() => import("./case-studies/LivesurgeryCaseStudy.jsx"));
+const SmartShooterCaseStudy = React.lazy(() => import("./case-studies/SmartShooterCaseStudy.jsx"));
+const FlowLogixCaseStudy    = React.lazy(() => import("./case-studies/FlowLogixCaseStudy.jsx"));
+const AlphorythmCaseStudy   = React.lazy(() => import("./case-studies/AlphorythmCaseStudy.jsx"));
+const PortfolioCaseStudy    = React.lazy(() => import("./case-studies/PortfolioCaseStudy.jsx"));
+const MedintegroCaseStudy   = React.lazy(() => import("./case-studies/MedintegroCaseStudy.jsx"));
 
 const CATEGORY = { TECH: "tech", MED: "medtech" };
 
@@ -20,7 +26,7 @@ const collectTags = (list) => {
 
 function ProjectCard({ p, variant, onOpenCase }) {
   const inDev = p.inDevelopment;
-  const CardIcon = p.icon ? Lucide[p.icon] || Lucide.Circle : null;
+  const CardIcon = p.icon ? (CARD_ICONS[p.icon] || Circle) : null;
 
   return (
     <article className={`project-card${variant ? ` project-card--${variant}` : ""}`}>
@@ -257,21 +263,23 @@ export default function Projects() {
             : "Case Study"
         }
       >
-        {caseId === "livesurgery" ? (
-          <LivesurgeryCaseStudy />
-        ) : caseId === "smartshooter" ? (
-          <SmartShooterCaseStudy />
-        ) : caseId === "flowlogix" ? (
-          <FlowLogixCaseStudy />
-        ) : caseId === "alphorythm" ? (
-          <AlphorythmCaseStudy />
-        ) : caseId === "portfolio" ? (
-          <PortfolioCaseStudy />
-        ) : caseId === "medintegro" ? (
-          <MedintegroCaseStudy />
-        ) : (
-          <div>Coming soon…</div>
-        )}
+        <Suspense fallback={<div className="cs-loading">Loading…</div>}>
+          {caseId === "livesurgery" ? (
+            <LivesurgeryCaseStudy />
+          ) : caseId === "smartshooter" ? (
+            <SmartShooterCaseStudy />
+          ) : caseId === "flowlogix" ? (
+            <FlowLogixCaseStudy />
+          ) : caseId === "alphorythm" ? (
+            <AlphorythmCaseStudy />
+          ) : caseId === "portfolio" ? (
+            <PortfolioCaseStudy />
+          ) : caseId === "medintegro" ? (
+            <MedintegroCaseStudy />
+          ) : (
+            <div>Coming soon…</div>
+          )}
+        </Suspense>
       </CaseStudyModal>
     </section>
   );

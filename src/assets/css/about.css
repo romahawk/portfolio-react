@@ -113,6 +113,49 @@
   .about__list .tech-icon i { transition: none; }
 }
 
+/* Three-pillar block */
+.about__pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: .25rem 0 .5rem;
+}
+
+.about__pillar {
+  background: linear-gradient(180deg, rgba(16,20,28,.9), rgba(16,20,28,.75));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+.about__pillar:hover {
+  border-color: rgba(0,221,235,.35);
+  box-shadow: 0 0 18px rgba(0,221,235,.08);
+}
+
+.about__pillar-icon {
+  color: var(--brand);
+  flex-shrink: 0;
+}
+
+.about__pillar-title {
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.about__pillar-text {
+  font-size: .85rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .about__row--two-columns {
@@ -126,4 +169,8 @@
     border-radius: 10px;
   }
   .about__subtitle { font-size: 1.3rem; }
+
+  .about__pillars {
+    grid-template-columns: 1fr;
+  }
 }

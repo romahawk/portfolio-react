@@ -35,7 +35,7 @@ const Footer = () => {
             Building scalable systems in regulated industries.
           </p>
           <div className="footer__socials">
-            {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
+            {SOCIAL_LINKS.map(({ label, href, icon }) => (
               <a
                 key={label}
                 href={href}
@@ -45,7 +45,7 @@ const Footer = () => {
                 aria-label={label}
                 title={label}
               >
-                <Icon size={16} />
+                {React.createElement(icon, { size: 16 })}
               </a>
             ))}
           </div>

@@ -6,6 +6,41 @@
   margin-top: 1rem;
 }
 
+/* Status badges */
+.ai-sdlc__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1.25rem;
+}
+
+.ai-sdlc__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--brand);
+  background: rgba(0,221,235,.08);
+  border: 1px solid rgba(0,221,235,.2);
+  border-radius: 6px;
+  padding: .3rem .65rem;
+}
+
+/* Diagram image slot */
+.ai-sdlc__diagram {
+  margin: 1.25rem 0;
+}
+
+.ai-sdlc__diagram-img {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
 .ai-sdlc__stack {
   display: grid;
   gap: .25rem;
@@ -13,6 +48,11 @@
 
 .ai-sdlc__stack-item {
   display: flex;
-  align-items: center;
-  gap: .35rem;
+  align-items: flex-start;
+  gap: .5rem;
+}
+
+.ai-sdlc__stack-item > svg {
+  flex-shrink: 0;
+  margin-top: 3px;
 }
