@@ -2,7 +2,7 @@
 ## Roman Mazuryk — Portfolio & Proof-of-Work Site
 
 **Format:** Lightweight ADR (Architecture Decision Record)
-**Last Updated:** 2026-02-26
+**Last Updated:** 2026-02-26 (ADR-007, ADR-008 added)
 
 ---
 
@@ -142,3 +142,48 @@ Use Vite with `@vitejs/plugin-react`. No Next.js.
 - ✅ Vite produces a static bundle deployable to any CDN (Vercel, Netlify, GitHub Pages)
 - ✅ No server-side rendering needed for a static portfolio
 - ⚠️ No SSR/SSG built-in — if SEO becomes critical, Next.js migration would be needed (acceptable: static OG tags + sitemap.xml are sufficient for current SEO goals)
+
+---
+
+## ADR-007: Named Lucide Imports + Static Icon Maps Over Wildcard Import
+
+**Date:** 2026-02-26
+**Status:** Accepted
+**Decider:** Roman Mazuryk
+
+### Context
+Three components (`Projects`, `Milestones`, `JourneyFull`) used `import * as Lucide from "lucide-react"` to resolve icon names stored as strings in data files. This pattern is convenient — no lookup map needed — but wildcard namespace imports prevent Rollup from tree-shaking the lucide-react package, forcing all 1,000+ icons into the bundle (~850 kB).
+
+### Decision
+Replace wildcard imports with explicit named imports for only the icons actually referenced in the data files. Build a `const COMPONENT_ICONS = { ... }` static lookup map in each component and use it for dynamic resolution.
+
+### Consequences
+- ✅ Rollup can tree-shake lucide-react — only imported icons are bundled
+- ✅ Bundle reduction: ~800 kB removed from initial load
+- ✅ No runtime behavior change — same dynamic icon resolution via string key
+- ⚠️ When adding a new icon to a data file, the named import and the map entry must also be added to the consuming component (acceptable: icons change rarely; easy to spot at PR review)
+
+---
+
+## ADR-008: Lazy-Load Case Study Components (React.lazy + Suspense)
+
+**Date:** 2026-02-26
+**Status:** Accepted
+**Decider:** Roman Mazuryk
+
+### Context
+Six case study components (LiveSurgery, FlowLogix, SmartShooter, Alphorythm, Portfolio, Medintegro) were statically imported in `Projects.jsx`. They are only ever rendered inside a modal that opens on user interaction. Including them in the initial bundle adds ~50 kB of JSX that is never needed until a user explicitly clicks "Case Study".
+
+### Decision
+Convert all six case study imports to `React.lazy(() => import(...))` and wrap the modal body in `<Suspense fallback={<div className="cs-loading">Loading…</div>}>`.
+
+### Consequences
+- ✅ Case study code is split into 6 separate chunks, loaded on demand
+- ✅ Initial bundle reduced; faster first paint and LCP
+- ✅ Each case study chunk is small (3–11 kB gzip) — loads in < 100ms on any reasonable connection
+- ✅ `<Suspense>` fallback handles the brief loading state gracefully
+- ⚠️ First open of a case study has a tiny async delay (imperceptible on broadband; acceptable trade-off)
+- ⚠️ New case study components must also use `React.lazy` to stay consistent (documented in CONTRIBUTING)
+
+### Outcome
+Lighthouse Performance score: **38 → 99**. Initial JS gzip: **242 kB → 78 kB**.

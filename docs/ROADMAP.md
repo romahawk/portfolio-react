@@ -2,7 +2,7 @@
 ## Roman Mazuryk — Portfolio & Proof-of-Work Site
 
 **Version:** 1.0
-**Last Updated:** 2026-02-26
+**Last Updated:** 2026-02-26 (progress updated)
 **Horizon:** 12 weeks (3 months)
 
 ---
@@ -21,22 +21,22 @@
 **Outcome:** The repo looks and behaves like a professionally maintained production project. Documentation exists. Workflow infrastructure is in place. Regressions are caught before they ship.
 
 ### Issues
-- [ ] `[CHORE]` Add `/docs/` folder with PRD, Architecture, Roadmap, Decisions Log
-- [ ] `[CHORE]` Add GitHub issue templates (feature + bug) and PR template
-- [ ] `[CHORE]` Add `CHANGELOG.md` and `CONTRIBUTING.md`
-- [ ] `[BUG]` Fix OG image URL — change from relative `/images/profile.jpg` to absolute `https://roman-mazuryk.vercel.app/images/profile.jpg` in `index.html`
-- [ ] `[CHORE]` Add `public/sitemap.xml` and `public/robots.txt`
-- [ ] `[CHORE]` Update `README.md` with setup steps, deploy link, stack, screenshots
-- [ ] `[CHORE]` Add `vercel.json` for explicit build configuration and headers
+- [x] `[CHORE]` Add `/docs/` folder with PRD, Architecture, Roadmap, Decisions Log
+- [x] `[CHORE]` Add GitHub issue templates (feature + bug) and PR template
+- [x] `[CHORE]` Add `CHANGELOG.md` and `CONTRIBUTING.md`
+- [x] `[BUG]` Fix OG image URL — change from relative `/images/profile.jpg` to absolute `https://roman-mazuryk.vercel.app/images/profile.jpg` in `index.html`
+- [x] `[CHORE]` Add `public/sitemap.xml` and `public/robots.txt`
+- [x] `[CHORE]` Update `README.md` with setup steps, deploy link, stack, screenshots
+- [ ] `[CHORE]` Add `vercel.json` for explicit build configuration and security headers
 
 ### Definition of Done
-- [ ] `docs/` folder has all 4 files with substantive content
-- [ ] GitHub repo has issue + PR templates visible when creating new issues
-- [ ] `CHANGELOG.md` exists and has at least one entry
-- [ ] OG image renders on LinkedIn Post Inspector
-- [ ] `sitemap.xml` is accessible at `https://roman-mazuryk.vercel.app/sitemap.xml`
-- [ ] `npm run build` exits 0, `npm run lint` exits 0
-- [ ] README has a screenshot and a "Getting Started" section
+- [x] `docs/` folder has all 4 files with substantive content
+- [x] GitHub repo has issue + PR templates visible when creating new issues
+- [x] `CHANGELOG.md` exists and has at least one entry
+- [ ] OG image renders on LinkedIn Post Inspector — **needs manual verification**
+- [ ] `sitemap.xml` is accessible at `https://roman-mazuryk.vercel.app/sitemap.xml` — **needs deploy to main**
+- [x] `npm run build` exits 0, `npm run lint` exits 0
+- [ ] README has a screenshot — **not yet added**
 
 ### Demo Artifact Required
 Screenshot of LinkedIn post preview showing OG image rendering correctly.
@@ -48,22 +48,22 @@ Screenshot of LinkedIn post preview showing OG image rendering correctly.
 **Outcome:** You have a feedback loop. You know who visits, what they look at, and how long they stay. Site passes Lighthouse 90+ on all metrics.
 
 ### Issues
-- [ ] `[FEATURE]` Add Vercel Analytics (zero-config, privacy-respecting, free tier)
+- [x] `[FEATURE]` Add Vercel Analytics (zero-config, privacy-respecting, free tier)
 - [ ] `[FEATURE]` Add Lighthouse CI to verify no regressions on build
-- [ ] `[BUG]` Audit and fix any Lighthouse score < 90 (Performance, Accessibility, Best Practices, SEO)
-- [ ] `[CHORE]` Add `<link rel="preload">` for profile image and above-the-fold fonts
+- [x] `[BUG]` Audit and fix any Lighthouse score < 90 — Performance 38→99, others 96–100
+- [x] `[CHORE]` Add `<link rel="preload">` for profile image with `fetchpriority="high"`
 - [ ] `[CHORE]` Verify all case study modals work on mobile (iOS Safari + Android Chrome)
 - [ ] `[FEATURE]` Add "Last updated" timestamp to each case study component (visible in footer of modal)
 
 ### Definition of Done
-- [ ] Vercel Analytics dashboard shows real visitor data
-- [ ] Lighthouse score ≥ 90 on Performance, Accessibility, Best Practices, SEO
+- [x] Vercel Analytics dashboard shows real visitor data
+- [x] Lighthouse score ≥ 90 — Performance 99, Accessibility 100, Best Practices 96, SEO 100
 - [ ] All 6 case study modals tested on mobile — no layout breaks
-- [ ] Profile image preloaded — no layout shift
+- [x] Profile image preloaded — no layout shift
 - [ ] Each case study footer shows "Last updated: [Month YYYY]"
 
 ### Demo Artifact Required
-Loom or screenshot: Lighthouse report showing 4x 90+ scores.
+Loom or screenshot: Lighthouse report showing 4x 90+ scores. ✅ Confirmed 99/100/96/100.
 
 ---
 
