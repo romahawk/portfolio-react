@@ -14,7 +14,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 - Lazy-load all 6 case study components with `React.lazy` + `Suspense` — they are modal-only and never needed on initial page load
 - Add `manualChunks` to `vite.config.js` to split `react-vendor` into a separate cacheable chunk
 - Add `<link rel="preload">` for `/images/profile.jpg` with `fetchpriority="high"` — fixes LCP delay
-- Result: initial JS bundle (gzip) reduced from **242 kB → 78 kB** (68% reduction); no chunk size warnings
+- Result: initial JS bundle (gzip) reduced from **242 kB → 78 kB** (68% reduction); Lighthouse Performance **38 → 99**
 
 ### Added
 - Vercel Analytics (`@vercel/analytics`) — privacy-respecting visitor tracking via `<Analytics />` in `App.jsx`
