@@ -7,11 +7,10 @@ const MILESTONE_ICONS = { BriefcaseBusiness, Hospital, Compass, Circle };
 const Milestones = () => {
   return (
     <div className="milestones" aria-label="Key milestones">
-      {(milestones || []).map((m, idx) => {
+      {(milestones || []).map((m) => {
         const Icon = MILESTONE_ICONS[m.icon] || Circle;
-        const delay = idx === 1 ? " reveal--delay-1" : idx === 2 ? " reveal--delay-2" : "";
         return (
-          <article key={m.id} className={`milestone reveal${delay}`}>
+          <article key={m.id} className="milestone">
             <header className="milestone__head">
               <span className="milestone__range">{m.range}</span>
               <span className="milestone__icon" aria-hidden>
