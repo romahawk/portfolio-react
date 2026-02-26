@@ -258,6 +258,10 @@ export default function SmartShooterCaseStudy() {
       </div>
 
       <CaseStudyLinks />
+
+      <footer className="cs__footer">
+        <p className="cs__last-updated">Last updated: Feb 2026</p>
+      </footer>
     </section>
   );
 }
