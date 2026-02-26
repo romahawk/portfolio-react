@@ -27,14 +27,14 @@
 - [x] `[BUG]` Fix OG image URL — change from relative `/images/profile.jpg` to absolute `https://roman-mazuryk.vercel.app/images/profile.jpg` in `index.html`
 - [x] `[CHORE]` Add `public/sitemap.xml` and `public/robots.txt`
 - [x] `[CHORE]` Update `README.md` with setup steps, deploy link, stack, screenshots
-- [x] `[CHORE]` Add `vercel.json` for explicit build configuration and security headers
+- [ ] `[CHORE]` Add `vercel.json` for explicit build configuration and security headers
 
 ### Definition of Done
 - [x] `docs/` folder has all 4 files with substantive content
 - [x] GitHub repo has issue + PR templates visible when creating new issues
 - [x] `CHANGELOG.md` exists and has at least one entry
-- [x] OG image renders on LinkedIn Post Inspector — **verified**
-- [x] `sitemap.xml` is accessible at `https://roman-mazuryk.vercel.app/sitemap.xml` — **verified**
+- [ ] OG image renders on LinkedIn Post Inspector — **needs manual verification**
+- [ ] `sitemap.xml` is accessible at `https://roman-mazuryk.vercel.app/sitemap.xml` — **needs deploy to main**
 - [x] `npm run build` exits 0, `npm run lint` exits 0
 - [ ] README has a screenshot — **not yet added**
 
@@ -49,18 +49,18 @@ Screenshot of LinkedIn post preview showing OG image rendering correctly.
 
 ### Issues
 - [x] `[FEATURE]` Add Vercel Analytics (zero-config, privacy-respecting, free tier)
-- [x] `[FEATURE]` Add Lighthouse CI to verify no regressions on build
+- [ ] `[FEATURE]` Add Lighthouse CI to verify no regressions on build
 - [x] `[BUG]` Audit and fix any Lighthouse score < 90 — Performance 38→99, others 96–100
 - [x] `[CHORE]` Add `<link rel="preload">` for profile image with `fetchpriority="high"`
-- [ ] `[CHORE]` Verify all case study modals work on mobile (iOS Safari + Android Chrome) — **needs manual QA**
-- [x] `[FEATURE]` Add "Last updated" timestamp to each case study component (visible in footer of modal)
+- [ ] `[CHORE]` Verify all case study modals work on mobile (iOS Safari + Android Chrome)
+- [ ] `[FEATURE]` Add "Last updated" timestamp to each case study component (visible in footer of modal)
 
 ### Definition of Done
 - [x] Vercel Analytics dashboard shows real visitor data
 - [x] Lighthouse score ≥ 90 — Performance 99, Accessibility 100, Best Practices 96, SEO 100
-- [ ] All 6 case study modals tested on mobile — **needs manual QA**
+- [ ] All 6 case study modals tested on mobile — no layout breaks
 - [x] Profile image preloaded — no layout shift
-- [x] Each case study footer shows "Last updated: Feb 2026"
+- [ ] Each case study footer shows "Last updated: [Month YYYY]"
 
 ### Demo Artifact Required
 Loom or screenshot: Lighthouse report showing 4x 90+ scores. ✅ Confirmed 99/100/96/100.
@@ -75,18 +75,18 @@ Loom or screenshot: Lighthouse report showing 4x 90+ scores. ✅ Confirmed 99/10
 
 **Outcome:** Add one new project or case study that is directly relevant to current job search focus (B2B SaaS / internal tools / regulated industry).
 
-- [x] `[CHORE]` Refresh Skills section with any new tools/frameworks from active work
-- [x] `[FEATURE]` Add "Open to Work" availability banner (dismissible, persistent via localStorage)
-- [x] `[CHORE]` Update Timeline with 2026 AI Production OS entry
-- [ ] `[FEATURE]` Add case study: deferred — existing 6 are sufficient for current job search
+- [ ] `[FEATURE]` Add case study: [new project — to be determined based on active work]
+- [ ] `[CHORE]` Refresh Skills section with any new tools/frameworks from active work
+- [ ] `[FEATURE]` Add "Open to Work" availability banner (dismissible, toggleable)
+- [ ] `[CHORE]` Update Timeline with any 2025–2026 entries
 
 ### Definition of Done
-- [x] Skills section reflects current stack (Claude Code, GitHub Actions, updated AI tools)
-- [x] Timeline is up-to-date through Feb 2026
-- [x] Availability banner visible on load, dismissible, green pulse indicator
+- [ ] New case study live in production
+- [ ] Skills section reflects current stack
+- [ ] Timeline is up-to-date through current month
 
 ### Demo Artifact Required
-Screenshot of new case study modal with all sections populated. — *skipped per decision*
+Screenshot of new case study modal with all sections populated.
 
 ---
 
