@@ -169,7 +169,7 @@ export default function FlowLogixCaseStudy() {
         <ul className="cs__list">
           <li>Designed the product around <strong>daily decisions</strong> (risk, near-ETA, delays), not raw data dumps.</li>
           <li>Introduced <strong>role-based transitions</strong> across lifecycle to prevent accidental workflow breaks.</li>
-          <li>Built <strong>timeline visualization</strong> as the primary risk signal (ETD->ETA), with clear fallbacks.</li>
+          <li>Built <strong>timeline visualization</strong> as the primary risk signal (ETD → ETA), with clear fallbacks.</li>
           <li>Added <strong>demo mode</strong> so the system is portfolio-safe while keeping functionality realistic.</li>
         </ul>
       </div>
@@ -233,7 +233,7 @@ export default function FlowLogixCaseStudy() {
           <h2 className="cs__h2">Outcomes & Success Criteria</h2>
           <ul className="cs__list">
             <li>Unified order lifecycle view with early risk detection via timeline and KPIs.</li>
-            <li>Role-governed transitions across Orders -> Warehouse -> Delivered workflows.</li>
+            <li>Role-governed transitions across Orders → Warehouse → Delivered workflows.</li>
             <li>Reporting reliability improved through exportable filtered operational views.</li>
             <li>MVP validated with stable UX states for daily, non-technical operations use.</li>
             <li>Defined next-phase metrics: ETA variance reduction, update latency, and user adoption.</li>
@@ -276,6 +276,10 @@ export default function FlowLogixCaseStudy() {
       </div>
 
       <CaseStudyLinks />
+
+      <footer className="cs__footer">
+        <p className="cs__last-updated">Last updated: Feb 2026</p>
+      </footer>
     </section>
   );
 }

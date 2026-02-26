@@ -148,7 +148,7 @@ export default function AlphorythmCaseStudy() {
       <div className="cs__card">
         <h2 className="cs__h2">Key Product Decisions I Owned</h2>
         <ul className="cs__list">
-          <li>Prioritized a <strong>single review workflow</strong> (import -> table -> metrics) over feature breadth.</li>
+          <li>Prioritized a <strong>single review workflow</strong> (import → table → metrics) over feature breadth.</li>
           <li>Introduced a <strong>validation layer</strong> early to prevent "garbage in, garbage out".</li>
           <li>Designed strategy comparison as <strong>tabs with shared metric definitions</strong> to reduce ambiguity.</li>
           <li>Planned for roles early (Trader/Analyst/Admin) to avoid hard refactors later.</li>
@@ -251,6 +251,10 @@ export default function AlphorythmCaseStudy() {
       </div>
 
       <CaseStudyLinks />
+
+      <footer className="cs__footer">
+        <p className="cs__last-updated">Last updated: Feb 2026</p>
+      </footer>
     </section>
   );
 }
