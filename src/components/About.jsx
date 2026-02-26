@@ -34,8 +34,8 @@ const About = () => {
             </p>
             <p className="about__text">
               I design systems that make trade-offs explicit, decisions visible, and delivery
-              predictable under real constraints. Moving from "Technical PM who uses AI" to a
-              proprietary AI-Leverage Framework that powers production-grade solo delivery.
+              predictable under real constraints — using a proprietary AI-Leverage Framework
+              that powers production-grade solo delivery.
             </p>
           </div>
         </div>
