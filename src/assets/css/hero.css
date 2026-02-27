@@ -46,6 +46,30 @@
 .hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .hero__email-cta { display: inline-flex; align-items: center; }
 
+/* -------- Social row -------- */
+.hero__social-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.hero__social-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.hero__social-link:hover { color: var(--brand); }
+.hero__social-sep {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--muted);
+  opacity: 0.4;
+}
+
 /* -------- Scroll indicator -------- */
 .hero__scroll-hint {
   position: absolute;
