@@ -1,128 +1,99 @@
 // src/data/skillsCards.js
+// 3-pillar structure — 8 cards total, down from 14
+// Each pillar has a Lucide icon name consumed by Skills.jsx
 
-export const hardSkills = [
+export const skillsPillars = [
   {
-    title: "Systems & Platform Thinking",
-    items: [
-      "Translate operational workflows into product primitives: roles, states, permissions, and handoffs",
-      "Design data models and lifecycle logic with auditability and compliance-by-design",
-      "Define APIs, integrations, and boundaries that keep platforms scalable and resilient",
+    id: "product-systems-leadership",
+    title: "Product Systems Leadership",
+    icon: "Users",
+    cards: [
+      {
+        title: "Systems & Platform Thinking",
+        icon: "Network",
+        items: [
+          "Translate operational workflows into product primitives: roles, states, permissions, and handoffs",
+          "Define data models, APIs, and integration boundaries with auditability and compliance-by-design",
+          "Drive explicit trade-offs: build vs buy, speed vs reliability, MVP vs long-term maintainability",
+        ],
+      },
+      {
+        title: "Product Leadership",
+        icon: "Layers",
+        items: [
+          "Frame ambiguous problems into clear outcomes and executable product scope",
+          "Lead roadmap and prioritization decisions across product, engineering, and operations",
+          "Operate pragmatic Scrum/Kanban cadences; control scope, map dependencies, and sequence releases for predictable execution",
+        ],
+      },
+      {
+        title: "Stakeholder Leadership",
+        icon: "Users",
+        items: [
+          "Align executives and delivery teams around trade-offs, timelines, and measurable outcomes",
+          "Facilitate workshops, requirements interviews, and decision sessions with clear ownership",
+          "Write crisp artifacts: PRDs, specs, ADRs, and operating updates",
+        ],
+      },
     ],
   },
   {
-    title: "Internal Tools & Decision Support",
-    items: [
-      "Build internal systems for visibility, risk control, deadline tracking, and operational forecasting",
-      "Design metrics that support decisions: what matters, how to trust it, and when to act",
-      "Structure information flows to reduce coordination drag across teams",
+    id: "technical-leverage",
+    title: "Technical Leverage",
+    icon: "Zap",
+    cards: [
+      {
+        title: "AI-Accelerated Product Ops",
+        icon: "Sparkles",
+        items: [
+          "Use LLM workflows for faster prototyping, documentation, and architecture exploration",
+          "Build reusable prompting patterns for repeatable specs, audits, and delivery artifacts",
+          "Reduce manual coordination through automation and cleaner interface contracts",
+        ],
+      },
+      {
+        title: "Rapid Prototyping & Validation",
+        icon: "Code2",
+        items: [
+          "Prototype high-risk paths early: workflows, permissions, data integrity, and UX logic",
+          "Use constraint-driven MVP slicing to validate assumptions before scaling",
+          "Ship small increments, validate quickly, and evolve system boundaries intentionally",
+        ],
+      },
+      {
+        title: "Core Engine & Stack",
+        icon: "Database",
+        items: [
+          "React, JavaScript, Python (Flask/FastAPI), and Node.js for production web systems and service prototypes",
+          "PostgreSQL, Firebase, REST APIs, and role-based access control for operational data modeling",
+          "Git/GitHub, Docker, Vercel; Mermaid for architecture diagrams; Linear/Jira for delivery governance",
+        ],
+      },
     ],
   },
   {
-    title: "Architecture Trade-offs",
-    items: [
-      "Drive explicit trade-offs: build vs buy, speed vs reliability, MVP vs long-term maintainability",
-      "Apply constraints-first architecture in regulated and high-stakes operating contexts",
-      "Document decisions with rationale, risk profile, and expected operational impact",
-    ],
-  },
-];
-
-export const pmSkills = [
-  {
-    title: "Product Leadership",
-    items: [
-      "Frame ambiguous problems into clear outcomes and executable product scope",
-      "Lead roadmap and prioritization decisions across product, engineering, and operations",
-      "Run governance cadences that keep risk, sequencing, and delivery accountability visible",
-    ],
-  },
-  {
-    title: "Execution & Delivery Operations",
-    items: [
-      "Operate pragmatic Scrum/Kanban cadences using Linear, Trello, Jira, and Confluence",
-      "Orchestrate cross-functional delivery across operations, engineering, leadership, and vendors",
-      "Control scope, map dependencies, and sequence releases for predictable execution",
-    ],
-  },
-];
-
-export const softSkills = [
-  {
-    title: "Stakeholder Leadership",
-    items: [
-      "Align executives and delivery teams around trade-offs, timelines, and measurable outcomes",
-      "Facilitate workshops, requirements interviews, and decision sessions with clear ownership",
-      "Write crisp artifacts: PRDs, specs, ADRs, and operating updates",
-    ],
-  },
-  {
-    title: "Ownership & Operator Mindset",
-    items: [
-      "Own delivery end-to-end from ambiguity through deployment and adoption",
-      "Create clarity fast in messy environments and convert decisions into action",
-      "Stay accountable for system outcomes, not output volume",
-    ],
-  },
-  {
-    title: "Execution Under Constraint",
-    items: [
-      "Use structured loops: constraints -> model -> decision -> iteration",
-      "Design operating routines that improve reliability without adding bureaucracy",
-      "Maintain calm, consistent execution in high-stakes and compliance-heavy settings",
-    ],
-  },
-];
-
-export const leverageSkills = [
-  {
-    title: "AI-Accelerated Product Ops",
-    items: [
-      "Use LLM workflows for faster prototyping, documentation, and architecture exploration",
-      "Accelerate iteration with AI-assisted coding, review, and decision prep",
-      "Build reusable prompting patterns for repeatable specs, audits, and delivery artifacts",
-    ],
-  },
-  {
-    title: "Rapid Prototyping & Validation",
-    items: [
-      "Prototype high-risk paths early: workflows, permissions, data integrity, and UX logic",
-      "Use constraint-driven MVP slicing to validate assumptions before scaling",
-      "Ship small increments, validate quickly, and evolve boundaries intentionally",
-    ],
-  },
-  {
-    title: "Operational Leverage Design",
-    items: [
-      "Reduce manual coordination through automation and cleaner interface contracts",
-      "Codify playbooks and repeatable routines that improve delivery consistency",
-      "Increase leverage through clearer decisions, fewer dependencies, and better system signals",
-    ],
-  },
-];
-
-export const techStack = [
-  {
-    title: "Core Engine",
-    items: [
-      "React (Vite), JavaScript, and Node.js (Express) for production web systems",
-      "Python (Flask/FastAPI) for architecture validation, service prototypes, and automation",
-      "REST architecture, role-based access control, and workflow-state modeling as system primitives",
-    ],
-  },
-  {
-    title: "Implementation Stack",
-    items: [
-      "PostgreSQL and SQLite for operational data modeling and query-driven workflows",
-      "Firebase (Auth, Firestore) for validated internal tooling and fast implementation loops",
-      "Git/GitHub PR discipline, Docker, Vercel, and Render for traceable delivery and deployment",
-    ],
-  },
-  {
-    title: "Strategic Tools",
-    items: [
-      "Mermaid for system visualization, sequence logic, and architecture communication",
-      "GitHub Copilot for implementation speed in constrained, review-driven cycles",
-      "Linear and Trello for delivery governance, micro-scope planning, and execution visibility",
+    id: "operating-edge",
+    title: "Operating Edge",
+    icon: "ShieldCheck",
+    cards: [
+      {
+        title: "Regulated Domain Advantage",
+        icon: "Stethoscope",
+        items: [
+          "MedTech and Pharma execution advantage: build for environments where uptime, auditability, and safety are non-negotiable",
+          "Micro-Scope control and explicit acceptance criteria keep delivery traceable for regulated SDLC requirements",
+          "14+ years navigating compliance-heavy procurement, clinical, and logistics workflows",
+        ],
+      },
+      {
+        title: "Ownership & Operator Mindset",
+        icon: "BriefcaseBusiness",
+        items: [
+          "Own delivery end-to-end: from problem framing through deployment and operational impact",
+          "Use structured loops — constraints → model → decision → iteration — to convert ambiguity into execution",
+          "Stay accountable for system outcomes, not output volume; maintain calm delivery under high-stakes constraints",
+        ],
+      },
     ],
   },
 ];
