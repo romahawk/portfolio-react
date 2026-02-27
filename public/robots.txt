@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://roman-mazuryk.vercel.app/sitemap.xml
+Sitemap: https://www.mazuryk.dev/sitemap.xml
