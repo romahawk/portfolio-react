@@ -10,6 +10,9 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 ## [Unreleased]
 
 ### Added
+- `index.html` — add `<link rel="canonical" href="https://www.mazuryk.dev/" />` so search engines consolidate authority on the custom domain
+- `Hero.jsx` — replace external LinkedIn ghost CTA with on-site `#contact` anchor ("Get in touch"); keeps conversion loop on-site
+- `public/robots.txt`, `public/sitemap.xml`, `index.html` (og:url, og:image, twitter:image) — update all canonical URLs from `roman-mazuryk.vercel.app` to `www.mazuryk.dev`
 - `vercel.json` — explicit build config + security headers (`X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy`); immutable cache headers for `/assets/`
 - `.github/workflows/lighthouse.yml` — Lighthouse CI on every push/PR to `main`; fails build if any category drops below 90
 - `.lighthouserc.json` — Lighthouse CI thresholds: Performance ≥ 90, Accessibility ≥ 90, Best Practices ≥ 90, SEO ≥ 90

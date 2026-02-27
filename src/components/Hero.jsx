@@ -33,8 +33,8 @@ const Hero = () => {
             <a href="#projects" className="btn btn--ghost">
               View Product Systems
             </a>
-            <a href="https://www.linkedin.com/in/roman-mazuryk/" className="btn btn--ghost" target="_blank" rel="noreferrer">
-              Connect on LinkedIn
+            <a href="#contact" className="btn btn--ghost">
+              Get in touch
             </a>
           </div>
         </div>
