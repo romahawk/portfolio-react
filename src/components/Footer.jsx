@@ -69,8 +69,8 @@ const Footer = () => {
           <p className="footer__cta-text">
             Open to Technical PM &amp; Product Owner roles and selective founder&#8209;operator collaborations.
           </p>
-          <a href="#contact" className="footer__cta-btn">
-            Get in touch <ArrowUpRight size={14} className="footer__cta-icon" />
+          <a href="mailto:romazuryk@proton.me" className="footer__cta-btn">
+            Send an email <ArrowUpRight size={14} className="footer__cta-icon" />
           </a>
         </div>
 

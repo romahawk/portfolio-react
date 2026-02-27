@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Mail } from "lucide-react";
 
 const Hero = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -33,8 +33,9 @@ const Hero = () => {
             <a href="#projects" className="btn btn--ghost">
               View Product Systems
             </a>
-            <a href="#contact" className="btn btn--ghost">
-              Get in touch
+            <a href="mailto:romazuryk@proton.me" className="btn btn--ghost hero__email-cta">
+              <Mail size={15} className="icon mr-1" />
+              romazuryk@proton.me
             </a>
           </div>
         </div>
