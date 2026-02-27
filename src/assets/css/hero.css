@@ -44,6 +44,7 @@
   margin: 0 0 24px 0;
 }
 .hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero__email-cta { display: inline-flex; align-items: center; }
 
 /* -------- Scroll indicator -------- */
 .hero__scroll-hint {
