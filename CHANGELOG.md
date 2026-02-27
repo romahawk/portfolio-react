@@ -9,9 +9,6 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
-### Fixed
-- `Hero.jsx` — remove broken "Download CV" link; `/roman-mazuryk-cv.pdf` did not exist in `public/`, causing a 404 on click
-
 ### Added
 - `Hero.jsx`, `Footer.jsx` — replace dead-end `#contact` anchor CTAs with direct `mailto:romazuryk@proton.me` links; Hero "Get in touch" becomes one-click email open with visible address and Mail icon; Footer "Get in touch" becomes "Send an email" mailto
 - `index.html` — add `<link rel="canonical" href="https://www.mazuryk.dev/" />` so search engines consolidate authority on the custom domain
