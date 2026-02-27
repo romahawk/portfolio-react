@@ -1,11 +1,10 @@
 import React, { useMemo, useRef, useEffect, useState } from "react";
 import {
-  Layers, Building2, Brain, Boxes,
-  Wrench, PenTool, BriefcaseBusiness, Pill, Circle,
+  ShieldCheck, Database, Workflow, Zap, Network, BarChart3, History, Circle,
 } from "lucide-react";
 import journey from "../data/journey.js";
 
-const JOURNEY_ICONS = { Layers, Building2, Brain, Boxes, Wrench, PenTool, BriefcaseBusiness, Pill, Circle };
+const JOURNEY_ICONS = { ShieldCheck, Database, Workflow, Zap, Network, BarChart3, History, Circle };
 
 const toYear = (y) => Number(String(y).match(/\d{4}/)?.[0] || 0);
 
