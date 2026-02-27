@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ChevronDown, Mail, Linkedin, Github } from "lucide-react";
+import { ChevronDown, Mail, Linkedin, Github, FileDown } from "lucide-react";
 
 const Hero = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -46,6 +46,10 @@ const Hero = () => {
             <span className="hero__social-sep" aria-hidden="true" />
             <a href="https://github.com/romahawk" target="_blank" rel="noreferrer" className="hero__social-link">
               <Github size={14} className="icon mr-1" /> GitHub
+            </a>
+            <span className="hero__social-sep" aria-hidden="true" />
+            <a href="/roman-mazuryk-cv.pdf" download className="hero__social-link">
+              <FileDown size={14} className="icon mr-1" /> Download CV
             </a>
           </div>
         </div>
