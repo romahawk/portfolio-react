@@ -48,7 +48,7 @@ const Hero = () => {
               <Github size={14} className="icon mr-1" /> GitHub
             </a>
             <span className="hero__social-sep" aria-hidden="true" />
-            <a href="/roman-mazuryk-cv.pdf" download className="hero__social-link">
+            <a href="/roman-mazuryk-cv.pdf" download aria-label="Download CV (PDF)" className="hero__social-link">
               <FileDown size={14} className="icon mr-1" /> Download CV
             </a>
           </div>

@@ -1,4 +1,3 @@
-// src/data/journey.js
 // Product-oriented journey data with Lucide icon names
 const journey = [
   {
@@ -12,28 +11,22 @@ const journey = [
     ],
   },
   {
-    year: "2024-2025",
+    year: "2024–2025",
     icon: "Building2",
     items: [
-      "Product Manager (Internal Systems) at PharmaLogis GmbH (Germany)",
-      "Replaced fragmented Excel/email coordination with unified internal platform workflows",
+      "Technical Product Manager (Internal Systems) at PharmaLogis GmbH (Germany)",
+      "Defined data contracts and schema architecture for the transition from Excel/email to centralized SQL-based platform logic",
+      "Managed Engineering-to-Ops stakeholder alignment throughout platform definition and rollout",
       "Improved operational velocity by ~35% and reduced executive reporting time by ~25%",
     ],
   },
   {
-    year: "May 2024",
-    icon: "GraduationCap",
-    items: [
-      "Master's Degree in Computer Science (Technical Deepening)",
-      "Strengthened system design, data modeling, and architecture trade-off capabilities",
-    ],
-  },
-  {
-    year: "2019-now",
+    year: "2019–2024",
     icon: "Building2",
     items: [
-      "Technical Product Manager | Systems & Platform Delivery at Medintegro",
+      "Technical Product Manager | Systems & Platform Delivery at Medintegro (Ukraine / EU)",
       "Delivered 20+ integrated MedTech systems using modular implementation patterns",
+      "Standardized delivery lifecycle (discovery → install → training → support) as a repeatable delivery product",
       "Reduced operational overhead by ~30% through automation and standardized delivery routines",
     ],
   },
@@ -51,25 +44,16 @@ const journey = [
     icon: "Boxes",
     items: [
       "Led integrated OR programs across imaging, endoscopy, and video systems",
-      "Standardized delivery lifecycle: discovery -> planning -> installation -> training -> support",
+      "Standardized delivery lifecycle: discovery → planning → installation → training → support",
       "Aligned clinicians, vendors, and engineers around executable integration scope",
-    ],
-  },
-  {
-    year: "2019",
-    icon: "TrendingUp",
-    items: [
-      "Scaled Medintegro implementations through structured delivery playbooks",
-      "Expanded hospital client footprint across private and public healthcare providers",
-      "Strengthened commercial-to-delivery handoffs for predictable rollout outcomes",
     ],
   },
   {
     year: "2018",
     icon: "Wrench",
     items: [
-      "Founded Medintegro — sales, installation, and lifecycle service for medical systems",
-      "Delivered Ukraine’s first compact SURGIMEDIA OR integration system",
+      "Founded Medintegro — designed the delivery product for clinical platform integration",
+      "Productized the deployment of integrated clinical platforms; standardized the hardware/software stack to reduce implementation lead times",
       "Established repeatable installation and support routines for scale",
     ],
   },
@@ -82,16 +66,16 @@ const journey = [
     ],
   },
   {
-    year: "2011-2012",
+    year: "2011–2012",
     icon: "BriefcaseBusiness",
     items: [
-      "CEO / Head of International Business Development in a regulated pharma environment",
-      "Managed $40M+ P&L and a 70+ FTE cross-functional organization",
-      "Built early operator discipline across compliance, commercial execution, and systems thinking",
+      "Product & Business Systems Lead (CEO) — promoted within three months to lead a strategic operational turnaround",
+      "Managed $40M+ P&L and a 70+ FTE cross-functional organization in regulated pharma (Acropolus Biosciences)",
+      "Architected the organizational operating system across procurement, compliance, and commercial execution",
     ],
   },
   {
-    year: "2005-2010",
+    year: "2005–2010",
     icon: "Pill",
     items: [
       "Foundational pharma and healthcare operations with high-compliance execution foundations across 3 organizations",
@@ -102,5 +86,3 @@ const journey = [
 ];
 
 export default journey;
-
-

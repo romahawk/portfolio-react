@@ -1,11 +1,11 @@
 import React, { useMemo, useRef, useEffect, useState } from "react";
 import {
-  Layers, Building2, GraduationCap, Brain, Boxes,
-  TrendingUp, Wrench, PenTool, BriefcaseBusiness, Pill, Circle,
+  Layers, Building2, Brain, Boxes,
+  Wrench, PenTool, BriefcaseBusiness, Pill, Circle,
 } from "lucide-react";
 import journey from "../data/journey.js";
 
-const JOURNEY_ICONS = { Layers, Building2, GraduationCap, Brain, Boxes, TrendingUp, Wrench, PenTool, BriefcaseBusiness, Pill, Circle };
+const JOURNEY_ICONS = { Layers, Building2, Brain, Boxes, Wrench, PenTool, BriefcaseBusiness, Pill, Circle };
 
 const toYear = (y) => Number(String(y).match(/\d{4}/)?.[0] || 0);
 
