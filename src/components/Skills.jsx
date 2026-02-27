@@ -46,9 +46,10 @@ const Skills = () => (
       );
     })}
 
-    <p className="about__text reveal">
+    <p className="skills__statement reveal">
       I use code as a leverage tool to validate system boundaries, clarify trade-offs, and
-      accelerate production delivery — not as an end in itself.
+      accelerate production delivery —{" "}
+      <span className="skills__statement-em">not as an end in itself.</span>
     </p>
   </section>
 );
