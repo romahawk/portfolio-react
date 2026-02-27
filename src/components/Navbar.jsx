@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
 const IDS = [
-  "home",
   "about",
   "ai-sdlc",
   "timeline",
@@ -11,7 +10,6 @@ const IDS = [
   "contact",
 ];
 const NAV_LABELS = {
-  home: "Home",
   about: "About",
   "ai-sdlc": "AI SDLC",
   timeline: "Timeline",
@@ -27,7 +25,8 @@ const SWITCH_BUFFER = 24;     // px hysteresis to avoid flicker on boundaries
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [active, setActive] = useState("home");
+  const [active, setActive] = useState("about");
+  const [progress, setProgress] = useState(0);
 
   const ticking = useRef(false);
   const sectionsRef = useRef([]);
@@ -57,6 +56,8 @@ export default function Navbar() {
     ticking.current = true;
     requestAnimationFrame(() => {
       computeActive();
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? Math.min(window.scrollY / max, 1) : 0);
       ticking.current = false;
     });
   }, [computeActive]);
@@ -128,11 +129,11 @@ export default function Navbar() {
         aria-hidden="true"
       />
       <nav className="nav container">
-        <div className="nav__logo">
+        <a href="#home" className="nav__logo" aria-label="Back to top" onClick={() => handleClick("home")}>
           <span className="nav__logo-brace">{'{ }'}</span>
           <span className="nav__logo-text">ROMAZ</span>
           <span className="nav__logo-accent" />
-        </div>
+        </a>
 
         <button
           className={`nav__toggle ${isOpen ? "x" : ""}`}
@@ -146,7 +147,7 @@ export default function Navbar() {
         </button>
 
         <ul className={`nav__list ${isOpen ? "nav__list--open" : ""}`}>
-          {IDS.slice(0, -1).map((id) => (
+          {IDS.map((id) => (
             <li key={id}>
               <a
                 href={`#${id}`}
@@ -157,17 +158,14 @@ export default function Navbar() {
               </a>
             </li>
           ))}
-          <li>
-            <a
-              href="#contact"
-              className={`nav__cta ${active === "contact" ? "nav__cta--active" : ""}`}
-              onClick={() => handleClick("contact")}
-            >
-              Contact
-            </a>
-          </li>
         </ul>
       </nav>
+
+      <div
+        className="nav__progress"
+        style={{ transform: `scaleX(${progress})` }}
+        aria-hidden="true"
+      />
     </header>
   );
 }
