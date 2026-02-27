@@ -67,6 +67,25 @@
   line-height: 1.6;
 }
 
+/* === Closing statement callout === */
+
+.skills__statement {
+  margin-top: 0.5rem;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--brand);
+  background: rgba(0, 221, 235, 0.05);
+  border-radius: 0 10px 10px 0;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  box-shadow: 0 0 20px rgba(0, 221, 235, 0.07);
+}
+
+.skills__statement-em {
+  color: var(--brand);
+  font-style: italic;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .skill-card { transition: none; }
   .skill-card:hover { transform: none; }
