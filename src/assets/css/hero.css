@@ -50,7 +50,6 @@
   padding: 14px 22px;
   font-size: 15px;
   font-weight: 700;
-  box-shadow: 0 4px 20px rgba(0, 221, 235, 0.3);
 }
 .hero__email-cta {
   display: inline-flex;
