@@ -3,8 +3,8 @@
   position: fixed; inset: 0; z-index: 90;
 }
 .cs-modal__backdrop {
-  position: absolute; inset: 0; background: rgba(0,0,0,.55);
-  backdrop-filter: blur(2px);
+  position: absolute; inset: 0; background: rgba(0,0,0,.72);
+  backdrop-filter: blur(4px);
 }
 .cs-modal__panel {
   position: absolute; inset: 40px 20px;
@@ -28,12 +28,44 @@
 }
 .cs-modal__title { margin: 0; font-weight: 700; }
 .cs-modal__close {
-  width: 36px; height: 36px; border-radius: 10px;
+  width: 44px; height: 44px; border-radius: 10px;
   border: 1px solid var(--border); background: var(--panel); color: var(--text);
   display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.cs-modal__close:hover {
+  background: #121824;
+  border-color: #263046;
+}
+.cs-modal__close:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
 
 .cs-modal__body { padding: 16px; overflow: auto; }
+
+/* ---- Case Study loading state ---- */
+.cs-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+.cs-loading__spinner {
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  border-top-color: var(--brand);
+  animation: cs-spin 0.7s linear infinite;
+}
+@keyframes cs-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-loading__spinner { animation: none; opacity: 0.5; }
+}
 
 /* ---- Case Study content ---- */
 .cs { display: grid; gap: 14px; }
@@ -51,7 +83,7 @@
 
 .cs__card {
   border: 1px solid var(--border);
-  border-radius: 14px; padding: 14px;
+  border-radius: var(--radius); padding: 14px;
   background: radial-gradient(600px 300px at 110% -10%, rgba(0,221,235,.06), transparent), #0f1520;
 }
 

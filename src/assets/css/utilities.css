@@ -1,3 +1,24 @@
+/* ===== Skip-to-main accessibility link ===== */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 200;
+  background: var(--brand);
+  color: #000;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 0 0 var(--radius) var(--radius);
+  text-decoration: none;
+  white-space: nowrap;
+  /* Use transform (compositor-only) instead of top to avoid layout thrash */
+  transform: translateX(-50%) translateY(-100%);
+  transition: transform 0.15s ease;
+}
+.skip-link:focus {
+  transform: translateX(-50%) translateY(0);
+}
+
 /* Buttons */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -58,6 +79,15 @@
 .btn,
 .btn * {
   transition: color .2s ease;
+}
+
+/* Touch :active fallbacks — provide feedback on devices without hover */
+@media (hover: none) {
+  .btn:active { background: #1a2030; }
+  .btn--primary:active { opacity: 0.88; }
+  .chip:active, .tab:active { background: #1a2030; }
+  .backtotop:active { background: #1a2030; }
+  .cs-modal__close:active { background: #1a2030; }
 }
 
 /* prefers-reduced-motion: kill button/backtotop transitions */

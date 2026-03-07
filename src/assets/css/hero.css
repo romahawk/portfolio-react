@@ -43,8 +43,24 @@
   line-height: 1.6;
   margin: 0 0 24px 0;
 }
-.hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.hero__email-cta { display: inline-flex; align-items: center; }
+.hero__actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+/* CTA hierarchy: primary is larger; secondary is standard; email is muted/small */
+.hero__actions .btn--primary {
+  padding: 14px 22px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.hero__email-cta {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  color: var(--muted);
+  padding: 8px 12px;
+  border-color: transparent;
+  background: transparent;
+}
+.hero__email-cta:hover { color: var(--text); background: rgba(255,255,255,0.04); }
 
 /* -------- Social row -------- */
 .hero__social-row {

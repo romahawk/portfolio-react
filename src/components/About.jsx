@@ -18,6 +18,8 @@ const About = () => {
               className="about__photo-img"
               loading="lazy"
               decoding="async"
+              width="320"
+              height="320"
             />
           </div>
 
