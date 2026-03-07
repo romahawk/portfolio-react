@@ -1,3 +1,23 @@
+/* ===== Skip-to-main accessibility link ===== */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  background: var(--brand);
+  color: #000;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 0 0 var(--radius) var(--radius);
+  text-decoration: none;
+  transition: top 0.15s ease;
+  white-space: nowrap;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 /* Buttons */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -58,6 +78,15 @@
 .btn,
 .btn * {
   transition: color .2s ease;
+}
+
+/* Touch :active fallbacks — provide feedback on devices without hover */
+@media (hover: none) {
+  .btn:active { background: #1a2030; }
+  .btn--primary:active { filter: brightness(0.9); }
+  .chip:active, .tab:active { background: #1a2030; }
+  .backtotop:active { background: #1a2030; }
+  .cs-modal__close:active { background: #1a2030; }
 }
 
 /* prefers-reduced-motion: kill button/backtotop transitions */

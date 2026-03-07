@@ -17,6 +17,7 @@ import BackToTop from "./components/BackToTop.jsx";
    useScrollReveal();
    return (
      <>
+       <a href="#main" className="skip-link">Skip to main content</a>
        <Navbar />
        <main id="main">
          <Hero />

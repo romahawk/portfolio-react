@@ -205,11 +205,15 @@ export default function Projects() {
             Systems I design and ship to convert operational complexity into scalable products —
             from internal tools and data integrity layers to real-time interaction workflows.
           </p>
-          <div className="projects__grid">
-            {visibleTech.map((p) => (
-              <ProjectCard key={p.id} p={p} onOpenCase={openCase} />
-            ))}
-          </div>
+          {visibleTech.length === 0 ? (
+            <p className="projects__empty">No projects match that filter. <button className="link-like" onClick={() => setTag("All")}>Clear filter</button></p>
+          ) : (
+            <div className="projects__grid">
+              {visibleTech.map((p) => (
+                <ProjectCard key={p.id} p={p} onOpenCase={openCase} />
+              ))}
+            </div>
+          )}
         </>
       ) : (
         <>
@@ -263,7 +267,7 @@ export default function Projects() {
             : "Case Study"
         }
       >
-        <Suspense fallback={<div className="cs-loading">Loading…</div>}>
+        <Suspense fallback={<div className="cs-loading" aria-label="Loading case study"><span className="cs-loading__spinner" aria-hidden="true" /></div>}>
           {caseId === "livesurgery" ? (
             <LivesurgeryCaseStudy />
           ) : caseId === "smartshooter" ? (

@@ -9,7 +9,7 @@
 .contact__panel, .contact__form {
   background: linear-gradient(180deg, rgba(16,20,28,.9), rgba(16,20,28,.75));
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: var(--radius);
   padding: 18px;
   box-shadow: var(--shadow);
 }

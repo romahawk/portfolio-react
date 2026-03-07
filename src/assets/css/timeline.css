@@ -17,7 +17,7 @@
 @media (max-width: 980px){ .milestones { grid-template-columns: 1fr; } }
 
 .milestone {
-  border: 1px solid #193447; border-radius: 14px; padding: 16px;
+  border: 1px solid #193447; border-radius: var(--radius); padding: 16px;
   background: radial-gradient(600px 300px at 110% -10%, rgba(0,221,235,.08), transparent), #0f1520;
   box-shadow: 0 6px 20px rgba(0,0,0,.35);
 }
@@ -147,8 +147,14 @@
 }
 
 /* Shift them slightly outside the scroll container */
-.timeline__scroll-btn--left  { left: -48px; }  /* was 10px */
-.timeline__scroll-btn--right { right: -48px; } /* was 10px */
+.timeline__scroll-btn--left  { left: -48px; }
+.timeline__scroll-btn--right { right: -48px; }
+
+/* On narrow viewports, bring scroll buttons inside to stay on-screen */
+@media (max-width: 900px) {
+  .timeline__scroll-btn--left  { left: 4px; }
+  .timeline__scroll-btn--right { right: 4px; }
+}
 
 /* Keep timeline container from hiding them */
 .timeline {

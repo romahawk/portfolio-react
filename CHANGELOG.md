@@ -10,6 +10,22 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 ## [Unreleased]
 
 ### Added
+- `App.jsx` + `utilities.css` — skip-to-main link (`.skip-link`): visually hidden until focused, appears at top for keyboard users (WCAG 2.4.1)
+- `Navbar.jsx` — mobile menu keyboard fix: `aria-hidden` + `inert` on `nav__list` when closed on mobile; Escape key closes open menu
+- `Projects.jsx` — empty state with "Clear filter" when tag filter yields zero results
+- `Projects.jsx` + `modal.css` — case study lazy-load spinner (`.cs-loading__spinner`) replaces plain text fallback
+- `utilities.css` — `@media (hover: none)` `:active` fallbacks for cards and interactive elements
+
+### Changed
+- `timeline.css` — scroll buttons repositioned to `4px` inside on viewports ≤ 900px (was `-48px`, clipped off-screen)
+- `modal.css` — close button enlarged 36→44px (WCAG 2.5.5); hover + focus-visible styles added; backdrop 0.55→0.72 opacity, blur 2→4px
+- `projects.css` — category tabs redesigned as segmented control to distinguish from tag filter chips; empty state style added
+- `hero.css` — CTA hierarchy: primary button larger with glow; email link de-emphasised
+- `Contact.jsx` — copy confirmation extended to 2.5s with `aria-live="polite"`
+- `main.css` — section padding `48px 0` on ≤ 640px
+- `About.jsx` — profile image explicit `width/height` to prevent CLS
+- `ai-sdlc.css`, `skills.css`, `certifications.css`, `about.css`, `projects.css`, `contact.css`, `timeline.css`, `modal.css` — `border-radius: 14px` → `var(--radius)` token
+
 - `Hero.jsx`, `Footer.jsx` — replace dead-end `#contact` anchor CTAs with direct `mailto:romazuryk@proton.me` links; Hero "Get in touch" becomes one-click email open with visible address and Mail icon; Footer "Get in touch" becomes "Send an email" mailto
 - `index.html` — add `<link rel="canonical" href="https://www.mazuryk.dev/" />` so search engines consolidate authority on the custom domain
 - `Hero.jsx` — replace external LinkedIn ghost CTA with on-site `#contact` anchor ("Get in touch"); keeps conversion loop on-site

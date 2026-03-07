@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
+// 800px matches the CSS mobile breakpoint
+const MOBILE_MQ = "(max-width: 800px)";
+
 const IDS = [
   "about",
   "ai-sdlc",
@@ -27,6 +30,9 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("about");
   const [progress, setProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" && window.matchMedia(MOBILE_MQ).matches
+  );
 
   const ticking = useRef(false);
   const sectionsRef = useRef([]);
@@ -98,6 +104,23 @@ export default function Navbar() {
     [computeActive]
   );
 
+  // Track mobile breakpoint for aria/inert management
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia(MOBILE_MQ);
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  // Close menu on Escape
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e) => { if (e.key === "Escape") setIsOpen(false); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [isOpen]);
+
   useEffect(() => {
     if (typeof window === "undefined" || typeof document === "undefined") return;
 
@@ -146,7 +169,11 @@ export default function Navbar() {
           <span className="nav__toggle-bar" />
         </button>
 
-        <ul className={`nav__list ${isOpen ? "nav__list--open" : ""}`}>
+        <ul
+          className={`nav__list ${isOpen ? "nav__list--open" : ""}`}
+          aria-hidden={isMobile && !isOpen}
+          inert={isMobile && !isOpen ? "" : undefined}
+        >
           {IDS.map((id) => (
             <li key={id}>
               <a

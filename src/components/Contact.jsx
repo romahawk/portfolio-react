@@ -13,7 +13,7 @@ const Contact = () => {
     try {
       await navigator.clipboard.writeText(email);
       setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
+      setTimeout(() => setCopied(false), 2500);
     } catch { /* clipboard unavailable */ }
   };
 
@@ -55,7 +55,9 @@ const Contact = () => {
                 <button className="link-like" onClick={copyEmail} title="Copy email">
                   {email} <Copy size={14} className="icon ml-1" />
                 </button>
-                <span className={`contact__copied ${copied ? "is-visible" : ""}`}>Copied!</span>
+                <span className={`contact__copied ${copied ? "is-visible" : ""}`} aria-live="polite">
+                  {copied ? "Copied!" : ""}
+                </span>
               </div>
             </div>
 
