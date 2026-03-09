@@ -214,9 +214,9 @@ export default function LivesurgeryCaseStudy() {
         demoUrl="https://livesurgery.vercel.app/"
         docs={[
           { label: "README", url: "https://github.com/romahawk/livesurgery-poc/blob/main/README.md" },
-          { label: "Architecture", url: "https://github.com/romahawk/livesurgery-poc/blob/main/docs/architecture.md" },
-          { label: "PRD", url: "https://github.com/romahawk/livesurgery-poc/blob/main/docs/prd.md" },
-          { label: "Roadmap", url: "https://github.com/romahawk/livesurgery-poc/blob/main/docs/roadmap.md" },
+          { label: "Architecture", url: "https://github.com/romahawk/livesurgery-poc/blob/main/docs/ARCHITECTURE.md" },
+          { label: "PRD", url: "https://github.com/romahawk/livesurgery-poc/blob/main/docs/PRD.md" },
+          { label: "Roadmap", url: "https://github.com/romahawk/livesurgery-poc/blob/main/docs/ROADMAP.md" },
           { label: "Repository", url: "https://github.com/romahawk/livesurgery-poc" },
         ]}
       />
