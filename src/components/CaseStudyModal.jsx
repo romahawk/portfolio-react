@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { X } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { X, Link2, Check } from "lucide-react";
 
 const FOCUSABLE = [
   'a[href]',
@@ -10,10 +10,21 @@ const FOCUSABLE = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(', ');
 
-export default function CaseStudyModal({ open, onClose, title, children }) {
+export default function CaseStudyModal({ open, onClose, title, slug, children }) {
   const panelRef = useRef(null);
   const closeRef = useRef(null);
   const previousFocusRef = useRef(null);
+  const [copied, setCopied] = useState(false);
+
+  // Reset copied state when modal closes
+  useEffect(() => { if (!open) setCopied(false); }, [open]);
+
+  function handleCopyLink() {
+    navigator.clipboard.writeText(`https://www.mazuryk.dev/projects/${slug}`).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }
 
   // Escape key + focus trap
   useEffect(() => {
@@ -69,9 +80,22 @@ export default function CaseStudyModal({ open, onClose, title, children }) {
       <div className="cs-modal__panel" ref={panelRef} role="document">
         <header className="cs-modal__header">
           <h3 className="cs-modal__title">{title}</h3>
-          <button ref={closeRef} className="cs-modal__close" aria-label="Close" onClick={onClose}>
-            <X size={18} />
-          </button>
+          <div className="cs-modal__actions">
+            {slug && (
+              <button
+                className="cs-modal__share"
+                onClick={handleCopyLink}
+                aria-label="Copy shareable link"
+                aria-live="polite"
+              >
+                {copied ? <Check size={15} /> : <Link2 size={15} />}
+                <span>{copied ? "Copied!" : "Share"}</span>
+              </button>
+            )}
+            <button ref={closeRef} className="cs-modal__close" aria-label="Close" onClick={onClose}>
+              <X size={18} />
+            </button>
+          </div>
         </header>
         <div className="cs-modal__body">
           {children}

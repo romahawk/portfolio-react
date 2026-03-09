@@ -251,6 +251,7 @@ export default function Projects() {
       <CaseStudyModal
         open={!!caseId}
         onClose={closeCase}
+        slug={caseId}
         title={
           caseId === "livesurgery"
             ? "LiveSurgery — Case Study"
