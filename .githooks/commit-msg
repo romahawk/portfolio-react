@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# commit-msg hook — enforces conventional commit format
+# Installed automatically via `npm run prepare`
+
+MSG_FILE="$1"
+MSG=$(cat "$MSG_FILE")
+
+# Allow merge commits, revert commits, and fixup/squash commits
+if echo "$MSG" | grep -qE "^(Merge|Revert|fixup!|squash!)"; then
+  exit 0
+fi
+
+VALID_TYPES="feat|fix|chore|perf|docs|refactor|style|test"
+# Pattern: type(optional-scope): subject
+PATTERN="^($VALID_TYPES)(\([a-z0-9/_-]+\))?: .{1,72}$"
+
+FIRST_LINE=$(echo "$MSG" | head -1)
+
+if ! echo "$FIRST_LINE" | grep -qE "$PATTERN"; then
+  echo ""
+  echo "  ✗ Commit message rejected."
+  echo ""
+  echo "  First line: \"$FIRST_LINE\""
+  echo ""
+  echo "  Required format:  type(scope): subject"
+  echo "  Allowed types:    feat | fix | chore | perf | docs | refactor | style | test"
+  echo "  Max length:       72 characters on the first line"
+  echo ""
+  echo "  Examples:"
+  echo "    feat: add OG image for SmartShooter case study"
+  echo "    fix: correct aria-label on CV download link"
+  echo "    chore: update ROADMAP with Week 5 tasks"
+  echo ""
+  exit 1
+fi
+
+# Reject bare "Update X.jsx" / "Add files via upload" patterns (web editor noise)
+if echo "$FIRST_LINE" | grep -qiE "^(feat|fix|chore|perf|docs|refactor|style|test)(\([a-z0-9/_-]+\))?: (Update |Add files via upload|added |uploaded )"; then
+  echo ""
+  echo "  ✗ Commit message rejected — subject looks like a GitHub web-editor default."
+  echo "  Describe *why* the change was made, not just what file changed."
+  echo ""
+  exit 1
+fi
+
+exit 0
