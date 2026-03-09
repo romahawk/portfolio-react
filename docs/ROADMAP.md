@@ -77,6 +77,7 @@ Lighthouse CI: `.github/workflows/lighthouse.yml` runs on every PR to `main`.
 **Outcome:** Add one new project or case study that is directly relevant to current job search focus (B2B SaaS / internal tools / regulated industry).
 
 - [ ] `[FEATURE]` Add case study: [new project — to be determined based on active work]
+- [ ] `[CHORE]` Upload OG screenshots for remaining 5 projects (SmartShooter, FlowLogix, Alphorythm, Portfolio, Medintegro) and wire up `og:image` meta tags per case study
 - [ ] `[CHORE]` Refresh Skills section with any new tools/frameworks from active work
 - [ ] `[FEATURE]` Add "Open to Work" availability banner (dismissible, toggleable)
 - [ ] `[CHORE]` Update Timeline with any 2025–2026 entries
