@@ -211,18 +211,18 @@ export default function LivesurgeryCaseStudy() {
 
       <CaseStudyLinks
         pitchUrl="https://livesurgery-pitch-deck.vercel.app/"
+        demoUrl="https://livesurgery.vercel.app/"
         docs={[
           { label: "README", url: "https://github.com/romahawk/livesurgery-poc/blob/main/README.md" },
           { label: "Architecture", url: "https://github.com/romahawk/livesurgery-poc/blob/main/docs/architecture.md" },
           { label: "PRD", url: "https://github.com/romahawk/livesurgery-poc/blob/main/docs/prd.md" },
           { label: "Roadmap", url: "https://github.com/romahawk/livesurgery-poc/blob/main/docs/roadmap.md" },
           { label: "Repository", url: "https://github.com/romahawk/livesurgery-poc" },
-          { label: "Demo", url: "https://livesurgery.vercel.app/" },
         ]}
       />
 
       <footer className="cs__footer">
-        <p className="cs__last-updated">Last updated: Feb 2026</p>
+        <p className="cs__last-updated">Last updated: Mar 2026</p>
       </footer>
     </section>
   );
