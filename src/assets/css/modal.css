@@ -135,3 +135,67 @@
   scrollbar-width: thin;
   scrollbar-color: #00ddeb rgba(0,0,0,0.15);
 }
+
+/* ===== CaseStudyLinks ===== */
+.cs-links__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.cs-links__demo-btn {
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.cs-links__demo-btn:hover {
+  border-color: rgba(0, 221, 235, 0.4);
+  color: var(--brand);
+  background: rgba(255,255,255,0.03);
+}
+.cs-links__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 8px;
+}
+.cs-links__item {
+  display: contents;
+}
+.cs-links__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+}
+.cs-links__link:hover {
+  border-color: rgba(0, 221, 235, 0.4);
+  color: var(--brand);
+  background: rgba(0, 221, 235, 0.04);
+}
+.cs-links__icon {
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.cs-links__link:hover .cs-links__icon {
+  color: var(--brand);
+}
+.cs-links__ext {
+  margin-left: auto;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.cs-links__empty {
+  font-style: italic;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-links__link { transition: none; }
+}
