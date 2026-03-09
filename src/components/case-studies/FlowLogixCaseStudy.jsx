@@ -275,7 +275,16 @@ export default function FlowLogixCaseStudy() {
         </ul>
       </div>
 
-      <CaseStudyLinks />
+      <CaseStudyLinks
+        demoUrl="https://flowlogix.onrender.com/"
+        docs={[
+          { label: "README", url: "https://github.com/romahawk/flowlogix/blob/main/README.md" },
+          { label: "Architecture", url: "https://github.com/romahawk/flowlogix/blob/main/docs/ARCHITECTURE.md" },
+          { label: "PRD", url: "https://github.com/romahawk/flowlogix/blob/main/docs/PRD.md" },
+          { label: "Roadmap", url: "https://github.com/romahawk/flowlogix/blob/main/docs/ROADMAP.md" },
+          { label: "Repository", url: "https://github.com/romahawk/flowlogix" },
+        ]}
+      />
 
       <footer className="cs__footer">
         <p className="cs__last-updated">Last updated: Feb 2026</p>
