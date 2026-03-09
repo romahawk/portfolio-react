@@ -57,7 +57,16 @@ export default function PortfolioCaseStudy() {
         <p className="cs__p">React + Vite, Tailwind/CSS, lucide-react icons.</p>
       </div>
 
-      <CaseStudyLinks />
+      <CaseStudyLinks
+        demoUrl="https://www.mazuryk.dev/"
+        docs={[
+          { label: "README", url: "https://github.com/romahawk/portfolio-react/blob/main/README.md" },
+          { label: "Architecture", url: "https://github.com/romahawk/portfolio-react/blob/main/docs/ARCHITECTURE.md" },
+          { label: "PRD", url: "https://github.com/romahawk/portfolio-react/blob/main/docs/PRD.md" },
+          { label: "Roadmap", url: "https://github.com/romahawk/portfolio-react/blob/main/docs/ROADMAP.md" },
+          { label: "Repository", url: "https://github.com/romahawk/portfolio-react" },
+        ]}
+      />
 
       <footer className="cs__footer">
         <p className="cs__last-updated">Last updated: Feb 2026</p>

@@ -257,7 +257,14 @@ export default function SmartShooterCaseStudy() {
         </ul>
       </div>
 
-      <CaseStudyLinks />
+      <CaseStudyLinks
+        demoUrl="https://smartshooter.vercel.app"
+        docs={[
+          { label: "README", url: "https://github.com/romahawk/smartshooter/blob/main/README.md" },
+          { label: "Roadmap", url: "https://github.com/romahawk/smartshooter/blob/main/docs/roadmap.md" },
+          { label: "Repository", url: "https://github.com/romahawk/smartshooter" },
+        ]}
+      />
 
       <footer className="cs__footer">
         <p className="cs__last-updated">Last updated: Feb 2026</p>
