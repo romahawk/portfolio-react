@@ -26,7 +26,17 @@
   padding: 12px 14px; border-bottom: 1px solid var(--border);
   background: rgba(255,255,255,.02);
 }
-.cs-modal__title { margin: 0; font-weight: 700; }
+.cs-modal__title { margin: 0; font-weight: 700; flex: 1; min-width: 0; }
+.cs-modal__actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.cs-modal__share {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 36px; padding: 0 12px; border-radius: 8px;
+  border: 1px solid var(--border); background: transparent; color: var(--muted);
+  font-size: 13px; font-weight: 500; white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.cs-modal__share:hover { color: var(--brand); border-color: var(--brand); background: rgba(0,221,235,.06); }
+.cs-modal__share:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
 .cs-modal__close {
   width: 44px; height: 44px; border-radius: 10px;
   border: 1px solid var(--border); background: var(--panel); color: var(--text);
