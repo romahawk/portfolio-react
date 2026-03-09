@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Milestones from "./Milestones.jsx";
-import JourneyFull from "./JourneyFull.jsx";
+
+const JourneyFull = React.lazy(() => import("./JourneyFull.jsx"));
 
 const TimelineSwitch = () => {
   const [full, setFull] = useState(
@@ -26,7 +27,7 @@ const TimelineSwitch = () => {
           {full ? "Show 3 Milestones" : "View Full History (11)"}
         </button>
       </header>
-      {full ? <JourneyFull /> : <Milestones />}
+      {full ? <Suspense fallback={null}><JourneyFull /></Suspense> : <Milestones />}
     </section>
   );
 };
