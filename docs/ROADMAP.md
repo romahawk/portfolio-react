@@ -2,7 +2,7 @@
 ## Roman Mazuryk — Portfolio & Proof-of-Work Site
 
 **Version:** 1.0
-**Last Updated:** 2026-02-26 (progress updated)
+**Last Updated:** 2026-03-09 (progress updated)
 **Horizon:** 12 weeks (3 months)
 
 ---
@@ -27,14 +27,14 @@
 - [x] `[BUG]` Fix OG image URL — change from relative `/images/profile.jpg` to absolute `https://roman-mazuryk.vercel.app/images/profile.jpg` in `index.html`
 - [x] `[CHORE]` Add `public/sitemap.xml` and `public/robots.txt`
 - [x] `[CHORE]` Update `README.md` with setup steps, deploy link, stack, screenshots
-- [ ] `[CHORE]` Add `vercel.json` for explicit build configuration and security headers
+- [x] `[CHORE]` Add `vercel.json` for explicit build configuration and security headers
 
 ### Definition of Done
 - [x] `docs/` folder has all 4 files with substantive content
 - [x] GitHub repo has issue + PR templates visible when creating new issues
 - [x] `CHANGELOG.md` exists and has at least one entry
 - [ ] OG image renders on LinkedIn Post Inspector — **needs manual verification**
-- [ ] `sitemap.xml` is accessible at `https://roman-mazuryk.vercel.app/sitemap.xml` — **needs deploy to main**
+- [ ] `sitemap.xml` is accessible at `https://www.mazuryk.dev/sitemap.xml` — **needs manual verification**
 - [x] `npm run build` exits 0, `npm run lint` exits 0
 - [ ] README has a screenshot — **not yet added**
 
@@ -49,21 +49,22 @@ Screenshot of LinkedIn post preview showing OG image rendering correctly.
 
 ### Issues
 - [x] `[FEATURE]` Add Vercel Analytics (zero-config, privacy-respecting, free tier)
-- [ ] `[FEATURE]` Add Lighthouse CI to verify no regressions on build
+- [x] `[FEATURE]` Add Lighthouse CI to verify no regressions on build
 - [x] `[BUG]` Audit and fix any Lighthouse score < 90 — Performance 38→99, others 96–100
 - [x] `[CHORE]` Add `<link rel="preload">` for profile image with `fetchpriority="high"`
 - [ ] `[CHORE]` Verify all case study modals work on mobile (iOS Safari + Android Chrome)
-- [ ] `[FEATURE]` Add "Last updated" timestamp to each case study component (visible in footer of modal)
+- [x] `[FEATURE]` Add "Last updated" timestamp to each case study component (visible in footer of modal)
 
 ### Definition of Done
 - [x] Vercel Analytics dashboard shows real visitor data
 - [x] Lighthouse score ≥ 90 — Performance 99, Accessibility 100, Best Practices 96, SEO 100
 - [ ] All 6 case study modals tested on mobile — no layout breaks
 - [x] Profile image preloaded — no layout shift
-- [ ] Each case study footer shows "Last updated: [Month YYYY]"
+- [x] Each case study footer shows "Last updated: [Month YYYY]"
 
 ### Demo Artifact Required
 Loom or screenshot: Lighthouse report showing 4x 90+ scores. ✅ Confirmed 99/100/96/100.
+Lighthouse CI: `.github/workflows/lighthouse.yml` runs on every PR to `main`.
 
 ---
 
@@ -168,3 +169,4 @@ These are explicitly out of scope for this 12-week roadmap:
 | Version | Date | Summary |
 |---------|------|---------|
 | 1.0 | 2026-02-26 | Initial roadmap created via AI Production OS v1 audit |
+| 1.1 | 2026-03-09 | Mark vercel.json, Lighthouse CI, and "Last updated" timestamps as complete; update canonical domain to www.mazuryk.dev |

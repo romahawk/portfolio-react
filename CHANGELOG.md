@@ -10,6 +10,9 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 ## [Unreleased]
 
 ### Added
+- `docs/ROADMAP.md` — mark `vercel.json`, Lighthouse CI, and "Last updated" case study timestamps as complete; update domain references from `roman-mazuryk.vercel.app` to `www.mazuryk.dev`; version history entry v1.1
+
+### Changed
 - `App.jsx` + `utilities.css` — skip-to-main link (`.skip-link`): visually hidden until focused, appears at top for keyboard users (WCAG 2.4.1)
 - `Navbar.jsx` — mobile menu keyboard fix: `aria-hidden` + `inert` on `nav__list` when closed on mobile; Escape key closes open menu
 - `Projects.jsx` — empty state with "Clear filter" when tag filter yields zero results
