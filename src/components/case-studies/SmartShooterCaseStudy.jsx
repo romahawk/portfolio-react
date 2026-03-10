@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CaseStudyLinks from "../CaseStudyLinks.jsx";
 
 const sprints = [
@@ -78,6 +78,7 @@ const sprints = [
 ];
 
 export default function SmartShooterCaseStudy() {
+  const [sprintsOpen, setSprintsOpen] = useState(false);
   return (
     <section className="cs">
       <header className="cs__hero">
@@ -188,8 +189,18 @@ export default function SmartShooterCaseStudy() {
       </div>
 
       <div className="cs__card">
-        <h2 className="cs__h2">Execution Roadmap (Agile Sprints)</h2>
-        <div className="cs__grid cs__grid--two">
+        <button
+          className="cs__collapsible-header"
+          onClick={() => setSprintsOpen((o) => !o)}
+          aria-expanded={sprintsOpen}
+        >
+          <h2 className="cs__h2">Execution Roadmap (Agile Sprints)</h2>
+          <span className="cs__collapsible-arrow" aria-hidden="true">
+            {sprintsOpen ? "▲" : "▼"}
+          </span>
+        </button>
+        {sprintsOpen && (
+          <div className="cs__grid cs__grid--two">
           {sprints.map((s) => (
             <article key={s.id} className="cs__sprint">
               <h3 className="cs__h3">{s.title}</h3>
@@ -208,7 +219,8 @@ export default function SmartShooterCaseStudy() {
               <div className="cs__sprint-retro">Retro: {s.retro}</div>
             </article>
           ))}
-        </div>
+          </div>
+        )}
       </div>
 
       <div className="cs__grid cs__grid--two">
