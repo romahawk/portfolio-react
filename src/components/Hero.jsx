@@ -17,7 +17,7 @@ const Hero = () => {
           <p className="hero__eyebrow">Technical Product Portfolio · {new Date().getFullYear()}</p>
 
           <h1 className="hero__title">
-            Technical Product Manager &amp; Founder-Operator
+            Technical Product Manager &amp; Delivery Lead
           </h1>
 
           <p className="hero__subtitle">
