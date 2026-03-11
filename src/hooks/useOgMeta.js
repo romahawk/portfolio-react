@@ -6,7 +6,7 @@ const BASE = {
   description:
     "Technical Product Manager and Founder-Operator with 10+ years in MedTech and regulated B2B environments. Building scalable product systems from strategy to delivery.",
   url: "https://www.mazuryk.dev/",
-  image: "https://www.mazuryk.dev/images/profile.jpg",
+  image: "https://www.mazuryk.dev/images/og-home.png",
 };
 
 function setMeta(selector, attr, value) {
