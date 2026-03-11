@@ -223,7 +223,7 @@ export default function LivesurgeryCaseStudy() {
 
       <CaseStudyLinks
         pitchUrl="https://livesurgery-pitch-deck.vercel.app/"
-        demoUrl="https://livesurgery.vercel.app/"
+        demoUrl="https://livesurgery-landing.vercel.app/"
         docs={[
           { label: "README", url: "https://github.com/romahawk/livesurgery-poc/blob/main/README.md" },
           { label: "Architecture", url: "https://github.com/romahawk/livesurgery-poc/blob/main/docs/ARCHITECTURE.md" },
