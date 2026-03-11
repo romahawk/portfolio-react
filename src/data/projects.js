@@ -14,14 +14,13 @@ export const techProjects = [
   },
   {
     id: "flowlogix",
-    title: "FlowLogix - Supply Visibility and Lifecycle Control",
+    title: "FlowLogix - API-Driven Supply Visibility and Lifecycle Control",
     summary:
-      "Decision-support system centralizing orders, warehouse intake, and delivery transitions with role-gated workflows and ETA risk visibility to reduce coordination drag and reporting drift.",
-    stack: ["Flask", "SQLite", "SQLAlchemy", "Tailwind", "Chart.js"],
-    tags: ["Internal Tools", "Decision Support", "Platform", "Regulated", "B2B"],
-    link: "https://flowlogix.onrender.com/",
+      "Logistics operations platform centralizing orders, warehouse intake, and delivered transitions with a strict API contract, role-gated workflows, readonly demo mode, and timeline-based ETA risk visibility.",
+    stack: ["Flask", "SQLite", "SQLAlchemy", "Vanilla JS", "Tailwind", "Chart.js"],
+    tags: ["Internal Tools", "Decision Support", "API-First", "Platform", "B2B"],
+    link: "https://flowlogix.koyeb.app/",
     caseStudy: "flowlogix",
-    warmupNote: "Tip: first load may take ~30s (free Render).",
   },
   {
     id: "smartshooter",

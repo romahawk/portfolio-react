@@ -4,101 +4,90 @@ import CaseStudyLinks from "../CaseStudyLinks.jsx";
 const sprints = [
   {
     id: 1,
-    title: "Sprint 1 - Project Initialization & Access Control",
+    title: "Sprint 1 - API v1 Hardening",
     goals: [
-      "App skeleton + baseline navigation",
-      "Core data model (orders + lifecycle entities)",
-      "Authentication and role-based access (admin/user/viewer)",
-      "Environment config + deploy baseline",
+      "Read-only API for orders and current-user bootstrap",
+      "Strict query validation and deterministic sorting",
+      "RBAC-scoped payloads with stable pagination",
+      "JSON-native error handling for frontend consumers",
     ],
-    outcome: "Secure foundation: users can sign in and access a protected dashboard.",
-    retro: "Early RBAC reduced later risk and rework.",
+    outcome:
+      "FlowLogix gained a reliable application contract instead of coupling the UI directly to template-side data plumbing.",
+    retro:
+      "API discipline paid off early: later UI work moved faster because the payload shape stopped drifting.",
   },
   {
     id: 2,
-    title: "Sprint 2 - Orders Workflow & Table UX",
+    title: "Sprint 2 - Legacy Dashboard Modernization",
     goals: [
-      "Orders CRUD aligned with operational workflow",
-      "Paginated table with key columns",
-      "Search + basic filters (company, status, dates)",
-      "Validation + feedback states",
+      "Server-aligned orders table with fixed pagination",
+      "Search and sort UX built around operational scans",
+      "Timeline visualization for ETD to ETA / ATA tracking",
+      "KPI cards for transit, warehouse, delivered, and delay state",
     ],
-    outcome: "End-to-end order workflow working with search and stable table UX.",
-    retro: "Table baseline is strong; deeper filters can come later.",
+    outcome:
+      "Operations users got one screen for triage, not a spreadsheet plus chat-message workflow.",
+    retro:
+      "Timeline and table had to stay operationally deterministic; cosmetic polish only worked once the data behavior was stable.",
   },
   {
     id: 3,
-    title: "Sprint 3 - Timeline & Risk Visibility",
+    title: "Sprint 3 - Demo Safety and Environment Reliability",
     goals: [
-      "ETD->ETA timeline visualization",
-      "Date normalization and fallback rules",
-      "KPI widgets: open, near-ETA, delayed",
-      "Responsive integration",
+      "Auto-seeded demo dataset with current dates",
+      "Readonly demo protections across write-capable routes",
+      "Auto-login entry flow and safer public landing behavior",
+      "Health endpoint and startup race hardening for deployment",
     ],
-    outcome: "Operations can spot risk and timing drift early via timeline + KPIs.",
-    retro: "Document assumptions (ETD/ETA fallbacks) to avoid confusion.",
+    outcome:
+      "The app became portfolio-safe and shareable without turning into a fake static prototype.",
+    retro:
+      "Demo mode had to behave like a real product, not a disconnected showcase.",
   },
   {
     id: 4,
-    title: "Sprint 4 - Warehouse & Delivered Lifecycle Tabs",
+    title: "Sprint 4 - Lifecycle Workflow Depth",
     goals: [
-      "Warehouse intake records + stock positions",
-      "Delivered tab + history",
+      "Warehouse intake records and stock positions",
+      "Delivered tab and history",
       "Role-gated transitions across lifecycle",
-      "CSV export of filtered results",
+      "Stockreport and operational audit visibility",
     ],
     outcome: "Lifecycle transitions are controlled and trackable end-to-end.",
-    retro: "Add guardrails for edge cases (double moves).",
+    retro:
+      "Guardrails around transitions matter more than raw CRUD volume in ops software.",
   },
   {
     id: 5,
-    title: "Sprint 5 - UX Polish & Reliability States",
+    title: "Sprint 5 - Responsive UX Refinement",
     goals: [
-      "UI consistency pass (spacing, typography, cards)",
-      "Dark mode legibility for tables/timeline",
-      "Loading / empty / error states",
-      "Form validation hints",
+      "Desktop-preserving responsive behavior for tablet and mobile",
+      "No horizontal scroll in orders and timeline workflows",
+      "Single-row mobile/tablet navbar with compact primary actions",
+      "Adaptive timeline scale labels and improved onboarding tour layout",
     ],
-    outcome: "Clear, resilient UI that behaves well under slow/empty/error conditions.",
-    retro: "Standardize shared UI components to reduce duplication.",
-  },
-  {
-    id: 6,
-    title: "Sprint 6 - Stockreport & Role Controls",
-    goals: [
-      "Stockreport modal: Arrived / Stocked / Delivered",
-      "Cargo tracking fields + totals",
-      "Refined RBAC: can_edit vs can_view_all; company scoping",
-      "Demo mode (read-only) for portfolio",
-    ],
-    outcome: "Deeper operational visibility + safe public demo workflow.",
-    retro: "Next hardening: audit log + soft delete.",
-  },
-  {
-    id: 7,
-    title: "Sprint 7 - Performance & Admin Hardening",
-    goals: [
-      "Query optimization and pagination hardening",
-      "Admin tools: user roles, seeding, imports",
-      "Error boundaries and 404/500 pages",
-      "Screenshots + case study assets",
-    ],
-    outcome: "Stable MVP with predictable performance and portfolio-ready artifacts.",
-    retro: "Ready for PostgreSQL migration and beta feedback loop.",
+    outcome:
+      "The same operational dashboard now works across desktop, tablet, and mobile without collapsing into cramped overflow states.",
+    retro:
+      "Responsive work had to preserve desktop density while making mobile intentional, not merely smaller.",
   },
 ];
 
 export default function FlowLogixCaseStudy() {
   const [sprintsOpen, setSprintsOpen] = useState(false);
+
   return (
     <section className="cs">
       <header className="cs__hero">
         <span className="cs__badge">Case Study - Logistics (Internal Systems)</span>
-        <h1 className="cs__title">FlowLogix - Supply Visibility and Lifecycle Control</h1>
+        <h1 className="cs__title">
+          FlowLogix - API-Driven Supply Visibility and Lifecycle Control
+        </h1>
         <p className="cs__lead">
-          A decision-support system that centralizes orders, warehouse intake, and deliveries into
-          one source of truth. Built to reduce status drift, improve ETA reliability, and enable
-          role-based operational workflows.
+          A logistics operations platform that centralizes orders, warehouse intake,
+          and delivered transitions into one role-safe system of record. Built to
+          reduce status drift, surface ETA risk early, and give teams a deterministic
+          dashboard instead of spreadsheet coordination.
         </p>
       </header>
 
@@ -106,20 +95,24 @@ export default function FlowLogixCaseStudy() {
         <h2 className="cs__h2">Founder Lens</h2>
         <ul className="cs__list">
           <li>
-            <strong>Product thesis</strong>: logistics teams lose speed and confidence when order
-            lifecycle data is fragmented across tools; one operational layer cuts coordination drag.
+            <strong>Product thesis</strong>: logistics teams lose speed and
+            confidence when order lifecycle data is fragmented across tools; one
+            operational layer cuts coordination drag and reduces reporting ambiguity.
           </li>
           <li>
-            <strong>ICP + buyer/user</strong>: SMB and mid-market import and distribution teams;
-            buyers are operations leadership, users are operations managers and warehouse leads.
+            <strong>ICP + buyer/user</strong>: SMB and mid-market import and
+            distribution teams; buyers are operations leadership, users are
+            operations managers and warehouse leads.
           </li>
           <li>
-            <strong>Wedge + why now</strong>: start with shipment risk visibility and lifecycle
-            transitions where missed ETAs immediately impact customer commitments.
+            <strong>Wedge + why now</strong>: start with shipment risk visibility,
+            lifecycle transitions, and public-demo-safe ops tooling where missed ETAs
+            immediately impact customer commitments.
           </li>
           <li>
-            <strong>Moat</strong>: workflow depth in lifecycle states, role-gated transitions, and
-            operational reporting consistency.
+            <strong>Moat</strong>: workflow depth in lifecycle states, strict API
+            behavior, and role-gated operational consistency across orders,
+            warehouse, and delivered views.
           </li>
         </ul>
       </div>
@@ -128,9 +121,9 @@ export default function FlowLogixCaseStudy() {
         <div className="cs__card">
           <h2 className="cs__h2">Problem & Context</h2>
           <p className="cs__p">
-            Teams were tracking shipments across spreadsheets and ad-hoc messages. Updates drifted,
-            ETAs were missed, and managers could not see risk early, creating manual follow-ups and
-            firefighting.
+            Teams were tracking shipments across spreadsheets and ad-hoc messages.
+            Updates drifted, ETAs were missed, and managers could not see risk
+            early, creating manual follow-ups and firefighting.
           </p>
         </div>
         <div className="cs__card">
@@ -139,17 +132,23 @@ export default function FlowLogixCaseStudy() {
             <li>
               <div className="cs__persona-name">Operations Manager</div>
               <div className="cs__persona-role">Risk & timing visibility</div>
-              <p className="cs__p">Needs KPIs and a fast view of delays and near-ETA shipments.</p>
+              <p className="cs__p">
+                Needs KPIs and a fast view of delays and near-ETA shipments.
+              </p>
             </li>
             <li>
               <div className="cs__persona-name">Warehouse Lead</div>
               <div className="cs__persona-role">Intake and lifecycle execution</div>
-              <p className="cs__p">Wants fast intake, stock tracking, and delivery confirmations.</p>
+              <p className="cs__p">
+                Wants fast intake, stock tracking, and delivery confirmations.
+              </p>
             </li>
             <li>
               <div className="cs__persona-name">Account Manager</div>
               <div className="cs__persona-role">Reporting</div>
-              <p className="cs__p">Requires filtered exports and read-only visibility across accounts.</p>
+              <p className="cs__p">
+                Requires filtered operational views and reliable shared status.
+              </p>
             </li>
           </ul>
         </div>
@@ -158,20 +157,48 @@ export default function FlowLogixCaseStudy() {
       <div className="cs__card">
         <h2 className="cs__h2">Constraints</h2>
         <ul className="cs__list">
-          <li><strong>RBAC</strong>: company scoping + role-gated actions (view vs edit).</li>
-          <li><strong>Data quality</strong>: date fallbacks and validation to prevent misleading timelines.</li>
-          <li><strong>Adoption</strong>: non-technical users need clarity and speed.</li>
-          <li><strong>Public demo</strong>: safe portfolio mode without exposing real operational data.</li>
+          <li>
+            <strong>RBAC</strong>: role-gated actions and readonly demo behavior
+            must prevent accidental writes.
+          </li>
+          <li>
+            <strong>Data quality</strong>: strict validation and date normalization
+            are required to keep the timeline trustworthy.
+          </li>
+          <li>
+            <strong>Adoption</strong>: non-technical users need clarity, speed, and
+            deterministic behavior.
+          </li>
+          <li>
+            <strong>Public demo</strong>: seeded, readonly demo mode must stay
+            realistic without exposing real operational data.
+          </li>
         </ul>
       </div>
 
       <div className="cs__card">
         <h2 className="cs__h2">Key Product Decisions I Owned</h2>
         <ul className="cs__list">
-          <li>Designed the product around <strong>daily decisions</strong> (risk, near-ETA, delays), not raw data dumps.</li>
-          <li>Introduced <strong>role-based transitions</strong> across lifecycle to prevent accidental workflow breaks.</li>
-          <li>Built <strong>timeline visualization</strong> as the primary risk signal (ETD → ETA), with clear fallbacks.</li>
-          <li>Added <strong>demo mode</strong> so the system is portfolio-safe while keeping functionality realistic.</li>
+          <li>
+            Moved the product to an <strong>API-first contract</strong> so the UI
+            could evolve without backend ambiguity.
+          </li>
+          <li>
+            Designed around <strong>daily ops decisions</strong> such as risk,
+            overdue shipments, and lifecycle transitions, not raw data dumps.
+          </li>
+          <li>
+            Made <strong>timeline visualization</strong> the core risk surface,
+            backed by strict date handling and deterministic sorting.
+          </li>
+          <li>
+            Added <strong>readonly demo mode with seeded data</strong> so the app
+            can be shared publicly without faking the workflow.
+          </li>
+          <li>
+            Protected desktop density while driving <strong>responsive UX
+            refinement</strong> for tablet and mobile operations use.
+          </li>
         </ul>
       </div>
 
@@ -179,28 +206,31 @@ export default function FlowLogixCaseStudy() {
         <h2 className="cs__h2">Architecture & Technical Leverage</h2>
         <ul className="cs__list">
           <li>
-            <strong>Backend</strong>: Flask + SQLite + SQLAlchemy with migrations and seeded data
-            for predictable environment setup.
+            <strong>Backend</strong>: Flask + SQLite + SQLAlchemy with migrations,
+            demo seeding, health checks, and startup hardening for predictable
+            deployment behavior.
           </li>
           <li>
-            <strong>Access model</strong>: Flask-Login + RBAC with company scoping and role-gated
-            lifecycle actions.
+            <strong>Access model</strong>: Flask-Login + RBAC with role-gated
+            lifecycle actions and readonly demo protections across write routes.
           </li>
           <li>
-            <strong>UI layer</strong>: Tailwind dashboard optimized for high-frequency operational
-            use, including dark-mode readability.
+            <strong>UI layer</strong>: legacy-first Flask templates plus vanilla JS
+            and Tailwind, tuned for high-frequency operational use and recent
+            mobile/tablet responsiveness.
           </li>
           <li>
-            <strong>Decision layer</strong>: ETD-to-ETA timeline and KPI widgets for risk
-            detection and prioritization.
+            <strong>Decision layer</strong>: ETD-to-ETA timeline, overdue
+            highlighting, KPI widgets, and adaptive scale labels for risk detection
+            and prioritization.
           </li>
           <li>
-            <strong>Operational outputs</strong>: CSV export and lifecycle state tracking for
-            external reporting.
+            <strong>API contract</strong>: versioned JSON endpoints for orders and
+            auth bootstrap with strict validation and stable response behavior.
           </li>
           <li>
-            <strong>Deployment path</strong>: Render/Railway with environment-based config and
-            safe demo mode.
+            <strong>Deployment path</strong>: Render/Railway compatible with
+            environment-based config and safe public demo mode.
           </li>
         </ul>
       </div>
@@ -208,34 +238,34 @@ export default function FlowLogixCaseStudy() {
       <div className="cs__card">
         <button
           className="cs__collapsible-header"
-          onClick={() => setSprintsOpen((o) => !o)}
+          onClick={() => setSprintsOpen((open) => !open)}
           aria-expanded={sprintsOpen}
         >
           <h2 className="cs__h2">Execution Roadmap (Agile Sprints)</h2>
           <span className="cs__collapsible-arrow" aria-hidden="true">
-            {sprintsOpen ? "▲" : "▼"}
+            {sprintsOpen ? "Up" : "Down"}
           </span>
         </button>
         {sprintsOpen && (
           <div className="cs__grid cs__grid--two">
-          {sprints.map((s) => (
-            <article key={s.id} className="cs__sprint">
-              <h3 className="cs__h3">{s.title}</h3>
-              <div className="cs__sprint-sec">
-                <div className="cs__sprint-label">Goals</div>
-                <ul className="cs__list cs__list--compact">
-                  {s.goals.map((g, i) => (
-                    <li key={i}>{g}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="cs__sprint-sec">
-                <div className="cs__sprint-label">Outcome</div>
-                <p className="cs__p">{s.outcome}</p>
-              </div>
-              <div className="cs__sprint-retro">Retro: {s.retro}</div>
-            </article>
-          ))}
+            {sprints.map((sprint) => (
+              <article key={sprint.id} className="cs__sprint">
+                <h3 className="cs__h3">{sprint.title}</h3>
+                <div className="cs__sprint-sec">
+                  <div className="cs__sprint-label">Goals</div>
+                  <ul className="cs__list cs__list--compact">
+                    {sprint.goals.map((goal, index) => (
+                      <li key={index}>{goal}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="cs__sprint-sec">
+                  <div className="cs__sprint-label">Outcome</div>
+                  <p className="cs__p">{sprint.outcome}</p>
+                </div>
+                <div className="cs__sprint-retro">Retro: {sprint.retro}</div>
+              </article>
+            ))}
           </div>
         )}
       </div>
@@ -244,19 +274,36 @@ export default function FlowLogixCaseStudy() {
         <div className="cs__card">
           <h2 className="cs__h2">Outcomes & Success Criteria</h2>
           <ul className="cs__list">
-            <li>Unified order lifecycle view with early risk detection via timeline and KPIs.</li>
-            <li>Role-governed transitions across Orders → Warehouse → Delivered workflows.</li>
-            <li>Reporting reliability improved through exportable filtered operational views.</li>
-            <li>MVP validated with stable UX states for daily, non-technical operations use.</li>
-            <li>Defined next-phase metrics: ETA variance reduction, update latency, and user adoption.</li>
+            <li>
+              Unified order lifecycle view with earlier risk detection through
+              timeline and KPI signals.
+            </li>
+            <li>
+              Role-governed transitions across Orders to Warehouse to Delivered
+              workflows.
+            </li>
+            <li>
+              Public demo can be shared safely without breaking realism or exposing
+              write access.
+            </li>
+            <li>
+              Operational UI now behaves predictably across desktop, tablet, and
+              mobile viewports.
+            </li>
+            <li>
+              Defined next-phase work around modular JS extraction, broader test
+              coverage, and deployment hardening.
+            </li>
           </ul>
         </div>
         <div className="cs__card">
           <h2 className="cs__h2">My Role (Product Owner / Technical PM)</h2>
           <p className="cs__p">
-            Technical Product Manager: defined workflow, role model, success criteria, and delivery
-            plan. Used hands-on prototyping to validate the UI, data model, and timeline logic, and
-            to iterate quickly on stakeholder feedback.
+            Technical Product Manager / builder: defined the workflow, API
+            behavior, role model, success criteria, and delivery plan. I used
+            hands-on implementation to validate the UI, data model, demo mode, and
+            responsive behavior, then iterated quickly based on product tradeoffs
+            rather than treating engineering as a handoff.
           </p>
         </div>
       </div>
@@ -265,30 +312,31 @@ export default function FlowLogixCaseStudy() {
         <h2 className="cs__h2">Business Model & GTM</h2>
         <ul className="cs__list">
           <li>
-            <strong>Pricing models</strong>: per-site subscription with user tiers, plus setup and
-            onboarding package.
+            <strong>Pricing models</strong>: per-site subscription with user tiers,
+            plus setup and onboarding package.
           </li>
           <li>
-            <strong>First 5 customers plan</strong>: import/distribution teams with recurring ETA
-            misses and high manual coordination overhead.
+            <strong>First 5 customers plan</strong>: import/distribution teams with
+            recurring ETA misses and high manual coordination overhead.
           </li>
           <li>
-            <strong>Why they buy</strong>: fewer missed handoffs, faster issue escalation, and more
-            reliable reporting.
+            <strong>Why they buy</strong>: fewer missed handoffs, faster issue
+            escalation, and more reliable reporting.
           </li>
           <li>
-            <strong>How to close</strong>: time-boxed pilot on one operational lane with pre-agreed
-            KPI targets and weekly reviews.
+            <strong>How to close</strong>: time-boxed pilot on one operational lane
+            with pre-agreed KPI targets and weekly reviews.
           </li>
           <li>
-            <strong>Sales cycle reality</strong>: adoption depends on workflow trust; proving data
-            quality and role clarity is critical in the first month.
+            <strong>Sales cycle reality</strong>: adoption depends on workflow
+            trust; proving data quality, demo realism, and role clarity is critical
+            in the first month.
           </li>
         </ul>
       </div>
 
       <CaseStudyLinks
-        demoUrl="https://flowlogix.onrender.com/"
+        demoUrl="https://flowlogix.koyeb.app/"
         docs={[
           { label: "README", url: "https://github.com/romahawk/flowlogix/blob/main/README.md" },
           { label: "Architecture", url: "https://github.com/romahawk/flowlogix/blob/main/docs/ARCHITECTURE.md" },
@@ -299,7 +347,7 @@ export default function FlowLogixCaseStudy() {
       />
 
       <footer className="cs__footer">
-        <p className="cs__last-updated">Last updated: Feb 2026</p>
+        <p className="cs__last-updated">Last updated: Mar 2026</p>
       </footer>
     </section>
   );
