@@ -23,14 +23,13 @@ export const techProjects = [
     caseStudy: "flowlogix",
   },
   {
-    id: "smartshooter",
-    title: "SmartShooter - Training Log and Shooting Analytics",
+    id: "jobsprint",
+    title: "JobSprint - Job Search Workflow Manager",
     summary:
-      "Player-coach performance system combining low-friction session logging, zone-based analytics, and habit loops (streaks/challenges) to improve training consistency and decision quality.",
-    stack: ["React", "Tailwind", "Firebase", "Firestore", "Auth"],
-    tags: ["Analytics", "Decision Support", "Platform"],
-    link: "https://smartshooter.vercel.app",
-    caseStudy: "smartshooter",
+      "Execution-oriented job search system for solo product and engineering candidates, replacing scattered notes and spreadsheets with a drag-and-drop application pipeline, weekly execution tracking, funnel analytics, and an offer-probability view tied to real conversion progress.",
+    stack: ["React", "Vite", "Tailwind", "Local Storage", "Analytics"],
+    tags: ["Productivity", "Workflow", "Decision Support", "Platform"],
+    link: "https://job-sprint-ten.vercel.app/",
   },
   {
     id: "portfolio",
