@@ -9,7 +9,7 @@ export const techProjects = [
       "Founder-led MedTech PoC delivering a fully functional OR workspace: multi-panel video coordination, drag-and-drop source assignment, role-based access (Surgeon / Observer / Admin), and WebSocket-powered real-time layout sync with optimistic concurrency. Backed by a FastAPI + SQLite REST API with session lifecycle management, an analytics dashboard, and a searchable session archive.",
     stack: ["React + Tailwind", "FastAPI + SQLite", "WebSocket (real-time sync)", "Vite · Recharts · dnd-kit", "WebRTC (next phase)"],
     tags: ["Real-time", "Full-stack", "PoC", "MedTech", "RBAC"],
-    link: "https://livesurgery.vercel.app/",
+    link: "https://livesurgery-landing.vercel.app/",
     caseStudy: "livesurgery",
   },
   {
