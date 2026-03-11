@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import { techProjects } from "../data/projects.js";
 
 const BASE = {
-  title: "Roman Mazuryk — Technical Product Manager & Founder-Operator",
+  title: "Roman Mazuryk - Technical Product Manager & Founder-Operator",
   description:
-    "Technical Product Manager and Founder-Operator with 10+ years in MedTech and regulated B2B environments. Building scalable product systems from strategy to delivery.",
+    "Technical Product Manager and Founder-Operator building AI-augmented product systems in regulated industries from strategy through delivery.",
   url: "https://www.mazuryk.dev/",
   image: "https://www.mazuryk.dev/images/og-home.png",
+  image: "https://www.mazuryk.dev/images/og-home.svg",
 };
 
 function setMeta(selector, attr, value) {
@@ -16,14 +17,14 @@ function setMeta(selector, attr, value) {
 
 function applyMeta({ title, description, url, image }) {
   document.title = title;
-  setMeta('meta[name="description"]',          "content", description);
-  setMeta('meta[property="og:title"]',         "content", title);
-  setMeta('meta[property="og:description"]',   "content", description);
-  setMeta('meta[property="og:url"]',           "content", url);
-  setMeta('meta[property="og:image"]',         "content", image);
-  setMeta('meta[name="twitter:title"]',        "content", title);
-  setMeta('meta[name="twitter:description"]',  "content", description);
-  setMeta('meta[name="twitter:image"]',        "content", image);
+  setMeta('meta[name="description"]', "content", description);
+  setMeta('meta[property="og:title"]', "content", title);
+  setMeta('meta[property="og:description"]', "content", description);
+  setMeta('meta[property="og:url"]', "content", url);
+  setMeta('meta[property="og:image"]', "content", image);
+  setMeta('meta[name="twitter:title"]', "content", title);
+  setMeta('meta[name="twitter:description"]', "content", description);
+  setMeta('meta[name="twitter:image"]', "content", image);
 }
 
 export function useOgMeta() {
@@ -34,7 +35,7 @@ export function useOgMeta() {
         const project = techProjects.find((p) => p.caseStudy === match[1]);
         if (project) {
           applyMeta({
-            title: `${project.title} — mazuryk.dev`,
+            title: `${project.title} - mazuryk.dev`,
             description: project.summary,
             url: `https://www.mazuryk.dev/#projects/${match[1]}`,
             image: BASE.image,
@@ -42,6 +43,7 @@ export function useOgMeta() {
           return;
         }
       }
+
       applyMeta(BASE);
     }
 
