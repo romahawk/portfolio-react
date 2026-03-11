@@ -68,12 +68,9 @@ function ProjectCard({ p, variant, onOpenCase }) {
               <span>In progress</span>
             </div>
           ) : p.link ? (
-            <div className="project-card__link-wrap">
-              <a className="project-card__link" href={p.link} target="_blank" rel="noreferrer">
-                View
-              </a>
-              {p.warmupNote ? <p className="project-card__hint">{p.warmupNote}</p> : null}
-            </div>
+            <a className="project-card__link" href={p.link} target="_blank" rel="noreferrer">
+              View
+            </a>
           ) : null}
         </div>
 
