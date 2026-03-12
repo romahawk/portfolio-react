@@ -17,12 +17,11 @@ const AIAugmentedSDLC = () => (
       <span className="about__chev">&gt;</span> AI-Augmented SDLC
     </h2>
     <p className="about__text reveal">
-      Proprietary AI-Leverage Framework for production-grade delivery. Trade-offs stay explicit,
+      The Systems-First SDLC for production-grade delivery. Trade-offs stay explicit,
       decisions stay visible, scope stays constrained to what can ship. Built for
       Remote-First Agile Environments targeting EU/Global B2B SaaS and regulated industries.
     </p>
 
-    {/* Remote-First + Compliance badges */}
     <div className="ai-sdlc__badges reveal">
       <span className="ai-sdlc__badge">
         <Globe size={13} /> Remote-First Architecture
@@ -46,7 +45,6 @@ const AIAugmentedSDLC = () => (
       </a>
     </div>
 
-    {/* Workflow diagram — drop your images in public/images/ and uncomment */}
     {/*
     <div className="ai-sdlc__diagram reveal">
       <img
@@ -72,7 +70,7 @@ const AIAugmentedSDLC = () => (
       <p className="about__text">
         <strong>Decision Logs</strong> capture trade-off rationale, accepted risk, and system
         implications to compound long-term leverage across releases. Every architectural
-        decision has a record — no institutional knowledge locked in Slack threads.
+        decision has a record - no institutional knowledge locked in Slack threads.
       </p>
       <p className="about__text">
         <strong>Compliance Edge:</strong> In regulated MedTech/Pharma environments, explicit
@@ -89,12 +87,12 @@ const AIAugmentedSDLC = () => (
       <p className="about__text">
         <strong>Micro-Scope execution:</strong> select a GitHub issue, define acceptance
         criteria and data schemas before touching code, then implement through small
-        daily PRs. Scope is locked at issue-open — no mid-sprint expansion.
+        daily PRs. Scope is locked at issue-open - protecting scope integrity and predictable velocity.
       </p>
       <p className="about__text">
-        <strong>Manual Reasoning Pass</strong> is a hard gate before every implementation:
+        <strong>Architectural Gate &amp; Risk Assessment</strong> is a hard gate before every implementation:
         architecture logic, state transitions, and edge cases are validated by the architect.
-        AI assists — the architect decides.
+        AI assists - the architect decides.
       </p>
       <p className="about__text">
         <strong>Auditability in regulated contexts:</strong> Micro-Scope plus explicit
@@ -111,17 +109,17 @@ const AIAugmentedSDLC = () => (
       <div className="ai-sdlc__stack">
         <p className="about__text ai-sdlc__stack-item">
           <Gauge size={16} className="icon about__icon" />
-          <span><strong>Lighthouse</strong> — performance baselines and release gating.
+          <span><strong>Lighthouse</strong> - performance baselines and release gating.
           Score regression blocks merge.</span>
         </p>
         <p className="about__text ai-sdlc__stack-item">
           <Bug size={16} className="icon about__icon" />
-          <span><strong>Sentry</strong> — runtime error visibility and failure triage
+          <span><strong>Sentry</strong> - runtime error visibility and failure triage
           with environment-scoped alerting.</span>
         </p>
         <p className="about__text ai-sdlc__stack-item">
           <BarChart3 size={16} className="icon about__icon" />
-          <span><strong>PostHog</strong> — usage analytics and post-release signal
+          <span><strong>PostHog</strong> - usage analytics and post-release signal
           tracking to validate delivery impact.</span>
         </p>
       </div>

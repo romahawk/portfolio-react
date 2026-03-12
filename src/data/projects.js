@@ -4,11 +4,11 @@
 export const techProjects = [
   {
     id: "livesurgery",
-    title: "LiveSurgery — Real-Time Surgical Collaboration Platform",
+    title: "LiveSurgery - Real-Time Surgical Collaboration Platform",
     summary:
       "Founder-led MedTech PoC delivering a fully functional OR workspace: multi-panel video coordination, drag-and-drop source assignment, role-based access (Surgeon / Observer / Admin), and WebSocket-powered real-time layout sync with optimistic concurrency. Backed by a FastAPI + SQLite REST API with session lifecycle management, an analytics dashboard, and a searchable session archive.",
-    stack: ["React + Tailwind", "FastAPI + SQLite", "WebSocket (real-time sync)", "Vite · Recharts · dnd-kit", "WebRTC (next phase)"],
-    tags: ["Real-time", "Full-stack", "PoC", "MedTech", "RBAC"],
+    stack: ["React + Tailwind", "FastAPI + SQLite", "WebSocket (real-time sync)", "Vite + Recharts + dnd-kit", "WebRTC (next phase)"],
+    tags: ["Real-Time Systems", "Decision Support", "MedTech", "B2B"],
     link: "https://livesurgery-landing.vercel.app/",
     caseStudy: "livesurgery",
   },
@@ -18,7 +18,7 @@ export const techProjects = [
     summary:
       "Logistics operations platform centralizing orders, warehouse intake, and delivered transitions with a strict API contract, role-gated workflows, readonly demo mode, and timeline-based ETA risk visibility.",
     stack: ["Flask", "SQLite", "SQLAlchemy", "Vanilla JS", "Tailwind", "Chart.js"],
-    tags: ["Internal Tools", "Decision Support", "API-First", "Platform", "B2B"],
+    tags: ["Workflow Systems", "Internal Tools", "Decision Support", "B2B"],
     link: "https://flowlogix.koyeb.app/",
     caseStudy: "flowlogix",
   },
@@ -28,46 +28,14 @@ export const techProjects = [
     summary:
       "Execution-oriented job search system for solo product and engineering candidates, replacing scattered notes and spreadsheets with a drag-and-drop application pipeline, weekly execution tracking, funnel analytics, and an offer-probability view tied to real conversion progress.",
     stack: ["React", "Vite", "Tailwind", "Local Storage", "Analytics"],
-    tags: ["Productivity", "Workflow", "Decision Support", "Platform"],
-    link: "https://job-sprint-ten.vercel.app/",
-  },
-  {
-    id: "portfolio",
-    title: "Portfolio - Product Narrative System",
-    summary:
-      "Product artifact designed around executive scanability: clear positioning, evidence hierarchy, and case-study storytelling that translates delivery depth into decision-ready narrative.",
-    stack: ["React", "Vite", "Tailwind"],
-    tags: ["Platform", "B2B", "Decision Support"],
-    link: "#",
-    caseStudy: "portfolio",
-  },
-  {
-    id: "medintegro",
-    title: "Medintegro - B2B Platform Rebuild (In Progress)",
-    summary:
-      "Product-led rebuild of a MedTech distributor platform with modular information architecture, multilingual content (DE/EN/UA), and CMS-ready structure for scalable growth.",
-    stack: ["Next.js", "React", "Tailwind"],
-    tags: ["B2B", "Platform", "Regulated"],
-    link: "#",
-    caseStudy: "medintegro",
-    inDevelopment: true,
-  },
-  {
-    id: "alphorythm",
-    title: "AlphaRhythm - Strategy Analytics Platform (In Progress)",
-    summary:
-      "Decision-support platform unifying imports, backtests, and live trading logs into one consistent review workflow to reduce metric ambiguity and improve execution discipline.",
-    stack: ["React", "Tailwind", "Node/Flask (planned)", "Firebase", "Chart.js", "SQLite"],
-    tags: ["Analytics", "Decision Support", "Platform", "PoC"],
-    link: "#",
-    caseStudy: "alphorythm",
-    inDevelopment: true,
+    tags: ["Workflow Systems", "Productivity", "Decision Support"],
+    link: "https://jobsprint-demo.vercel.app/",
+    caseStudy: "jobsprint",
   },
 ];
 
 // ---------- MedTech ----------
 export const medtechProjects = [
-  // Integration & Innovation
   {
     id: "surgiris-lights",
     segment: "integration",
@@ -113,14 +81,12 @@ export const medtechProjects = [
     stack: ["Imaging Workflow", "Integration", "Supportability"],
     icon: "Camera",
   },
-
-  // Sales & Project Management
   {
     id: "national-launches",
     segment: "management",
     title: "National Product Launches (MedTech)",
     summary:
-      "Launched MedTech products nationwide: positioning, demos, KOL engagement, training, and early adoption—aligning vendor goals with hospital realities.",
+      "Launched MedTech products nationwide: positioning, demos, KOL engagement, training, and early adoption - aligning vendor goals with hospital realities.",
     stack: ["GTM", "Stakeholder Alignment", "Training"],
     icon: "Rocket",
   },

@@ -89,9 +89,15 @@ export default function FlowLogixCaseStudy() {
           reduce status drift, surface ETA risk early, and give teams a deterministic
           dashboard instead of spreadsheet coordination.
         </p>
+        <div className="cs__meta" aria-label="Case study highlights">
+          <div className="cs__meta-item"><strong>Scope</strong> Operations system with API-first lifecycle control</div>
+          <div className="cs__meta-item"><strong>Focus</strong> Risk visibility, demo safety, responsive ops UX</div>
+          <div className="cs__meta-item"><strong>Format</strong> Internal tool case study with shipped workflow depth</div>
+        </div>
       </header>
 
-      <div className="cs__card">
+      <div id="founder-lens" className="cs__card cs__card--insight">
+        <div className="cs__eyebrow">Strategic framing</div>
         <h2 className="cs__h2">Founder Lens</h2>
         <ul className="cs__list">
           <li>
@@ -118,7 +124,8 @@ export default function FlowLogixCaseStudy() {
       </div>
 
       <div className="cs__grid cs__grid--two">
-        <div className="cs__card">
+        <div id="problem-context" className="cs__card">
+          <div className="cs__eyebrow">Problem space</div>
           <h2 className="cs__h2">Problem & Context</h2>
           <p className="cs__p">
             Teams were tracking shipments across spreadsheets and ad-hoc messages.
@@ -126,7 +133,8 @@ export default function FlowLogixCaseStudy() {
             early, creating manual follow-ups and firefighting.
           </p>
         </div>
-        <div className="cs__card">
+        <div className="cs__card cs__card--cool">
+          <div className="cs__eyebrow">User map</div>
           <h2 className="cs__h2">Users / Stakeholders</h2>
           <ul className="cs__personas">
             <li>
@@ -154,7 +162,8 @@ export default function FlowLogixCaseStudy() {
         </div>
       </div>
 
-      <div className="cs__card">
+      <div id="constraints" className="cs__card">
+        <div className="cs__eyebrow">Delivery guardrails</div>
         <h2 className="cs__h2">Constraints</h2>
         <ul className="cs__list">
           <li>
@@ -176,7 +185,8 @@ export default function FlowLogixCaseStudy() {
         </ul>
       </div>
 
-      <div className="cs__card">
+      <div id="product-decisions" className="cs__card cs__card--warm">
+        <div className="cs__eyebrow">Product bets</div>
         <h2 className="cs__h2">Key Product Decisions I Owned</h2>
         <ul className="cs__list">
           <li>
@@ -202,7 +212,8 @@ export default function FlowLogixCaseStudy() {
         </ul>
       </div>
 
-      <div className="cs__card">
+      <div id="architecture" className="cs__card cs__card--cool">
+        <div className="cs__eyebrow">System design</div>
         <h2 className="cs__h2">Architecture & Technical Leverage</h2>
         <ul className="cs__list">
           <li>
@@ -235,15 +246,19 @@ export default function FlowLogixCaseStudy() {
         </ul>
       </div>
 
-      <div className="cs__card">
+      <div id="roadmap" className="cs__card cs__card--interactive">
         <button
           className="cs__collapsible-header"
           onClick={() => setSprintsOpen((open) => !open)}
           aria-expanded={sprintsOpen}
         >
-          <h2 className="cs__h2">Execution Roadmap (Agile Sprints)</h2>
+          <div className="cs__collapsible-copy">
+            <div className="cs__eyebrow">Execution pacing</div>
+            <h2 className="cs__h2">Execution Roadmap (Agile Sprints)</h2>
+            <div className="cs__collapsible-helper">5 iterations covering API hardening, dashboard modernization, demo safety, lifecycle depth, and responsive UX.</div>
+          </div>
           <span className="cs__collapsible-arrow" aria-hidden="true">
-            {sprintsOpen ? "Up" : "Down"}
+            {sprintsOpen ? "Close" : "Open"}
           </span>
         </button>
         {sprintsOpen && (
@@ -271,7 +286,8 @@ export default function FlowLogixCaseStudy() {
       </div>
 
       <div className="cs__grid cs__grid--two">
-        <div className="cs__card">
+        <div id="outcomes" className="cs__card cs__card--success">
+          <div className="cs__eyebrow">Business impact</div>
           <h2 className="cs__h2">Outcomes & Success Criteria</h2>
           <ul className="cs__list">
             <li>
@@ -297,6 +313,7 @@ export default function FlowLogixCaseStudy() {
           </ul>
         </div>
         <div className="cs__card">
+          <div className="cs__eyebrow">Ownership</div>
           <h2 className="cs__h2">My Role (Product Owner / Technical PM)</h2>
           <p className="cs__p">
             Technical Product Manager / builder: defined the workflow, API
@@ -308,7 +325,8 @@ export default function FlowLogixCaseStudy() {
         </div>
       </div>
 
-      <div className="cs__card">
+      <div id="gtm" className="cs__card cs__card--warm">
+        <div className="cs__eyebrow">Commercial path</div>
         <h2 className="cs__h2">Business Model & GTM</h2>
         <ul className="cs__list">
           <li>

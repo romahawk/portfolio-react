@@ -42,8 +42,13 @@
 .projects__filters {
   display: inline-flex;
   gap: 6px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  max-width: 100%;
+  padding-bottom: 2px;
+  scrollbar-width: none;
 }
+.projects__filters::-webkit-scrollbar { display: none; }
 
 .projects__section-title {
   color: var(--brand);
@@ -85,7 +90,11 @@
 .project-card__head {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 8px;
+}
+.project-card__title-wrap {
+  display: grid;
   gap: 8px;
 }
 
@@ -98,6 +107,21 @@
 .project-card__summary {
   margin: 0 0 10px;
   line-height: 1.6;
+}
+.project-card__tone {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(190, 208, 230, 0.1);
+  background: rgba(255,255,255,0.025);
+  color: var(--muted-strong);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .project-card__stack {
@@ -127,6 +151,33 @@
   justify-content: center;
   color: var(--brand);
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.25));
+}
+.project-card--signal {
+  background:
+    radial-gradient(560px 240px at 100% 0, rgba(73,215,209,0.08), transparent 60%),
+    linear-gradient(180deg, rgba(16, 20, 28, 0.92), rgba(16, 20, 28, 0.78));
+}
+.project-card--signal:hover {
+  border-color: rgba(73, 215, 209, 0.45);
+  box-shadow: 0 12px 26px rgba(73, 215, 209, 0.16);
+}
+.project-card--workflow {
+  background:
+    radial-gradient(560px 240px at 100% 0, rgba(111,164,255,0.09), transparent 60%),
+    linear-gradient(180deg, rgba(16, 20, 28, 0.92), rgba(16, 20, 28, 0.78));
+}
+.project-card--workflow:hover {
+  border-color: rgba(111, 164, 255, 0.42);
+  box-shadow: 0 12px 26px rgba(111, 164, 255, 0.16);
+}
+.project-card--insight {
+  background:
+    radial-gradient(560px 240px at 100% 0, rgba(243,182,110,0.1), transparent 60%),
+    linear-gradient(180deg, rgba(16, 20, 28, 0.92), rgba(16, 20, 28, 0.78));
+}
+.project-card--insight:hover {
+  border-color: rgba(243, 182, 110, 0.42);
+  box-shadow: 0 12px 26px rgba(243, 182, 110, 0.14);
 }
 
 .projects__filters .chip--active {
@@ -261,6 +312,9 @@
 
 /* ==== Responsive ==== */
 @media (max-width: 540px) {
+  .projects__filters {
+    width: 100%;
+  }
   .project-card__actions {
     flex-direction: column;
     align-items: flex-start;
