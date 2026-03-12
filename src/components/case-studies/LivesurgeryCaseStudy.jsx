@@ -74,7 +74,7 @@ export default function LivesurgeryCaseStudy() {
         </div>
       </header>
 
-      <div id="founder-lens" className="cs__card cs__card--insight">
+      <div id="founder-lens" data-cs-section="founder-lens" className="cs__card cs__card--insight">
         <div className="cs__eyebrow">Strategic framing</div>
         <h2 className="cs__h2">Founder Lens</h2>
         <ul className="cs__list">
@@ -99,7 +99,7 @@ export default function LivesurgeryCaseStudy() {
       </div>
 
       <div className="cs__grid cs__grid--two">
-        <div id="problem-context" className="cs__card">
+        <div id="problem-context" data-cs-section="problem-context" className="cs__card">
           <div className="cs__eyebrow">Problem space</div>
           <h2 className="cs__h2">Problem & Context</h2>
           <p className="cs__p">
@@ -132,7 +132,7 @@ export default function LivesurgeryCaseStudy() {
         </div>
       </div>
 
-      <div id="constraints" className="cs__card">
+      <div id="constraints" data-cs-section="constraints" className="cs__card">
         <div className="cs__eyebrow">Delivery guardrails</div>
         <h2 className="cs__h2">Constraints</h2>
         <ul className="cs__list">
@@ -143,7 +143,7 @@ export default function LivesurgeryCaseStudy() {
         </ul>
       </div>
 
-      <div id="product-decisions" className="cs__card cs__card--warm">
+      <div id="product-decisions" data-cs-section="product-decisions" className="cs__card cs__card--warm">
         <div className="cs__eyebrow">Product bets</div>
         <h2 className="cs__h2">Key Product Decisions I Owned</h2>
         <ul className="cs__list">
@@ -154,7 +154,7 @@ export default function LivesurgeryCaseStudy() {
         </ul>
       </div>
 
-      <div id="architecture" className="cs__card cs__card--cool">
+      <div id="architecture" data-cs-section="architecture" className="cs__card cs__card--cool">
         <div className="cs__eyebrow">System design</div>
         <h2 className="cs__h2">Architecture & Technical Leverage</h2>
         <ul className="cs__list">
@@ -166,7 +166,7 @@ export default function LivesurgeryCaseStudy() {
         </ul>
       </div>
 
-      <div id="roadmap" className="cs__card cs__card--interactive">
+      <div id="roadmap" data-cs-section="roadmap" className="cs__card cs__card--interactive">
         <button
           className="cs__collapsible-header"
           onClick={() => setSprintsOpen((o) => !o)}
@@ -178,7 +178,8 @@ export default function LivesurgeryCaseStudy() {
             <div className="cs__collapsible-helper">6 iterations covering core UI, collaboration, archive, RBAC, and demo delivery.</div>
           </div>
           <span className="cs__collapsible-arrow" aria-hidden="true">
-            {sprintsOpen ? "Close" : "Open"}
+            <span className="cs__collapsible-action">{sprintsOpen ? "Collapse" : "Expand"}</span>
+            <span className={`cs__collapsible-chevron${sprintsOpen ? " is-open" : ""}`}>⌄</span>
           </span>
         </button>
         {sprintsOpen && (
@@ -206,7 +207,7 @@ export default function LivesurgeryCaseStudy() {
       </div>
 
       <div className="cs__grid cs__grid--two">
-        <div id="outcomes" className="cs__card cs__card--success">
+        <div id="outcomes" data-cs-section="outcomes" className="cs__card cs__card--success">
           <div className="cs__eyebrow">Business impact</div>
           <h2 className="cs__h2">Outcomes & Success Criteria</h2>
           <ul className="cs__list">
@@ -228,7 +229,7 @@ export default function LivesurgeryCaseStudy() {
         </div>
       </div>
 
-      <div id="gtm" className="cs__card cs__card--warm">
+      <div id="gtm" data-cs-section="gtm" className="cs__card cs__card--warm">
         <div className="cs__eyebrow">Commercial path</div>
         <h2 className="cs__h2">Business Model & GTM</h2>
         <ul className="cs__list">

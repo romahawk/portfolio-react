@@ -12,6 +12,7 @@ const FOCUSABLE = [
 
 export default function CaseStudyModal({ open, onClose, title, slug, sections = [], children }) {
   const panelRef = useRef(null);
+  const bodyRef = useRef(null);
   const closeRef = useRef(null);
   const previousFocusRef = useRef(null);
   const [copied, setCopied] = useState(false);
@@ -25,6 +26,16 @@ export default function CaseStudyModal({ open, onClose, title, slug, sections = 
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
+  }
+
+  function handleTocClick(sectionId) {
+    const body = bodyRef.current;
+    if (!body) return;
+
+    const target = body.querySelector(`[data-cs-section="${sectionId}"]`);
+    if (!target) return;
+
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   // Escape key + focus trap
@@ -98,19 +109,26 @@ export default function CaseStudyModal({ open, onClose, title, slug, sections = 
             </button>
           </div>
         </header>
-        <div className="cs-modal__body">
-          {sections.length > 0 ? (
+        {sections.length > 0 ? (
+          <div className="cs-modal__toc-shell">
             <nav className="cs-modal__toc" aria-label="Case study sections">
               <div className="cs-modal__toc-label">On this page</div>
               <div className="cs-modal__toc-list">
                 {sections.map((section) => (
-                  <a key={section.id} className="cs-modal__toc-link" href={`#${section.id}`}>
+                  <button
+                    key={section.id}
+                    className="cs-modal__toc-link"
+                    type="button"
+                    onClick={() => handleTocClick(section.id)}
+                  >
                     {section.label}
-                  </a>
+                  </button>
                 ))}
               </div>
             </nav>
-          ) : null}
+          </div>
+        ) : null}
+        <div className="cs-modal__body" ref={bodyRef}>
           {children}
         </div>
       </div>
