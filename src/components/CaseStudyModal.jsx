@@ -10,11 +10,12 @@ const FOCUSABLE = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(', ');
 
-export default function CaseStudyModal({ open, onClose, title, slug, children }) {
+export default function CaseStudyModal({ open, onClose, title, slug, sections = [], children }) {
   const panelRef = useRef(null);
   const closeRef = useRef(null);
   const previousFocusRef = useRef(null);
   const [copied, setCopied] = useState(false);
+  const titleId = slug ? `case-study-title-${slug}` : "case-study-title";
 
   // Reset copied state when modal closes
   useEffect(() => { if (!open) setCopied(false); }, [open]);
@@ -75,11 +76,11 @@ export default function CaseStudyModal({ open, onClose, title, slug, children })
   if (!open) return null;
 
   return (
-    <div className="cs-modal" role="dialog" aria-modal="true" aria-label={title}>
+    <div className="cs-modal" role="dialog" aria-modal="true" aria-labelledby={titleId}>
       <div className="cs-modal__backdrop" onClick={onClose} />
       <div className="cs-modal__panel" ref={panelRef} role="document">
         <header className="cs-modal__header">
-          <h3 className="cs-modal__title">{title}</h3>
+          <h3 className="cs-modal__title" id={titleId}>{title}</h3>
           <div className="cs-modal__actions">
             {slug && (
               <button
@@ -98,6 +99,18 @@ export default function CaseStudyModal({ open, onClose, title, slug, children })
           </div>
         </header>
         <div className="cs-modal__body">
+          {sections.length > 0 ? (
+            <nav className="cs-modal__toc" aria-label="Case study sections">
+              <div className="cs-modal__toc-label">On this page</div>
+              <div className="cs-modal__toc-list">
+                {sections.map((section) => (
+                  <a key={section.id} className="cs-modal__toc-link" href={`#${section.id}`}>
+                    {section.label}
+                  </a>
+                ))}
+              </div>
+            </nav>
+          ) : null}
           {children}
         </div>
       </div>

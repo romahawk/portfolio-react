@@ -3,10 +3,10 @@ import { Copy, Linkedin, Github, Mail, MapPin, Info, CheckCircle } from "lucide-
 
 const Contact = () => {
   const formRef = useRef(null);
-  const [copied, setCopied]     = useState(false);
+  const [copied, setCopied] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const email    = "romazuryk@proton.me";
+  const email = "romazuryk@proton.me";
   const location = "Germany (CET)";
 
   const copyEmail = async () => {
@@ -14,17 +14,19 @@ const Contact = () => {
       await navigator.clipboard.writeText(email);
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
-    } catch { /* clipboard unavailable */ }
+    } catch {
+      // clipboard unavailable
+    }
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const fd      = new FormData(formRef.current);
-    const name    = fd.get("name")    || "";
-    const from    = fd.get("email")   || "";
+    const fd = new FormData(formRef.current);
+    const name = fd.get("name") || "";
+    const from = fd.get("email") || "";
     const message = fd.get("message") || "";
     const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-    const body    = encodeURIComponent(`From: ${name} <${from}>\n\n${message}`);
+    const body = encodeURIComponent(`From: ${name} <${from}>\n\n${message}`);
     window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     formRef.current.reset();
     setSubmitted(true);
@@ -98,7 +100,7 @@ const Contact = () => {
 
           <p className="contact__hint">
             <Info size={13} className="icon mr-1" />
-            Sends via your email client · no data stored
+            Sends via your email client - no data stored
           </p>
 
           <div className="contact__actions">
@@ -106,10 +108,9 @@ const Contact = () => {
             <a className="btn btn--ghost" href={`mailto:${email}`}>Email directly</a>
           </div>
 
-          {/* Submitted confirmation */}
           <p className={`contact__submitted ${submitted ? "is-visible" : ""}`} aria-live="polite">
             <CheckCircle size={14} className="icon mr-1" />
-            Opening your email client with the draft…
+            Opening your email client with the draft...
           </p>
         </form>
       </div>

@@ -4,7 +4,7 @@ import CaseStudyLinks from "../CaseStudyLinks.jsx";
 const sprints = [
   {
     id: 1,
-    title: "Sprint 1 — Project Setup & Core UI",
+    title: "Sprint 1 - Project Setup & Core UI",
     goals: [
       "App scaffold; navigation and layout",
       "Core UI components and interaction patterns",
@@ -15,7 +15,7 @@ const sprints = [
   },
   {
     id: 2,
-    title: "Sprint 2 — Multi-Stream OR Panel",
+    title: "Sprint 2 - Multi-Stream OR Panel",
     goals: [
       "Multi-source stream layout (mock sources)",
       "Draggable/resizable panels",
@@ -26,28 +26,28 @@ const sprints = [
   },
   {
     id: 3,
-    title: "Sprint 3 — Collaboration Layer",
+    title: "Sprint 3 - Collaboration Layer",
     goals: ["Role-tagged chat", "Annotation overlay", "Presence indicators"],
     outcome: "Real-time collaboration layer on top of active streams.",
     retro: "Improve readability and cognitive load under time pressure.",
   },
   {
     id: 4,
-    title: "Sprint 4 — Recording & Archive",
+    title: "Sprint 4 - Recording & Archive",
     goals: ["Record start/stop (stub)", "Archive list", "Playback timeline (stub)"],
     outcome: "Archive UX ready for future storage/recording implementation.",
     retro: "Define retention and lifecycle policies early.",
   },
   {
     id: 5,
-    title: "Sprint 5 — Auth & Roles",
+    title: "Sprint 5 - Auth & Roles",
     goals: ["Auth baseline", "Roles: Admin/Surgeon/Observer", "Role-gated actions"],
     outcome: "Role-based access model aligned with clinical workflows.",
     retro: "Early rules reduced risk of permission leaks later.",
   },
   {
     id: 6,
-    title: "Sprint 6 — Deploy & Demo",
+    title: "Sprint 6 - Deploy & Demo",
     goals: ["Deploy + docs", "Persona-based demo", "Backlog refinement"],
     outcome: "Shareable PoC URL with a clear walkthrough and assumptions.",
     retro: "Simplify surgeon workflow; document integration pipelines.",
@@ -56,19 +56,26 @@ const sprints = [
 
 export default function LivesurgeryCaseStudy() {
   const [sprintsOpen, setSprintsOpen] = useState(false);
+
   return (
     <section className="cs">
       <header className="cs__hero">
-        <span className="cs__badge">Case Study • MedTech (Founder-Led System)</span>
-        <h1 className="cs__title">LiveSurgery — Real-Time Surgical Collaboration System</h1>
+        <span className="cs__badge">Case Study - MedTech (Founder-Led System)</span>
+        <h1 className="cs__title">LiveSurgery - Real-Time Surgical Collaboration System</h1>
         <p className="cs__lead">
           Founder-led product initiative to solve fragmented OR collaboration: multi-source video,
           role-based interaction, and session governance in one workflow. Built as a wedge into
           regulated clinical environments where coordination quality directly affects outcomes.
         </p>
+        <div className="cs__meta" aria-label="Case study highlights">
+          <div className="cs__meta-item"><strong>Scope</strong> Founder-led MedTech collaboration system</div>
+          <div className="cs__meta-item"><strong>Focus</strong> Workflow orchestration under governance constraints</div>
+          <div className="cs__meta-item"><strong>Format</strong> PoC with clinical pilot logic and roadmap</div>
+        </div>
       </header>
 
-      <div className="cs__card">
+      <div id="founder-lens" className="cs__card cs__card--insight">
+        <div className="cs__eyebrow">Strategic framing</div>
         <h2 className="cs__h2">Founder Lens</h2>
         <ul className="cs__list">
           <li>
@@ -92,7 +99,8 @@ export default function LivesurgeryCaseStudy() {
       </div>
 
       <div className="cs__grid cs__grid--two">
-        <div className="cs__card">
+        <div id="problem-context" className="cs__card">
+          <div className="cs__eyebrow">Problem space</div>
           <h2 className="cs__h2">Problem & Context</h2>
           <p className="cs__p">
             OR collaboration is operationally expensive: video sources are fragmented, live
@@ -101,7 +109,8 @@ export default function LivesurgeryCaseStudy() {
             under reliability and governance constraints.
           </p>
         </div>
-        <div className="cs__card">
+        <div className="cs__card cs__card--cool">
+          <div className="cs__eyebrow">User map</div>
           <h2 className="cs__h2">Users / Stakeholders</h2>
           <ul className="cs__personas">
             <li>
@@ -123,7 +132,8 @@ export default function LivesurgeryCaseStudy() {
         </div>
       </div>
 
-      <div className="cs__card">
+      <div id="constraints" className="cs__card">
+        <div className="cs__eyebrow">Delivery guardrails</div>
         <h2 className="cs__h2">Constraints</h2>
         <ul className="cs__list">
           <li><strong>Regulatory path</strong>: explicit path to GDPR/HIPAA-aligned controls and policy enforcement.</li>
@@ -133,7 +143,8 @@ export default function LivesurgeryCaseStudy() {
         </ul>
       </div>
 
-      <div className="cs__card">
+      <div id="product-decisions" className="cs__card cs__card--warm">
+        <div className="cs__eyebrow">Product bets</div>
         <h2 className="cs__h2">Key Product Decisions I Owned</h2>
         <ul className="cs__list">
           <li>Scoped MVP around <strong>workflow orchestration</strong> first, not full compliance automation, to validate core behavior quickly.</li>
@@ -143,7 +154,8 @@ export default function LivesurgeryCaseStudy() {
         </ul>
       </div>
 
-      <div className="cs__card">
+      <div id="architecture" className="cs__card cs__card--cool">
+        <div className="cs__eyebrow">System design</div>
         <h2 className="cs__h2">Architecture & Technical Leverage</h2>
         <ul className="cs__list">
           <li><strong>UI layer</strong>: React + custom CSS optimized for quick role-specific interactions.</li>
@@ -154,15 +166,19 @@ export default function LivesurgeryCaseStudy() {
         </ul>
       </div>
 
-      <div className="cs__card">
+      <div id="roadmap" className="cs__card cs__card--interactive">
         <button
           className="cs__collapsible-header"
           onClick={() => setSprintsOpen((o) => !o)}
           aria-expanded={sprintsOpen}
         >
-          <h2 className="cs__h2">Execution Roadmap (Agile Sprints)</h2>
+          <div className="cs__collapsible-copy">
+            <div className="cs__eyebrow">Execution pacing</div>
+            <h2 className="cs__h2">Execution Roadmap (Agile Sprints)</h2>
+            <div className="cs__collapsible-helper">6 iterations covering core UI, collaboration, archive, RBAC, and demo delivery.</div>
+          </div>
           <span className="cs__collapsible-arrow" aria-hidden="true">
-            {sprintsOpen ? "▲" : "▼"}
+            {sprintsOpen ? "Close" : "Open"}
           </span>
         </button>
         {sprintsOpen && (
@@ -190,7 +206,8 @@ export default function LivesurgeryCaseStudy() {
       </div>
 
       <div className="cs__grid cs__grid--two">
-        <div className="cs__card">
+        <div id="outcomes" className="cs__card cs__card--success">
+          <div className="cs__eyebrow">Business impact</div>
           <h2 className="cs__h2">Outcomes & Success Criteria</h2>
           <ul className="cs__list">
             <li>Validated multi-source session workflow in a realistic OR interaction model.</li>
@@ -200,6 +217,7 @@ export default function LivesurgeryCaseStudy() {
           </ul>
         </div>
         <div className="cs__card">
+          <div className="cs__eyebrow">Ownership</div>
           <h2 className="cs__h2">My Role (Founder-Operator / Product Owner)</h2>
           <p className="cs__p">
             Owned product from thesis to execution: problem framing, ICP definition, wedge strategy,
@@ -210,7 +228,8 @@ export default function LivesurgeryCaseStudy() {
         </div>
       </div>
 
-      <div className="cs__card">
+      <div id="gtm" className="cs__card cs__card--warm">
+        <div className="cs__eyebrow">Commercial path</div>
         <h2 className="cs__h2">Business Model & GTM</h2>
         <ul className="cs__list">
           <li><strong>Pricing models</strong>: pilot package (time-boxed), subscription per site, or per-room/per-session enterprise plan.</li>

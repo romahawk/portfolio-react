@@ -9,29 +9,92 @@ import CaseStudyModal from "./CaseStudyModal.jsx";
 
 const CARD_ICONS = { Lightbulb, MonitorCog, Wrench, SearchCheck, Camera, Rocket, TrendingUp, Waves, Circle };
 
-const LivesurgeryCaseStudy  = React.lazy(() => import("./case-studies/LivesurgeryCaseStudy.jsx"));
-const SmartShooterCaseStudy = React.lazy(() => import("./case-studies/SmartShooterCaseStudy.jsx"));
-const FlowLogixCaseStudy    = React.lazy(() => import("./case-studies/FlowLogixCaseStudy.jsx"));
-const AlphorythmCaseStudy   = React.lazy(() => import("./case-studies/AlphorythmCaseStudy.jsx"));
-const PortfolioCaseStudy    = React.lazy(() => import("./case-studies/PortfolioCaseStudy.jsx"));
-const MedintegroCaseStudy   = React.lazy(() => import("./case-studies/MedintegroCaseStudy.jsx"));
+const LivesurgeryCaseStudy = React.lazy(() => import("./case-studies/LivesurgeryCaseStudy.jsx"));
+const FlowLogixCaseStudy = React.lazy(() => import("./case-studies/FlowLogixCaseStudy.jsx"));
+const JobSprintCaseStudy = React.lazy(() => import("./case-studies/JobSprintCaseStudy.jsx"));
 
 const CATEGORY = { TECH: "tech", MED: "medtech" };
+const TECH_TAG_ORDER = [
+  "All",
+  "Workflow Systems",
+  "Decision Support",
+  "Real-Time Systems",
+  "Internal Tools",
+  "Productivity",
+  "B2B",
+  "MedTech",
+];
 
-const collectTags = (list) => {
-  const set = new Set();
-  list.forEach((p) => (p.tags || []).forEach((t) => set.add(t)));
-  return ["All", ...Array.from(set)];
+const CASE_STUDY_CONFIG = {
+  livesurgery: {
+    title: "LiveSurgery - Case Study",
+    Component: LivesurgeryCaseStudy,
+    sections: [
+      { id: "founder-lens", label: "Founder Lens" },
+      { id: "problem-context", label: "Problem & Context" },
+      { id: "constraints", label: "Constraints" },
+      { id: "product-decisions", label: "Key Decisions" },
+      { id: "architecture", label: "Architecture" },
+      { id: "roadmap", label: "Roadmap" },
+      { id: "outcomes", label: "Outcomes" },
+      { id: "gtm", label: "Business Model" },
+    ],
+  },
+  flowlogix: {
+    title: "FlowLogix - Case Study",
+    Component: FlowLogixCaseStudy,
+    sections: [
+      { id: "founder-lens", label: "Founder Lens" },
+      { id: "problem-context", label: "Problem & Context" },
+      { id: "constraints", label: "Constraints" },
+      { id: "product-decisions", label: "Key Decisions" },
+      { id: "architecture", label: "Architecture" },
+      { id: "roadmap", label: "Roadmap" },
+      { id: "outcomes", label: "Outcomes" },
+      { id: "gtm", label: "Business Model" },
+    ],
+  },
+  jobsprint: {
+    title: "JobSprint - Case Study",
+    Component: JobSprintCaseStudy,
+    sections: [
+      { id: "founder-lens", label: "Founder Lens" },
+      { id: "problem-context", label: "Problem & Context" },
+      { id: "constraints", label: "Constraints" },
+      { id: "product-decisions", label: "Key Decisions" },
+      { id: "architecture", label: "Architecture" },
+      { id: "roadmap", label: "Roadmap" },
+      { id: "outcomes", label: "Outcomes" },
+      { id: "gtm", label: "Business Model" },
+    ],
+  },
+};
+
+const normalizeTags = (list) => {
+  const present = new Set();
+  list.forEach((project) => (project.tags || []).forEach((tag) => present.add(tag)));
+  return TECH_TAG_ORDER.filter((tag) => tag === "All" || present.has(tag));
+};
+
+const getCardTone = (project) => {
+  if (project.tags?.includes("Real-Time Systems")) return "signal";
+  if (project.tags?.includes("Workflow Systems")) return "workflow";
+  if (project.tags?.includes("Decision Support")) return "insight";
+  return "";
 };
 
 function ProjectCard({ p, variant, onOpenCase }) {
   const inDev = p.inDevelopment;
   const CardIcon = p.icon ? (CARD_ICONS[p.icon] || Circle) : null;
+  const tone = getCardTone(p);
 
   return (
-    <article className={`project-card${variant ? ` project-card--${variant}` : ""}`}>
+    <article className={`project-card${variant ? ` project-card--${variant}` : ""}${tone ? ` project-card--${tone}` : ""}`}>
       <header className="project-card__head">
-        <h4 className="project-card__title">{p.title}</h4>
+        <div className="project-card__title-wrap">
+          <h4 className="project-card__title">{p.title}</h4>
+          {tone ? <span className="project-card__tone">{tone.replace("-", " ")}</span> : null}
+        </div>
         {CardIcon ? (
           <span className="project-card__icon" aria-hidden>
             <CardIcon size={18} strokeWidth={2} />
@@ -41,7 +104,6 @@ function ProjectCard({ p, variant, onOpenCase }) {
 
       <p className="project-card__summary">{p.summary}</p>
 
-      {/* Keep stack, but it's supporting evidence */}
       {p.stack?.length ? (
         <ul className="project-card__stack">
           {p.stack.map((s, i) => (
@@ -96,29 +158,35 @@ function ProjectCard({ p, variant, onOpenCase }) {
 export default function Projects() {
   const [cat, setCat] = useState(CATEGORY.TECH);
   const [caseId, setCaseId] = useState(null);
+  const [tag, setTag] = useState("All");
 
   const CASE_HASH_PREFIX = "#projects/";
+  const activeCaseStudyIds = useMemo(
+    () => new Set(techProjects.map((project) => project.caseStudy).filter(Boolean)),
+    []
+  );
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     const syncFromHash = () => {
       const hash = window.location.hash || "";
-      if (hash.startsWith(CASE_HASH_PREFIX)) {
-        const slug = hash.slice(CASE_HASH_PREFIX.length);
-        setCaseId(slug || null);
-      } else {
+      if (!hash.startsWith(CASE_HASH_PREFIX)) {
         setCaseId(null);
+        return;
       }
+
+      const slug = hash.slice(CASE_HASH_PREFIX.length);
+      setCaseId(activeCaseStudyIds.has(slug) ? slug : null);
     };
 
     syncFromHash();
     window.addEventListener("hashchange", syncFromHash);
     return () => window.removeEventListener("hashchange", syncFromHash);
-  }, []);
+  }, [activeCaseStudyIds]);
 
   const openCase = (id) => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && activeCaseStudyIds.has(id)) {
       window.location.hash = `projects/${id}`;
     }
   };
@@ -132,15 +200,15 @@ export default function Projects() {
   };
 
   const data = cat === CATEGORY.TECH ? techProjects : medtechProjects;
-  const tags = useMemo(() => (cat === CATEGORY.TECH ? collectTags(data) : []), [cat, data]);
-  const [tag, setTag] = useState("All");
+  const tags = useMemo(() => (cat === CATEGORY.TECH ? normalizeTags(data) : []), [cat, data]);
 
-  // Reset active tag filter whenever the user switches category tabs
-  useEffect(() => { setTag("All"); }, [cat]);
+  useEffect(() => {
+    setTag("All");
+  }, [cat]);
 
   const visibleTech = useMemo(() => {
     if (tag === "All") return techProjects;
-    return techProjects.filter((p) => (p.tags || []).includes(tag));
+    return techProjects.filter((project) => (project.tags || []).includes(tag));
   }, [tag]);
 
   const medIntegration = useMemo(
@@ -151,6 +219,9 @@ export default function Projects() {
     () => medtechProjects.filter((p) => p.segment === "management"),
     []
   );
+
+  const activeCaseStudy = caseId ? CASE_STUDY_CONFIG[caseId] : null;
+  const ActiveCaseComponent = activeCaseStudy?.Component || null;
 
   return (
     <section id="projects" className="section container">
@@ -178,7 +249,7 @@ export default function Projects() {
         </div>
 
         {cat === CATEGORY.TECH && tags.length > 1 && (
-          <div className="projects__filters" role="group" aria-label="Filter tags">
+          <div className="projects__filters" role="group" aria-label="Filter product system tags">
             {tags.map((t) => (
               <button
                 key={t}
@@ -199,7 +270,7 @@ export default function Projects() {
             <Boxes size={18} className="icon" /> Product Systems
           </h3>
           <p className="projects__intro">
-            Systems I design and ship to convert operational complexity into scalable products —
+            Systems I design and ship to convert operational complexity into scalable products -
             from internal tools and data integrity layers to real-time interaction workflows.
           </p>
           {visibleTech.length === 0 ? (
@@ -215,7 +286,7 @@ export default function Projects() {
       ) : (
         <>
           <h3 className="projects__section-title">
-            <Stethoscope size={18} className="icon" /> MedTech — Integration & Delivery
+            <Stethoscope size={18} className="icon" /> MedTech - Integration & Delivery
           </h3>
           <p className="projects__intro">
             Regulated delivery across clinical environments: multi-vendor integrations, workflow governance,
@@ -230,7 +301,7 @@ export default function Projects() {
           {medManagement.length ? (
             <div className="projects__subsection">
               <h3 className="projects__section-title">
-                <BriefcaseBusiness size={18} className="icon" /> MedTech — Programs & Commercial Execution
+                <BriefcaseBusiness size={18} className="icon" /> MedTech - Programs & Commercial Execution
               </h3>
               <p className="projects__intro">
                 Multi-site rollout governance, procurement/tenders, vendor orchestration, and adoption enablement.
@@ -246,41 +317,14 @@ export default function Projects() {
       )}
 
       <CaseStudyModal
-        open={!!caseId}
+        open={!!activeCaseStudy}
         onClose={closeCase}
         slug={caseId}
-        title={
-          caseId === "livesurgery"
-            ? "LiveSurgery — Case Study"
-            : caseId === "smartshooter"
-            ? "SmartShooter — Case Study"
-            : caseId === "flowlogix"
-            ? "FlowLogix — Case Study"
-            : caseId === "alphorythm"
-            ? "AlphaRhythm — Case Study"
-            : caseId === "portfolio"
-            ? "Technical PM Portfolio — Case Study"
-            : caseId === "medintegro"
-            ? "Medintegro Rebuild — Case Study"
-            : "Case Study"
-        }
+        title={activeCaseStudy?.title || "Case Study"}
+        sections={activeCaseStudy?.sections || []}
       >
         <Suspense fallback={<div className="cs-loading" aria-label="Loading case study"><span className="cs-loading__spinner" aria-hidden="true" /></div>}>
-          {caseId === "livesurgery" ? (
-            <LivesurgeryCaseStudy />
-          ) : caseId === "smartshooter" ? (
-            <SmartShooterCaseStudy />
-          ) : caseId === "flowlogix" ? (
-            <FlowLogixCaseStudy />
-          ) : caseId === "alphorythm" ? (
-            <AlphorythmCaseStudy />
-          ) : caseId === "portfolio" ? (
-            <PortfolioCaseStudy />
-          ) : caseId === "medintegro" ? (
-            <MedintegroCaseStudy />
-          ) : (
-            <div>Coming soon…</div>
-          )}
+          {ActiveCaseComponent ? <ActiveCaseComponent /> : <div>Coming soon...</div>}
         </Suspense>
       </CaseStudyModal>
     </section>
