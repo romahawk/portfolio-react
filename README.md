@@ -2,7 +2,7 @@
 
 > Technical Product Manager and Founder-Operator with 10+ years in MedTech and regulated B2B environments. This portfolio proves product leadership through documented case studies, an AI-augmented SDLC framework, and a disciplined build history.
 
-**Live:** [roman-mazuryk.vercel.app](https://roman-mazuryk.vercel.app)
+**Live:** [mazuryk.dev](https://mazuryk.dev)
 
 ---
 
@@ -10,7 +10,7 @@
 
 A single-page proof-of-work portfolio that demonstrates:
 
-- **6 in-depth case studies** — problem → solution → stack → results
+- **3 in-depth case studies** — problem → solution → stack → results
 - **AI-Augmented SDLC framework** — how I use AI to accelerate product delivery without losing discipline
 - **Career timeline** — MedTech operator (2012) → Technical PM / Founder-Operator (2025)
 - **Skills taxonomy** — PM, systems, tech stack, soft skills, leverage patterns
