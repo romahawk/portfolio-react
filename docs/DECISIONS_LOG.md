@@ -172,7 +172,7 @@ Replace wildcard imports with explicit named imports for only the icons actually
 **Decider:** Roman Mazuryk
 
 ### Context
-Six case study components (LiveSurgery, FlowLogix, SmartShooter, Alphorythm, Portfolio, Medintegro) were statically imported in `Projects.jsx`. They are only ever rendered inside a modal that opens on user interaction. Including them in the initial bundle adds ~50 kB of JSX that is never needed until a user explicitly clicks "Case Study".
+Six case study components (LiveSurgery, Flowlogics, SmartShooter, Alphorythm, Portfolio, Medintegro) were statically imported in `Projects.jsx`. They are only ever rendered inside a modal that opens on user interaction. Including them in the initial bundle adds ~50 kB of JSX that is never needed until a user explicitly clicks "Case Study".
 
 ### Decision
 Convert all six case study imports to `React.lazy(() => import(...))` and wrap the modal body in `<Suspense fallback={<div className="cs-loading">Loading…</div>}>`.

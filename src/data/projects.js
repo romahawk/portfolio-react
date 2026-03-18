@@ -13,14 +13,14 @@ export const techProjects = [
     caseStudy: "livesurgery",
   },
   {
-    id: "flowlogix",
-    title: "FlowLogix - API-Driven Supply Visibility and Lifecycle Control",
+    id: "flowlogics",
+    title: "Flowlogics - API-Driven Supply Visibility and Lifecycle Control",
     summary:
       "Logistics operations platform centralizing orders, warehouse intake, and delivered transitions with a strict API contract, role-gated workflows, readonly demo mode, and timeline-based ETA risk visibility.",
     stack: ["Flask", "SQLite", "SQLAlchemy", "Vanilla JS", "Tailwind", "Chart.js"],
     tags: ["Workflow Systems", "Internal Tools", "Decision Support", "B2B"],
-    link: "https://flowlogix.koyeb.app/",
-    caseStudy: "flowlogix",
+    link: "https://flowlogics.app/",
+    caseStudy: "flowlogics",
   },
   {
     id: "jobsprint",

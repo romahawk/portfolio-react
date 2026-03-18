@@ -36,7 +36,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 - `vercel.json` — explicit build config + security headers (`X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy`); immutable cache headers for `/assets/`
 - `.github/workflows/lighthouse.yml` — Lighthouse CI on every push/PR to `main`; fails build if any category drops below 90
 - `.lighthouserc.json` — Lighthouse CI thresholds: Performance ≥ 90, Accessibility ≥ 90, Best Practices ≥ 90, SEO ≥ 90
-- "Last updated: Feb 2026" footer added to all 6 case study modals (AlphaRhythm, FlowLogix, LiveSurgery, Medintegro, Portfolio, SmartShooter)
+- "Last updated: Feb 2026" footer added to all 6 case study modals (AlphaRhythm, Flowlogics, LiveSurgery, Medintegro, Portfolio, SmartShooter)
 
 ### Fixed
 - `Footer.jsx` — replace `icon: Icon` destructuring alias (invisible to ESLint `no-unused-vars`) with direct `icon` + `React.createElement(icon, ...)` pattern
@@ -72,7 +72,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 - `TimelineSwitch` component — toggle between 3-milestone summary and full 11-entry timeline
 - `JourneyFull` component — horizontal scrollable timeline with sort and tag filter
 - `CaseStudyModal` — accessible modal with focus trap, Escape key support, hash-based routing
-- 6 case study components: LiveSurgery, SmartShooter, FlowLogix, Alphorythm, Portfolio, Medintegro
+- 6 case study components: LiveSurgery, SmartShooter, Flowlogics, Alphorythm, Portfolio, Medintegro
 - `BackToTop` button — appears after 400px scroll
 - `useScrollReveal` hook — IntersectionObserver scroll reveal with `prefers-reduced-motion` support
 - Open Graph and Twitter Card meta tags in `index.html`

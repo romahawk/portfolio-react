@@ -10,7 +10,7 @@ const timeline = [
     summary:
       "Building and shipping product systems that model complex operations: roles, states, data integrity, and decision-support workflows. Focused on platform thinking, architecture trade-offs, and execution discipline.",
     highlights: [
-      "Designed and prototyped product systems: FlowLogix (operations platform), LiveSurgery (real-time workspace PoC), SmartShooter (analytics)",
+      "Designed and prototyped product systems: Flowlogics (operations platform), LiveSurgery (real-time workspace PoC), SmartShooter (analytics)",
       "Translated messy operational needs into system primitives: state models, permissions, data flows, and UI workflows",
       "Used prototyping to de-risk architecture, accelerate delivery, and improve engineering alignment",
     ],

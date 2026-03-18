@@ -40,8 +40,8 @@ const CASE_STUDY_CONFIG = {
       { id: "gtm", label: "Business Model" },
     ],
   },
-  flowlogix: {
-    title: "FlowLogix - Case Study",
+  flowlogics: {
+    title: "Flowlogics - Case Study",
     Component: FlowLogixCaseStudy,
     sections: [
       { id: "founder-lens", label: "Founder Lens" },
@@ -177,6 +177,10 @@ export default function Projects() {
       }
 
       const slug = hash.slice(CASE_HASH_PREFIX.length);
+      if (slug === "flowlogix") {
+        window.location.hash = "projects/flowlogics";
+        return;
+      }
       setCaseId(activeCaseStudyIds.has(slug) ? slug : null);
     };
 

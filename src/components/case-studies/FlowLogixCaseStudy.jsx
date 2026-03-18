@@ -12,7 +12,7 @@ const sprints = [
       "JSON-native error handling for frontend consumers",
     ],
     outcome:
-      "FlowLogix gained a reliable application contract instead of coupling the UI directly to template-side data plumbing.",
+      "Flowlogics gained a reliable application contract instead of coupling the UI directly to template-side data plumbing.",
     retro:
       "API discipline paid off early: later UI work moved faster because the payload shape stopped drifting.",
   },
@@ -81,7 +81,7 @@ export default function FlowLogixCaseStudy() {
       <header className="cs__hero">
         <span className="cs__badge">Case Study - Logistics (Internal Systems)</span>
         <h1 className="cs__title">
-          FlowLogix - API-Driven Supply Visibility and Lifecycle Control
+          Flowlogics - API-Driven Supply Visibility and Lifecycle Control
         </h1>
         <p className="cs__lead">
           A logistics operations platform that centralizes orders, warehouse intake,
@@ -355,7 +355,7 @@ export default function FlowLogixCaseStudy() {
       </div>
 
       <CaseStudyLinks
-        demoUrl="https://flowlogix.koyeb.app/"
+        demoUrl="https://flowlogics.app/"
         docs={[
           { label: "README", url: "https://github.com/romahawk/flowlogix/blob/main/README.md" },
           { label: "Architecture", url: "https://github.com/romahawk/flowlogix/blob/main/docs/ARCHITECTURE.md" },

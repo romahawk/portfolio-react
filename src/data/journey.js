@@ -47,7 +47,7 @@ const journey = [
       "Systems Delivery Lead — MedTech Infrastructure & Clinical Integration",
       "Architected implementation frameworks for complex surgical environments, bridging clinical workflows with hardware constraints",
       "Led technical discovery for multi-vendor integrations, reducing deployment friction across complex stakeholder ecosystems",
-      "Identified systemic inefficiencies in healthcare logistics that informed the future architecture of Medintegro and FlowLogix",
+      "Identified systemic inefficiencies in healthcare logistics that informed the future architecture of Medintegro and Flowlogics",
     ],
   },
   {
