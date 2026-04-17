@@ -6,7 +6,7 @@
 }
 
 .cert-card {
-  background: linear-gradient(180deg, rgba(16,20,28,.9), rgba(16,20,28,.75));
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 16px;
@@ -59,8 +59,8 @@
   width: 100%;
   border-radius: 10px;
   margin: 8px 0 10px;
-  border: 1px solid #1f2a3f;
-  background: #0d1320;
+  border: 1px solid var(--border);
+  background: var(--panel);
 }
 
 /* --- Meta & summary text --- */
@@ -89,8 +89,8 @@
   font-size: 12px;
   padding: 4px 8px;
   border-radius: 999px;
-  border: 1px solid #1f2a3f;
-  background: #0d1320;
+  border: 1px solid var(--tag-border);
+  background: var(--tag-bg);
   color: var(--muted);
 }
 
@@ -99,20 +99,17 @@
   /* keep the same spacing as images */
   margin: 8px 0 10px;
   border-radius: 12px;
-  border: 1px solid #1f2a3f;
+  border: 1px solid var(--border);
   position: relative;
   overflow: hidden;
 
-  /* HEIGHT: mimic PM certificate proportions */
-  aspect-ratio: 4 / 5;            /* portrait like your PM image */
-  /* fallback for older browsers and fine control across viewports */
+  aspect-ratio: 4 / 5;
   height: clamp(220px, 28vw, 360px);
 
-  /* on-brand layered gradient */
   background:
-    radial-gradient(120% 120% at 100% 0%, rgba(0,221,235,.18), transparent 55%),
-    radial-gradient(120% 120% at 0% 100%, rgba(91,157,255,.16), transparent 55%),
-    linear-gradient(160deg, rgba(0,221,235,.18), rgba(91,157,255,.22) 60%, rgba(0,221,235,.18));
+    radial-gradient(120% 120% at 100% 0%, var(--surface-glow), transparent 55%),
+    radial-gradient(120% 120% at 0% 100%, var(--surface-cool), transparent 55%),
+    var(--card-bg);
   box-shadow: inset 0 0 0 1px rgba(0,221,235,.10);
 }
 

@@ -7,7 +7,6 @@ const BASE = {
     "Technical Product Manager and Founder-Operator building AI-augmented product systems in regulated industries from strategy through delivery.",
   url: "https://www.mazuryk.dev/",
   image: "https://www.mazuryk.dev/images/og-home.png",
-  image: "https://www.mazuryk.dev/images/og-home.svg",
 };
 
 function setMeta(selector, attr, value) {

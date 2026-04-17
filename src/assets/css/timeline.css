@@ -7,7 +7,7 @@
   padding: 8px 12px; border-radius: 999px;
   border: 1px solid var(--border); background: var(--panel); color: var(--muted);
 }
-.chip:hover { color: var(--text); background: #121824; border-color: #263046; }
+.chip:hover { color: var(--text); background: var(--panel-hover); border-color: var(--border-hover); }
 
 /* 3-card milestone layout */
 .milestones {
@@ -17,9 +17,9 @@
 @media (max-width: 980px){ .milestones { grid-template-columns: 1fr; } }
 
 .milestone {
-  border: 1px solid #193447; border-radius: var(--radius); padding: 16px;
-  background: radial-gradient(600px 300px at 110% -10%, rgba(0,221,235,.08), transparent), #0f1520;
-  box-shadow: 0 6px 20px rgba(0,0,0,.35);
+  border: 1px solid var(--milestone-border); border-radius: var(--radius); padding: 16px;
+  background: radial-gradient(600px 300px at 110% -10%, var(--surface-glow), transparent), var(--milestone-bg);
+  box-shadow: var(--shadow);
 }
 .milestone__head { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
 .milestone__range { font-family: ui-monospace, monospace; color: var(--brand); }
@@ -51,16 +51,16 @@
 
 /* Firefox */
 .timeline__container {
-  scrollbar-width: thin;                       /* already there, keep */
-  scrollbar-color: rgba(0,221,235,.35) #0f1520;/* thumb / track */
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand) var(--bg-elevated);
 }
 
 /* Chromium/WebKit */
 .timeline__container::-webkit-scrollbar {
-  height: 8px;                 /* horizontal bar height */
+  height: 8px;
 }
 .timeline__container::-webkit-scrollbar-track {
-  background: #0f1520;         /* subtle track (same family as panels) */
+  background: var(--bg-elevated);
   border-radius: 999px;
   border: 1px solid var(--border);
 }
@@ -79,7 +79,7 @@
   flex: 0 0 auto;
   width: clamp(220px, 26vw, 300px);
   min-width: unset;
-  background: linear-gradient(180deg, rgba(16,20,28,.9), rgba(16,20,28,.75));
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.35);
@@ -141,8 +141,8 @@
 }
 .timeline__scroll-btn:hover {
   opacity: 1;
-  background: #121824;
-  border-color: #263046;
+  background: var(--panel-hover);
+  border-color: var(--border-hover);
   transform: translateY(-50%) scale(1.05);
 }
 

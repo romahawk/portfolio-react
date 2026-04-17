@@ -43,6 +43,13 @@
       content="Technical Product Manager and Delivery Lead building AI-augmented product systems in regulated industries from strategy through delivery."
     />
     <meta name="twitter:image" content="https://www.mazuryk.dev/images/og-home.svg" />
+    <script>
+      (function(){
+        var m=localStorage.getItem('theme');
+        var t=m?m:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+        document.documentElement.setAttribute('data-theme',t);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
