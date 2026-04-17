@@ -28,7 +28,7 @@
   color: var(--text);
   transition: transform .08s, background .2s, border-color .2s;
 }
-.btn:hover { background: #121824; border-color: #263046; }
+.btn:hover { background: var(--panel-hover); border-color: var(--border-hover); }
 .btn:active { transform: translateY(1px); }
 .btn--primary {
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
@@ -52,7 +52,7 @@
   z-index: 60;
 }
 .backtotop.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
-.backtotop:hover { background: #121824; border-color: #263046; }
+.backtotop:hover { background: var(--panel-hover); border-color: var(--border-hover); }
 .backtotop:focus-visible {
   outline: 2px solid var(--brand);
   outline-offset: 3px;
@@ -83,11 +83,11 @@
 
 /* Touch :active fallbacks — provide feedback on devices without hover */
 @media (hover: none) {
-  .btn:active { background: #1a2030; }
+  .btn:active { background: var(--panel-active); }
   .btn--primary:active { opacity: 0.88; }
-  .chip:active, .tab:active { background: #1a2030; }
-  .backtotop:active { background: #1a2030; }
-  .cs-modal__close:active { background: #1a2030; }
+  .chip:active, .tab:active { background: var(--panel-active); }
+  .backtotop:active { background: var(--panel-active); }
+  .cs-modal__close:active { background: var(--panel-active); }
 }
 
 /* prefers-reduced-motion: kill button/backtotop transitions */

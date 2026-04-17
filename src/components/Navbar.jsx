@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import ThemeSwitcher from "./ThemeSwitcher.jsx";
 
 // 800px matches the CSS mobile breakpoint
 const MOBILE_MQ = "(max-width: 800px)";
@@ -26,7 +27,7 @@ const NAV_LABELS = {
 const VIEWPORT_ANCHOR = 0.32; // 32% down the viewport for deciding active section
 const SWITCH_BUFFER = 24;     // px hysteresis to avoid flicker on boundaries
 
-export default function Navbar() {
+export default function Navbar({ themeMode, onThemeChange }) {
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("about");
   const [progress, setProgress] = useState(0);
@@ -158,17 +159,6 @@ export default function Navbar() {
           <span className="nav__logo-accent" />
         </a>
 
-        <button
-          className={`nav__toggle ${isOpen ? "x" : ""}`}
-          onClick={() => setIsOpen((p) => !p)}
-          aria-label="Toggle navigation"
-          aria-expanded={isOpen}
-        >
-          <span className="nav__toggle-bar" />
-          <span className="nav__toggle-bar" />
-          <span className="nav__toggle-bar" />
-        </button>
-
         <ul
           className={`nav__list ${isOpen ? "nav__list--open" : ""}`}
           aria-hidden={isMobile && !isOpen}
@@ -186,6 +176,20 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
+
+        <div className="nav__actions">
+          <ThemeSwitcher mode={themeMode} onChange={onThemeChange} />
+          <button
+            className={`nav__toggle ${isOpen ? "x" : ""}`}
+            onClick={() => setIsOpen((p) => !p)}
+            aria-label="Toggle navigation"
+            aria-expanded={isOpen}
+          >
+            <span className="nav__toggle-bar" />
+            <span className="nav__toggle-bar" />
+            <span className="nav__toggle-bar" />
+          </button>
+        </div>
       </nav>
 
       <div

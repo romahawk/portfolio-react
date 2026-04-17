@@ -73,7 +73,7 @@
 .project-card {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, rgba(16, 20, 28, 0.9), rgba(16, 20, 28, 0.75));
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 16px;
@@ -115,8 +115,8 @@
   min-height: 26px;
   padding: 0 10px;
   border-radius: 999px;
-  border: 1px solid rgba(190, 208, 230, 0.1);
-  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--surface-border);
+  background: var(--surface-soft);
   color: var(--muted-strong);
   font-size: 11px;
   font-weight: 700;
@@ -140,8 +140,8 @@
   font-size: 12px;
   padding: 4px 8px;
   border-radius: 999px;
-  border: 1px solid #1f2a3f;
-  background: #0d1320;
+  border: 1px solid var(--tag-border);
+  background: var(--tag-bg);
   color: var(--muted);
 }
 
@@ -154,8 +154,8 @@
 }
 .project-card--signal {
   background:
-    radial-gradient(560px 240px at 100% 0, rgba(73,215,209,0.08), transparent 60%),
-    linear-gradient(180deg, rgba(16, 20, 28, 0.92), rgba(16, 20, 28, 0.78));
+    radial-gradient(560px 240px at 100% 0, var(--surface-glow), transparent 60%),
+    var(--card-bg);
 }
 .project-card--signal:hover {
   border-color: rgba(73, 215, 209, 0.45);
@@ -163,8 +163,8 @@
 }
 .project-card--workflow {
   background:
-    radial-gradient(560px 240px at 100% 0, rgba(111,164,255,0.09), transparent 60%),
-    linear-gradient(180deg, rgba(16, 20, 28, 0.92), rgba(16, 20, 28, 0.78));
+    radial-gradient(560px 240px at 100% 0, var(--surface-cool), transparent 60%),
+    var(--card-bg);
 }
 .project-card--workflow:hover {
   border-color: rgba(111, 164, 255, 0.42);
@@ -172,8 +172,8 @@
 }
 .project-card--insight {
   background:
-    radial-gradient(560px 240px at 100% 0, rgba(243,182,110,0.1), transparent 60%),
-    linear-gradient(180deg, rgba(16, 20, 28, 0.92), rgba(16, 20, 28, 0.78));
+    radial-gradient(560px 240px at 100% 0, var(--surface-warm), transparent 60%),
+    var(--card-bg);
 }
 .project-card--insight:hover {
   border-color: rgba(243, 182, 110, 0.42);
@@ -190,10 +190,10 @@
 
 /* ==== MedTech variants ==== */
 .project-card--med {
-  border-color: #2a3552;
+  border-color: var(--border-strong);
   background:
-    radial-gradient(600px 300px at 110% -10%, rgba(91, 157, 255, 0.1), transparent),
-    linear-gradient(180deg, rgba(16, 20, 28, 0.95), rgba(16, 20, 28, 0.78));
+    radial-gradient(600px 300px at 110% -10%, var(--surface-cool), transparent),
+    var(--card-bg);
 }
 
 .project-card--med:hover {
@@ -202,14 +202,14 @@
 }
 
 .project-card--mgmt {
-  border-color: #3b2f1a;
+  border-color: var(--border-strong);
   background:
-    radial-gradient(600px 300px at 110% -10%, rgba(255, 193, 7, 0.1), transparent),
-    linear-gradient(180deg, rgba(16, 20, 28, 0.95), rgba(16, 20, 28, 0.78));
+    radial-gradient(600px 300px at 110% -10%, var(--surface-warm), transparent),
+    var(--card-bg);
 }
 
 .project-card--mgmt .project-card__title {
-  color: #ffd479;
+  color: var(--brand-warm);
 }
 
 .projects__empty {
@@ -271,7 +271,7 @@
   align-items: center;
   gap: 6px;
   font-weight: 600;
-  color: #fff;
+  color: var(--text);
 }
 
 .dev-status__dot {

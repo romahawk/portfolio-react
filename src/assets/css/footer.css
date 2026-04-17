@@ -2,7 +2,7 @@
 .site-footer {
   margin-top: 60px;
   border-top: 1px solid var(--border);
-  background: rgba(11, 13, 18, 0.85);
+  background: var(--footer-bg);
   backdrop-filter: blur(8px);
 }
 
@@ -23,7 +23,7 @@
   font-weight: 800;
   font-size: 18px;
   letter-spacing: 0.4px;
-  color: #fff;
+  color: var(--text);
   margin-bottom: 10px;
 }
 .footer__brand-brace  { opacity: .85; }
@@ -100,8 +100,9 @@
 }
 .footer__nav-link:hover {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--surface-soft);
 }
+[data-theme="light"] .footer__nav-link:hover { background: rgba(0,0,0,0.05); }
 
 /* ---- CTA column ---- */
 .footer__cta-text {

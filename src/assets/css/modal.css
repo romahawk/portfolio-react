@@ -7,15 +7,14 @@
   background:
     radial-gradient(700px 340px at 78% 12%, rgba(73,215,209,0.16), transparent 60%),
     radial-gradient(560px 320px at 18% 82%, rgba(111,164,255,0.12), transparent 62%),
-    rgba(4, 8, 14, 0.78);
+    var(--modal-backdrop);
   backdrop-filter: blur(10px) saturate(120%);
 }
 .cs-modal__panel {
   position: absolute; inset: 40px 20px;
   max-width: 1100px; margin: 0 auto;
-  background:
-    linear-gradient(180deg, rgba(19,31,45,0.98), rgba(12,20,30,0.97));
-  border: 1px solid rgba(190, 208, 230, 0.12);
+  background: var(--modal-bg);
+  border: 1px solid var(--surface-border-strong);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-strong);
   overflow: hidden; display: flex; flex-direction: column;
@@ -31,9 +30,8 @@
   display: flex; align-items: center; justify-content: space-between;
   position: sticky; top: 0; z-index: 2;
   padding: 14px 18px;
-  border-bottom: 1px solid rgba(190, 208, 230, 0.1);
-  background:
-    linear-gradient(180deg, rgba(18, 29, 42, 0.98), rgba(18, 29, 42, 0.94));
+  border-bottom: 1px solid var(--surface-border);
+  background: var(--modal-header-bg);
   backdrop-filter: blur(14px);
 }
 .cs-modal__title {
@@ -48,8 +46,8 @@
 .cs-modal__share {
   display: inline-flex; align-items: center; gap: 6px;
   height: 38px; padding: 0 13px; border-radius: 999px;
-  border: 1px solid rgba(190, 208, 230, 0.14);
-  background: rgba(255,255,255,0.025); color: var(--muted);
+  border: 1px solid var(--surface-border-strong);
+  background: var(--surface-soft); color: var(--muted);
   font-size: 13px; font-weight: 500; white-space: nowrap;
   transition: color 0.15s, border-color 0.15s, background 0.15s, transform 0.15s;
 }
@@ -62,8 +60,8 @@
 .cs-modal__share:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
 .cs-modal__close {
   width: 44px; height: 44px; border-radius: 12px;
-  border: 1px solid rgba(190, 208, 230, 0.14);
-  background: rgba(255,255,255,0.035); color: var(--text);
+  border: 1px solid var(--surface-border-strong);
+  background: var(--surface-soft); color: var(--text);
   display: grid; place-items: center;
   flex-shrink: 0;
   transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
@@ -80,8 +78,8 @@
 
 .cs-modal__toc-shell {
   padding: 12px 24px 0;
-  border-bottom: 1px solid rgba(190, 208, 230, 0.08);
-  background: linear-gradient(180deg, rgba(13, 22, 33, 0.92), rgba(13, 22, 33, 0.72));
+  border-bottom: 1px solid var(--surface-border);
+  background: var(--modal-toc-bg);
 }
 
 .cs-modal__body { padding: 24px 24px 28px; overflow: auto; }
@@ -91,9 +89,9 @@
   gap: 12px;
   margin: 0 0 12px;
   padding: 10px 12px;
-  border: 1px solid rgba(190, 208, 230, 0.1);
+  border: 1px solid var(--surface-border);
   border-radius: 14px;
-  background: rgba(9, 16, 24, 0.78);
+  background: var(--modal-inner-bg);
   backdrop-filter: blur(10px);
 }
 .cs-modal__toc-label {
@@ -120,8 +118,8 @@
   min-height: 34px;
   padding: 0 12px;
   border-radius: 999px;
-  border: 1px solid rgba(190, 208, 230, 0.1);
-  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--surface-border);
+  background: var(--surface-soft);
   color: var(--muted-strong);
   font-size: 12px;
   white-space: nowrap;
@@ -202,8 +200,8 @@
   min-height: 38px;
   padding: 0 12px;
   border-radius: 999px;
-  border: 1px solid rgba(190, 208, 230, 0.1);
-  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--surface-border);
+  background: var(--surface-soft);
   color: var(--muted-strong);
   font-size: 12px;
 }
@@ -219,11 +217,10 @@
 .cs__card {
   position: relative;
   scroll-margin-top: 132px;
-  border: 1px solid rgba(190, 208, 230, 0.1);
+  border: 1px solid var(--surface-border);
   border-radius: var(--radius);
   padding: 20px 20px 18px;
-  background:
-    linear-gradient(180deg, rgba(19,31,45,0.84), rgba(14,23,35,0.9));
+  background: var(--card-bg-deep);
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
 }
 .cs__card::before {
@@ -237,29 +234,29 @@
 .cs__card--insight {
   background:
     radial-gradient(560px 260px at 100% 0, var(--surface-glow), transparent 60%),
-    linear-gradient(180deg, rgba(19,31,45,0.88), rgba(14,23,35,0.94));
+    var(--card-bg-deep);
 }
 .cs__card--cool {
   background:
     radial-gradient(560px 260px at 100% 0, var(--surface-cool), transparent 60%),
-    linear-gradient(180deg, rgba(19,31,45,0.88), rgba(14,23,35,0.94));
+    var(--card-bg-deep);
 }
 .cs__card--warm {
   background:
     radial-gradient(560px 260px at 100% 0, var(--surface-warm), transparent 60%),
-    linear-gradient(180deg, rgba(19,31,45,0.88), rgba(14,23,35,0.94));
+    var(--card-bg-deep);
 }
 .cs__card--success {
   background:
     radial-gradient(560px 260px at 100% 0, var(--surface-success), transparent 60%),
-    linear-gradient(180deg, rgba(19,31,45,0.88), rgba(14,23,35,0.94));
+    var(--card-bg-deep);
 }
 .cs__card--interactive {
   background:
-    radial-gradient(560px 260px at 90% -10%, rgba(73,215,209,0.1), transparent 58%),
-    radial-gradient(420px 220px at 10% 100%, rgba(111,164,255,0.08), transparent 60%),
-    linear-gradient(180deg, rgba(18,30,44,0.94), rgba(13,22,33,0.98));
-  border-color: rgba(73,215,209,0.18);
+    radial-gradient(560px 260px at 90% -10%, var(--surface-glow), transparent 58%),
+    radial-gradient(420px 220px at 10% 100%, var(--surface-cool), transparent 60%),
+    var(--card-bg-deep);
+  border-color: var(--surface-border);
 }
 
 .cs__eyebrow {
@@ -290,8 +287,8 @@
 .cs__personas li {
   padding: 14px;
   border-radius: 14px;
-  border: 1px solid rgba(190, 208, 230, 0.08);
-  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--surface-border);
+  background: var(--surface-soft);
 }
 .cs__persona-name { font-weight: 700; margin-bottom: 4px; }
 .cs__persona-role { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
@@ -310,8 +307,8 @@
 .cs__collapsible-header {
   display: flex; align-items: center; justify-content: space-between;
   width: 100%;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(190, 208, 230, 0.08);
+  background: var(--surface-soft);
+  border: 1px solid var(--surface-border);
   border-radius: 14px;
   padding: 14px 16px;
   cursor: pointer;
@@ -355,8 +352,8 @@
   width: 36px;
   height: 36px;
   border-radius: 999px;
-  border: 1px solid rgba(190, 208, 230, 0.12);
-  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--surface-border-strong);
+  background: var(--surface-soft);
   font-size: 18px;
   line-height: 1;
   color: var(--muted-strong);
@@ -374,11 +371,10 @@
 .cs__collapsible-header + .cs__grid { margin-top: 18px; }
 
 .cs__sprint {
-  border: 1px solid rgba(73,215,209,0.14);
+  border: 1px solid var(--surface-border);
   border-radius: 16px;
   padding: 16px;
-  background:
-    linear-gradient(180deg, rgba(16,28,40,0.96), rgba(13,21,31,0.96));
+  background: var(--modal-bg);
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.025);
 }
 .cs__sprint-sec { margin-top: 14px; }
@@ -395,14 +391,14 @@
   margin-top: 14px;
   font-size: 12px;
   color: var(--muted);
-  border-top: 1px solid rgba(190, 208, 230, 0.08);
+  border-top: 1px solid var(--surface-border);
   padding-top: 12px;
 }
 
 .cs__footer {
   margin-top: 6px;
   padding-top: 16px;
-  border-top: 1px solid rgba(190, 208, 230, 0.08);
+  border-top: 1px solid var(--surface-border);
 }
 .cs__last-updated { margin: 0; font-size: 11px; color: var(--muted); opacity: 0.6; }
 
@@ -418,16 +414,16 @@
   width: 6px;
 }
 .cs-modal__body::-webkit-scrollbar-track {
-  background: rgba(0,0,0,0.15);
+  background: var(--bg-elevated);
   border-radius: 999px;
 }
 .cs-modal__body::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #00ddeb 0%, #0066ff 100%);
+  background: linear-gradient(180deg, var(--brand) 0%, var(--brand-2) 100%);
   border-radius: 999px;
 }
 .cs-modal__body {
   scrollbar-width: thin;
-  scrollbar-color: #00ddeb rgba(0,0,0,0.15);
+  scrollbar-color: var(--brand) var(--bg-elevated);
 }
 
 /* ===== CaseStudyLinks ===== */
@@ -464,7 +460,7 @@
   padding: 8px 12px;
   border-radius: 10px;
   border: 1px solid var(--border);
-  background: rgba(255,255,255,0.02);
+  background: var(--surface-soft);
   color: var(--text);
   font-size: 13px;
   font-weight: 500;

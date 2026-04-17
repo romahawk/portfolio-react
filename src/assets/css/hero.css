@@ -60,7 +60,8 @@
   border-color: transparent;
   background: transparent;
 }
-.hero__email-cta:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+.hero__email-cta:hover { color: var(--text); background: var(--surface-soft); }
+[data-theme="light"] .hero__email-cta:hover { background: rgba(0,0,0,0.05); }
 
 /* -------- Social row -------- */
 .hero__social-row {
