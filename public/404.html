@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 – Page not found · mazuryk.dev</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <script>
+    /* honour the stored theme preference, same as the main site */
+    (function () {
+      var m = localStorage.getItem('theme');
+      var t = m ? m : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <style>
+    /* ── Design tokens ───────────────────────────────────────────── */
+    :root {
+      --bg:           #081018;
+      --panel:        #101925;
+      --panel-2:      #131f2d;
+      --text:         #ecf2fb;
+      --muted:        #9ca8ba;
+      --muted-strong: #bec8d6;
+      --brand:        #49d7d1;
+      --brand-2:      #6fa4ff;
+      --border:       #213044;
+      --border-strong:#314760;
+      --radius:       16px;
+      --shadow:       0 16px 44px rgba(0,0,0,0.34);
+
+      /* terminal colours */
+      --term-bg:      #0b1420;
+      --term-border:  #1e2f45;
+      --term-prompt:  #49d7d1;
+      --term-arg:     #6fa4ff;
+      --term-error:   #ff6b6b;
+      --term-hint:    #9ca8ba;
+      --term-code:    #f3b66e;
+
+      /* dot colours */
+      --dot-red:      #ff5f57;
+      --dot-yellow:   #febc2e;
+      --dot-green:    #28c840;
+    }
+
+    [data-theme="light"] {
+      --bg:           #f4f7fb;
+      --panel:        #ffffff;
+      --panel-2:      #f7f9fd;
+      --text:         #111827;
+      --muted:        #566070;
+      --muted-strong: #3c4860;
+      --brand:        #0898a3;
+      --brand-2:      #2b6fd4;
+      --border:       #d1daea;
+      --border-strong:#b5c4d8;
+
+      --term-bg:      #eef3fc;
+      --term-border:  var(--border);
+      --term-prompt:  #0898a3;
+      --term-arg:     #2b6fd4;
+      --term-error:   #d93535;
+      --term-hint:    #566070;
+      --term-code:    #c4762e;
+    }
+
+    /* ── Reset ───────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: "Segoe UI", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.01em;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 800px at 76% -10%, rgba(73,215,209,0.10), transparent 58%),
+        radial-gradient(920px 620px at -8% 10%, rgba(111,164,255,0.09), transparent 56%),
+        var(--bg);
+    }
+
+    [data-theme="light"] body {
+      background:
+        radial-gradient(1200px 800px at 76% -10%, rgba(8,152,163,0.07), transparent 58%),
+        radial-gradient(920px 620px at -8% 10%, rgba(43,111,212,0.06), transparent 56%),
+        var(--bg);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Page shell ──────────────────────────────────────────────── */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Navbar ──────────────────────────────────────────────────── */
+    .site-nav {
+      display: flex;
+      align-items: center;
+      padding: 0 clamp(20px, 4vw, 48px);
+      height: 72px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,16,24,0.75);
+      backdrop-filter: blur(6px);
+      flex-shrink: 0;
+    }
+
+    [data-theme="light"] .site-nav {
+      background: rgba(244,247,251,0.88);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.4px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo-brace  { opacity: .85; }
+    .logo-name   { text-transform: uppercase; }
+    .logo-dot {
+      width: 6px; height: 6px;
+      background: var(--brand);
+      border-radius: 999px;
+      display: inline-block;
+      margin-left: 2px;
+    }
+
+    /* ── Main content ────────────────────────────────────────────── */
+    .main {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 48px clamp(20px, 5vw, 48px);
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 28px;
+      width: 100%;
+      max-width: 560px;
+    }
+
+    /* ── Terminal micro-detail ───────────────────────────────────── */
+    .terminal {
+      width: 100%;
+      background: var(--term-bg);
+      border: 1px solid var(--term-border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      font-family: ui-monospace, "Cascadia Code", "Fira Code", "Courier New", monospace;
+      font-size: 13px;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--term-border);
+      background: rgba(0,0,0,0.15);
+    }
+
+    [data-theme="light"] .terminal-header {
+      background: rgba(0,0,0,0.04);
+    }
+
+    .terminal-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .terminal-dot--red    { background: var(--dot-red); }
+    .terminal-dot--yellow { background: var(--dot-yellow); }
+    .terminal-dot--green  { background: var(--dot-green); }
+
+    .terminal-title {
+      margin-left: 4px;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    .terminal-body {
+      padding: 16px 18px;
+      display: grid;
+      gap: 8px;
+      line-height: 1.6;
+    }
+
+    .terminal-line {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    .terminal-prompt {
+      color: var(--term-prompt);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .terminal-cmd { color: var(--text); }
+
+    .terminal-arg { color: var(--term-arg); }
+
+    .terminal-error .terminal-status {
+      color: var(--term-error);
+      font-weight: 700;
+    }
+
+    .terminal-error .terminal-msg {
+      color: var(--muted-strong);
+    }
+
+    .terminal-hint {
+      color: var(--term-hint);
+      padding-left: 18px;
+    }
+
+    .terminal-hint code {
+      color: var(--term-code);
+      background: rgba(243,182,110,0.08);
+      border: 1px solid rgba(243,182,110,0.15);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 12px;
+    }
+
+    [data-theme="light"] .terminal-hint code {
+      background: rgba(196,118,46,0.08);
+      border-color: rgba(196,118,46,0.15);
+    }
+
+    .terminal-cursor {
+      display: inline-block;
+      width: 8px; height: 14px;
+      background: var(--brand);
+      vertical-align: middle;
+      border-radius: 1px;
+      animation: blink 1.1s step-end infinite;
+      margin-left: 4px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .terminal-cursor { animation: none; }
+    }
+
+    /* ── Headline ────────────────────────────────────────────────── */
+    .headline {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .headline-code {
+      font-size: clamp(56px, 10vw, 80px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .headline-text {
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text);
+    }
+
+    /* ── Message ─────────────────────────────────────────────────── */
+    .message {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+      max-width: 46ch;
+    }
+
+    /* ── Actions ─────────────────────────────────────────────────── */
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.08s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: var(--panel-2, #131f2d);
+      border-color: var(--border-strong);
+    }
+
+    .btn:active { transform: translateY(1px); }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 3px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      border-color: transparent;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      border-color: transparent;
+    }
+
+    /* ── Footer ──────────────────────────────────────────────────── */
+    .site-footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    /* ── Responsive ──────────────────────────────────────────────── */
+    @media (max-width: 540px) {
+      .headline { gap: 8px; }
+      .actions  { flex-direction: column; }
+      .btn      { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <nav class="site-nav">
+      <a href="https://www.mazuryk.dev/" class="logo" aria-label="Back to homepage">
+        <span class="logo-brace">{ }</span>
+        <span class="logo-name">ROMAZ</span>
+        <span class="logo-dot"></span>
+      </a>
+    </nav>
+
+    <main class="main">
+      <div class="content">
+
+        <div class="terminal" role="img" aria-label="Terminal showing a 404 route-not-found error">
+          <div class="terminal-header" aria-hidden="true">
+            <span class="terminal-dot terminal-dot--red"></span>
+            <span class="terminal-dot terminal-dot--yellow"></span>
+            <span class="terminal-dot terminal-dot--green"></span>
+            <span class="terminal-title">navigator.sh</span>
+          </div>
+          <div class="terminal-body" aria-hidden="true">
+            <div class="terminal-line">
+              <span class="terminal-prompt">$</span>
+              <span class="terminal-cmd">navigate <span class="terminal-arg">--to</span> /this-page</span>
+            </div>
+            <div class="terminal-line terminal-error">
+              <span class="terminal-status">✗ 404</span>
+              <span class="terminal-msg">route not found in any known map</span>
+            </div>
+            <div class="terminal-line terminal-hint">
+              hint: try <code>cd /</code> or <code>open --projects</code>
+              <span class="terminal-cursor" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="headline">
+          <span class="headline-code" aria-hidden="true">404</span>
+          <h1 class="headline-text">Page not found</h1>
+        </div>
+
+        <p class="message">
+          This URL doesn't map to anything here — probably a stale link,
+          a typo, or a path that moved. Nothing's broken on your end.
+        </p>
+
+        <div class="actions">
+          <a href="https://www.mazuryk.dev/" class="btn btn-primary">
+            ← Back to homepage
+          </a>
+          <a href="https://www.mazuryk.dev/#projects" class="btn">
+            View Projects
+          </a>
+          <a href="https://www.mazuryk.dev/#contact" class="btn">
+            Contact
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <span>mazuryk.dev &nbsp;·&nbsp; Roman Mazuryk</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
