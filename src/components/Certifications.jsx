@@ -1,118 +1,72 @@
 import React from "react";
 import { GraduationCap, Database, Projector } from "lucide-react";
+import { useTranslation } from "../context/LangContext.jsx";
 
-const certifications = [
-  {
-    id: 1,
-    title: "GoIT — Project Management Certificate",
-    image: "/images/certs/goit-pm.jpg",
-    icon: <Projector size={20} />,
-    issuer: "GoIT (2025)",
-    stack: [
-      "Agile Delivery",
-      "Scope & Roadmaps",
-      "Backlog & Prioritization",
-      "Risk & Dependencies",
-      "Stakeholder Management",
-      "Delivery Artifacts (SOW/WBS/RACI)",
-    ],
-    summary:
-      "End-to-end delivery governance: translating scope into roadmaps and execution plans, managing risks and dependencies, and maintaining stakeholder alignment through structured reporting and artifacts.",
-  },
+const CERT_ICONS = [<Projector size={20} />, <GraduationCap size={20} />, <Database size={20} />];
+const CERT_LINKS = [null, null, "https://app.datacamp.com/learn/career-tracks/associate-ai-engineer-for-developers"];
+const CERT_IMAGES = ["/images/certs/goit-pm.jpg", "/images/certs/goit-neoversity.jpg", null];
+const CERT_STATUS = [null, "ongoing", "ongoing"];
 
-  {
-    id: 2,
-    title: "Neoversity — Master’s in Software Development (Technical Deepening)",
-    image: "/images/certs/goit-neoversity.jpg",
-    icon: <GraduationCap size={20} />,
-    issuer: "Woolf University (2024–2026)",
-    stack: [
-      "System Design",
-      "Data Modeling",
-      "Full-Stack Foundations",
-      "APIs",
-      "Cloud & DevOps Basics",
-    ],
-    summary:
-      "Formal technical deepening to lead product systems with less abstraction — strengthening architecture fluency, data modeling, and engineering collaboration.",
-    status: "ongoing",
-  },
-  {
-    id: 3,
-    title: "DataCamp – Associate AI Engineer for Developers",
-    placeholder: true,
-    icon: <Database size={20} />,
-    issuer: "DataCamp (2025)",
-    link: "https://app.datacamp.com/learn/career-tracks/associate-ai-engineer-for-developers",
-    stack: [
-      "AI Integration",
-      "OpenAI API",
-      "Prompting",
-      "Tooling Patterns",
-      "Productized AI Features",
-    ],
-    summary:
-      "Applied AI integration track focused on building AI-powered product features using APIs and modern workflows — emphasizing practical implementation patterns over theory.",
-    status: "ongoing",
-  },
-];
+const Certifications = () => {
+  const { t } = useTranslation();
+  const items = t("certifications.items");
 
-const Certifications = () => (
-  <section id="certifications" className="section container">
-    <h2 className="section__title reveal">&gt; Certifications</h2>
+  return (
+    <section id="certifications" className="section container">
+      <h2 className="section__title reveal">&gt; {t("certifications.title")}</h2>
 
-    <div className="certs__grid">
-      {certifications.map((cert, idx) => {
-        const isPlaceholder = cert.placeholder || !cert.image;
-        const delay = idx === 1 ? " reveal--delay-1" : idx === 2 ? " reveal--delay-2" : "";
+      <div className="certs__grid">
+        {Array.isArray(items) && items.map((cert, idx) => {
+          const isPlaceholder = !CERT_IMAGES[idx];
+          const delay = idx === 1 ? " reveal--delay-1" : idx === 2 ? " reveal--delay-2" : "";
 
-        return (
-          <div key={cert.id} className={`cert-card reveal${delay}`}>
-            <div className="cert-card__head">
-              <span className="cert-card__icon">{cert.icon}</span>
-              <h3 className="cert-card__title">{cert.title}</h3>
-            </div>
-
-            {/* Image or gradient placeholder */}
-            {isPlaceholder ? (
-              <div className="cert-card__ph">
-                <span className="cert-card__ph-label">In progress</span>
+          return (
+            <div key={idx} className={`cert-card reveal${delay}`}>
+              <div className="cert-card__head">
+                <span className="cert-card__icon">{CERT_ICONS[idx]}</span>
+                <h3 className="cert-card__title">{cert.title}</h3>
               </div>
-            ) : (
-              <img
-                src={cert.image}
-                alt={cert.title}
-                className="cert-card__img"
-                loading="lazy"
-              />
-            )}
 
-            <p className="cert-card__issuer">{cert.issuer}</p>
+              {isPlaceholder ? (
+                <div className="cert-card__ph">
+                  <span className="cert-card__ph-label">{t("certifications.inProgress")}</span>
+                </div>
+              ) : (
+                <img
+                  src={CERT_IMAGES[idx]}
+                  alt={cert.title}
+                  className="cert-card__img"
+                  loading="lazy"
+                />
+              )}
 
-            {cert.link ? (
-              <a href={cert.link} target="_blank" rel="noreferrer">
-                View credential
-              </a>
-            ) : null}
+              <p className="cert-card__issuer">{cert.issuer}</p>
 
-            {cert.status === "ongoing" && (
-              <span className="badge badge--ongoing">Ongoing</span>
-            )}
+              {CERT_LINKS[idx] ? (
+                <a href={CERT_LINKS[idx]} target="_blank" rel="noreferrer">
+                  {t("certifications.viewCredential")}
+                </a>
+              ) : null}
 
-            <p className="cert-card__summary">{cert.summary}</p>
+              {CERT_STATUS[idx] === "ongoing" && (
+                <span className="badge badge--ongoing">{t("certifications.ongoing")}</span>
+              )}
 
-            {Array.isArray(cert.stack) && cert.stack.length > 0 && (
-              <ul className="cert-card__stack">
-                {cert.stack.map((s, i) => (
-                  <li key={i}>{s}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        );
-      })}
-    </div>
-  </section>
-);
+              <p className="cert-card__summary">{cert.summary}</p>
+
+              {Array.isArray(cert.stack) && cert.stack.length > 0 && (
+                <ul className="cert-card__stack">
+                  {cert.stack.map((s, i) => (
+                    <li key={i}>{s}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+};
 
 export default Certifications;

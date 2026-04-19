@@ -1,5 +1,6 @@
 import React from "react";
 import { Analytics } from "@vercel/analytics/react";
+import { LangProvider } from "./context/LangContext.jsx";
 import { useScrollReveal } from "./hooks/useScrollReveal.js";
 import { useOgMeta } from "./hooks/useOgMeta.js";
 import { useTheme } from "./hooks/useTheme.js";
@@ -15,29 +16,37 @@ import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import BackToTop from "./components/BackToTop.jsx";
 
- function App() {
-   const [themeMode, setThemeMode] = useTheme();
-   useScrollReveal();
-   useOgMeta();
-   return (
-     <>
-       <a href="#main" className="skip-link">Skip to main content</a>
-       <Navbar themeMode={themeMode} onThemeChange={setThemeMode} />
-       <main id="main">
-         <Hero />
-         <About />
-         <AIAugmentedSDLC />
-         <TimelineSwitch />
-         <Skills />
-         <Projects />
-         <Certifications />
-         <Contact />
-       </main>
-       <Footer />
-       <BackToTop />
-       <Analytics />
-     </>
-   );
- }
+function AppInner() {
+  const [themeMode, setThemeMode] = useTheme();
+  useScrollReveal();
+  useOgMeta();
+  return (
+    <>
+      <a href="#main" className="skip-link">Skip to main content</a>
+      <Navbar themeMode={themeMode} onThemeChange={setThemeMode} />
+      <main id="main">
+        <Hero />
+        <About />
+        <AIAugmentedSDLC />
+        <TimelineSwitch />
+        <Skills />
+        <Projects />
+        <Certifications />
+        <Contact />
+      </main>
+      <Footer />
+      <BackToTop />
+      <Analytics />
+    </>
+  );
+}
 
- export default App;
+function App() {
+  return (
+    <LangProvider>
+      <AppInner />
+    </LangProvider>
+  );
+}
+
+export default App;

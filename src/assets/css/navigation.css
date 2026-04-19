@@ -202,7 +202,81 @@
 
 }
 
-/* ===== Theme Switcher ===== */
+/* ===== Unified nav controls pill (desktop): theme + lang in one container ===== */
+.nav-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 3px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-controls__btn {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-controls__btn:hover {
+  background: var(--surface-soft);
+  color: var(--text);
+}
+
+.nav-controls__btn--active {
+  background: var(--surface-glow);
+  color: var(--brand);
+}
+
+/* Language buttons override: text, not icon */
+.nav-controls__btn--lang {
+  width: auto;
+  padding: 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.nav-controls__btn--lang-active {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #fff;
+}
+
+.nav-controls__btn--lang-active:hover {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #fff;
+}
+
+/* Hairline divider between theme and lang groups */
+.nav-controls__sep {
+  width: 1px;
+  height: 18px;
+  background: var(--border);
+  margin: 0 3px;
+  flex-shrink: 0;
+}
+
+.nav-controls__btn:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-controls,
+  .nav-controls__btn { transition: none; }
+}
+
+/* ===== Theme Switcher (mobile only — shown next to hamburger) ===== */
 .theme-switcher {
   display: flex;
   align-items: center;
@@ -245,4 +319,55 @@
 @media (prefers-reduced-motion: reduce) {
   .theme-switcher,
   .theme-switcher__btn { transition: none; }
+}
+
+/* ===== Language Switcher (mobile nav list) ===== */
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 3px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.lang-switcher__btn {
+  padding: 4px 10px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color .15s, background .15s;
+  line-height: 1.4;
+}
+
+.lang-switcher__btn:hover {
+  background: var(--surface-soft);
+  color: var(--text);
+}
+
+.lang-switcher__btn--active {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #fff;
+}
+
+.lang-switcher__btn:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.nav__lang-mobile {
+  padding: 8px 12px 4px;
+  list-style: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lang-switcher,
+  .lang-switcher__btn { transition: none; }
 }
