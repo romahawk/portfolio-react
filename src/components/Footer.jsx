@@ -1,13 +1,14 @@
 import React from "react";
 import { Linkedin, Github, Mail, ArrowUpRight } from "lucide-react";
+import { useTranslation } from "../context/LangContext.jsx";
 
-const NAV_LINKS = [
-  { label: "Home",            href: "#home" },
-  { label: "About",           href: "#about" },
-  { label: "Timeline",        href: "#timeline" },
-  { label: "Skills",          href: "#skills" },
-  { label: "Product Systems", href: "#projects" },
-  { label: "Contact",         href: "#contact" },
+const NAV_LINK_KEYS = [
+  { key: "Home",           href: "#home" },
+  { key: "About",          href: "#about" },
+  { key: "Timeline",       href: "#timeline" },
+  { key: "Skills",         href: "#skills" },
+  { key: "Product Systems", href: "#projects" },
+  { key: "Contact",        href: "#contact" },
 ];
 
 const SOCIAL_LINKS = [
@@ -17,7 +18,9 @@ const SOCIAL_LINKS = [
 ];
 
 const Footer = () => {
+  const { t } = useTranslation();
   const year = new Date().getFullYear();
+  const taglineLines = t("footer.tagline").split("\n");
 
   return (
     <footer className="site-footer">
@@ -31,8 +34,8 @@ const Footer = () => {
             <span className="footer__brand-dot" />
           </div>
           <p className="footer__tagline">
-            Technical Product Manager &amp; Founder&#8209;Operator.<br />
-            Building scalable systems in regulated industries.
+            {taglineLines[0]}
+            {taglineLines[1] ? <><br />{taglineLines[1]}</> : null}
           </p>
           <div className="footer__socials">
             {SOCIAL_LINKS.map(({ label, href, icon }) => (
@@ -53,11 +56,13 @@ const Footer = () => {
 
         {/* Centre — navigation */}
         <nav className="footer__nav-col" aria-label="Footer navigation">
-          <p className="footer__col-heading">Navigation</p>
+          <p className="footer__col-heading">{t("footer.nav")}</p>
           <ul className="footer__nav">
-            {NAV_LINKS.map(({ label, href }) => (
+            {NAV_LINK_KEYS.map(({ key, href }) => (
               <li key={href}>
-                <a href={href} className="footer__nav-link">{label}</a>
+                <a href={href} className="footer__nav-link">
+                  {t(`footer.navLinks.${key}`) || key}
+                </a>
               </li>
             ))}
           </ul>
@@ -65,12 +70,10 @@ const Footer = () => {
 
         {/* Right — availability CTA */}
         <div className="footer__cta-col">
-          <p className="footer__col-heading">Availability</p>
-          <p className="footer__cta-text">
-            Open to Technical PM &amp; Product Owner roles and selective founder&#8209;operator collaborations.
-          </p>
+          <p className="footer__col-heading">{t("footer.availability")}</p>
+          <p className="footer__cta-text">{t("footer.availabilityText")}</p>
           <a href="mailto:romazuryk@proton.me" className="footer__cta-btn">
-            Send an email <ArrowUpRight size={14} className="footer__cta-icon" />
+            {t("footer.sendEmail")} <ArrowUpRight size={14} className="footer__cta-icon" />
           </a>
         </div>
 
@@ -79,8 +82,8 @@ const Footer = () => {
       {/* Bottom bar */}
       <div className="footer__bar">
         <div className="container footer__bar-inner">
-          <span className="footer__copy">© {year} Roman Mazuryk. All rights reserved.</span>
-          <span className="footer__copy">Germany (CET) · Available for remote &amp; hybrid</span>
+          <span className="footer__copy">&copy; {year} Roman Mazuryk. {t("footer.copyright")}</span>
+          <span className="footer__copy">{t("footer.location")}</span>
         </div>
       </div>
     </footer>

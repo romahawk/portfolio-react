@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { ChevronDown, Mail, Linkedin, Github, FileDown } from "lucide-react";
+import { useTranslation } from "../context/LangContext.jsx";
 
 const Hero = () => {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -14,24 +16,18 @@ const Hero = () => {
     <section id="home" className="hero">
       <div className="container hero__inner">
         <div className="hero__content">
-          <p className="hero__eyebrow">Technical Product Portfolio · {new Date().getFullYear()}</p>
+          <p className="hero__eyebrow">{t("hero.eyebrow")} · {new Date().getFullYear()}</p>
 
-          <h1 className="hero__title">
-            Technical Product Manager &amp; Delivery Lead
-          </h1>
+          <h1 className="hero__title">{t("hero.headline")}</h1>
 
-          <p className="hero__subtitle">
-            AI-Augmented SDLC for production-grade delivery in regulated industries.
-            10+ years leading MedTech &amp; Pharma platforms — from $40M+ operations to
-            full-stack system architecture. I make trade-offs explicit and delivery predictable.
-          </p>
+          <p className="hero__subtitle">{t("hero.subtitle")}</p>
 
           <div className="hero__actions">
             <a href="#ai-sdlc" className="btn btn--primary">
-              View AI-Augmented SDLC
+              {t("hero.ctaSDLC")}
             </a>
             <a href="#projects" className="btn btn--ghost">
-              View Product Systems
+              {t("hero.ctaProjects")}
             </a>
             <a href="mailto:romazuryk@proton.me" className="btn btn--ghost hero__email-cta">
               <Mail size={15} className="icon mr-1" />
@@ -48,15 +44,15 @@ const Hero = () => {
               <Github size={14} className="icon mr-1" /> GitHub
             </a>
             <span className="hero__social-sep" aria-hidden="true" />
-            <a href="/roman-mazuryk-cv.pdf" download aria-label="Download CV (PDF)" className="hero__social-link">
-              <FileDown size={14} className="icon mr-1" /> Download CV
+            <a href="/roman-mazuryk-cv.pdf" download aria-label={t("hero.downloadCV")} className="hero__social-link">
+              <FileDown size={14} className="icon mr-1" /> {t("hero.downloadCV")}
             </a>
           </div>
         </div>
       </div>
 
       <div className={`hero__scroll-hint ${scrolled ? "hero__scroll-hint--hidden" : ""}`} aria-hidden="true">
-        <span>Scroll</span>
+        <span>{t("hero.scroll")}</span>
         <ChevronDown size={18} className="hero__scroll-hint-icon" />
       </div>
     </section>

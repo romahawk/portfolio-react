@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { X, Link2, Check } from "lucide-react";
+import { useTranslation } from "../context/LangContext.jsx";
 
 const FOCUSABLE = [
   'a[href]',
@@ -11,6 +12,7 @@ const FOCUSABLE = [
 ].join(', ');
 
 export default function CaseStudyModal({ open, onClose, title, slug, sections = [], children }) {
+  const { t } = useTranslation();
   const panelRef = useRef(null);
   const bodyRef = useRef(null);
   const closeRef = useRef(null);
@@ -18,7 +20,6 @@ export default function CaseStudyModal({ open, onClose, title, slug, sections = 
   const [copied, setCopied] = useState(false);
   const titleId = slug ? `case-study-title-${slug}` : "case-study-title";
 
-  // Reset copied state when modal closes
   useEffect(() => { if (!open) setCopied(false); }, [open]);
 
   function handleCopyLink() {
@@ -42,10 +43,8 @@ export default function CaseStudyModal({ open, onClose, title, slug, sections = 
   useEffect(() => {
     if (!open) return;
 
-    // Store focus to restore on close
     previousFocusRef.current = document.activeElement;
 
-    // Auto-focus close button
     requestAnimationFrame(() => closeRef.current?.focus());
 
     const onKey = (e) => {
@@ -79,7 +78,6 @@ export default function CaseStudyModal({ open, onClose, title, slug, sections = 
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("keydown", onKey);
-      // Restore focus to the element that opened the modal
       previousFocusRef.current?.focus();
     };
   }, [open, onClose]);
@@ -97,14 +95,14 @@ export default function CaseStudyModal({ open, onClose, title, slug, sections = 
               <button
                 className="cs-modal__share"
                 onClick={handleCopyLink}
-                aria-label="Copy shareable link"
+                aria-label={t("modal.copyLinkLabel")}
                 aria-live="polite"
               >
                 {copied ? <Check size={15} /> : <Link2 size={15} />}
-                <span>{copied ? "Copied!" : "Share"}</span>
+                <span>{copied ? t("modal.copied") : t("modal.share")}</span>
               </button>
             )}
-            <button ref={closeRef} className="cs-modal__close" aria-label="Close" onClick={onClose}>
+            <button ref={closeRef} className="cs-modal__close" aria-label={t("modal.closeLabel")} onClick={onClose}>
               <X size={18} />
             </button>
           </div>
@@ -112,7 +110,7 @@ export default function CaseStudyModal({ open, onClose, title, slug, sections = 
         {sections.length > 0 ? (
           <div className="cs-modal__toc-shell">
             <nav className="cs-modal__toc" aria-label="Case study sections">
-              <div className="cs-modal__toc-label">On this page</div>
+              <div className="cs-modal__toc-label">{t("modal.onThisPage")}</div>
               <div className="cs-modal__toc-list">
                 {sections.map((section) => (
                   <button

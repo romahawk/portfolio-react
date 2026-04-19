@@ -6,6 +6,7 @@ import {
   Rocket, TrendingUp, Waves, Circle,
 } from "lucide-react";
 import CaseStudyModal from "./CaseStudyModal.jsx";
+import { useTranslation } from "../context/LangContext.jsx";
 
 const CARD_ICONS = { Lightbulb, MonitorCog, Wrench, SearchCheck, Camera, Rocket, TrendingUp, Waves, Circle };
 
@@ -25,50 +26,22 @@ const TECH_TAG_ORDER = [
   "MedTech",
 ];
 
-const CASE_STUDY_CONFIG = {
-  livesurgery: {
-    title: "LiveSurgery - Case Study",
-    Component: LivesurgeryCaseStudy,
-    sections: [
-      { id: "founder-lens", label: "Founder Lens" },
-      { id: "problem-context", label: "Problem & Context" },
-      { id: "constraints", label: "Constraints" },
-      { id: "product-decisions", label: "Key Decisions" },
-      { id: "architecture", label: "Architecture" },
-      { id: "roadmap", label: "Roadmap" },
-      { id: "outcomes", label: "Outcomes" },
-      { id: "gtm", label: "Business Model" },
-    ],
-  },
-  flowlogics: {
-    title: "Flowlogics - Case Study",
-    Component: FlowLogixCaseStudy,
-    sections: [
-      { id: "founder-lens", label: "Founder Lens" },
-      { id: "problem-context", label: "Problem & Context" },
-      { id: "constraints", label: "Constraints" },
-      { id: "product-decisions", label: "Key Decisions" },
-      { id: "architecture", label: "Architecture" },
-      { id: "roadmap", label: "Roadmap" },
-      { id: "outcomes", label: "Outcomes" },
-      { id: "gtm", label: "Business Model" },
-    ],
-  },
-  jobsprint: {
-    title: "JobSprint - Case Study",
-    Component: JobSprintCaseStudy,
-    sections: [
-      { id: "founder-lens", label: "Founder Lens" },
-      { id: "problem-context", label: "Problem & Context" },
-      { id: "constraints", label: "Constraints" },
-      { id: "product-decisions", label: "Key Decisions" },
-      { id: "architecture", label: "Architecture" },
-      { id: "roadmap", label: "Roadmap" },
-      { id: "outcomes", label: "Outcomes" },
-      { id: "gtm", label: "Business Model" },
-    ],
-  },
+const CASE_STUDY_COMPONENTS = {
+  livesurgery: LivesurgeryCaseStudy,
+  flowlogics: FlowLogixCaseStudy,
+  jobsprint: JobSprintCaseStudy,
 };
+
+const CASE_STUDY_SECTION_IDS = [
+  "founder-lens",
+  "problem-context",
+  "constraints",
+  "product-decisions",
+  "architecture",
+  "roadmap",
+  "outcomes",
+  "gtm",
+];
 
 const normalizeTags = (list) => {
   const present = new Set();
@@ -83,16 +56,19 @@ const getCardTone = (project) => {
   return "";
 };
 
-function ProjectCard({ p, variant, onOpenCase }) {
+function ProjectCard({ p, variant, onOpenCase, t }) {
   const inDev = p.inDevelopment;
   const CardIcon = p.icon ? (CARD_ICONS[p.icon] || Circle) : null;
   const tone = getCardTone(p);
+
+  const translatedTitle = t(`projects.items.${p.id}.title`) || p.title;
+  const translatedSummary = t(`projects.items.${p.id}.summary`) || p.summary;
 
   return (
     <article className={`project-card${variant ? ` project-card--${variant}` : ""}${tone ? ` project-card--${tone}` : ""}`}>
       <header className="project-card__head">
         <div className="project-card__title-wrap">
-          <h4 className="project-card__title">{p.title}</h4>
+          <h4 className="project-card__title">{translatedTitle}</h4>
           {tone ? <span className="project-card__tone">{tone.replace("-", " ")}</span> : null}
         </div>
         {CardIcon ? (
@@ -102,7 +78,7 @@ function ProjectCard({ p, variant, onOpenCase }) {
         ) : null}
       </header>
 
-      <p className="project-card__summary">{p.summary}</p>
+      <p className="project-card__summary">{translatedSummary}</p>
 
       {p.stack?.length ? (
         <ul className="project-card__stack">
@@ -114,9 +90,9 @@ function ProjectCard({ p, variant, onOpenCase }) {
 
       {p.tags?.length ? (
         <div className="project-card__tags">
-          {p.tags.map((t) => (
-            <span key={t} className="tag">
-              {t}
+          {p.tags.map((tag) => (
+            <span key={tag} className="tag">
+              {t(`projects.filters.${tag}`) || tag}
             </span>
           ))}
         </div>
@@ -127,11 +103,11 @@ function ProjectCard({ p, variant, onOpenCase }) {
           {inDev ? (
             <div className="dev-status">
               <span className="dev-status__dot" aria-hidden></span>
-              <span>In progress</span>
+              <span>{t("projects.inProgress")}</span>
             </div>
           ) : p.link ? (
             <a className="project-card__link" href={p.link} target="_blank" rel="noreferrer">
-              View
+              {t("projects.viewLink")}
             </a>
           ) : null}
         </div>
@@ -146,7 +122,7 @@ function ProjectCard({ p, variant, onOpenCase }) {
                 onOpenCase && onOpenCase(p.caseStudy);
               }}
             >
-              <FileText size={14} className="icon mr-1" /> Case Study
+              <FileText size={14} className="icon mr-1" /> {t("projects.caseStudy")}
             </a>
           ) : null}
         </div>
@@ -156,6 +132,7 @@ function ProjectCard({ p, variant, onOpenCase }) {
 }
 
 export default function Projects() {
+  const { t } = useTranslation();
   const [cat, setCat] = useState(CATEGORY.TECH);
   const [caseId, setCaseId] = useState(null);
   const [tag, setTag] = useState("All");
@@ -224,22 +201,32 @@ export default function Projects() {
     []
   );
 
-  const activeCaseStudy = caseId ? CASE_STUDY_CONFIG[caseId] : null;
-  const ActiveCaseComponent = activeCaseStudy?.Component || null;
+  const ActiveCaseComponent = caseId ? CASE_STUDY_COMPONENTS[caseId] : null;
+
+  // Build translated sections and title for the active case study
+  const activeCaseStudySections = caseId
+    ? CASE_STUDY_SECTION_IDS.map((id) => ({
+        id,
+        label: t(`projects.caseStudySections.${id}`),
+      }))
+    : [];
+  const activeCaseStudyTitle = caseId
+    ? t(`projects.caseStudyTitles.${caseId}`) || `${caseId} - Case Study`
+    : "Case Study";
 
   return (
     <section id="projects" className="section container">
-      <h2 className="section__title reveal">&gt; Product Systems</h2>
+      <h2 className="section__title reveal">&gt; {t("projects.title")}</h2>
 
       <div className="projects__toolbar reveal reveal--delay-1">
-        <div className="projects__tabs" role="tablist" aria-label="Portfolio categories">
+        <div className="projects__tabs" role="tablist" aria-label={t("projects.ariaLabel")}>
           <button
             role="tab"
             aria-selected={cat === CATEGORY.TECH}
             className={`tab ${cat === CATEGORY.TECH ? "tab--active" : ""}`}
             onClick={() => setCat(CATEGORY.TECH)}
           >
-            <Cpu size={16} className="icon mr-1" /> Product Systems
+            <Cpu size={16} className="icon mr-1" /> {t("projects.tabs.tech")}
           </button>
 
           <button
@@ -248,20 +235,20 @@ export default function Projects() {
             className={`tab ${cat === CATEGORY.MED ? "tab--active" : ""}`}
             onClick={() => setCat(CATEGORY.MED)}
           >
-            <Shield size={16} className="icon mr-1" /> Regulated Systems Delivery
+            <Shield size={16} className="icon mr-1" /> {t("projects.tabs.medtech")}
           </button>
         </div>
 
         {cat === CATEGORY.TECH && tags.length > 1 && (
-          <div className="projects__filters" role="group" aria-label="Filter product system tags">
-            {tags.map((t) => (
+          <div className="projects__filters" role="group" aria-label={t("projects.filtersAriaLabel")}>
+            {tags.map((tagItem) => (
               <button
-                key={t}
-                className={`chip ${tag === t ? "chip--active" : ""}`}
-                onClick={() => setTag(t)}
-                aria-pressed={tag === t}
+                key={tagItem}
+                className={`chip ${tag === tagItem ? "chip--active" : ""}`}
+                onClick={() => setTag(tagItem)}
+                aria-pressed={tag === tagItem}
               >
-                {t}
+                {t(`projects.filters.${tagItem}`) || tagItem}
               </button>
             ))}
           </div>
@@ -271,18 +258,20 @@ export default function Projects() {
       {cat === CATEGORY.TECH ? (
         <>
           <h3 className="projects__section-title">
-            <Boxes size={18} className="icon" /> Product Systems
+            <Boxes size={18} className="icon" /> {t("projects.techSectionTitle")}
           </h3>
-          <p className="projects__intro">
-            Systems I design and ship to convert operational complexity into scalable products -
-            from internal tools and data integrity layers to real-time interaction workflows.
-          </p>
+          <p className="projects__intro">{t("projects.techIntro")}</p>
           {visibleTech.length === 0 ? (
-            <p className="projects__empty">No projects match that filter. <button className="link-like" onClick={() => setTag("All")}>Clear filter</button></p>
+            <p className="projects__empty">
+              {t("projects.empty")}{" "}
+              <button className="link-like" onClick={() => setTag("All")}>
+                {t("projects.clearFilter")}
+              </button>
+            </p>
           ) : (
             <div className="projects__grid">
               {visibleTech.map((p) => (
-                <ProjectCard key={p.id} p={p} onOpenCase={openCase} />
+                <ProjectCard key={p.id} p={p} onOpenCase={openCase} t={t} />
               ))}
             </div>
           )}
@@ -290,29 +279,24 @@ export default function Projects() {
       ) : (
         <>
           <h3 className="projects__section-title">
-            <Stethoscope size={18} className="icon" /> MedTech - Integration & Delivery
+            <Stethoscope size={18} className="icon" /> {t("projects.medSectionTitle")}
           </h3>
-          <p className="projects__intro">
-            Regulated delivery across clinical environments: multi-vendor integrations, workflow governance,
-            adoption enablement, and lifecycle reliability under real constraints.
-          </p>
+          <p className="projects__intro">{t("projects.medIntro")}</p>
           <div className="projects__grid">
             {medIntegration.map((p) => (
-              <ProjectCard key={p.id} p={p} variant="med" onOpenCase={openCase} />
+              <ProjectCard key={p.id} p={p} variant="med" onOpenCase={openCase} t={t} />
             ))}
           </div>
 
           {medManagement.length ? (
             <div className="projects__subsection">
               <h3 className="projects__section-title">
-                <BriefcaseBusiness size={18} className="icon" /> MedTech - Programs & Commercial Execution
+                <BriefcaseBusiness size={18} className="icon" /> {t("projects.medMgmtSectionTitle")}
               </h3>
-              <p className="projects__intro">
-                Multi-site rollout governance, procurement/tenders, vendor orchestration, and adoption enablement.
-              </p>
+              <p className="projects__intro">{t("projects.medMgmtIntro")}</p>
               <div className="projects__grid">
                 {medManagement.map((p) => (
-                  <ProjectCard key={p.id} p={p} variant="mgmt" onOpenCase={openCase} />
+                  <ProjectCard key={p.id} p={p} variant="mgmt" onOpenCase={openCase} t={t} />
                 ))}
               </div>
             </div>
@@ -321,14 +305,18 @@ export default function Projects() {
       )}
 
       <CaseStudyModal
-        open={!!activeCaseStudy}
+        open={!!caseId}
         onClose={closeCase}
         slug={caseId}
-        title={activeCaseStudy?.title || "Case Study"}
-        sections={activeCaseStudy?.sections || []}
+        title={activeCaseStudyTitle}
+        sections={activeCaseStudySections}
       >
-        <Suspense fallback={<div className="cs-loading" aria-label="Loading case study"><span className="cs-loading__spinner" aria-hidden="true" /></div>}>
-          {ActiveCaseComponent ? <ActiveCaseComponent /> : <div>Coming soon...</div>}
+        <Suspense fallback={
+          <div className="cs-loading" aria-label={t("projects.loadingCaseStudy")}>
+            <span className="cs-loading__spinner" aria-hidden="true" />
+          </div>
+        }>
+          {ActiveCaseComponent ? <ActiveCaseComponent /> : <div>{t("projects.comingSoon")}</div>}
         </Suspense>
       </CaseStudyModal>
     </section>

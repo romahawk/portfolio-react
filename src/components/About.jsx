@@ -1,11 +1,14 @@
 import React from "react";
 import { Layers, Target, Users, Dot, ArrowRight, Cpu, GitBranch, Rocket } from "lucide-react";
+import { useTranslation } from "../context/LangContext.jsx";
 
 const About = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="about" className="section container about">
       <h2 className="about__title reveal">
-        <span className="about__chev">&gt;</span> About
+        <span className="about__chev">&gt;</span> {t("about.title")}
       </h2>
 
       <div className="about__container">
@@ -13,7 +16,7 @@ const About = () => {
           <div className="about__photo">
             <img
               src="/images/profile.jpg"
-              alt="Roman Mazuryk profile"
+              alt={t("about.profileAlt")}
               className="about__photo-img"
               loading="lazy"
               decoding="async"
@@ -23,22 +26,14 @@ const About = () => {
           </div>
 
           <div className="about__panel">
-            <div className="about__eyebrow">Operator profile</div>
+            <div className="about__eyebrow">{t("about.eyebrow")}</div>
             <h3 className="about__heading">
               <Layers size={18} className="icon about__icon" />
-              Technical Product Manager | Systems & Delivery
+              {t("about.heading")}
             </h3>
 
-            <p className="about__text">
-              With 10+ years in MedTech and regulated B2B delivery, I operate at the intersection
-              of Product Strategy, System Architecture, and Operational Excellence. I specialize
-              in turning ambiguous, high-compliance constraints into predictable, high-uptime systems.
-            </p>
-            <p className="about__text">
-              My operating model is decision compression. I reduce organizational drag by translating
-              complex operational needs into lean system primitives. I do not just manage backlogs;
-              I architect the logic that ensures delivery is predictable, compliant, and impactful.
-            </p>
+            <p className="about__text">{t("about.para1")}</p>
+            <p className="about__text">{t("about.para2")}</p>
           </div>
         </div>
 
@@ -46,106 +41,86 @@ const About = () => {
           <div className="about__pillars">
             <div className="about__pillar">
               <Cpu size={22} className="about__pillar-icon" />
-              <h4 className="about__pillar-title">Strategy</h4>
-              <p className="about__pillar-text">
-                Max 3 active workstreams. Focused on outcome-velocity over feature-volume.
-              </p>
+              <h4 className="about__pillar-title">{t("about.pillars.strategy.title")}</h4>
+              <p className="about__pillar-text">{t("about.pillars.strategy.text")}</p>
             </div>
             <div className="about__pillar">
               <GitBranch size={22} className="about__pillar-icon" />
-              <h4 className="about__pillar-title">Architecture</h4>
-              <p className="about__pillar-text">
-                Rigorous system validation before a single line of code is committed.
-              </p>
+              <h4 className="about__pillar-title">{t("about.pillars.architecture.title")}</h4>
+              <p className="about__pillar-text">{t("about.pillars.architecture.text")}</p>
             </div>
             <div className="about__pillar">
               <Rocket size={22} className="about__pillar-icon" />
-              <h4 className="about__pillar-title">Execution</h4>
-              <p className="about__pillar-text">
-                Small, daily deployments. If it isn&apos;t in production, it hasn&apos;t solved the problem yet.
-              </p>
+              <h4 className="about__pillar-title">{t("about.pillars.execution.title")}</h4>
+              <p className="about__pillar-text">{t("about.pillars.execution.text")}</p>
             </div>
           </div>
         </div>
 
         <div className="about__row reveal">
           <div className="about__section-card">
-            <div className="about__eyebrow">Operating model</div>
+            <div className="about__eyebrow">{t("about.operatingModel.eyebrow")}</div>
             <h3 className="about__heading">
               <Target size={18} className="icon about__icon" />
-              My Operating Model: Decision Compression
+              {t("about.operatingModel.heading")}
             </h3>
-            <p className="about__text">
-              I reduce organizational drag by translating complex operational needs into lean system
-              primitives. I do not just manage backlogs; I architect the logic that ensures delivery
-              is predictable, compliant, and impactful.
-            </p>
+            <p className="about__text">{t("about.operatingModel.text")}</p>
             <ul className="about__principles">
               <li>
-                <strong>Strategy:</strong> Max 3 active workstreams. Focused on outcome-velocity over feature-volume.
+                <strong>{t("about.operatingModel.principles.strategy.label")}</strong>{" "}
+                {t("about.operatingModel.principles.strategy.text")}
               </li>
               <li>
-                <strong>Architecture:</strong> Rigorous system validation before a single line of code is committed.
+                <strong>{t("about.operatingModel.principles.architecture.label")}</strong>{" "}
+                {t("about.operatingModel.principles.architecture.text")}
               </li>
               <li>
-                <strong>Execution:</strong> Small, daily deployments. If it is not in production, it has not solved the problem yet.
+                <strong>{t("about.operatingModel.principles.execution.label")}</strong>{" "}
+                {t("about.operatingModel.principles.execution.text")}
               </li>
             </ul>
             <a href="#ai-sdlc" className="btn btn--primary about__framework-cta">
-              View Full System Architecture <ArrowRight size={16} className="icon ml-1" />
+              {t("about.operatingModel.cta")} <ArrowRight size={16} className="icon ml-1" />
             </a>
           </div>
         </div>
 
         <div className="about__row reveal">
           <div className="about__section-card about__section-card--cool">
-            <div className="about__eyebrow">Best-fit environment</div>
+            <div className="about__eyebrow">{t("about.bestFit.eyebrow")}</div>
             <h3 className="about__heading">
               <Users size={18} className="icon about__icon" />
-              Where I Operate Best
+              {t("about.bestFit.heading")}
             </h3>
-            <p className="about__text">
-              Designed for remote-first agile environments. This workflow performs best in
-              compliance-heavy systems, multi-stakeholder delivery, and zero-to-one platform work -
-              particularly in EU and global B2B SaaS, internal tools, and regulated industries.
-            </p>
-            <p className="about__text">
-              I collaborate directly with engineering on architecture while aligning leadership on
-              the trade-offs that drive speed, reliability, and long-term leverage. In regulated
-              MedTech and Pharma contexts, Micro-Scope and explicit acceptance criteria provide
-              auditability without slowing delivery.
-            </p>
-            <p className="about__text">
-              Systems ownership end-to-end: from ambiguity to shipped operational impact.
-            </p>
+            <p className="about__text">{t("about.bestFit.para1")}</p>
+            <p className="about__text">{t("about.bestFit.para2")}</p>
+            <p className="about__text">{t("about.bestFit.para3")}</p>
           </div>
         </div>
 
         <div className="about__row reveal">
           <div className="about__section-card about__section-card--warm">
-            <div className="about__eyebrow">Outside the platform</div>
-            <h3 className="about__heading">Outside the Platform</h3>
+            <div className="about__eyebrow">{t("about.outside.eyebrow")}</div>
+            <h3 className="about__heading">{t("about.outside.heading")}</h3>
 
             <ul className="about__list">
               <li className="about__list-item">
                 <Dot size={16} className="icon about__bullet-icon" />
-                <strong>Basketball</strong> - systems thinking applied to team dynamics.
+                <strong>Basketball</strong> - {t("about.outside.basketball")}
               </li>
               <li className="about__list-item">
                 <Dot size={16} className="icon about__bullet-icon" />
-                <strong>Training &amp; discipline</strong> - feedback loops compound over time.
+                <strong>Training &amp; discipline</strong> - {t("about.outside.training")}
               </li>
               <li className="about__list-item">
                 <Dot size={16} className="icon about__bullet-icon" />
-                <strong>Travel</strong> - pattern recognition across environments.
+                <strong>Travel</strong> - {t("about.outside.travel")}
               </li>
             </ul>
 
             <blockquote className="about__quote">
-              <em>
-                &ldquo;Some people want it to happen, some wish it would happen, others make it happen.&rdquo;
-              </em>
-              <div className="about__quote-attribution">- Michael Jordan</div>
+              <em>{t("about.outside.quote")}</em>
+              <div className="about__quote-attribution">{t("about.outside.quoteAttrib")}</div>
             </blockquote>
           </div>
         </div>

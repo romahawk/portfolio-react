@@ -10,6 +10,19 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 ## [Unreleased]
 
 ### Added
+- **i18n: English + German language support** — EN/DE switcher in navbar (desktop) and mobile menu; language persists via `localStorage`; `document.lang` updated reactively per locale
+- `src/locales/en.js` + `src/locales/de.js` — all user-facing strings centralised; German copy written for Germany-based recruiters
+- `src/context/LangContext.jsx` — lightweight `LangProvider` + `useTranslation()` hook; dot-notation key resolver with EN fallback; no external i18n framework
+- `src/components/LanguageSwitcher.jsx` — EN/DE pill toggle; `aria-pressed` state; visible on desktop header and inside mobile nav
+- `navigation.css` — `.lang-switcher` and `.nav__end` styles; mobile breakpoint hides desktop switcher, shows it inside slide-out menu instead
+- `src/hooks/useOgMeta.js` — fix pre-existing duplicate `image` key
+
+### Changed
+- All section components (`Hero`, `About`, `AIAugmentedSDLC`, `Skills`, `Projects`, `Certifications`, `Contact`, `Footer`, `CaseStudyModal`, `TimelineSwitch`, `BackToTop`) updated to consume `useTranslation()` — all visible strings now resolve from locale files
+- `Navbar.jsx` — nav labels driven by locale keys; `nav__toggle` moved inside `nav__end` wrapper alongside the language switcher
+- `App.jsx` — wraps `AppInner` with `LangProvider`; inner component pattern preserves hook call order
+
+### Added (prior)
 - `docs/ROADMAP.md` — mark `vercel.json`, Lighthouse CI, and "Last updated" case study timestamps as complete; update domain references from `roman-mazuryk.vercel.app` to `www.mazuryk.dev`; version history entry v1.1
 
 ### Changed

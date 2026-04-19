@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
+import { useTranslation } from "../context/LangContext.jsx";
 
 const BackToTop = () => {
+  const { t } = useTranslation();
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -17,8 +19,8 @@ const BackToTop = () => {
     <button
       className={`backtotop ${show ? "is-visible" : ""}`}
       onClick={top}
-      aria-label="Back to top"
-      title="Back to top"
+      aria-label={t("backToTop")}
+      title={t("backToTop")}
     >
       <ArrowUp size={18} className="icon" />
     </button>
