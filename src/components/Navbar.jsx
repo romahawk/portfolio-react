@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import ThemeSwitcher from "./ThemeSwitcher.jsx";
-import { useTranslation } from "../context/LangContext.jsx";
 import LanguageSwitcher from "./LanguageSwitcher.jsx";
+import NavControls from "./NavControls.jsx";
+import { useTranslation } from "../context/LangContext.jsx";
 
 // 800px matches the CSS mobile breakpoint
 const MOBILE_MQ = "(max-width: 800px)";
@@ -179,8 +180,10 @@ export default function Navbar({ themeMode, onThemeChange }) {
         </ul>
 
         <div className="nav__actions">
-          <ThemeSwitcher mode={themeMode} onChange={onThemeChange} />
-          {!isMobile && <LanguageSwitcher />}
+          {isMobile
+            ? <ThemeSwitcher mode={themeMode} onChange={onThemeChange} />
+            : <NavControls mode={themeMode} onThemeChange={onThemeChange} />
+          }
           <button
             className={`nav__toggle ${isOpen ? "x" : ""}`}
             onClick={() => setIsOpen((p) => !p)}
