@@ -3,12 +3,12 @@ import { Linkedin, Github, Mail, ArrowUpRight } from "lucide-react";
 import { useTranslation } from "../context/LangContext.jsx";
 
 const NAV_LINK_KEYS = [
-  { key: "Home",           href: "#home" },
-  { key: "About",          href: "#about" },
-  { key: "Timeline",       href: "#timeline" },
-  { key: "Skills",         href: "#skills" },
-  { key: "Product Systems", href: "#projects" },
-  { key: "Contact",        href: "#contact" },
+  { key: "Results",   href: "#results" },
+  { key: "Projects",  href: "#projects" },
+  { key: "Services",  href: "#services" },
+  { key: "Framework", href: "#framework" },
+  { key: "About",     href: "#about" },
+  { key: "Contact",   href: "#contact" },
 ];
 
 const SOCIAL_LINKS = [
@@ -21,6 +21,8 @@ const Footer = () => {
   const { t } = useTranslation();
   const year = new Date().getFullYear();
   const taglineLines = t("footer.tagline").split("\n");
+  const isServicesPage =
+    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/services";
 
   return (
     <footer className="site-footer">
@@ -60,7 +62,7 @@ const Footer = () => {
           <ul className="footer__nav">
             {NAV_LINK_KEYS.map(({ key, href }) => (
               <li key={href}>
-                <a href={href} className="footer__nav-link">
+                <a href={isServicesPage ? `/${href}` : href} className="footer__nav-link">
                   {t(`footer.navLinks.${key}`) || key}
                 </a>
               </li>

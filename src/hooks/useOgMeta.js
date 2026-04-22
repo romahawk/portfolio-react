@@ -9,6 +9,14 @@ const BASE = {
   image: "https://www.mazuryk.dev/images/og-home.png",
 };
 
+const SERVICES = {
+  title: "Services - mazuryk.dev",
+  description:
+    "Productized web, workflow, and automation systems that generate leads, save time, and launch fast.",
+  url: "https://www.mazuryk.dev/services",
+  image: BASE.image,
+};
+
 function setMeta(selector, attr, value) {
   const el = document.querySelector(selector);
   if (el) el.setAttribute(attr, value);
@@ -29,6 +37,11 @@ function applyMeta({ title, description, url, image }) {
 export function useOgMeta() {
   useEffect(() => {
     function update() {
+      if (window.location.pathname.replace(/\/+$/, "") === "/services") {
+        applyMeta(SERVICES);
+        return;
+      }
+
       const match = window.location.hash.match(/^#projects\/(.+)$/);
       if (match) {
         const project = techProjects.find((p) => p.caseStudy === match[1]);
@@ -48,6 +61,10 @@ export function useOgMeta() {
 
     update();
     window.addEventListener("hashchange", update);
-    return () => window.removeEventListener("hashchange", update);
+    window.addEventListener("popstate", update);
+    return () => {
+      window.removeEventListener("hashchange", update);
+      window.removeEventListener("popstate", update);
+    };
   }, []);
 }
