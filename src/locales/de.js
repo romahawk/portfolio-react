@@ -1,15 +1,28 @@
 // src/locales/de.js
 export default {
   nav: {
-    about: "\u00DCber mich",
-    aiSdlc: "AI SDLC",
-    timeline: "Werdegang",
-    skills: "Kompetenzen",
+    results: "Ergebnisse",
     projects: "Projekte",
-    certifications: "Zertifikate",
+    services: "Leistungen",
+    framework: "Framework",
+    about: "\u00DCber mich",
     contact: "Kontakt",
     toggleNav: "Navigation umschalten",
     backToTop: "Nach oben",
+  },
+
+  results: {
+    title: "Ergebnisse",
+    intro: "\u00DCber 10 Jahre Liefernachweise in regulierten Branchen und dom\u00E4nen\u00FCbergreifenden Produktsystemen.",
+    tiles: [
+      { metric: "10+", label: "Jahre in MedTech & Pharma" },
+      // TODO: Genaue Zahl aus Kundenunterlagen pr\u00FCfen
+      { metric: "$40M+", label: "Operativer Skalierungsbereich" },
+      // TODO: Endg\u00FCltige Anzahl gelieferter Systeme pr\u00FCfen
+      { metric: "5+", label: "Systeme in mehreren Dom\u00E4nen geliefert" },
+      { metric: "3", label: "Regulierte Branchen: MedTech, Pharma, B2B SaaS" },
+      { metric: "100%", label: "Remote-first Liefermodell, verteilte Teams" },
+    ],
   },
 
   hero: {
@@ -21,6 +34,178 @@ export default {
     ctaProjects: "Produktsysteme ansehen",
     downloadCV: "Lebenslauf herunterladen",
     scroll: "Scrollen",
+  },
+
+  servicesPage: {
+    nav: {
+      hero: "Leistungen",
+      overview: "Überblick",
+      details: "Details",
+      process: "Ablauf",
+      proof: "Kontext",
+      book: "Termin",
+    },
+    cta: {
+      book: "Termin buchen",
+      how: "Ablauf ansehen",
+    },
+    hero: {
+      eyebrow: "Produktisierte Systeme",
+      title: "Einfache Systeme, die Kunden bringen und Zeit sparen – schnell umgesetzt",
+      subtitle:
+        "Wir konzipieren und bauen fokussierte Web-, Workflow- und Automatisierungssysteme für Teams, die mehr Klarheit, weniger manuelle Arbeit und schnellere Umsetzung brauchen.",
+      panelLabel: "Signale zur Umsetzung",
+      signals: [
+        { label: "Startpunkt", value: "Ein konkretes Business-Problem" },
+        { label: "Umsetzung", value: "Schlank, klar begrenzt, launchbereit" },
+        { label: "Best Fit", value: "B2B, Operations, regulierte Teams" },
+      ],
+    },
+    overview: {
+      kicker: "Leistungen",
+      title: "Wählen Sie das System, das die meiste Reibung entfernt",
+      intro:
+        "Jedes Angebot ist auf ein sichtbares Ergebnis ausgerichtet: mehr qualifizierte Leads, weniger manuelle Arbeit, bessere Conversion oder eine klare Automatisierungs-Roadmap.",
+      items: [
+        {
+          id: "lead-generation-website",
+          icon: "LineChart",
+          title: "Lead-Generation-Website",
+          description: "Eine fokussierte Website, die das Angebot erklärt, Vertrauen schafft und Besucher in Gespräche führt.",
+          timeline: "7 Tage",
+          outcome: "Klare Positionierung und mehr qualifizierte Anfragen",
+        },
+        {
+          id: "workflow-dashboard",
+          icon: "BarChart3",
+          title: "Workflow- / Operations-Dashboard",
+          description: "Ein praktisches Dashboard für Arbeit, Übergaben, Status und operative Engpässe.",
+          timeline: "2-3 Wochen",
+          outcome: "Weniger Tabellen-Chaos und schnellere Entscheidungen",
+        },
+        {
+          id: "ai-automation-audit",
+          icon: "Bot",
+          title: "KI- & Automatisierungs-Audit",
+          description: "Ein schneller Scan von repetitiver Arbeit, Datenflüssen und sicheren Automatisierungschancen.",
+          timeline: "3-5 Tage",
+          outcome: "Priorisierte Automatisierungs-Roadmap mit nächsten Schritten",
+        },
+        {
+          id: "conversion-optimization-sprint",
+          icon: "Gauge",
+          title: "Conversion-Optimierungs-Sprint",
+          description: "Ein fokussierter Sprint für Messaging, Nutzerfluss, CTAs und Seitenstruktur bei bestehender Nachfrage.",
+          timeline: "5-10 Tage",
+          outcome: "Klarerer Conversion-Pfad ohne kompletten Relaunch",
+        },
+      ],
+    },
+    details: {
+      kicker: "Details",
+      title: "Was jede Leistung konkret liefert",
+      expectedLabel: "Erwartetes Ergebnis",
+      items: [
+        {
+          id: "lead-generation-website",
+          icon: "LineChart",
+          title: "Lead-Generation-Website",
+          timeline: "7 Tage",
+          expected: "Eine live geschaltete, glaubwürdige Seite, die das Angebot schnell verständlich macht und einen klaren nächsten Schritt bietet.",
+          blocks: [
+            { label: "Problem", items: ["Besucher verstehen das Angebot nicht schnell genug", "Vertrauenssignale sind verstreut", "Anfragen hängen nur an Empfehlungen"] },
+            { label: "Was wir tun", items: ["Positionierung und Seitenfluss klären", "Responsive Sektionen bauen", "CTA- und Anfrageweg verbinden"] },
+            { label: "Was Sie bekommen", items: ["Live-Website oder Landingpage", "Conversion-orientierte Copy-Struktur", "Analytics-bereiter CTA-Pfad"] },
+            { label: "Timeline", items: ["Tag 1 Analyse und Struktur", "Tage 2-6 Umsetzung", "Tag 7 Launch-Check"] },
+          ],
+        },
+        {
+          id: "workflow-dashboard",
+          icon: "BarChart3",
+          title: "Workflow- / Operations-Dashboard",
+          timeline: "2-3 Wochen",
+          expected: "Eine zentrale operative Sicht, die Statusabfragen reduziert und Übergaben sichtbar macht.",
+          blocks: [
+            { label: "Problem", items: ["Arbeit verteilt sich auf mehrere Tools", "Manuelles Reporting bremst Entscheidungen", "Ownership ist unklar"] },
+            { label: "Was wir tun", items: ["Workflow abbilden", "Rollen, Zustände und Datenpunkte definieren", "Ein nutzbares Dashboard bauen"] },
+            { label: "Was Sie bekommen", items: ["Dashboard-Prototyp oder internes Live-Tool", "Workflow-Logik und Statusmodell", "Klare Übergabe-Dokumentation"] },
+            { label: "Timeline", items: ["Woche 1 Modell und Prototyp", "Woche 2 Umsetzung", "Optional Woche 3 Härtung"] },
+          ],
+        },
+        {
+          id: "ai-automation-audit",
+          icon: "Bot",
+          title: "KI- & Automatisierungs-Audit",
+          timeline: "3-5 Tage",
+          expected: "Eine kurze Liste von Automatisierungschancen, priorisiert nach Wert, Risiko und Umsetzungsaufwand.",
+          blocks: [
+            { label: "Problem", items: ["KI-Ideen bleiben unkonkret", "Manuelle Aufgaben wiederholen sich jede Woche", "Risiko ist schwer einzuschätzen"] },
+            { label: "Was wir tun", items: ["Workflows und Dateneingaben prüfen", "Sichere Automatisierungskandidaten finden", "Aufwand und Grenzen einschätzen"] },
+            { label: "Was Sie bekommen", items: ["Map der Automatisierungschancen", "Pilot-Empfehlung", "Prompt- und Tooling-Richtung"] },
+            { label: "Timeline", items: ["Kickoff und Zugriffsprüfung", "Workflow-Scan", "Roadmap-Übergabe"] },
+          ],
+        },
+        {
+          id: "conversion-optimization-sprint",
+          icon: "Gauge",
+          title: "Conversion-Optimierungs-Sprint",
+          timeline: "5-10 Tage",
+          expected: "Ein klarerer Conversion-Pfad, der Zögern reduziert und qualifizierte Besucher zur nächsten Aktion führt.",
+          blocks: [
+            { label: "Problem", items: ["Traffic ist da, aber Intent geht verloren", "CTAs konkurrieren miteinander", "Messaging wirkt generisch"] },
+            { label: "Was wir tun", items: ["Hierarchie und Reibung auditieren", "Wichtige Sektionen neu schreiben", "CTA-Platzierung und Flow verbessern"] },
+            { label: "Was Sie bekommen", items: ["Priorisierte Conversion-Fixes", "Aktualisierte Seitensektionen", "Mess-Checkliste"] },
+            { label: "Timeline", items: ["Schneller Audit", "Copy- und UI-Update", "Launch-Review"] },
+          ],
+        },
+      ],
+    },
+    process: {
+      kicker: "Arbeitsweise",
+      title: "Ein kleines System vor einer großen Entscheidung",
+      steps: [
+        {
+          icon: "SearchCheck",
+          title: "Kurze Analyse",
+          desc: "Wir identifizieren ein konkretes Problem in Ihrem Prozess.",
+        },
+        {
+          icon: "Settings2",
+          title: "Schnelle Umsetzung",
+          desc: "Wir setzen eine einfache Lösung in 5-10 Tagen um.",
+        },
+        {
+          icon: "Rocket",
+          title: "Start & Optimierung",
+          desc: "Sie nutzen das System direkt und wir verbessern es weiter.",
+        },
+      ],
+    },
+    proof: {
+      kicker: "Kontext",
+      title: "Gebaut aus echter Operations-Erfahrung, nicht aus Agentur-Theater",
+      text:
+        "Die Arbeit basiert auf Systemen aus MedTech, Logistik, internen Operations und Produkt-Workflows. Wir achten auf klare Zustände, saubere Übergaben und Tools, die im Alltag funktionieren.",
+      stats: [
+        { value: "10+", label: "Jahre in MedTech- und Pharma-Delivery" },
+        { value: "5+", label: "produktisierte Systeme gebaut oder prototypisiert" },
+        { value: "3", label: "Domänen: MedTech, Logistik, B2B SaaS" },
+        { value: "1", label: "fokussiertes Problem zum Start" },
+      ],
+    },
+    trust: {
+      kicker: "Vertrauen",
+      title: "Kurze Notiz von Roman",
+      text:
+        "Ich baue zuerst aus Operator-Perspektive. Vor Design oder Code suche ich nach Workflow-Logik, Entscheidungspunkten und dem kleinsten System, das sichtbaren Hebel schafft.",
+    },
+    final: {
+      kicker: "Nächster Schritt",
+      title: "Lassen Sie uns ein konkretes Problem lösen",
+      text:
+        "Bringen Sie einen Engpass mit: schwache Lead-Generierung, manuelles Reporting, unklare Conversion oder eine Automatisierungsidee, die Struktur braucht. Wir machen daraus einen kleinen Pilot.",
+      secondary: "Start mit einem kleinen Pilot",
+    },
   },
 
   about: {
@@ -415,11 +600,11 @@ export default {
     copyright: "Alle Rechte vorbehalten.",
     location: "Deutschland (MEZ) \u00B7 Verf\u00FCgbar f\u00FCr Remote & Hybrid",
     navLinks: {
-      Home: "Start",
+      Results: "Ergebnisse",
+      Projects: "Projekte",
+      Services: "Leistungen",
+      Framework: "Framework",
       About: "\u00DCber mich",
-      Timeline: "Werdegang",
-      Skills: "Kompetenzen",
-      "Product Systems": "Produktsysteme",
       Contact: "Kontakt",
     },
   },

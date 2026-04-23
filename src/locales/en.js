@@ -1,15 +1,28 @@
 // src/locales/en.js
 export default {
   nav: {
-    about: "About",
-    aiSdlc: "AI SDLC",
-    timeline: "Timeline",
-    skills: "Skills",
+    results: "Results",
     projects: "Projects",
-    certifications: "Certifications",
+    services: "Skills",
+    framework: "Framework",
+    about: "About",
     contact: "Contact",
     toggleNav: "Toggle navigation",
     backToTop: "Back to top",
+  },
+
+  results: {
+    title: "Results",
+    intro: "10+ years of delivery evidence across regulated industries and multi-domain product systems.",
+    tiles: [
+      { metric: "10+", label: "Years in MedTech & Pharma delivery" },
+      // TODO: verify exact operational scale figure with client records
+      { metric: "$40M+", label: "Operational scale exposure" },
+      // TODO: verify final shipped systems count
+      { metric: "5+", label: "Productized systems shipped across domains" },
+      { metric: "3", label: "Regulated industries: MedTech, Pharma, B2B SaaS" },
+      { metric: "100%", label: "Remote-first delivery, distributed team experience" },
+    ],
   },
 
   hero: {
@@ -21,6 +34,178 @@ export default {
     ctaProjects: "View Product Systems",
     downloadCV: "Download CV",
     scroll: "Scroll",
+  },
+
+  servicesPage: {
+    nav: {
+      hero: "Services",
+      overview: "Overview",
+      details: "Details",
+      process: "Process",
+      proof: "Proof",
+      book: "Book",
+    },
+    cta: {
+      book: "Book a Call",
+      how: "See how it works",
+    },
+    hero: {
+      eyebrow: "Productized systems",
+      title: "Simple systems that generate leads and save time — built fast",
+      subtitle:
+        "We design and ship focused web, workflow, and automation systems for teams that need clearer demand, cleaner operations, and faster execution.",
+      panelLabel: "Services delivery signals",
+      signals: [
+        { label: "Start point", value: "One concrete business problem" },
+        { label: "Build style", value: "Lean, scoped, launch-ready" },
+        { label: "Best fit", value: "B2B, operations, regulated teams" },
+      ],
+    },
+    overview: {
+      kicker: "Services",
+      title: "Pick the system that removes the most friction",
+      intro:
+        "Each offer is scoped around a visible outcome: more qualified leads, less manual work, sharper conversion, or a faster automation roadmap.",
+      items: [
+        {
+          id: "lead-generation-website",
+          icon: "LineChart",
+          title: "Lead Generation Website",
+          description: "A focused website that explains the offer, builds trust, and turns visitors into booked calls.",
+          timeline: "7 days",
+          outcome: "Clear positioning and a stronger call pipeline",
+        },
+        {
+          id: "workflow-dashboard",
+          icon: "BarChart3",
+          title: "Workflow / Operations Dashboard",
+          description: "A practical dashboard for tracking work, handoffs, status, and operational bottlenecks.",
+          timeline: "2-3 weeks",
+          outcome: "Less spreadsheet drift and faster decisions",
+        },
+        {
+          id: "ai-automation-audit",
+          icon: "Bot",
+          title: "AI & Automation Audit",
+          description: "A fast scan of repetitive work, data flows, and where automation can safely create leverage.",
+          timeline: "3-5 days",
+          outcome: "Prioritized automation roadmap with next steps",
+        },
+        {
+          id: "conversion-optimization-sprint",
+          icon: "Gauge",
+          title: "Conversion Optimization Sprint",
+          description: "A focused sprint to improve messaging, flows, CTAs, and page structure where intent already exists.",
+          timeline: "5-10 days",
+          outcome: "Sharper conversion path without a full rebuild",
+        },
+      ],
+    },
+    details: {
+      kicker: "Detail",
+      title: "What each service actually delivers",
+      expectedLabel: "Expected result",
+      items: [
+        {
+          id: "lead-generation-website",
+          icon: "LineChart",
+          title: "Lead Generation Website",
+          timeline: "7 days",
+          expected: "A live, credible page that makes the offer obvious and gives visitors one clear next step.",
+          blocks: [
+            { label: "Problem", items: ["Visitors do not understand the offer fast enough", "Trust signals are scattered", "Calls depend on referrals only"] },
+            { label: "What we do", items: ["Clarify positioning and page flow", "Build responsive page sections", "Connect CTA and inquiry path"] },
+            { label: "What you get", items: ["Live website or landing page", "Conversion-focused copy structure", "Analytics-ready CTA path"] },
+            { label: "Timeline", items: ["Day 1 audit and structure", "Days 2-6 build", "Day 7 launch pass"] },
+          ],
+        },
+        {
+          id: "workflow-dashboard",
+          icon: "BarChart3",
+          title: "Workflow / Operations Dashboard",
+          timeline: "2-3 weeks",
+          expected: "A single operational view that reduces status chasing and makes handoffs visible.",
+          blocks: [
+            { label: "Problem", items: ["Work lives across tools", "Manual reporting slows decisions", "Ownership is unclear"] },
+            { label: "What we do", items: ["Map the workflow", "Define roles, states, and data points", "Build a usable dashboard"] },
+            { label: "What you get", items: ["Dashboard prototype or live internal tool", "Workflow logic and status model", "Clean handoff documentation"] },
+            { label: "Timeline", items: ["Week 1 model and prototype", "Week 2 build", "Optional week 3 hardening"] },
+          ],
+        },
+        {
+          id: "ai-automation-audit",
+          icon: "Bot",
+          title: "AI & Automation Audit",
+          timeline: "3-5 days",
+          expected: "A short list of automation opportunities ranked by value, risk, and implementation effort.",
+          blocks: [
+            { label: "Problem", items: ["AI ideas are vague", "Manual tasks repeat every week", "Risk is hard to judge"] },
+            { label: "What we do", items: ["Review workflows and data inputs", "Identify safe automation candidates", "Estimate effort and constraints"] },
+            { label: "What you get", items: ["Automation opportunity map", "Pilot recommendation", "Prompt and tooling direction"] },
+            { label: "Timeline", items: ["Kickoff and access review", "Workflow scan", "Roadmap handover"] },
+          ],
+        },
+        {
+          id: "conversion-optimization-sprint",
+          icon: "Gauge",
+          title: "Conversion Optimization Sprint",
+          timeline: "5-10 days",
+          expected: "A cleaner conversion path that reduces hesitation and moves qualified visitors toward action.",
+          blocks: [
+            { label: "Problem", items: ["Traffic exists but intent leaks", "CTAs compete with each other", "Messaging feels generic"] },
+            { label: "What we do", items: ["Audit hierarchy and friction", "Rewrite key sections", "Improve CTA placement and flow"] },
+            { label: "What you get", items: ["Prioritized conversion fixes", "Updated page sections", "Measurement checklist"] },
+            { label: "Timeline", items: ["Fast audit", "Copy and UI update", "Launch review"] },
+          ],
+        },
+      ],
+    },
+    process: {
+      kicker: "How we work",
+      title: "A small system before a big commitment",
+      steps: [
+        {
+          icon: "SearchCheck",
+          title: "Quick Audit",
+          desc: "We identify one clear bottleneck in your workflow or website.",
+        },
+        {
+          icon: "Settings2",
+          title: "Fast Build",
+          desc: "We implement a simple, working solution in 5-10 days.",
+        },
+        {
+          icon: "Rocket",
+          title: "Launch & Improve",
+          desc: "You start using it immediately and we refine based on results.",
+        },
+      ],
+    },
+    proof: {
+      kicker: "Context",
+      title: "Built from real operations, not agency theater",
+      text:
+        "The work comes from shipping systems across MedTech, logistics, internal operations, and product workflows. We care about clear states, clean handoffs, and tools that survive contact with daily work.",
+      stats: [
+        { value: "10+", label: "years in MedTech and pharma delivery" },
+        { value: "5+", label: "productized systems shipped or prototyped" },
+        { value: "3", label: "domains: MedTech, logistics, B2B SaaS" },
+        { value: "1", label: "focused problem to start" },
+      ],
+    },
+    trust: {
+      kicker: "Trust",
+      title: "Small note from Roman",
+      text:
+        "I build from the operator side first. Before design or code, I look for the workflow logic, the decision points, and the smallest system that can create visible leverage.",
+    },
+    final: {
+      kicker: "Next step",
+      title: "Let’s fix one problem first",
+      text:
+        "Bring one bottleneck: weak lead flow, manual reporting, unclear conversion, or an automation idea that needs structure. We will turn it into a small pilot.",
+      secondary: "Start with a small pilot",
+    },
   },
 
   about: {
@@ -411,11 +596,11 @@ export default {
     copyright: "All rights reserved.",
     location: "Germany (CET) \u00B7 Available for remote & hybrid",
     navLinks: {
-      Home: "Home",
+      Results: "Results",
+      Projects: "Projects",
+      Services: "Services",
+      Framework: "Framework",
       About: "About",
-      Timeline: "Timeline",
-      Skills: "Skills",
-      "Product Systems": "Product Systems",
       Contact: "Contact",
     },
   },

@@ -15,7 +15,7 @@ const Skills = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="skills" className="section container">
+    <section id="services" className="section container">
       <h2 className="section__title reveal">&gt; {t("skills.title")}</h2>
 
       {skillsPillars.map((pillar) => {

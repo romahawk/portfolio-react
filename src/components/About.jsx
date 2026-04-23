@@ -79,7 +79,7 @@ const About = () => {
                 {t("about.operatingModel.principles.execution.text")}
               </li>
             </ul>
-            <a href="#ai-sdlc" className="btn btn--primary about__framework-cta">
+            <a href="#framework" className="btn btn--primary about__framework-cta">
               {t("about.operatingModel.cta")} <ArrowRight size={16} className="icon ml-1" />
             </a>
           </div>

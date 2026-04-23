@@ -16,7 +16,7 @@ const AIAugmentedSDLC = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="ai-sdlc" className="section container ai-sdlc">
+    <section id="framework" className="section container ai-sdlc">
       <h2 className="section__title reveal">
         <span className="about__chev">&gt;</span> {t("aiSdlc.title")}
       </h2>

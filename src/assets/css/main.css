@@ -1,10 +1,12 @@
 @import "./animations.css";
 @import "./navigation.css";
 @import "./hero.css";
+@import "./results.css";
 @import "./about.css";
 @import "./ai-sdlc.css";
 @import "./timeline.css";
 @import "./skills.css";
+@import "./services-page.css";
 @import "./projects.css";
 @import "./modal.css";
 @import "./certifications.css";

@@ -23,7 +23,7 @@ const Hero = () => {
           <p className="hero__subtitle">{t("hero.subtitle")}</p>
 
           <div className="hero__actions">
-            <a href="#ai-sdlc" className="btn btn--primary">
+            <a href="#framework" className="btn btn--primary">
               {t("hero.ctaSDLC")}
             </a>
             <a href="#projects" className="btn btn--ghost">

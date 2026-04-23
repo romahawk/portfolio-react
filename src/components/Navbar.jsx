@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import ThemeSwitcher from "./ThemeSwitcher.jsx";
 import LanguageSwitcher from "./LanguageSwitcher.jsx";
 import NavControls from "./NavControls.jsx";
@@ -8,13 +8,21 @@ import { useTranslation } from "../context/LangContext.jsx";
 const MOBILE_MQ = "(max-width: 800px)";
 
 const IDS = [
-  "about",
-  "ai-sdlc",
-  "timeline",
-  "skills",
+  "results",
   "projects",
-  "certifications",
+  "services",
+  "framework",
+  "about",
   "contact",
+];
+
+const SERVICES_PAGE_IDS = [
+  "services",
+  "services-overview",
+  "service-details",
+  "how-it-works",
+  "proof",
+  "book-call",
 ];
 
 // tuning knobs
@@ -23,8 +31,11 @@ const SWITCH_BUFFER = 24;     // px hysteresis to avoid flicker on boundaries
 
 export default function Navbar({ themeMode, onThemeChange }) {
   const { t } = useTranslation();
+  const isServicesPage =
+    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/services";
+  const navIds = useMemo(() => (isServicesPage ? SERVICES_PAGE_IDS : IDS), [isServicesPage]);
   const [isOpen, setIsOpen] = useState(false);
-  const [active, setActive] = useState("about");
+  const [active, setActive] = useState(() => (isServicesPage ? SERVICES_PAGE_IDS[0] : "about"));
   const [progress, setProgress] = useState(0);
   const [isMobile, setIsMobile] = useState(
     () => typeof window !== "undefined" && window.matchMedia(MOBILE_MQ).matches
@@ -36,19 +47,26 @@ export default function Navbar({ themeMode, onThemeChange }) {
   const navScrollTimeoutRef = useRef(null);
 
   const NAV_LABEL_KEYS = {
-    about: "nav.about",
-    "ai-sdlc": "nav.aiSdlc",
-    timeline: "nav.timeline",
-    skills: "nav.skills",
+    results: "nav.results",
     projects: "nav.projects",
-    certifications: "nav.certifications",
+    services: "nav.services",
+    framework: "nav.framework",
+    about: "nav.about",
     contact: "nav.contact",
+    "services-overview": "servicesPage.nav.overview",
+    "service-details": "servicesPage.nav.details",
+    "how-it-works": "servicesPage.nav.process",
+    proof: "servicesPage.nav.proof",
+    "book-call": "servicesPage.nav.book",
   };
+
+  const getNavLabelKey = (id) =>
+    isServicesPage && id === "services" ? "servicesPage.nav.hero" : NAV_LABEL_KEYS[id];
 
   const computeActive = useCallback(() => {
     const anchor = window.scrollY + window.innerHeight * VIEWPORT_ANCHOR;
 
-    let current = IDS[0];
+    let current = navIds[0];
     for (const { id, top, bottom } of sectionsRef.current) {
       if (anchor >= top + SWITCH_BUFFER && anchor < bottom - SWITCH_BUFFER) {
         current = id;
@@ -56,7 +74,7 @@ export default function Navbar({ themeMode, onThemeChange }) {
       }
     }
     setActive((prev) => (prev !== current ? current : prev));
-  }, []);
+  }, [navIds]);
 
   const onScroll = useCallback(() => {
     if (navScrollRef.current) return;
@@ -73,7 +91,7 @@ export default function Navbar({ themeMode, onThemeChange }) {
 
   const collectSections = useCallback(() => {
     const results = [];
-    for (const id of IDS) {
+    for (const id of navIds) {
       const el = document.getElementById(id);
       if (!el) continue;
       const rect = el.getBoundingClientRect();
@@ -83,7 +101,7 @@ export default function Navbar({ themeMode, onThemeChange }) {
     }
     sectionsRef.current = results;
     computeActive();
-  }, [computeActive]);
+  }, [computeActive, navIds]);
 
   const handleClick = useCallback(
     (id) => {
@@ -123,23 +141,31 @@ export default function Navbar({ themeMode, onThemeChange }) {
 
     collectSections();
 
+    const onHashChange = () => setTimeout(collectSections, 50);
+    const onLoad = () => setTimeout(collectSections, 0);
+
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", collectSections);
     window.addEventListener("orientationchange", collectSections);
-    window.addEventListener("hashchange", () => setTimeout(collectSections, 50));
-    window.addEventListener("load", () => setTimeout(collectSections, 0));
+    window.addEventListener("hashchange", onHashChange);
+    window.addEventListener("load", onLoad);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", collectSections);
       window.removeEventListener("orientationchange", collectSections);
-      window.removeEventListener("hashchange", collectSections);
-      window.removeEventListener("load", collectSections);
+      window.removeEventListener("hashchange", onHashChange);
+      window.removeEventListener("load", onLoad);
       if (navScrollTimeoutRef.current) {
         clearTimeout(navScrollTimeoutRef.current);
       }
     };
   }, [collectSections, onScroll]);
+
+  useEffect(() => {
+    setActive(navIds[0]);
+    setTimeout(collectSections, 0);
+  }, [collectSections, navIds]);
 
   return (
     <header className="site-header">
@@ -149,7 +175,7 @@ export default function Navbar({ themeMode, onThemeChange }) {
         aria-hidden="true"
       />
       <nav className="nav container">
-        <a href="#home" className="nav__logo" aria-label={t("nav.backToTop")} onClick={() => handleClick("home")}>
+        <a href={isServicesPage ? "#services" : "#home"} className="nav__logo" aria-label={t("nav.backToTop")} onClick={() => handleClick(isServicesPage ? "services" : "home")}>
           <span className="nav__logo-brace">{'{ }'}</span>
           <span className="nav__logo-text">ROMAZ</span>
           <span className="nav__logo-accent" />
@@ -160,14 +186,14 @@ export default function Navbar({ themeMode, onThemeChange }) {
           aria-hidden={isMobile && !isOpen}
           inert={isMobile && !isOpen ? "" : undefined}
         >
-          {IDS.map((id) => (
+          {navIds.map((id) => (
             <li key={id}>
               <a
                 href={`#${id}`}
                 className={`nav__link ${active === id ? "nav__link--active" : ""}`}
                 onClick={() => handleClick(id)}
               >
-                {t(NAV_LABEL_KEYS[id])}
+                {t(getNavLabelKey(id))}
               </a>
             </li>
           ))}

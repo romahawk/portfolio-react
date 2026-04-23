@@ -8,7 +8,7 @@ import { useEffect } from "react";
  * rootMargin "-60px 0px" means the trigger fires when the element is
  * at least 60px inside the viewport — avoids instant pop-in at the very edge.
  */
-export function useScrollReveal() {
+export function useScrollReveal(trigger) {
   useEffect(() => {
     // Respect user's motion preference at the JS level too
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -51,5 +51,5 @@ export function useScrollReveal() {
       observer.disconnect();
       clearTimeout(t);
     };
-  }, []);
+  }, [trigger]);
 }
