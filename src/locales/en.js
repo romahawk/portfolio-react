@@ -416,6 +416,8 @@ export default {
       "Decision Support": "Decision Support",
       "Real-Time Systems": "Real-Time Systems",
       "Internal Tools": "Internal Tools",
+      "Trading Systems": "Trading Systems",
+      FinTech: "FinTech",
       Productivity: "Productivity",
       B2B: "B2B",
       MedTech: "MedTech",
@@ -448,6 +450,11 @@ export default {
         title: "Flowlogics - API-Driven Supply Visibility and Lifecycle Control",
         summary:
           "Logistics operations platform centralizing orders, warehouse intake, and delivered transitions with a strict API contract, role-gated workflows, readonly demo mode, and timeline-based ETA risk visibility.",
+      },
+      alpharhythm: {
+        title: "AlphaRhythm - Trading Execution and Discipline System",
+        summary:
+          "Rule-based trading execution system designed to improve discipline, enforce strategy compliance, and turn discretionary decision-making into a repeatable workflow. Includes trade journaling, execution gates, violation tracking, and performance review loops for consistent trader behavior.",
       },
       jobsprint: {
         title: "JobSprint - Job Search Workflow Manager",
@@ -508,6 +515,7 @@ export default {
     caseStudyTitles: {
       livesurgery: "LiveSurgery - Case Study",
       flowlogics: "Flowlogics - Case Study",
+      alphorythm: "AlphaRhythm - Case Study",
       jobsprint: "JobSprint - Case Study",
     },
   },
