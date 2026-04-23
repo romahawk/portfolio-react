@@ -23,6 +23,16 @@ export const techProjects = [
     caseStudy: "flowlogics",
   },
   {
+    id: "alpharhythm",
+    title: "AlphaRhythm - Trading Execution and Discipline System",
+    summary:
+      "Rule-based trading execution system designed to improve discipline, enforce strategy compliance, and turn discretionary decision-making into a repeatable workflow. Includes trade journaling, execution gates, violation tracking, and performance review loops for consistent trader behavior.",
+    stack: ["React", "Vite", "Tailwind", "Firebase", "Firestore"],
+    tags: ["Trading Systems", "FinTech", "Decision Support", "Productivity"],
+    link: "https://alpharhythm.trade/",
+    caseStudy: "alphorythm",
+  },
+  {
     id: "jobsprint",
     title: "JobSprint - Job Search Workflow Manager",
     summary:
@@ -31,6 +41,7 @@ export const techProjects = [
     tags: ["Workflow Systems", "Productivity", "Decision Support"],
     link: "https://jobsprint-demo.vercel.app/",
     caseStudy: "jobsprint",
+    hiddenFromFrontend: true,
   },
 ];
 

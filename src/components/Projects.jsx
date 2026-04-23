@@ -12,6 +12,7 @@ const CARD_ICONS = { Lightbulb, MonitorCog, Wrench, SearchCheck, Camera, Rocket,
 
 const LivesurgeryCaseStudy = React.lazy(() => import("./case-studies/LivesurgeryCaseStudy.jsx"));
 const FlowLogixCaseStudy = React.lazy(() => import("./case-studies/FlowLogixCaseStudy.jsx"));
+const AlphorythmCaseStudy = React.lazy(() => import("./case-studies/AlphorythmCaseStudy.jsx"));
 const JobSprintCaseStudy = React.lazy(() => import("./case-studies/JobSprintCaseStudy.jsx"));
 
 const CATEGORY = { TECH: "tech", MED: "medtech" };
@@ -29,6 +30,7 @@ const TECH_TAG_ORDER = [
 const CASE_STUDY_COMPONENTS = {
   livesurgery: LivesurgeryCaseStudy,
   flowlogics: FlowLogixCaseStudy,
+  alphorythm: AlphorythmCaseStudy,
   jobsprint: JobSprintCaseStudy,
 };
 
@@ -136,11 +138,15 @@ export default function Projects() {
   const [cat, setCat] = useState(CATEGORY.TECH);
   const [caseId, setCaseId] = useState(null);
   const [tag, setTag] = useState("All");
+  const visibleTechProjects = useMemo(
+    () => techProjects.filter((project) => !project.hiddenFromFrontend),
+    []
+  );
 
   const CASE_HASH_PREFIX = "#projects/";
   const activeCaseStudyIds = useMemo(
-    () => new Set(techProjects.map((project) => project.caseStudy).filter(Boolean)),
-    []
+    () => new Set(visibleTechProjects.map((project) => project.caseStudy).filter(Boolean)),
+    [visibleTechProjects]
   );
 
   useEffect(() => {
@@ -181,16 +187,19 @@ export default function Projects() {
   };
 
   const data = cat === CATEGORY.TECH ? techProjects : medtechProjects;
-  const tags = useMemo(() => (cat === CATEGORY.TECH ? normalizeTags(data) : []), [cat, data]);
+  const tags = useMemo(
+    () => (cat === CATEGORY.TECH ? normalizeTags(visibleTechProjects) : []),
+    [cat, visibleTechProjects]
+  );
 
   useEffect(() => {
     setTag("All");
   }, [cat]);
 
   const visibleTech = useMemo(() => {
-    if (tag === "All") return techProjects;
-    return techProjects.filter((project) => (project.tags || []).includes(tag));
-  }, [tag]);
+    if (tag === "All") return visibleTechProjects;
+    return visibleTechProjects.filter((project) => (project.tags || []).includes(tag));
+  }, [tag, visibleTechProjects]);
 
   const medIntegration = useMemo(
     () => medtechProjects.filter((p) => p.segment !== "management"),
