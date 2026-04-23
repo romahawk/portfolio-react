@@ -6,6 +6,7 @@ import {
   Gauge,
   Bug,
   BarChart3,
+  Bot,
   Globe,
   FileCheck,
   ExternalLink,
@@ -31,6 +32,9 @@ const AIAugmentedSDLC = () => {
         </span>
         <span className="ai-sdlc__badge">
           <ShieldCheck size={13} /> {t("aiSdlc.badge3")}
+        </span>
+        <span className="ai-sdlc__badge">
+          <ShieldCheck size={13} /> {t("aiSdlc.badge4")}
         </span>
       </div>
 
@@ -94,6 +98,10 @@ const AIAugmentedSDLC = () => {
           <p className="about__text ai-sdlc__stack-item">
             <BarChart3 size={16} className="icon about__icon" />
             <span><strong>PostHog</strong> - {t("aiSdlc.hardening.posthog")}</span>
+          </p>
+          <p className="about__text ai-sdlc__stack-item">
+            <Bot size={16} className="icon about__icon" />
+            <span><strong>AI-Driven Observability</strong> - {t("aiSdlc.hardening.aiObservability")}</span>
           </p>
         </div>
         <p className="about__text">

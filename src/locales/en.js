@@ -15,23 +15,21 @@ export default {
     title: "Results",
     intro: "10+ years of delivery evidence across regulated industries and multi-domain product systems.",
     tiles: [
-      { metric: "10+", label: "Years in MedTech & Pharma delivery" },
-      // TODO: verify exact operational scale figure with client records
-      { metric: "$40M+", label: "Operational scale exposure" },
-      // TODO: verify final shipped systems count
-      { metric: "5+", label: "Productized systems shipped across domains" },
-      { metric: "3", label: "Regulated industries: MedTech, Pharma, B2B SaaS" },
-      { metric: "100%", label: "Remote-first delivery, distributed team experience" },
+      { metric: "10+ Years", label: "Product & Systems Leadership in regulated industries." },
+      { metric: "$50M+", label: "Annual turnover managed under executive leadership." },
+      { metric: "Full-Stack", label: "Architecting systems via AI-augmented SDLC." },
+      { metric: "4+ Domains", label: "MedTech, Pharma, Logistics, and B2B SaaS expertise." },
+      { metric: "AI-Native", label: "10x delivery velocity through agentic orchestration." },
     ],
   },
 
   hero: {
-    eyebrow: "Technical Product Portfolio",
-    headline: "Technical Product Manager & Delivery Lead",
+    eyebrow: "TECHNICAL PRODUCT PORTFOLIO",
+    headline: "Technical Product Manager | Systems & AI Automation",
     subtitle:
-      "AI-Augmented SDLC for production-grade delivery in regulated industries. 10+ years leading MedTech & Pharma platforms \u2014 from $40M+ operations to full-stack system architecture. I make trade-offs explicit and delivery predictable.",
-    ctaSDLC: "View AI-Augmented SDLC",
-    ctaProjects: "View Product Systems",
+      "Replacing operational chaos with scalable, AI-powered systems. 10+ years of domain expertise in MedTech & Pharma, managing $50M+ annual turnover. I bridge the gap between executive strategy and rapid technical delivery using an AI-orchestrated SDLC.",
+    ctaSDLC: "How I Build (AI-Stack)",
+    ctaProjects: "Explore Shipped Systems",
     downloadCV: "Download CV",
     scroll: "Scroll",
   },
@@ -210,13 +208,13 @@ export default {
 
   about: {
     title: "About",
-    eyebrow: "Operator profile",
-    heading: "Technical Product Manager | Systems & Delivery",
+    eyebrow: "Bridging $50M+ Operational Scale with AI-Orchestrated Delivery.",
+    heading: "Technical Product Manager | Systems & AI Automation",
     profileAlt: "Roman Mazuryk profile",
     para1:
-      "With 10+ years in MedTech and regulated B2B delivery, I operate at the intersection of Product Strategy, System Architecture, and Operational Excellence. I specialize in turning ambiguous, high-compliance constraints into predictable, high-uptime systems.",
+      "With 10+ years leading MedTech and regulated B2B delivery, I operate at the intersection of Product Strategy and AI-Augmented Architecture. I specialize in turning ambiguous, high-compliance constraints into predictable systems — leveraging my experience managing $50M+ operations to bridge the gap between business P&L and technical execution.",
     para2:
-      "My operating model is decision compression. I reduce organizational drag by translating complex operational needs into lean system primitives. I do not just manage backlogs; I architect the logic that ensures delivery is predictable, compliant, and impactful.",
+      "My operating model is decision compression. I use AI as a tool for systemic speed, not as a coding shortcut. The goal is to compress ambiguity into auditable execution and move from requirement to production-grade outcome with fewer handoffs, clearer trade-offs, and stronger delivery control.",
     pillars: {
       strategy: {
         title: "Strategy",
@@ -235,7 +233,7 @@ export default {
       eyebrow: "Operating model",
       heading: "My Operating Model: Decision Compression",
       text:
-        "I reduce organizational drag by translating complex operational needs into lean system primitives. I do not just manage backlogs; I architect the logic that ensures delivery is predictable, compliant, and impactful.",
+        "I reduce organizational drag by translating complex operational needs into lean system primitives. By utilizing AI-agentic workflows (Cursor, ClaudeCode), I compress the distance between a business requirement and a production-grade system, ensuring that delivery is not just fast, but auditable and impactful.",
       principles: {
         strategy: {
           label: "Strategy:",
@@ -250,15 +248,15 @@ export default {
           text: "Small, daily deployments. If it is not in production, it has not solved the problem yet.",
         },
       },
-      cta: "View Full System Architecture",
+      cta: "Explore the AI Production OS",
     },
     bestFit: {
       eyebrow: "Best-fit environment",
       heading: "Where I Operate Best",
       para1:
-        "Designed for remote-first agile environments. This workflow performs best in compliance-heavy systems, multi-stakeholder delivery, and zero-to-one platform work \u2014 particularly in EU and global B2B SaaS, internal tools, and regulated industries.",
+        "Designed for remote-first, English-first agile environments targeting EU and global B2B SaaS. This workflow performs best where technical ambiguity is high, execution speed matters, and leadership needs clear control across product, engineering, and operations.",
       para2:
-        "I collaborate directly with engineering on architecture while aligning leadership on the trade-offs that drive speed, reliability, and long-term leverage. In regulated MedTech and Pharma contexts, Micro-Scope and explicit acceptance criteria provide auditability without slowing delivery.",
+        "I collaborate directly with engineering on architecture while aligning leadership on the trade-offs that drive speed, reliability, and long-term leverage. In regulated MedTech and Pharma contexts, auditability is the differentiator: Micro-Scope, explicit acceptance criteria, and AI-supported documentation create traceability without slowing delivery.",
       para3: "Systems ownership end-to-end: from ambiguity to shipped operational impact.",
     },
     outside: {
@@ -276,10 +274,11 @@ export default {
   aiSdlc: {
     title: "AI-Augmented SDLC",
     intro:
-      "The Systems-First SDLC for production-grade delivery. Trade-offs stay explicit, decisions stay visible, scope stays constrained to what can ship. Built for Remote-First Agile Environments targeting EU/Global B2B SaaS and regulated industries.",
+      "An executive-control operating model for production-grade delivery. AI handles leverage, scaffolding, and signal synthesis; human judgment owns architecture, trade-offs, and release quality. Built for high-velocity teams shipping in EU/global B2B SaaS and regulated environments where auditability cannot slow execution.",
     badge1: "Remote-First Architecture",
     badge2: "MedTech / Pharma Auditability",
     badge3: "EU / Global Market Ready",
+    badge4: "FinTech / Blockchain Ready",
     cta: "See the workflow in action",
     strategy: {
       heading: "Strategy & Governance",
@@ -291,7 +290,7 @@ export default {
         "capture trade-off rationale, accepted risk, and system implications to compound long-term leverage across releases. Every architectural decision has a record \u2014 no institutional knowledge locked in Slack threads.",
       p3label: "Compliance Edge:",
       p3text:
-        "In regulated MedTech/Pharma environments, explicit Operating Rules and Decision Logs satisfy audit requirements without adding delivery overhead. Governance is built into the workflow, not bolted on.",
+        "In regulated MedTech/Pharma environments, explicit Operating Rules and Decision Logs satisfy audit requirements without adding delivery overhead. Governance is an automated byproduct of the workflow, not a manual overhead.",
     },
     buildLoop: {
       heading: "The Daily Build Loop",
@@ -300,18 +299,20 @@ export default {
         "select a GitHub issue, define acceptance criteria and data schemas before touching code, then implement through small daily PRs. Scope is locked at issue-open \u2014 protecting scope integrity and predictable velocity.",
       p2label: "Architectural Gate & Risk Assessment",
       p2text:
-        "is a hard gate before every implementation: architecture logic, state transitions, and edge cases are validated by the architect. AI assists \u2014 the architect decides.",
+        "is a hard gate before every implementation: architecture logic, state transitions, and edge cases are validated by the architect before work moves into Cursor and ClaudeCode for architect-led implementation. The model layer handles AI-assisted scaffolding; the human layer verifies architecture, constraints, and production readiness.",
       p3label: "Auditability in regulated contexts:",
       p3text:
-        "Micro-Scope plus explicit acceptance criteria provides a traceable paper trail for MedTech/Pharma delivery without slowing cadence. Each PR maps directly to a scoped requirement.",
+        "Micro-Scope plus explicit acceptance criteria provides a traceable paper trail for MedTech/Pharma delivery without slowing cadence. Each PR maps directly to a scoped requirement, with AI-assisted scaffolding and human-verified architecture preserving executive control over what ships.",
     },
     hardening: {
       heading: "The Production Hardening Stack",
       lighthouse: "performance baselines and release gating. Score regression blocks merge.",
       sentry: "runtime error visibility and failure triage with environment-scoped alerting.",
       posthog: "usage analytics and post-release signal tracking to validate delivery impact.",
+      aiObservability:
+        "using LLMs to synthesize Sentry logs and PostHog signals into actionable product iterations, so teams move from noise to prioritized decisions faster.",
       aiReview:
-        "are a standard implementation gate before merge, alongside human approval on architecture-critical changes. Every PR passes automated quality checks before it reaches the architect review layer.",
+        "are a standard implementation gate before merge, alongside human approval on architecture-critical changes. Every PR passes automated AI-quality gates, ensuring that human ingenuity is spent on solving business problems, not debugging boilerplate.",
     },
   },
 
@@ -562,12 +563,12 @@ export default {
 
   contact: {
     title: "Contact",
-    subtitle: "Product Systems Inquiries",
+    subtitle: "Systems & AI Strategy Inquiries",
     para1:
-      "Open to Technical Product Manager and Product Owner roles, as well as selective founder/operator collaborations in complex, regulated environments.",
+      "Selectively evaluating Technical Product Manager roles within high-growth, English-first organizations. Specialized in bridging $50M+ operational complexity with AI-augmented delivery.",
     para2label: "Best for:",
     para2text:
-      "internal tools, workflow automation, decision-support dashboards, real-time PoCs, and MVP validation.",
+      "AI-agentic workflows, high-compliance platforms, internal tooling architecture, and zero-to-one system validation.",
     emailLabel: "Email",
     locationLabel: "Location",
     location: "Germany (CET)",
@@ -587,14 +588,14 @@ export default {
 
   footer: {
     tagline:
-      "Technical Product Manager & Founder\u2011Operator.\nBuilding scalable systems in regulated industries.",
+      "Technical Product Manager | Systems & AI Automation\nArchitecting scalable systems in regulated industries. Leveraging 10+ years of domain expertise and AI-orchestrated delivery to make outcomes predictable.",
     nav: "Navigation",
-    availability: "Availability",
+    availability: "Selective Focus",
     availabilityText:
-      "Open to Technical PM & Product Owner roles and selective founder\u2011operator collaborations.",
+      "Selectively evaluating high-leverage Technical Product Manager opportunities and systemic challenges where executive alignment and production-grade delivery both matter.",
     sendEmail: "Send an email",
     copyright: "All rights reserved.",
-    location: "Germany (CET) \u00B7 Available for remote & hybrid",
+    location: "Germany (CET) \u00B7 Selective for remote & hybrid",
     navLinks: {
       Results: "Results",
       Projects: "Projects",

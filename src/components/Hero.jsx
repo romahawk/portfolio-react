@@ -5,6 +5,8 @@ import { useTranslation } from "../context/LangContext.jsx";
 const Hero = () => {
   const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
+  const headline = t("hero.headline");
+  const [headlineLead, headlineTail] = headline.split("|").map((part) => part.trim());
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -16,9 +18,12 @@ const Hero = () => {
     <section id="home" className="hero">
       <div className="container hero__inner">
         <div className="hero__content">
-          <p className="hero__eyebrow">{t("hero.eyebrow")} · {new Date().getFullYear()}</p>
+          <p className="hero__eyebrow">{t("hero.eyebrow")}</p>
 
-          <h1 className="hero__title">{t("hero.headline")}</h1>
+          <h1 className="hero__title">
+            <span className="hero__title-lead">{headlineLead}</span>
+            {headlineTail ? <span className="hero__title-tail">| {headlineTail}</span> : null}
+          </h1>
 
           <p className="hero__subtitle">{t("hero.subtitle")}</p>
 

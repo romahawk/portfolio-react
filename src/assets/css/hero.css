@@ -23,25 +23,41 @@
   padding: 40px 0 120px; /* extra bottom padding to make room for scroll hint */
 }
 .hero__content {
-  max-width: 820px;
+  max-width: 920px;
 }
 .hero__eyebrow {
   color: var(--brand);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   font-size: 12px;
   text-transform: uppercase;
-  margin: 0 0 10px 0;
+  font-weight: 700;
+  margin: 0 0 16px 0;
 }
 .hero__title {
-  font-size: clamp(32px, 6vw, 56px);
-  line-height: 1.05;
-  margin: 0 0 12px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 14px;
+  font-size: clamp(34px, 6vw, 58px);
+  line-height: 1.02;
+  margin: 0 0 18px 0;
+}
+.hero__title-lead {
+  font-weight: 800;
+  color: var(--text);
+}
+.hero__title-tail {
+  font-weight: 650;
+  color: var(--muted-strong);
+  font-size: clamp(20px, 3vw, 32px);
+  line-height: 1.15;
 }
 .hero__subtitle {
-  color: var(--muted);
-  font-size: clamp(16px, 2.5vw, 18px);
-  line-height: 1.6;
-  margin: 0 0 24px 0;
+  max-width: 860px;
+  color: var(--muted-strong);
+  font-size: clamp(17px, 2.4vw, 20px);
+  line-height: 1.7;
+  margin: 0 0 28px 0;
 }
 .hero__actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
 
@@ -112,6 +128,25 @@
 .hero__scroll-hint-icon {
   color: var(--brand);
   animation: bounce-y 1.6s ease-in-out infinite;
+}
+
+@media (max-width: 640px) {
+  .hero__inner {
+    padding: 32px 0 104px;
+  }
+
+  .hero__title {
+    gap: 6px;
+  }
+
+  .hero__title-tail {
+    font-size: clamp(18px, 5vw, 24px);
+  }
+
+  .hero__subtitle {
+    font-size: 16px;
+    line-height: 1.65;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -9,7 +9,7 @@ export default function MedintegroCaseStudy() {
         <h1 className="cs__title">Medintegro — B2B Website Rebuild</h1>
         <p className="cs__lead">
           Product-led rebuild of a MedTech distributor website to improve clarity, structure, SEO,
-          and multilingual scalability—designed for long-term maintainability and content ownership.
+          and multilingual scalability — designed for long-term maintainability and content ownership.
         </p>
       </header>
 

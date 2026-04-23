@@ -16,7 +16,7 @@ const Results = () => {
         {Array.isArray(tiles) && tiles.map((tile, i) => (
           <div
             key={i}
-            className={`result-tile reveal${i < 3 ? ` reveal--delay-${i + 1}` : ""}`}
+            className={`result-tile${i === 1 ? " result-tile--featured" : ""} reveal${i < 3 ? ` reveal--delay-${i + 1}` : ""}`}
           >
             {/* TODO: replace placeholder metrics with final verified numbers */}
             <span className="result-tile__metric">{tile.metric}</span>

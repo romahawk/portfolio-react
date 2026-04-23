@@ -43,7 +43,7 @@ const timeline = [
     company: "Medintegro — Ukraine / EU",
     tags: ["MedTech"],
     summary:
-      "Owned lifecycle delivery for complex MedTech systems in regulated environments—designing the implementation product and turning clinical workflows into a standardized, repeatable hardware/software stack with disciplined execution routines.",
+      "Owned lifecycle delivery for complex MedTech systems in regulated environments — designing the implementation product and turning clinical workflows into a standardized, repeatable hardware/software stack with disciplined execution routines.",
     highlights: [
       "Delivered 20+ integrated systems using a modular platform approach (high reuse across implementations)",
       "Standardized the delivery lifecycle (discovery → install → training → support) as a repeatable delivery product",
@@ -79,7 +79,7 @@ const timeline = [
     company: "Medintegro — Ukraine",
     tags: ["MedTech"],
     summary:
-      "Orchestrated multi-vendor OR integrations across imaging, endoscopy, and video systems—aligning clinicians, vendors, and engineers around executable system scope.",
+      "Orchestrated multi-vendor OR integrations across imaging, endoscopy, and video systems — aligning clinicians, vendors, and engineers around executable system scope.",
     highlights: [
       "Productized the deployment of integrated clinical platforms; standardized the hardware/software stack to reduce implementation lead times",
       "Standardized delivery lifecycle: discovery → planning → installation → training → support",
