@@ -27,7 +27,7 @@ const journey = [
     items: [
       "Founder & Technical Product Manager | Systems & Platform Delivery at Medintegro",
       "Productized the deployment of integrated MedTech platforms, scaling to 20+ clinical systems",
-      "Standardized the full delivery lifecycle—from discovery to support—as a repeatable, high-margin product",
+      "Standardized the full delivery lifecycle — from discovery to support — as a repeatable, high-margin product",
       "Sustained 100% delivery uptime under extreme logistical and geopolitical constraints",
     ],
   },
