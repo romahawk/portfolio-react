@@ -576,6 +576,11 @@ export default {
     para1:
       "Ich evaluiere selektiv Technical-Product-Manager-Rollen in wachstumsstarken, English-First-Organisationen. Meine Spezialisierung liegt darin, $50M+ operative Komplexität mit KI-augmentierter Delivery zu verbinden.",
     para2label: "Besonders geeignet für:",
+    para2items: [
+      "Komplexität: Organisationen, die über \"Excel-basierte\" Koordination hinaus skalieren.",
+      "Hochkritische Operations: Logistik, FinTech und B2B SaaS, in denen Auditierbarkeit nicht verhandelbar ist.",
+      "KI-Orchestrierung: Teams, die ihre Delivery-Geschwindigkeit durch agentische Workflows (Cursor, ClaudeCode, v0) verzehnfachen wollen.",
+    ],
     para2text:
       "KI-agentische Workflows, Plattformen mit hohen Compliance-Anforderungen, Architektur interner Tools und Zero-to-One-Systemvalidierung.",
     emailLabel: "E-Mail",

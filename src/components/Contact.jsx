@@ -7,6 +7,7 @@ const Contact = () => {
   const formRef = useRef(null);
   const [copied, setCopied] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const bestForItems = t("contact.para2items");
 
   const email = "romazuryk@proton.me";
 
@@ -45,8 +46,19 @@ const Contact = () => {
           <h3 className="contact__subtitle">{t("contact.subtitle")}</h3>
           <p className="contact__text">{t("contact.para1")}</p>
           <p className="contact__text">
-            <strong>{t("contact.para2label")}</strong> {t("contact.para2text")}
+            <strong>{t("contact.para2label")}</strong>
           </p>
+          {Array.isArray(bestForItems) ? (
+            <ul className="contact__best-for">
+              {bestForItems.map((item, index) => (
+                <li key={index} className="contact__text">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="contact__text">{t("contact.para2text")}</p>
+          )}
 
           <div className="contact__info">
             <div className="contact__row">

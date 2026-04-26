@@ -575,6 +575,11 @@ export default {
     para1:
       "Selectively evaluating Technical Product Manager roles within high-growth, English-first organizations. Specialized in bridging $50M+ operational complexity with AI-augmented delivery.",
     para2label: "Best for:",
+    para2items: [
+      "Complexity: Organizations scaling past \"Excel-based\" coordination.",
+      "High-Stakes Ops: Logistics, FinTech, and B2B SaaS where auditability is non-negotiable.",
+      "AI-Orchestration: Teams looking to 10x their delivery speed through agentic workflows (Cursor, ClaudeCode, v0).",
+    ],
     para2text:
       "AI-agentic workflows, high-compliance platforms, internal tooling architecture, and zero-to-one system validation.",
     emailLabel: "Email",
