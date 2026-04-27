@@ -561,13 +561,139 @@
   line-height: 1.6;
 }
 
+.services-page__context {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.96fr);
+  gap: 24px;
+  align-items: start;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(520px 220px at 100% 0, var(--surface-glow), transparent 62%),
+    radial-gradient(460px 180px at 0 100%, var(--surface-cool), transparent 66%),
+    var(--card-bg-deep);
+  box-shadow: var(--shadow);
+}
+
+.services-page__context-copy {
+  display: grid;
+  gap: 14px;
+  max-width: 640px;
+}
+
+.services-page__context-copy h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(30px, 3.6vw, 40px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.services-page__context-copy p {
+  margin: 0;
+  color: var(--muted-strong);
+  font-size: 16px;
+  line-height: 1.72;
+}
+
+.services-page__context-side {
+  display: grid;
+  gap: 12px;
+}
+
+.services-page__context-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.services-page__context-stat {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  min-height: 142px;
+  align-content: start;
+  padding: 18px;
+  border: 1px solid var(--surface-border);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+    var(--surface-soft);
+  overflow: hidden;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.28s ease,
+    border-color 0.22s ease,
+    background 0.28s ease;
+}
+
+.services-page__context-stat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(220px 120px at 100% 0, rgba(73, 215, 209, 0.13), transparent 62%),
+    radial-gradient(180px 100px at 0 100%, rgba(111, 164, 255, 0.1), transparent 64%);
+  opacity: 0.35;
+  transition: opacity 0.22s ease;
+  pointer-events: none;
+}
+
+.services-page__context-stat:hover {
+  transform: translateY(-4px);
+  border-color: rgba(73, 215, 209, 0.55);
+  box-shadow: 0 14px 30px rgba(73, 215, 209, 0.14);
+  background:
+    linear-gradient(180deg, rgba(73, 215, 209, 0.08), rgba(255,255,255,0)),
+    var(--surface-soft);
+}
+
+.services-page__context-stat:hover::before {
+  opacity: 0.7;
+}
+
+.services-page__context-stat strong,
+.services-page__context-stat span {
+  position: relative;
+  z-index: 1;
+}
+
+.services-page__context-stat strong {
+  color: var(--brand);
+  font-size: clamp(1.4rem, 1.8vw, 1.75rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.services-page__context-stat span {
+  color: var(--muted-strong);
+  font-size: 14px;
+  line-height: 1.58;
+}
+
+.services-page__context-stat--featured {
+  border-color: rgba(73, 215, 209, 0.22);
+  background:
+    linear-gradient(135deg, rgba(73, 215, 209, 0.1), rgba(73, 215, 209, 0.02)),
+    var(--surface-soft);
+}
+
+.services-page__context-note {
+  margin: 0;
+  padding-inline: 4px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
 .services-page__trust {
   padding-top: 1.5rem;
 }
 
 .services-page__trust-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) clamp(180px, 24vw, 280px);
+  grid-template-columns: minmax(0, 1.2fr) clamp(90px, 12vw, 140px);
   gap: 18px;
   align-items: stretch;
 }
@@ -662,6 +788,7 @@
   .services-page__hero-inner,
   .services-page__diagnosis,
   .services-page__proof,
+  .services-page__context,
   .services-page__trust-grid {
     grid-template-columns: 1fr;
   }
@@ -683,7 +810,7 @@
   }
 
   .services-page__trust-photo {
-    max-width: 220px;
+    max-width: 110px;
   }
 }
 
@@ -691,7 +818,8 @@
   .services-page__friction-grid,
   .services-page__cards,
   .services-page__detail-grid,
-  .services-page__proof-grid {
+  .services-page__proof-grid,
+  .services-page__context-grid {
     grid-template-columns: 1fr;
   }
 
@@ -747,6 +875,7 @@
   .services-page__step,
   .services-page__router-item,
   .services-page__proof-stat,
+  .services-page__context-stat,
   .services-page__detail-block,
   .services-page__expected,
   .services-page__scroll-hint {
@@ -764,8 +893,13 @@
   .services-page__step:hover,
   .services-page__router-item:hover,
   .services-page__proof-stat:hover,
+  .services-page__context-stat:hover,
   .services-page__detail-block:hover,
   .services-page__expected:hover {
     transform: none;
+  }
+
+  .services-page__context-stat::before {
+    transition: none;
   }
 }

@@ -19,6 +19,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { useTranslation } from "../context/LangContext.jsx";
+import ServicesContextSection from "./ServicesContextSection.jsx";
 
 const ICONS = {
   BarChart3,
@@ -94,7 +95,6 @@ const ServicesPage = () => {
   const overviewItems = t("servicesPage.overview.items");
   const detailItems = t("servicesPage.details.items");
   const steps = t("servicesPage.process.steps");
-  const proofStats = t("servicesPage.proof.stats");
   const heroSignals = t("servicesPage.hero.signals");
 
   useEffect(() => {
@@ -243,23 +243,7 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      <section id="proof" className="section container services-page__section">
-        <div className="services-page__proof reveal">
-          <div>
-            <p className="services-page__kicker">{t("servicesPage.proof.kicker")}</p>
-            <h2>{t("servicesPage.proof.title")}</h2>
-            <p>{t("servicesPage.proof.text")}</p>
-          </div>
-          <div className="services-page__proof-grid">
-            {(Array.isArray(proofStats) ? proofStats : []).map((stat) => (
-              <div key={stat.value} className="services-page__proof-stat">
-                <strong>{stat.value}</strong>
-                <span>{stat.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicesContextSection />
 
       <section id="trust" className="section container services-page__section services-page__trust">
         <div className="services-page__trust-grid reveal">
@@ -269,6 +253,7 @@ const ServicesPage = () => {
               <p className="services-page__kicker">{t("servicesPage.trust.kicker")}</p>
               <h2>{t("servicesPage.trust.title")}</h2>
               <p>{t("servicesPage.trust.text")}</p>
+              <p>{t("servicesPage.trust.text2")}</p>
             </div>
           </div>
 

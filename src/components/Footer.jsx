@@ -74,6 +74,7 @@ const Footer = () => {
         <div className="footer__cta-col">
           <p className="footer__col-heading">{t("footer.availability")}</p>
           <p className="footer__cta-text">{t("footer.availabilityText")}</p>
+          <p className="footer__cta-text">{t("footer.availabilityText2")}</p>
           <a href="mailto:romazuryk@proton.me" className="footer__cta-btn">
             {t("footer.sendEmail")} <ArrowUpRight size={14} className="footer__cta-icon" />
           </a>
