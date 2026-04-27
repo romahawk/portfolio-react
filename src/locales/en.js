@@ -351,14 +351,16 @@ export default {
     ],
     proof: {
       kicker: "Context",
-      title: "Built from real operations, not agency theater",
+      title: "Systems built from real operations, not agency guesswork",
       text:
-        "The work comes from shipping systems across MedTech, logistics, internal operations, and product workflows. We care about clear states, clean handoffs, and tools that survive contact with daily work.",
+        "I design systems from the operator’s perspective — where workflows break, decisions stall, and time is lost. Each build is scoped to remove friction and create measurable leverage in daily operations.",
+      note:
+        "Based on operator-side delivery experience and workflow analysis.",
       stats: [
-        { value: "10+", label: "years in MedTech and pharma delivery" },
-        { value: "5+", label: "productized systems shipped or prototyped" },
-        { value: "3", label: "domains: MedTech, logistics, B2B SaaS" },
-        { value: "1", label: "focused problem to start" },
+        { value: "10+ years", label: "MedTech, Logistics, FinTech delivery" },
+        { value: "$40M+", label: "operations managed / supported" },
+        { value: "5+ systems", label: "shipped in real environments" },
+        { value: "30 – 50%", label: "manual work reduction potential" },
       ],
     },
     credibility: {
@@ -376,9 +378,11 @@ export default {
     },
     trust: {
       kicker: "Trust",
-      title: "Small note from Roman",
+      title: "Built from the operator side",
       text:
-        "I build from the operator side first. Before design or code, I look for the workflow logic, the decision points, and the smallest system that can create visible leverage.",
+        "Before design or code, I map how the work actually happens: where decisions stall, where handoffs break, and where time is lost.",
+      text2:
+        "Then I scope the smallest system that can create visible leverage — faster clarity, cleaner execution, or measurable time savings.",
     },
     note: {
       kicker: "Trust",
@@ -796,7 +800,9 @@ export default {
     nav: "Navigation",
     availability: "Selective Focus",
     availabilityText:
-      "Selectively evaluating high-leverage Technical Product Manager opportunities and systemic challenges where executive alignment and production-grade delivery both matter.",
+      "I take on a limited number of projects where fixing one system can unlock real operational leverage.",
+    availabilityText2:
+      "Each engagement is scoped around a single high-impact problem — with a clear path to faster execution, cleaner workflows, or measurable efficiency gains.",
     sendEmail: "Send an email",
     copyright: "All rights reserved.",
     location: "Germany (CET) \u00B7 Selective for remote & hybrid",

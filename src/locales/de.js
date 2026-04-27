@@ -351,14 +351,16 @@ export default {
     ],
     proof: {
       kicker: "Kontext",
-      title: "Gebaut aus echter Operations-Erfahrung, nicht aus Agentur-Theater",
+      title: "Systeme gebaut aus echter Operations-Erfahrung, nicht aus Agentur-Guesswork",
       text:
-        "Die Arbeit basiert auf Systemen aus MedTech, Logistik, internen Operations und Produkt-Workflows. Wir achten auf klare Zustände, saubere Übergaben und Tools, die im Alltag funktionieren.",
+        "Ich entwerfe Systeme aus der Operator-Perspektive – dort, wo Workflows brechen, Entscheidungen stocken und Zeit verloren geht. Jeder Build wird so geschnitten, dass er Reibung entfernt und messbaren Hebel im Tagesgeschäft erzeugt.",
+      note:
+        "Basiert auf operator-seitiger Delivery-Erfahrung und Workflow-Analyse.",
       stats: [
-        { value: "10+", label: "Jahre in MedTech- und Pharma-Delivery" },
-        { value: "5+", label: "produktisierte Systeme gebaut oder prototypisiert" },
-        { value: "3", label: "Domänen: MedTech, Logistik, B2B SaaS" },
-        { value: "1", label: "fokussiertes Problem zum Start" },
+        { value: "10+ Jahre", label: "Delivery in MedTech, Logistik, FinTech" },
+        { value: "$40M+", label: "Operations verantwortet / unterstützt" },
+        { value: "5+ Systeme", label: "in realen Umgebungen ausgeliefert" },
+        { value: "30 – 50%", label: "Potenzial zur Reduktion manueller Arbeit" },
       ],
     },
     credibility: {
@@ -376,9 +378,11 @@ export default {
     },
     trust: {
       kicker: "Vertrauen",
-      title: "Kurze Notiz von Roman",
+      title: "Aufgebaut von der Operator-Seite",
       text:
-        "Ich baue zuerst aus Operator-Perspektive. Vor Design oder Code suche ich nach Workflow-Logik, Entscheidungspunkten und dem kleinsten System, das sichtbaren Hebel schafft.",
+        "Vor Design oder Code bilde ich ab, wie die Arbeit wirklich abläuft: wo Entscheidungen ins Stocken geraten, wo Übergaben scheitern und wo Zeit verloren geht.",
+      text2:
+        "Dann scope ich das kleinste System, das sichtbaren Hebel schafft — schnellere Klarheit, saubere Ausführung oder messbare Zeitersparnis.",
     },
     note: {
       kicker: "Vertrauen",
@@ -797,7 +801,9 @@ export default {
     nav: "Navigation",
     availability: "Selektiver Fokus",
     availabilityText:
-      "Ich evaluiere selektiv hochwirksame Technical-Product-Manager-Chancen und systemische Herausforderungen, bei denen Executive Alignment und produktionsreife Delivery gleichermaßen zählen.",
+      "Ich nehme eine begrenzte Anzahl an Projekten an, bei denen die Behebung eines Systems echten operativen Hebel freisetzen kann.",
+    availabilityText2:
+      "Jedes Engagement ist auf ein einziges hochrelevantes Problem ausgerichtet — mit einem klaren Weg zu schnellerer Ausführung, saubereren Workflows oder messbaren Effizienzgewinnen.",
     sendEmail: "E-Mail senden",
     copyright: "Alle Rechte vorbehalten.",
     location: "Deutschland (MEZ) · Selektiv offen für Remote & Hybrid",
