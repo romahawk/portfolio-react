@@ -186,7 +186,6 @@ export default function Projects() {
     }
   };
 
-  const data = cat === CATEGORY.TECH ? techProjects : medtechProjects;
   const tags = useMemo(
     () => (cat === CATEGORY.TECH ? normalizeTags(visibleTechProjects) : []),
     [cat, visibleTechProjects]

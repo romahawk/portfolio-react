@@ -46,6 +46,8 @@ export default {
     cta: {
       book: "Book a Call",
       how: "See how it works",
+      diagnosis: "Start with a Friction Diagnosis",
+      viewSystems: "View systems",
     },
     hero: {
       eyebrow: "Productized systems",
@@ -58,6 +60,127 @@ export default {
         { label: "Build style", value: "Lean, scoped, launch-ready" },
         { label: "Best fit", value: "B2B, operations, regulated teams" },
       ],
+    },
+    friction: {
+      kicker: "Start with the bottleneck",
+      title: "Business friction usually shows up before a team knows which tool it needs",
+      intro:
+        "The work starts by locating where the business is losing qualified inquiries, time, or decision clarity. Then we install the smallest system that produces a measurable improvement.",
+    },
+    frictionPoints: [
+      {
+        icon: "LineChart",
+        title: "Lead friction",
+        text: "The website gets visits, but the offer is unclear, trust is weak, or inquiries are not qualified.",
+      },
+      {
+        icon: "BarChart3",
+        title: "Operational drag",
+        text: "Work is tracked across spreadsheets, inboxes, and disconnected tools, so status takes too long to see.",
+      },
+      {
+        icon: "Bot",
+        title: "Manual repetition",
+        text: "The same admin and follow-up tasks keep happening every week without a simple system behind them.",
+      },
+      {
+        icon: "Gauge",
+        title: "Conversion leakage",
+        text: "People show interest, but pages, CTAs, or booking flows create hesitation before action happens.",
+      },
+    ],
+    diagnosisOffer: {
+      kicker: "Start here",
+      title: "Friction Diagnosis Sprint",
+      copy:
+        "Not sure whether your biggest problem is leads, conversion, manual work, or operational visibility? We start with a focused diagnosis to identify the highest-impact bottlenecks and map the fastest path to improvement.",
+      timeline: "3-5 days",
+      outputs: [
+        "Top 3 friction points",
+        "ROI-ranked improvement opportunities",
+        "Recommended system path",
+        "Clear implementation roadmap",
+      ],
+      cta: "Book a diagnosis",
+    },
+    systemsIntro: {
+      kicker: "Recommended systems",
+      title: "Choose the system that changes the business output",
+      intro:
+        "These are not isolated websites or dashboards. Each system is scoped to remove a bottleneck and create a clearer operational result.",
+    },
+    systems: [
+      {
+        id: "lead-generation-system",
+        icon: "LineChart",
+        title: "Lead Generation System",
+        purpose: "For businesses that need more qualified inquiries.",
+        recommendedWhen: "Weak pipeline, unclear offer, low-trust pages",
+        includes: [
+          "Positioning and messaging",
+          "Conversion-focused landing page",
+          "CTA and booking flow",
+          "Trust elements",
+          "Basic tracking setup",
+        ],
+        timeline: "7 days",
+        outcome: "Clearer offer, stronger trust, more qualified calls.",
+      },
+      {
+        id: "operations-visibility-system",
+        icon: "BarChart3",
+        title: "Operations Visibility System",
+        purpose: "For teams managing work through spreadsheets, email, or disconnected tools.",
+        recommendedWhen: "Status chasing, spreadsheet drift, unclear accountability",
+        includes: [
+          "Workflow mapping",
+          "Status dashboard",
+          "Bottleneck visibility",
+          "Role-based views if needed",
+          "Simple reporting layer",
+        ],
+        timeline: "2-3 weeks",
+        outcome: "Less spreadsheet drift, faster decisions, clearer accountability.",
+      },
+      {
+        id: "automation-leverage-system",
+        icon: "Bot",
+        title: "Automation Leverage System",
+        purpose: "For repetitive manual work that can be safely reduced or structured.",
+        recommendedWhen: "Weekly repetition, handoff delays, unclear automation priorities",
+        includes: [
+          "Process audit",
+          "Data flow mapping",
+          "Automation opportunity ranking",
+          "AI/tool recommendations",
+          "Implementation roadmap",
+        ],
+        timeline: "3-5 days",
+        outcome: "Prioritized automation roadmap with realistic next steps.",
+      },
+      {
+        id: "conversion-optimization-system",
+        icon: "Gauge",
+        title: "Conversion Optimization System",
+        purpose: "For websites or funnels that already have some traffic but weak conversion.",
+        recommendedWhen: "Traffic exists, but visitors hesitate or drop off",
+        includes: [
+          "Messaging audit",
+          "CTA structure",
+          "Page flow improvements",
+          "Trust and objection handling",
+          "Before/after recommendations",
+        ],
+        timeline: "5-10 days",
+        outcome: "Sharper conversion path without a full rebuild.",
+      },
+    ],
+    labels: {
+      timeline: "Timeline",
+      output: "Output",
+      includes: "Includes",
+      outcome: "Outcome",
+      recommendedWhen: "Recommended when",
     },
     overview: {
       kicker: "Services",
@@ -161,6 +284,8 @@ export default {
     process: {
       kicker: "How we work",
       title: "A small system before a big commitment",
+      intro:
+        "The page follows the same operating logic as the work itself: diagnose the bottleneck, install the right system, then measure whether friction actually went down.",
       steps: [
         {
           icon: "SearchCheck",
@@ -179,6 +304,51 @@ export default {
         },
       ],
     },
+    processSteps: [
+      {
+        icon: "SearchCheck",
+        title: "Step 1 - Diagnose friction",
+        text: "Identify where the business loses leads, time, or decision clarity.",
+      },
+      {
+        icon: "Settings2",
+        title: "Step 2 - Install the right system",
+        text: "Build the focused solution: landing page, dashboard, automation map, or conversion system.",
+      },
+      {
+        icon: "Rocket",
+        title: "Step 3 - Measure and improve",
+        text: "Track the output and refine the system based on real usage.",
+      },
+    ],
+    router: {
+      kicker: "Decision router",
+      title: "Which system do you need?",
+      intro:
+        "If the tool choice is unclear, start from the business problem instead of the deliverable.",
+    },
+    decisionRouterItems: [
+      {
+        problem: "We do not get enough qualified inquiries",
+        system: "Lead Generation System",
+      },
+      {
+        problem: "We manage too much through spreadsheets",
+        system: "Operations Visibility System",
+      },
+      {
+        problem: "We repeat the same manual tasks every week",
+        system: "Automation Leverage System",
+      },
+      {
+        problem: "People visit but do not convert",
+        system: "Conversion Optimization System",
+      },
+      {
+        problem: "We are not sure",
+        system: "Friction Diagnosis Sprint",
+      },
+    ],
     proof: {
       kicker: "Context",
       title: "Built from real operations, not agency theater",
@@ -191,7 +361,26 @@ export default {
         { value: "1", label: "focused problem to start" },
       ],
     },
+    credibility: {
+      kicker: "Built as a repeatable delivery system",
+      title: "Built as a repeatable delivery system",
+      text:
+        "The method is simple on purpose: diagnose before building, focus on business output, use the simplest stack that works, and leave the client with a system that can be repeated or improved.",
+      points: [
+        "Diagnose before building.",
+        "Focus on business output, not decoration.",
+        "Use simple tools before complex automation.",
+        "Deliver fast, measurable improvements.",
+        "Document the system so it can be repeated or improved.",
+      ],
+    },
     trust: {
+      kicker: "Trust",
+      title: "Small note from Roman",
+      text:
+        "I build from the operator side first. Before design or code, I look for the workflow logic, the decision points, and the smallest system that can create visible leverage.",
+    },
+    note: {
       kicker: "Trust",
       title: "Small note from Roman",
       text:
@@ -203,6 +392,8 @@ export default {
       text:
         "Bring one bottleneck: weak lead flow, manual reporting, unclear conversion, or an automation idea that needs structure. We will turn it into a small pilot.",
       secondary: "Start with a small pilot",
+      primaryCta: "Book a Friction Diagnosis",
+      secondaryCta: "Contact me",
     },
   },
 
@@ -575,6 +766,11 @@ export default {
     para1:
       "Selectively evaluating Technical Product Manager roles within high-growth, English-first organizations. Specialized in bridging $50M+ operational complexity with AI-augmented delivery.",
     para2label: "Best for:",
+    para2items: [
+      "Complexity: Organizations scaling past \"Excel-based\" coordination.",
+      "High-Stakes Ops: Logistics, FinTech, and B2B SaaS where auditability is non-negotiable.",
+      "AI-Orchestration: Teams looking to 10x their delivery speed through agentic workflows (Cursor, ClaudeCode, v0).",
+    ],
     para2text:
       "AI-agentic workflows, high-compliance platforms, internal tooling architecture, and zero-to-one system validation.",
     emailLabel: "Email",

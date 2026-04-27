@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ArrowRight,
   BarChart3,
   Bot,
   CalendarCheck,
   CheckCircle2,
+  ChevronDown,
+  CircleAlert,
+  Clock3,
   Gauge,
   LineChart,
+  PackageCheck,
   Rocket,
   SearchCheck,
   Settings2,
   ShieldCheck,
   Sparkles,
+  Wrench,
 } from "lucide-react";
 import { useTranslation } from "../context/LangContext.jsx";
 
@@ -20,30 +25,44 @@ const ICONS = {
   Bot,
   CalendarCheck,
   CheckCircle2,
+  CircleAlert,
+  Clock3,
   Gauge,
   LineChart,
+  PackageCheck,
   Rocket,
   SearchCheck,
   Settings2,
   ShieldCheck,
   Sparkles,
+  Wrench,
 };
+
+const DETAIL_BLOCK_ICONS = [
+  { icon: "CircleAlert", bulletIcon: "CircleAlert" },
+  { icon: "Wrench", bulletIcon: "Wrench" },
+  { icon: "PackageCheck", bulletIcon: "CheckCircle2" },
+  { icon: "Clock3", bulletIcon: "Clock3" },
+];
 
 const BOOK_CALL_HREF =
   "mailto:romazuryk@proton.me?subject=Book%20a%20call%20-%20systems%20pilot";
+const CONTACT_HREF =
+  "mailto:romazuryk@proton.me?subject=Services%20inquiry";
 
 function ServiceIcon({ name, className = "services-page__icon", size = 20 }) {
   const Icon = ICONS[name] || Sparkles;
   return <Icon size={size} className={className} aria-hidden="true" />;
 }
 
-function BulletList({ items }) {
+function BulletList({ items, icon = "CheckCircle2" }) {
   if (!Array.isArray(items)) return null;
+  const Icon = ICONS[icon] || CheckCircle2;
   return (
     <ul>
       {items.map((item) => (
         <li key={item}>
-          <CheckCircle2 size={15} aria-hidden="true" />
+          <Icon size={15} aria-hidden="true" />
           <span>{item}</span>
         </li>
       ))}
@@ -51,12 +70,45 @@ function BulletList({ items }) {
   );
 }
 
+function DetailBlock({ block, index }) {
+  const iconConfig = DETAIL_BLOCK_ICONS[index] || DETAIL_BLOCK_ICONS[0];
+
+  return (
+    <div className="services-page__detail-block">
+      <h4>
+        <ServiceIcon
+          name={iconConfig.icon}
+          className="services-page__detail-block-icon"
+          size={15}
+        />
+        <span>{block.label}</span>
+      </h4>
+      <BulletList items={block.items} icon={iconConfig.bulletIcon} />
+    </div>
+  );
+}
+
 const ServicesPage = () => {
   const { t } = useTranslation();
+  const [scrolled, setScrolled] = useState(false);
   const overviewItems = t("servicesPage.overview.items");
   const detailItems = t("servicesPage.details.items");
   const steps = t("servicesPage.process.steps");
   const proofStats = t("servicesPage.proof.stats");
+  const heroSignals = t("servicesPage.hero.signals");
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const handleHeroScroll = () => {
+    document.getElementById("service-details")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
 
   return (
     <div className="services-page">
@@ -69,17 +121,20 @@ const ServicesPage = () => {
             <div className="services-page__actions">
               <a href={BOOK_CALL_HREF} className="btn btn--primary">
                 <CalendarCheck size={16} className="icon mr-1" />
-                {t("servicesPage.cta.book")}
+                {t("servicesPage.cta.diagnosis")}
               </a>
-              <a href="#how-it-works" className="btn btn--ghost">
-                {t("servicesPage.cta.how")}
+              <a href="#service-details" className="btn btn--ghost">
+                {t("servicesPage.cta.viewSystems")}
                 <ArrowRight size={15} className="icon ml-1" />
               </a>
             </div>
           </div>
 
-          <div className="services-page__hero-panel reveal reveal--delay-1" aria-label={t("servicesPage.hero.panelLabel")}>
-            {(t("servicesPage.hero.signals") || []).map((signal) => (
+          <div
+            className="services-page__hero-panel reveal reveal--delay-1"
+            aria-label={t("servicesPage.hero.panelLabel")}
+          >
+            {(Array.isArray(heroSignals) ? heroSignals : []).map((signal) => (
               <div key={signal.label} className="services-page__signal">
                 <span>{signal.label}</span>
                 <strong>{signal.value}</strong>
@@ -87,6 +142,16 @@ const ServicesPage = () => {
             ))}
           </div>
         </div>
+
+        <button
+          type="button"
+          className={`services-page__scroll-hint ${scrolled ? "services-page__scroll-hint--hidden" : ""}`}
+          onClick={handleHeroScroll}
+          aria-label={t("servicesPage.cta.viewSystems")}
+        >
+          <span>{t("hero.scroll")}</span>
+          <ChevronDown size={18} className="services-page__scroll-hint-icon" />
+        </button>
       </section>
 
       <section id="services-overview" className="section container services-page__section">
@@ -103,8 +168,9 @@ const ServicesPage = () => {
             <a
               href={`#${service.id}`}
               key={service.id}
-              className={`services-page__card reveal reveal--delay-${Math.min(index + 1, 3)}`}
+              className={`services-page__card services-page__system reveal reveal--delay-${Math.min(index + 1, 3)}`}
             >
+              <div className="services-page__system-connector" aria-hidden="true" />
               <ServiceIcon name={service.icon} />
               <h3>{service.title}</h3>
               <p>{service.description}</p>
@@ -117,7 +183,7 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      <section id="service-details" className="section container services-page__section services-page__details">
+      <section id="service-details" className="section container services-page__section">
         <div className="services-page__section-head reveal">
           <p className="services-page__kicker">{t("servicesPage.details.kicker")}</p>
           <h2 className="section__title">
@@ -125,30 +191,36 @@ const ServicesPage = () => {
           </h2>
         </div>
 
-        {(Array.isArray(detailItems) ? detailItems : []).map((service, index) => (
-          <article id={service.id} key={service.id} className="services-page__detail reveal">
-            <div className="services-page__detail-title">
-              <ServiceIcon name={service.icon} size={18} />
-              <div>
-                <h3>{service.title}</h3>
-                <p>{service.timeline}</p>
-              </div>
-            </div>
-            <div className="services-page__detail-grid">
-              {service.blocks.map((block) => (
-                <div key={block.label} className="services-page__detail-block">
-                  <h4>{block.label}</h4>
-                  <BulletList items={block.items} />
+        <div className="services-page__details">
+          {(Array.isArray(detailItems) ? detailItems : []).map((service, index) => (
+            <article
+              id={service.id}
+              key={service.id}
+              className={`services-page__detail services-page__system reveal reveal--delay-${Math.min(index + 1, 3)}`}
+            >
+              <div className="services-page__system-connector" aria-hidden="true" />
+
+              <div className="services-page__detail-title">
+                <ServiceIcon name={service.icon} size={18} />
+                <div>
+                  <h3>{service.title}</h3>
+                  <p>{service.timeline}</p>
                 </div>
-              ))}
-              <div className="services-page__expected">
-                <span>{t("servicesPage.details.expectedLabel")}</span>
-                <strong>{service.expected}</strong>
               </div>
-            </div>
-            {index < detailItems.length - 1 ? <div className="services-page__divider" aria-hidden="true" /> : null}
-          </article>
-        ))}
+
+              <div className="services-page__detail-grid">
+                {service.blocks.map((block, blockIndex) => (
+                  <DetailBlock key={block.label} block={block} index={blockIndex} />
+                ))}
+
+                <div className="services-page__expected">
+                  <span>{t("servicesPage.details.expectedLabel")}</span>
+                  <strong>{service.expected}</strong>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section id="how-it-works" className="section container services-page__section">
@@ -190,12 +262,26 @@ const ServicesPage = () => {
       </section>
 
       <section id="trust" className="section container services-page__section services-page__trust">
-        <div className="services-page__note reveal">
-          <ShieldCheck size={20} className="services-page__icon" aria-hidden="true" />
-          <div>
-            <p className="services-page__kicker">{t("servicesPage.trust.kicker")}</p>
-            <h2>{t("servicesPage.trust.title")}</h2>
-            <p>{t("servicesPage.trust.text")}</p>
+        <div className="services-page__trust-grid reveal">
+          <div className="services-page__note">
+            <ShieldCheck size={20} className="services-page__icon" aria-hidden="true" />
+            <div>
+              <p className="services-page__kicker">{t("servicesPage.trust.kicker")}</p>
+              <h2>{t("servicesPage.trust.title")}</h2>
+              <p>{t("servicesPage.trust.text")}</p>
+            </div>
+          </div>
+
+          <div className="services-page__trust-photo">
+            <img
+              src="/images/profile.jpg"
+              alt={t("about.profileAlt")}
+              className="services-page__trust-photo-img"
+              loading="lazy"
+              decoding="async"
+              width="320"
+              height="320"
+            />
           </div>
         </div>
       </section>
@@ -210,7 +296,9 @@ const ServicesPage = () => {
               <CalendarCheck size={16} className="icon mr-1" />
               {t("servicesPage.cta.book")}
             </a>
-            <span>{t("servicesPage.final.secondary")}</span>
+            <a href={CONTACT_HREF} className="btn btn--ghost">
+              {t("servicesPage.final.secondary")}
+            </a>
           </div>
         </div>
       </section>

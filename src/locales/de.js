@@ -46,6 +46,8 @@ export default {
     cta: {
       book: "Termin buchen",
       how: "Ablauf ansehen",
+      diagnosis: "Mit einer Friction Diagnosis starten",
+      viewSystems: "Systeme ansehen",
     },
     hero: {
       eyebrow: "Produktisierte Systeme",
@@ -58,6 +60,127 @@ export default {
         { label: "Umsetzung", value: "Schlank, klar begrenzt, launchbereit" },
         { label: "Best Fit", value: "B2B, Operations, regulierte Teams" },
       ],
+    },
+    friction: {
+      kicker: "Mit dem Engpass starten",
+      title: "Business-Reibung wird meist sichtbar, bevor klar ist, welches Tool wirklich gebraucht wird",
+      intro:
+        "Der Einstieg beginnt damit, zu lokalisieren, wo das Unternehmen qualifizierte Anfragen, Zeit oder Entscheidungsklarheit verliert. Danach installieren wir das kleinste System mit messbarer Verbesserung.",
+    },
+    frictionPoints: [
+      {
+        icon: "LineChart",
+        title: "Lead-Reibung",
+        text: "Die Website bekommt Besuche, aber Angebot, Vertrauen oder Qualitaet der Anfragen bleiben zu schwach.",
+      },
+      {
+        icon: "BarChart3",
+        title: "Operativer Drag",
+        text: "Arbeit wird ueber Tabellen, Postfaecher und getrennte Tools verfolgt, sodass Status zu spaet sichtbar wird.",
+      },
+      {
+        icon: "Bot",
+        title: "Manuelle Wiederholung",
+        text: "Dieselben Admin- und Follow-up-Aufgaben wiederholen sich jede Woche ohne simples System dahinter.",
+      },
+      {
+        icon: "Gauge",
+        title: "Conversion-Verlust",
+        text: "Es gibt Interesse, aber Seiten, CTAs oder Buchungswege erzeugen Zoegern vor der Aktion.",
+      },
+    ],
+    diagnosisOffer: {
+      kicker: "Start hier",
+      title: "Friction Diagnosis Sprint",
+      copy:
+        "Nicht sicher, ob Ihr groesstes Problem Leads, Conversion, manuelle Arbeit oder operative Transparenz ist? Wir starten mit einer fokussierten Diagnose, um die wirksamsten Engpaesse zu identifizieren und den schnellsten Verbesserungsweg zu skizzieren.",
+      timeline: "3-5 Tage",
+      outputs: [
+        "Top 3 Reibungspunkte",
+        "ROI-priorisierte Verbesserungsfelder",
+        "Empfohlener Systempfad",
+        "Klare Umsetzungs-Roadmap",
+      ],
+      cta: "Diagnose buchen",
+    },
+    systemsIntro: {
+      kicker: "Empfohlene Systeme",
+      title: "Waehlen Sie das System, das den Business-Output veraendert",
+      intro:
+        "Das sind keine isolierten Websites oder Dashboards. Jedes System ist darauf zugeschnitten, einen Engpass zu entfernen und ein klareres operatives Ergebnis zu erzeugen.",
+    },
+    systems: [
+      {
+        id: "lead-generation-system",
+        icon: "LineChart",
+        title: "Lead Generation System",
+        purpose: "Fuer Unternehmen, die mehr qualifizierte Anfragen brauchen.",
+        recommendedWhen: "Schwache Pipeline, unklare Positionierung, wenig Vertrauen auf der Seite",
+        includes: [
+          "Positionierung und Messaging",
+          "Conversion-orientierte Landingpage",
+          "CTA- und Buchungsfluss",
+          "Trust-Elemente",
+          "Basis-Tracking",
+        ],
+        timeline: "7 Tage",
+        outcome: "Klareres Angebot, staerkeres Vertrauen, mehr qualifizierte Gespraeche.",
+      },
+      {
+        id: "operations-visibility-system",
+        icon: "BarChart3",
+        title: "Operations Visibility System",
+        purpose: "Fuer Teams, die Arbeit ueber Tabellen, E-Mail oder getrennte Tools steuern.",
+        recommendedWhen: "Status-Chasing, Tabellen-Drift, unklare Verantwortlichkeit",
+        includes: [
+          "Workflow-Mapping",
+          "Status-Dashboard",
+          "Bottleneck-Transparenz",
+          "Rollenbasierte Views bei Bedarf",
+          "Einfache Reporting-Schicht",
+        ],
+        timeline: "2-3 Wochen",
+        outcome: "Weniger Tabellen-Drift, schnellere Entscheidungen, klarere Verantwortlichkeit.",
+      },
+      {
+        id: "automation-leverage-system",
+        icon: "Bot",
+        title: "Automation Leverage System",
+        purpose: "Fuer repetitive manuelle Arbeit, die sicher reduziert oder strukturiert werden kann.",
+        recommendedWhen: "Woechentliche Wiederholung, Handoff-Verzoegerungen, unklare Automatisierungs-Prioritaeten",
+        includes: [
+          "Prozess-Audit",
+          "Data-Flow-Mapping",
+          "Ranking von Automatisierungschancen",
+          "KI-/Tool-Empfehlungen",
+          "Umsetzungs-Roadmap",
+        ],
+        timeline: "3-5 Tage",
+        outcome: "Priorisierte Automatisierungs-Roadmap mit realistischen naechsten Schritten.",
+      },
+      {
+        id: "conversion-optimization-system",
+        icon: "Gauge",
+        title: "Conversion Optimization System",
+        purpose: "Fuer Websites oder Funnels mit vorhandenem Traffic, aber schwacher Conversion.",
+        recommendedWhen: "Traffic ist da, aber Besucher zoegern oder springen ab",
+        includes: [
+          "Messaging-Audit",
+          "CTA-Struktur",
+          "Verbesserungen im Seitenfluss",
+          "Trust- und Einwandbehandlung",
+          "Vorher-/Nachher-Empfehlungen",
+        ],
+        timeline: "5-10 Tage",
+        outcome: "Schaerferer Conversion-Pfad ohne kompletten Relaunch.",
+      },
+    ],
+    labels: {
+      timeline: "Zeitrahmen",
+      output: "Output",
+      includes: "Enthaelt",
+      outcome: "Ergebnis",
+      recommendedWhen: "Empfohlen bei",
     },
     overview: {
       kicker: "Leistungen",
@@ -161,6 +284,8 @@ export default {
     process: {
       kicker: "Arbeitsweise",
       title: "Ein kleines System vor einer großen Entscheidung",
+      intro:
+        "Die Seite folgt derselben Logik wie die Umsetzung selbst: Engpass diagnostizieren, passendes System installieren und dann messen, ob die Reibung wirklich sinkt.",
       steps: [
         {
           icon: "SearchCheck",
@@ -179,6 +304,51 @@ export default {
         },
       ],
     },
+    processSteps: [
+      {
+        icon: "SearchCheck",
+        title: "Schritt 1 - Reibung diagnostizieren",
+        text: "Identifizieren, wo das Unternehmen Leads, Zeit oder Entscheidungsklarheit verliert.",
+      },
+      {
+        icon: "Settings2",
+        title: "Schritt 2 - Das richtige System installieren",
+        text: "Die fokussierte Loesung bauen: Landingpage, Dashboard, Automatisierungs-Map oder Conversion-System.",
+      },
+      {
+        icon: "Rocket",
+        title: "Schritt 3 - Messen und verbessern",
+        text: "Output verfolgen und das System anhand realer Nutzung verbessern.",
+      },
+    ],
+    router: {
+      kicker: "Decision Router",
+      title: "Welches System brauchen Sie?",
+      intro:
+        "Wenn die Tool-Wahl unklar ist, starten wir nicht beim Deliverable, sondern beim Business-Problem.",
+    },
+    decisionRouterItems: [
+      {
+        problem: "Wir bekommen nicht genug qualifizierte Anfragen",
+        system: "Lead Generation System",
+      },
+      {
+        problem: "Wir steuern zu viel ueber Tabellen",
+        system: "Operations Visibility System",
+      },
+      {
+        problem: "Wir wiederholen jede Woche dieselben manuellen Aufgaben",
+        system: "Automation Leverage System",
+      },
+      {
+        problem: "Menschen besuchen die Seite, konvertieren aber nicht",
+        system: "Conversion Optimization System",
+      },
+      {
+        problem: "Wir sind nicht sicher",
+        system: "Friction Diagnosis Sprint",
+      },
+    ],
     proof: {
       kicker: "Kontext",
       title: "Gebaut aus echter Operations-Erfahrung, nicht aus Agentur-Theater",
@@ -191,7 +361,26 @@ export default {
         { value: "1", label: "fokussiertes Problem zum Start" },
       ],
     },
+    credibility: {
+      kicker: "Gebaut als wiederholbares Delivery-System",
+      title: "Gebaut als wiederholbares Delivery-System",
+      text:
+        "Die Methode ist bewusst einfach: vor dem Bauen diagnostizieren, Business-Output statt Dekoration priorisieren, mit simplen Tools starten und ein System hinterlassen, das wiederholt oder verbessert werden kann.",
+      points: [
+        "Vor dem Bauen diagnostizieren.",
+        "Business-Output priorisieren, nicht Dekoration.",
+        "Einfache Tools vor komplexer Automatisierung einsetzen.",
+        "Schnell und messbar verbessern.",
+        "Das System dokumentieren, damit es wiederholt oder verbessert werden kann.",
+      ],
+    },
     trust: {
+      kicker: "Vertrauen",
+      title: "Kurze Notiz von Roman",
+      text:
+        "Ich baue zuerst aus Operator-Perspektive. Vor Design oder Code suche ich nach Workflow-Logik, Entscheidungspunkten und dem kleinsten System, das sichtbaren Hebel schafft.",
+    },
+    note: {
       kicker: "Vertrauen",
       title: "Kurze Notiz von Roman",
       text:
@@ -203,6 +392,8 @@ export default {
       text:
         "Bringen Sie einen Engpass mit: schwache Lead-Generierung, manuelles Reporting, unklare Conversion oder eine Automatisierungsidee, die Struktur braucht. Wir machen daraus einen kleinen Pilot.",
       secondary: "Mit einem kleinen Piloten starten",
+      primaryCta: "Friction Diagnosis buchen",
+      secondaryCta: "Kontakt aufnehmen",
     },
   },
 
@@ -576,6 +767,11 @@ export default {
     para1:
       "Ich evaluiere selektiv Technical-Product-Manager-Rollen in wachstumsstarken, English-First-Organisationen. Meine Spezialisierung liegt darin, $50M+ operative Komplexität mit KI-augmentierter Delivery zu verbinden.",
     para2label: "Besonders geeignet für:",
+    para2items: [
+      "Komplexität: Organisationen, die über \"Excel-basierte\" Koordination hinaus skalieren.",
+      "Hochkritische Operations: Logistik, FinTech und B2B SaaS, in denen Auditierbarkeit nicht verhandelbar ist.",
+      "KI-Orchestrierung: Teams, die ihre Delivery-Geschwindigkeit durch agentische Workflows (Cursor, ClaudeCode, v0) verzehnfachen wollen.",
+    ],
     para2text:
       "KI-agentische Workflows, Plattformen mit hohen Compliance-Anforderungen, Architektur interner Tools und Zero-to-One-Systemvalidierung.",
     emailLabel: "E-Mail",
