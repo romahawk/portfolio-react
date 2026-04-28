@@ -9,6 +9,13 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed
+- `index.html` — updated page `<title>` and all meta descriptions to "Technical Product Manager | Systems & AI Automation" brand positioning; removed duplicate OG/Twitter tag blocks; consolidated to single canonical set; added `twitter:domain` + `twitter:url` properties
+- `public/images/og-home.png` — updated OG image to match revised headline/branding
+
+### Removed
+- `public/images/og-home.svg` — replaced by PNG; all references updated to `og-home.png`
+
 ### Added
 - **i18n: English + German language support** — EN/DE switcher in navbar (desktop) and mobile menu; language persists via `localStorage`; `document.lang` updated reactively per locale
 - `src/locales/en.js` + `src/locales/de.js` — all user-facing strings centralised; German copy written for Germany-based recruiters
