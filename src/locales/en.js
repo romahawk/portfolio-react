@@ -36,8 +36,8 @@ export default {
 
   servicesPage: {
     nav: {
-      hero: "Services",
-      overview: "Overview",
+      hero: "Home",
+      overview: "Services",
       details: "Details",
       process: "Process",
       proof: "Proof",
