@@ -158,7 +158,6 @@
 .services-page__step,
 .services-page__router-item,
 .services-page__proof-stat,
-.services-page__detail-block,
 .services-page__expected {
   transition:
     transform 0.22s ease,
@@ -187,7 +186,6 @@
 .services-page__step:hover,
 .services-page__router-item:hover,
 .services-page__proof-stat:hover,
-.services-page__detail-block:hover,
 .services-page__expected:hover {
   transform: translateY(-4px) scale(1.01);
   border-color: rgba(73, 215, 209, 0.55);
@@ -364,7 +362,7 @@
 
 .services-page__detail-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 14px;
 }
 
@@ -405,6 +403,196 @@
   margin-top: 3px;
   color: var(--brand);
   flex-shrink: 0;
+}
+
+/* ===== Process step cards (service detail blocks) ===== */
+
+.services-page__process-grid {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.services-page__process-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 22px;
+  color: var(--muted);
+  opacity: 0.3;
+}
+
+.services-page__process-step {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  overflow: hidden;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.28s ease,
+    border-color 0.22s ease,
+    background-color 0.22s ease;
+}
+
+.services-page__process-step::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+/* Rose — Problem */
+.services-page__process-step--rose {
+  background: rgba(225, 29, 72, 0.05);
+  border-color: rgba(225, 29, 72, 0.2);
+}
+.services-page__process-step--rose::before {
+  background: rgba(225, 29, 72, 0.55);
+}
+.services-page__process-step--rose:hover {
+  transform: translateY(-3px);
+  background: rgba(225, 29, 72, 0.09);
+  border-color: rgba(225, 29, 72, 0.38);
+  box-shadow: 0 10px 24px rgba(225, 29, 72, 0.1);
+}
+.services-page__process-step--rose .services-page__process-badge,
+.services-page__process-step--rose .services-page__process-icon {
+  color: rgb(251, 113, 133);
+}
+.services-page__process-step--rose .services-page__process-dot {
+  background: rgb(251, 113, 133);
+}
+
+/* Blue — What we do */
+.services-page__process-step--blue {
+  background: rgba(59, 130, 246, 0.05);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+.services-page__process-step--blue::before {
+  background: rgba(59, 130, 246, 0.55);
+}
+.services-page__process-step--blue:hover {
+  transform: translateY(-3px);
+  background: rgba(59, 130, 246, 0.09);
+  border-color: rgba(59, 130, 246, 0.38);
+  box-shadow: 0 10px 24px rgba(59, 130, 246, 0.1);
+}
+.services-page__process-step--blue .services-page__process-badge,
+.services-page__process-step--blue .services-page__process-icon {
+  color: rgb(96, 165, 250);
+}
+.services-page__process-step--blue .services-page__process-dot {
+  background: rgb(96, 165, 250);
+}
+
+/* Emerald — What you get */
+.services-page__process-step--emerald {
+  background: rgba(16, 185, 129, 0.05);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+.services-page__process-step--emerald::before {
+  background: rgba(16, 185, 129, 0.55);
+}
+.services-page__process-step--emerald:hover {
+  transform: translateY(-3px);
+  background: rgba(16, 185, 129, 0.09);
+  border-color: rgba(16, 185, 129, 0.38);
+  box-shadow: 0 10px 24px rgba(16, 185, 129, 0.1);
+}
+.services-page__process-step--emerald .services-page__process-badge,
+.services-page__process-step--emerald .services-page__process-icon {
+  color: rgb(52, 211, 153);
+}
+.services-page__process-step--emerald .services-page__process-dot {
+  background: rgb(52, 211, 153);
+}
+
+/* Violet — Timeline */
+.services-page__process-step--violet {
+  background: rgba(124, 58, 237, 0.05);
+  border-color: rgba(124, 58, 237, 0.2);
+}
+.services-page__process-step--violet::before {
+  background: rgba(124, 58, 237, 0.55);
+}
+.services-page__process-step--violet:hover {
+  transform: translateY(-3px);
+  background: rgba(124, 58, 237, 0.09);
+  border-color: rgba(124, 58, 237, 0.38);
+  box-shadow: 0 10px 24px rgba(124, 58, 237, 0.1);
+}
+.services-page__process-step--violet .services-page__process-badge,
+.services-page__process-step--violet .services-page__process-icon {
+  color: rgb(167, 139, 250);
+}
+.services-page__process-step--violet .services-page__process-dot {
+  background: rgb(167, 139, 250);
+}
+
+/* Step internals */
+.services-page__process-step-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.services-page__process-badge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.services-page__process-icon {
+  flex-shrink: 0;
+}
+
+.services-page__process-title {
+  margin: 0;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.services-page__process-subtitle {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.services-page__process-list {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.services-page__process-item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.services-page__process-dot {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-top: 6px;
 }
 
 .services-page__expected {
@@ -775,8 +963,18 @@
     grid-template-columns: 1fr;
   }
 
-  .services-page__detail-grid {
+  .services-page__process-grid {
+    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .services-page__process-connector {
+    display: none;
+  }
+
+  .services-page__process-step {
+    flex: none;
   }
 }
 
@@ -817,9 +1015,9 @@
 @media (max-width: 640px) {
   .services-page__friction-grid,
   .services-page__cards,
-  .services-page__detail-grid,
   .services-page__proof-grid,
-  .services-page__context-grid {
+  .services-page__context-grid,
+  .services-page__process-grid {
     grid-template-columns: 1fr;
   }
 
@@ -876,8 +1074,8 @@
   .services-page__router-item,
   .services-page__proof-stat,
   .services-page__context-stat,
-  .services-page__detail-block,
   .services-page__expected,
+  .services-page__process-step,
   .services-page__scroll-hint {
     transition: none;
   }
@@ -894,8 +1092,8 @@
   .services-page__router-item:hover,
   .services-page__proof-stat:hover,
   .services-page__context-stat:hover,
-  .services-page__detail-block:hover,
-  .services-page__expected:hover {
+  .services-page__expected:hover,
+  .services-page__process-step:hover {
     transform: none;
   }
 

@@ -4,7 +4,6 @@ import {
   BarChart3,
   Bot,
   CalendarCheck,
-  CheckCircle2,
   ChevronDown,
   CircleAlert,
   Clock3,
@@ -25,7 +24,6 @@ const ICONS = {
   BarChart3,
   Bot,
   CalendarCheck,
-  CheckCircle2,
   CircleAlert,
   Clock3,
   Gauge,
@@ -39,11 +37,11 @@ const ICONS = {
   Wrench,
 };
 
-const DETAIL_BLOCK_ICONS = [
-  { icon: "CircleAlert", bulletIcon: "CircleAlert" },
-  { icon: "Wrench", bulletIcon: "Wrench" },
-  { icon: "PackageCheck", bulletIcon: "CheckCircle2" },
-  { icon: "Clock3", bulletIcon: "Clock3" },
+const STEP_CONFIG = [
+  { icon: "CircleAlert", accent: "rose",    subtitle: "Why it matters"  },
+  { icon: "Wrench",      accent: "blue",    subtitle: "Our approach"    },
+  { icon: "PackageCheck",accent: "emerald", subtitle: "Your new assets" },
+  { icon: "Clock3",      accent: "violet",  subtitle: "Sprint plan"     },
 ];
 
 const BOOK_CALL_HREF =
@@ -56,35 +54,25 @@ function ServiceIcon({ name, className = "services-page__icon", size = 20 }) {
   return <Icon size={size} className={className} aria-hidden="true" />;
 }
 
-function BulletList({ items, icon = "CheckCircle2" }) {
-  if (!Array.isArray(items)) return null;
-  const Icon = ICONS[icon] || CheckCircle2;
+function ProcessStepCard({ block, index }) {
+  const config = STEP_CONFIG[index] || STEP_CONFIG[0];
+  const Icon = ICONS[config.icon] || Sparkles;
   return (
-    <ul>
-      {items.map((item) => (
-        <li key={item}>
-          <Icon size={15} aria-hidden="true" />
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function DetailBlock({ block, index }) {
-  const iconConfig = DETAIL_BLOCK_ICONS[index] || DETAIL_BLOCK_ICONS[0];
-
-  return (
-    <div className="services-page__detail-block">
-      <h4>
-        <ServiceIcon
-          name={iconConfig.icon}
-          className="services-page__detail-block-icon"
-          size={15}
-        />
-        <span>{block.label}</span>
-      </h4>
-      <BulletList items={block.items} icon={iconConfig.bulletIcon} />
+    <div className={`services-page__process-step services-page__process-step--${config.accent}`}>
+      <div className="services-page__process-step-top">
+        <span className="services-page__process-badge">0{index + 1}</span>
+        <Icon size={17} className="services-page__process-icon" aria-hidden="true" />
+      </div>
+      <h4 className="services-page__process-title">{block.label}</h4>
+      <p className="services-page__process-subtitle">{config.subtitle}</p>
+      <ul className="services-page__process-list">
+        {Array.isArray(block.items) && block.items.map((item) => (
+          <li key={item} className="services-page__process-item">
+            <span className="services-page__process-dot" aria-hidden="true" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -209,9 +197,18 @@ const ServicesPage = () => {
               </div>
 
               <div className="services-page__detail-grid">
-                {service.blocks.map((block, blockIndex) => (
-                  <DetailBlock key={block.label} block={block} index={blockIndex} />
-                ))}
+                <div className="services-page__process-grid">
+                  {service.blocks.map((block, blockIndex) => (
+                    <React.Fragment key={block.label}>
+                      <ProcessStepCard block={block} index={blockIndex} />
+                      {blockIndex < service.blocks.length - 1 && (
+                        <div className="services-page__process-connector" aria-hidden="true">
+                          <ArrowRight size={14} />
+                        </div>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
 
                 <div className="services-page__expected">
                   <span>{t("servicesPage.details.expectedLabel")}</span>
