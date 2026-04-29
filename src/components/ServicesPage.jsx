@@ -44,6 +44,8 @@ const STEP_CONFIG = [
   { icon: "Clock3",      accent: "violet",  subtitle: "Sprint plan"     },
 ];
 
+const AUDIT_HREF =
+  "mailto:romazuryk@proton.me?subject=Website%20%2F%20Workflow%20Audit%20Request";
 const BOOK_CALL_HREF =
   "mailto:romazuryk@proton.me?subject=Book%20a%20call%20-%20systems%20pilot";
 const CONTACT_HREF =
@@ -106,25 +108,28 @@ const ServicesPage = () => {
             <p className="hero__eyebrow">{t("servicesPage.hero.eyebrow")}</p>
             <h1 className="services-page__title">{t("servicesPage.hero.title")}</h1>
             <p className="services-page__lead">{t("servicesPage.hero.subtitle")}</p>
+            <p className="services-page__hero-credibility">{t("servicesPage.hero.credibility")}</p>
             <div className="services-page__actions">
-              <a href={BOOK_CALL_HREF} className="btn btn--primary">
+              <a href={AUDIT_HREF} className="btn btn--primary">
                 <CalendarCheck size={16} className="icon mr-1" />
-                {t("servicesPage.cta.diagnosis")}
+                {t("servicesPage.cta.audit")}
               </a>
-              <a href="#service-details" className="btn btn--ghost">
+              <a href="#services-overview" className="btn btn--ghost">
                 {t("servicesPage.cta.viewSystems")}
                 <ArrowRight size={15} className="icon ml-1" />
               </a>
             </div>
+            <p className="services-page__hero-microcopy">{t("servicesPage.cta.microCopy")}</p>
           </div>
 
           <div
             className="services-page__hero-panel reveal reveal--delay-1"
             aria-label={t("servicesPage.hero.panelLabel")}
           >
-            {(Array.isArray(heroSignals) ? heroSignals : []).map((signal) => (
+            {(Array.isArray(heroSignals) ? heroSignals : []).map((signal, idx) => (
               <div key={signal.label} className="services-page__signal">
-                <span>{signal.label}</span>
+                <span className="services-page__signal-step">0{idx + 1}</span>
+                <span className="services-page__signal-label">{signal.label}</span>
                 <strong>{signal.value}</strong>
               </div>
             ))}
@@ -251,6 +256,9 @@ const ServicesPage = () => {
               <h2>{t("servicesPage.trust.title")}</h2>
               <p>{t("servicesPage.trust.text")}</p>
               <p>{t("servicesPage.trust.text2")}</p>
+              {t("servicesPage.trust.text3") && (
+                <p className="services-page__trust-closing">{t("servicesPage.trust.text3")}</p>
+              )}
             </div>
           </div>
 

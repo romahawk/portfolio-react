@@ -11,6 +11,18 @@ const NAV_LINK_KEYS = [
   { key: "Contact",   href: "#contact" },
 ];
 
+const SERVICES_NAV_LINKS = [
+  { key: "audit",    href: "#services" },
+  { key: "systems",  href: "#services-overview" },
+  { key: "packages", href: "#service-details" },
+  { key: "process",  href: "#how-it-works" },
+  { key: "context",  href: "#proof" },
+  { key: "trust",    href: "#trust" },
+  { key: "contact",  href: "#book-call" },
+];
+
+const AUDIT_HREF = "mailto:romazuryk@proton.me?subject=Website%20%2F%20Workflow%20Audit%20Request";
+
 const SOCIAL_LINKS = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/roman-mazuryk/", icon: Linkedin },
   { label: "GitHub",   href: "https://github.com/romahawk",               icon: Github  },
@@ -60,10 +72,12 @@ const Footer = () => {
         <nav className="footer__nav-col" aria-label="Footer navigation">
           <p className="footer__col-heading">{t("footer.nav")}</p>
           <ul className="footer__nav">
-            {NAV_LINK_KEYS.map(({ key, href }) => (
+            {(isServicesPage ? SERVICES_NAV_LINKS : NAV_LINK_KEYS).map(({ key, href }) => (
               <li key={href}>
-                <a href={isServicesPage ? `/${href}` : href} className="footer__nav-link">
-                  {t(`footer.navLinks.${key}`) || key}
+                <a href={href} className="footer__nav-link">
+                  {isServicesPage
+                    ? t(`footer.servicesNavLinks.${key}`)
+                    : (t(`footer.navLinks.${key}`) || key)}
                 </a>
               </li>
             ))}
@@ -73,11 +87,23 @@ const Footer = () => {
         {/* Right — availability CTA */}
         <div className="footer__cta-col">
           <p className="footer__col-heading">{t("footer.availability")}</p>
-          <p className="footer__cta-text">{t("footer.availabilityText")}</p>
-          <p className="footer__cta-text">{t("footer.availabilityText2")}</p>
-          <a href="mailto:romazuryk@proton.me" className="footer__cta-btn">
-            {t("footer.sendEmail")} <ArrowUpRight size={14} className="footer__cta-icon" />
-          </a>
+          {isServicesPage ? (
+            <>
+              <p className="footer__cta-text">{t("footer.availabilityTextServices")}</p>
+              <p className="footer__cta-text">{t("footer.availabilityText2Services")}</p>
+              <a href={AUDIT_HREF} className="footer__cta-btn">
+                {t("footer.requestAudit")} <ArrowUpRight size={14} className="footer__cta-icon" />
+              </a>
+            </>
+          ) : (
+            <>
+              <p className="footer__cta-text">{t("footer.availabilityText")}</p>
+              <p className="footer__cta-text">{t("footer.availabilityText2")}</p>
+              <a href="mailto:romazuryk@proton.me" className="footer__cta-btn">
+                {t("footer.sendEmail")} <ArrowUpRight size={14} className="footer__cta-icon" />
+              </a>
+            </>
+          )}
         </div>
 
       </div>
