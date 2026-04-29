@@ -44,6 +44,17 @@ const STEP_CONFIG = [
   { icon: "Clock3",      accent: "violet",  subtitle: "Sprint plan"     },
 ];
 
+const HERO_STEP_CONFIG = [
+  { accent: "amber" },
+  { accent: "cyan", featured: true },
+  { accent: "emerald" },
+];
+
+const TRANSITION_CHIPS = [
+  { label: "Scope", accent: "cyan" },
+  { label: "Ship",  accent: "emerald" },
+];
+
 const AUDIT_HREF =
   "mailto:romazuryk@proton.me?subject=Website%20%2F%20Workflow%20Audit%20Request";
 const BOOK_CALL_HREF =
@@ -126,13 +137,28 @@ const ServicesPage = () => {
             className="services-page__hero-panel reveal reveal--delay-1"
             aria-label={t("servicesPage.hero.panelLabel")}
           >
-            {(Array.isArray(heroSignals) ? heroSignals : []).map((signal, idx) => (
-              <div key={signal.label} className="services-page__signal">
-                <span className="services-page__signal-step">0{idx + 1}</span>
-                <span className="services-page__signal-label">{signal.label}</span>
-                <strong>{signal.value}</strong>
-              </div>
-            ))}
+            {(Array.isArray(heroSignals) ? heroSignals : []).map((signal, idx) => {
+              const config = HERO_STEP_CONFIG[idx] || HERO_STEP_CONFIG[0];
+              const chip = TRANSITION_CHIPS[idx];
+              return (
+                <React.Fragment key={signal.label}>
+                  <div
+                    className={`services-page__signal services-page__signal--${config.accent}${config.featured ? " services-page__signal--featured" : ""}`}
+                  >
+                    <span className="services-page__signal-step">0{idx + 1}</span>
+                    <span className="services-page__signal-label">{signal.label}</span>
+                    <strong className="services-page__signal-value">{signal.value}</strong>
+                  </div>
+                  {chip && (
+                    <div className={`services-page__transition-chip services-page__transition-chip--${chip.accent}`}>
+                      <span className="services-page__transition-line services-page__transition-line--before" aria-hidden="true" />
+                      <span className="services-page__transition-badge">{chip.label}</span>
+                      <span className="services-page__transition-line services-page__transition-line--after" aria-hidden="true" />
+                    </div>
+                  )}
+                </React.Fragment>
+              );
+            })}
           </div>
         </div>
 
