@@ -284,6 +284,29 @@ export default {
         },
       ],
     },
+    selector: {
+      kicker: "IHRE SITUATION",
+      title: "Wählen Sie Ihre Situation",
+      subtitle: "Starten Sie mit dem Problem, das Ihrem aktuellen Engpass am nächsten kommt.",
+      cards: [
+        {
+          title: "Veraltete Website",
+          desc: "Besucher verstehen Ihr Angebot nicht oder zögern, Sie zu kontaktieren.",
+        },
+        {
+          title: "Manuelle Abläufe",
+          desc: "Arbeit ist über Excel, E-Mail, WhatsApp oder Erinnerungen verteilt.",
+        },
+        {
+          title: "KI- / Admin-Automatisierung",
+          desc: "Wiederholende Aufgaben kosten Zeit, aber dem Team fehlt ein praktischer KI-Weg.",
+        },
+        {
+          title: "Noch nicht sicher?",
+          desc: "Starten Sie mit einem kurzen Audit und definieren Sie den schnellsten Verbesserungspfad.",
+        },
+      ],
+    },
     process: {
       kicker: "Arbeitsweise",
       title: "Ein kleines System vor einer großen Entscheidung",

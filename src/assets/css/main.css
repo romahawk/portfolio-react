@@ -17,6 +17,7 @@
 /* -------- Base tokens (dark — default) -------- */
 :root{
   color-scheme: dark;
+  --nav-h: 72px;
   --bg: #081018;
   --bg-elevated: #0e1723;
   --panel: #101925;

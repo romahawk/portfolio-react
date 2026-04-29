@@ -55,6 +55,13 @@ const TRANSITION_CHIPS = [
   { label: "Ship",  accent: "emerald" },
 ];
 
+const SITUATION_HREFS = [
+  "#lead-generation-website",
+  "#workflow-dashboard",
+  "#ai-automation-audit",
+  "#book-call",
+];
+
 const AUDIT_HREF =
   "mailto:romazuryk@proton.me?subject=Website%20%2F%20Workflow%20Audit%20Request";
 const BOOK_CALL_HREF =
@@ -95,6 +102,7 @@ const ServicesPage = () => {
   const [scrolled, setScrolled] = useState(false);
   const overviewItems = t("servicesPage.overview.items");
   const detailItems = t("servicesPage.details.items");
+  const selectorCards = t("servicesPage.selector.cards");
   const steps = t("servicesPage.process.steps");
   const heroSignals = t("servicesPage.hero.signals");
 
@@ -197,6 +205,27 @@ const ServicesPage = () => {
                 <span>{service.timeline}</span>
                 <strong>{service.outcome}</strong>
               </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="section container services-page__section">
+        <div className="services-page__selector-head reveal">
+          <p className="services-page__kicker">{t("servicesPage.selector.kicker")}</p>
+          <h2 className="services-page__selector-title">{t("servicesPage.selector.title")}</h2>
+          <p className="services-page__selector-subtitle">{t("servicesPage.selector.subtitle")}</p>
+        </div>
+        <div className="services-page__selector-grid">
+          {(Array.isArray(selectorCards) ? selectorCards : []).map((card, idx) => (
+            <a
+              key={card.title}
+              href={SITUATION_HREFS[idx]}
+              className="services-page__selector-card reveal"
+            >
+              <span className="services-page__selector-number" aria-hidden="true">0{idx + 1}</span>
+              <strong className="services-page__selector-card-title">{card.title}</strong>
+              <p className="services-page__selector-card-desc">{card.desc}</p>
             </a>
           ))}
         </div>
