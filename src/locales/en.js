@@ -284,6 +284,29 @@ export default {
         },
       ],
     },
+    selector: {
+      kicker: "YOUR SITUATION",
+      title: "Choose your situation",
+      subtitle: "Start with the problem that looks closest to your current bottleneck.",
+      cards: [
+        {
+          title: "Outdated Website",
+          desc: "Visitors don't understand your offer or hesitate to contact you.",
+        },
+        {
+          title: "Manual Operations",
+          desc: "Work is scattered across Excel, email, WhatsApp, or memory.",
+        },
+        {
+          title: "AI / Admin Automation",
+          desc: "Repetitive tasks consume time, but the team lacks a practical AI path.",
+        },
+        {
+          title: "Not Sure Yet?",
+          desc: "Start with a short audit and define the fastest improvement path.",
+        },
+      ],
+    },
     process: {
       kicker: "How we work",
       title: "A small system before a big commitment",
