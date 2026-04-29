@@ -12,6 +12,9 @@ export default function ServicesContextSection() {
           <p className="services-page__kicker">{t("servicesPage.proof.kicker")}</p>
           <h2>{t("servicesPage.proof.title")}</h2>
           <p>{t("servicesPage.proof.text")}</p>
+          {t("servicesPage.proof.text2") && (
+            <p className="services-page__context-recognition">{t("servicesPage.proof.text2")}</p>
+          )}
         </div>
 
         <div className="services-page__context-side">

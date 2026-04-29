@@ -47,18 +47,21 @@ export default {
       book: "Termin buchen",
       how: "Ablauf ansehen",
       diagnosis: "Mit einer Friction Diagnosis starten",
+      audit: "Website- / Workflow-Analyse anfragen",
       viewSystems: "Systeme ansehen",
+      microCopy: "Klarer Verbesserungsplan in 24–48 Std. Ohne Verpflichtung.",
     },
     hero: {
-      eyebrow: "Produktisierte Systeme",
-      title: "Einfache Systeme, die Kunden bringen und Zeit sparen – schnell umgesetzt",
+      eyebrow: "PRODUKTIVIERTE SYSTEME FÜR KMUS",
+      title: "Verwandeln Sie Ihre Website und Workflows in Lead-generierende Systeme — in 5–10 Tagen",
       subtitle:
-        "Wir konzipieren und bauen fokussierte Web-, Workflow- und Automatisierungssysteme für Teams, die mehr Klarheit, weniger manuelle Arbeit und schnellere Umsetzung brauchen.",
-      panelLabel: "Signale zur Umsetzung",
+        "Websites, interne Tools und KI-gestützte Workflows für KMU, die noch auf Excel, E-Mail, verstreute Prozesse und veraltete Web-Präsenz setzen.",
+      credibility: "10+ Jahre Aufbau und Betrieb von Systemen in MedTech, Pharma und B2B-Umgebungen.",
+      panelLabel: "So funktioniert es",
       signals: [
-        { label: "Startpunkt", value: "Ein konkretes Business-Problem" },
-        { label: "Umsetzung", value: "Schlank, klar begrenzt, launchbereit" },
-        { label: "Best Fit", value: "B2B, Operations, regulierte Teams" },
+        { label: "Start",      value: "Ein klares Geschäftsproblem"                 },
+        { label: "Umsetzung",  value: "Fokussierter Sprint in 5–10 Tagen"           },
+        { label: "Ergebnis",   value: "Funktionierendes System, sofort einsetzbar"  },
       ],
     },
     friction: {
@@ -351,16 +354,18 @@ export default {
     ],
     proof: {
       kicker: "Kontext",
-      title: "Systeme gebaut aus echter Operations-Erfahrung, nicht aus Agentur-Guesswork",
+      title: "Aus echter Praxis gebaut — damit Ihr System wirklich funktioniert",
       text:
-        "Ich entwerfe Systeme aus der Operator-Perspektive – dort, wo Workflows brechen, Entscheidungen stocken und Zeit verloren geht. Jeder Build wird so geschnitten, dass er Reibung entfernt und messbaren Hebel im Tagesgeschäft erzeugt.",
+        "Ich fange dort an, wo Arbeit wirklich scheitert: unklare Übergaben, verstreute Tools, langsame Entscheidungen und manuelle Koordination. Dann entwerfe ich das kleinste System, das Reibung beseitigt und sichtbare Ergebnisse schafft — mehr Leads, schnellere Ausführung und weniger manuelle Arbeit.",
+      text2:
+        "Wenn Ihr Team auf Excel, E-Mail und manuelle Nachverfolgung setzt, liegt hier oft der größte versteckte Kostenfaktor.",
       note:
         "Basiert auf operator-seitiger Delivery-Erfahrung und Workflow-Analyse.",
       stats: [
-        { value: "10+ Jahre", label: "Delivery in MedTech, Logistik, FinTech" },
-        { value: "$40M+", label: "Operations verantwortet / unterstützt" },
-        { value: "5+ Systeme", label: "in realen Umgebungen ausgeliefert" },
-        { value: "30 – 50%", label: "Potenzial zur Reduktion manueller Arbeit" },
+        { value: "10+ Jahre",  label: "MedTech, Pharma, Logistik und B2B Delivery" },
+        { value: "$50M+",      label: "Operations verantwortet, unterstützt oder beeinflusst" },
+        { value: "5+ Systeme", label: "in realen Umgebungen ausgeliefert und eingesetzt" },
+        { value: "30–50%",     label: "Potenzial zur Reduktion manueller Arbeit in typischen Workflows" },
       ],
     },
     credibility: {
@@ -378,11 +383,13 @@ export default {
     },
     trust: {
       kicker: "Vertrauen",
-      title: "Aufgebaut von der Operator-Seite",
+      title: "Aufgebaut von der Operator-Seite — nicht aus Theorie",
       text:
-        "Vor Design oder Code bilde ich ab, wie die Arbeit wirklich abläuft: wo Entscheidungen ins Stocken geraten, wo Übergaben scheitern und wo Zeit verloren geht.",
+        "Vor dem Code bilde ich ab, wie die Arbeit wirklich abläuft: wo Entscheidungen ins Stocken geraten, wo Übergaben scheitern und wo Zeit verloren geht.",
       text2:
-        "Dann scope ich das kleinste System, das sichtbaren Hebel schafft — schnellere Klarheit, saubere Ausführung oder messbare Zeitersparnis.",
+        "Dann baue ich das kleinste System, das sofort Wirkung zeigt — klarere Workflows, schnellere Ausführung und messbare Zeitersparnis.",
+      text3:
+        "Das Ziel ist nicht mehr Software. Das Ziel ist ein funktionierendes System, das Ihr Team wirklich nutzen kann.",
     },
     note: {
       kicker: "Vertrauen",
@@ -805,6 +812,11 @@ export default {
     availabilityText2:
       "Jedes Engagement ist auf ein einziges hochrelevantes Problem ausgerichtet — mit einem klaren Weg zu schnellerer Ausführung, saubereren Workflows oder messbaren Effizienzgewinnen.",
     sendEmail: "E-Mail senden",
+    requestAudit: "Analyse anfragen",
+    availabilityTextServices:
+      "Ich nehme eine begrenzte Anzahl von KMU-Website-, Workflow- und Automatisierungsprojekten an, bei denen ein fokussiertes System sichtbaren Geschäftshebel erzeugen kann.",
+    availabilityText2Services:
+      "Jedes Engagement beginnt mit einem klaren Audit: der schnellste Weg zu mehr Leads, saubereren Workflows oder messbaren Zeiteinsparungen.",
     copyright: "Alle Rechte vorbehalten.",
     location: "Deutschland (MEZ) · Selektiv offen für Remote & Hybrid",
     navLinks: {
@@ -814,6 +826,15 @@ export default {
       Framework: "Framework",
       About: "Über mich",
       Contact: "Kontakt",
+    },
+    servicesNavLinks: {
+      audit:    "Analyse",
+      systems:  "Systeme",
+      packages: "Pakete",
+      process:  "Ablauf",
+      context:  "Kontext",
+      trust:    "Vertrauen",
+      contact:  "Kontakt",
     },
   },
 

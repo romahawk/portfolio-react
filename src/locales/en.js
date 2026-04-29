@@ -47,18 +47,21 @@ export default {
       book: "Book a Call",
       how: "See how it works",
       diagnosis: "Start with a Friction Diagnosis",
+      audit: "Request Website / Workflow Audit",
       viewSystems: "View systems",
+      microCopy: "Get a clear improvement path in 24–48h. No commitment.",
     },
     hero: {
-      eyebrow: "Productized systems",
-      title: "Simple systems that generate leads and save time — built fast",
+      eyebrow: "PRODUCTIZED SYSTEMS FOR SMEs",
+      title: "Turn your website and workflows into lead-generating systems — in 5-10 days",
       subtitle:
-        "We design and ship focused web, workflow, and automation systems for teams that need clearer demand, cleaner operations, and faster execution.",
-      panelLabel: "Services delivery signals",
+        "Websites, internal tools, and AI-assisted workflows for SMEs still running on Excel, email, scattered processes, and outdated web presence.",
+      credibility: "10+ years building and operating systems in MedTech, Pharma, and B2B environments.",
+      panelLabel: "How it works",
       signals: [
-        { label: "Start point", value: "One concrete business problem" },
-        { label: "Build style", value: "Lean, scoped, launch-ready" },
-        { label: "Best fit", value: "B2B, operations, regulated teams" },
+        { label: "Start",  value: "One clear business bottleneck"              },
+        { label: "Build",  value: "Focused 5–10 day sprint"                   },
+        { label: "Result", value: "Working system you can use immediately"     },
       ],
     },
     friction: {
@@ -351,16 +354,18 @@ export default {
     ],
     proof: {
       kicker: "Context",
-      title: "Systems built from real operations, not agency guesswork",
+      title: "Built from real operations — so your system actually works",
       text:
-        "I design systems from the operator’s perspective — where workflows break, decisions stall, and time is lost. Each build is scoped to remove friction and create measurable leverage in daily operations.",
+        "I start where work actually breaks: unclear handoffs, scattered tools, slow decisions, and manual coordination. Then I design the smallest system that removes friction and creates visible results — more leads, faster execution, and less manual work.",
+      text2:
+        "If your team runs on Excel, email, and manual follow-ups, this is where most of the hidden cost usually starts.",
       note:
         "Based on operator-side delivery experience and workflow analysis.",
       stats: [
-        { value: "10+ years", label: "MedTech, Logistics, FinTech delivery" },
-        { value: "$40M+", label: "operations managed / supported" },
-        { value: "5+ systems", label: "shipped in real environments" },
-        { value: "30 – 50%", label: "manual work reduction potential" },
+        { value: "10+ years", label: "MedTech, Pharma, logistics, and B2B delivery" },
+        { value: "$50M+",     label: "operations managed, supported, or influenced" },
+        { value: "5+ systems", label: "shipped and used in real environments" },
+        { value: "30–50%",    label: "manual work reduction potential in typical workflows" },
       ],
     },
     credibility: {
@@ -378,11 +383,13 @@ export default {
     },
     trust: {
       kicker: "Trust",
-      title: "Built from the operator side",
+      title: "Built from the operator side — not theory",
       text:
-        "Before design or code, I map how the work actually happens: where decisions stall, where handoffs break, and where time is lost.",
+        "Before writing code, I map how the work actually happens: where decisions stall, where handoffs break, and where time is lost.",
       text2:
-        "Then I scope the smallest system that can create visible leverage — faster clarity, cleaner execution, or measurable time savings.",
+        "Then I build the smallest system that creates immediate leverage — clearer workflows, faster execution, and measurable time savings.",
+      text3:
+        "The goal is not more software. The goal is a working system your team can actually use.",
     },
     note: {
       kicker: "Trust",
@@ -804,6 +811,11 @@ export default {
     availabilityText2:
       "Each engagement is scoped around a single high-impact problem — with a clear path to faster execution, cleaner workflows, or measurable efficiency gains.",
     sendEmail: "Send an email",
+    requestAudit: "Request an audit",
+    availabilityTextServices:
+      "I take on a limited number of SME website, workflow, and automation projects where one focused system can create visible business leverage.",
+    availabilityText2Services:
+      "Each engagement starts with a clear audit: the fastest path to more leads, cleaner workflows, or measurable time savings.",
     copyright: "All rights reserved.",
     location: "Germany (CET) \u00B7 Selective for remote & hybrid",
     navLinks: {
@@ -813,6 +825,15 @@ export default {
       Framework: "Framework",
       About: "About",
       Contact: "Contact",
+    },
+    servicesNavLinks: {
+      audit:    "Audit",
+      systems:  "Systems",
+      packages: "Packages",
+      process:  "Process",
+      context:  "Context",
+      trust:    "Trust",
+      contact:  "Contact",
     },
   },
 

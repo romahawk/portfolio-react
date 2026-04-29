@@ -47,6 +47,20 @@
   line-height: 1.7;
 }
 
+.services-page__hero-credibility {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.services-page__hero-microcopy {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.01em;
+}
+
 .services-page__actions {
   display: flex;
   flex-wrap: wrap;
@@ -76,6 +90,19 @@
 .services-page__signal span {
   color: var(--muted);
   font-size: 12px;
+}
+
+.services-page__signal-step {
+  color: var(--brand);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.services-page__signal-label {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .services-page__signal strong {
@@ -865,6 +892,26 @@
   background:
     linear-gradient(135deg, rgba(73, 215, 209, 0.1), rgba(73, 215, 209, 0.02)),
     var(--surface-soft);
+}
+
+.services-page__context-recognition {
+  margin-top: 4px;
+  padding: 12px 14px;
+  border-left: 2px solid rgba(73, 215, 209, 0.4);
+  color: var(--muted-strong);
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.65;
+}
+
+.services-page__trust-closing {
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  color: var(--muted-strong);
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.65;
 }
 
 .services-page__context-note {
