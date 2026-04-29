@@ -69,22 +69,44 @@
 }
 
 .services-page__hero-panel {
+  position: relative;
   display: grid;
-  gap: 10px;
-  background: var(--card-bg);
+  gap: 12px;
+  background:
+    linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.02), transparent),
+    var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 16px;
   padding: 16px;
   box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
 }
 
+
 .services-page__signal {
+  position: relative;
   display: grid;
   gap: 5px;
   padding: 14px;
   border: 1px solid var(--surface-border);
   border-radius: 12px;
   background: var(--surface-soft);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.services-page__signal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.services-page__signal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .services-page__signal span {
@@ -93,21 +115,130 @@
 }
 
 .services-page__signal-step {
-  color: var(--brand);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.1em;
+  opacity: 0.6;
 }
 
 .services-page__signal-label {
-  color: var(--text);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
 }
 
-.services-page__signal strong {
+.services-page__signal-value {
+  display: block;
   color: var(--text);
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Amber — Start */
+.services-page__signal--amber {
+  background: rgba(245, 158, 11, 0.04);
+  border-color: rgba(251, 191, 36, 0.15);
+}
+.services-page__signal--amber::before {
+  background: rgba(251, 191, 36, 0.35);
+}
+.services-page__signal--amber .services-page__signal-step {
+  color: rgb(252, 211, 77);
+}
+.services-page__signal--amber:hover {
+  border-color: rgba(251, 191, 36, 0.25);
+}
+
+/* Cyan — Build (slightly emphasized, not dominant) */
+.services-page__signal--cyan {
+  background: rgba(6, 182, 212, 0.04);
+  border-color: rgba(34, 211, 238, 0.15);
+}
+.services-page__signal--cyan::before {
+  background: rgba(34, 211, 238, 0.35);
+}
+.services-page__signal--cyan .services-page__signal-step {
+  color: rgb(103, 232, 249);
+}
+.services-page__signal--cyan:hover {
+  border-color: rgba(34, 211, 238, 0.25);
+}
+
+.services-page__signal--featured {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Emerald — Result */
+.services-page__signal--emerald {
+  background: rgba(16, 185, 129, 0.04);
+  border-color: rgba(52, 211, 153, 0.15);
+}
+.services-page__signal--emerald::before {
+  background: rgba(52, 211, 153, 0.35);
+}
+.services-page__signal--emerald .services-page__signal-step {
+  color: rgb(110, 231, 183);
+}
+.services-page__signal--emerald:hover {
+  border-color: rgba(52, 211, 153, 0.25);
+}
+
+/* ===== Transition chips (between hero step cards) ===== */
+
+.services-page__transition-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+}
+
+.services-page__transition-line {
+  display: block;
+  height: 1px;
+  width: 32px;
+  flex-shrink: 0;
+}
+
+.services-page__transition-badge {
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 2px 10px;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Cyan chip — Scope */
+.services-page__transition-chip--cyan .services-page__transition-badge {
+  background: rgba(6, 182, 212, 0.04);
+  border-color: rgba(34, 211, 238, 0.15);
+  color: rgb(103, 232, 249);
+}
+.services-page__transition-chip--cyan .services-page__transition-line--before {
+  background: linear-gradient(to right, transparent, rgba(34, 211, 238, 0.2));
+}
+.services-page__transition-chip--cyan .services-page__transition-line--after {
+  background: linear-gradient(to right, rgba(34, 211, 238, 0.2), transparent);
+}
+
+/* Emerald chip — Ship */
+.services-page__transition-chip--emerald .services-page__transition-badge {
+  background: rgba(16, 185, 129, 0.04);
+  border-color: rgba(52, 211, 153, 0.15);
+  color: rgb(110, 231, 183);
+}
+.services-page__transition-chip--emerald .services-page__transition-line--before {
+  background: linear-gradient(to right, transparent, rgba(52, 211, 153, 0.2));
+}
+.services-page__transition-chip--emerald .services-page__transition-line--after {
+  background: linear-gradient(to right, rgba(52, 211, 153, 0.2), transparent);
 }
 
 .services-page__scroll-hint {
@@ -1073,6 +1204,11 @@
     grid-template-columns: 1fr;
   }
 
+  .services-page__transition-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+
   .services-page__actions {
     align-items: stretch;
   }
@@ -1128,6 +1264,7 @@
   .services-page__context-stat,
   .services-page__expected,
   .services-page__process-step,
+  .services-page__signal,
   .services-page__scroll-hint {
     transition: none;
   }
@@ -1145,7 +1282,8 @@
   .services-page__proof-stat:hover,
   .services-page__context-stat:hover,
   .services-page__expected:hover,
-  .services-page__process-step:hover {
+  .services-page__process-step:hover,
+  .services-page__signal:hover {
     transform: none;
   }
 
