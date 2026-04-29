@@ -219,8 +219,13 @@
   box-shadow: 0 14px 30px rgba(73, 215, 209, 0.14);
 }
 
-.services-page__detail.services-page__system:hover {
+.services-page__detail.services-page__system:hover,
+.services-page__card:hover,
+.services-page__expected:hover {
   transform: none;
+}
+
+.services-page__detail.services-page__system:hover {
   border-color: var(--border);
   box-shadow: var(--shadow);
 }
