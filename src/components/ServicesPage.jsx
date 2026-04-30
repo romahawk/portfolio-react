@@ -211,7 +211,7 @@ const ServicesPage = () => {
       </section>
 
       <section className="section container services-page__section">
-        <div className="services-page__selector-head reveal">
+        <div className="services-page__selector-head">
           <p className="services-page__kicker">{t("servicesPage.selector.kicker")}</p>
           <h2 className="services-page__selector-title">{t("servicesPage.selector.title")}</h2>
           <p className="services-page__selector-subtitle">{t("servicesPage.selector.subtitle")}</p>
@@ -221,7 +221,7 @@ const ServicesPage = () => {
             <a
               key={card.title}
               href={SITUATION_HREFS[idx]}
-              className="services-page__selector-card reveal"
+              className="services-page__selector-card"
             >
               <span className="services-page__selector-number" aria-hidden="true">0{idx + 1}</span>
               <strong className="services-page__selector-card-title">{card.title}</strong>

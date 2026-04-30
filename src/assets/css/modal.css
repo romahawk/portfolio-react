@@ -85,8 +85,9 @@
 .cs-modal__body { padding: 24px 24px 28px; overflow: auto; }
 .cs-modal__toc {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
   margin: 0 0 12px;
   padding: 10px 12px;
   border: 1px solid var(--surface-border);
@@ -95,7 +96,6 @@
   backdrop-filter: blur(10px);
 }
 .cs-modal__toc-label {
-  flex-shrink: 0;
   color: var(--muted);
   font-size: 11px;
   font-weight: 700;
@@ -104,12 +104,8 @@
 }
 .cs-modal__toc-list {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.cs-modal__toc-list::-webkit-scrollbar {
-  display: none;
 }
 .cs-modal__toc-link {
   display: inline-flex;
@@ -512,8 +508,5 @@
     max-width: none;
   }
 
-  .cs-modal__toc {
-    align-items: flex-start;
-    flex-direction: column;
-  }
+
 }
