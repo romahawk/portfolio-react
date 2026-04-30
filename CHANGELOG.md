@@ -9,6 +9,13 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Fixed
+- `ServicesPage.jsx` — situation selector cards now always visible; removed `reveal` class that was being reset on language-switch re-renders, making cards disappear
+- `modal.css` — case study "On this page" chips now wrap to multiple rows instead of overflowing off-screen; replaced horizontal scroll with `flex-wrap: wrap`
+
+### Added
+- `public/images/og-services.png` — OG image for `/services` route
+
 ### Changed
 - `index.html` — updated page `<title>` and all meta descriptions to "Technical Product Manager | Systems & AI Automation" brand positioning; removed duplicate OG/Twitter tag blocks; consolidated to single canonical set; added `twitter:domain` + `twitter:url` properties
 - `public/images/og-home.png` — updated OG image to match revised headline/branding
