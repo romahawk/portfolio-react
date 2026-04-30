@@ -17,6 +17,9 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 - `public/images/og-services.png` — OG image for `/services` route
 
 ### Changed
+- `src/hooks/useOgMeta.js` — `/services` route now uses `og-services.png` and services-specific title/description; `applyMeta()` extended to update `og:image:width`, `og:image:height`, `og:image:alt`, `twitter:url`, and `link[rel="canonical"]` (previously only 8 of 13 meta tags were updated on route change)
+
+### Changed
 - `index.html` — updated page `<title>` and all meta descriptions to "Technical Product Manager | Systems & AI Automation" brand positioning; removed duplicate OG/Twitter tag blocks; consolidated to single canonical set; added `twitter:domain` + `twitter:url` properties
 - `public/images/og-home.png` — updated OG image to match revised headline/branding
 
