@@ -18,6 +18,8 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ### Changed
 - `src/hooks/useOgMeta.js` — `/services` route now uses `og-services.png` and services-specific title/description; `applyMeta()` extended to update `og:image:width`, `og:image:height`, `og:image:alt`, `twitter:url`, and `link[rel="canonical"]` (previously only 8 of 13 meta tags were updated on route change)
+- `services/index.html` + `vite.config.js` — added as a second Vite build entry so `dist/services/index.html` is emitted with services-specific OG/Twitter meta baked into static HTML; social crawlers (which don't run JS) now receive the correct preview image and copy for `/services`
+- `vercel.json` — replaced `/services` SPA fallback rewrites with a `/services/(.*)` catch-all pointing to `dist/services/index.html`
 
 ### Changed
 - `index.html` — updated page `<title>` and all meta descriptions to "Technical Product Manager | Systems & AI Automation" brand positioning; removed duplicate OG/Twitter tag blocks; consolidated to single canonical set; added `twitter:domain` + `twitter:url` properties
