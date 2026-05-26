@@ -15,6 +15,7 @@ export default defineConfig({
         services: resolve(__dirname, 'services/index.html'),
         collaborate: resolve(__dirname, 'collaborate/index.html'),
         aiWorkflow: resolve(__dirname, 'ai-workflow/index.html'),
+        orIntegration: resolve(__dirname, 'proof-of-work/or-integration/index.html'),
       },
       output: {
         manualChunks: {

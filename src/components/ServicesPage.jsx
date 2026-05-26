@@ -9,6 +9,7 @@ import {
   Sparkles,
   Stethoscope,
 } from "lucide-react";
+import { useTranslation } from "../context/LangContext.jsx";
 import PageHero from "./common/PageHero.jsx";
 
 const AUDIT_HREF = "mailto:romazuryk@proton.me?subject=AI%20Workflow%20Audit%20Request";
@@ -131,37 +132,49 @@ const PROOF_LINKS = [
 ];
 
 export default function ServicesPage() {
+  const { t } = useTranslation();
+  const whoForValue = t("site.services.who.items");
+  const translatedServicesValue = t("site.services.offers.items");
+  const methodStepsValue = t("site.services.method.steps");
+  const proofLinksValue = t("site.services.proof.links");
+  const whoFor = Array.isArray(whoForValue) ? whoForValue : WHO_FOR;
+  const translatedServices = Array.isArray(translatedServicesValue) ? translatedServicesValue : [];
+  const methodSteps = Array.isArray(methodStepsValue) ? methodStepsValue : METHOD_STEPS;
+  const proofLinks = Array.isArray(proofLinksValue) ? proofLinksValue : PROOF_LINKS;
   const [selectedServiceId, setSelectedServiceId] = useState(SERVICES[0].id);
-  const selectedService = SERVICES.find((service) => service.id === selectedServiceId) || SERVICES[0];
+  const localizedServices = SERVICES.map((service, index) => ({
+    ...service,
+    ...(translatedServices?.[index] || {}),
+  }));
+  const selectedService = localizedServices.find((service) => service.id === selectedServiceId) || localizedServices[0];
   const SelectedIcon = selectedService.icon;
 
   return (
     <div className="services-page">
       <PageHero
         id="services"
-        eyebrow="WORK WITH ME"
-        title="AI-Assisted Workflow Collaboration for MedTech Teams"
-        subtitle="I work with MedTech, HealthTech, and regulated operations teams to map complex workflows, identify bottlenecks, prototype better systems, and create implementation-ready documentation."
-        primaryCta={{ label: "Start With a Workflow Audit", href: AUDIT_HREF, icon: <CalendarCheck size={16} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: "View AI Workflow Examples", href: "/ai-workflow", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
+        eyebrow={t("site.services.hero.eyebrow")}
+        title={t("site.services.hero.title")}
+        subtitle={t("site.services.hero.subtitle")}
+        primaryCta={{ label: t("site.cta.startAudit"), href: AUDIT_HREF, icon: <CalendarCheck size={16} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: t("site.cta.viewAiExamples"), href: "/ai-workflow", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
         visualType="services"
         scrollTargetId="services-overview"
       >
         <p className="services-page__hero-microcopy">
-          Concepts and prototypes are scoped with human review, traceability, and clear ownership.
-          No claim of certified medical software or automated regulatory decisions.
+          {t("site.services.hero.microcopy")}
         </p>
       </PageHero>
 
       <section className="section container services-page__section">
         <div className="services-page__section-head reveal">
-          <p className="services-page__kicker">Who this is for</p>
+          <p className="services-page__kicker">{t("site.services.who.eyebrow")}</p>
           <h2 className="section__title">
-            <span className="about__chev">&gt;</span> Teams with operational complexity and AI pressure
+            <span className="about__chev">&gt;</span> {t("site.services.who.title")}
           </h2>
         </div>
         <div className="services-page__fit-grid">
-          {WHO_FOR.map((item) => (
+          {whoFor.map((item) => (
             <article className="services-page__fit-card reveal" key={item}>
               {item}
             </article>
@@ -171,18 +184,15 @@ export default function ServicesPage() {
 
       <section id="services-overview" className="section container services-page__section">
         <div className="services-page__section-head reveal">
-          <p className="services-page__kicker">Collaboration offers</p>
+          <p className="services-page__kicker">{t("site.services.offers.eyebrow")}</p>
           <h2 className="section__title">
-            <span className="about__chev">&gt;</span> Commercial support for one workflow at a time
+            <span className="about__chev">&gt;</span> {t("site.services.offers.title")}
           </h2>
-          <p>
-            Each engagement starts from operational reality: what people do today, where the
-            process fails, what AI can safely assist, and what must remain under human control.
-          </p>
+          <p>{t("site.services.offers.text")}</p>
         </div>
 
         <div className="services-page__selector-tabs ux-tabs" role="tablist" aria-label="Service selector">
-          {SERVICES.map((service) => (
+          {localizedServices.map((service) => (
             <button
               type="button"
               className={`ux-tab ${selectedService.id === service.id ? "ux-tab--active" : ""}`}
@@ -200,13 +210,13 @@ export default function ServicesPage() {
           </div>
           <dl className="services-page__service-proof">
             <div>
-              <dt>Problem solved</dt>
+              <dt>{t("site.services.labels.problemSolved")}</dt>
               <dd>{selectedService.problem}</dd>
             </div>
           </dl>
           <p className="services-page__service-description">{selectedService.description}</p>
           <div className="services-page__deliverables">
-            <span>Deliverables</span>
+            <span>{t("site.services.labels.deliverables")}</span>
             <ul>
               {selectedService.deliverables.slice(0, 6).map((item) => (
                 <li key={item}>{item}</li>
@@ -214,10 +224,10 @@ export default function ServicesPage() {
             </ul>
           </div>
           <div className="services-page__expected">
-            <span>Typical outcome</span>
+            <span>{t("site.services.labels.outcome")}</span>
             <strong>{selectedService.outcome}</strong>
           </div>
-          <a href={AUDIT_HREF} className="btn btn--primary">Start With a Workflow Audit</a>
+          <a href={AUDIT_HREF} className="btn btn--primary">{t("site.cta.startAudit")}</a>
         </article>
       </section>
 
@@ -225,14 +235,11 @@ export default function ServicesPage() {
         <div className="services-page__method reveal">
           <Sparkles size={20} className="services-page__icon" aria-hidden="true" />
           <div>
-            <p className="services-page__kicker">Method</p>
-            <h2>Operator-first, AI-assisted</h2>
-            <p>
-              I do not start from what AI can do. I start from where the workflow breaks,
-              where risk appears, and what system should exist.
-            </p>
+            <p className="services-page__kicker">{t("site.services.method.eyebrow")}</p>
+            <h2>{t("site.services.method.title")}</h2>
+            <p>{t("site.services.method.text")}</p>
             <div className="services-page__method-steps" aria-label="Method steps">
-              {METHOD_STEPS.map((step, index) => (
+              {methodSteps.map((step, index) => (
                 <span key={step}>
                   <strong>{String(index + 1).padStart(2, "0")}</strong>
                   {step}
@@ -245,17 +252,14 @@ export default function ServicesPage() {
 
       <section id="proof" className="section container services-page__section">
         <div className="services-page__section-head reveal">
-          <p className="services-page__kicker">Proof</p>
+          <p className="services-page__kicker">{t("site.services.proof.eyebrow")}</p>
           <h2 className="section__title">
-            <span className="about__chev">&gt;</span> See practical workflow examples
+            <span className="about__chev">&gt;</span> {t("site.services.proof.title")}
           </h2>
-          <p>
-            The workflow library shows transparent concept workflows, reference systems,
-            prototype concepts, and proof-of-work artifacts with explicit maturity labels.
-          </p>
+          <p>{t("site.services.proof.text")}</p>
         </div>
         <div className="services-page__proof-links">
-          {PROOF_LINKS.slice(0, 4).map((proof) => (
+          {proofLinks.slice(0, 4).map((proof) => (
             <a href={proof.href} className="services-page__proof-link" key={proof.href}>
               {proof.title} <ArrowRight size={14} aria-hidden="true" />
             </a>
@@ -265,20 +269,16 @@ export default function ServicesPage() {
 
       <section id="book-call" className="section container services-page__final">
         <div className="services-page__final-inner reveal">
-          <p className="services-page__kicker">Next step</p>
-          <h2>Start with one workflow</h2>
-          <p>
-            Bring one fragmented workflow, implementation bottleneck, or AI idea. I will help
-            map the current process, identify safe AI assistance points, and define the first
-            auditable system path.
-          </p>
+          <p className="services-page__kicker">{t("site.nextStep")}</p>
+          <h2>{t("site.services.final.title")}</h2>
+          <p>{t("site.services.final.text")}</p>
           <div className="services-page__actions">
             <a href={AUDIT_HREF} className="btn btn--primary">
               <CalendarCheck size={16} className="icon mr-1" />
-              Start With a Workflow Audit
+              {t("site.cta.startAudit")}
             </a>
             <a href="/ai-workflow" className="btn btn--ghost">
-              View AI Workflow Examples
+              {t("site.cta.viewAiExamples")}
             </a>
           </div>
         </div>
@@ -286,7 +286,7 @@ export default function ServicesPage() {
 
       <a href={AUDIT_HREF} className="services-page__sticky-cta">
         <CalendarCheck size={16} aria-hidden="true" />
-        Start With a Workflow Audit
+        {t("site.cta.startAudit")}
       </a>
     </div>
   );

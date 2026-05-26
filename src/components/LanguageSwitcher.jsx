@@ -2,10 +2,10 @@ import React from "react";
 import { useTranslation } from "../context/LangContext.jsx";
 
 export default function LanguageSwitcher() {
-  const { lang, setLang } = useTranslation();
+  const { lang, setLang, t } = useTranslation();
 
   return (
-    <div className="lang-switcher" role="group" aria-label="Language selector">
+    <div className="lang-switcher" role="group" aria-label={t("site.languageSelector")}>
       <button
         className={`lang-switcher__btn${lang === "en" ? " lang-switcher__btn--active" : ""}`}
         onClick={() => setLang("en")}

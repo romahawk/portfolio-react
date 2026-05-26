@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ArrowRight, Boxes, ChevronDown, ExternalLink } from "lucide-react";
 import { aiWorkflowExamples, getWorkflowBySlug } from "../data/aiWorkflows.js";
+import { useTranslation } from "../context/LangContext.jsx";
 import StatusBadge from "./StatusBadge.jsx";
 import PageHero from "./common/PageHero.jsx";
 
@@ -135,72 +136,85 @@ const ARCHIVE_ITEMS = [
 ];
 
 function WorkflowProofCard({ workflow }) {
+  const { t } = useTranslation();
   if (!workflow) return null;
-  const title = TITLE_OVERRIDES[workflow.slug] || workflow.title;
+  const translatedTitle = t(`site.workflows.${workflow.slug}.title`);
+  const translatedDomain = t(`site.workflows.${workflow.slug}.domain`);
+  const translatedProblem = t(`site.workflows.${workflow.slug}.problem`);
+  const translatedSummary = t(`site.workflows.${workflow.slug}.summary`);
+  const translatedValue = t(`site.workflows.${workflow.slug}.expectedBusinessValue`);
+  const title = translatedTitle === `site.workflows.${workflow.slug}.title` ? (TITLE_OVERRIDES[workflow.slug] || workflow.title) : translatedTitle;
+  const domain = translatedDomain === `site.workflows.${workflow.slug}.domain` ? workflow.domain : translatedDomain;
+  const problem = translatedProblem === `site.workflows.${workflow.slug}.problem` ? workflow.problem : translatedProblem;
+  const summary = translatedSummary === `site.workflows.${workflow.slug}.summary` ? workflow.summary : translatedSummary;
+  const value = Array.isArray(translatedValue) ? translatedValue : workflow.expectedBusinessValue;
 
   return (
     <article className="proof-page__card">
       <header className="proof-page__card-head">
         <div>
           <h3>{title}</h3>
-          <p>{workflow.domain}</p>
+          <p>{domain}</p>
         </div>
         <StatusBadge status={workflow.status} />
       </header>
 
       <dl className="proof-page__card-proof">
         <div>
-          <dt>Problem</dt>
-          <dd>{workflow.problem}</dd>
+          <dt>{t("site.proof.labels.problem")}</dt>
+          <dd>{problem}</dd>
         </div>
         <div>
-          <dt>System concept</dt>
-          <dd>{workflow.summary}</dd>
+          <dt>{t("site.proof.labels.systemConcept")}</dt>
+          <dd>{summary}</dd>
         </div>
         <div>
-          <dt>Value</dt>
-          <dd>{workflow.expectedBusinessValue.slice(0, 4).join(", ")}.</dd>
+          <dt>{t("site.proof.labels.value")}</dt>
+          <dd>{value.slice(0, 4).join(", ")}.</dd>
         </div>
       </dl>
 
       <a href={`/ai-workflow/${workflow.slug}`} className="project-card__link project-card__link--ghost">
-        View Workflow <ArrowRight size={14} aria-hidden="true" />
+        {t("site.cta.viewWorkflow")} <ArrowRight size={14} aria-hidden="true" />
       </a>
     </article>
   );
 }
 
 function ORIntegrationProofCard() {
+  const { t } = useTranslation();
+  const proof = t("site.proof.featured.card");
+  const item = typeof proof === "object" ? proof : OR_INTEGRATION_PROOF;
   return (
     <article className="proof-page__card proof-page__card--or-integration">
       <div className="proof-page__or-content">
         <header className="proof-page__card-head">
           <div>
-            <h3>{OR_INTEGRATION_PROOF.title}</h3>
-            <p>{OR_INTEGRATION_PROOF.domain}</p>
+            <h3>{item.title}</h3>
+            <p>{item.domain}</p>
           </div>
           <StatusBadge status={OR_INTEGRATION_PROOF.status} />
         </header>
 
-        <p className="proof-page__lead-summary">{OR_INTEGRATION_PROOF.summary}</p>
+        <p className="proof-page__lead-summary">{item.summary}</p>
 
         <dl className="proof-page__card-proof">
           <div>
-            <dt>Problem</dt>
-            <dd>{OR_INTEGRATION_PROOF.problem}</dd>
+            <dt>{t("site.proof.labels.problem")}</dt>
+            <dd>{item.problem}</dd>
           </div>
           <div>
-            <dt>System / workflow experience</dt>
-            <dd>{OR_INTEGRATION_PROOF.system}</dd>
+            <dt>{t("site.proof.labels.systemExperience")}</dt>
+            <dd>{item.system}</dd>
           </div>
           <div>
-            <dt>What it proves</dt>
-            <dd>{OR_INTEGRATION_PROOF.proves}</dd>
+            <dt>{t("site.proof.labels.proves")}</dt>
+            <dd>{item.proves}</dd>
           </div>
         </dl>
 
         <a href={OR_INTEGRATION_PROOF.href} className="project-card__link project-card__link--ghost">
-          View OR Integration Proof <ArrowRight size={14} aria-hidden="true" />
+          {t("site.proof.featured.cta")} <ArrowRight size={14} aria-hidden="true" />
         </a>
       </div>
 
@@ -216,6 +230,7 @@ function ORIntegrationProofCard() {
 }
 
 function MedTechImplementationCard({ item }) {
+  const { t } = useTranslation();
   return (
     <article className="proof-page__card proof-page__card--implementation">
       <header className="proof-page__card-head">
@@ -228,11 +243,11 @@ function MedTechImplementationCard({ item }) {
 
       <dl className="proof-page__card-proof">
         <div>
-          <dt>What was involved</dt>
+          <dt>{t("site.proof.labels.involved")}</dt>
           <dd>{item.involved}</dd>
         </div>
         <div>
-          <dt>What it proves</dt>
+          <dt>{t("site.proof.labels.proves")}</dt>
           <dd>{item.proves}</dd>
         </div>
       </dl>
@@ -245,6 +260,7 @@ function MedTechImplementationCard({ item }) {
 }
 
 function ArchiveCard({ item }) {
+  const { t } = useTranslation();
   return (
     <article className="proof-page__archive-card">
       <div className="proof-page__archive-card-head">
@@ -253,12 +269,12 @@ function ArchiveCard({ item }) {
       </div>
       <p>{item.note}</p>
       <div>
-        <span>What it proves</span>
+        <span>{t("site.proof.labels.proves")}</span>
         <strong>{item.proves}</strong>
       </div>
       {item.href ? (
         <a href={item.href} className="project-card__link project-card__link--ghost" target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noreferrer" : undefined}>
-          View <ExternalLink size={13} aria-hidden="true" />
+          {t("site.cta.view")} <ExternalLink size={13} aria-hidden="true" />
         </a>
       ) : null}
     </article>
@@ -266,7 +282,14 @@ function ArchiveCard({ item }) {
 }
 
 export default function ProofOfWorkPage() {
+  const { t } = useTranslation();
   const [showMoreMedTech, setShowMoreMedTech] = useState(false);
+  const primaryMedTechValue = t("site.proof.medtech.primary");
+  const secondaryMedTechValue = t("site.proof.medtech.secondary");
+  const archiveValue = t("site.proof.archive.items");
+  const primaryMedTech = Array.isArray(primaryMedTechValue) ? primaryMedTechValue : PRIMARY_MEDTECH_IMPLEMENTATION;
+  const secondaryMedTech = Array.isArray(secondaryMedTechValue) ? secondaryMedTechValue : SECONDARY_MEDTECH_IMPLEMENTATION;
+  const archiveItems = Array.isArray(archiveValue) ? archiveValue : ARCHIVE_ITEMS;
   const primaryWorkflows = AI_WORKFLOW_SLUGS.map(getWorkflowBySlug).filter(Boolean);
   const primarySlugs = new Set(primaryWorkflows.map((workflow) => workflow.slug));
   const secondaryWorkflows = aiWorkflowExamples.filter(
@@ -276,45 +299,35 @@ export default function ProofOfWorkPage() {
   return (
     <div className="proof-page">
       <PageHero
-        eyebrow="MEDTECH DELIVERY / PRODUCT SYSTEMS / AI WORKFLOWS"
-        title="Proof of Work"
-        subtitle="Real-world MedTech implementation proof, AI-assisted workflow systems, and earlier experiments showing how I translate operational complexity into structured, auditable systems."
-        primaryCta={{ label: "View Domain Proof", href: "#featured-domain-proof", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: "Explore AI Workflows", href: "/ai-workflow" }}
+        eyebrow={t("site.proof.hero.eyebrow")}
+        title={t("site.proof.hero.title")}
+        subtitle={t("site.proof.hero.subtitle")}
+        primaryCta={{ label: t("site.proof.hero.primary"), href: "#featured-domain-proof", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: t("site.cta.exploreAiWorkflows"), href: "/ai-workflow" }}
         scrollTargetId="projects"
       >
         <p className="proof-page__trust-note">
-          Real MedTech implementation is separated from concept workflows and archived experiments.
-          Each item is labeled by maturity and intent.
+          {t("site.proof.hero.trust")}
         </p>
       </PageHero>
 
       <section id="projects" className="section container proof-page__section">
         <div id="featured-domain-proof" className="proof-page__section-head reveal">
-          <p className="proof-page__kicker">Featured domain proof</p>
-          <h2><span className="about__chev">&gt;</span> OR Integration & Surgical Workflow Systems</h2>
-          <p>
-            The strongest proof item is real-world MedTech implementation experience, not a
-            software or AI product claim.
-          </p>
+          <p className="proof-page__kicker">{t("site.proof.featured.eyebrow")}</p>
+          <h2><span className="about__chev">&gt;</span> {t("site.proof.featured.title")}</h2>
+          <p>{t("site.proof.featured.text")}</p>
         </div>
         <ORIntegrationProofCard />
       </section>
 
       <section id="real-medtech-delivery" className="section container proof-page__section">
         <div className="proof-page__section-head reveal">
-          <p className="proof-page__kicker">Domain proof</p>
-          <h2><span className="about__chev">&gt;</span> Real-world MedTech implementation experience</h2>
-          <p>
-            Before building AI-assisted workflow systems, I worked across real MedTech delivery
-            environments: operating rooms, hospital stakeholders, medical equipment projects,
-            multi-vendor coordination, installation, training, support, and handover. These
-            projects are included as domain proof, showing the operational reality behind my
-            current product and workflow systems work.
-          </p>
+          <p className="proof-page__kicker">{t("site.proof.medtech.eyebrow")}</p>
+          <h2><span className="about__chev">&gt;</span> {t("site.proof.medtech.title")}</h2>
+          <p>{t("site.proof.medtech.text")}</p>
         </div>
         <div className="proof-page__grid proof-page__grid--implementation">
-          {PRIMARY_MEDTECH_IMPLEMENTATION.map((item) => (
+          {primaryMedTech.map((item) => (
             <MedTechImplementationCard item={item} key={item.title} />
           ))}
         </div>
@@ -325,11 +338,11 @@ export default function ProofOfWorkPage() {
           onToggle={(event) => setShowMoreMedTech(event.currentTarget.open)}
         >
           <summary>
-            <span>View more MedTech implementation examples</span>
+            <span>{t("site.proof.medtech.more")}</span>
             <ChevronDown size={18} aria-hidden="true" />
           </summary>
           <div className="proof-page__grid proof-page__grid--implementation proof-page__grid--more">
-            {SECONDARY_MEDTECH_IMPLEMENTATION.map((item) => (
+            {secondaryMedTech.map((item) => (
               <MedTechImplementationCard item={item} key={item.title} />
             ))}
           </div>
@@ -338,13 +351,9 @@ export default function ProofOfWorkPage() {
 
       <section id="ai-workflow-systems" className="section container proof-page__section">
         <div className="proof-page__section-head reveal">
-          <p className="proof-page__kicker">AI workflow systems</p>
-          <h2><span className="about__chev">&gt;</span> AI-Assisted Workflow Systems</h2>
-          <p>
-            Reference workflows, prototypes, and concept systems that build on real MedTech
-            implementation patterns and show how operational complexity can be translated into
-            AI-assisted systems.
-          </p>
+          <p className="proof-page__kicker">{t("site.proof.ai.eyebrow")}</p>
+          <h2><span className="about__chev">&gt;</span> {t("site.proof.ai.title")}</h2>
+          <p>{t("site.proof.ai.text")}</p>
         </div>
 
         <div className="proof-page__grid proof-page__grid--primary">
@@ -354,7 +363,7 @@ export default function ProofOfWorkPage() {
         {secondaryWorkflows.length > 0 ? (
           <details className="proof-page__more reveal">
             <summary>
-              <span>View more AI workflow examples ({secondaryWorkflows.length})</span>
+              <span>{t("site.proof.ai.more")} ({secondaryWorkflows.length})</span>
               <ChevronDown size={18} aria-hidden="true" />
             </summary>
             <div className="proof-page__grid proof-page__grid--primary proof-page__grid--more">
@@ -371,17 +380,15 @@ export default function ProofOfWorkPage() {
           <summary>
             <span>
               <Boxes size={18} aria-hidden="true" />
-              Archived systems and earlier experiments
+              {t("site.proof.archive.title")}
             </span>
             <ChevronDown size={18} aria-hidden="true" />
           </summary>
           <p className="proof-page__archive-intro">
-            Earlier projects that developed my product, workflow, and AI-assisted delivery
-            capability. They are kept as background evidence but are not the main focus of my
-            current MedTech Product & Workflow Systems positioning.
+            {t("site.proof.archive.text")}
           </p>
           <div className="proof-page__archive-grid">
-            {ARCHIVE_ITEMS.map((item) => <ArchiveCard item={item} key={item.title} />)}
+            {archiveItems.map((item) => <ArchiveCard item={item} key={item.title} />)}
           </div>
         </details>
       </section>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Linkedin, Github, Mail, ArrowUpRight } from "lucide-react";
+import { useTranslation } from "../context/LangContext.jsx";
 
 const NAV_LINKS = [
   { label: "Proof of Work", href: "/proof-of-work" },
@@ -16,7 +17,10 @@ const SOCIAL_LINKS = [
 ];
 
 export default function Footer() {
+  const { t } = useTranslation();
   const year = new Date().getFullYear();
+  const navLinksValue = t("site.footer.navLinks");
+  const navLinks = Array.isArray(navLinksValue) ? navLinksValue : NAV_LINKS.map((link) => link.label);
 
   return (
     <footer className="site-footer">
@@ -27,11 +31,8 @@ export default function Footer() {
             <span className="footer__brand-name">ROMAZ</span>
             <span className="footer__brand-dot" />
           </a>
-          <h2 className="footer__headline">MedTech Product & Workflow Systems</h2>
-          <p className="footer__tagline">
-            Real MedTech implementation experience translated into product systems, workflow
-            design, and AI-assisted delivery.
-          </p>
+          <h2 className="footer__headline">{t("site.footer.headline")}</h2>
+          <p className="footer__tagline">{t("site.footer.tagline")}</p>
           <div className="footer__socials" aria-label="Social and contact links">
             {SOCIAL_LINKS.map(({ label, href, icon }) => (
               <a
@@ -50,12 +51,12 @@ export default function Footer() {
         </div>
 
         <nav className="footer__nav-col" aria-label="Footer navigation">
-          <p className="footer__col-heading">Navigation</p>
+          <p className="footer__col-heading">{t("site.footer.navigation")}</p>
           <ul className="footer__nav">
-            {NAV_LINKS.map(({ label, href }) => (
+            {NAV_LINKS.map(({ label, href }, index) => (
               <li key={href}>
                 <a href={href} className="footer__nav-link">
-                  {label}
+                  {navLinks[index] || label}
                 </a>
               </li>
             ))}
@@ -63,28 +64,22 @@ export default function Footer() {
         </nav>
 
         <div className="footer__cta-col">
-          <p className="footer__col-heading">Selective focus</p>
-          <p className="footer__cta-text">
-            I focus on selected roles and projects where MedTech domain experience, product
-            thinking, and workflow systems can create real operational leverage.
-          </p>
-          <p className="footer__cta-text footer__cta-text--fit">
-            Best fit: MedTech product roles, workflow systems, AI-assisted delivery, and regulated
-            operations.
-          </p>
+          <p className="footer__col-heading">{t("site.footer.focus")}</p>
+          <p className="footer__cta-text">{t("site.footer.focusText")}</p>
+          <p className="footer__cta-text footer__cta-text--fit">{t("site.footer.bestFit")}</p>
           <a href="/contact" className="footer__cta-btn">
-            Discuss a role or workflow <ArrowUpRight size={14} className="footer__cta-icon" aria-hidden="true" />
+            {t("site.cta.discussRole")} <ArrowUpRight size={14} className="footer__cta-icon" aria-hidden="true" />
           </a>
           <a href="/collaborate" className="footer__secondary-link">
-            Explore collaboration options <ArrowUpRight size={13} aria-hidden="true" />
+            {t("site.cta.exploreCollaboration")} <ArrowUpRight size={13} aria-hidden="true" />
           </a>
         </div>
       </div>
 
       <div className="footer__bar">
         <div className="container footer__bar-inner">
-          <span className="footer__copy">&copy; {year} Roman Mazuryk. MedTech Product & Workflow Systems.</span>
-          <span className="footer__copy">Built with React, product thinking, and AI-assisted delivery.</span>
+          <span className="footer__copy">&copy; {year} {t("site.footer.bottomLeft")}</span>
+          <span className="footer__copy">{t("site.footer.bottomRight")}</span>
         </div>
       </div>
     </footer>

@@ -7,7 +7,7 @@
     { "source": "/services/(.*)", "destination": "/services/index.html" },
     { "source": "/collaborate", "destination": "/collaborate/index.html" },
     { "source": "/collaborate/(.*)", "destination": "/collaborate/index.html" },
-    { "source": "/proof-of-work/or-integration", "destination": "/index.html" },
+    { "source": "/proof-of-work/or-integration", "destination": "/proof-of-work/or-integration/index.html" },
     { "source": "/proof-of-work", "destination": "/index.html" },
     { "source": "/about", "destination": "/index.html" },
     { "source": "/contact", "destination": "/index.html" },
