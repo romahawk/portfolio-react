@@ -104,8 +104,14 @@ function ProjectCard({ p, variant, onOpenCase, t }) {
 
   const titleKey = `projects.items.${p.id}.title`;
   const summaryKey = `projects.items.${p.id}.summary`;
-  const translatedTitle = t(titleKey) === titleKey ? p.title : t(titleKey);
-  const translatedSummary = t(summaryKey) === summaryKey ? p.summary : t(summaryKey);
+  const homeTitleKey = `site.home.proofPreview.items.${p.id}.title`;
+  const homeSummaryKey = `site.home.proofPreview.items.${p.id}.summary`;
+  const translatedTitle = t(homeTitleKey) !== homeTitleKey ? t(homeTitleKey) : (t(titleKey) === titleKey ? p.title : t(titleKey));
+  const translatedSummary = t(homeSummaryKey) !== homeSummaryKey ? t(homeSummaryKey) : (t(summaryKey) === summaryKey ? p.summary : t(summaryKey));
+  const translatedProof = t(`site.home.proofPreview.items.${p.id}.proof`);
+  const proof = typeof translatedProof === "object" ? translatedProof : p.proof;
+  const translatedStack = t(`site.home.proofPreview.items.${p.id}.stack`);
+  const stack = Array.isArray(translatedStack) ? translatedStack : p.stack;
   const proofRows = [
     ["problem", t("projects.labels.problem")],
     ["system", t("projects.labels.system")],
@@ -130,22 +136,22 @@ function ProjectCard({ p, variant, onOpenCase, t }) {
 
       <p className="project-card__summary">{translatedSummary}</p>
 
-      {p.proof ? (
+      {proof ? (
         <dl className="project-card__proof">
           {proofRows.map(([key, label]) => (
-            p.proof[key] ? (
+            proof[key] ? (
               <div className="project-card__proof-row" key={key}>
                 <dt>{label}</dt>
-                <dd>{p.proof[key]}</dd>
+                <dd>{proof[key]}</dd>
               </div>
             ) : null
           ))}
         </dl>
       ) : null}
 
-      {p.stack?.length ? (
+      {stack?.length ? (
         <ul className="project-card__stack">
-          {p.stack.map((s, i) => (
+          {stack.map((s, i) => (
             <li key={i}>{s}</li>
           ))}
         </ul>
@@ -266,11 +272,10 @@ export default function Projects() {
       <h2 className="section__title reveal">&gt; {t("projects.title")}</h2>
 
       <h3 className="projects__section-title">
-        <Boxes size={18} className="icon" /> Featured Proof of Work
+        <Boxes size={18} className="icon" /> {t("site.home.proofPreview.title")}
       </h3>
       <p className="projects__intro">
-        Three proof items led by real MedTech implementation experience, then connected to
-        product concepts and AI-assisted workflow systems.
+        {t("site.home.proofPreview.text")}
       </p>
 
       <div className="projects__grid">
@@ -286,7 +291,7 @@ export default function Projects() {
 
       <div className="projects__actions reveal">
         <a href="/proof-of-work" className="btn btn--primary">
-          View Full Proof of Work <ArrowRight size={15} className="icon ml-1" />
+          {t("site.home.proofPreview.cta")} <ArrowRight size={15} className="icon ml-1" />
         </a>
       </div>
 

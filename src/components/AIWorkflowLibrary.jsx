@@ -13,6 +13,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { aiWorkflowExamples, workflowCategories } from "../data/aiWorkflows.js";
+import { useTranslation } from "../context/LangContext.jsx";
 import StatusBadge from "./StatusBadge.jsx";
 import PageHero from "./common/PageHero.jsx";
 
@@ -31,8 +32,31 @@ const ICONS = {
   Wrench,
 };
 
+const statusSlug = (status = "") =>
+  status.toLowerCase().replace(/&/g, "and").replace(/\//g, " ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+function getWorkflowText(t, workflow, field) {
+  const value = t(`site.workflows.${workflow.slug}.${field}`);
+  return value === `site.workflows.${workflow.slug}.${field}` ? workflow[field] : value;
+}
+
+function getWorkflowArray(t, workflow, field, fallback) {
+  const value = t(`site.workflows.${workflow.slug}.${field}`);
+  return Array.isArray(value) ? value : fallback;
+}
+
 function WorkflowCard({ workflow }) {
+  const { t } = useTranslation();
   const Icon = ICONS[workflow.icon] || LayoutDashboard;
+  const title = getWorkflowText(t, workflow, "title");
+  const domain = getWorkflowText(t, workflow, "domain");
+  const problem = getWorkflowText(t, workflow, "problem");
+  const summary = getWorkflowText(t, workflow, "summary");
+  const systemComponents = getWorkflowArray(t, workflow, "systemComponents", workflow.systemComponents);
+  const humanReviewPoints = getWorkflowArray(t, workflow, "humanReviewPoints", workflow.humanReviewPoints);
+  const auditabilityFeatures = getWorkflowArray(t, workflow, "auditabilityFeatures", workflow.auditabilityFeatures);
+  const expectedBusinessValue = getWorkflowArray(t, workflow, "expectedBusinessValue", workflow.expectedBusinessValue);
+  const bottlenecks = getWorkflowArray(t, workflow, "bottlenecks", workflow.currentWorkflow.bottlenecks);
 
   return (
     <article
@@ -45,15 +69,15 @@ function WorkflowCard({ workflow }) {
             <Icon size={19} />
           </span>
           <div>
-            <h3>{workflow.title}</h3>
-            <p>{workflow.domain}</p>
+            <h3>{title}</h3>
+            <p>{domain}</p>
           </div>
         </div>
         <StatusBadge status={workflow.status} />
       </header>
 
-      <div className="ai-workflow-card__map" aria-label={`${workflow.title} process map`}>
-        {["Capture", "Structure", "Assist", "Review", "Handover"].map((step, index) => (
+      <div className="ai-workflow-card__map" aria-label={`${title} ${t("site.aiWorkflow.processMap")}`}>
+        {t("site.workflowSteps").map((step, index) => (
           <span key={step} style={{ "--step-index": index }}>
             {step}
           </span>
@@ -62,53 +86,54 @@ function WorkflowCard({ workflow }) {
 
       <dl className="ai-workflow-card__details">
         <div>
-          <dt>Workflow problem</dt>
-          <dd>{workflow.problem}</dd>
+          <dt>{t("site.aiWorkflow.labels.problem")}</dt>
+          <dd>{problem}</dd>
         </div>
         <div>
-          <dt>Current workflow pain</dt>
-          <dd>{workflow.currentWorkflow.bottlenecks.join(", ")}.</dd>
+          <dt>{t("site.aiWorkflow.labels.pain")}</dt>
+          <dd>{bottlenecks.join(", ")}.</dd>
         </div>
         <div>
-          <dt>AI-assisted workflow concept</dt>
-          <dd>{workflow.summary}</dd>
+          <dt>{t("site.aiWorkflow.labels.concept")}</dt>
+          <dd>{summary}</dd>
         </div>
       </dl>
 
       <div className="ai-workflow-card__systems">
         <div>
-          <h4>System components</h4>
+          <h4>{t("site.aiWorkflow.labels.components")}</h4>
           <ul>
-            {workflow.systemComponents.slice(0, 5).map((item) => <li key={item}>{item}</li>)}
+            {systemComponents.slice(0, 5).map((item) => <li key={item}>{item}</li>)}
           </ul>
         </div>
         <div>
-          <h4>Human review points</h4>
+          <h4>{t("site.aiWorkflow.labels.review")}</h4>
           <ul>
-            {workflow.humanReviewPoints.slice(0, 4).map((item) => <li key={item}>{item}</li>)}
+            {humanReviewPoints.slice(0, 4).map((item) => <li key={item}>{item}</li>)}
           </ul>
         </div>
       </div>
 
       <div className="ai-workflow-card__trace">
         <div>
-          <span>Auditability / traceability layer</span>
-          <p>{workflow.auditabilityFeatures.slice(0, 4).join(", ")}.</p>
+          <span>{t("site.aiWorkflow.labels.traceability")}</span>
+          <p>{auditabilityFeatures.slice(0, 4).join(", ")}.</p>
         </div>
         <div>
-          <span>Expected business value</span>
-          <p>{workflow.expectedBusinessValue.slice(0, 4).join(", ")}.</p>
+          <span>{t("site.aiWorkflow.labels.value")}</span>
+          <p>{expectedBusinessValue.slice(0, 4).join(", ")}.</p>
         </div>
       </div>
 
       <a href={`/ai-workflow/${workflow.slug}`} className="project-card__link project-card__link--ghost">
-        View Workflow <ArrowRight size={14} aria-hidden="true" />
+        {t("site.cta.viewWorkflow")} <ArrowRight size={14} aria-hidden="true" />
       </a>
     </article>
   );
 }
 
 export default function AIWorkflowLibrary() {
+  const { t } = useTranslation();
   const [activeCategory, setActiveCategory] = useState(workflowCategories[0]?.title || "");
   const [domainFilter, setDomainFilter] = useState("All");
   const [statusFilter, setStatusFilter] = useState("All");
@@ -132,30 +157,22 @@ export default function AIWorkflowLibrary() {
   return (
     <div className="ai-workflow-page">
       <PageHero
-        eyebrow="PRACTICAL AI WORKFLOW SYSTEMS"
-        title="AI Workflow Library"
-        subtitle="Practical examples of AI-assisted workflow systems for MedTech, HealthTech, and regulated operations."
-        primaryCta={{ label: "View MedTech Workflows", href: "#medtech-clinical-or-workflows", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: "Request AI Workflow Audit", href: AUDIT_HREF }}
+        eyebrow={t("site.aiWorkflow.hero.eyebrow")}
+        title={t("site.aiWorkflow.hero.title")}
+        subtitle={t("site.aiWorkflow.hero.subtitle")}
+        primaryCta={{ label: t("site.aiWorkflow.hero.primary"), href: "#medtech-clinical-or-workflows", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: t("site.cta.startAudit"), href: AUDIT_HREF }}
         visualType="workflow"
         scrollTargetId="medtech-clinical-or-workflows"
       />
 
       <section id="medtech-clinical-or-workflows" className="section container ai-workflow-page__section">
         <div className="ai-workflow-page__explain reveal">
-          <p className="ai-workflow-page__kicker">Reference library</p>
-          <h2><span className="about__chev">&gt;</span> Why this library exists</h2>
-          <p>
-            These examples show how messy, manual, and compliance-heavy workflows can be
-            transformed into structured, AI-assisted systems. They are designed as reference
-            workflows, prototype concepts, and proof-of-work artifacts with explicit maturity labels.
-          </p>
+          <p className="ai-workflow-page__kicker">{t("site.aiWorkflow.reference.eyebrow")}</p>
+          <h2><span className="about__chev">&gt;</span> {t("site.aiWorkflow.reference.title")}</h2>
+          <p>{t("site.aiWorkflow.reference.text")}</p>
           <p className="ai-workflow-page__trust-note">
-            These workflow examples are reference systems and concept implementations informed by
-            real MedTech and regulated-operations patterns, including implementation handovers, OR
-            workflows, documentation gaps, equipment coordination, and operational visibility
-            problems. They remain transparently labeled as concept, reference, prototype, or built
-            systems where applicable.
+            {t("site.aiWorkflow.reference.trust")}
           </p>
           <div className="ai-workflow-page__status-row" aria-label="Workflow status labels">
             {["Built System", "Prototype", "Reference System", "Concept Workflow", "Proof-of-Work Artifact", "Case Simulation", "Archived Experiment"].map((status) => (
@@ -167,9 +184,9 @@ export default function AIWorkflowLibrary() {
 
       <section className="section container ai-workflow-page__section">
         <div className="ai-workflow-page__section-head reveal">
-          <p className="ai-workflow-page__kicker">Featured workflow</p>
-          <h2><span className="about__chev">&gt;</span> Browse by workflow family</h2>
-          <p>Choose one category, inspect the featured reference workflow, then open the detail page if it maps to your context.</p>
+          <p className="ai-workflow-page__kicker">{t("site.aiWorkflow.featured.eyebrow")}</p>
+          <h2><span className="about__chev">&gt;</span> {t("site.aiWorkflow.featured.title")}</h2>
+          <p>{t("site.aiWorkflow.featured.text")}</p>
         </div>
         <div className="ux-tabs" role="tablist" aria-label="Workflow categories">
           {workflowCategories.map((category) => (
@@ -179,7 +196,9 @@ export default function AIWorkflowLibrary() {
               onClick={() => setActiveCategory(category.title)}
               key={category.title}
             >
-              {category.title.replace("MedTech / Clinical / OR Workflows", "MedTech / Clinical / OR")}
+              {t(`site.aiWorkflow.categories.${category.title}`) === `site.aiWorkflow.categories.${category.title}`
+                ? category.title.replace("MedTech / Clinical / OR Workflows", "MedTech / Clinical / OR")
+                : t(`site.aiWorkflow.categories.${category.title}`)}
             </button>
           ))}
         </div>
@@ -187,10 +206,10 @@ export default function AIWorkflowLibrary() {
           <div className="ai-workflow-page__featured">
             <WorkflowCard workflow={featuredWorkflow} />
             <aside className="ai-workflow-page__other-list">
-              <p className="ai-workflow-page__kicker">Other workflows</p>
+              <p className="ai-workflow-page__kicker">{t("site.aiWorkflow.other")}</p>
               {otherWorkflows.map((workflow) => (
                 <a href={`/ai-workflow/${workflow.slug}`} key={workflow.slug}>
-                  <span>{workflow.title}</span>
+                  <span>{getWorkflowText(t, workflow, "title")}</span>
                   <StatusBadge status={workflow.status} />
                 </a>
               ))}
@@ -201,24 +220,24 @@ export default function AIWorkflowLibrary() {
 
       <section className="section container ai-workflow-page__section">
         <div className="ai-workflow-page__section-head reveal">
-          <p className="ai-workflow-page__kicker">Workflow explorer</p>
-          <h2><span className="about__chev">&gt;</span> Filter reference workflows</h2>
-          <p>Use a narrow filter set to keep the library scannable.</p>
+          <p className="ai-workflow-page__kicker">{t("site.aiWorkflow.explorer.eyebrow")}</p>
+          <h2><span className="about__chev">&gt;</span> {t("site.aiWorkflow.explorer.title")}</h2>
+          <p>{t("site.aiWorkflow.explorer.text")}</p>
         </div>
         <div className="ai-workflow-page__filters">
-          <label>Domain
+          <label>{t("site.aiWorkflow.filters.domain")}
             <select value={domainFilter} onChange={(event) => setDomainFilter(event.target.value)}>
-              {domains.map((domain) => <option key={domain}>{domain}</option>)}
+              {domains.map((domain) => <option key={domain} value={domain}>{domain === "All" ? t("site.filters.all") : (t(`site.aiWorkflow.categories.${domain}`) === `site.aiWorkflow.categories.${domain}` ? domain : t(`site.aiWorkflow.categories.${domain}`))}</option>)}
             </select>
           </label>
-          <label>Status
+          <label>{t("site.aiWorkflow.filters.status")}
             <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
-              {statuses.map((status) => <option key={status}>{status}</option>)}
+              {statuses.map((status) => <option key={status} value={status}>{status === "All" ? t("site.filters.all") : (t(`site.status.${statusSlug(status)}`) === `site.status.${statusSlug(status)}` ? status : t(`site.status.${statusSlug(status)}`))}</option>)}
             </select>
           </label>
-          <label>Business problem
+          <label>{t("site.aiWorkflow.filters.problem")}
             <select value={problemFilter} onChange={(event) => setProblemFilter(event.target.value)}>
-              {problemTypes.map((problem) => <option key={problem}>{problem}</option>)}
+              {problemTypes.map((problem) => <option key={problem} value={problem}>{t(`site.aiWorkflow.problemTypes.${problem}`) === `site.aiWorkflow.problemTypes.${problem}` ? problem : t(`site.aiWorkflow.problemTypes.${problem}`)}</option>)}
             </select>
           </label>
         </div>
@@ -226,8 +245,8 @@ export default function AIWorkflowLibrary() {
           {filteredWorkflows.map((workflow) => (
             <a href={`/ai-workflow/${workflow.slug}`} className="ai-workflow-page__compact-result" key={workflow.slug}>
               <div>
-                <strong>{workflow.title}</strong>
-                <span>{workflow.problem}</span>
+                <strong>{getWorkflowText(t, workflow, "title")}</strong>
+                <span>{getWorkflowText(t, workflow, "problem")}</span>
               </div>
               <StatusBadge status={workflow.status} />
             </a>
@@ -237,16 +256,13 @@ export default function AIWorkflowLibrary() {
 
       <section className="section container ai-workflow-page__final">
         <div className="ai-workflow-page__final-inner reveal">
-          <p className="ai-workflow-page__kicker">Next step</p>
-          <h2>Want to map one of your workflows?</h2>
-          <p>
-            Start with one workflow, define where it breaks, identify what AI can safely assist,
-            and design the review, traceability, and handover layer around it.
-          </p>
+          <p className="ai-workflow-page__kicker">{t("site.nextStep")}</p>
+          <h2>{t("site.aiWorkflow.final.title")}</h2>
+          <p>{t("site.aiWorkflow.final.text")}</p>
           <div className="ai-workflow-page__actions">
-            <a href={AUDIT_HREF} className="btn btn--primary">Request AI Workflow Audit</a>
-            <a href="/collaborate" className="btn btn--ghost">Work With Me</a>
-            <a href="/proof-of-work#projects" className="btn btn--ghost">View Proof of Work</a>
+            <a href={AUDIT_HREF} className="btn btn--primary">{t("site.cta.startAudit")}</a>
+            <a href="/collaborate" className="btn btn--ghost">{t("site.cta.workWithMe")}</a>
+            <a href="/proof-of-work#projects" className="btn btn--ghost">{t("site.cta.viewProof")}</a>
           </div>
         </div>
       </section>

@@ -7,7 +7,8 @@ const Contact = () => {
   const formRef = useRef(null);
   const [copied, setCopied] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const bestForItems = t("contact.para2items");
+  const bestForItemsValue = t("site.contact.details.bestForItems");
+  const bestForItems = Array.isArray(bestForItemsValue) ? bestForItemsValue : [];
 
   const email = "romazuryk@proton.me";
 
@@ -38,7 +39,7 @@ const Contact = () => {
   return (
     <section id="contact" className="section container contact">
       <h2 className="section__title reveal">
-        <span className="about__chev">&gt;</span> {t("contact.title")}
+        <span className="about__chev">&gt;</span> {t("site.contact.details.title")}
       </h2>
 
       <div className="contact__paths reveal">
@@ -56,10 +57,10 @@ const Contact = () => {
 
       <div className="contact__grid">
         <div className="contact__panel reveal reveal--delay-1">
-          <h3 className="contact__subtitle">{t("contact.subtitle")}</h3>
-          <p className="contact__text">{t("contact.para1")}</p>
+          <h3 className="contact__subtitle">{t("site.contact.details.subtitle")}</h3>
+          <p className="contact__text">{t("site.contact.details.text")}</p>
           <p className="contact__text">
-            <strong>{t("contact.para2label")}</strong>
+            <strong>{t("site.contact.details.bestForLabel")}</strong>
           </p>
           {Array.isArray(bestForItems) ? (
             <ul className="contact__best-for">
@@ -70,33 +71,33 @@ const Contact = () => {
               ))}
             </ul>
           ) : (
-            <p className="contact__text">{t("contact.para2text")}</p>
+            <p className="contact__text">{t("site.contact.details.note")}</p>
           )}
 
           <div className="contact__info">
             <div className="contact__row">
               <span className="contact__label">
-                <Mail size={16} className="icon mr-1" /> {t("contact.emailLabel")}
+                <Mail size={16} className="icon mr-1" /> {t("site.contact.details.emailLabel")}
               </span>
               <div className="contact__value">
                 <button className="link-like" onClick={copyEmail} title="Copy email">
                   {email} <Copy size={14} className="icon ml-1" />
                 </button>
                 <span className={`contact__copied ${copied ? "is-visible" : ""}`} aria-live="polite">
-                  {copied ? t("contact.copied") : ""}
+                  {copied ? t("site.contact.details.copied") : ""}
                 </span>
               </div>
             </div>
 
             <div className="contact__row">
               <span className="contact__label">
-                <MapPin size={16} className="icon mr-1" /> {t("contact.locationLabel")}
+                <MapPin size={16} className="icon mr-1" /> {t("site.contact.details.locationLabel")}
               </span>
-              <span className="contact__value">{t("contact.location")}</span>
+              <span className="contact__value">{t("site.contact.details.location")}</span>
             </div>
 
             <div className="contact__row">
-              <span className="contact__label">{t("contact.socialLabel")}</span>
+              <span className="contact__label">{t("site.contact.details.socialLabel")}</span>
               <div className="contact__socials">
                 <a href="https://www.linkedin.com/in/roman-mazuryk/" target="_blank" rel="noreferrer" className="contact__social">
                   <Linkedin size={16} className="icon" /> LinkedIn
@@ -111,38 +112,38 @@ const Contact = () => {
 
         <form ref={formRef} onSubmit={onSubmit} className="contact__form reveal reveal--delay-2" noValidate>
           <div className="field">
-            <label htmlFor="name">{t("contact.nameLabel")}</label>
-            <input id="name" name="name" type="text" required placeholder={t("contact.namePlaceholder")} />
+            <label htmlFor="name">{t("site.contact.form.nameLabel")}</label>
+            <input id="name" name="name" type="text" required placeholder={t("site.contact.form.namePlaceholder")} />
           </div>
 
           <div className="field">
-            <label htmlFor="email">{t("contact.emailFieldLabel")}</label>
-            <input id="email" name="email" type="email" required placeholder={t("contact.emailFieldPlaceholder")} />
+            <label htmlFor="email">{t("site.contact.form.emailLabel")}</label>
+            <input id="email" name="email" type="email" required placeholder={t("site.contact.form.emailPlaceholder")} />
           </div>
 
           <div className="field field--full">
-            <label htmlFor="message">{t("contact.messageLabel")}</label>
-            <textarea id="message" name="message" rows="6" required placeholder={t("contact.messagePlaceholder")} />
+            <label htmlFor="message">{t("site.contact.form.messageLabel")}</label>
+            <textarea id="message" name="message" rows="6" required placeholder={t("site.contact.form.messagePlaceholder")} />
           </div>
 
           <p className="contact__hint">
             <Info size={13} className="icon mr-1" />
-            {t("contact.hint")}
+            {t("site.contact.form.hint")}
           </p>
 
           <div className="contact__actions">
-            <button type="submit" className="btn btn--primary">{t("contact.submitBtn")}</button>
+            <button type="submit" className="btn btn--primary">{t("site.contact.form.submit")}</button>
             <a
               className="btn btn--ghost"
               href={`mailto:${email}?subject=AI%20Workflow%20Audit%20Request`}
             >
-              {t("contact.emailDirectBtn")}
+              {t("site.contact.form.emailDirect")}
             </a>
           </div>
 
           <p className={`contact__submitted ${submitted ? "is-visible" : ""}`} aria-live="polite">
             <CheckCircle size={14} className="icon mr-1" />
-            {t("contact.submitted")}
+            {t("site.contact.form.submitted")}
           </p>
         </form>
       </div>

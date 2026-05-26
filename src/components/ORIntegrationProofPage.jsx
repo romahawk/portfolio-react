@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { useTranslation } from "../context/LangContext.jsx";
 import PageHero from "./common/PageHero.jsx";
 import StatusBadge from "./StatusBadge.jsx";
 
@@ -63,32 +64,36 @@ const contextImages = [
 ];
 
 export default function ORIntegrationProofPage() {
+  const { t } = useTranslation();
+  const complexityValue = t("site.orProof.complexity.items");
+  const cardsValue = t("site.orProof.proves.cards");
+  const opportunitiesValue = t("site.orProof.opportunities.items");
+  const complexity = Array.isArray(complexityValue) ? complexityValue : complexityElements;
+  const cards = Array.isArray(cardsValue) ? cardsValue : proofCards;
+  const opportunities = Array.isArray(opportunitiesValue) ? opportunitiesValue : futureOpportunities;
+
   return (
     <div className="proof-page or-proof-page">
       <PageHero
-        eyebrow="REAL MEDTECH IMPLEMENTATION EXPERIENCE"
-        title="OR Integration & Surgical Workflow Systems"
-        subtitle="Real-world MedTech implementation experience across operating room infrastructure, surgical equipment integration, video/audio workflows, clinical handover, and hospital stakeholder coordination."
-        primaryCta={{ label: "Explore AI Workflows", href: "/ai-workflow", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: "Work With Me", href: "/collaborate" }}
-        tertiaryCta={{ label: "Contact", href: "/contact" }}
+        eyebrow={t("site.orProof.hero.eyebrow")}
+        title={t("site.orProof.hero.title")}
+        subtitle={t("site.orProof.hero.subtitle")}
+        primaryCta={{ label: t("site.cta.exploreAiWorkflows"), href: "/ai-workflow", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: t("site.cta.workWithMe"), href: "/collaborate" }}
+        tertiaryCta={{ label: t("site.cta.contact"), href: "/contact" }}
         scrollTargetId="or-context"
       >
         <div className="or-proof__hero-meta">
           <StatusBadge status="Real MedTech Implementation Experience" />
-          <span>Operating rooms / surgical infrastructure / medical equipment integration</span>
+          <span>{t("site.orProof.hero.meta")}</span>
         </div>
       </PageHero>
 
       <section id="or-context" className="section container or-proof__section">
         <div className="or-proof__section-head reveal">
-          <p className="proof-page__kicker">Context</p>
-          <h2>Integrated OR environments are workflow systems</h2>
-          <p>
-            Integrated OR environments combine surgical infrastructure, medical equipment,
-            audio/video routing, visualization, recording, patient data workflows, telemedicine
-            possibilities, documentation, and team coordination.
-          </p>
+          <p className="proof-page__kicker">{t("site.orProof.context.eyebrow")}</p>
+          <h2>{t("site.orProof.context.title")}</h2>
+          <p>{t("site.orProof.context.text")}</p>
         </div>
         <div className="or-proof__image-grid reveal">
           {contextImages.map((image) => (
@@ -101,11 +106,11 @@ export default function ORIntegrationProofPage() {
 
       <section className="section container or-proof__section">
         <div className="or-proof__section-head reveal">
-          <p className="proof-page__kicker">Workflow complexity</p>
-          <h2>Connected elements inside the operating room system</h2>
+          <p className="proof-page__kicker">{t("site.orProof.complexity.eyebrow")}</p>
+          <h2>{t("site.orProof.complexity.title")}</h2>
         </div>
         <div className="or-proof__chip-grid">
-          {complexityElements.map((item) => (
+          {complexity.map((item) => (
             <span className="or-proof__chip" key={item}>{item}</span>
           ))}
         </div>
@@ -114,21 +119,17 @@ export default function ORIntegrationProofPage() {
       <section className="section container or-proof__section">
         <div className="or-proof__panel reveal">
           <div>
-            <p className="proof-page__kicker">Role / exposure</p>
-            <h2>Roman's real-world role and exposure</h2>
+            <p className="proof-page__kicker">{t("site.orProof.role.eyebrow")}</p>
+            <h2>{t("site.orProof.role.title")}</h2>
           </div>
-          <p>
-            Experience included business development, project coordination, implementation support,
-            equipment delivery/installation coordination, training/handover support, and stakeholder
-            communication around MedTech and OR environments.
-          </p>
+          <p>{t("site.orProof.role.text")}</p>
         </div>
       </section>
 
       <section className="section container or-proof__section">
         <div className="or-proof__section-head reveal">
-          <p className="proof-page__kicker">What this proves</p>
-          <h2>Credibility for product, workflow, implementation, and solutions roles</h2>
+          <p className="proof-page__kicker">{t("site.orProof.proves.eyebrow")}</p>
+          <h2>{t("site.orProof.proves.title")}</h2>
         </div>
         <div className="or-proof__proof-map" aria-label="Hub-and-spoke credibility proof map">
           <svg className="or-proof__data-flow" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
@@ -145,10 +146,10 @@ export default function ORIntegrationProofPage() {
             <circle className="or-proof__data-flow-node" cx="76" cy="86" r="1.7" />
           </svg>
           <div className="or-proof__hub">
-            <span>OR / Hospital</span>
-            <strong>Workflow Reality</strong>
+            <span>{t("site.orProof.proves.hubTop")}</span>
+            <strong>{t("site.orProof.proves.hubBottom")}</strong>
           </div>
-          {proofCards.map((card, index) => (
+          {cards.map((card, index) => (
             <article className={`or-proof__card or-proof__card--point-${index + 1}`} key={card.title}>
               <h3>{card.title}</h3>
               <p>{card.text}</p>
@@ -159,26 +160,20 @@ export default function ORIntegrationProofPage() {
 
       <section className="section container or-proof__section">
         <div className="or-proof__bridge reveal">
-          <p className="proof-page__kicker">Bridge to current positioning</p>
-          <h2>Real implementation background, translated into AI-assisted systems</h2>
-          <p>
-            This real-world implementation background now informs my work on MedTech Product &
-            Workflow Systems, using AI-assisted discovery, prototyping, documentation, and delivery
-            where it creates measurable value.
-          </p>
+          <p className="proof-page__kicker">{t("site.orProof.bridge.eyebrow")}</p>
+          <h2>{t("site.orProof.bridge.title")}</h2>
+          <p>{t("site.orProof.bridge.text")}</p>
         </div>
       </section>
 
       <section className="section container or-proof__section">
         <div className="or-proof__section-head reveal">
-          <p className="proof-page__kicker">Future workflow opportunities</p>
-          <h2>Concept workflows this experience can inform</h2>
-          <p>
-            These are future opportunities and concept workflows, not completed client projects.
-          </p>
+          <p className="proof-page__kicker">{t("site.orProof.opportunities.eyebrow")}</p>
+          <h2>{t("site.orProof.opportunities.title")}</h2>
+          <p>{t("site.orProof.opportunities.text")}</p>
         </div>
         <div className="or-proof__chip-grid">
-          {futureOpportunities.map((item) => (
+          {opportunities.map((item) => (
             <span className="or-proof__chip or-proof__chip--concept" key={item}>{item}</span>
           ))}
         </div>
@@ -187,17 +182,14 @@ export default function ORIntegrationProofPage() {
       <section className="section container or-proof__section">
         <div className="or-proof__cta reveal">
           <div>
-            <p className="proof-page__kicker">Next</p>
-            <h2>From OR workflow exposure to structured systems</h2>
-            <p>
-              Explore the AI workflow library for reference systems and concept implementations
-              built around documentation, handover, operational visibility, and traceability.
-            </p>
+            <p className="proof-page__kicker">{t("site.next")}</p>
+            <h2>{t("site.orProof.final.title")}</h2>
+            <p>{t("site.orProof.final.text")}</p>
           </div>
           <div className="or-proof__actions">
-            <a href="/ai-workflow" className="btn btn--primary">Explore AI Workflows</a>
-            <a href="/collaborate" className="btn btn--ghost">Work With Me</a>
-            <a href="/contact" className="btn btn--ghost">Contact</a>
+            <a href="/ai-workflow" className="btn btn--primary">{t("site.cta.exploreAiWorkflows")}</a>
+            <a href="/collaborate" className="btn btn--ghost">{t("site.cta.workWithMe")}</a>
+            <a href="/contact" className="btn btn--ghost">{t("site.cta.contact")}</a>
           </div>
         </div>
       </section>

@@ -202,7 +202,7 @@ export default function Navbar({ themeMode, onThemeChange }) {
           {isMobile && !isServicesPage && (
             <li>
               <a href="/collaborate" className="nav__link nav__link--cta" onClick={() => setIsOpen(false)}>
-                Work With Me
+                {t("site.cta.workWithMe")}
               </a>
             </li>
           )}
@@ -215,7 +215,7 @@ export default function Navbar({ themeMode, onThemeChange }) {
 
         <div className="nav__actions">
           {!isServicesPage && (
-            <a href="/collaborate" className="nav__work-cta">Work With Me</a>
+            <a href="/collaborate" className="nav__work-cta">{t("site.cta.workWithMe")}</a>
           )}
           {isMobile
             ? <ThemeSwitcher mode={themeMode} onChange={onThemeChange} />

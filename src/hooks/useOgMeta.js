@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { techProjects } from "../data/projects.js";
 import { getWorkflowBySlug } from "../data/aiWorkflows.js";
+import { useTranslation } from "../context/LangContext.jsx";
 
 const BASE = {
-  title: "Roman Mazuryk — MedTech Product & Workflow Systems",
+  title: "Roman Mazuryk - MedTech Product & Workflow Systems",
   description:
     "MedTech operator and product systems builder combining real implementation experience with AI-assisted discovery, prototyping, documentation, and delivery.",
   url: "https://www.mazuryk.dev/",
@@ -47,7 +48,7 @@ const AI_WORKFLOW = {
 };
 
 const PROOF_OF_WORK = {
-  title: "Proof of Work — MedTech Product & Workflow Systems",
+  title: "Proof of Work - MedTech Product & Workflow Systems",
   description:
     "Selected workflow systems, product concepts, and AI-assisted prototypes showing how Roman Mazuryk translates operational complexity into structured, auditable systems.",
   url: "https://www.mazuryk.dev/proof-of-work",
@@ -96,27 +97,50 @@ function applyMeta({ title, description, url, image, imageAlt = "", imageWidth =
 }
 
 export function useOgMeta() {
+  const { lang, t } = useTranslation();
+
   useEffect(() => {
+    const seo = (key, fallback) => {
+      const value = t(`site.seo.${key}`);
+      return value === `site.seo.${key}` ? fallback : value;
+    };
+
     function update() {
       const path = window.location.pathname.replace(/\/+$/, "") || "/";
 
       if (path === "/services" || path === "/collaborate") {
-        applyMeta(COLLABORATE);
+        applyMeta({
+          ...COLLABORATE,
+          title: seo("collaborateTitle", COLLABORATE.title),
+          description: seo("collaborateDescription", COLLABORATE.description),
+        });
         return;
       }
 
       if (path === "/ai-workflow") {
-        applyMeta(AI_WORKFLOW);
+        applyMeta({
+          ...AI_WORKFLOW,
+          title: seo("aiWorkflowTitle", AI_WORKFLOW.title),
+          description: seo("aiWorkflowDescription", AI_WORKFLOW.description),
+        });
         return;
       }
 
       if (path === "/proof-of-work") {
-        applyMeta(PROOF_OF_WORK);
+        applyMeta({
+          ...PROOF_OF_WORK,
+          title: seo("proofTitle", PROOF_OF_WORK.title),
+          description: seo("proofDescription", PROOF_OF_WORK.description),
+        });
         return;
       }
 
       if (path === "/proof-of-work/or-integration") {
-        applyMeta(OR_INTEGRATION_PROOF);
+        applyMeta({
+          ...OR_INTEGRATION_PROOF,
+          title: seo("orProofTitle", OR_INTEGRATION_PROOF.title),
+          description: seo("orProofDescription", OR_INTEGRATION_PROOF.description),
+        });
         return;
       }
 
@@ -124,19 +148,27 @@ export function useOgMeta() {
         const slug = path.slice("/ai-workflow/".length);
         const workflow = getWorkflowBySlug(slug);
         if (workflow) {
+          const titleKey = `site.workflows.${workflow.slug}.title`;
+          const summaryKey = `site.workflows.${workflow.slug}.summary`;
+          const title = t(titleKey) === titleKey ? workflow.title : t(titleKey);
+          const summary = t(summaryKey) === summaryKey ? workflow.summary : t(summaryKey);
           applyMeta({
-            title: `${workflow.title} — AI Workflow Reference`,
-            description: workflow.summary,
+            title: `${title} - ${seo("workflowReference", "AI Workflow Reference")}`,
+            description: summary,
             url: `https://www.mazuryk.dev/ai-workflow/${workflow.slug}`,
             image: AI_WORKFLOW.image,
-            imageAlt: `${workflow.title} reference workflow for MedTech and regulated operations.`,
+            imageAlt: `${title} ${seo("workflowImageAltSuffix", "reference workflow for MedTech and regulated operations.")}`,
           });
           return;
         }
       }
 
       if (path === "/medtech-ai-systems/clinical-evidence-workflow") {
-        applyMeta(CLINICAL_EVIDENCE);
+        applyMeta({
+          ...CLINICAL_EVIDENCE,
+          title: seo("clinicalEvidenceTitle", CLINICAL_EVIDENCE.title),
+          description: seo("clinicalEvidenceDescription", CLINICAL_EVIDENCE.description),
+        });
         return;
       }
 
@@ -154,7 +186,11 @@ export function useOgMeta() {
         }
       }
 
-      applyMeta(BASE);
+      applyMeta({
+        ...BASE,
+        title: seo("homeTitle", BASE.title),
+        description: seo("homeDescription", BASE.description),
+      });
     }
 
     update();
@@ -164,5 +200,5 @@ export function useOgMeta() {
       window.removeEventListener("hashchange", update);
       window.removeEventListener("popstate", update);
     };
-  }, []);
+  }, [lang, t]);
 }

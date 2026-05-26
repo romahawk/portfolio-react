@@ -9,12 +9,12 @@ const Hero = () => {
   return (
     <PageHero
       id="home"
-      eyebrow={t("hero.eyebrow")}
-      title="MedTech Product & Workflow Systems"
-      subtitle="I help MedTech, HealthTech, and regulated operations teams turn complex workflows into structured, auditable systems — combining real implementation experience, product thinking, and AI-assisted discovery, prototyping, documentation, and delivery."
-      primaryCta={{ label: "View Proof of Work", href: "/proof-of-work" }}
-      secondaryCta={{ label: "Explore AI Workflows", href: "/ai-workflow" }}
-      tertiaryCta={{ label: "Work With Me", href: "/collaborate" }}
+      eyebrow={t("site.home.hero.eyebrow")}
+      title={t("site.home.hero.title")}
+      subtitle={t("site.home.hero.subtitle")}
+      primaryCta={{ label: t("site.cta.viewProof"), href: "/proof-of-work" }}
+      secondaryCta={{ label: t("site.cta.exploreAiWorkflows"), href: "/ai-workflow" }}
+      tertiaryCta={{ label: t("site.cta.workWithMe"), href: "/collaborate" }}
       visualType="home"
       scrollTargetId="operator-advantage"
       metaLinks={[
