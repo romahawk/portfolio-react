@@ -1,5 +1,7 @@
 @import "./animations.css";
+@import "./status-badge.css";
 @import "./navigation.css";
+@import "./page-hero.css";
 @import "./hero.css";
 @import "./results.css";
 @import "./about.css";
@@ -7,6 +9,14 @@
 @import "./timeline.css";
 @import "./skills.css";
 @import "./services-page.css";
+@import "./home-services.css";
+@import "./operator-advantage.css";
+@import "./hiring-teams.css";
+@import "./ai-workflow-preview.css";
+@import "./clinical-evidence-page.css";
+@import "./ai-workflow-library.css";
+@import "./ai-workflow-detail.css";
+@import "./proof-of-work.css";
 @import "./projects.css";
 @import "./modal.css";
 @import "./certifications.css";

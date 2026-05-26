@@ -64,7 +64,7 @@ export const skillsPillars = [
         title: "Core Engine & Stack",
         icon: "Database",
         items: [
-          "React, JavaScript, Python (Flask/FastAPI), and Node.js for production web systems and service prototypes",
+          "React, JavaScript, Python (Flask/FastAPI), and Node.js for operational systems and service prototypes",
           "PostgreSQL, Firebase, REST APIs, and role-based access control for operational data modeling",
           "Git/GitHub, Docker, Vercel; Mermaid for architecture diagrams; Linear/Jira for delivery governance",
         ],

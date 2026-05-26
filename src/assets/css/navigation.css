@@ -27,6 +27,24 @@
   grid-column: 3;
 }
 
+.nav__work-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-soft);
+  color: var(--muted-strong);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.nav__work-cta:hover {
+  color: var(--brand);
+  border-color: rgba(73, 215, 209, 0.45);
+}
+
 /* logo — now an anchor; reset link styles */
 .nav__logo {
   display: flex;
@@ -200,6 +218,15 @@
     display: none;
   }
 
+  .nav__work-cta {
+    display: none;
+  }
+
+  .nav__link--cta {
+    color: var(--brand);
+    font-weight: 800;
+  }
+
 }
 
 /* ===== Unified nav controls pill (desktop): theme + lang in one container ===== */
@@ -235,6 +262,18 @@
 .nav-controls__btn--active {
   background: var(--surface-glow);
   color: var(--brand);
+}
+
+.nav-controls__btn--theme-toggle,
+.theme-switcher__btn--single {
+  color: var(--brand);
+  background: var(--surface-glow);
+}
+
+.nav-controls__btn--theme-toggle:hover,
+.theme-switcher__btn--single:hover {
+  color: var(--brand);
+  background: var(--surface-cool);
 }
 
 /* Language buttons override: text, not icon */

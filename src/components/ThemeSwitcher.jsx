@@ -1,4 +1,3 @@
-import React from "react";
 import { Sun, Moon } from "lucide-react";
 
 export default function ThemeSwitcher({ mode, onChange }) {
@@ -7,26 +6,19 @@ export default function ThemeSwitcher({ mode, onChange }) {
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-color-scheme: dark)").matches;
   const resolved = mode ?? (systemDark ? "dark" : "light");
+  const nextMode = resolved === "dark" ? "light" : "dark";
+  const ToggleIcon = nextMode === "light" ? Sun : Moon;
+  const label = nextMode === "light" ? "Switch to light theme" : "Switch to dark theme";
 
   return (
-    <div className="theme-switcher" role="group" aria-label="Color theme">
+    <div className="theme-switcher" aria-label="Color theme">
       <button
-        className={`theme-switcher__btn${resolved === "light" ? " theme-switcher__btn--active" : ""}`}
-        onClick={() => onChange("light")}
-        aria-label="Light theme"
-        aria-pressed={mode === "light"}
-        title="Light theme"
+        className="theme-switcher__btn theme-switcher__btn--single"
+        onClick={() => onChange(nextMode)}
+        aria-label={label}
+        title={label}
       >
-        {React.createElement(Sun, { size: 14, "aria-hidden": "true" })}
-      </button>
-      <button
-        className={`theme-switcher__btn${resolved === "dark" ? " theme-switcher__btn--active" : ""}`}
-        onClick={() => onChange("dark")}
-        aria-label="Dark theme"
-        aria-pressed={mode === "dark"}
-        title="Dark theme"
-      >
-        {React.createElement(Moon, { size: 14, "aria-hidden": "true" })}
+        <ToggleIcon size={14} aria-hidden="true" />
       </button>
     </div>
   );

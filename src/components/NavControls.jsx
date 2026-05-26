@@ -9,26 +9,19 @@ export default function NavControls({ mode, onThemeChange }) {
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-color-scheme: dark)").matches;
   const resolved = mode ?? (systemDark ? "dark" : "light");
+  const nextTheme = resolved === "dark" ? "light" : "dark";
+  const ThemeIcon = nextTheme === "light" ? Sun : Moon;
+  const themeLabel = nextTheme === "light" ? "Switch to light theme" : "Switch to dark theme";
 
   return (
     <div className="nav-controls" role="group" aria-label="Site preferences">
       <button
-        className={`nav-controls__btn${resolved === "light" ? " nav-controls__btn--active" : ""}`}
-        onClick={() => onThemeChange("light")}
-        aria-label="Light theme"
-        aria-pressed={mode === "light"}
-        title="Light theme"
+        className="nav-controls__btn nav-controls__btn--theme-toggle"
+        onClick={() => onThemeChange(nextTheme)}
+        aria-label={themeLabel}
+        title={themeLabel}
       >
-        <Sun size={14} aria-hidden="true" />
-      </button>
-      <button
-        className={`nav-controls__btn${resolved === "dark" ? " nav-controls__btn--active" : ""}`}
-        onClick={() => onThemeChange("dark")}
-        aria-label="Dark theme"
-        aria-pressed={mode === "dark"}
-        title="Dark theme"
-      >
-        <Moon size={14} aria-hidden="true" />
+        <ThemeIcon size={14} aria-hidden="true" />
       </button>
 
       <span className="nav-controls__sep" aria-hidden="true" />

@@ -1,10 +1,11 @@
 // src/locales/en.js
 export default {
   nav: {
+    home: "Home",
     results: "Results",
-    projects: "Projects",
-    services: "Skills",
-    framework: "Framework",
+    projects: "Proof of Work",
+    services: "Services",
+    aiWorkflow: "AI Workflows",
     about: "About",
     contact: "Contact",
     toggleNav: "Toggle navigation",
@@ -24,10 +25,12 @@ export default {
   },
 
   hero: {
-    eyebrow: "TECHNICAL PRODUCT PORTFOLIO",
-    headline: "Technical Product Manager | Systems & AI Automation",
+    eyebrow: "MEDTECH / HEALTHTECH / REGULATED OPERATIONS",
+    headline: "MedTech Product & Workflow Systems",
     subtitle:
-      "Replacing operational chaos with scalable, AI-powered systems. 10+ years of domain expertise in MedTech & Pharma, managing $50M+ annual turnover. I bridge the gap between executive strategy and rapid technical delivery using an AI-orchestrated SDLC.",
+      "I help MedTech, HealthTech, and B2B operations teams turn messy operational workflows into AI-assisted, auditable systems — from discovery to prototype, SOPs, and handover.",
+    ctaAudit: "Work With Me",
+    ctaCaseStudies: "View Product Case Studies",
     ctaSDLC: "How I Build (AI-Stack)",
     ctaProjects: "Explore Shipped Systems",
     downloadCV: "Download CV",
@@ -38,427 +41,40 @@ export default {
     nav: {
       hero: "Home",
       overview: "Services",
-      details: "Details",
-      process: "Process",
+      process: "Method",
       proof: "Proof",
-      book: "Book",
-    },
-    cta: {
-      book: "Book a Call",
-      how: "See how it works",
-      diagnosis: "Start with a Friction Diagnosis",
-      audit: "Request Website / Workflow Audit",
-      viewSystems: "View systems",
-      microCopy: "Get a clear improvement path in 24–48h. No commitment.",
-    },
-    hero: {
-      eyebrow: "PRODUCTIZED SYSTEMS FOR SMEs",
-      title: "Turn your website and workflows into lead-generating systems — in 5-10 days",
-      subtitle:
-        "Websites, internal tools, and AI-assisted workflows for SMEs still running on Excel, email, scattered processes, and outdated web presence.",
-      credibility: "10+ years building and operating systems in MedTech, Pharma, and B2B environments.",
-      panelLabel: "How it works",
-      signals: [
-        { label: "Start",  value: "One clear business bottleneck"              },
-        { label: "Build",  value: "Focused 5–10 day sprint"                   },
-        { label: "Result", value: "Working system you can use immediately"     },
-      ],
-    },
-    friction: {
-      kicker: "Start with the bottleneck",
-      title: "Business friction usually shows up before a team knows which tool it needs",
-      intro:
-        "The work starts by locating where the business is losing qualified inquiries, time, or decision clarity. Then we install the smallest system that produces a measurable improvement.",
-    },
-    frictionPoints: [
-      {
-        icon: "LineChart",
-        title: "Lead friction",
-        text: "The website gets visits, but the offer is unclear, trust is weak, or inquiries are not qualified.",
-      },
-      {
-        icon: "BarChart3",
-        title: "Operational drag",
-        text: "Work is tracked across spreadsheets, inboxes, and disconnected tools, so status takes too long to see.",
-      },
-      {
-        icon: "Bot",
-        title: "Manual repetition",
-        text: "The same admin and follow-up tasks keep happening every week without a simple system behind them.",
-      },
-      {
-        icon: "Gauge",
-        title: "Conversion leakage",
-        text: "People show interest, but pages, CTAs, or booking flows create hesitation before action happens.",
-      },
-    ],
-    diagnosisOffer: {
-      kicker: "Start here",
-      title: "Friction Diagnosis Sprint",
-      copy:
-        "Not sure whether your biggest problem is leads, conversion, manual work, or operational visibility? We start with a focused diagnosis to identify the highest-impact bottlenecks and map the fastest path to improvement.",
-      timeline: "3-5 days",
-      outputs: [
-        "Top 3 friction points",
-        "ROI-ranked improvement opportunities",
-        "Recommended system path",
-        "Clear implementation roadmap",
-      ],
-      cta: "Book a diagnosis",
-    },
-    systemsIntro: {
-      kicker: "Recommended systems",
-      title: "Choose the system that changes the business output",
-      intro:
-        "These are not isolated websites or dashboards. Each system is scoped to remove a bottleneck and create a clearer operational result.",
-    },
-    systems: [
-      {
-        id: "lead-generation-system",
-        icon: "LineChart",
-        title: "Lead Generation System",
-        purpose: "For businesses that need more qualified inquiries.",
-        recommendedWhen: "Weak pipeline, unclear offer, low-trust pages",
-        includes: [
-          "Positioning and messaging",
-          "Conversion-focused landing page",
-          "CTA and booking flow",
-          "Trust elements",
-          "Basic tracking setup",
-        ],
-        timeline: "7 days",
-        outcome: "Clearer offer, stronger trust, more qualified calls.",
-      },
-      {
-        id: "operations-visibility-system",
-        icon: "BarChart3",
-        title: "Operations Visibility System",
-        purpose: "For teams managing work through spreadsheets, email, or disconnected tools.",
-        recommendedWhen: "Status chasing, spreadsheet drift, unclear accountability",
-        includes: [
-          "Workflow mapping",
-          "Status dashboard",
-          "Bottleneck visibility",
-          "Role-based views if needed",
-          "Simple reporting layer",
-        ],
-        timeline: "2-3 weeks",
-        outcome: "Less spreadsheet drift, faster decisions, clearer accountability.",
-      },
-      {
-        id: "automation-leverage-system",
-        icon: "Bot",
-        title: "Automation Leverage System",
-        purpose: "For repetitive manual work that can be safely reduced or structured.",
-        recommendedWhen: "Weekly repetition, handoff delays, unclear automation priorities",
-        includes: [
-          "Process audit",
-          "Data flow mapping",
-          "Automation opportunity ranking",
-          "AI/tool recommendations",
-          "Implementation roadmap",
-        ],
-        timeline: "3-5 days",
-        outcome: "Prioritized automation roadmap with realistic next steps.",
-      },
-      {
-        id: "conversion-optimization-system",
-        icon: "Gauge",
-        title: "Conversion Optimization System",
-        purpose: "For websites or funnels that already have some traffic but weak conversion.",
-        recommendedWhen: "Traffic exists, but visitors hesitate or drop off",
-        includes: [
-          "Messaging audit",
-          "CTA structure",
-          "Page flow improvements",
-          "Trust and objection handling",
-          "Before/after recommendations",
-        ],
-        timeline: "5-10 days",
-        outcome: "Sharper conversion path without a full rebuild.",
-      },
-    ],
-    labels: {
-      timeline: "Timeline",
-      output: "Output",
-      includes: "Includes",
-      outcome: "Outcome",
-      recommendedWhen: "Recommended when",
-    },
-    overview: {
-      kicker: "Services",
-      title: "Pick the system that removes the most friction",
-      intro:
-        "Each offer is scoped around a visible outcome: more qualified leads, less manual work, sharper conversion, or a faster automation roadmap.",
-      items: [
-        {
-          id: "lead-generation-website",
-          icon: "LineChart",
-          title: "Lead Generation Website",
-          description: "A focused website that explains the offer, builds trust, and turns visitors into booked calls.",
-          timeline: "7 days",
-          outcome: "Clear positioning and a stronger call pipeline",
-        },
-        {
-          id: "workflow-dashboard",
-          icon: "BarChart3",
-          title: "Workflow / Operations Dashboard",
-          description: "A practical dashboard for tracking work, handoffs, status, and operational bottlenecks.",
-          timeline: "2-3 weeks",
-          outcome: "Less spreadsheet drift and faster decisions",
-        },
-        {
-          id: "ai-automation-audit",
-          icon: "Bot",
-          title: "AI & Automation Audit",
-          description: "A fast scan of repetitive work, data flows, and where automation can safely create leverage.",
-          timeline: "3-5 days",
-          outcome: "Prioritized automation roadmap with next steps",
-        },
-        {
-          id: "conversion-optimization-sprint",
-          icon: "Gauge",
-          title: "Conversion Optimization Sprint",
-          description: "A focused sprint to improve messaging, flows, CTAs, and page structure where intent already exists.",
-          timeline: "5-10 days",
-          outcome: "Sharper conversion path without a full rebuild",
-        },
-      ],
-    },
-    details: {
-      kicker: "Detail",
-      title: "What each service actually delivers",
-      expectedLabel: "Expected result",
-      items: [
-        {
-          id: "lead-generation-website",
-          icon: "LineChart",
-          title: "Lead Generation Website",
-          timeline: "7 days",
-          expected: "A live, credible page that makes the offer obvious and gives visitors one clear next step.",
-          blocks: [
-            { label: "Problem", items: ["Visitors do not understand the offer fast enough", "Trust signals are scattered", "Calls depend on referrals only"] },
-            { label: "What we do", items: ["Clarify positioning and page flow", "Build responsive page sections", "Connect CTA and inquiry path"] },
-            { label: "What you get", items: ["Live website or landing page", "Conversion-focused copy structure", "Analytics-ready CTA path"] },
-            { label: "Timeline", items: ["Day 1 audit and structure", "Days 2-6 build", "Day 7 launch pass"] },
-          ],
-        },
-        {
-          id: "workflow-dashboard",
-          icon: "BarChart3",
-          title: "Workflow / Operations Dashboard",
-          timeline: "2-3 weeks",
-          expected: "A single operational view that reduces status chasing and makes handoffs visible.",
-          blocks: [
-            { label: "Problem", items: ["Work lives across tools", "Manual reporting slows decisions", "Ownership is unclear"] },
-            { label: "What we do", items: ["Map the workflow", "Define roles, states, and data points", "Build a usable dashboard"] },
-            { label: "What you get", items: ["Dashboard prototype or live internal tool", "Workflow logic and status model", "Clean handoff documentation"] },
-            { label: "Timeline", items: ["Week 1 model and prototype", "Week 2 build", "Optional week 3 hardening"] },
-          ],
-        },
-        {
-          id: "ai-automation-audit",
-          icon: "Bot",
-          title: "AI & Automation Audit",
-          timeline: "3-5 days",
-          expected: "A short list of automation opportunities ranked by value, risk, and implementation effort.",
-          blocks: [
-            { label: "Problem", items: ["AI ideas are vague", "Manual tasks repeat every week", "Risk is hard to judge"] },
-            { label: "What we do", items: ["Review workflows and data inputs", "Identify safe automation candidates", "Estimate effort and constraints"] },
-            { label: "What you get", items: ["Automation opportunity map", "Pilot recommendation", "Prompt and tooling direction"] },
-            { label: "Timeline", items: ["Kickoff and access review", "Workflow scan", "Roadmap handover"] },
-          ],
-        },
-        {
-          id: "conversion-optimization-sprint",
-          icon: "Gauge",
-          title: "Conversion Optimization Sprint",
-          timeline: "5-10 days",
-          expected: "A cleaner conversion path that reduces hesitation and moves qualified visitors toward action.",
-          blocks: [
-            { label: "Problem", items: ["Traffic exists but intent leaks", "CTAs compete with each other", "Messaging feels generic"] },
-            { label: "What we do", items: ["Audit hierarchy and friction", "Rewrite key sections", "Improve CTA placement and flow"] },
-            { label: "What you get", items: ["Prioritized conversion fixes", "Updated page sections", "Measurement checklist"] },
-            { label: "Timeline", items: ["Fast audit", "Copy and UI update", "Launch review"] },
-          ],
-        },
-      ],
-    },
-    selector: {
-      kicker: "YOUR SITUATION",
-      title: "Choose your situation",
-      subtitle: "Start with the problem that looks closest to your current bottleneck.",
-      cards: [
-        {
-          title: "Outdated Website",
-          desc: "Visitors don't understand your offer or hesitate to contact you.",
-        },
-        {
-          title: "Manual Operations",
-          desc: "Work is scattered across Excel, email, WhatsApp, or memory.",
-        },
-        {
-          title: "AI / Admin Automation",
-          desc: "Repetitive tasks consume time, but the team lacks a practical AI path.",
-        },
-        {
-          title: "Not Sure Yet?",
-          desc: "Start with a short audit and define the fastest improvement path.",
-        },
-      ],
-    },
-    process: {
-      kicker: "How we work",
-      title: "A small system before a big commitment",
-      intro:
-        "The page follows the same operating logic as the work itself: diagnose the bottleneck, install the right system, then measure whether friction actually went down.",
-      steps: [
-        {
-          icon: "SearchCheck",
-          title: "Quick Audit",
-          desc: "We identify one clear bottleneck in your workflow or website.",
-        },
-        {
-          icon: "Settings2",
-          title: "Fast Build",
-          desc: "We implement a simple, working solution in 5-10 days.",
-        },
-        {
-          icon: "Rocket",
-          title: "Launch & Improve",
-          desc: "You start using it immediately and we refine based on results.",
-        },
-      ],
-    },
-    processSteps: [
-      {
-        icon: "SearchCheck",
-        title: "Step 1 - Diagnose friction",
-        text: "Identify where the business loses leads, time, or decision clarity.",
-      },
-      {
-        icon: "Settings2",
-        title: "Step 2 - Install the right system",
-        text: "Build the focused solution: landing page, dashboard, automation map, or conversion system.",
-      },
-      {
-        icon: "Rocket",
-        title: "Step 3 - Measure and improve",
-        text: "Track the output and refine the system based on real usage.",
-      },
-    ],
-    router: {
-      kicker: "Decision router",
-      title: "Which system do you need?",
-      intro:
-        "If the tool choice is unclear, start from the business problem instead of the deliverable.",
-    },
-    decisionRouterItems: [
-      {
-        problem: "We do not get enough qualified inquiries",
-        system: "Lead Generation System",
-      },
-      {
-        problem: "We manage too much through spreadsheets",
-        system: "Operations Visibility System",
-      },
-      {
-        problem: "We repeat the same manual tasks every week",
-        system: "Automation Leverage System",
-      },
-      {
-        problem: "People visit but do not convert",
-        system: "Conversion Optimization System",
-      },
-      {
-        problem: "We are not sure",
-        system: "Friction Diagnosis Sprint",
-      },
-    ],
-    proof: {
-      kicker: "Context",
-      title: "Built from real operations — so your system actually works",
-      text:
-        "I start where work actually breaks: unclear handoffs, scattered tools, slow decisions, and manual coordination. Then I design the smallest system that removes friction and creates visible results — more leads, faster execution, and less manual work.",
-      text2:
-        "If your team runs on Excel, email, and manual follow-ups, this is where most of the hidden cost usually starts.",
-      note:
-        "Based on operator-side delivery experience and workflow analysis.",
-      stats: [
-        { value: "10+ years", label: "MedTech, Pharma, logistics, and B2B delivery" },
-        { value: "$50M+",     label: "operations managed, supported, or influenced" },
-        { value: "5+ systems", label: "shipped and used in real environments" },
-        { value: "30–50%",    label: "manual work reduction potential in typical workflows" },
-      ],
-    },
-    credibility: {
-      kicker: "Built as a repeatable delivery system",
-      title: "Built as a repeatable delivery system",
-      text:
-        "The method is simple on purpose: diagnose before building, focus on business output, use the simplest stack that works, and leave the client with a system that can be repeated or improved.",
-      points: [
-        "Diagnose before building.",
-        "Focus on business output, not decoration.",
-        "Use simple tools before complex automation.",
-        "Deliver fast, measurable improvements.",
-        "Document the system so it can be repeated or improved.",
-      ],
-    },
-    trust: {
-      kicker: "Trust",
-      title: "Built from the operator side — not theory",
-      text:
-        "Before writing code, I map how the work actually happens: where decisions stall, where handoffs break, and where time is lost.",
-      text2:
-        "Then I build the smallest system that creates immediate leverage — clearer workflows, faster execution, and measurable time savings.",
-      text3:
-        "The goal is not more software. The goal is a working system your team can actually use.",
-    },
-    note: {
-      kicker: "Trust",
-      title: "Small note from Roman",
-      text:
-        "I build from the operator side first. Before design or code, I look for the workflow logic, the decision points, and the smallest system that can create visible leverage.",
-    },
-    final: {
-      kicker: "Next step",
-      title: "Let’s fix one problem first",
-      text:
-        "Bring one bottleneck: weak lead flow, manual reporting, unclear conversion, or an automation idea that needs structure. We will turn it into a small pilot.",
-      secondary: "Start with a small pilot",
-      primaryCta: "Book a Friction Diagnosis",
-      secondaryCta: "Contact me",
+      book: "Contact",
     },
   },
 
   about: {
     title: "About",
-    eyebrow: "Bridging $50M+ Operational Scale with AI-Orchestrated Delivery.",
-    heading: "Technical Product Manager | Systems & AI Automation",
+    eyebrow: "Operator background for regulated AI workflow systems.",
+    heading: "AI Product / Technical Product Leader for MedTech Workflow Systems",
     profileAlt: "Roman Mazuryk profile",
     para1:
-      "With 10+ years leading MedTech and regulated B2B delivery, I operate at the intersection of Product Strategy and AI-Augmented Architecture. I specialize in turning ambiguous, high-compliance constraints into predictable systems — leveraging my experience managing $50M+ operations to bridge the gap between business P&L and technical execution.",
+      "My background is operator-first: 10+ years around MedTech implementation, regulated B2B operations, product delivery, and cross-functional execution. I understand the messy middle where clinical, operational, commercial, and technical realities collide.",
     para2:
-      "My operating model is decision compression. I use AI as a tool for systemic speed, not as a coding shortcut. The goal is to compress ambiguity into auditable execution and move from requirement to production-grade outcome with fewer handoffs, clearer trade-offs, and stronger delivery control.",
+      "Today I focus on AI workflow systems: product discovery, workflow modeling, prototype delivery, SOP-ready handover, and practical automation for regulated operations. I use AI to accelerate analysis and build loops while keeping human review, traceability, and system ownership explicit.",
     pillars: {
       strategy: {
-        title: "Strategy",
-        text: "Max 3 active workstreams. Focused on outcome-velocity over feature-volume.",
+        title: "Discovery",
+        text: "Translate ambiguous workflow pain into users, states, constraints, risks, and product scope.",
       },
       architecture: {
-        title: "Architecture",
-        text: "Rigorous system validation before a single line of code is committed.",
+        title: "Systems",
+        text: "Turn messy operations into requirements, data models, review paths, and auditable handoffs.",
       },
       execution: {
-        title: "Execution",
-        text: "Small, daily deployments. If it isn\u2019t in production, it hasn\u2019t solved the problem yet.",
+        title: "Delivery",
+        text: "Prototype quickly, validate with operators, document decisions, and hand over usable systems.",
       },
     },
     operatingModel: {
       eyebrow: "Operating model",
       heading: "My Operating Model: Decision Compression",
       text:
-        "I reduce organizational drag by translating complex operational needs into lean system primitives. By utilizing AI-agentic workflows (Cursor, ClaudeCode), I compress the distance between a business requirement and a production-grade system, ensuring that delivery is not just fast, but auditable and impactful.",
+      "I reduce organizational drag by translating complex operational needs into lean system primitives. By using AI-agentic workflows (Cursor, ClaudeCode), I compress the distance between a business requirement and a concept implementation, while keeping auditability and operational impact visible.",
       principles: {
         strategy: {
           label: "Strategy:",
@@ -470,7 +86,7 @@ export default {
         },
         execution: {
           label: "Execution:",
-          text: "Small, daily deployments. If it is not in production, it has not solved the problem yet.",
+          text: "Small, daily validation loops. If the workflow is not usable by operators, it has not solved the problem yet.",
         },
       },
       cta: "Explore the AI Production OS",
@@ -479,10 +95,10 @@ export default {
       eyebrow: "Best-fit environment",
       heading: "Where I Operate Best",
       para1:
-        "Designed for remote-first, English-first agile environments targeting EU and global B2B SaaS. This workflow performs best where technical ambiguity is high, execution speed matters, and leadership needs clear control across product, engineering, and operations.",
+        "Best fit: AI Product Manager, Technical Product Manager, Product Operations, MedTech / HealthTech Product Lead, or Workflow Automation roles where the work requires both product judgment and operational realism.",
       para2:
-        "I collaborate directly with engineering on architecture while aligning leadership on the trade-offs that drive speed, reliability, and long-term leverage. In regulated MedTech and Pharma contexts, auditability is the differentiator: Micro-Scope, explicit acceptance criteria, and AI-supported documentation create traceability without slowing delivery.",
-      para3: "Systems ownership end-to-end: from ambiguity to shipped operational impact.",
+        "I work across business, product, operations, and engineering: framing the problem, mapping the workflow, shaping MVP scope, defining acceptance criteria, and making trade-offs visible to leadership.",
+      para3: "Regulated operations mindset: move fast where possible, but keep review ownership, traceability, documentation, and handover discipline intact.",
     },
     outside: {
       eyebrow: "Outside the platform",
@@ -499,7 +115,7 @@ export default {
   aiSdlc: {
     title: "AI-Augmented SDLC",
     intro:
-      "An executive-control operating model for production-grade delivery. AI handles leverage, scaffolding, and signal synthesis; human judgment owns architecture, trade-offs, and release quality. Built for high-velocity teams shipping in EU/global B2B SaaS and regulated environments where auditability cannot slow execution.",
+      "An executive-control operating model for AI workflow systems. AI handles leverage, scaffolding, and signal synthesis; human judgment owns architecture, trade-offs, auditability, and release quality in regulated operations.",
     badge1: "Remote-First Architecture",
     badge2: "MedTech / Pharma Auditability",
     badge3: "EU / Global Market Ready",
@@ -524,7 +140,7 @@ export default {
         "select a GitHub issue, define acceptance criteria and data schemas before touching code, then implement through small daily PRs. Scope is locked at issue-open \u2014 protecting scope integrity and predictable velocity.",
       p2label: "Architectural Gate & Risk Assessment",
       p2text:
-        "is a hard gate before every implementation: architecture logic, state transitions, and edge cases are validated by the architect before work moves into Cursor and ClaudeCode for architect-led implementation. The model layer handles AI-assisted scaffolding; the human layer verifies architecture, constraints, and production readiness.",
+        "is a hard gate before every implementation: architecture logic, state transitions, workflow risk, and edge cases are validated before work moves into Cursor and ClaudeCode for architect-led implementation. The model layer handles AI-assisted scaffolding; the human layer verifies architecture, constraints, and operational readiness.",
       p3label: "Auditability in regulated contexts:",
       p3text:
         "Micro-Scope plus explicit acceptance criteria provides a traceable paper trail for MedTech/Pharma delivery without slowing cadence. Each PR maps directly to a scoped requirement, with AI-assisted scaffolding and human-verified architecture preserving executive control over what ships.",
@@ -544,7 +160,7 @@ export default {
   skills: {
     title: "Skills & Leverage",
     statement:
-      "I use code as a leverage tool to validate system boundaries, clarify trade-offs, and accelerate production delivery \u2014",
+      "I use code as a leverage tool to validate system boundaries, clarify trade-offs, and accelerate concept implementation \u2014",
     statementEm: "not as an end in itself.",
     pillars: {
       "product-systems-leadership": {
@@ -598,7 +214,7 @@ export default {
           {
             title: "Core Engine & Stack",
             items: [
-              "React, JavaScript, Python (Flask/FastAPI), and Node.js for production web systems and service prototypes",
+              "React, JavaScript, Python (Flask/FastAPI), and Node.js for operational systems and service prototypes",
               "PostgreSQL, Firebase, REST APIs, and role-based access control for operational data modeling",
               "Git/GitHub, Docker, Vercel; Mermaid for architecture diagrams; Linear/Jira for delivery governance",
             ],
@@ -630,7 +246,7 @@ export default {
   },
 
   projects: {
-    title: "Product Systems",
+    title: "Proof of Work",
     tabs: {
       tech: "Product Systems",
       medtech: "Regulated Systems Delivery",
@@ -641,17 +257,18 @@ export default {
       "Decision Support": "Decision Support",
       "Real-Time Systems": "Real-Time Systems",
       "Internal Tools": "Internal Tools",
+      "AI-Assisted": "AI-Assisted",
       "Trading Systems": "Trading Systems",
       FinTech: "FinTech",
       Productivity: "Productivity",
       B2B: "B2B",
       MedTech: "MedTech",
     },
-    ariaLabel: "Portfolio categories",
-    filtersAriaLabel: "Filter product system tags",
-    techSectionTitle: "Product Systems",
+    ariaLabel: "Proof of work categories",
+    filtersAriaLabel: "Filter proof of work tags",
+    techSectionTitle: "System-building evidence",
     techIntro:
-      "Systems I design and ship to convert operational complexity into scalable products \u2014 from internal tools and data integrity layers to real-time interaction workflows.",
+      "Selected systems reframed as evidence of workflow design, product thinking, AI-assisted delivery, and practical operational automation.",
     medSectionTitle: "MedTech - Integration & Delivery",
     medIntro:
       "Regulated delivery across clinical environments: multi-vendor integrations, workflow governance, adoption enablement, and lifecycle reliability under real constraints.",
@@ -663,28 +280,45 @@ export default {
     viewLink: "View",
     inProgress: "In progress",
     caseStudy: "Case Study",
+    viewCaseStudy: "View Case Study",
+    labels: {
+      problem: "Problem",
+      system: "System built",
+      value: "Business/process value",
+      evidence: "Tech/product evidence",
+    },
     loadingCaseStudy: "Loading case study",
     comingSoon: "Coming soon...",
     items: {
-      livesurgery: {
-        title: "LiveSurgery - Real-Time Surgical Collaboration Platform",
+      "clinical-evidence-workflow": {
+        title: "Clinical Evidence Workflow",
         summary:
-          "Founder-led MedTech PoC delivering a fully functional OR workspace: multi-panel video coordination, drag-and-drop source assignment, role-based access (Surgeon / Observer / Admin), and WebSocket-powered real-time layout sync with optimistic concurrency. Backed by a FastAPI + SQLite REST API with session lifecycle management, an analytics dashboard, and a searchable session archive.",
+          "Flagship proof: AI-assisted workflow for MedTech evidence review, claim mapping, traceability, and handover.",
+      },
+      livesurgery: {
+        title: "LiveSurgery",
+        summary:
+          "Surgical workflow intelligence for multi-source OR video, session structuring, education, and surgical collaboration.",
       },
       flowlogics: {
-        title: "Flowlogics - API-Driven Supply Visibility and Lifecycle Control",
+        title: "FlowLogix",
         summary:
-          "Logistics operations platform centralizing orders, warehouse intake, and delivered transitions with a strict API contract, role-gated workflows, readonly demo mode, and timeline-based ETA risk visibility.",
+          "Operations visibility dashboard for workflow visibility and operational decision support.",
+      },
+      "vendor-free-supply-tracker": {
+        title: "Vendor-Free Supply Tracker",
+        summary:
+          "Logistics and stock reporting workflow system for purchase orders, warehouse intake, delivered goods, and stock reporting.",
       },
       alpharhythm: {
-        title: "AlphaRhythm - Trading Execution and Discipline System",
+        title: "AlphaRhythm",
         summary:
-          "Rule-based trading execution system designed to improve discipline, enforce strategy compliance, and turn discretionary decision-making into a repeatable workflow. Includes trade journaling, execution gates, violation tracking, and performance review loops for consistent trader behavior.",
+          "Rule-based execution and compliance system for trading discipline, rule checking, violations, and weekly review.",
       },
       jobsprint: {
-        title: "JobSprint - Job Search Workflow Manager",
+        title: "JobSprint",
         summary:
-          "Execution-oriented job search system for solo product and engineering candidates, replacing scattered notes and spreadsheets with a drag-and-drop application pipeline, weekly execution tracking, funnel analytics, and an offer-probability view tied to real conversion progress.",
+          "AI-assisted workflow/productivity system for job search pipeline, role capture, application tracking, and compliance support.",
       },
       "surgiris-lights": {
         title: "SURGIRIS LED Surgical Lights (Multi-site Delivery)",
@@ -738,8 +372,10 @@ export default {
       gtm: "Business Model",
     },
     caseStudyTitles: {
+      "clinical-evidence-workflow": "Clinical Evidence Workflow - Case Study",
       livesurgery: "LiveSurgery - Case Study",
       flowlogics: "Flowlogics - Case Study",
+      "vendor-free-supply-tracker": "Vendor-Free Supply Tracker - Case Study",
       alphorythm: "AlphaRhythm - Case Study",
       jobsprint: "JobSprint - Case Study",
     },
@@ -796,14 +432,14 @@ export default {
 
   contact: {
     title: "Contact",
-    subtitle: "Systems & AI Strategy Inquiries",
+    subtitle: "Roles, product teams, and workflow systems",
     para1:
-      "Selectively evaluating Technical Product Manager roles within high-growth, English-first organizations. Specialized in bridging $50M+ operational complexity with AI-augmented delivery.",
+      "Open to AI Product Manager, Technical Product Manager, Product Operations, and MedTech / HealthTech product roles where operator context and AI-assisted systems thinking matter.",
     para2label: "Best for:",
     para2items: [
-      "Complexity: Organizations scaling past \"Excel-based\" coordination.",
-      "High-Stakes Ops: Logistics, FinTech, and B2B SaaS where auditability is non-negotiable.",
-      "AI-Orchestration: Teams looking to 10x their delivery speed through agentic workflows (Cursor, ClaudeCode, v0).",
+      "Hiring teams evaluating workflow automation, AI product, or regulated operations leadership.",
+      "Product teams that need someone who can translate messy operations into system requirements.",
+      "Business teams looking for focused AI workflow audits or prototype support.",
     ],
     para2text:
       "AI-agentic workflows, high-compliance platforms, internal tooling architecture, and zero-to-one system validation.",
@@ -818,15 +454,15 @@ export default {
     messageLabel: "Message",
     messagePlaceholder: "How can I help?",
     hint: "Sends via your email client \u2014 no data stored",
-    submitBtn: "Send inquiry",
-    emailDirectBtn: "Email directly",
+    submitBtn: "Contact for Roles",
+    emailDirectBtn: "Request AI Workflow Audit",
     copied: "Copied!",
     submitted: "Opening your email client with the draft...",
   },
 
   footer: {
     tagline:
-      "Technical Product Manager | Systems & AI Automation\nArchitecting scalable systems in regulated industries. Leveraging 10+ years of domain expertise and AI-orchestrated delivery to make outcomes predictable.",
+      "MedTech Product & Workflow Systems\nCombining real MedTech implementation experience with AI-assisted discovery, prototyping, documentation, and delivery.",
     nav: "Navigation",
     availability: "Selective Focus",
     availabilityText:
@@ -836,25 +472,27 @@ export default {
     sendEmail: "Send an email",
     requestAudit: "Request an audit",
     availabilityTextServices:
-      "I take on a limited number of SME website, workflow, and automation projects where one focused system can create visible business leverage.",
+      "I take on a limited number of MedTech, HealthTech, and regulated operations projects where one workflow system can create visible leverage.",
     availabilityText2Services:
-      "Each engagement starts with a clear audit: the fastest path to more leads, cleaner workflows, or measurable time savings.",
+      "Each engagement starts with a clear audit: the fastest path to safer AI assistance, cleaner workflows, and auditable handover.",
     copyright: "All rights reserved.",
     location: "Germany (CET) \u00B7 Selective for remote & hybrid",
     navLinks: {
+      Home: "Home",
       Results: "Results",
-      Projects: "Projects",
+      Projects: "Proof of Work",
       Services: "Services",
-      Framework: "Framework",
+      AIWorkflows: "AI Workflows",
+      ServicesBusiness: "Work With Me",
       About: "About",
       Contact: "Contact",
     },
     servicesNavLinks: {
       audit:    "Audit",
-      systems:  "Systems",
+      systems:  "Services",
       packages: "Packages",
-      process:  "Process",
-      context:  "Context",
+      process:  "Method",
+      context:  "Proof",
       trust:    "Trust",
       contact:  "Contact",
     },

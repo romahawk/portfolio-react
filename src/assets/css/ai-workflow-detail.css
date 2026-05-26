@@ -1,0 +1,285 @@
+.ai-workflow-detail {
+  padding-bottom: 20px;
+}
+
+.ai-workflow-detail__hero {
+  min-height: calc(72svh - 72px);
+  display: grid;
+  align-items: center;
+  position: relative;
+}
+
+.ai-workflow-detail__hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(760px 420px at 20% 30%, var(--surface-glow), transparent 62%),
+    radial-gradient(680px 380px at 88% 18%, var(--surface-cool), transparent 64%);
+  pointer-events: none;
+}
+
+.ai-workflow-detail__hero-inner {
+  position: relative;
+  padding: 52px 0 72px;
+}
+
+.ai-workflow-detail__hero-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  border: 1px solid var(--surface-border);
+  border-radius: 14px;
+  background: var(--surface-soft);
+  color: var(--brand);
+}
+
+.ai-workflow-detail__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.ai-workflow-detail__meta > span:not(.status-badge) {
+  padding: 7px 10px;
+  border: 1px solid var(--tag-border);
+  border-radius: 999px;
+  background: var(--tag-bg);
+  color: var(--muted-strong);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ai-workflow-detail__meta .ai-workflow-detail__hero-icon {
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  border-radius: 10px;
+  padding: 0;
+}
+
+.ai-workflow-detail__hero h1 {
+  max-width: 980px;
+  margin: 0 0 18px;
+  font-size: clamp(34px, 6vw, 62px);
+  line-height: 1.04;
+}
+
+.ai-workflow-detail__hero p {
+  max-width: 860px;
+  margin: 0;
+  color: var(--muted-strong);
+  font-size: clamp(17px, 2.3vw, 20px);
+  line-height: 1.7;
+}
+
+.ai-workflow-detail__section {
+  padding-top: 54px;
+}
+
+.ai-workflow-detail__section-head {
+  margin-bottom: 18px;
+}
+
+.ai-workflow-detail__problem-grid,
+.ai-workflow-detail__current,
+.ai-workflow-detail__triple,
+.ai-workflow-detail__component-grid,
+.ai-workflow-detail__value-grid,
+.ai-workflow-detail__artifact-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.ai-workflow-detail__problem-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ai-workflow-detail__current {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.ai-workflow-detail__triple {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 16px;
+}
+
+.ai-workflow-detail__problem-grid article,
+.ai-workflow-detail__list-card,
+.ai-workflow-detail__component,
+.ai-workflow-detail__audit,
+.ai-workflow-detail__value-grid article,
+.ai-workflow-detail__artifact,
+.ai-workflow-detail__panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+}
+
+.ai-workflow-detail__problem-grid article,
+.ai-workflow-detail__list-card,
+.ai-workflow-detail__audit,
+.ai-workflow-detail__panel {
+  padding: 18px;
+}
+
+.ai-workflow-detail__problem-grid h3,
+.ai-workflow-detail__list-card h3 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.ai-workflow-detail__problem-grid p,
+.ai-workflow-detail__audit p,
+.ai-workflow-detail__panel p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.ai-workflow-detail__list-card ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ai-workflow-detail__list-card li,
+.ai-workflow-detail__value-grid article {
+  display: flex;
+  gap: 8px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.ai-workflow-detail__list-card svg,
+.ai-workflow-detail__value-grid svg {
+  color: var(--brand);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ai-workflow-detail__flow {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.ai-workflow-detail__flow-step {
+  min-height: 140px;
+  padding: 16px;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(360px 180px at 100% 0, var(--surface-cool), transparent 68%),
+    var(--card-bg);
+}
+
+.ai-workflow-detail__flow-step span {
+  display: inline-flex;
+  margin-bottom: 12px;
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.ai-workflow-detail__flow-step p {
+  margin: 0;
+  color: var(--muted-strong);
+  line-height: 1.55;
+}
+
+.ai-workflow-detail__component-grid {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.ai-workflow-detail__component {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  color: var(--muted-strong);
+  font-weight: 800;
+}
+
+.ai-workflow-detail__audit {
+  display: grid;
+  gap: 16px;
+  background:
+    radial-gradient(620px 280px at 100% 0, var(--surface-glow), transparent 64%),
+    var(--card-bg);
+}
+
+.ai-workflow-detail__value-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.ai-workflow-detail__value-grid article {
+  min-height: 76px;
+  align-items: flex-start;
+  padding: 14px;
+}
+
+.ai-workflow-detail__artifact-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.ai-workflow-detail__artifact {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+}
+
+.ai-workflow-detail__artifact span {
+  color: var(--muted-strong);
+  font-weight: 800;
+}
+
+.ai-workflow-detail__artifact div {
+  min-height: 118px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 12px;
+  background:
+    linear-gradient(90deg, transparent 24%, var(--surface-soft) 25%, transparent 26%),
+    linear-gradient(0deg, transparent 24%, var(--surface-soft) 25%, transparent 26%),
+    var(--surface-soft);
+  background-size: 32px 32px;
+}
+
+.ai-workflow-detail--missing {
+  min-height: 60svh;
+  display: grid;
+  align-items: center;
+}
+
+.ai-workflow-detail__panel h1 {
+  margin: 0 0 12px;
+}
+
+.ai-workflow-detail__panel .btn {
+  margin-top: 18px;
+}
+
+@media (max-width: 860px) {
+  .ai-workflow-detail__problem-grid,
+  .ai-workflow-detail__triple {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 540px) {
+  .ai-workflow-detail__hero-inner {
+    padding: 36px 0 52px;
+  }
+
+  .ai-workflow-detail__section {
+    padding-top: 36px;
+  }
+}

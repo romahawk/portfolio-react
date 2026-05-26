@@ -35,7 +35,7 @@ const milestones = [
     summary:
       "Shifted from implementation-heavy delivery to product systems ownership in Germany: defining technical data contracts, schema architecture, and platform boundaries for high-compliance logistics operations.",
     points: [
-      "2024–2025 — Technical Product Manager, PharmaLogis GmbH: defined data contracts and schema architecture for the transition from Excel/email to centralized SQL-based platform logic",
+      "2024–2025 — Technical Product Manager, vendor-free supply operations: defined data contracts and schema architecture for the transition from Excel/email to centralized SQL-based platform logic",
       "Managed Engineering-to-Ops stakeholder alignment throughout platform definition and rollout",
       "Increased operational velocity by ~35% via unified dashboards and reduced manual cross-referencing",
       "Shortened executive reporting cycles by ~25% with real-time visualization and automated reconciliation",

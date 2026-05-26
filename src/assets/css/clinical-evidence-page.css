@@ -1,0 +1,229 @@
+.clinical-page {
+  padding-bottom: 20px;
+}
+
+.clinical-page__hero {
+  min-height: calc(100svh - 72px);
+  display: grid;
+  align-items: center;
+  position: relative;
+}
+
+.clinical-page__hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(720px 440px at 20% 30%, var(--surface-glow), transparent 62%),
+    radial-gradient(680px 420px at 92% 20%, var(--surface-cool), transparent 64%);
+  pointer-events: none;
+}
+
+.clinical-page__hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+  gap: 28px;
+  align-items: center;
+  padding: 44px 0 96px;
+}
+
+.clinical-page__hero-copy h1 {
+  max-width: 900px;
+  margin: 0 0 18px;
+  font-size: clamp(34px, 6vw, 62px);
+  line-height: 1.02;
+}
+
+.clinical-page__hero-copy p {
+  max-width: 860px;
+  color: var(--muted-strong);
+  font-size: clamp(17px, 2.4vw, 20px);
+  line-height: 1.7;
+}
+
+.clinical-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.clinical-page__hero-panel,
+.clinical-page__card,
+.clinical-page__mini,
+.clinical-page__evidence-card,
+.clinical-page__final-inner {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+}
+
+.clinical-page__hero-panel {
+  padding: 18px;
+}
+
+.clinical-page__hero-panel h2,
+.clinical-page__card h3,
+.clinical-page__mini h3,
+.clinical-page__evidence-card h3 {
+  margin: 0 0 8px;
+  color: var(--text);
+}
+
+.clinical-page__hero-panel p,
+.clinical-page__card p,
+.clinical-page__evidence-card p,
+.clinical-page__final-inner p {
+  margin: 0;
+  line-height: 1.65;
+}
+
+.clinical-page__section-head {
+  max-width: 820px;
+  margin-bottom: 18px;
+}
+
+.clinical-page__kicker {
+  margin: 0 0 8px;
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.clinical-page__two-col {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.clinical-page__card {
+  padding: 18px;
+}
+
+.clinical-page__workflow {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(120px, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+}
+
+.clinical-page__workflow-step {
+  min-height: 120px;
+  display: grid;
+  align-content: space-between;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background:
+    radial-gradient(260px 140px at 100% 0, var(--surface-cool), transparent 62%),
+    var(--card-bg);
+}
+
+.clinical-page__workflow-step span {
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.clinical-page__workflow-step strong {
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.clinical-page__band {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.clinical-page__grid,
+.clinical-page__evidence-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.clinical-page__grid {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.clinical-page__grid--three {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.clinical-page__mini {
+  min-height: 116px;
+  padding: 16px;
+}
+
+.clinical-page__icon {
+  color: var(--brand);
+  margin-bottom: 10px;
+}
+
+.clinical-page__evidence-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.clinical-page__evidence-card {
+  padding: 16px;
+}
+
+.clinical-page__placeholder {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 12px;
+  border: 1px solid var(--surface-border);
+  border-radius: 10px;
+  background: var(--surface-soft);
+}
+
+.clinical-page__placeholder span {
+  display: block;
+  height: 9px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--surface-cool), var(--surface-glow));
+}
+
+.clinical-page__placeholder span:nth-child(2) {
+  width: 76%;
+}
+
+.clinical-page__placeholder span:nth-child(3) {
+  width: 52%;
+}
+
+.clinical-page__final-inner {
+  padding: 28px;
+  background:
+    radial-gradient(620px 300px at 100% 0, var(--surface-glow), transparent 64%),
+    var(--card-bg);
+}
+
+.clinical-page__final-inner h2 {
+  margin: 0 0 10px;
+}
+
+@media (max-width: 860px) {
+  .clinical-page__hero-inner,
+  .clinical-page__two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 540px) {
+  .clinical-page__hero-inner {
+    padding-bottom: 56px;
+  }
+
+  .clinical-page__workflow {
+    grid-template-columns: 1fr;
+    overflow: visible;
+  }
+}

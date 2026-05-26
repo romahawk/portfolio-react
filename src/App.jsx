@@ -6,19 +6,47 @@ import { useOgMeta } from "./hooks/useOgMeta.js";
 import { useTheme } from "./hooks/useTheme.js";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
-import Results from "./components/Results.jsx";
+import OperatorAdvantage from "./components/OperatorAdvantage.jsx";
 import Projects from "./components/Projects.jsx";
-import Skills from "./components/Skills.jsx";
-import AIAugmentedSDLC from "./components/AIAugmentedSDLC.jsx";
-import About from "./components/About.jsx";
-import Contact from "./components/Contact.jsx";
+import AIWorkflowPreview from "./components/AIWorkflowPreview.jsx";
+import AboutPage from "./components/AboutPage.jsx";
+import ContactPage from "./components/ContactPage.jsx";
 import Footer from "./components/Footer.jsx";
 import BackToTop from "./components/BackToTop.jsx";
 import ServicesPage from "./components/ServicesPage.jsx";
+import ClinicalEvidenceWorkflowPage from "./components/ClinicalEvidenceWorkflowPage.jsx";
+import AIWorkflowLibrary from "./components/AIWorkflowLibrary.jsx";
+import AIWorkflowDetailPage from "./components/AIWorkflowDetailPage.jsx";
+import ProofOfWorkPage from "./components/ProofOfWorkPage.jsx";
+import ORIntegrationProofPage from "./components/ORIntegrationProofPage.jsx";
+
+const CLINICAL_EVIDENCE_PATH = "/medtech-ai-systems/clinical-evidence-workflow";
+const AI_WORKFLOW_PATH = "/ai-workflow";
+const PROOF_OF_WORK_PATH = "/proof-of-work";
+const OR_INTEGRATION_PROOF_PATH = "/proof-of-work/or-integration";
+const ROUTE_SECTION_MAP = {
+  "/about": "about",
+  "/contact": "contact",
+};
 
 function getPage() {
   if (typeof window === "undefined") return "home";
-  return window.location.pathname.replace(/\/+$/, "") === "/services" ? "services" : "home";
+  const path = window.location.pathname.replace(/\/+$/, "") || "/";
+  if (path === "/services" || path === "/collaborate") return "services";
+  if (path === "/about") return "about";
+  if (path === "/contact") return "contact";
+  if (path === OR_INTEGRATION_PROOF_PATH) return "or-integration-proof";
+  if (path === PROOF_OF_WORK_PATH) return "proof-of-work";
+  if (path === AI_WORKFLOW_PATH) return "ai-workflow";
+  if (path.startsWith(`${AI_WORKFLOW_PATH}/`)) return "ai-workflow-detail";
+  if (path === CLINICAL_EVIDENCE_PATH) return "clinical-evidence-workflow";
+  return "home";
+}
+
+function getWorkflowSlug() {
+  if (typeof window === "undefined") return "";
+  const path = window.location.pathname.replace(/\/+$/, "") || "/";
+  return path.startsWith(`${AI_WORKFLOW_PATH}/`) ? path.slice(`${AI_WORKFLOW_PATH}/`.length) : "";
 }
 
 function AppInner() {
@@ -39,8 +67,10 @@ function AppInner() {
   }, []);
 
   React.useEffect(() => {
-    if (page !== "home" || !window.location.hash) return;
-    const id = window.location.hash.slice(1);
+    if (page !== "home") return;
+    const path = window.location.pathname.replace(/\/+$/, "") || "/";
+    const id = window.location.hash.slice(1) || ROUTE_SECTION_MAP[path];
+    if (!id) return;
     window.requestAnimationFrame(() => {
       document.getElementById(id)?.scrollIntoView();
     });
@@ -53,15 +83,26 @@ function AppInner() {
       <main id="main">
         {page === "services" ? (
           <ServicesPage />
+        ) : page === "about" ? (
+          <AboutPage />
+        ) : page === "contact" ? (
+          <ContactPage />
+        ) : page === "proof-of-work" ? (
+          <ProofOfWorkPage />
+        ) : page === "or-integration-proof" ? (
+          <ORIntegrationProofPage />
+        ) : page === "ai-workflow" ? (
+          <AIWorkflowLibrary />
+        ) : page === "ai-workflow-detail" ? (
+          <AIWorkflowDetailPage slug={getWorkflowSlug()} />
+        ) : page === "clinical-evidence-workflow" ? (
+          <ClinicalEvidenceWorkflowPage />
         ) : (
           <>
             <Hero />
-            <Results />
+            <OperatorAdvantage />
             <Projects />
-            <Skills />
-            <AIAugmentedSDLC />
-            <About />
-            <Contact />
+            <AIWorkflowPreview />
           </>
         )}
       </main>

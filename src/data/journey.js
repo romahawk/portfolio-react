@@ -15,7 +15,7 @@ const journey = [
     year: "2024–2025",
     icon: "Database",
     items: [
-      "Technical Product Manager (Internal Systems) at PharmaLogis GmbH (Germany)",
+      "Technical Product Manager (Internal Systems) at vendor-free supply operations (Germany)",
       "Defined data contracts and schema architecture for the transition from legacy workflows to centralized SQL platform logic",
       "Bridged Engineering and Ops to align technical implementation with complex regulatory requirements",
       "Increased operational velocity by ~35% through unified dashboarding and real-time reconciliation",
