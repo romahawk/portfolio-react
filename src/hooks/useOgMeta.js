@@ -41,7 +41,7 @@ const AI_WORKFLOW = {
   description:
     "Practical examples of AI-assisted workflow systems for MedTech, HealthTech, and regulated operations.",
   url: "https://www.mazuryk.dev/ai-workflow",
-  image: "https://www.mazuryk.dev/images/og-home.png",
+  image: "https://www.mazuryk.dev/images/og-ai-workflows.png",
   imageAlt: "AI workflow solution library for MedTech and regulated operations.",
   imageWidth: "1200",
   imageHeight: "630",
@@ -63,7 +63,7 @@ const OR_INTEGRATION_PROOF = {
   description:
     "Real-world MedTech implementation experience across operating room infrastructure, surgical equipment integration, video/audio workflows, clinical handover, and hospital stakeholder coordination.",
   url: "https://www.mazuryk.dev/proof-of-work/or-integration",
-  image: "https://www.mazuryk.dev/images/og-home.png",
+  image: "https://www.mazuryk.dev/images/og-or_workflow.png",
   imageAlt: "OR integration and surgical workflow systems proof page for Roman Mazuryk.",
   imageWidth: "1200",
   imageHeight: "630",
