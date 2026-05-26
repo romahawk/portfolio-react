@@ -1,35 +1,41 @@
 import React, { Suspense, useEffect, useMemo, useState } from "react";
-import { techProjects, medtechProjects } from "../data/projects.js";
+import { techProjects } from "../data/projects.js";
 import {
-  Cpu, Shield, FileText, Boxes, Stethoscope, BriefcaseBusiness,
+  ArrowRight, ClipboardList, FileText, Boxes,
   Lightbulb, MonitorCog, Wrench, SearchCheck, Camera,
   Rocket, TrendingUp, Waves, Circle,
 } from "lucide-react";
 import CaseStudyModal from "./CaseStudyModal.jsx";
 import { useTranslation } from "../context/LangContext.jsx";
+import StatusBadge from "./StatusBadge.jsx";
 
-const CARD_ICONS = { Lightbulb, MonitorCog, Wrench, SearchCheck, Camera, Rocket, TrendingUp, Waves, Circle };
+const CARD_ICONS = {
+  Boxes,
+  ClipboardList,
+  FileText,
+  Lightbulb,
+  MonitorCog,
+  Wrench,
+  SearchCheck,
+  Camera,
+  Rocket,
+  TrendingUp,
+  Waves,
+  Circle,
+};
 
+const ClinicalEvidenceCaseStudy = React.lazy(() => import("./case-studies/ClinicalEvidenceCaseStudy.jsx"));
 const LivesurgeryCaseStudy = React.lazy(() => import("./case-studies/LivesurgeryCaseStudy.jsx"));
 const FlowLogixCaseStudy = React.lazy(() => import("./case-studies/FlowLogixCaseStudy.jsx"));
+const VendorFreeSupplyCaseStudy = React.lazy(() => import("./case-studies/VendorFreeSupplyCaseStudy.jsx"));
 const AlphorythmCaseStudy = React.lazy(() => import("./case-studies/AlphorythmCaseStudy.jsx"));
 const JobSprintCaseStudy = React.lazy(() => import("./case-studies/JobSprintCaseStudy.jsx"));
 
-const CATEGORY = { TECH: "tech", MED: "medtech" };
-const TECH_TAG_ORDER = [
-  "All",
-  "Workflow Systems",
-  "Decision Support",
-  "Real-Time Systems",
-  "Internal Tools",
-  "Productivity",
-  "B2B",
-  "MedTech",
-];
-
 const CASE_STUDY_COMPONENTS = {
+  "clinical-evidence-workflow": ClinicalEvidenceCaseStudy,
   livesurgery: LivesurgeryCaseStudy,
   flowlogics: FlowLogixCaseStudy,
+  "vendor-free-supply-tracker": VendorFreeSupplyCaseStudy,
   alphorythm: AlphorythmCaseStudy,
   jobsprint: JobSprintCaseStudy,
 };
@@ -44,12 +50,45 @@ const CASE_STUDY_SECTION_IDS = [
   "outcomes",
   "gtm",
 ];
+const LEGACY_SUPPLY_TRACKER_SLUG = ["pharma", "logis-supply-tracker"].join("");
 
-const normalizeTags = (list) => {
-  const present = new Set();
-  list.forEach((project) => (project.tags || []).forEach((tag) => present.add(tag)));
-  return TECH_TAG_ORDER.filter((tag) => tag === "All" || present.has(tag));
-};
+const FEATURED_PROOF = [
+  {
+    id: "or-integration-surgical-workflow-systems",
+    title: "OR Integration & Surgical Workflow Systems",
+    summary:
+      "Real-world experience with operating room integration and surgical infrastructure projects, including surgical lighting, OR video/audio workflows, medical equipment coordination, implementation handover, and hospital stakeholder alignment.",
+    proof: {
+      problem: "Operating rooms are complex environments where equipment, video signals, patient data, lighting, documentation, and clinical workflows must work together reliably. Poor integration creates friction, delays, weak visibility, and handover risk.",
+      system: "Experience across implementation planning, equipment coordination, installation support, clinical handover, stakeholder communication, and workflow understanding around integrated OR environments.",
+      value: "MedTech domain expertise, OR workflow understanding, implementation reality, and the ability to translate clinical-operational complexity into structured product and workflow systems.",
+      evidence: "Real MedTech implementation exposure across OR environments, medical equipment integration, clinical handover, and hospital stakeholder coordination.",
+    },
+    stack: ["OR workflow", "Surgical infrastructure", "Medical equipment coordination", "Clinical handover"],
+    tags: ["Workflow Systems", "MedTech"],
+    status: "Real MedTech Implementation Experience",
+    icon: "MonitorCog",
+    caseStudy: "or-integration",
+    caseStudyUrl: "/proof-of-work/or-integration",
+  },
+  {
+    ...techProjects.find((project) => project.id === "medtech-implementation-handoff-assistant"),
+    id: "medtech-handoff-assistant",
+    title: "MedTech Implementation Handoff Assistant",
+    summary:
+      "Handoff-ready reference workflow for turning implementation context into structured requirements, risks, ownership, and next actions.",
+    proof: {
+      problem: "Implementation knowledge can sit across site notes, vendor details, user constraints, and informal stakeholder conversations.",
+      system: "AI-assisted handoff assistant that structures workflow context, open risks, acceptance criteria, responsible owners, and rollout notes.",
+      value: "Improves continuity between operator discovery, product planning, engineering scope, and post-implementation support.",
+      evidence: "MedTech implementation lens, workflow mapping, handover templates, role/state logic, and product requirement structure.",
+    },
+    stack: ["Workflow discovery", "Implementation handover", "Requirements", "Risk mapping"],
+    tags: ["Workflow Systems", "MedTech", "AI-Assisted"],
+    status: "Reference System",
+    icon: "ClipboardList",
+  },
+].filter(Boolean);
 
 const getCardTone = (project) => {
   if (project.tags?.includes("Real-Time Systems")) return "signal";
@@ -63,14 +102,23 @@ function ProjectCard({ p, variant, onOpenCase, t }) {
   const CardIcon = p.icon ? (CARD_ICONS[p.icon] || Circle) : null;
   const tone = getCardTone(p);
 
-  const translatedTitle = t(`projects.items.${p.id}.title`) || p.title;
-  const translatedSummary = t(`projects.items.${p.id}.summary`) || p.summary;
+  const titleKey = `projects.items.${p.id}.title`;
+  const summaryKey = `projects.items.${p.id}.summary`;
+  const translatedTitle = t(titleKey) === titleKey ? p.title : t(titleKey);
+  const translatedSummary = t(summaryKey) === summaryKey ? p.summary : t(summaryKey);
+  const proofRows = [
+    ["problem", t("projects.labels.problem")],
+    ["system", t("projects.labels.system")],
+    ["value", t("projects.labels.value")],
+    ["evidence", t("projects.labels.evidence")],
+  ];
 
   return (
     <article className={`project-card${variant ? ` project-card--${variant}` : ""}${tone ? ` project-card--${tone}` : ""}`}>
       <header className="project-card__head">
         <div className="project-card__title-wrap">
           <h4 className="project-card__title">{translatedTitle}</h4>
+          <StatusBadge status={p.status || (p.inDevelopment ? "Prototype" : "Proof-of-Work Artifact")} />
           {tone ? <span className="project-card__tone">{tone.replace("-", " ")}</span> : null}
         </div>
         {CardIcon ? (
@@ -81,6 +129,19 @@ function ProjectCard({ p, variant, onOpenCase, t }) {
       </header>
 
       <p className="project-card__summary">{translatedSummary}</p>
+
+      {p.proof ? (
+        <dl className="project-card__proof">
+          {proofRows.map(([key, label]) => (
+            p.proof[key] ? (
+              <div className="project-card__proof-row" key={key}>
+                <dt>{label}</dt>
+                <dd>{p.proof[key]}</dd>
+              </div>
+            ) : null
+          ))}
+        </dl>
+      ) : null}
 
       {p.stack?.length ? (
         <ul className="project-card__stack">
@@ -118,13 +179,15 @@ function ProjectCard({ p, variant, onOpenCase, t }) {
           {p.caseStudy ? (
             <a
               className="project-card__link project-card__link--ghost"
-              href={`#projects/${p.caseStudy}`}
+              href={p.caseStudyUrl || `#projects/${p.caseStudy}`}
               onClick={(e) => {
-                e.preventDefault();
-                onOpenCase && onOpenCase(p.caseStudy);
+                if (!p.caseStudyUrl) {
+                  e.preventDefault();
+                  onOpenCase && onOpenCase(p.caseStudy);
+                }
               }}
             >
-              <FileText size={14} className="icon mr-1" /> {t("projects.caseStudy")}
+              <FileText size={14} className="icon mr-1" /> {t("projects.viewCaseStudy")}
             </a>
           ) : null}
         </div>
@@ -135,13 +198,8 @@ function ProjectCard({ p, variant, onOpenCase, t }) {
 
 export default function Projects() {
   const { t } = useTranslation();
-  const [cat, setCat] = useState(CATEGORY.TECH);
   const [caseId, setCaseId] = useState(null);
-  const [tag, setTag] = useState("All");
-  const visibleTechProjects = useMemo(
-    () => techProjects.filter((project) => !project.hiddenFromFrontend),
-    []
-  );
+  const visibleTechProjects = useMemo(() => FEATURED_PROOF, []);
 
   const CASE_HASH_PREFIX = "#projects/";
   const activeCaseStudyIds = useMemo(
@@ -162,6 +220,10 @@ export default function Projects() {
       const slug = hash.slice(CASE_HASH_PREFIX.length);
       if (slug === "flowlogix") {
         window.location.hash = "projects/flowlogics";
+        return;
+      }
+      if (slug === LEGACY_SUPPLY_TRACKER_SLUG) {
+        window.location.hash = "projects/vendor-free-supply-tracker";
         return;
       }
       setCaseId(activeCaseStudyIds.has(slug) ? slug : null);
@@ -186,29 +248,6 @@ export default function Projects() {
     }
   };
 
-  const tags = useMemo(
-    () => (cat === CATEGORY.TECH ? normalizeTags(visibleTechProjects) : []),
-    [cat, visibleTechProjects]
-  );
-
-  useEffect(() => {
-    setTag("All");
-  }, [cat]);
-
-  const visibleTech = useMemo(() => {
-    if (tag === "All") return visibleTechProjects;
-    return visibleTechProjects.filter((project) => (project.tags || []).includes(tag));
-  }, [tag, visibleTechProjects]);
-
-  const medIntegration = useMemo(
-    () => medtechProjects.filter((p) => p.segment !== "management"),
-    []
-  );
-  const medManagement = useMemo(
-    () => medtechProjects.filter((p) => p.segment === "management"),
-    []
-  );
-
   const ActiveCaseComponent = caseId ? CASE_STUDY_COMPONENTS[caseId] : null;
 
   // Build translated sections and title for the active case study
@@ -226,91 +265,30 @@ export default function Projects() {
     <section id="projects" className="section container">
       <h2 className="section__title reveal">&gt; {t("projects.title")}</h2>
 
-      <div className="projects__toolbar reveal reveal--delay-1">
-        <div className="projects__tabs" role="tablist" aria-label={t("projects.ariaLabel")}>
-          <button
-            role="tab"
-            aria-selected={cat === CATEGORY.TECH}
-            className={`tab ${cat === CATEGORY.TECH ? "tab--active" : ""}`}
-            onClick={() => setCat(CATEGORY.TECH)}
-          >
-            <Cpu size={16} className="icon mr-1" /> {t("projects.tabs.tech")}
-          </button>
+      <h3 className="projects__section-title">
+        <Boxes size={18} className="icon" /> Featured Proof of Work
+      </h3>
+      <p className="projects__intro">
+        Three proof items led by real MedTech implementation experience, then connected to
+        product concepts and AI-assisted workflow systems.
+      </p>
 
-          <button
-            role="tab"
-            aria-selected={cat === CATEGORY.MED}
-            className={`tab ${cat === CATEGORY.MED ? "tab--active" : ""}`}
-            onClick={() => setCat(CATEGORY.MED)}
-          >
-            <Shield size={16} className="icon mr-1" /> {t("projects.tabs.medtech")}
-          </button>
-        </div>
-
-        {cat === CATEGORY.TECH && tags.length > 1 && (
-          <div className="projects__filters" role="group" aria-label={t("projects.filtersAriaLabel")}>
-            {tags.map((tagItem) => (
-              <button
-                key={tagItem}
-                className={`chip ${tag === tagItem ? "chip--active" : ""}`}
-                onClick={() => setTag(tagItem)}
-                aria-pressed={tag === tagItem}
-              >
-                {t(`projects.filters.${tagItem}`) || tagItem}
-              </button>
-            ))}
-          </div>
-        )}
+      <div className="projects__grid">
+        {visibleTechProjects.map((p) => (
+          <ProjectCard
+            key={p.id}
+            p={p}
+            onOpenCase={openCase}
+            t={t}
+          />
+        ))}
       </div>
 
-      {cat === CATEGORY.TECH ? (
-        <>
-          <h3 className="projects__section-title">
-            <Boxes size={18} className="icon" /> {t("projects.techSectionTitle")}
-          </h3>
-          <p className="projects__intro">{t("projects.techIntro")}</p>
-          {visibleTech.length === 0 ? (
-            <p className="projects__empty">
-              {t("projects.empty")}{" "}
-              <button className="link-like" onClick={() => setTag("All")}>
-                {t("projects.clearFilter")}
-              </button>
-            </p>
-          ) : (
-            <div className="projects__grid">
-              {visibleTech.map((p) => (
-                <ProjectCard key={p.id} p={p} onOpenCase={openCase} t={t} />
-              ))}
-            </div>
-          )}
-        </>
-      ) : (
-        <>
-          <h3 className="projects__section-title">
-            <Stethoscope size={18} className="icon" /> {t("projects.medSectionTitle")}
-          </h3>
-          <p className="projects__intro">{t("projects.medIntro")}</p>
-          <div className="projects__grid">
-            {medIntegration.map((p) => (
-              <ProjectCard key={p.id} p={p} variant="med" onOpenCase={openCase} t={t} />
-            ))}
-          </div>
-
-          {medManagement.length ? (
-            <div className="projects__subsection">
-              <h3 className="projects__section-title">
-                <BriefcaseBusiness size={18} className="icon" /> {t("projects.medMgmtSectionTitle")}
-              </h3>
-              <p className="projects__intro">{t("projects.medMgmtIntro")}</p>
-              <div className="projects__grid">
-                {medManagement.map((p) => (
-                  <ProjectCard key={p.id} p={p} variant="mgmt" onOpenCase={openCase} t={t} />
-                ))}
-              </div>
-            </div>
-          ) : null}
-        </>
-      )}
+      <div className="projects__actions reveal">
+        <a href="/proof-of-work" className="btn btn--primary">
+          View Full Proof of Work <ArrowRight size={15} className="icon ml-1" />
+        </a>
+      </div>
 
       <CaseStudyModal
         open={!!caseId}

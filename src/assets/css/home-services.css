@@ -1,0 +1,62 @@
+.home-services {
+  padding-top: 32px;
+}
+
+.home-services__head {
+  max-width: 760px;
+  margin-bottom: 20px;
+}
+
+.home-services__kicker {
+  margin: 0 0 8px;
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.home-services__grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.home-services__card {
+  min-height: 190px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(420px 220px at 100% 0, var(--surface-cool), transparent 62%),
+    var(--card-bg);
+}
+
+.home-services__icon {
+  color: var(--brand);
+  margin-bottom: 12px;
+}
+
+.home-services__card h3 {
+  margin: 0 0 8px;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.home-services__card p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.home-services__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+@media (max-width: 540px) {
+  .home-services {
+    padding-top: 16px;
+  }
+}

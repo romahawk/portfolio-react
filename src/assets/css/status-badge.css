@@ -1,0 +1,88 @@
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--tag-border);
+  border-radius: 999px;
+  background: var(--tag-bg);
+  color: var(--muted-strong);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.status-badge--built-system {
+  color: #65d4a8;
+  border-color: rgba(101, 212, 168, 0.38);
+  background: rgba(101, 212, 168, 0.1);
+}
+
+.status-badge--prototype,
+.status-badge--prototype-concept,
+.status-badge--concept-workflow-prototype-concept {
+  color: var(--brand);
+  border-color: rgba(73, 215, 209, 0.4);
+  background: rgba(73, 215, 209, 0.1);
+}
+
+.status-badge--reference-system {
+  color: var(--brand-2);
+  border-color: rgba(111, 164, 255, 0.4);
+  background: rgba(111, 164, 255, 0.1);
+}
+
+.status-badge--real-medtech-implementation-experience {
+  color: var(--brand);
+  border-color: rgba(73, 215, 209, 0.42);
+  background: rgba(73, 215, 209, 0.11);
+}
+
+.status-badge--real-medtech-delivery-experience {
+  color: #65d4a8;
+  border-color: rgba(101, 212, 168, 0.38);
+  background: rgba(101, 212, 168, 0.1);
+}
+
+.status-badge--product-concept-reference-workflow {
+  color: var(--brand-2);
+  border-color: rgba(111, 164, 255, 0.4);
+  background: rgba(111, 164, 255, 0.1);
+}
+
+.status-badge--concept-workflow {
+  color: var(--brand-warm);
+  border-color: rgba(243, 182, 110, 0.42);
+  background: rgba(243, 182, 110, 0.1);
+}
+
+.status-badge--proof-of-work-artifact {
+  color: var(--muted-strong);
+  border-color: var(--surface-border-strong);
+  background: var(--surface-soft);
+}
+
+.status-badge--case-simulation,
+.status-badge--regulated-operations-pattern {
+  color: #d0b2ff;
+  border-color: rgba(167, 139, 250, 0.36);
+  background: rgba(167, 139, 250, 0.1);
+}
+
+.status-badge--archived-experiment {
+  color: var(--muted);
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+@media (max-width: 420px) {
+  .status-badge {
+    white-space: normal;
+    line-height: 1.25;
+    padding-block: 6px;
+  }
+}

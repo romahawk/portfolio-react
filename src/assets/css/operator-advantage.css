@@ -1,0 +1,131 @@
+.operator-advantage {
+  padding-top: 56px;
+}
+
+.operator-advantage__panel {
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(620px 300px at 100% 0, var(--surface-glow), transparent 64%),
+    var(--card-bg-deep);
+  box-shadow: var(--shadow);
+}
+
+.operator-advantage__kicker {
+  margin: 0 0 8px;
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.operator-advantage__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.36fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.operator-advantage__content {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+
+.operator-advantage__intro p {
+  max-width: 620px;
+  line-height: 1.7;
+}
+
+.operator-advantage__media {
+  margin: 0;
+  position: sticky;
+  top: calc(var(--nav-h) + 24px);
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--surface-border);
+  border-radius: 14px;
+  background: var(--surface-soft);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+}
+
+.operator-advantage__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.operator-advantage__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.operator-advantage__card {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 16px;
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  background: var(--surface-soft);
+}
+
+.operator-advantage__card svg {
+  color: var(--brand);
+}
+
+.operator-advantage__card h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.operator-advantage__card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.operator-advantage__compact-line {
+  margin: 0;
+  padding-top: 2px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.operator-advantage__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 860px) {
+  .operator-advantage__top {
+    grid-template-columns: 1fr;
+  }
+
+  .operator-advantage__media {
+    position: static;
+    max-width: 520px;
+  }
+
+  .operator-advantage__cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 540px) {
+  .operator-advantage {
+    padding-top: 28px;
+  }
+
+  .operator-advantage__panel {
+    padding: 18px;
+  }
+}

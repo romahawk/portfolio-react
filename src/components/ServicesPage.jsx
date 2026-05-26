@@ -1,359 +1,293 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   ArrowRight,
-  BarChart3,
   Bot,
   CalendarCheck,
-  ChevronDown,
-  CircleAlert,
-  Clock3,
-  Gauge,
-  LineChart,
-  PackageCheck,
-  Rocket,
-  SearchCheck,
-  Settings2,
+  ClipboardCheck,
+  FileSearch,
   ShieldCheck,
   Sparkles,
-  Wrench,
+  Stethoscope,
 } from "lucide-react";
-import { useTranslation } from "../context/LangContext.jsx";
-import ServicesContextSection from "./ServicesContextSection.jsx";
+import PageHero from "./common/PageHero.jsx";
 
-const ICONS = {
-  BarChart3,
-  Bot,
-  CalendarCheck,
-  CircleAlert,
-  Clock3,
-  Gauge,
-  LineChart,
-  PackageCheck,
-  Rocket,
-  SearchCheck,
-  Settings2,
-  ShieldCheck,
-  Sparkles,
-  Wrench,
-};
+const AUDIT_HREF = "mailto:romazuryk@proton.me?subject=AI%20Workflow%20Audit%20Request";
 
-const STEP_CONFIG = [
-  { icon: "CircleAlert", accent: "rose",    subtitle: "Why it matters"  },
-  { icon: "Wrench",      accent: "blue",    subtitle: "Our approach"    },
-  { icon: "PackageCheck",accent: "emerald", subtitle: "Your new assets" },
-  { icon: "Clock3",      accent: "violet",  subtitle: "Sprint plan"     },
+const WHO_FOR = [
+  "MedTech / HealthTech startups scaling operations",
+  "Pharma logistics and regulated operations teams",
+  "Implementation-heavy B2B teams",
+  "Teams with scattered documentation, manual coordination, weak handovers, or AI interest without workflow clarity",
 ];
 
-const HERO_STEP_CONFIG = [
-  { accent: "amber" },
-  { accent: "cyan", featured: true },
-  { accent: "emerald" },
+const SERVICES = [
+  {
+    id: "ai-workflow-audit",
+    title: "AI Workflow Audit",
+    icon: ClipboardCheck,
+    problem: "A complex workflow is slow, manual, or unclear, but the team does not yet know where AI can safely help.",
+    description: "A focused remote audit to map one workflow, identify bottlenecks, assess risk, and define the first practical system path.",
+    deliverables: [
+      "workflow map",
+      "bottleneck analysis",
+      "AI opportunity matrix",
+      "risk/control analysis",
+      "implementation recommendations",
+      "roadmap",
+    ],
+    outcome: "A clear, auditable starting point for one workflow improvement.",
+  },
+  {
+    id: "ai-product-discovery-sprint",
+    title: "AI Product Discovery Sprint",
+    icon: FileSearch,
+    problem: "The team has an AI or workflow product idea, but the use case, users, data, risks, and scope are still fuzzy.",
+    description: "Discovery sprint for teams exploring AI products, internal tools, or workflow automation opportunities.",
+    deliverables: [
+      "problem framing",
+      "user and workflow analysis",
+      "product concept",
+      "feature prioritization",
+      "prototype direction",
+      "build/no-build recommendation",
+    ],
+    outcome: "A sharper product direction before engineering spend.",
+  },
+  {
+    id: "workflow-prototype-sprint",
+    title: "Workflow Prototype Sprint",
+    icon: Bot,
+    problem: "The workflow is understood, but the team needs a tangible interface or prototype to validate the system model.",
+    description: "A focused sprint to turn one selected workflow into a testable prototype or internal operating model.",
+    deliverables: [
+      "workflow specification",
+      "prototype",
+      "dashboard or structured interface",
+      "review checkpoints",
+      "implementation roadmap",
+    ],
+    outcome: "A prototype that makes the workflow visible enough to test, discuss, and refine.",
+  },
+  {
+    id: "sop-documentation-system",
+    title: "SOP / Documentation System",
+    icon: ClipboardCheck,
+    problem: "Process knowledge is scattered across notes, files, calls, and individual memory.",
+    description: "Structure documentation, SOP support, handover artifacts, and review-ready operating records.",
+    deliverables: [
+      "documentation map",
+      "SOP draft structure",
+      "handover checklist",
+      "review checkpoints",
+      "source traceability model",
+    ],
+    outcome: "Cleaner operational memory and easier handover.",
+  },
+  {
+    id: "medtech-ai-operator-in-residence",
+    title: "MedTech AI Operator-in-Residence",
+    icon: Stethoscope,
+    problem: "The team needs operator-level workflow thinking alongside product, AI, and implementation coordination.",
+    description: "Part-time embedded support for AI discovery, product specs, workflow modeling, and implementation coordination.",
+    deliverables: [
+      "workflow discovery",
+      "process documentation",
+      "product requirements",
+      "AI use-case mapping",
+      "coordination support",
+      "prioritization support",
+    ],
+    outcome: "More structured product and workflow decisions with operator context.",
+  },
+  {
+    id: "compliance-aware-automation-setup",
+    title: "Compliance-Aware Automation Setup",
+    icon: ShieldCheck,
+    problem: "Automation ideas stall because ownership, review, traceability, and exception paths are unclear.",
+    description: "Design automation workflows with human review, source traceability, checkpoints, and version history.",
+    deliverables: [
+      "automation map",
+      "human-in-the-loop review model",
+      "audit trail structure",
+      "SOP support",
+      "implementation backlog",
+    ],
+    outcome: "A safer automation model that keeps human review and auditability explicit.",
+  },
 ];
 
-const TRANSITION_CHIPS = [
-  { label: "Scope", accent: "cyan" },
-  { label: "Ship",  accent: "emerald" },
+const METHOD_STEPS = [
+  "Map the workflow",
+  "Identify bottlenecks and risks",
+  "Define the system model",
+  "Add AI assistance where useful",
+  "Design review and traceability checkpoints",
+  "Prototype, document, and hand over",
 ];
 
-const SITUATION_HREFS = [
-  "#lead-generation-website",
-  "#workflow-dashboard",
-  "#ai-automation-audit",
-  "#book-call",
+const PROOF_LINKS = [
+  { title: "Proof of Work", href: "/proof-of-work" },
+  { title: "AI Workflow Library", href: "/ai-workflow" },
 ];
 
-const AUDIT_HREF =
-  "mailto:romazuryk@proton.me?subject=Website%20%2F%20Workflow%20Audit%20Request";
-const BOOK_CALL_HREF =
-  "mailto:romazuryk@proton.me?subject=Book%20a%20call%20-%20systems%20pilot";
-const CONTACT_HREF =
-  "mailto:romazuryk@proton.me?subject=Services%20inquiry";
-
-function ServiceIcon({ name, className = "services-page__icon", size = 20 }) {
-  const Icon = ICONS[name] || Sparkles;
-  return <Icon size={size} className={className} aria-hidden="true" />;
-}
-
-function ProcessStepCard({ block, index }) {
-  const config = STEP_CONFIG[index] || STEP_CONFIG[0];
-  const Icon = ICONS[config.icon] || Sparkles;
-  return (
-    <div className={`services-page__process-step services-page__process-step--${config.accent}`}>
-      <div className="services-page__process-step-top">
-        <span className="services-page__process-badge">0{index + 1}</span>
-        <Icon size={17} className="services-page__process-icon" aria-hidden="true" />
-      </div>
-      <h4 className="services-page__process-title">{block.label}</h4>
-      <p className="services-page__process-subtitle">{config.subtitle}</p>
-      <ul className="services-page__process-list">
-        {Array.isArray(block.items) && block.items.map((item) => (
-          <li key={item} className="services-page__process-item">
-            <span className="services-page__process-dot" aria-hidden="true" />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-const ServicesPage = () => {
-  const { t } = useTranslation();
-  const [scrolled, setScrolled] = useState(false);
-  const overviewItems = t("servicesPage.overview.items");
-  const detailItems = t("servicesPage.details.items");
-  const selectorCards = t("servicesPage.selector.cards");
-  const steps = t("servicesPage.process.steps");
-  const heroSignals = t("servicesPage.hero.signals");
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const handleHeroScroll = () => {
-    document.getElementById("service-details")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
+export default function ServicesPage() {
+  const [selectedServiceId, setSelectedServiceId] = useState(SERVICES[0].id);
+  const selectedService = SERVICES.find((service) => service.id === selectedServiceId) || SERVICES[0];
+  const SelectedIcon = selectedService.icon;
 
   return (
     <div className="services-page">
-      <section id="services" className="services-page__hero">
-        <div className="container services-page__hero-inner">
-          <div className="services-page__hero-copy reveal">
-            <p className="hero__eyebrow">{t("servicesPage.hero.eyebrow")}</p>
-            <h1 className="services-page__title">{t("servicesPage.hero.title")}</h1>
-            <p className="services-page__lead">{t("servicesPage.hero.subtitle")}</p>
-            <p className="services-page__hero-credibility">{t("servicesPage.hero.credibility")}</p>
-            <div className="services-page__actions">
-              <a href={AUDIT_HREF} className="btn btn--primary">
-                <CalendarCheck size={16} className="icon mr-1" />
-                {t("servicesPage.cta.audit")}
-              </a>
-              <a href="#services-overview" className="btn btn--ghost">
-                {t("servicesPage.cta.viewSystems")}
-                <ArrowRight size={15} className="icon ml-1" />
-              </a>
-            </div>
-            <p className="services-page__hero-microcopy">{t("servicesPage.cta.microCopy")}</p>
-          </div>
-
-          <div
-            className="services-page__hero-panel reveal reveal--delay-1"
-            aria-label={t("servicesPage.hero.panelLabel")}
-          >
-            {(Array.isArray(heroSignals) ? heroSignals : []).map((signal, idx) => {
-              const config = HERO_STEP_CONFIG[idx] || HERO_STEP_CONFIG[0];
-              const chip = TRANSITION_CHIPS[idx];
-              return (
-                <React.Fragment key={signal.label}>
-                  <div
-                    className={`services-page__signal services-page__signal--${config.accent}${config.featured ? " services-page__signal--featured" : ""}`}
-                  >
-                    <span className="services-page__signal-step">0{idx + 1}</span>
-                    <span className="services-page__signal-label">{signal.label}</span>
-                    <strong className="services-page__signal-value">{signal.value}</strong>
-                  </div>
-                  {chip && (
-                    <div className={`services-page__transition-chip services-page__transition-chip--${chip.accent}`}>
-                      <span className="services-page__transition-line services-page__transition-line--before" aria-hidden="true" />
-                      <span className="services-page__transition-badge">{chip.label}</span>
-                      <span className="services-page__transition-line services-page__transition-line--after" aria-hidden="true" />
-                    </div>
-                  )}
-                </React.Fragment>
-              );
-            })}
-          </div>
-        </div>
-
-        <button
-          type="button"
-          className={`services-page__scroll-hint ${scrolled ? "services-page__scroll-hint--hidden" : ""}`}
-          onClick={handleHeroScroll}
-          aria-label={t("servicesPage.cta.viewSystems")}
-        >
-          <span>{t("hero.scroll")}</span>
-          <ChevronDown size={18} className="services-page__scroll-hint-icon" />
-        </button>
-      </section>
-
-      <section id="services-overview" className="section container services-page__section">
-        <div className="services-page__section-head reveal">
-          <p className="services-page__kicker">{t("servicesPage.overview.kicker")}</p>
-          <h2 className="section__title">
-            <span className="about__chev">&gt;</span> {t("servicesPage.overview.title")}
-          </h2>
-          <p>{t("servicesPage.overview.intro")}</p>
-        </div>
-
-        <div className="services-page__cards">
-          {(Array.isArray(overviewItems) ? overviewItems : []).map((service, index) => (
-            <a
-              href={`#${service.id}`}
-              key={service.id}
-              className={`services-page__card services-page__system reveal reveal--delay-${Math.min(index + 1, 3)}`}
-            >
-              <div className="services-page__system-connector" aria-hidden="true" />
-              <ServiceIcon name={service.icon} />
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
-              <div className="services-page__card-meta">
-                <span>{service.timeline}</span>
-                <strong>{service.outcome}</strong>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
+      <PageHero
+        id="services"
+        eyebrow="WORK WITH ME"
+        title="AI-Assisted Workflow Collaboration for MedTech Teams"
+        subtitle="I work with MedTech, HealthTech, and regulated operations teams to map complex workflows, identify bottlenecks, prototype better systems, and create implementation-ready documentation."
+        primaryCta={{ label: "Start With a Workflow Audit", href: AUDIT_HREF, icon: <CalendarCheck size={16} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: "View AI Workflow Examples", href: "/ai-workflow", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
+        visualType="services"
+        scrollTargetId="services-overview"
+      >
+        <p className="services-page__hero-microcopy">
+          Concepts and prototypes are scoped with human review, traceability, and clear ownership.
+          No claim of certified medical software or automated regulatory decisions.
+        </p>
+      </PageHero>
 
       <section className="section container services-page__section">
-        <div className="services-page__selector-head">
-          <p className="services-page__kicker">{t("servicesPage.selector.kicker")}</p>
-          <h2 className="services-page__selector-title">{t("servicesPage.selector.title")}</h2>
-          <p className="services-page__selector-subtitle">{t("servicesPage.selector.subtitle")}</p>
-        </div>
-        <div className="services-page__selector-grid">
-          {(Array.isArray(selectorCards) ? selectorCards : []).map((card, idx) => (
-            <a
-              key={card.title}
-              href={SITUATION_HREFS[idx]}
-              className="services-page__selector-card"
-            >
-              <span className="services-page__selector-number" aria-hidden="true">0{idx + 1}</span>
-              <strong className="services-page__selector-card-title">{card.title}</strong>
-              <p className="services-page__selector-card-desc">{card.desc}</p>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      <section id="service-details" className="section container services-page__section">
         <div className="services-page__section-head reveal">
-          <p className="services-page__kicker">{t("servicesPage.details.kicker")}</p>
+          <p className="services-page__kicker">Who this is for</p>
           <h2 className="section__title">
-            <span className="about__chev">&gt;</span> {t("servicesPage.details.title")}
+            <span className="about__chev">&gt;</span> Teams with operational complexity and AI pressure
           </h2>
         </div>
-
-        <div className="services-page__details">
-          {(Array.isArray(detailItems) ? detailItems : []).map((service, index) => (
-            <article
-              id={service.id}
-              key={service.id}
-              className={`services-page__detail services-page__system reveal reveal--delay-${Math.min(index + 1, 3)}`}
-            >
-              <div className="services-page__system-connector" aria-hidden="true" />
-
-              <div className="services-page__detail-title">
-                <ServiceIcon name={service.icon} size={18} />
-                <div>
-                  <h3>{service.title}</h3>
-                  <p>{service.timeline}</p>
-                </div>
-              </div>
-
-              <div className="services-page__detail-grid">
-                <div className="services-page__process-grid">
-                  {service.blocks.map((block, blockIndex) => (
-                    <React.Fragment key={block.label}>
-                      <ProcessStepCard block={block} index={blockIndex} />
-                      {blockIndex < service.blocks.length - 1 && (
-                        <div className="services-page__process-connector" aria-hidden="true">
-                          <ArrowRight size={14} />
-                        </div>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </div>
-
-                <div className="services-page__expected">
-                  <span>{t("servicesPage.details.expectedLabel")}</span>
-                  <strong>{service.expected}</strong>
-                </div>
-              </div>
+        <div className="services-page__fit-grid">
+          {WHO_FOR.map((item) => (
+            <article className="services-page__fit-card reveal" key={item}>
+              {item}
             </article>
           ))}
         </div>
       </section>
 
-      <section id="how-it-works" className="section container services-page__section">
+      <section id="services-overview" className="section container services-page__section">
         <div className="services-page__section-head reveal">
-          <p className="services-page__kicker">{t("servicesPage.process.kicker")}</p>
+          <p className="services-page__kicker">Collaboration offers</p>
           <h2 className="section__title">
-            <span className="about__chev">&gt;</span> {t("servicesPage.process.title")}
+            <span className="about__chev">&gt;</span> Commercial support for one workflow at a time
           </h2>
+          <p>
+            Each engagement starts from operational reality: what people do today, where the
+            process fails, what AI can safely assist, and what must remain under human control.
+          </p>
         </div>
 
-        <div className="services-page__flow">
-          {(Array.isArray(steps) ? steps : []).map((step, index) => (
-            <div key={step.title} className="services-page__step">
-              <span className="services-page__step-number">0{index + 1}</span>
-              <ServiceIcon name={step.icon} className="services-page__step-icon" size={20} />
-              <h3>{step.title}</h3>
-              <p>{step.desc || step.text}</p>
-            </div>
+        <div className="services-page__selector-tabs ux-tabs" role="tablist" aria-label="Service selector">
+          {SERVICES.map((service) => (
+            <button
+              type="button"
+              className={`ux-tab ${selectedService.id === service.id ? "ux-tab--active" : ""}`}
+              onClick={() => setSelectedServiceId(service.id)}
+              key={service.id}
+            >
+              {service.title}
+            </button>
           ))}
+        </div>
+        <article id={selectedService.id} className="services-page__selected-service reveal">
+          <div className="services-page__detail-title">
+            <SelectedIcon size={18} className="services-page__icon" aria-hidden="true" />
+            <h3>{selectedService.title}</h3>
+          </div>
+          <dl className="services-page__service-proof">
+            <div>
+              <dt>Problem solved</dt>
+              <dd>{selectedService.problem}</dd>
+            </div>
+          </dl>
+          <p className="services-page__service-description">{selectedService.description}</p>
+          <div className="services-page__deliverables">
+            <span>Deliverables</span>
+            <ul>
+              {selectedService.deliverables.slice(0, 6).map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="services-page__expected">
+            <span>Typical outcome</span>
+            <strong>{selectedService.outcome}</strong>
+          </div>
+          <a href={AUDIT_HREF} className="btn btn--primary">Start With a Workflow Audit</a>
+        </article>
+      </section>
+
+      <section id="how-it-works" className="section container services-page__section">
+        <div className="services-page__method reveal">
+          <Sparkles size={20} className="services-page__icon" aria-hidden="true" />
+          <div>
+            <p className="services-page__kicker">Method</p>
+            <h2>Operator-first, AI-assisted</h2>
+            <p>
+              I do not start from what AI can do. I start from where the workflow breaks,
+              where risk appears, and what system should exist.
+            </p>
+            <div className="services-page__method-steps" aria-label="Method steps">
+              {METHOD_STEPS.map((step, index) => (
+                <span key={step}>
+                  <strong>{String(index + 1).padStart(2, "0")}</strong>
+                  {step}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      <ServicesContextSection />
-
-      <section id="trust" className="section container services-page__section services-page__trust">
-        <div className="services-page__trust-grid reveal">
-          <div className="services-page__note">
-            <ShieldCheck size={20} className="services-page__icon" aria-hidden="true" />
-            <div>
-              <p className="services-page__kicker">{t("servicesPage.trust.kicker")}</p>
-              <h2>{t("servicesPage.trust.title")}</h2>
-              <p>{t("servicesPage.trust.text")}</p>
-              <p>{t("servicesPage.trust.text2")}</p>
-              {t("servicesPage.trust.text3") && (
-                <p className="services-page__trust-closing">{t("servicesPage.trust.text3")}</p>
-              )}
-            </div>
-          </div>
-
-          <div className="services-page__trust-photo">
-            <img
-              src="/images/profile.jpg"
-              alt={t("about.profileAlt")}
-              className="services-page__trust-photo-img"
-              loading="lazy"
-              decoding="async"
-              width="320"
-              height="320"
-            />
-          </div>
+      <section id="proof" className="section container services-page__section">
+        <div className="services-page__section-head reveal">
+          <p className="services-page__kicker">Proof</p>
+          <h2 className="section__title">
+            <span className="about__chev">&gt;</span> See practical workflow examples
+          </h2>
+          <p>
+            The workflow library shows transparent concept workflows, reference systems,
+            prototype concepts, and proof-of-work artifacts with explicit maturity labels.
+          </p>
+        </div>
+        <div className="services-page__proof-links">
+          {PROOF_LINKS.slice(0, 4).map((proof) => (
+            <a href={proof.href} className="services-page__proof-link" key={proof.href}>
+              {proof.title} <ArrowRight size={14} aria-hidden="true" />
+            </a>
+          ))}
         </div>
       </section>
 
       <section id="book-call" className="section container services-page__final">
         <div className="services-page__final-inner reveal">
-          <p className="services-page__kicker">{t("servicesPage.final.kicker")}</p>
-          <h2>{t("servicesPage.final.title")}</h2>
-          <p>{t("servicesPage.final.text")}</p>
+          <p className="services-page__kicker">Next step</p>
+          <h2>Start with one workflow</h2>
+          <p>
+            Bring one fragmented workflow, implementation bottleneck, or AI idea. I will help
+            map the current process, identify safe AI assistance points, and define the first
+            auditable system path.
+          </p>
           <div className="services-page__actions">
-            <a href={BOOK_CALL_HREF} className="btn btn--primary">
+            <a href={AUDIT_HREF} className="btn btn--primary">
               <CalendarCheck size={16} className="icon mr-1" />
-              {t("servicesPage.cta.book")}
+              Start With a Workflow Audit
             </a>
-            <a href={CONTACT_HREF} className="btn btn--ghost">
-              {t("servicesPage.final.secondary")}
+            <a href="/ai-workflow" className="btn btn--ghost">
+              View AI Workflow Examples
             </a>
           </div>
         </div>
       </section>
 
-      <a href={BOOK_CALL_HREF} className="services-page__sticky-cta">
+      <a href={AUDIT_HREF} className="services-page__sticky-cta">
         <CalendarCheck size={16} aria-hidden="true" />
-        {t("servicesPage.cta.book")}
+        Start With a Workflow Audit
       </a>
     </div>
   );
-};
-
-export default ServicesPage;
+}

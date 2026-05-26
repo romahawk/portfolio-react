@@ -3,7 +3,17 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
-    { "source": "/services/(.*)", "destination": "/services/index.html" }
+    { "source": "/services", "destination": "/services/index.html" },
+    { "source": "/services/(.*)", "destination": "/services/index.html" },
+    { "source": "/collaborate", "destination": "/collaborate/index.html" },
+    { "source": "/collaborate/(.*)", "destination": "/collaborate/index.html" },
+    { "source": "/proof-of-work/or-integration", "destination": "/index.html" },
+    { "source": "/proof-of-work", "destination": "/index.html" },
+    { "source": "/about", "destination": "/index.html" },
+    { "source": "/contact", "destination": "/index.html" },
+    { "source": "/ai-workflow", "destination": "/ai-workflow/index.html" },
+    { "source": "/ai-workflow/(.*)", "destination": "/index.html" },
+    { "source": "/medtech-ai-systems/clinical-evidence-workflow", "destination": "/index.html" }
   ],
   "headers": [
     {

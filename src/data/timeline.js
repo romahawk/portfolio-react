@@ -18,11 +18,11 @@ const timeline = [
   },
 
   {
-    id: "2024-2025-pharmalogis",
+    id: "2024-2025-vendor-free-supply",
     year: 2024,
     title: "Technical Product Systems — Internal Tools",
     role: "Technical Product Manager (Internal Systems)",
-    company: "PharmaLogis GmbH — Germany",
+    company: "Vendor-Free Supply Operations — Germany",
     tags: ["Tech"],
     summary:
       "Defined data contracts, schema architecture, and platform boundaries for the transition from fragmented Excel/email workflows to a centralized SQL-based internal operations platform for high-compliance logistics.",

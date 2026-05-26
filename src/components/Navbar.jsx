@@ -8,22 +8,15 @@ import { useTranslation } from "../context/LangContext.jsx";
 const MOBILE_MQ = "(max-width: 800px)";
 
 const IDS = [
-  "results",
+  "home",
   "projects",
-  "services",
-  "framework",
   "about",
   "contact",
 ];
 
-const SERVICES_PAGE_IDS = [
-  "services",
-  "services-overview",
-  "service-details",
-  "how-it-works",
-  "proof",
-  "book-call",
-];
+const CLINICAL_EVIDENCE_PATH = "/medtech-ai-systems/clinical-evidence-workflow";
+const AI_WORKFLOW_PATH = "/ai-workflow";
+const PROOF_OF_WORK_PATH = "/proof-of-work";
 
 // tuning knobs
 const VIEWPORT_ANCHOR = 0.32; // 32% down the viewport for deciding active section
@@ -32,10 +25,24 @@ const SWITCH_BUFFER = 24;     // px hysteresis to avoid flicker on boundaries
 export default function Navbar({ themeMode, onThemeChange }) {
   const { t } = useTranslation();
   const isServicesPage =
-    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/services";
-  const navIds = useMemo(() => (isServicesPage ? SERVICES_PAGE_IDS : IDS), [isServicesPage]);
+    typeof window !== "undefined" && ["/services", "/collaborate"].includes(window.location.pathname.replace(/\/+$/, ""));
+  const isClinicalEvidencePage =
+    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === CLINICAL_EVIDENCE_PATH;
+  const isAIWorkflowPage =
+    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "").startsWith(AI_WORKFLOW_PATH);
+  const isProofOfWorkPage =
+    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "").startsWith(PROOF_OF_WORK_PATH);
+  const isAboutPage =
+    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/about";
+  const isContactPage =
+    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/contact";
+  const isStandalonePage = isServicesPage || isClinicalEvidencePage || isAIWorkflowPage || isProofOfWorkPage || isAboutPage || isContactPage;
+  const navIds = useMemo(
+    () => (isStandalonePage ? [] : IDS),
+    [isStandalonePage]
+  );
   const [isOpen, setIsOpen] = useState(false);
-  const [active, setActive] = useState(() => (isServicesPage ? SERVICES_PAGE_IDS[0] : "about"));
+  const [active, setActive] = useState(() => "home");
   const [progress, setProgress] = useState(0);
   const [isMobile, setIsMobile] = useState(
     () => typeof window !== "undefined" && window.matchMedia(MOBILE_MQ).matches
@@ -46,27 +53,21 @@ export default function Navbar({ themeMode, onThemeChange }) {
   const navScrollRef = useRef(false);
   const navScrollTimeoutRef = useRef(null);
 
-  const NAV_LABEL_KEYS = {
-    results: "nav.results",
-    projects: "nav.projects",
-    services: "nav.services",
-    framework: "nav.framework",
-    about: "nav.about",
-    contact: "nav.contact",
-    "services-overview": "servicesPage.nav.overview",
-    "service-details": "servicesPage.nav.details",
-    "how-it-works": "servicesPage.nav.process",
-    proof: "servicesPage.nav.proof",
-    "book-call": "servicesPage.nav.book",
-  };
-
-  const getNavLabelKey = (id) =>
-    isServicesPage && id === "services" ? "servicesPage.nav.hero" : NAV_LABEL_KEYS[id];
+  const navItems = useMemo(
+    () => [
+      { id: isStandalonePage ? undefined : "home", href: "/", labelKey: "nav.home", current: !isStandalonePage && active === "home" },
+      { href: PROOF_OF_WORK_PATH, labelKey: "nav.projects", current: isProofOfWorkPage },
+      { href: AI_WORKFLOW_PATH, labelKey: "nav.aiWorkflow", current: isAIWorkflowPage || isClinicalEvidencePage },
+      { id: isStandalonePage ? undefined : "about", href: "/about", labelKey: "nav.about", current: isAboutPage || (!isStandalonePage && active === "about") },
+      { id: isStandalonePage ? undefined : "contact", href: "/contact", labelKey: "nav.contact", current: isContactPage || (!isStandalonePage && active === "contact") },
+    ],
+    [active, isAIWorkflowPage, isAboutPage, isClinicalEvidencePage, isContactPage, isProofOfWorkPage, isStandalonePage]
+  );
 
   const computeActive = useCallback(() => {
     const anchor = window.scrollY + window.innerHeight * VIEWPORT_ANCHOR;
 
-    let current = navIds[0];
+    let current = navIds[0] || "";
     for (const { id, top, bottom } of sectionsRef.current) {
       if (anchor >= top + SWITCH_BUFFER && anchor < bottom - SWITCH_BUFFER) {
         current = id;
@@ -175,7 +176,7 @@ export default function Navbar({ themeMode, onThemeChange }) {
         aria-hidden="true"
       />
       <nav className="nav container">
-        <a href={isServicesPage ? "#services" : "#home"} className="nav__logo" aria-label={t("nav.backToTop")} onClick={() => handleClick(isServicesPage ? "services" : "home")}>
+        <a href="/" className="nav__logo" aria-label={t("nav.backToTop")} onClick={() => handleClick("home")}>
           <span className="nav__logo-brace">{'{ }'}</span>
           <span className="nav__logo-text">ROMAZ</span>
           <span className="nav__logo-accent" />
@@ -186,18 +187,25 @@ export default function Navbar({ themeMode, onThemeChange }) {
           aria-hidden={isMobile && !isOpen}
           inert={isMobile && !isOpen ? "" : undefined}
         >
-          {navIds.map((id) => (
-            <li key={id}>
+          {navItems.map(({ id, href, labelKey, current }) => (
+            <li key={href}>
               <a
-                href={`#${id}`}
-                className={`nav__link ${active === id ? "nav__link--active" : ""}`}
-                onClick={() => handleClick(id)}
+                href={href}
+                className={`nav__link ${current ? "nav__link--active" : ""}`}
+                onClick={() => (id ? handleClick(id) : setIsOpen(false))}
               >
-                {t(getNavLabelKey(id))}
+                {t(labelKey)}
               </a>
             </li>
           ))}
           {/* Language switcher inside mobile menu */}
+          {isMobile && !isServicesPage && (
+            <li>
+              <a href="/collaborate" className="nav__link nav__link--cta" onClick={() => setIsOpen(false)}>
+                Work With Me
+              </a>
+            </li>
+          )}
           {isMobile && (
             <li className="nav__lang-mobile">
               <LanguageSwitcher />
@@ -206,6 +214,9 @@ export default function Navbar({ themeMode, onThemeChange }) {
         </ul>
 
         <div className="nav__actions">
+          {!isServicesPage && (
+            <a href="/collaborate" className="nav__work-cta">Work With Me</a>
+          )}
           {isMobile
             ? <ThemeSwitcher mode={themeMode} onChange={onThemeChange} />
             : <NavControls mode={themeMode} onThemeChange={onThemeChange} />

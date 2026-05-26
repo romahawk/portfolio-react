@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Copy, Linkedin, Github, Mail, MapPin, Info, CheckCircle } from "lucide-react";
+import { Copy, Linkedin, Github, Mail, MapPin, Info, CheckCircle, BriefcaseBusiness, CalendarCheck } from "lucide-react";
 import { useTranslation } from "../context/LangContext.jsx";
 
 const Contact = () => {
@@ -40,6 +40,19 @@ const Contact = () => {
       <h2 className="section__title reveal">
         <span className="about__chev">&gt;</span> {t("contact.title")}
       </h2>
+
+      <div className="contact__paths reveal">
+        <a href="mailto:romazuryk@proton.me?subject=Role%20Inquiry" className="contact__path">
+          <BriefcaseBusiness size={18} aria-hidden="true" />
+          <strong>For hiring teams</strong>
+          <span>Role fit, product leadership, AI workflow systems, regulated operations.</span>
+        </a>
+        <a href="mailto:romazuryk@proton.me?subject=AI%20Workflow%20Audit%20Request" className="contact__path">
+          <CalendarCheck size={18} aria-hidden="true" />
+          <strong>For business inquiries</strong>
+          <span>Start with one workflow audit, discovery sprint, or prototype conversation.</span>
+        </a>
+      </div>
 
       <div className="contact__grid">
         <div className="contact__panel reveal reveal--delay-1">
@@ -119,7 +132,12 @@ const Contact = () => {
 
           <div className="contact__actions">
             <button type="submit" className="btn btn--primary">{t("contact.submitBtn")}</button>
-            <a className="btn btn--ghost" href={`mailto:${email}`}>{t("contact.emailDirectBtn")}</a>
+            <a
+              className="btn btn--ghost"
+              href={`mailto:${email}?subject=AI%20Workflow%20Audit%20Request`}
+            >
+              {t("contact.emailDirectBtn")}
+            </a>
           </div>
 
           <p className={`contact__submitted ${submitted ? "is-visible" : ""}`} aria-live="polite">

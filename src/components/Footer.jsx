@@ -1,57 +1,38 @@
 import React from "react";
 import { Linkedin, Github, Mail, ArrowUpRight } from "lucide-react";
-import { useTranslation } from "../context/LangContext.jsx";
 
-const NAV_LINK_KEYS = [
-  { key: "Results",   href: "#results" },
-  { key: "Projects",  href: "#projects" },
-  { key: "Services",  href: "#services" },
-  { key: "Framework", href: "#framework" },
-  { key: "About",     href: "#about" },
-  { key: "Contact",   href: "#contact" },
+const NAV_LINKS = [
+  { label: "Proof of Work", href: "/proof-of-work" },
+  { label: "AI Workflows", href: "/ai-workflow" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+  { label: "Work With Me", href: "/collaborate" },
 ];
-
-const SERVICES_NAV_LINKS = [
-  { key: "audit",    href: "#services" },
-  { key: "systems",  href: "#services-overview" },
-  { key: "packages", href: "#service-details" },
-  { key: "process",  href: "#how-it-works" },
-  { key: "context",  href: "#proof" },
-  { key: "trust",    href: "#trust" },
-  { key: "contact",  href: "#book-call" },
-];
-
-const AUDIT_HREF = "mailto:romazuryk@proton.me?subject=Website%20%2F%20Workflow%20Audit%20Request";
 
 const SOCIAL_LINKS = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/roman-mazuryk/", icon: Linkedin },
-  { label: "GitHub",   href: "https://github.com/romahawk",               icon: Github  },
-  { label: "Email",    href: "mailto:romazuryk@proton.me",                icon: Mail    },
+  { label: "GitHub", href: "https://github.com/romahawk", icon: Github },
+  { label: "Email", href: "mailto:romazuryk@proton.me", icon: Mail },
 ];
 
-const Footer = () => {
-  const { t } = useTranslation();
+export default function Footer() {
   const year = new Date().getFullYear();
-  const taglineLines = t("footer.tagline").split("\n");
-  const isServicesPage =
-    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/services";
 
   return (
     <footer className="site-footer">
       <div className="container footer__inner">
-
-        {/* Left — brand + tagline + socials */}
         <div className="footer__brand-col">
-          <div className="footer__brand">
+          <a href="/" className="footer__brand" aria-label="ROMAZ home">
             <span className="footer__brand-brace">{"{ }"}</span>
             <span className="footer__brand-name">ROMAZ</span>
             <span className="footer__brand-dot" />
-          </div>
+          </a>
+          <h2 className="footer__headline">MedTech Product & Workflow Systems</h2>
           <p className="footer__tagline">
-            {taglineLines[0]}
-            {taglineLines[1] ? <><br />{taglineLines[1]}</> : null}
+            Real MedTech implementation experience translated into product systems, workflow
+            design, and AI-assisted delivery.
           </p>
-          <div className="footer__socials">
+          <div className="footer__socials" aria-label="Social and contact links">
             {SOCIAL_LINKS.map(({ label, href, icon }) => (
               <a
                 key={label}
@@ -62,61 +43,50 @@ const Footer = () => {
                 aria-label={label}
                 title={label}
               >
-                {React.createElement(icon, { size: 16 })}
+                {React.createElement(icon, { size: 16, "aria-hidden": "true" })}
               </a>
             ))}
           </div>
         </div>
 
-        {/* Centre — navigation */}
         <nav className="footer__nav-col" aria-label="Footer navigation">
-          <p className="footer__col-heading">{t("footer.nav")}</p>
+          <p className="footer__col-heading">Navigation</p>
           <ul className="footer__nav">
-            {(isServicesPage ? SERVICES_NAV_LINKS : NAV_LINK_KEYS).map(({ key, href }) => (
+            {NAV_LINKS.map(({ label, href }) => (
               <li key={href}>
                 <a href={href} className="footer__nav-link">
-                  {isServicesPage
-                    ? t(`footer.servicesNavLinks.${key}`)
-                    : (t(`footer.navLinks.${key}`) || key)}
+                  {label}
                 </a>
               </li>
             ))}
           </ul>
         </nav>
 
-        {/* Right — availability CTA */}
         <div className="footer__cta-col">
-          <p className="footer__col-heading">{t("footer.availability")}</p>
-          {isServicesPage ? (
-            <>
-              <p className="footer__cta-text">{t("footer.availabilityTextServices")}</p>
-              <p className="footer__cta-text">{t("footer.availabilityText2Services")}</p>
-              <a href={AUDIT_HREF} className="footer__cta-btn">
-                {t("footer.requestAudit")} <ArrowUpRight size={14} className="footer__cta-icon" />
-              </a>
-            </>
-          ) : (
-            <>
-              <p className="footer__cta-text">{t("footer.availabilityText")}</p>
-              <p className="footer__cta-text">{t("footer.availabilityText2")}</p>
-              <a href="mailto:romazuryk@proton.me" className="footer__cta-btn">
-                {t("footer.sendEmail")} <ArrowUpRight size={14} className="footer__cta-icon" />
-              </a>
-            </>
-          )}
+          <p className="footer__col-heading">Selective focus</p>
+          <p className="footer__cta-text">
+            I focus on selected roles and projects where MedTech domain experience, product
+            thinking, and workflow systems can create real operational leverage.
+          </p>
+          <p className="footer__cta-text footer__cta-text--fit">
+            Best fit: MedTech product roles, workflow systems, AI-assisted delivery, and regulated
+            operations.
+          </p>
+          <a href="/contact" className="footer__cta-btn">
+            Discuss a role or workflow <ArrowUpRight size={14} className="footer__cta-icon" aria-hidden="true" />
+          </a>
+          <a href="/collaborate" className="footer__secondary-link">
+            Explore collaboration options <ArrowUpRight size={13} aria-hidden="true" />
+          </a>
         </div>
-
       </div>
 
-      {/* Bottom bar */}
       <div className="footer__bar">
         <div className="container footer__bar-inner">
-          <span className="footer__copy">&copy; {year} Roman Mazuryk. {t("footer.copyright")}</span>
-          <span className="footer__copy">{t("footer.location")}</span>
+          <span className="footer__copy">&copy; {year} Roman Mazuryk. MedTech Product & Workflow Systems.</span>
+          <span className="footer__copy">Built with React, product thinking, and AI-assisted delivery.</span>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

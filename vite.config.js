@@ -13,6 +13,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         services: resolve(__dirname, 'services/index.html'),
+        collaborate: resolve(__dirname, 'collaborate/index.html'),
+        aiWorkflow: resolve(__dirname, 'ai-workflow/index.html'),
       },
       output: {
         manualChunks: {
