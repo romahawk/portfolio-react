@@ -1,0 +1,247 @@
+.market-page {
+  padding-bottom: 24px;
+}
+
+.market-page .page-hero {
+  min-height: calc(100svh - var(--nav-h));
+}
+
+.market-page--home .page-hero {
+  min-height: calc(100svh - var(--nav-h));
+}
+
+.market-page__claim {
+  max-width: 720px;
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 2px solid rgba(73, 215, 209, 0.45);
+  background: var(--surface-soft);
+  color: var(--muted-strong);
+  line-height: 1.65;
+}
+
+.market-page__section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.market-page__section-head {
+  max-width: 860px;
+  margin-bottom: 20px;
+}
+
+.market-page__section-head h2,
+.market-page__cta h2 {
+  margin: 0 0 10px;
+}
+
+.market-page__section-head p,
+.market-page__cta p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.market-page__kicker {
+  margin: 0 0 8px;
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.market-page__route-grid,
+.market-page__grid,
+.market-page__project-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.market-page__route-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.market-page__grid {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.market-page__project-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.market-page__route-card,
+.market-page__card,
+.market-page__project,
+.market-page__cta {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background:
+    radial-gradient(520px 230px at 100% 0, var(--surface-cool), transparent 64%),
+    var(--card-bg);
+  box-shadow: var(--shadow);
+}
+
+.market-page__route-card {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  min-height: 300px;
+  padding: 20px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.market-page__route-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-hover);
+}
+
+.market-page__route-card h3,
+.market-page__card h3,
+.market-page__project h3 {
+  margin: 0;
+  color: var(--text);
+}
+
+.market-page__route-card p,
+.market-page__card p,
+.market-page__project p,
+.market-page__project dd {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.market-page__route-card span,
+.market-page__icon {
+  color: var(--brand);
+}
+
+.market-page__route-card span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: end;
+  margin-top: auto;
+  font-weight: 850;
+}
+
+.market-page__card {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  min-height: 190px;
+  padding: 18px;
+}
+
+.market-page__project {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  padding: 18px;
+}
+
+.market-page__project header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.market-page__project header p {
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+.market-page__project dl {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.market-page__project dl div {
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.market-page__project dt {
+  color: var(--brand);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.market-page__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.market-page__chips span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 7px 10px;
+  border: 1px solid var(--tag-border);
+  border-radius: 999px;
+  background: var(--tag-bg);
+  color: var(--muted-strong);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.market-page__chips--large {
+  max-width: 900px;
+}
+
+.market-page__chips--large span {
+  min-height: 36px;
+  padding: 9px 12px;
+}
+
+.market-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.market-page__cta {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  padding: 22px;
+}
+
+@media (max-width: 860px) {
+  .market-page__route-grid,
+  .market-page__project-grid,
+  .market-page__cta {
+    grid-template-columns: 1fr;
+  }
+
+  .market-page__route-card {
+    min-height: 0;
+  }
+
+  .market-page__project header {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .market-page .page-hero,
+  .market-page--home .page-hero {
+    min-height: calc(100svh - var(--nav-h));
+  }
+
+  .market-page__section {
+    padding-top: 38px;
+    padding-bottom: 38px;
+  }
+
+  .market-page__chips--large span {
+    width: 100%;
+    border-radius: 12px;
+  }
+}

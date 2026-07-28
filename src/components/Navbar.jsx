@@ -9,9 +9,7 @@ const MOBILE_MQ = "(max-width: 800px)";
 
 const IDS = [
   "home",
-  "projects",
-  "about",
-  "contact",
+  "routes",
 ];
 
 const CLINICAL_EVIDENCE_PATH = "/medtech-ai-systems/clinical-evidence-workflow";
@@ -25,7 +23,11 @@ const SWITCH_BUFFER = 24;     // px hysteresis to avoid flicker on boundaries
 export default function Navbar({ themeMode, onThemeChange }) {
   const { t } = useTranslation();
   const isServicesPage =
-    typeof window !== "undefined" && ["/services", "/collaborate"].includes(window.location.pathname.replace(/\/+$/, ""));
+    typeof window !== "undefined" && ["/ai", "/services", "/collaborate"].includes(window.location.pathname.replace(/\/+$/, ""));
+  const isMedTechPage =
+    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/medtech";
+  const isFullStackPage =
+    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/fullstack";
   const isClinicalEvidencePage =
     typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === CLINICAL_EVIDENCE_PATH;
   const isAIWorkflowPage =
@@ -36,7 +38,7 @@ export default function Navbar({ themeMode, onThemeChange }) {
     typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/about";
   const isContactPage =
     typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/contact";
-  const isStandalonePage = isServicesPage || isClinicalEvidencePage || isAIWorkflowPage || isProofOfWorkPage || isAboutPage || isContactPage;
+  const isStandalonePage = isServicesPage || isMedTechPage || isFullStackPage || isClinicalEvidencePage || isAIWorkflowPage || isProofOfWorkPage || isAboutPage || isContactPage;
   const navIds = useMemo(
     () => (isStandalonePage ? [] : IDS),
     [isStandalonePage]
@@ -56,12 +58,13 @@ export default function Navbar({ themeMode, onThemeChange }) {
   const navItems = useMemo(
     () => [
       { id: isStandalonePage ? undefined : "home", href: "/", labelKey: "nav.home", current: !isStandalonePage && active === "home" },
-      { href: PROOF_OF_WORK_PATH, labelKey: "nav.projects", current: isProofOfWorkPage },
-      { href: AI_WORKFLOW_PATH, labelKey: "nav.aiWorkflow", current: isAIWorkflowPage || isClinicalEvidencePage },
+      { href: "/ai", labelKey: "nav.aiSolutions", current: isServicesPage || isAIWorkflowPage || isClinicalEvidencePage },
+      { href: "/medtech", labelKey: "nav.medtech", current: isMedTechPage || isProofOfWorkPage },
+      { href: "/fullstack", labelKey: "nav.fullstack", current: isFullStackPage },
       { id: isStandalonePage ? undefined : "about", href: "/about", labelKey: "nav.about", current: isAboutPage || (!isStandalonePage && active === "about") },
       { id: isStandalonePage ? undefined : "contact", href: "/contact", labelKey: "nav.contact", current: isContactPage || (!isStandalonePage && active === "contact") },
     ],
-    [active, isAIWorkflowPage, isAboutPage, isClinicalEvidencePage, isContactPage, isProofOfWorkPage, isStandalonePage]
+    [active, isAIWorkflowPage, isAboutPage, isClinicalEvidencePage, isContactPage, isFullStackPage, isMedTechPage, isProofOfWorkPage, isServicesPage, isStandalonePage]
   );
 
   const computeActive = useCallback(() => {
@@ -199,9 +202,9 @@ export default function Navbar({ themeMode, onThemeChange }) {
             </li>
           ))}
           {/* Language switcher inside mobile menu */}
-          {isMobile && !isServicesPage && (
+          {isMobile && !isContactPage && (
             <li>
-              <a href="/collaborate" className="nav__link nav__link--cta" onClick={() => setIsOpen(false)}>
+              <a href="/contact" className="nav__link nav__link--cta" onClick={() => setIsOpen(false)}>
                 {t("site.cta.workWithMe")}
               </a>
             </li>
@@ -214,8 +217,8 @@ export default function Navbar({ themeMode, onThemeChange }) {
         </ul>
 
         <div className="nav__actions">
-          {!isServicesPage && (
-            <a href="/collaborate" className="nav__work-cta">{t("site.cta.workWithMe")}</a>
+          {!isContactPage && (
+            <a href="/contact" className="nav__work-cta">{t("site.cta.workWithMe")}</a>
           )}
           {isMobile
             ? <ThemeSwitcher mode={themeMode} onChange={onThemeChange} />

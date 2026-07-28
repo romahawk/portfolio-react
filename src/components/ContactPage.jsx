@@ -10,10 +10,10 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow={t("site.contact.hero.eyebrow")}
-        title={t("site.contact.hero.title")}
-        subtitle={t("site.contact.hero.subtitle")}
-        primaryCta={{ label: t("site.contact.hero.primary"), href: "#contact", icon: <BriefcaseBusiness size={15} className="icon ml-1" aria-hidden="true" /> }}
+        eyebrow="Contact"
+        title="Work With Me"
+        subtitle="Choose the path that fits: AI workflow automation, MedTech product/project roles, or full-stack prototype collaboration."
+        primaryCta={{ label: "Choose Contact Path", href: "#contact", icon: <BriefcaseBusiness size={15} className="icon ml-1" aria-hidden="true" /> }}
         secondaryCta={{ label: t("site.cta.startAudit"), href: "mailto:romazuryk@proton.me?subject=AI%20Workflow%20Audit%20Request", icon: <CalendarCheck size={15} className="icon ml-1" aria-hidden="true" /> }}
         visualType="contact"
         scrollTargetId="contact"
