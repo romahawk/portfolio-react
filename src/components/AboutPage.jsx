@@ -10,10 +10,10 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow={t("site.about.hero.eyebrow")}
-        title={t("site.about.hero.title")}
-        subtitle={t("site.about.hero.subtitle")}
-        primaryCta={{ label: t("site.cta.viewProof"), href: "/proof-of-work", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
+        eyebrow="About"
+        title="Operator, Product Thinker, and AI-Enhanced Builder"
+        subtitle="I combine MedTech implementation experience, product/project management, AI automation, and full-stack development to build practical workflow systems."
+        primaryCta={{ label: "Explore MedTech Proof", href: "/medtech", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
         secondaryCta={{ label: t("site.cta.contact"), href: "/contact" }}
         scrollTargetId="about"
       />

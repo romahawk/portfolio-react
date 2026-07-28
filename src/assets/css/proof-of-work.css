@@ -382,8 +382,20 @@
   line-height: 1.5;
 }
 
+.proof-page__archive-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.proof-page__archive-actions .project-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .or-proof-page .page-hero {
-  min-height: calc(82svh - var(--nav-h));
+  min-height: calc(100svh - var(--nav-h));
 }
 
 .or-proof__hero-meta {

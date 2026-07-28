@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Copy, Linkedin, Github, Mail, MapPin, Info, CheckCircle, BriefcaseBusiness, CalendarCheck } from "lucide-react";
+import { Copy, Linkedin, Github, Mail, MapPin, Info, CheckCircle, BriefcaseBusiness, CalendarCheck, Code2 } from "lucide-react";
 import { useTranslation } from "../context/LangContext.jsx";
 
 const Contact = () => {
@@ -43,15 +43,20 @@ const Contact = () => {
       </h2>
 
       <div className="contact__paths reveal">
-        <a href="mailto:romazuryk@proton.me?subject=Role%20Inquiry" className="contact__path">
-          <BriefcaseBusiness size={18} aria-hidden="true" />
-          <strong>For hiring teams</strong>
-          <span>Role fit, product leadership, AI workflow systems, regulated operations.</span>
-        </a>
         <a href="mailto:romazuryk@proton.me?subject=AI%20Workflow%20Audit%20Request" className="contact__path">
           <CalendarCheck size={18} aria-hidden="true" />
-          <strong>For business inquiries</strong>
-          <span>Start with one workflow audit, discovery sprint, or prototype conversation.</span>
+          <strong>I need AI workflow automation</strong>
+          <span>Workflow audit, automation sprint, SOP system, dashboard, or internal tool prototype.</span>
+        </a>
+        <a href="mailto:romazuryk@proton.me?subject=MedTech%20Product%20%2F%20Project%20Role" className="contact__path">
+          <BriefcaseBusiness size={18} aria-hidden="true" />
+          <strong>I am hiring for a MedTech / Product / Project role</strong>
+          <span>Product, project, implementation, product ops, or workflow ownership roles.</span>
+        </a>
+        <a href="mailto:romazuryk@proton.me?subject=Full-Stack%20Prototype%20Discussion" className="contact__path">
+          <Code2 size={18} aria-hidden="true" />
+          <strong>I want to discuss a full-stack prototype or collaboration</strong>
+          <span>Product prototypes, dashboards, workflow tools, APIs, and AI-assisted build work.</span>
         </a>
       </div>
 

@@ -5,15 +5,11 @@ import { useScrollReveal } from "./hooks/useScrollReveal.js";
 import { useOgMeta } from "./hooks/useOgMeta.js";
 import { useTheme } from "./hooks/useTheme.js";
 import Navbar from "./components/Navbar.jsx";
-import Hero from "./components/Hero.jsx";
-import OperatorAdvantage from "./components/OperatorAdvantage.jsx";
-import Projects from "./components/Projects.jsx";
-import AIWorkflowPreview from "./components/AIWorkflowPreview.jsx";
 import AboutPage from "./components/AboutPage.jsx";
 import ContactPage from "./components/ContactPage.jsx";
 import Footer from "./components/Footer.jsx";
 import BackToTop from "./components/BackToTop.jsx";
-import ServicesPage from "./components/ServicesPage.jsx";
+import { AIPage, FullStackPage, HomePage, MedTechPage } from "./components/MarketPages.jsx";
 import ClinicalEvidenceWorkflowPage from "./components/ClinicalEvidenceWorkflowPage.jsx";
 import AIWorkflowLibrary from "./components/AIWorkflowLibrary.jsx";
 import AIWorkflowDetailPage from "./components/AIWorkflowDetailPage.jsx";
@@ -32,7 +28,9 @@ const ROUTE_SECTION_MAP = {
 function getPage() {
   if (typeof window === "undefined") return "home";
   const path = window.location.pathname.replace(/\/+$/, "") || "/";
-  if (path === "/services" || path === "/collaborate") return "services";
+  if (path === "/ai" || path === "/services" || path === "/collaborate") return "ai";
+  if (path === "/medtech") return "medtech";
+  if (path === "/fullstack") return "fullstack";
   if (path === "/about") return "about";
   if (path === "/contact") return "contact";
   if (path === OR_INTEGRATION_PROOF_PATH) return "or-integration-proof";
@@ -81,8 +79,12 @@ function AppInner() {
       <a href="#main" className="skip-link">Skip to main content</a>
       <Navbar themeMode={themeMode} onThemeChange={setThemeMode} />
       <main id="main">
-        {page === "services" ? (
-          <ServicesPage />
+        {page === "ai" ? (
+          <AIPage />
+        ) : page === "medtech" ? (
+          <MedTechPage />
+        ) : page === "fullstack" ? (
+          <FullStackPage />
         ) : page === "about" ? (
           <AboutPage />
         ) : page === "contact" ? (
@@ -98,12 +100,7 @@ function AppInner() {
         ) : page === "clinical-evidence-workflow" ? (
           <ClinicalEvidenceWorkflowPage />
         ) : (
-          <>
-            <Hero />
-            <OperatorAdvantage />
-            <Projects />
-            <AIWorkflowPreview />
-          </>
+          <HomePage />
         )}
       </main>
       <Footer />

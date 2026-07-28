@@ -4,9 +4,9 @@ import { getWorkflowBySlug } from "../data/aiWorkflows.js";
 import { useTranslation } from "../context/LangContext.jsx";
 
 const BASE = {
-  title: "Roman Mazuryk - MedTech Product & Workflow Systems",
+  title: "Roman Mazuryk - AI-Augmented Product & Workflow Systems",
   description:
-    "MedTech operator and product systems builder combining real implementation experience with AI-assisted discovery, prototyping, documentation, and delivery.",
+    "Product management, MedTech implementation, AI automation, and full-stack development for workflow systems, prototypes, and operational tools.",
   url: "https://www.mazuryk.dev/",
   image: "https://www.mazuryk.dev/images/og-home.png",
   imageAlt: "Mazuryk.dev hero preview with headline, CTA buttons, and a small circular profile photo.",
@@ -14,13 +14,57 @@ const BASE = {
   imageHeight: "630",
 };
 
-const COLLABORATE = {
-  title: "AI-Assisted Workflow Collaboration for MedTech Teams",
+const AI_SOLUTIONS = {
+  title: "AI Workflow Automation for SMEs - Roman Mazuryk",
   description:
-    "Workflow audits, discovery sprints, prototypes, SOP systems, and compliance-aware automation support for MedTech, HealthTech, and regulated operations teams.",
-  url: "https://www.mazuryk.dev/collaborate",
+    "AI workflow audits, automations, SOP systems, internal dashboards, and practical workflow prototypes for small and medium-sized businesses.",
+  url: "https://www.mazuryk.dev/ai",
   image: "https://www.mazuryk.dev/images/og-services.png",
-  imageAlt: "Mazuryk.dev collaboration page preview for AI-assisted workflow support in MedTech and regulated operations.",
+  imageAlt: "AI workflow automation services for SMEs by Roman Mazuryk.",
+  imageWidth: "1200",
+  imageHeight: "630",
+};
+
+const MEDTECH = {
+  title: "MedTech Product & Project Portfolio - Roman Mazuryk",
+  description:
+    "MedTech implementation, OR integration, workflow systems, stakeholder coordination, and product/project management proof.",
+  url: "https://www.mazuryk.dev/medtech",
+  image: "https://www.mazuryk.dev/images/og-home.png",
+  imageAlt: "MedTech product and project portfolio by Roman Mazuryk.",
+  imageWidth: "1200",
+  imageHeight: "630",
+};
+
+const FULLSTACK = {
+  title: "AI-Enhanced Full-Stack Product Builder - Roman Mazuryk",
+  description:
+    "Product prototypes, dashboards, workflow tools, and AI-assisted systems built with modern full-stack tools.",
+  url: "https://www.mazuryk.dev/fullstack",
+  image: "https://www.mazuryk.dev/images/og-home.png",
+  imageAlt: "AI-enhanced full-stack product builder portfolio by Roman Mazuryk.",
+  imageWidth: "1200",
+  imageHeight: "630",
+};
+
+const ABOUT = {
+  title: "About - Roman Mazuryk",
+  description:
+    "MedTech implementation experience, product/project management, AI automation, and full-stack development unified around practical workflow systems.",
+  url: "https://www.mazuryk.dev/about",
+  image: "https://www.mazuryk.dev/images/og-home.png",
+  imageAlt: "About Roman Mazuryk.",
+  imageWidth: "1200",
+  imageHeight: "630",
+};
+
+const CONTACT = {
+  title: "Contact - Roman Mazuryk",
+  description:
+    "Contact Roman Mazuryk for AI workflow automation, MedTech product/project roles, or full-stack prototype collaboration.",
+  url: "https://www.mazuryk.dev/contact",
+  image: "https://www.mazuryk.dev/images/og-home.png",
+  imageAlt: "Contact Roman Mazuryk.",
   imageWidth: "1200",
   imageHeight: "630",
 };
@@ -108,11 +152,47 @@ export function useOgMeta() {
     function update() {
       const path = window.location.pathname.replace(/\/+$/, "") || "/";
 
-      if (path === "/services" || path === "/collaborate") {
+      if (path === "/ai" || path === "/services" || path === "/collaborate") {
         applyMeta({
-          ...COLLABORATE,
-          title: seo("collaborateTitle", COLLABORATE.title),
-          description: seo("collaborateDescription", COLLABORATE.description),
+          ...AI_SOLUTIONS,
+          title: seo("aiTitle", AI_SOLUTIONS.title),
+          description: seo("aiDescription", AI_SOLUTIONS.description),
+        });
+        return;
+      }
+
+      if (path === "/medtech") {
+        applyMeta({
+          ...MEDTECH,
+          title: seo("medtechTitle", MEDTECH.title),
+          description: seo("medtechDescription", MEDTECH.description),
+        });
+        return;
+      }
+
+      if (path === "/fullstack") {
+        applyMeta({
+          ...FULLSTACK,
+          title: seo("fullstackTitle", FULLSTACK.title),
+          description: seo("fullstackDescription", FULLSTACK.description),
+        });
+        return;
+      }
+
+      if (path === "/about") {
+        applyMeta({
+          ...ABOUT,
+          title: seo("aboutTitle", ABOUT.title),
+          description: seo("aboutDescription", ABOUT.description),
+        });
+        return;
+      }
+
+      if (path === "/contact") {
+        applyMeta({
+          ...CONTACT,
+          title: seo("contactTitle", CONTACT.title),
+          description: seo("contactDescription", CONTACT.description),
         });
         return;
       }

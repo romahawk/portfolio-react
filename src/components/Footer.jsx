@@ -3,11 +3,11 @@ import { Linkedin, Github, Mail, ArrowUpRight } from "lucide-react";
 import { useTranslation } from "../context/LangContext.jsx";
 
 const NAV_LINKS = [
-  { label: "Proof of Work", href: "/proof-of-work" },
-  { label: "AI Workflows", href: "/ai-workflow" },
+  { label: "AI Solutions", href: "/ai" },
+  { label: "MedTech", href: "/medtech" },
+  { label: "Full-Stack", href: "/fullstack" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Work With Me", href: "/collaborate" },
 ];
 
 const SOCIAL_LINKS = [
@@ -70,7 +70,7 @@ export default function Footer() {
           <a href="/contact" className="footer__cta-btn">
             {t("site.cta.discussRole")} <ArrowUpRight size={14} className="footer__cta-icon" aria-hidden="true" />
           </a>
-          <a href="/collaborate" className="footer__secondary-link">
+          <a href="/ai" className="footer__secondary-link">
             {t("site.cta.exploreCollaboration")} <ArrowUpRight size={13} aria-hidden="true" />
           </a>
         </div>

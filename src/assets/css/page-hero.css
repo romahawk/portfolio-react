@@ -1,5 +1,7 @@
 /* ===== Shared page hero system ===== */
 .page-hero {
+  --page-hero-scroll-bottom: 28px;
+  --page-hero-divider-bottom: calc(8% + 50px);
   min-height: calc(100svh - var(--nav-h));
   display: grid;
   align-items: center;
@@ -23,7 +25,7 @@
 .page-hero::after {
   content: "";
   position: absolute;
-  inset: auto 8% 8% 8%;
+  inset: auto 8% var(--page-hero-divider-bottom) 8%;
   height: 1px;
   z-index: -1;
   background: linear-gradient(90deg, transparent, rgba(73,215,209,.34), transparent);
@@ -31,7 +33,7 @@
 }
 
 .page-hero--compact {
-  min-height: calc(82svh - var(--nav-h));
+  min-height: calc(100svh - var(--nav-h));
 }
 
 .page-hero__inner {
@@ -113,7 +115,7 @@
 .page-hero__scroll-cue {
   position: absolute;
   left: 50%;
-  bottom: 28px;
+  bottom: var(--page-hero-scroll-bottom);
   transform: translateX(-50%);
   display: inline-flex;
   flex-direction: column;
@@ -362,10 +364,6 @@
 }
 
 @media (max-height: 680px) and (min-width: 760px) {
-  .page-hero {
-    min-height: calc(88svh - var(--nav-h));
-  }
-
   .page-hero__inner {
     padding-bottom: 84px;
   }

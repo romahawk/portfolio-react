@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowRight, Boxes, ChevronDown, ExternalLink } from "lucide-react";
+import { ArrowRight, Boxes, ChevronDown, ExternalLink, FileText, Presentation } from "lucide-react";
 import { aiWorkflowExamples, getWorkflowBySlug } from "../data/aiWorkflows.js";
 import { useTranslation } from "../context/LangContext.jsx";
 import StatusBadge from "./StatusBadge.jsx";
@@ -10,6 +10,11 @@ const AI_WORKFLOW_SLUGS = [
   "regulated-sop-assistant",
   "or-workflow-optimization",
   "surgical-recording-indexing",
+];
+
+const LIVESURGERY_ARCHIVE_LINKS = [
+  { label: "View", href: "https://livesurgery-landing.vercel.app/" },
+  { label: "Pitch deck", href: "https://livesurgery-pitch-deck.vercel.app/", icon: "pitch" },
 ];
 
 const TITLE_OVERRIDES = {
@@ -131,9 +136,21 @@ const ARCHIVE_ITEMS = [
     status: "Prototype",
     note: "Real-time OR collaboration and surgical education workspace.",
     proves: "Multi-source session design, role-based collaboration, and surgical workflow intelligence.",
-    href: "https://livesurgery-landing.vercel.app/",
+    links: LIVESURGERY_ARCHIVE_LINKS,
   },
 ];
+
+const ARCHIVE_LINK_ICONS = {
+  caseStudy: FileText,
+  pitch: Presentation,
+};
+
+function normalizeArchiveLinks(item) {
+  if (item.title === "LiveSurgery") {
+    return { ...item, href: undefined, links: item.links || LIVESURGERY_ARCHIVE_LINKS };
+  }
+  return item;
+}
 
 function WorkflowProofCard({ workflow }) {
   const { t } = useTranslation();
@@ -261,6 +278,8 @@ function MedTechImplementationCard({ item }) {
 
 function ArchiveCard({ item }) {
   const { t } = useTranslation();
+  const links = item.links || (item.href ? [{ label: t("site.cta.view"), href: item.href }] : []);
+
   return (
     <article className="proof-page__archive-card">
       <div className="proof-page__archive-card-head">
@@ -272,10 +291,27 @@ function ArchiveCard({ item }) {
         <span>{t("site.proof.labels.proves")}</span>
         <strong>{item.proves}</strong>
       </div>
-      {item.href ? (
-        <a href={item.href} className="project-card__link project-card__link--ghost" target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noreferrer" : undefined}>
-          {t("site.cta.view")} <ExternalLink size={13} aria-hidden="true" />
-        </a>
+      {links.length ? (
+        <nav className="proof-page__archive-actions" aria-label={`${item.title} links`}>
+          {links.map((link) => {
+            const isExternal = link.href.startsWith("http");
+            const Icon = ARCHIVE_LINK_ICONS[link.icon];
+
+            return (
+              <a
+                href={link.href}
+                className="project-card__link project-card__link--ghost"
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noreferrer" : undefined}
+                key={`${link.label}-${link.href}`}
+              >
+                {Icon ? <Icon size={13} aria-hidden="true" /> : null}
+                {link.label}
+                {isExternal ? <ExternalLink size={13} aria-hidden="true" /> : null}
+              </a>
+            );
+          })}
+        </nav>
       ) : null}
     </article>
   );
@@ -289,7 +325,7 @@ export default function ProofOfWorkPage() {
   const archiveValue = t("site.proof.archive.items");
   const primaryMedTech = Array.isArray(primaryMedTechValue) ? primaryMedTechValue : PRIMARY_MEDTECH_IMPLEMENTATION;
   const secondaryMedTech = Array.isArray(secondaryMedTechValue) ? secondaryMedTechValue : SECONDARY_MEDTECH_IMPLEMENTATION;
-  const archiveItems = Array.isArray(archiveValue) ? archiveValue : ARCHIVE_ITEMS;
+  const archiveItems = (Array.isArray(archiveValue) ? archiveValue : ARCHIVE_ITEMS).map(normalizeArchiveLinks);
   const primaryWorkflows = AI_WORKFLOW_SLUGS.map(getWorkflowBySlug).filter(Boolean);
   const primarySlugs = new Set(primaryWorkflows.map((workflow) => workflow.slug));
   const secondaryWorkflows = aiWorkflowExamples.filter(
