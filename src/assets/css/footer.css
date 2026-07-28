@@ -150,6 +150,22 @@
 }
 .footer__cta-icon { flex-shrink: 0; }
 
+[data-theme="light"] .footer__col-heading {
+  color: #056f78;
+}
+
+[data-theme="light"] .footer__cta-btn {
+  border-color: rgba(5, 111, 120, 0.42);
+  background: rgba(5, 111, 120, 0.08);
+  color: #056f78;
+}
+
+[data-theme="light"] .footer__cta-btn:hover {
+  border-color: rgba(5, 111, 120, 0.62);
+  background: rgba(5, 111, 120, 0.14);
+  color: var(--text);
+}
+
 .footer__secondary-link {
   display: inline-flex;
   align-items: center;

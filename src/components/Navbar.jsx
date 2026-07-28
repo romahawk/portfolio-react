@@ -179,7 +179,7 @@ export default function Navbar({ themeMode, onThemeChange }) {
         aria-hidden="true"
       />
       <nav className="nav container">
-        <a href="/" className="nav__logo" aria-label={t("nav.backToTop")} onClick={() => handleClick("home")}>
+        <a href="/" className="nav__logo" aria-label="ROMAZ home" onClick={() => handleClick("home")}>
           <span className="nav__logo-brace">{'{ }'}</span>
           <span className="nav__logo-text">ROMAZ</span>
           <span className="nav__logo-accent" />
@@ -187,7 +187,6 @@ export default function Navbar({ themeMode, onThemeChange }) {
 
         <ul
           className={`nav__list ${isOpen ? "nav__list--open" : ""}`}
-          aria-hidden={isMobile && !isOpen}
           inert={isMobile && !isOpen ? "" : undefined}
         >
           {navItems.map(({ id, href, labelKey, current }) => (
