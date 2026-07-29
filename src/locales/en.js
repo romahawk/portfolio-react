@@ -544,7 +544,7 @@ export default {
       medtechTitle: "MedTech Product & Project Portfolio \u2014 Roman Mazuryk",
       medtechDescription: "MedTech implementation experience translated into product thinking, project coordination, workflow systems, documentation, handover, and AI-assisted delivery.",
       fullstackTitle: "AI-Enhanced Full-Stack Product Builder \u2014 Roman Mazuryk",
-      fullstackDescription: "Product prototypes, dashboards, workflow tools, and AI-assisted systems built with modern full-stack tools.",
+      fullstackDescription: "Full-stack product prototypes, dashboards, workflow tools, and AI-assisted systems built with React, Next.js, Python, databases, deployment tools, and AI-native development workflows.",
       collaborateTitle: "AI-Assisted Workflow Collaboration for MedTech Teams",
       collaborateDescription: "Workflow audits, discovery sprints, prototypes, SOP systems, and compliance-aware automation support for MedTech, HealthTech, and regulated operations teams.",
       aiWorkflowTitle: "AI Workflow Library",
