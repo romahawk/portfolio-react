@@ -540,7 +540,7 @@ export default {
     seo: {
       homeTitle: "Roman Mazuryk \u2014 KI-augmentierte Produkt- und Workflow-Systeme",
       aiTitle: "KI-Workflow-Automatisierung fuer KMU \u2014 Roman Mazuryk",
-      aiDescription: "KI-Workflow-Audits, Automatisierungen, SOP-Systeme, interne Dashboards und praktische Workflow-Prototypen fuer kleine und mittlere Unternehmen.",
+      aiDescription: "KI-gestuetzte Workflow-Automatisierung, SOP-Systeme, Dashboards und interne Tools fuer KMU mit repetitiver operativer Arbeit und verstreuter Dokumentation.",
       medtechTitle: "MedTech Produkt- und Projektportfolio \u2014 Roman Mazuryk",
       medtechDescription: "MedTech-Implementierung, OP-Integration, Workflow-Systeme, Stakeholder-Koordination und Produkt-/Projektmanagement-Nachweis.",
       fullstackTitle: "KI-erweiterter Full-Stack Product Builder \u2014 Roman Mazuryk",
