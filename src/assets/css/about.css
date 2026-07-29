@@ -1,4 +1,22 @@
 /* -------- About section -------- */
+.about {
+  position: relative;
+  isolation: isolate;
+}
+
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 42px 42px, 42px 42px;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
 .about__container {
   max-width: 1000px;
   margin: 0 auto;
@@ -15,10 +33,10 @@
   display: inline-flex;
   align-items: center;
   margin-bottom: 0.7rem;
-  color: var(--muted);
+  color: var(--accent-medtech);
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-weight: 850;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
@@ -53,10 +71,29 @@
 
 .about__panel,
 .about__section-card {
+  position: relative;
+  overflow: hidden;
   padding: 1.15rem 1.15rem 1rem;
-  border: 1px solid var(--surface-border);
+  border: 1px solid var(--system-border);
   border-radius: var(--radius);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.62)),
+    var(--panel);
+  background-size: 28px 28px, 28px 28px, auto, auto;
+  box-shadow: var(--shadow);
+}
+
+.about__panel::before,
+.about__section-card::before,
+.about__cta::before,
+.about__timeline::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent-medtech), transparent);
 }
 
 .about__panel {
@@ -64,9 +101,6 @@
   flex-direction: column;
   gap: .75rem;
   margin-top: 0;
-  background:
-    radial-gradient(560px 260px at 100% 0, var(--surface-glow), transparent 60%),
-    var(--card-bg-deep);
 }
 
 .about__panel--hero {
@@ -96,22 +130,6 @@
   gap: 12px;
 }
 
-.about__section-card {
-  background: var(--card-bg-deep);
-}
-
-.about__section-card--cool {
-  background:
-    radial-gradient(560px 260px at 100% 0, var(--surface-cool), transparent 60%),
-    var(--card-bg-deep);
-}
-
-.about__section-card--warm {
-  background:
-    radial-gradient(560px 260px at 100% 0, var(--surface-warm), transparent 60%),
-    var(--card-bg-deep);
-}
-
 .about__heading {
   margin: 0 0 0.65rem;
   display: flex;
@@ -121,7 +139,7 @@
 
 .about__subtitle {
   font-size: 1.5rem;
-  color: var(--brand);
+  color: var(--accent-medtech);
   margin-bottom: 1rem;
 }
 [data-theme="dark"] .about__subtitle {
@@ -132,12 +150,6 @@
   color: var(--muted);
   line-height: 1.8;
   margin: 0 0 .75rem 0;
-}
-
-.about__section-card--implementation {
-  background:
-    radial-gradient(620px 280px at 100% 0, var(--surface-glow), transparent 62%),
-    var(--card-bg-deep);
 }
 
 .about__text--large {
@@ -187,7 +199,7 @@
 }
 
 .about__check-list svg {
-  color: var(--brand);
+  color: var(--accent-medtech);
   flex-shrink: 0;
   margin-top: 3px;
 }
@@ -238,17 +250,24 @@
 
 .about__implementation-copy blockquote {
   padding: 12px 14px;
-  border-left: 2px solid rgba(73,215,209,.45);
+  border-left: 2px solid color-mix(in srgb, var(--accent-medtech) 48%, var(--border));
   border-radius: 10px;
   background: var(--surface-soft);
   color: var(--muted-strong);
 }
 
 .about__timeline {
+  position: relative;
+  overflow: hidden;
   padding: 16px;
-  border: 1px solid var(--surface-border);
+  border: 1px solid var(--system-border);
   border-radius: var(--radius);
-  background: var(--card-bg-deep);
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    var(--panel);
+  background-size: 28px 28px, 28px 28px, auto;
+  box-shadow: var(--shadow);
 }
 
 .about__timeline summary {
@@ -267,11 +286,12 @@
 }
 
 .about__value-card {
+  position: relative;
   padding: 1.15rem;
-  border: 1px solid var(--surface-border);
+  border: 1px solid var(--system-border);
   border-radius: var(--radius);
-  background: var(--card-bg-deep);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+  background: color-mix(in srgb, var(--panel) 88%, transparent);
+  box-shadow: none;
 }
 
 .about__value-card h4,
@@ -281,13 +301,14 @@
 }
 
 .about__role-card {
+  position: relative;
   display: grid;
   gap: 12px;
   align-content: start;
   padding: 1.15rem;
-  border: 1px solid var(--surface-border);
+  border: 1px solid var(--system-border);
   border-radius: var(--radius);
-  background: var(--card-bg-deep);
+  background: color-mix(in srgb, var(--panel) 88%, transparent);
 }
 
 .about__role-card .btn {
@@ -307,7 +328,7 @@
   min-height: 54px;
   gap: 10px;
   padding: 13px 14px;
-  border: 1px solid var(--surface-border);
+  border: 1px solid var(--system-border);
   border-radius: 12px;
   background: var(--surface-soft);
   color: var(--text);
@@ -315,21 +336,26 @@
 }
 
 .about__proof-links a:hover {
-  color: var(--brand);
-  border-color: rgba(73,215,209,.42);
+  color: var(--accent-medtech);
+  border-color: color-mix(in srgb, var(--accent-medtech) 42%, var(--border));
 }
 
 .about__cta {
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
   padding: 1.15rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--system-border);
   border-radius: var(--radius);
   background:
-    radial-gradient(560px 260px at 100% 0, var(--surface-glow), transparent 60%),
-    var(--card-bg-deep);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.62)),
+    var(--panel);
+  background-size: 28px 28px, 28px 28px, auto, auto;
   box-shadow: var(--shadow);
 }
 
@@ -344,8 +370,8 @@
   margin-top: 1rem;
   padding: 1rem;
   background: var(--surface-soft);
-  border: 1px solid var(--surface-border);
-  border-left: 4px solid var(--brand);
+  border: 1px solid var(--system-border);
+  border-left: 4px solid var(--accent-medtech);
   border-radius: 12px;
   font-style: italic;
   color: var(--text);
@@ -370,8 +396,8 @@
 }
 
 .about__pillar {
-  background: var(--card-bg-deep);
-  border: 1px solid var(--surface-border);
+  background: color-mix(in srgb, var(--panel) 88%, transparent);
+  border: 1px solid var(--system-border);
   border-radius: var(--radius);
   padding: 1.1rem 1rem;
   display: flex;
@@ -381,12 +407,12 @@
 }
 
 .about__pillar:hover {
-  border-color: rgba(73,215,209,.35);
-  box-shadow: 0 0 18px rgba(73,215,209,.08);
+  border-color: color-mix(in srgb, var(--accent-medtech) 38%, var(--border));
+  box-shadow: var(--shadow);
 }
 
 .about__pillar-icon {
-  color: var(--brand);
+  color: var(--accent-medtech);
   flex-shrink: 0;
 }
 
@@ -406,6 +432,17 @@
 
 @media (prefers-reduced-motion: reduce) {
   .about__pillar { transition: none; }
+}
+
+[data-theme="dark"] .about__panel,
+[data-theme="dark"] .about__section-card,
+[data-theme="dark"] .about__timeline,
+[data-theme="dark"] .about__cta {
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(520px 220px at 100% 0, var(--accent-medtech-soft), transparent 66%),
+    var(--card-bg);
 }
 
 @media (max-width: 768px) {

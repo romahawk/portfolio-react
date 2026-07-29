@@ -1,21 +1,27 @@
-import React from "react";
 import {
   ArrowRight,
   Bot,
   BriefcaseBusiness,
   ClipboardCheck,
   Code2,
-  Database,
-  FileText,
   Github,
   Mail,
   Network,
   Stethoscope,
   Workflow,
 } from "lucide-react";
-import PageHero from "./common/PageHero.jsx";
-import StatusBadge from "./StatusBadge.jsx";
-import { getProjectsByCategory, projectCategories } from "../data/projects.js";
+import {
+  ArtifactMap,
+  CTAStrip,
+  FeaturePill,
+  PageHero,
+  ProofCard,
+  RouteCard,
+  SectionHeader,
+  SystemCard,
+  WorkflowMap,
+} from "./system/SystemVisuals.jsx";
+import { getProjectsByCategory, projectCategories, projectPortfolio } from "../data/projects.js";
 
 const EMAIL = "romazuryk@proton.me";
 
@@ -26,6 +32,7 @@ const routeCards = [
     cta: "Explore AI Solutions",
     href: "/ai",
     icon: Bot,
+    accent: "ai",
   },
   {
     title: "MedTech Product & Project Portfolio",
@@ -33,6 +40,7 @@ const routeCards = [
     cta: "View MedTech Portfolio",
     href: "/medtech",
     icon: Stethoscope,
+    accent: "medtech",
   },
   {
     title: "AI-Enhanced Full-Stack Development",
@@ -40,24 +48,191 @@ const routeCards = [
     cta: "View Full-Stack Work",
     href: "/fullstack",
     icon: Code2,
+    accent: "fullstack",
+  },
+];
+
+const homeWorkflow = [
+  { label: "Product Thinking", detail: "States, owners, decisions, requirements" },
+  { label: "AI Automation", detail: "Assistants, APIs, workflow triggers" },
+  { label: "Workflow Systems", detail: "Dashboards, SOPs, prototypes, handover" },
+];
+
+const heroInputs = ["Emails", "Excel", "PDFs", "Calls", "Manual tasks"];
+const heroOutputs = ["Workflow system", "Automation", "Dashboard", "SOP", "Prototype"];
+
+const operatingModelPills = [
+  "Product Thinking",
+  "MedTech / Operations Experience",
+  "AI Automation",
+  "Full-Stack Delivery",
+  "Workflow Systems",
+];
+
+const homeArtifact = {
+  inputLabel: "Capabilities",
+  outputLabel: "System",
+  inputs: ["AI Automation", "MedTech Experience", "Full-Stack Delivery"],
+  outputs: ["Workflow Systems"],
+};
+
+const aiArtifact = {
+  inputLabel: "Manual process",
+  outputLabel: "AI-assisted workflow",
+  inputs: ["Intake", "Trigger", "Manual task"],
+  outputs: ["Automation", "AI summary", "Human review", "Dashboard / output"],
+};
+
+const medtechArtifact = {
+  inputLabel: "OR / clinical workflow",
+  outputLabel: "Product & project systems",
+  inputs: ["Device / OR environment", "Stakeholders", "Documentation"],
+  outputs: ["Handover", "Workflow states", "Operational visibility"],
+};
+
+const fullstackArtifact = {
+  inputLabel: "Prompt",
+  outputLabel: "Product system",
+  inputs: ["Idea", "AI-assisted planning", "Code"],
+  outputs: ["Data layer", "UI", "Deployed demo"],
+};
+
+const proofHighlights = [
+  {
+    title: "AI workflow audits",
+    problem: "Manual work and scattered documentation hide where automation should start.",
+    system: "Map one workflow, identify automation opportunities, and define a smallest useful system.",
+    proof: "Offer structure, workflow mapping logic, SOP handover, and automation sprint path.",
+    cta: { label: "Explore AI", href: "/ai" },
+    icon: Bot,
+    accent: "ai",
+  },
+  {
+    title: "OR integration proof",
+    problem: "Clinical workflows depend on equipment, vendors, handover, training, and implementation reality.",
+    system: "Translate operating-room complexity into product/project requirements and workflow ownership.",
+    proof: "Surgimedia, Surgiris, surgical video/audio workflows, stakeholder coordination, and handover.",
+    cta: { label: "View MedTech", href: "/medtech" },
+    icon: Stethoscope,
+    accent: "medtech",
+  },
+  {
+    title: "Workflow tool builds",
+    problem: "Teams need visible workflow state, not another static document or vague prototype.",
+    system: "Build dashboards, product prototypes, APIs, persistence, and AI-assisted development loops.",
+    proof: "FlowLogix, LiveSurgery, mazuryk.dev, and archived technical prototypes.",
+    cta: { label: "View Full-Stack", href: "/fullstack" },
+    icon: Code2,
+    accent: "fullstack",
   },
 ];
 
 const aiOffers = [
-  ["AI Workflow Audit", "Map one messy process, identify automation opportunities, and define the smallest useful AI-assisted workflow."],
-  ["Automation Sprint", "Build one working automation or workflow prototype using tools such as n8n, Make, Airtable, Notion, APIs, and AI assistants."],
-  ["SOP / Knowledge System", "Turn scattered knowledge into structured operating procedures, onboarding materials, and repeatable documentation."],
-  ["Dashboard / Internal Tool Prototype", "Replace spreadsheet chaos with a lightweight dashboard or internal tool."],
+  {
+    title: "AI Workflow Audit",
+    problem: "A messy process is slow, repeated, and spread across people, spreadsheets, documents, and messages.",
+    system: "Map the workflow, expose bottlenecks, identify AI/automation opportunities, and define the smallest useful system.",
+    proof: "Clear workflow map, friction register, opportunity matrix, and a scoped next-step implementation plan.",
+    cta: { label: "Request audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` },
+    icon: ClipboardCheck,
+  },
+  {
+    title: "Automation Sprint",
+    problem: "The team sees automation potential but lacks a working prototype, ownership model, and exception handling.",
+    system: "Build one practical automation or workflow prototype using n8n, Make, Airtable/Notion, APIs, or custom UI where useful.",
+    proof: "Working automation path, review checkpoints, handover notes, and next build recommendations.",
+    cta: { label: "Discuss sprint", href: `mailto:${EMAIL}?subject=Automation%20Sprint%20Discussion` },
+    icon: Bot,
+  },
+  {
+    title: "SOP / Knowledge System",
+    problem: "Operating knowledge lives in scattered notes, calls, folders, chats, and individual memory.",
+    system: "Turn the knowledge into structured procedures, onboarding paths, ownership rules, and reusable documentation.",
+    proof: "SOP structure, source map, handover checklist, and repeatable operating memory.",
+    cta: { label: "Structure knowledge", href: `mailto:${EMAIL}?subject=SOP%20Knowledge%20System` },
+    icon: Workflow,
+  },
+  {
+    title: "Dashboard / Internal Tool Prototype",
+    problem: "Spreadsheet-heavy operations make status, risk, and handoffs hard to see.",
+    system: "Design a lightweight dashboard or internal tool that makes workflow states visible and actionable.",
+    proof: "Clickable prototype, state model, data assumptions, and implementation-ready next steps.",
+    cta: { label: "Discuss prototype", href: `mailto:${EMAIL}?subject=Internal%20Tool%20Prototype` },
+    icon: Code2,
+  },
+];
+
+const aiStack = [
+  "ChatGPT",
+  "Claude",
+  "n8n",
+  "Make",
+  "Airtable / Notion / Google Sheets",
+  "APIs",
+  "React / Next.js when custom UI is needed",
+  "Supabase / Firebase if persistence is needed",
+];
+
+const aiWorkflow = [
+  { label: "Audit", detail: "Map one workflow and its hidden states" },
+  { label: "Automate", detail: "Add AI/API support where it removes friction" },
+  { label: "Operate", detail: "Document, hand over, and improve the system" },
 ];
 
 const aiProblems = [
-  "Manual status updates and repeated coordination",
-  "Scattered SOPs, onboarding notes, and tribal knowledge",
-  "Spreadsheet-heavy operations with weak visibility",
-  "AI interest without a practical workflow starting point",
+  {
+    title: "Repetitive coordination",
+    problem: "Updates, reminders, approvals, and handoffs depend on people chasing each other manually.",
+    system: "Turn the recurring path into visible states, triggers, owners, and review points.",
+    proof: "Better fit for automation sprints, status dashboards, and exception handling.",
+    icon: Workflow,
+  },
+  {
+    title: "Scattered documentation",
+    problem: "Process knowledge lives across PDFs, chats, calls, spreadsheets, and individual memory.",
+    system: "Structure knowledge into SOPs, onboarding paths, checklists, and reusable operating records.",
+    proof: "SOP / Knowledge System offer with source mapping and handover logic.",
+    icon: ClipboardCheck,
+  },
+  {
+    title: "Spreadsheet visibility gaps",
+    problem: "Teams cannot easily see workflow state, bottlenecks, risk, or accountability.",
+    system: "Replace spreadsheet chaos with a lightweight dashboard or internal workflow tool.",
+    proof: "FlowLogix-style operational visibility patterns and custom UI where needed.",
+    icon: Code2,
+  },
+  {
+    title: "AI without a use case",
+    problem: "AI interest becomes experimentation when the workflow, data, and decision points are unclear.",
+    system: "Start with one workflow audit, then add AI only where it removes real friction.",
+    proof: "Clear opportunity matrix before build work begins.",
+    icon: Bot,
+  },
 ];
 
-const aiStack = ["ChatGPT / Claude", "n8n / Make", "Airtable / Notion / Google Sheets", "APIs", "React / Next.js", "Supabase / Firebase"];
+const aiProcess = [
+  {
+    title: "Map the workflow",
+    problem: "The process feels obvious until ownership, exceptions, inputs, and handoffs are made explicit.",
+    system: "Document the real path, not the idealized version.",
+    proof: "Workflow map, actors, states, artifacts, and bottlenecks.",
+    icon: Workflow,
+  },
+  {
+    title: "Find the smallest useful system",
+    problem: "Big automation scopes stall quickly.",
+    system: "Pick one useful workflow improvement with clear boundaries and human review.",
+    proof: "Prioritized automation candidate and implementation plan.",
+    icon: ClipboardCheck,
+  },
+  {
+    title: "Prototype and hand over",
+    problem: "A demo is not useful unless the team knows how to operate it.",
+    system: "Build the workflow prototype and package the logic into SOPs, notes, and next steps.",
+    proof: "Working path, review checkpoints, and handover artifacts.",
+    icon: Bot,
+  },
+];
 
 const medtechProof = [
   "OR integration and surgical infrastructure",
@@ -68,97 +243,180 @@ const medtechProof = [
 ];
 
 const medtechRoleFit = [
-  "Product / Project Manager",
-  "Technical Product Manager",
-  "Product Operations",
-  "Implementation / Solutions roles",
-  "MedTech or HealthTech founder support",
+  {
+    title: "Product / Project Manager",
+    problem: "MedTech delivery often fails between commercial promise, clinical workflow, vendor constraints, and implementation reality.",
+    system: "Translate field constraints into roadmaps, requirements, rollouts, decision records, and handover logic.",
+    proof: "OR integration, medical equipment implementation, training, stakeholder coordination, and documentation ownership.",
+    icon: BriefcaseBusiness,
+  },
+  {
+    title: "Technical Product Manager",
+    problem: "AI and workflow concepts need product judgment rooted in real operating environments.",
+    system: "Frame use cases, users, data flows, risks, review points, and prototype scope before engineering spend.",
+    proof: "LiveSurgery, clinical workflow concepts, OR video/audio workflow exposure, and AI-assisted delivery patterns.",
+    icon: Network,
+  },
+  {
+    title: "Product Operations / Implementation",
+    problem: "Teams need cleaner visibility across adoption, handover, training, supportability, and multi-vendor coordination.",
+    system: "Create structured workflow states, stakeholder maps, SOPs, dashboards, and accountable delivery routines.",
+    proof: "Multi-site rollouts, clinical onboarding, hospital stakeholder coordination, and implementation documentation.",
+    icon: Workflow,
+  },
+];
+
+const medtechWorkflow = [
+  { label: "Field reality", detail: "Hospitals, OR workflows, vendors, equipment" },
+  { label: "Product model", detail: "Roles, constraints, states, handover" },
+  { label: "Delivery proof", detail: "Implementation, training, workflow systems" },
+];
+
+const medtechOrExperience = [
+  {
+    title: "OR integration and surgical workflows",
+    problem: "Operating rooms combine equipment, signals, clinical routines, documentation, vendors, and downtime sensitivity.",
+    system: "Translate OR integration reality into workflow states, handover logic, adoption risks, and product requirements.",
+    proof: "Surgimedia context, surgical video/audio workflows, surgical monitors, recorders, and multi-vendor coordination.",
+    icon: Stethoscope,
+  },
+  {
+    title: "Surgical lights and equipment rollout",
+    problem: "Medical equipment delivery is not just installation; it requires clinical fit, training, supportability, and acceptance.",
+    system: "Coordinate rollout, training, stakeholder expectations, and implementation documentation.",
+    proof: "Surgiris surgical lights, Medintegro context, hospital stakeholders, training, and lifecycle handover.",
+    icon: ClipboardCheck,
+  },
+  {
+    title: "Implementation documentation",
+    problem: "Important field knowledge is often lost between sales, implementation, support, product, and clinical users.",
+    system: "Convert delivery context into structured records, requirements, owners, and support-ready documentation.",
+    proof: "Implementation handover, workflow ownership, training materials, and multi-vendor delivery coordination.",
+    icon: Workflow,
+  },
+];
+
+const medtechCapabilities = [
+  {
+    title: "Product / project translation",
+    problem: "Clinical and operational constraints often arrive as anecdotes, escalations, or implementation friction.",
+    system: "Turn field reality into requirements, scope, acceptance criteria, rollout plans, and decision records.",
+    proof: "MedTech implementation background plus workflow-system portfolio.",
+    icon: BriefcaseBusiness,
+  },
+  {
+    title: "Stakeholder coordination",
+    problem: "Hospitals, vendors, technical teams, clinicians, and commercial stakeholders need different levels of detail.",
+    system: "Create shared visibility around owners, risks, handoffs, and next decisions.",
+    proof: "Hospital stakeholder coordination, training, handover, and multi-vendor delivery.",
+    icon: Network,
+  },
+  {
+    title: "Workflow ownership",
+    problem: "Implementation-heavy products fail when no one owns the operating model after delivery.",
+    system: "Define how the workflow runs, who reviews it, what gets documented, and where escalation happens.",
+    proof: "OR integration proof, MedTech workflow concepts, and documentation-oriented delivery.",
+    icon: Workflow,
+  },
+];
+
+const medtechAiConcepts = [
+  {
+    title: "MedTech Implementation Handoff Assistant",
+    problem: "Implementation context gets lost before it becomes product, support, or customer-success knowledge.",
+    system: "Capture site context, owners, risks, acceptance criteria, and next actions in a structured handoff model.",
+    proof: "Workflow concept aligned with implementation-heavy MedTech teams.",
+    cta: { label: "View workflow library", href: "/ai-workflow" },
+    icon: ClipboardCheck,
+  },
+  {
+    title: "MedTech Operations Knowledge / Workflow OS",
+    problem: "Operational knowledge is scattered across implementation notes, support history, training, and vendor materials.",
+    system: "Create a searchable operating layer for SOPs, handover, review points, and workflow states.",
+    proof: "Combines MedTech domain context with AI-assisted knowledge-system patterns.",
+    cta: { label: "Explore workflows", href: "/ai-workflow" },
+    icon: Bot,
+  },
+  {
+    title: "Regulated operations visibility",
+    problem: "Operational teams need cleaner status visibility without pretending a dashboard solves clinical complexity.",
+    system: "Frame FlowLogix-style visibility around workflow states, risk, accountability, and handoffs.",
+    proof: "FlowLogix as operations visibility proof when applied carefully to regulated environments.",
+    cta: { label: "View proof", href: "/fullstack" },
+    icon: Code2,
+  },
 ];
 
 const fullstackStack = [
-  "React", "Next.js", "TypeScript / JavaScript", "Tailwind", "Python", "Flask / FastAPI",
-  "PostgreSQL / Supabase / Firebase", "REST APIs", "Git / GitHub", "Vercel / Render / Koyeb",
-  "ChatGPT / Claude / Codex / v0 / Cursor",
+  "React",
+  "Next.js",
+  "TypeScript / JavaScript",
+  "Tailwind",
+  "Python",
+  "Flask / FastAPI",
+  "PostgreSQL / Supabase / Firebase",
+  "REST APIs",
+  "Git / GitHub",
+  "Vercel / Render / Koyeb",
+  "ChatGPT",
+  "Claude",
+  "Codex",
+  "v0",
+  "Cursor",
 ];
 
-function SectionHeader({ eyebrow, title, text }) {
+const fullstackWorkflow = [
+  { label: "Product frame", detail: "User, workflow, state, acceptance criteria" },
+  { label: "AI-assisted build", detail: "Codex, Claude, ChatGPT, implementation loops" },
+  { label: "Working system", detail: "Prototype, dashboard, API, handover" },
+];
+
+const fullstackProjectProof = [
+  {
+    title: "Workflow Intelligence content system",
+    status: "Built",
+    summary: "Reusable visual and content primitives for workflow maps, system cards, proof cards, CTAs, and route-specific accents.",
+    problem: "Generic portfolio cards do not communicate operational complexity becoming structured systems.",
+    solution: "A component layer that expresses Problem, System, Proof, workflow states, connectors, and page-specific accents.",
+    proof: "SystemVisuals components, visual-system CSS, and the three-vector route architecture.",
+    stack: ["React components", "CSS tokens", "Workflow UX", "Design system"],
+    links: [{ label: "View source", href: "https://github.com/romahawk" }],
+    relevance: "Reusable product UI system",
+  },
+];
+
+function ProofGrid({ projects, accent }) {
   return (
-    <div className="market-page__section-head reveal">
-      <p className="market-page__kicker">{eyebrow}</p>
-      <h2><span className="about__chev">&gt;</span> {title}</h2>
-      {text ? <p>{text}</p> : null}
+    <div className="market-page__proof-grid">
+      {projects.map((project) => <ProofCard project={project} accent={accent} key={project.title} />)}
     </div>
   );
 }
 
-function CardGrid({ items, icon = ClipboardCheck }) {
+function PillList({ items, accent = "ai" }) {
   return (
-    <div className="market-page__grid">
-      {items.map(([title, text]) => (
-        <article className="market-page__card reveal" key={title}>
-          {React.createElement(icon, { size: 18, className: "market-page__icon", "aria-hidden": "true" })}
-          <h3>{title}</h3>
-          <p>{text}</p>
-        </article>
-      ))}
+    <div className="market-page__pill-list">
+      {items.map((item) => <FeaturePill accent={accent} key={item}>{item}</FeaturePill>)}
     </div>
   );
 }
 
-function ProjectCard({ project }) {
-  const links = project.links || [];
-
+function HomeHeroVisual() {
   return (
-    <article className="market-page__project reveal">
-      <header>
-        <div>
-          <h3>{project.title}</h3>
-          <p>{project.relevance}</p>
-        </div>
-        <StatusBadge status={project.status} />
-      </header>
-      <p>{project.summary}</p>
-      <dl>
-        <div>
-          <dt>Problem</dt>
-          <dd>{project.problem}</dd>
-        </div>
-        <div>
-          <dt>Proof</dt>
-          <dd>{project.proof}</dd>
-        </div>
-      </dl>
-      <div className="market-page__chips">
-        {project.stack.slice(0, 6).map((item) => <span key={item}>{item}</span>)}
+    <div className="home-system-visual system-accent--ai" aria-label="Fragmented inputs become structured outputs">
+      <div className="home-system-visual__column">
+        <span className="home-system-visual__label">Fragmented inputs</span>
+        {heroInputs.map((item) => <span className="home-system-visual__chip" key={item}>{item}</span>)}
       </div>
-      {links.length ? (
-        <div className="market-page__actions">
-          {links.map((link) => {
-            const external = link.href.startsWith("http");
-            return (
-              <a href={link.href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} className="project-card__link project-card__link--ghost" key={link.href}>
-                {link.label} <ArrowRight size={14} aria-hidden="true" />
-              </a>
-            );
-          })}
-        </div>
-      ) : null}
-    </article>
-  );
-}
-
-function ProjectGrid({ projects }) {
-  return (
-    <div className="market-page__project-grid">
-      {projects.map((project) => <ProjectCard project={project} key={project.title} />)}
-    </div>
-  );
-}
-
-function ChipList({ items }) {
-  return (
-    <div className="market-page__chips market-page__chips--large">
-      {items.map((item) => <span key={item}>{item}</span>)}
+      <div className="home-system-visual__core" aria-hidden="true">
+        <span className="home-system-visual__pulse" />
+        <strong>Product logic</strong>
+        <span>AI-assisted workflow map</span>
+      </div>
+      <div className="home-system-visual__column">
+        <span className="home-system-visual__label">Structured outputs</span>
+        {heroOutputs.map((item) => <span className="home-system-visual__chip home-system-visual__chip--output" key={item}>{item}</span>)}
+      </div>
     </div>
   );
 }
@@ -176,31 +434,64 @@ export function HomePage() {
         id="home"
         eyebrow="Roman Mazuryk"
         title="AI-Augmented Product & Workflow Systems"
-        subtitle="I combine product management, MedTech implementation experience, AI automation, and full-stack development to turn messy workflows into structured, usable systems."
+        subtitle="I turn messy operational workflows into structured software systems using product thinking, AI automation, and full-stack delivery."
         primaryCta={{ label: "Explore AI Solutions", href: "/ai" }}
         secondaryCta={{ label: "View MedTech Portfolio", href: "/medtech" }}
         tertiaryCta={{ label: "View Full-Stack Work", href: "/fullstack" }}
         scrollTargetId="routes"
       >
-        <ChipList items={highlights} />
+        <div className="market-page__hero-extra">
+          <PillList items={highlights} accent="ai" />
+          <HomeHeroVisual />
+        </div>
       </PageHero>
 
       <section id="routes" className="section container market-page__section">
         <SectionHeader
-          eyebrow="Choose the right entry point"
-          title="One background, three market routes"
-          text="The umbrella is simple: I turn operational complexity into software systems using product thinking, AI automation, and full-stack delivery."
+          eyebrow="Three-vector router"
+          title="Choose the route that matches your intent"
+          text="Three entry points, one operating model: fragmented workflows become visible systems."
         />
         <div className="market-page__route-grid">
-          {routeCards.map(({ title, text, cta, href, icon }) => (
-            <a href={href} className="market-page__route-card reveal" key={href}>
-              {React.createElement(icon, { size: 22, className: "market-page__icon", "aria-hidden": "true" })}
-              <h3>{title}</h3>
-              <p>{text}</p>
-              <span>{cta} <ArrowRight size={14} aria-hidden="true" /></span>
-            </a>
-          ))}
+          {routeCards.map((card) => <RouteCard {...card} key={card.href} />)}
         </div>
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader
+          eyebrow="System map"
+          title="One operating model, three market entry points"
+          text="Product thinking plus MedTech and operations experience plus AI automation plus full-stack delivery equals practical workflow systems."
+        />
+        <ArtifactMap
+          accent="ai"
+          title="AI Automation plus MedTech Experience plus Full-Stack Delivery becomes Workflow Systems"
+          {...homeArtifact}
+        />
+        <WorkflowMap items={homeWorkflow} accent="ai" title="One operating model, three market entry points" />
+        <PillList items={operatingModelPills} accent="ai" />
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader
+          eyebrow="Selected proof"
+          title="A few signals, not the whole archive"
+          text="The homepage stays concise; deeper proof lives inside the relevant market route."
+        />
+        <div className="market-page__highlight-grid">
+          {proofHighlights.map((item) => <SystemCard {...item} key={item.title} />)}
+        </div>
+      </section>
+
+      <section className="section container market-page__section">
+        <CTAStrip
+          accent="ai"
+          eyebrow="Next step"
+          title="Choose the path that matches your intent."
+          text="Start with one concrete workflow, role need, or prototype idea."
+          primary={{ label: "Discuss a workflow", href: "/contact" }}
+          secondary={{ label: "Explore AI Solutions", href: "/ai" }}
+        />
       </section>
     </div>
   );
@@ -223,23 +514,55 @@ export function AIPage() {
       </PageHero>
 
       <section id="ai-problems" className="section container market-page__section">
-        <SectionHeader eyebrow="Problems I solve" title="Useful AI starts with operational friction" />
-        <CardGrid items={aiProblems.map((item) => [item, "Mapped into a clearer workflow, automation candidate, SOP, dashboard, or prototype."])} icon={Workflow} />
+        <SectionHeader eyebrow="Problems I solve" title="Operational friction that is ready to become a system" text="The right starting point is usually not a grand AI strategy. It is one repeated process with unclear state, ownership, or documentation." />
+        <div className="market-page__system-grid">
+          {aiProblems.map((problem) => <SystemCard {...problem} accent="ai" key={problem.title} />)}
+        </div>
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader eyebrow="Workflow intelligence" title="Useful AI starts with operational friction" text="The work is not to decorate a business with AI. The work is to expose the process, structure the states, and automate where it is genuinely useful." />
+        <ArtifactMap
+          accent="ai"
+          title="Manual Process becomes AI-Assisted Workflow"
+          {...aiArtifact}
+        />
+        <WorkflowMap items={aiWorkflow} accent="ai" title="AI workflow automation path" />
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader eyebrow="Productized offers" title="Small, practical engagements" text="Each offer is scoped around one workflow, one useful outcome, and clear handover." />
-        <CardGrid items={aiOffers} icon={ClipboardCheck} />
+        <div className="market-page__system-grid">
+          {aiOffers.map((offer) => <SystemCard {...offer} accent="ai" key={offer.title} />)}
+        </div>
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader eyebrow="Example workflows" title="Automation and operating-system examples" />
-        <ProjectGrid projects={projects} />
+        <ProofGrid projects={projects} accent="ai" />
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader eyebrow="Stack / tools" title="Practical tools before heavy engineering" />
-        <ChipList items={aiStack} />
+        <PillList items={aiStack} accent="ai" />
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader eyebrow="Process" title="Start with one workflow, then build only what is useful" />
+        <div className="market-page__system-grid">
+          {aiProcess.map((step) => <SystemCard {...step} accent="ai" key={step.title} />)}
+        </div>
+      </section>
+
+      <section className="section container market-page__section">
+        <CTAStrip
+          accent="ai"
+          eyebrow="Next step"
+          title="Have one messy workflow worth fixing?"
+          text="Start with a focused audit or a scoped automation sprint. No AI theater, just workflow friction made visible."
+          primary={{ label: "Request AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
+          secondary={{ label: "Discuss Automation Sprint", href: `mailto:${EMAIL}?subject=Automation%20Sprint%20Discussion` }}
+        />
       </section>
     </div>
   );
@@ -247,6 +570,42 @@ export function AIPage() {
 
 export function MedTechPage() {
   const projects = getProjectsByCategory(projectCategories.medtech, { featuredOnly: true });
+  const medtechProofWork = [
+    ...projects,
+    {
+      title: "MedTech Implementation Handoff Assistant",
+      status: "Concept",
+      summary: "AI-assisted handoff model for turning implementation context into requirements, owners, risks, acceptance criteria, and next steps.",
+      problem: "Site realities and customer implementation knowledge get lost before they become product or support requirements.",
+      solution: "Structured intake, risk register, requirement map, owner matrix, handoff export, and review checklist.",
+      proof: "MedTech workflow concept grounded in implementation and product handover needs.",
+      stack: ["AI workflow design", "Implementation handover", "Requirement mapping", "Risk register"],
+      links: [{ label: "View workflow library", href: "/ai-workflow" }],
+      relevance: "Implementation-to-product bridge",
+    },
+    {
+      title: "MedTech Operations Knowledge / Workflow OS",
+      status: "Concept",
+      summary: "Structured operating layer for SOPs, onboarding, review points, handover, and implementation knowledge.",
+      problem: "Operational knowledge is scattered across notes, training, support history, and vendor materials.",
+      solution: "Knowledge workflow with source mapping, SOP structure, ownership logic, and AI-assisted retrieval patterns.",
+      proof: "Extends SOP / Knowledge System patterns into MedTech implementation contexts.",
+      stack: ["SOP systems", "Knowledge workflows", "AI assistance", "Handover"],
+      links: [{ label: "Explore workflows", href: "/ai-workflow" }],
+      relevance: "MedTech workflow-system concept",
+    },
+    {
+      title: "FlowLogix",
+      status: "Built",
+      summary: "Operations visibility dashboard relevant to regulated operations when framed around states, handoffs, risk, and accountability.",
+      problem: "Teams lose operational visibility across disconnected reports, spreadsheets, and status chasing.",
+      solution: "Dashboard model for workflow states, lifecycle visibility, ETA risk, and role-gated accountability.",
+      proof: "Flask API, SQLite schema, SQLAlchemy models, readonly demo mode, dashboard views, and Chart.js reporting.",
+      stack: ["Flask", "SQLite", "Operational visibility", "Dashboard UX"],
+      links: [{ label: "Live demo", href: "https://flowlogics.app/" }],
+      relevance: "Regulated operations visibility proof",
+    },
+  ];
 
   return (
     <div className="market-page">
@@ -261,24 +620,68 @@ export function MedTechPage() {
 
       <section id="medtech-credibility" className="section container market-page__section">
         <SectionHeader eyebrow="Real-world credibility" title="Implementation-aware product judgment" text="The MedTech story is not only AI. It is clinical workflow, installation reality, stakeholder coordination, handover, documentation, and ownership under operational constraints." />
-        <ChipList items={medtechProof} />
+        <PillList items={medtechProof} accent="medtech" />
       </section>
 
       <section className="section container market-page__section">
-        <SectionHeader eyebrow="Selected proof" title="MedTech product and project evidence" />
-        <ProjectGrid projects={projects} />
+        <SectionHeader eyebrow="OR integration" title="Clinical workflow experience translated into product logic" text="The useful signal is the ability to understand the environment behind the requirement: equipment, clinical routines, vendors, training, support, and handover." />
+        <ArtifactMap
+          accent="medtech"
+          title="OR and Clinical Workflow becomes Product and Project Systems"
+          {...medtechArtifact}
+        />
+        <WorkflowMap items={medtechWorkflow} accent="medtech" title="MedTech field reality to product logic" />
+        <div className="market-page__system-grid">
+          {medtechOrExperience.map((item) => <SystemCard {...item} accent="medtech" key={item.title} />)}
+        </div>
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader eyebrow="Product / project management" title="Where implementation becomes delivery capability" />
+        <div className="market-page__system-grid">
+          {medtechCapabilities.map((item) => <SystemCard {...item} accent="medtech" key={item.title} />)}
+        </div>
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader eyebrow="Selected proof" title="MedTech product and project evidence" text="Proof is framed around workflows, implementation ownership, and product/project translation rather than a disconnected case-study archive." />
+        <ProofGrid projects={medtechProofWork} accent="medtech" />
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader eyebrow="AI-assisted concepts" title="MedTech-relevant workflow systems" text="AI is positioned as assistance for documentation, handover, visibility, and structured review, not as a vague clinical claim." />
+        <div className="market-page__system-grid">
+          {medtechAiConcepts.map((item) => <SystemCard {...item} accent="medtech" key={item.title} />)}
+        </div>
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader eyebrow="Role fit" title="Where this background fits" />
-        <CardGrid items={medtechRoleFit.map((item) => [item, "A fit where workflow ownership, implementation reality, product thinking, and stakeholder coordination matter."])} icon={BriefcaseBusiness} />
+        <div className="market-page__system-grid">
+          {medtechRoleFit.map((role) => <SystemCard {...role} accent="medtech" cta={{ label: "Contact for role fit", href: `mailto:${EMAIL}?subject=MedTech%20Role%20Fit` }} key={role.title} />)}
+        </div>
+      </section>
+
+      <section className="section container market-page__section">
+        <CTAStrip
+          accent="medtech"
+          eyebrow="Next step"
+          title="Hiring for MedTech Product, Project, Product Ops, or Implementation roles?"
+          text="The strongest fit is implementation-heavy MedTech work where clinical workflow reality needs to become product logic, documentation, and delivery ownership."
+          primary={{ label: "View Product / Project Proof", href: "/proof-of-work" }}
+          secondary={{ label: "Contact for MedTech Roles", href: `mailto:${EMAIL}?subject=MedTech%20Product%20%2F%20Project%20Role` }}
+        />
       </section>
     </div>
   );
 }
 
 export function FullStackPage() {
-  const projects = getProjectsByCategory(projectCategories.fullstack, { featuredOnly: true });
+  const featuredProjects = getProjectsByCategory(projectCategories.fullstack, { featuredOnly: true });
+  const secondaryProjects = projectPortfolio.filter((project) => (
+    !project.featured && [projectCategories.fullstack, projectCategories.archived].includes(project.category)
+  ));
+  const selectedProjects = [...fullstackProjectProof, ...featuredProjects];
 
   return (
     <div className="market-page">
@@ -293,36 +696,89 @@ export function FullStackPage() {
 
       <section id="fullstack-stack" className="section container market-page__section">
         <SectionHeader eyebrow="Technical stack" title="Product-builder toolkit" text="Positioned honestly: not as a senior pure software engineer, but as an AI-enhanced builder who can ship prototypes, dashboards, workflow tools, and useful product systems." />
-        <ChipList items={fullstackStack} />
+        <ArtifactMap
+          accent="fullstack"
+          title="Prompt becomes Prototype becomes Product System"
+          {...fullstackArtifact}
+        />
+        <WorkflowMap items={fullstackWorkflow} accent="fullstack" title="AI-assisted full-stack delivery path" />
+        <PillList items={fullstackStack} accent="fullstack" />
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader eyebrow="AI-assisted development workflow" title="Faster discovery, clearer implementation" />
-        <CardGrid
-          icon={Network}
+        <div className="market-page__system-grid">
+          {[
+            {
+              title: "Product framing",
+              problem: "Building starts too early when the user, workflow, state model, and acceptance criteria are fuzzy.",
+              system: "Use AI to pressure-test jobs, workflows, constraints, risks, and requirements before implementation.",
+              proof: "Sharper specs, clearer edge cases, and build loops that start from product logic rather than guesswork.",
+              icon: Network,
+            },
+            {
+              title: "Implementation",
+              problem: "Prototype velocity stalls when every refactor, bug, and UI iteration is handled manually.",
+              system: "Use Codex, Claude, ChatGPT, and related tools for code generation, refactoring support, debugging, and documentation.",
+              proof: "Working prototypes, dashboards, route systems, metadata, and responsive interfaces shipped in short loops.",
+              icon: Code2,
+            },
+            {
+              title: "Handover",
+              problem: "Prototypes lose value when decisions, data assumptions, and next steps are not captured.",
+              system: "Turn builds into readmes, specs, architecture notes, and implementation plans.",
+              proof: "Cleaner project memory and easier continuation for founders, teams, or hiring reviewers.",
+              icon: ClipboardCheck,
+            },
+          ].map((item) => <SystemCard {...item} accent="fullstack" key={item.title} />)}
+        </div>
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader eyebrow="Selected projects" title="Technical execution proof" />
+        <ProofGrid projects={selectedProjects} accent="fullstack" />
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader eyebrow="Secondary experiments" title="Archived and de-emphasized proof" text="Older or less central projects are preserved as supporting workflow-system evidence without competing with the main market routes." />
+        <ProofGrid projects={secondaryProjects} accent="fullstack" />
+      </section>
+
+      <section className="section container market-page__section">
+        <CTAStrip
+          accent="fullstack"
+          eyebrow="Architecture / implementation proof"
+          title="Dashboards, workflow state, APIs, persistence, and deployment"
+          text="Examples include FlowLogix, LiveSurgery, this portfolio system, and archived prototypes such as JobSprint and AlphaRhythm."
+          primary={{ label: "Open proof archive", href: "/proof-of-work" }}
+          secondary={{ label: "Discuss prototype", href: `mailto:${EMAIL}?subject=Full-Stack%20Prototype%20Discussion` }}
+        />
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader eyebrow="GitHub / live demos" title="Built proof, demos, and implementation memory" text="The full-stack route is execution evidence for prototypes, dashboards, workflow tools, and AI-assisted build loops." />
+        <PillList
+          accent="fullstack"
           items={[
-            ["Product framing", "Use AI to pressure-test users, jobs, workflows, requirements, and acceptance criteria before build."],
-            ["Implementation", "Use Codex, Claude, ChatGPT, and related tools for code generation, refactoring support, debugging, and documentation."],
-            ["Handover", "Turn prototypes into clearer readmes, specs, architecture notes, and next-step implementation plans."],
+            "Git / GitHub history",
+            "Live demos where available",
+            "Prototype architecture",
+            "Workflow state modeling",
+            "API and persistence patterns",
+            "AI-assisted implementation loops",
           ]}
         />
       </section>
 
       <section className="section container market-page__section">
-        <SectionHeader eyebrow="Selected projects" title="Technical execution proof" />
-        <ProjectGrid projects={projects} />
-      </section>
-
-      <section className="section container market-page__section">
-        <div className="market-page__cta reveal">
-          <Database size={20} className="market-page__icon" aria-hidden="true" />
-          <div>
-            <p className="market-page__kicker">Architecture / implementation proof</p>
-            <h2>Dashboards, workflow state, APIs, persistence, and deployment</h2>
-            <p>Examples include FlowLogix, LiveSurgery, this portfolio system, and archived prototypes such as JobSprint and AlphaRhythm.</p>
-          </div>
-          <a href="/proof-of-work" className="btn btn--ghost">Open proof archive <FileText size={15} className="icon ml-1" /></a>
-        </div>
+        <CTAStrip
+          accent="fullstack"
+          eyebrow="Next step"
+          title="Need a prototype, dashboard, or workflow tool built quickly?"
+          text="The strongest fit is product-shaped technical work: a useful prototype, dashboard, internal tool, or AI-assisted workflow system."
+          primary={{ label: "View GitHub", href: "https://github.com/romahawk" }}
+          secondary={{ label: "Discuss Product Prototype", href: `mailto:${EMAIL}?subject=Full-Stack%20Prototype%20Discussion` }}
+        />
       </section>
     </div>
   );

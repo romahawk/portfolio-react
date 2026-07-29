@@ -4,7 +4,7 @@ import { getWorkflowBySlug } from "../data/aiWorkflows.js";
 import { useTranslation } from "../context/LangContext.jsx";
 
 const BASE = {
-  title: "Roman Mazuryk - AI-Augmented Product & Workflow Systems",
+  title: "Roman Mazuryk \u2014 AI-Augmented Product & Workflow Systems",
   description:
     "Product management, MedTech implementation, AI automation, and full-stack development for workflow systems, prototypes, and operational tools.",
   url: "https://www.mazuryk.dev/",
@@ -15,7 +15,7 @@ const BASE = {
 };
 
 const AI_SOLUTIONS = {
-  title: "AI Workflow Automation for SMEs - Roman Mazuryk",
+  title: "AI Workflow Automation for SMEs \u2014 Roman Mazuryk",
   description:
     "AI workflow audits, automations, SOP systems, internal dashboards, and practical workflow prototypes for small and medium-sized businesses.",
   url: "https://www.mazuryk.dev/ai",
@@ -26,7 +26,7 @@ const AI_SOLUTIONS = {
 };
 
 const MEDTECH = {
-  title: "MedTech Product & Project Portfolio - Roman Mazuryk",
+  title: "MedTech Product & Project Portfolio \u2014 Roman Mazuryk",
   description:
     "MedTech implementation, OR integration, workflow systems, stakeholder coordination, and product/project management proof.",
   url: "https://www.mazuryk.dev/medtech",
@@ -37,7 +37,7 @@ const MEDTECH = {
 };
 
 const FULLSTACK = {
-  title: "AI-Enhanced Full-Stack Product Builder - Roman Mazuryk",
+  title: "AI-Enhanced Full-Stack Product Builder \u2014 Roman Mazuryk",
   description:
     "Product prototypes, dashboards, workflow tools, and AI-assisted systems built with modern full-stack tools.",
   url: "https://www.mazuryk.dev/fullstack",
