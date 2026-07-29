@@ -28,7 +28,7 @@ const AI_SOLUTIONS = {
 const MEDTECH = {
   title: "MedTech Product & Project Portfolio \u2014 Roman Mazuryk",
   description:
-    "MedTech implementation, OR integration, workflow systems, stakeholder coordination, and product/project management proof.",
+    "MedTech implementation experience translated into product thinking, project coordination, workflow systems, documentation, handover, and AI-assisted delivery.",
   url: "https://www.mazuryk.dev/medtech",
   image: "https://www.mazuryk.dev/images/og-home.png",
   imageAlt: "MedTech product and project portfolio by Roman Mazuryk.",
