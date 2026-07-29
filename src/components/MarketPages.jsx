@@ -1,7 +1,6 @@
 import {
   ArrowRight,
   Bot,
-  BriefcaseBusiness,
   ClipboardCheck,
   Code2,
   Github,
@@ -81,13 +80,6 @@ const aiArtifact = {
   outputLabel: "AI-assisted workflow",
   inputs: ["Intake", "Trigger", "Manual task"],
   outputs: ["Automation", "AI summary", "Human review", "Dashboard / output"],
-};
-
-const medtechArtifact = {
-  inputLabel: "OR / clinical workflow",
-  outputLabel: "Product & project systems",
-  inputs: ["Device / OR environment", "Stakeholders", "Documentation"],
-  outputs: ["Handover", "Workflow states", "Operational visibility"],
 };
 
 const fullstackArtifact = {
@@ -312,108 +304,150 @@ const medtechProof = [
   "Multi-vendor delivery across medical equipment environments",
 ];
 
-const medtechRoleFit = [
+const medtechHeroWorkflow = [
+  { label: "Clinical need", detail: "User, site, and workflow context" },
+  { label: "Technical requirements", detail: "Devices, infrastructure, constraints" },
+  { label: "Implementation planning", detail: "Scope, dependencies, risk, owners" },
+  { label: "Installation / coordination", detail: "Hospital, suppliers, service partners" },
+  { label: "Training & handover", detail: "Documentation, adoption, support logic" },
+  { label: "Workflow system", detail: "Product requirements, SOPs, visibility" },
+];
+
+const medtechImpact = [
   {
-    title: "Product / Project Manager",
-    problem: "MedTech delivery often fails between commercial promise, clinical workflow, vendor constraints, and implementation reality.",
-    system: "Translate field constraints into roadmaps, requirements, rollouts, decision records, and handover logic.",
-    proof: "OR integration, medical equipment implementation, training, stakeholder coordination, and documentation ownership.",
-    icon: BriefcaseBusiness,
+    title: "Clinical workflow understanding",
+    text: "Worked around real operating room and clinical environments where technical systems, clinicians, infrastructure, documentation, and handover have to work together.",
   },
   {
-    title: "Technical Product Manager",
-    problem: "AI and workflow concepts need product judgment rooted in real operating environments.",
-    system: "Frame use cases, users, data flows, risks, review points, and prototype scope before engineering spend.",
-    proof: "LiveSurgery, clinical workflow concepts, OR video/audio workflow exposure, and AI-assisted delivery patterns.",
-    icon: Network,
+    title: "Multi-stakeholder coordination",
+    text: "Coordinated across clinicians, hospital teams, biomedical engineers, suppliers, service partners, and international manufacturers.",
   },
   {
-    title: "Product Operations / Implementation",
-    problem: "Teams need cleaner visibility across adoption, handover, training, supportability, and multi-vendor coordination.",
-    system: "Create structured workflow states, stakeholder maps, SOPs, dashboards, and accountable delivery routines.",
-    proof: "Multi-site rollouts, clinical onboarding, hospital stakeholder coordination, and implementation documentation.",
-    icon: Workflow,
+    title: "Implementation-to-handover thinking",
+    text: "Supported the transition from requirements and installation planning to training, documentation, operational use, and post-handover support.",
+  },
+  {
+    title: "Product / workflow translation",
+    text: "Translates field implementation complexity into product requirements, workflow maps, dashboards, SOP logic, and AI-assisted delivery concepts.",
   },
 ];
 
-const medtechWorkflow = [
-  { label: "Field reality", detail: "Hospitals, OR workflows, vendors, equipment" },
-  { label: "Product model", detail: "Roles, constraints, states, handover" },
-  { label: "Delivery proof", detail: "Implementation, training, workflow systems" },
-];
-
-const medtechOrExperience = [
+const medtechFieldContexts = [
   {
-    title: "OR integration and surgical workflows",
-    problem: "Operating rooms combine equipment, signals, clinical routines, documentation, vendors, and downtime sensitivity.",
-    system: "Translate OR integration reality into workflow states, handover logic, adoption risks, and product requirements.",
-    proof: "Surgimedia context, surgical video/audio workflows, surgical monitors, recorders, and multi-vendor coordination.",
-    icon: Stethoscope,
+    fieldContext: "OR integration and surgical workflow systems",
+    productRelevance: "workflow ownership, stakeholder alignment, handover risk",
   },
   {
-    title: "Surgical lights and equipment rollout",
-    problem: "Medical equipment delivery is not just installation; it requires clinical fit, training, supportability, and acceptance.",
-    system: "Coordinate rollout, training, stakeholder expectations, and implementation documentation.",
-    proof: "Surgiris surgical lights, Medintegro context, hospital stakeholders, training, and lifecycle handover.",
-    icon: ClipboardCheck,
+    fieldContext: "Surgical video / audio workflows",
+    productRelevance: "data capture, documentation, interoperability, clinical usability",
   },
   {
-    title: "Implementation documentation",
-    problem: "Important field knowledge is often lost between sales, implementation, support, product, and clinical users.",
-    system: "Convert delivery context into structured records, requirements, owners, and support-ready documentation.",
-    proof: "Implementation handover, workflow ownership, training materials, and multi-vendor delivery coordination.",
-    icon: Workflow,
+    fieldContext: "Surgical lights and OR equipment context",
+    productRelevance: "requirements, constraints, training, post-handover support",
+  },
+  {
+    fieldContext: "Medical equipment implementation",
+    productRelevance: "implementation planning, dependencies, acceptance, supportability",
+  },
+  {
+    fieldContext: "Hospital stakeholder coordination",
+    productRelevance: "alignment across clinicians, technical teams, suppliers, and decision-makers",
+  },
+  {
+    fieldContext: "Training, handover, documentation, support logic",
+    productRelevance: "structured operating memory, SOPs, onboarding, workflow state visibility",
   },
 ];
 
-const medtechCapabilities = [
+const medtechSelectedProof = [
   {
-    title: "Product / project translation",
-    problem: "Clinical and operational constraints often arrive as anecdotes, escalations, or implementation friction.",
-    system: "Turn field reality into requirements, scope, acceptance criteria, rollout plans, and decision records.",
-    proof: "MedTech implementation background plus workflow-system portfolio.",
-    icon: BriefcaseBusiness,
+    title: "OR Integration & Surgical Workflow Systems",
+    type: "Domain proof / implementation experience",
+    problem: "OR environments combine devices, people, infrastructure, documentation, and handover - but workflow ownership is often fragmented.",
+    system: "Mapped the implementation context around OR integration, surgical video workflows, stakeholder coordination, training, and handover.",
+    proof: "Real MedTech implementation background.",
+    relevance: "Product / project management, stakeholder alignment, workflow design, implementation risk.",
+    links: [{ label: "View OR proof", href: "/proof-of-work/or-integration" }],
   },
   {
-    title: "Stakeholder coordination",
-    problem: "Hospitals, vendors, technical teams, clinicians, and commercial stakeholders need different levels of detail.",
-    system: "Create shared visibility around owners, risks, handoffs, and next decisions.",
-    proof: "Hospital stakeholder coordination, training, handover, and multi-vendor delivery.",
-    icon: Network,
+    title: "LiveSurgery",
+    type: "Product concept / MedTech platform prototype",
+    problem: "Surgical collaboration, recording, remote expertise, and case visibility require structured product logic around clinical workflows.",
+    system: "Created a product concept and prototype direction for surgical video / collaboration workflows.",
+    proof: "Deployed product artifact and workflow prototype direction.",
+    relevance: "MedTech product thinking, workflow design, clinical collaboration, technical specification.",
+    links: [{ label: "Live demo", href: "https://livesurgery-landing.vercel.app/" }],
   },
-  {
-    title: "Workflow ownership",
-    problem: "Implementation-heavy products fail when no one owns the operating model after delivery.",
-    system: "Define how the workflow runs, who reviews it, what gets documented, and where escalation happens.",
-    proof: "OR integration proof, MedTech workflow concepts, and documentation-oriented delivery.",
-    icon: Workflow,
-  },
-];
-
-const medtechAiConcepts = [
   {
     title: "MedTech Implementation Handoff Assistant",
-    problem: "Implementation context gets lost before it becomes product, support, or customer-success knowledge.",
-    system: "Capture site context, owners, risks, acceptance criteria, and next actions in a structured handoff model.",
-    proof: "Workflow concept aligned with implementation-heavy MedTech teams.",
-    cta: { label: "View workflow library", href: "/ai-workflow" },
-    icon: ClipboardCheck,
+    type: "AI-assisted workflow concept",
+    problem: "Implementation knowledge is often scattered across emails, PDFs, meetings, notes, and informal handover.",
+    system: "Designed an AI-assisted workflow to structure requirements, missing documents, risks, meeting summaries, and customer handover.",
+    proof: "Workflow map / product specification / reference system.",
+    relevance: "Product Ops, implementation enablement, documentation, handover, AI-assisted delivery.",
+    links: [{ label: "View workflow library", href: "/ai-workflow" }],
   },
   {
     title: "MedTech Operations Knowledge / Workflow OS",
-    problem: "Operational knowledge is scattered across implementation notes, support history, training, and vendor materials.",
-    system: "Create a searchable operating layer for SOPs, handover, review points, and workflow states.",
-    proof: "Combines MedTech domain context with AI-assisted knowledge-system patterns.",
-    cta: { label: "Explore workflows", href: "/ai-workflow" },
-    icon: Bot,
+    type: "Internal workflow system concept",
+    problem: "Product data, project knowledge, SOPs, supplier information, and onboarding materials become fragmented over time.",
+    system: "Designed a structured knowledge and workflow system for products, projects, SOPs, onboarding, and handover.",
+    proof: "Concept, data model, prototype direction, and documentation artifact.",
+    relevance: "Operational visibility, knowledge management, internal tools, structured delivery.",
+    links: [{ label: "Explore workflows", href: "/ai-workflow" }],
+  },
+];
+
+const medtechCapabilityCards = [
+  {
+    title: "Requirements structuring",
+    text: "Translate clinical, operational, and technical input into clear requirements, workflow states, and implementation tasks.",
   },
   {
-    title: "Regulated operations visibility",
-    problem: "Operational teams need cleaner status visibility without pretending a dashboard solves clinical complexity.",
-    system: "Frame FlowLogix-style visibility around workflow states, risk, accountability, and handoffs.",
-    proof: "FlowLogix as operations visibility proof when applied carefully to regulated environments.",
-    cta: { label: "View proof", href: "/fullstack" },
-    icon: Code2,
+    title: "Stakeholder alignment",
+    text: "Coordinate between clinical users, technical teams, suppliers, service partners, and business stakeholders.",
+  },
+  {
+    title: "Workflow mapping",
+    text: "Map how devices, people, data, documents, approvals, and handover steps interact in real clinical or operational environments.",
+  },
+  {
+    title: "Implementation planning",
+    text: "Support rollout thinking across scope, constraints, dependencies, risks, training, and handover.",
+  },
+  {
+    title: "Documentation & SOP logic",
+    text: "Create structured documentation, handover materials, SOP flows, and knowledge systems for implementation-heavy teams.",
+  },
+  {
+    title: "AI-assisted delivery",
+    text: "Use AI tools to accelerate discovery, documentation, prototyping, workflow mapping, and product specification.",
+  },
+];
+
+const medtechRoleGroups = [
+  {
+    title: "Best-fit roles",
+    items: [
+      "Technical Product Manager",
+      "MedTech Product Manager",
+      "Product / Project Manager",
+      "Product Operations",
+      "Implementation / Solutions roles",
+      "Clinical workflow systems roles",
+      "AI-assisted workflow / internal tools roles",
+    ],
+  },
+  {
+    title: "Best-fit environments",
+    items: [
+      "MedTech and HealthTech companies",
+      "OR integration / digital surgery teams",
+      "Implementation-heavy B2B products",
+      "Regulated workflow environments",
+      "Medical equipment and clinical systems companies",
+      "Teams with fragmented documentation or handover processes",
+    ],
   },
 ];
 
@@ -491,6 +525,20 @@ function HomeHeroVisual() {
   );
 }
 
+function MedTechImpactGrid({ items }) {
+  return (
+    <div className="medtech-impact-grid">
+      {items.map((item, index) => (
+        <article className="medtech-impact-card reveal" key={item.title}>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 function WorkflowBeforeAfter({ before, after }) {
   return (
     <div className="ai-before-after reveal">
@@ -515,6 +563,26 @@ function WorkflowBeforeAfter({ before, after }) {
   );
 }
 
+function FieldContextMap({ items }) {
+  return (
+    <div className="medtech-field-map reveal">
+      {items.map((item) => (
+        <article className="medtech-field-row" key={item.fieldContext}>
+          <div>
+            <span>Field context</span>
+            <strong>{item.fieldContext}</strong>
+          </div>
+          <ArrowRight size={16} aria-hidden="true" />
+          <div>
+            <span>Product relevance</span>
+            <p>{item.productRelevance}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 function CapabilityToolMatrix({ items }) {
   return (
     <div className="ai-tool-matrix reveal">
@@ -531,6 +599,49 @@ function CapabilityToolMatrix({ items }) {
         </div>
       ))}
     </div>
+  );
+}
+
+function SelectedProofCard({ item }) {
+  const links = item.links || [];
+
+  return (
+    <article className="medtech-proof-card reveal">
+      <header>
+        <p>{item.type}</p>
+        <h3>{item.title}</h3>
+      </header>
+      <dl>
+        <div>
+          <dt>Problem</dt>
+          <dd>{item.problem}</dd>
+        </div>
+        <div>
+          <dt>System / contribution</dt>
+          <dd>{item.system}</dd>
+        </div>
+        <div>
+          <dt>Proof</dt>
+          <dd>{item.proof}</dd>
+        </div>
+        <div>
+          <dt>Relevance</dt>
+          <dd>{item.relevance}</dd>
+        </div>
+      </dl>
+      {links.length ? (
+        <div className="medtech-proof-card__links">
+          {links.map((link) => {
+            const external = link.href.startsWith("http");
+            return (
+              <a href={link.href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} key={link.href}>
+                {link.label} <ArrowRight size={14} aria-hidden="true" />
+              </a>
+            );
+          })}
+        </div>
+      ) : null}
+    </article>
   );
 }
 
@@ -562,6 +673,19 @@ function ProductizedOfferCard({ offer }) {
         {offer.cta.label} <ArrowRight size={14} aria-hidden="true" />
       </a>
     </article>
+  );
+}
+
+function CapabilityGrid({ items }) {
+  return (
+    <div className="medtech-capability-grid">
+      {items.map((item) => (
+        <article className="medtech-capability-card reveal" key={item.title}>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
   );
 }
 
@@ -607,6 +731,21 @@ function ProcessTimeline({ steps }) {
               </div>
             </dl>
           </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function RoleFitSection({ groups }) {
+  return (
+    <div className="medtech-role-grid">
+      {groups.map((group) => (
+        <article className="medtech-role-card reveal" key={group.title}>
+          <h3>{group.title}</h3>
+          <ul>
+            {group.items.map((item) => <li key={item}>{item}</li>)}
+          </ul>
         </article>
       ))}
     </div>
@@ -807,107 +946,78 @@ export function AIPage() {
 }
 
 export function MedTechPage() {
-  const projects = getProjectsByCategory(projectCategories.medtech, { featuredOnly: true });
-  const medtechProofWork = [
-    ...projects,
-    {
-      title: "MedTech Implementation Handoff Assistant",
-      status: "Concept",
-      summary: "AI-assisted handoff model for turning implementation context into requirements, owners, risks, acceptance criteria, and next steps.",
-      problem: "Site realities and customer implementation knowledge get lost before they become product or support requirements.",
-      solution: "Structured intake, risk register, requirement map, owner matrix, handoff export, and review checklist.",
-      proof: "MedTech workflow concept grounded in implementation and product handover needs.",
-      stack: ["AI workflow design", "Implementation handover", "Requirement mapping", "Risk register"],
-      links: [{ label: "View workflow library", href: "/ai-workflow" }],
-      relevance: "Implementation-to-product bridge",
-    },
-    {
-      title: "MedTech Operations Knowledge / Workflow OS",
-      status: "Concept",
-      summary: "Structured operating layer for SOPs, onboarding, review points, handover, and implementation knowledge.",
-      problem: "Operational knowledge is scattered across notes, training, support history, and vendor materials.",
-      solution: "Knowledge workflow with source mapping, SOP structure, ownership logic, and AI-assisted retrieval patterns.",
-      proof: "Extends SOP / Knowledge System patterns into MedTech implementation contexts.",
-      stack: ["SOP systems", "Knowledge workflows", "AI assistance", "Handover"],
-      links: [{ label: "Explore workflows", href: "/ai-workflow" }],
-      relevance: "MedTech workflow-system concept",
-    },
-    {
-      title: "FlowLogix",
-      status: "Built",
-      summary: "Operations visibility dashboard relevant to regulated operations when framed around states, handoffs, risk, and accountability.",
-      problem: "Teams lose operational visibility across disconnected reports, spreadsheets, and status chasing.",
-      solution: "Dashboard model for workflow states, lifecycle visibility, ETA risk, and role-gated accountability.",
-      proof: "Flask API, SQLite schema, SQLAlchemy models, readonly demo mode, dashboard views, and Chart.js reporting.",
-      stack: ["Flask", "SQLite", "Operational visibility", "Dashboard UX"],
-      links: [{ label: "Live demo", href: "https://flowlogics.app/" }],
-      relevance: "Regulated operations visibility proof",
-    },
-  ];
-
   return (
-    <div className="market-page">
+    <div className="market-page market-page--medtech">
       <PageHero
-        eyebrow="Trust engine"
+        eyebrow="MedTech / Product / Project"
         title="MedTech Product & Project Portfolio"
-        subtitle="Real MedTech implementation experience translated into product thinking, workflow systems, stakeholder coordination, and AI-assisted delivery."
-        primaryCta={{ label: "View Product / Project Proof", href: "/proof-of-work", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: "Contact for MedTech Roles", href: `mailto:${EMAIL}?subject=MedTech%20Product%20%2F%20Project%20Role` }}
-        scrollTargetId="medtech-credibility"
-      />
+        subtitle="Real MedTech implementation experience translated into product thinking, project coordination, workflow systems, stakeholder alignment, and AI-assisted delivery."
+        primaryCta={{ label: "Discuss MedTech Role", href: `mailto:${EMAIL}?subject=MedTech%20Product%20%2F%20Project%20Role`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: "View Selected Proof", href: "#medtech-proof" }}
+        scrollTargetId="medtech-impact"
+      >
+        <div className="market-page__hero-extra medtech-hero-extra">
+          <p className="medtech-credibility-line">10+ years across MedTech, OR integration, clinical equipment workflows, supplier coordination, training, handover, and healthcare operations.</p>
+          <WorkflowMap items={medtechHeroWorkflow} accent="medtech" title="Clinical need to workflow system" />
+        </div>
+      </PageHero>
 
-      <section id="medtech-credibility" className="section container market-page__section">
-        <SectionHeader eyebrow="Real-world credibility" title="Implementation-aware product judgment" text="The MedTech story is not only AI. It is clinical workflow, installation reality, stakeholder coordination, handover, documentation, and ownership under operational constraints." />
+      <section id="medtech-impact" className="section container market-page__section">
+        <SectionHeader
+          eyebrow="Impact snapshot"
+          title="Implementation experience with product impact"
+          text="The strongest signal is practical delivery context: clinical workflows, technical constraints, stakeholders, documentation, and handover translated into product/project judgment."
+        />
+        <MedTechImpactGrid items={medtechImpact} />
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader
+          eyebrow="Implementation proof"
+          title="Real-world MedTech implementation context"
+          text="My MedTech background comes from practical implementation work: operating room systems, medical equipment workflows, hospital stakeholders, supplier coordination, installation support, training, and handover."
+        />
+        <FieldContextMap items={medtechFieldContexts} />
         <PillList items={medtechProof} accent="medtech" />
       </section>
 
-      <section className="section container market-page__section">
-        <SectionHeader eyebrow="OR integration" title="Clinical workflow experience translated into product logic" text="The useful signal is the ability to understand the environment behind the requirement: equipment, clinical routines, vendors, training, support, and handover." />
-        <ArtifactMap
-          accent="medtech"
-          title="OR and Clinical Workflow becomes Product and Project Systems"
-          {...medtechArtifact}
+      <section id="medtech-proof" className="section container market-page__section">
+        <SectionHeader
+          eyebrow="Selected proof"
+          title="Selected proof of work"
+          text="A focused selection of MedTech and workflow-system projects that connect implementation experience with product thinking and AI-assisted delivery."
         />
-        <WorkflowMap items={medtechWorkflow} accent="medtech" title="MedTech field reality to product logic" />
-        <div className="market-page__system-grid">
-          {medtechOrExperience.map((item) => <SystemCard {...item} accent="medtech" key={item.title} />)}
+        <div className="medtech-proof-grid">
+          {medtechSelectedProof.map((item) => <SelectedProofCard item={item} key={item.title} />)}
         </div>
       </section>
 
       <section className="section container market-page__section">
-        <SectionHeader eyebrow="Product / project management" title="Where implementation becomes delivery capability" />
-        <div className="market-page__system-grid">
-          {medtechCapabilities.map((item) => <SystemCard {...item} accent="medtech" key={item.title} />)}
-        </div>
+        <SectionHeader
+          eyebrow="Capabilities"
+          title="Product & project capabilities"
+          text="Capability is framed around what implementation-heavy teams need: requirements, alignment, workflow mapping, rollout thinking, documentation, and practical AI support."
+        />
+        <CapabilityGrid items={medtechCapabilityCards} />
       </section>
 
       <section className="section container market-page__section">
-        <SectionHeader eyebrow="Selected proof" title="MedTech product and project evidence" text="Proof is framed around workflows, implementation ownership, and product/project translation rather than a disconnected case-study archive." />
-        <ProofGrid projects={medtechProofWork} accent="medtech" />
-      </section>
-
-      <section className="section container market-page__section">
-        <SectionHeader eyebrow="AI-assisted concepts" title="MedTech-relevant workflow systems" text="AI is positioned as assistance for documentation, handover, visibility, and structured review, not as a vague clinical claim." />
-        <div className="market-page__system-grid">
-          {medtechAiConcepts.map((item) => <SystemCard {...item} accent="medtech" key={item.title} />)}
-        </div>
-      </section>
-
-      <section className="section container market-page__section">
-        <SectionHeader eyebrow="Role fit" title="Where this background fits" />
-        <div className="market-page__system-grid">
-          {medtechRoleFit.map((role) => <SystemCard {...role} accent="medtech" cta={{ label: "Contact for role fit", href: `mailto:${EMAIL}?subject=MedTech%20Role%20Fit` }} key={role.title} />)}
-        </div>
+        <SectionHeader
+          eyebrow="Role fit"
+          title="Best-fit roles and environments"
+          text="Clear fit for teams where clinical workflow understanding, implementation reality, and product/project structure need to meet."
+        />
+        <RoleFitSection groups={medtechRoleGroups} />
       </section>
 
       <section className="section container market-page__section">
         <CTAStrip
           accent="medtech"
           eyebrow="Next step"
-          title="Hiring for MedTech Product, Project, Product Ops, or Implementation roles?"
-          text="The strongest fit is implementation-heavy MedTech work where clinical workflow reality needs to become product logic, documentation, and delivery ownership."
-          primary={{ label: "View Product / Project Proof", href: "/proof-of-work" }}
-          secondary={{ label: "Contact for MedTech Roles", href: `mailto:${EMAIL}?subject=MedTech%20Product%20%2F%20Project%20Role` }}
+          title="Need product, project, or workflow systems experience in MedTech?"
+          text="I am most useful where clinical workflow understanding, implementation experience, stakeholder coordination, product thinking, and AI-assisted delivery need to come together."
+          primary={{ label: "Discuss MedTech Role", href: `mailto:${EMAIL}?subject=MedTech%20Product%20%2F%20Project%20Role` }}
+          secondary={{ label: "Contact Roman", href: "/contact" }}
         />
       </section>
     </div>

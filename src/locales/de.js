@@ -542,7 +542,7 @@ export default {
       aiTitle: "KI-Workflow-Automatisierung fuer KMU \u2014 Roman Mazuryk",
       aiDescription: "KI-gestuetzte Workflow-Automatisierung, SOP-Systeme, Dashboards und interne Tools fuer KMU mit repetitiver operativer Arbeit und verstreuter Dokumentation.",
       medtechTitle: "MedTech Produkt- und Projektportfolio \u2014 Roman Mazuryk",
-      medtechDescription: "MedTech-Implementierung, OP-Integration, Workflow-Systeme, Stakeholder-Koordination und Produkt-/Projektmanagement-Nachweis.",
+      medtechDescription: "MedTech-Implementierungserfahrung uebersetzt in Produktdenken, Projektkoordination, Workflow-Systeme, Dokumentation, Handover und KI-gestuetzte Umsetzung.",
       fullstackTitle: "KI-erweiterter Full-Stack Product Builder \u2014 Roman Mazuryk",
       fullstackDescription: "Produktprototypen, Dashboards, Workflow-Tools und KI-gestuetzte Systeme mit modernen Full-Stack-Werkzeugen.",
       collaborateTitle: "KI-gestützte Workflow-Zusammenarbeit für MedTech-Teams",

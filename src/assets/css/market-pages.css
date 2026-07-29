@@ -562,6 +562,337 @@
   animation: connector-pulse 2.4s ease-in-out infinite;
 }
 
+.market-page--medtech .market-page__claim {
+  border-left-color: var(--accent-medtech);
+  background: var(--accent-medtech-soft);
+}
+
+.market-page--medtech .page-hero__inner {
+  padding-top: clamp(30px, 4vw, 48px);
+  padding-bottom: 108px;
+}
+
+.market-page--medtech .page-hero__eyebrow {
+  margin-bottom: 10px;
+}
+
+.market-page--medtech .page-hero__title {
+  max-width: 900px;
+  margin-bottom: 12px;
+  font-size: clamp(34px, 5.4vw, 62px);
+}
+
+.market-page--medtech .page-hero__subtitle {
+  max-width: 820px;
+  font-size: clamp(16px, 1.8vw, 18px);
+  line-height: 1.55;
+}
+
+.market-page--medtech .page-hero__actions {
+  margin-top: 18px;
+}
+
+.market-page--medtech .page-hero__extra {
+  margin-top: 12px;
+}
+
+.medtech-hero-extra {
+  max-width: 980px;
+  gap: 14px;
+}
+
+.medtech-credibility-line {
+  margin: 0;
+  padding: 11px 14px;
+  border: 1px solid var(--system-border);
+  border-left: 3px solid var(--accent-medtech);
+  border-radius: 12px;
+  background: var(--accent-medtech-soft);
+  color: var(--muted-strong);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.medtech-hero-extra .workflow-map {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 0;
+  padding: 14px;
+}
+
+.medtech-hero-extra .workflow-node {
+  grid-template-columns: 1fr;
+  gap: 8px;
+  min-height: auto;
+  padding: 11px 10px;
+}
+
+.medtech-hero-extra .workflow-connector {
+  display: none;
+}
+
+.medtech-hero-extra .workflow-node::after {
+  content: "";
+  position: absolute;
+  top: 23px;
+  left: calc(100% + 2px);
+  width: 10px;
+  height: 1px;
+  background-image: linear-gradient(90deg, var(--accent-medtech) 45%, transparent 0);
+  background-size: 8px 1px;
+  opacity: 0.75;
+}
+
+.medtech-hero-extra .workflow-node:nth-last-child(1)::after {
+  display: none;
+}
+
+.medtech-hero-extra .workflow-node__index {
+  width: 28px;
+  height: 28px;
+}
+
+.medtech-hero-extra .workflow-node strong {
+  font-size: 12px;
+}
+
+.medtech-hero-extra .workflow-node span:not(.workflow-node__index) {
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.medtech-impact-grid,
+.medtech-proof-grid,
+.medtech-capability-grid,
+.medtech-role-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.medtech-impact-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.medtech-proof-grid,
+.medtech-capability-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.medtech-role-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.medtech-impact-card,
+.medtech-proof-card,
+.medtech-capability-card,
+.medtech-role-card,
+.medtech-field-map {
+  border: 1px solid var(--system-border);
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    color-mix(in srgb, var(--panel) 90%, transparent);
+  background-size: 24px 24px, 24px 24px, auto;
+  box-shadow: var(--shadow);
+}
+
+.medtech-impact-card,
+.medtech-proof-card,
+.medtech-capability-card,
+.medtech-role-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.medtech-impact-card::before,
+.medtech-proof-card::before,
+.medtech-capability-card::before,
+.medtech-role-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent-medtech), transparent);
+}
+
+.medtech-impact-card {
+  padding: 18px;
+}
+
+.medtech-impact-card span {
+  color: var(--accent-medtech);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.medtech-impact-card h3,
+.medtech-proof-card h3,
+.medtech-capability-card h3,
+.medtech-role-card h3 {
+  margin: 8px 0 8px;
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.medtech-impact-card p,
+.medtech-capability-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.medtech-field-map {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 14px;
+  border-radius: 16px;
+}
+
+.medtech-field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 13px;
+  border: 1px solid var(--system-border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--panel) 88%, transparent);
+}
+
+.medtech-field-row svg {
+  color: var(--accent-medtech);
+}
+
+.medtech-field-row span,
+.medtech-proof-card header p {
+  display: block;
+  margin: 0 0 5px;
+  color: var(--accent-medtech);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.medtech-field-row strong,
+.medtech-field-row p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.medtech-field-row p {
+  color: var(--muted);
+}
+
+.medtech-proof-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.medtech-proof-card:nth-child(1) {
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(360px 170px at 0 0, color-mix(in srgb, var(--accent-medtech-soft) 82%, transparent), transparent 68%),
+    color-mix(in srgb, var(--panel) 91%, transparent);
+}
+
+.medtech-proof-card:nth-child(2) {
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(360px 170px at 100% 0, color-mix(in srgb, var(--accent-medtech-2) 12%, transparent), transparent 68%),
+    color-mix(in srgb, var(--panel) 92%, transparent);
+}
+
+.medtech-proof-card:nth-child(3) {
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(360px 170px at 0 100%, color-mix(in srgb, var(--accent-ai-soft) 82%, transparent), transparent 68%),
+    color-mix(in srgb, var(--panel) 91%, transparent);
+}
+
+.medtech-proof-card:nth-child(4) {
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(360px 170px at 100% 100%, color-mix(in srgb, var(--accent-fullstack-soft) 70%, transparent), transparent 68%),
+    color-mix(in srgb, var(--panel) 92%, transparent);
+}
+
+.medtech-proof-card:nth-child(2)::before {
+  background: linear-gradient(180deg, var(--accent-medtech-2), transparent);
+}
+
+.medtech-proof-card:nth-child(3)::before {
+  background: linear-gradient(180deg, var(--accent-ai), transparent);
+}
+
+.medtech-proof-card:nth-child(4)::before {
+  background: linear-gradient(180deg, var(--accent-fullstack), transparent);
+}
+
+.medtech-proof-card dl {
+  display: grid;
+  gap: 12px;
+  margin: 10px 0 0;
+}
+
+.medtech-proof-card dt {
+  color: var(--accent-medtech);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.medtech-proof-card dd {
+  margin: 3px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.medtech-proof-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.medtech-proof-card__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-medtech);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.medtech-capability-card {
+  padding: 18px;
+}
+
+.medtech-role-card {
+  padding: 18px;
+}
+
+.medtech-role-card ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 @media (max-width: 920px) {
   .page-hero--ai .page-hero__content,
   .ai-before-after,
@@ -612,6 +943,10 @@
   .market-page__system-grid,
   .market-page__proof-grid,
   .market-page__highlight-grid,
+  .medtech-impact-grid,
+  .medtech-proof-grid,
+  .medtech-capability-grid,
+  .medtech-role-grid,
   .home-system-visual {
     grid-template-columns: 1fr;
   }
@@ -623,6 +958,22 @@
 
   .home-system-visual__column:last-child {
     padding-left: 0;
+  }
+
+  .medtech-field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .medtech-field-row svg {
+    transform: rotate(90deg);
+  }
+
+  .medtech-hero-extra .workflow-map {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .medtech-hero-extra .workflow-node::after {
+    display: none;
   }
 }
 
@@ -642,6 +993,15 @@
 
   .home-system-visual__chip {
     border-radius: 10px;
+  }
+
+  .market-page--medtech .page-hero__inner {
+    padding-top: 30px;
+    padding-bottom: 108px;
+  }
+
+  .medtech-hero-extra .workflow-map {
+    grid-template-columns: 1fr;
   }
 
   .ai-before-after,
