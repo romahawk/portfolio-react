@@ -17,7 +17,7 @@ export const techProjects = [
     tags: ["Workflow Systems", "Decision Support", "MedTech", "AI-Assisted"],
     caseStudy: "clinical-evidence-workflow",
     caseStudyUrl: "/medtech-ai-systems/clinical-evidence-workflow",
-    status: "Concept Workflow / Prototype Concept",
+    status: "Concept",
     icon: "SearchCheck",
   },
   {
@@ -35,7 +35,7 @@ export const techProjects = [
     tags: ["Real-Time Systems", "Decision Support", "MedTech", "B2B"],
     link: "https://livesurgery-landing.vercel.app/",
     caseStudy: "livesurgery",
-    status: "Prototype",
+    status: "Prototyped",
   },
   {
     id: "flowlogics",
@@ -52,7 +52,7 @@ export const techProjects = [
     tags: ["Workflow Systems", "Internal Tools", "Decision Support", "B2B"],
     link: "https://flowlogics.app/",
     caseStudy: "flowlogics",
-    status: "Built System",
+    status: "Built",
   },
   {
     id: "vendor-free-supply-tracker",
@@ -68,7 +68,7 @@ export const techProjects = [
     stack: ["Workflow mapping", "SQL data modeling", "Operations reporting", "Acceptance criteria"],
     tags: ["Workflow Systems", "Internal Tools", "Decision Support", "B2B"],
     caseStudy: "vendor-free-supply-tracker",
-    status: "Archived Experiment",
+    status: "Archived",
     icon: "Boxes",
     archivedFromMain: true,
   },
@@ -87,7 +87,7 @@ export const techProjects = [
     tags: ["Trading Systems", "FinTech", "Decision Support", "Productivity"],
     link: "https://alpharhythm.trade/",
     caseStudy: "alphorythm",
-    status: "Archived Experiment",
+    status: "Archived",
     archivedFromMain: true,
   },
   {
@@ -105,7 +105,7 @@ export const techProjects = [
     tags: ["Workflow Systems", "Productivity", "Decision Support"],
     link: "https://jobsprint-demo.vercel.app/",
     caseStudy: "jobsprint",
-    status: "Archived Experiment",
+    status: "Archived",
     archivedFromMain: true,
   },
 ];
@@ -197,7 +197,7 @@ export const projectPortfolio = [
   {
     title: "AI Workflow Audit",
     category: projectCategories.aiAutomation,
-    status: "Productized service",
+    status: "Mapped",
     summary: "Map one messy process, identify automation opportunities, and define the smallest useful AI-assisted workflow.",
     problem: "Operational work is scattered across spreadsheets, messages, documents, and individual memory.",
     solution: "A workflow map, friction analysis, automation opportunity matrix, and practical first-step implementation plan.",
@@ -210,7 +210,7 @@ export const projectPortfolio = [
   {
     title: "Automation Sprint",
     category: projectCategories.aiAutomation,
-    status: "Productized service",
+    status: "Prototyped",
     summary: "Build one working automation or workflow prototype with practical tools and human review points.",
     problem: "Teams want automation, but the workflow, data handoffs, ownership, and exception paths are unclear.",
     solution: "A scoped prototype using tools such as n8n, Make, Airtable, Notion, APIs, AI assistants, or a custom UI where useful.",
@@ -223,7 +223,7 @@ export const projectPortfolio = [
   {
     title: "OR Integration & Surgical Workflow Systems",
     category: projectCategories.medtech,
-    status: "Real implementation experience",
+    status: "Real Implementation",
     summary: "Operating room integration, surgical lights, video/audio workflows, training, handover, and hospital stakeholder coordination.",
     problem: "OR environments combine clinical workflow, infrastructure, vendors, equipment, documentation, and handover risk.",
     solution: "Implementation coordination and workflow ownership across delivery, installation, clinical onboarding, and operational handover.",
@@ -236,7 +236,7 @@ export const projectPortfolio = [
   {
     title: "LiveSurgery",
     category: projectCategories.medtech,
-    status: "Prototype",
+    status: "Prototyped",
     summary: "Surgical workflow intelligence for multi-source OR video, session structuring, education, and surgical collaboration.",
     problem: "Surgical collaboration and education workflows depend on fragmented video sources and weak session structure.",
     solution: "Real-time OR workspace with role-based sessions, source assignment, archive/search patterns, and analytics direction.",
@@ -249,7 +249,7 @@ export const projectPortfolio = [
   {
     title: "mazuryk.dev",
     category: projectCategories.fullstack,
-    status: "Built system",
+    status: "Built",
     summary: "This portfolio: a routed React/Vite content system for market-specific positioning, proof pages, SEO, theme, and language controls.",
     problem: "One portfolio needed to support AI automation, MedTech credibility, and full-stack proof without feeling like three unrelated careers.",
     solution: "A single strategic router with curated vertical pages and reusable project/content data.",
@@ -262,7 +262,7 @@ export const projectPortfolio = [
   {
     title: "FlowLogix",
     category: projectCategories.fullstack,
-    status: "Built system",
+    status: "Built",
     summary: "Operations visibility dashboard for workflow visibility, status handoffs, ETA risk, and accountability.",
     problem: "Operations teams lose time to status chasing across emails, spreadsheets, and disconnected reports.",
     solution: "API-driven dashboard with order states, warehouse intake, delivered transitions, role-gated workflows, and reporting.",
@@ -275,7 +275,7 @@ export const projectPortfolio = [
   {
     title: "SmartShooter",
     category: projectCategories.fullstack,
-    status: "Prototype",
+    status: "Archived",
     summary: "Technical product prototype showing structured interaction design and execution discipline.",
     problem: "Useful as broader technical proof, but less central to the current three-vector positioning.",
     solution: "Archived as supporting evidence rather than primary homepage material.",
@@ -288,7 +288,7 @@ export const projectPortfolio = [
   {
     title: "AlphaRhythm",
     category: projectCategories.archived,
-    status: "Archived experiment",
+    status: "Archived",
     summary: "Rule-based execution and review system for trading discipline.",
     problem: "Less relevant to the main market routes.",
     solution: "Kept as archived evidence of workflow thinking and product execution.",
@@ -301,7 +301,7 @@ export const projectPortfolio = [
   {
     title: "JobSprint",
     category: projectCategories.archived,
-    status: "Archived experiment",
+    status: "Archived",
     summary: "AI-assisted job search pipeline and productivity system.",
     problem: "Useful proof, but not a primary market-facing wedge.",
     solution: "Kept as supporting full-stack/workflow evidence.",
