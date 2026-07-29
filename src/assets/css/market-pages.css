@@ -77,6 +77,374 @@
   margin-top: 2px;
 }
 
+.page-hero--ai .page-hero__content {
+  max-width: none;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 0.78fr);
+  column-gap: clamp(28px, 6vw, 76px);
+  align-items: center;
+}
+
+.page-hero--ai .page-hero__eyebrow,
+.page-hero--ai .page-hero__title,
+.page-hero--ai .page-hero__subtitle,
+.page-hero--ai .page-hero__actions {
+  grid-column: 1;
+}
+
+.page-hero--ai .page-hero__extra {
+  grid-column: 2;
+  grid-row: 1 / span 4;
+  margin-top: 0;
+}
+
+.ai-hero-extra {
+  display: grid;
+  gap: 16px;
+}
+
+.ai-hero-extra .home-system-visual {
+  max-width: 100%;
+}
+
+.ai-before-after,
+.ai-tool-matrix,
+.ai-offer-card,
+.ai-workflow-strip,
+.ai-process-step,
+.ai-fit-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--system-border);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.62)),
+    var(--panel);
+  background-size: 28px 28px, 28px 28px, auto, auto;
+  box-shadow: var(--shadow);
+}
+
+.ai-before-after {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: stretch;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.ai-before-after__panel {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border: 1px dashed var(--system-border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--panel) 88%, transparent);
+}
+
+.ai-before-after__panel--after {
+  border-style: solid;
+  border-color: color-mix(in srgb, var(--accent-ai) 34%, var(--border));
+  background: color-mix(in srgb, var(--accent-ai-soft) 72%, var(--panel));
+}
+
+.ai-before-after__label,
+.ai-tool-matrix__head,
+.ai-offer-card dt,
+.ai-process-step dt {
+  color: var(--accent-ai);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ai-before-after h3,
+.ai-offer-card h3,
+.ai-workflow-strip h3,
+.ai-process-step h3,
+.ai-fit-card h3 {
+  margin: 0;
+  color: var(--text);
+}
+
+.ai-before-after ul,
+.ai-fit-card ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+}
+
+.ai-before-after li,
+.ai-fit-card li {
+  display: flex;
+  gap: 8px;
+  line-height: 1.45;
+}
+
+.ai-before-after li::before,
+.ai-fit-card li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: var(--accent-ai);
+  box-shadow: 0 0 0 4px var(--accent-ai-soft);
+  flex: 0 0 auto;
+}
+
+.ai-before-after__arrow {
+  display: grid;
+  place-items: center;
+  color: var(--accent-ai);
+}
+
+.ai-tool-matrix {
+  display: grid;
+  padding: 8px;
+}
+
+.ai-tool-matrix__head,
+.ai-tool-matrix__row {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.9fr) minmax(150px, 0.75fr) minmax(0, 1.35fr);
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+}
+
+.ai-tool-matrix__row {
+  border-top: 1px dashed var(--system-border);
+}
+
+.ai-tool-matrix__row strong {
+  color: var(--text);
+}
+
+.ai-tool-matrix__row span {
+  color: var(--accent-ai);
+  font-weight: 800;
+}
+
+.ai-tool-matrix__row p,
+.ai-offer-card dd,
+.ai-workflow-strip p,
+.ai-process-step dd {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.ai-offer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.ai-offer-card {
+  display: grid;
+  gap: 16px;
+  padding: 22px;
+}
+
+.ai-offer-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent-ai), transparent);
+}
+
+.ai-offer-card--featured {
+  border-color: color-mix(in srgb, var(--accent-ai) 46%, var(--border));
+  box-shadow: var(--shadow-strong);
+}
+
+.ai-offer-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.ai-offer-card__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid color-mix(in srgb, var(--accent-ai) 34%, var(--border));
+  border-radius: 12px;
+  background: var(--accent-ai-soft);
+  color: var(--accent-ai);
+}
+
+.ai-offer-card__badge {
+  padding: 7px 9px;
+  border: 1px solid color-mix(in srgb, var(--accent-ai) 38%, var(--border));
+  border-radius: 999px;
+  background: var(--accent-ai-soft);
+  color: var(--accent-ai);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.ai-offer-card dl,
+.ai-process-step dl {
+  display: grid;
+  gap: 11px;
+  margin: 0;
+}
+
+.ai-offer-card dl div,
+.ai-process-step dl div {
+  padding-top: 11px;
+  border-top: 1px dashed var(--system-border);
+}
+
+.ai-offer-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  color: var(--accent-ai);
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.ai-workflow-library {
+  display: grid;
+  gap: 12px;
+}
+
+.ai-workflow-strip {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.62fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+}
+
+.ai-workflow-strip__title {
+  display: grid;
+  gap: 6px;
+}
+
+.ai-workflow-strip__flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.ai-workflow-strip__node {
+  position: relative;
+  display: grid;
+  gap: 5px;
+  min-height: 72px;
+  padding: 10px;
+  border: 1px solid var(--system-border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--panel) 88%, transparent);
+  color: var(--muted-strong);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.ai-workflow-strip__node:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -9px;
+  width: 9px;
+  height: 1px;
+  background: var(--accent-ai);
+  opacity: 0.65;
+}
+
+.ai-workflow-strip__node span {
+  color: var(--accent-ai);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ai-process-timeline {
+  position: relative;
+  display: grid;
+  gap: 14px;
+}
+
+.ai-process-timeline::before {
+  content: "";
+  position: absolute;
+  inset: 12px auto 12px 24px;
+  width: 1px;
+  background-image: linear-gradient(180deg, var(--accent-ai) 45%, transparent 0);
+  background-size: 1px 10px;
+  opacity: 0.65;
+}
+
+.ai-process-step {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  padding: 18px;
+}
+
+.ai-process-step__number {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid color-mix(in srgb, var(--accent-ai) 38%, var(--border));
+  border-radius: 999px;
+  background: var(--accent-ai-soft);
+  color: var(--accent-ai);
+  font-weight: 900;
+}
+
+.ai-process-step__body {
+  display: grid;
+  gap: 12px;
+}
+
+.ai-fit-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.ai-fit-card {
+  padding: 18px;
+}
+
+.ai-fit-card--not li::before {
+  background: var(--muted);
+  box-shadow: 0 0 0 4px var(--surface-soft);
+}
+
+[data-theme="dark"] .ai-before-after,
+[data-theme="dark"] .ai-tool-matrix,
+[data-theme="dark"] .ai-offer-card,
+[data-theme="dark"] .ai-workflow-strip,
+[data-theme="dark"] .ai-process-step,
+[data-theme="dark"] .ai-fit-card {
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(520px 220px at 100% 0, var(--accent-ai-soft), transparent 66%),
+    var(--card-bg);
+}
+
 .home-system-visual {
   position: relative;
   display: grid;
@@ -108,11 +476,11 @@
 }
 
 .home-system-visual::before {
-  left: calc(50% - 152px);
+  left: calc(50% - 112px);
 }
 
 .home-system-visual::after {
-  right: calc(50% - 152px);
+  right: calc(50% - 112px);
 }
 
 .home-system-visual__column {
@@ -195,6 +563,51 @@
 }
 
 @media (max-width: 920px) {
+  .page-hero--ai .page-hero__content,
+  .ai-before-after,
+  .ai-tool-matrix__head,
+  .ai-tool-matrix__row,
+  .ai-offer-grid,
+  .ai-workflow-strip,
+  .ai-workflow-strip__flow,
+  .ai-fit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-hero--ai .page-hero__eyebrow,
+  .page-hero--ai .page-hero__title,
+  .page-hero--ai .page-hero__subtitle,
+  .page-hero--ai .page-hero__actions,
+  .page-hero--ai .page-hero__extra {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .page-hero--ai .page-hero__extra {
+    margin-top: 18px;
+  }
+
+  .ai-before-after__arrow {
+    transform: rotate(90deg);
+  }
+
+  .ai-tool-matrix__head {
+    display: none;
+  }
+
+  .ai-tool-matrix__row {
+    gap: 7px;
+  }
+
+  .ai-workflow-strip__node:not(:last-child)::after {
+    top: auto;
+    right: auto;
+    left: 20px;
+    bottom: -9px;
+    width: 1px;
+    height: 9px;
+  }
+
   .market-page__route-grid,
   .market-page__system-grid,
   .market-page__proof-grid,
@@ -229,5 +642,22 @@
 
   .home-system-visual__chip {
     border-radius: 10px;
+  }
+
+  .ai-before-after,
+  .ai-tool-matrix,
+  .ai-offer-card,
+  .ai-workflow-strip,
+  .ai-process-step,
+  .ai-fit-card {
+    border-radius: 12px;
+  }
+
+  .ai-process-step {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-process-timeline::before {
+    display: none;
   }
 }

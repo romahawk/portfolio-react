@@ -130,109 +130,179 @@ const proofHighlights = [
 const aiOffers = [
   {
     title: "AI Workflow Audit",
-    problem: "A messy process is slow, repeated, and spread across people, spreadsheets, documents, and messages.",
-    system: "Map the workflow, expose bottlenecks, identify AI/automation opportunities, and define the smallest useful system.",
-    proof: "Clear workflow map, friction register, opportunity matrix, and a scoped next-step implementation plan.",
+    badge: "Best starting point",
+    bestFor: "Identifying where AI and automation can remove real workflow friction.",
+    deliverable: "Workflow map + automation opportunity roadmap.",
+    output: "Prioritized opportunities, risk points, tool suggestions, and first sprint scope.",
     cta: { label: "Request audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` },
     icon: ClipboardCheck,
+    featured: true,
   },
   {
     title: "Automation Sprint",
-    problem: "The team sees automation potential but lacks a working prototype, ownership model, and exception handling.",
-    system: "Build one practical automation or workflow prototype using n8n, Make, Airtable/Notion, APIs, or custom UI where useful.",
-    proof: "Working automation path, review checkpoints, handover notes, and next build recommendations.",
+    bestFor: "Building one useful workflow instead of discussing broad AI strategy.",
+    deliverable: "A working automation or prototype.",
+    output: "Connected forms, emails, documents, spreadsheets, APIs, and AI actions.",
     cta: { label: "Discuss sprint", href: `mailto:${EMAIL}?subject=Automation%20Sprint%20Discussion` },
     icon: Bot,
   },
   {
     title: "SOP / Knowledge System",
-    problem: "Operating knowledge lives in scattered notes, calls, folders, chats, and individual memory.",
-    system: "Turn the knowledge into structured procedures, onboarding paths, ownership rules, and reusable documentation.",
-    proof: "SOP structure, source map, handover checklist, and repeatable operating memory.",
+    bestFor: "Turning scattered business knowledge into repeatable procedures.",
+    deliverable: "Structured SOPs, onboarding materials, and reusable documentation flows.",
+    output: "Process library, SOP drafts, handover templates, and AI-assisted documentation logic.",
     cta: { label: "Structure knowledge", href: `mailto:${EMAIL}?subject=SOP%20Knowledge%20System` },
     icon: Workflow,
   },
   {
     title: "Dashboard / Internal Tool Prototype",
-    problem: "Spreadsheet-heavy operations make status, risk, and handoffs hard to see.",
-    system: "Design a lightweight dashboard or internal tool that makes workflow states visible and actionable.",
-    proof: "Clickable prototype, state model, data assumptions, and implementation-ready next steps.",
+    bestFor: "Replacing spreadsheet chaos with operational visibility.",
+    deliverable: "A lightweight dashboard or internal workflow tool.",
+    output: "Status tracking, task ownership, simple reporting, and workflow state visibility.",
     cta: { label: "Discuss prototype", href: `mailto:${EMAIL}?subject=Internal%20Tool%20Prototype` },
     icon: Code2,
   },
 ];
 
 const aiStack = [
-  "ChatGPT",
-  "Claude",
-  "n8n",
-  "Make",
-  "Airtable / Notion / Google Sheets",
-  "APIs",
-  "React / Next.js when custom UI is needed",
-  "Supabase / Firebase if persistence is needed",
+  {
+    capability: "AI reasoning / writing",
+    tools: "ChatGPT, Claude",
+    useCase: "Summaries, classification, SOP drafts, structured outputs",
+  },
+  {
+    capability: "Research / validation",
+    tools: "Perplexity",
+    useCase: "Market checks, source-backed research, process discovery",
+  },
+  {
+    capability: "Automation",
+    tools: "n8n, Make",
+    useCase: "Connect forms, emails, spreadsheets, APIs, and AI actions",
+  },
+  {
+    capability: "Data / operations base",
+    tools: "Airtable, Notion, Google Sheets",
+    useCase: "Lightweight workflow databases and operational tracking",
+  },
+  {
+    capability: "Custom UI",
+    tools: "React, Next.js",
+    useCase: "Dashboards, internal tools, workflow interfaces",
+  },
+  {
+    capability: "Data persistence",
+    tools: "Supabase, Firebase",
+    useCase: "User data, workflow states, project records",
+  },
+  {
+    capability: "Deployment",
+    tools: "Vercel, Render",
+    useCase: "Fast deployment of prototypes and lightweight tools",
+  },
 ];
 
-const aiWorkflow = [
-  { label: "Audit", detail: "Map one workflow and its hidden states" },
-  { label: "Automate", detail: "Add AI/API support where it removes friction" },
-  { label: "Operate", detail: "Document, hand over, and improve the system" },
-];
+const aiBeforeAfter = {
+  before: [
+    "Emails",
+    "Spreadsheets",
+    "PDFs",
+    "Manual follow-ups",
+    "Unclear ownership",
+    "No workflow memory",
+  ],
+  after: [
+    "Structured intake",
+    "AI-assisted summaries",
+    "Task ownership",
+    "Status visibility",
+    "SOPs / handover",
+    "Reusable workflow system",
+  ],
+};
 
-const aiProblems = [
+const aiExampleWorkflows = [
   {
-    title: "Repetitive coordination",
-    problem: "Updates, reminders, approvals, and handoffs depend on people chasing each other manually.",
-    system: "Turn the recurring path into visible states, triggers, owners, and review points.",
-    proof: "Better fit for automation sprints, status dashboards, and exception handling.",
-    icon: Workflow,
+    title: "Lead qualification workflow",
+    steps: ["Website form / email", "AI classifies request", "Human reviews priority", "CRM/task updated"],
+    value: "Faster response and cleaner follow-up ownership.",
   },
   {
-    title: "Scattered documentation",
-    problem: "Process knowledge lives across PDFs, chats, calls, spreadsheets, and individual memory.",
-    system: "Structure knowledge into SOPs, onboarding paths, checklists, and reusable operating records.",
-    proof: "SOP / Knowledge System offer with source mapping and handover logic.",
-    icon: ClipboardCheck,
+    title: "Quote / request intake workflow",
+    steps: ["Customer request", "AI extracts key fields", "Missing data flagged", "Quote task created"],
+    value: "Less manual sorting and fewer incomplete requests.",
   },
   {
-    title: "Spreadsheet visibility gaps",
-    problem: "Teams cannot easily see workflow state, bottlenecks, risk, or accountability.",
-    system: "Replace spreadsheet chaos with a lightweight dashboard or internal workflow tool.",
-    proof: "FlowLogix-style operational visibility patterns and custom UI where needed.",
-    icon: Code2,
+    title: "SOP generator",
+    steps: ["Process notes", "AI drafts SOP", "Human review", "Structured documentation"],
+    value: "Repeatable procedures instead of scattered knowledge.",
   },
   {
-    title: "AI without a use case",
-    problem: "AI interest becomes experimentation when the workflow, data, and decision points are unclear.",
-    system: "Start with one workflow audit, then add AI only where it removes real friction.",
-    proof: "Clear opportunity matrix before build work begins.",
-    icon: Bot,
+    title: "Meeting-to-action workflow",
+    steps: ["Meeting notes", "AI summary", "Decisions and owners extracted", "Tasks assigned"],
+    value: "Clearer ownership after calls and meetings.",
+  },
+  {
+    title: "Document extraction workflow",
+    steps: ["PDF / email attachment", "AI extracts fields", "Review queue", "Database updated"],
+    value: "Less copy-paste and more reliable document handling.",
+  },
+  {
+    title: "Operations dashboard",
+    steps: ["Sheets / forms / tasks", "Workflow state model", "Dashboard", "Weekly visibility"],
+    value: "Better status visibility across recurring operational work.",
   },
 ];
 
 const aiProcess = [
   {
-    title: "Map the workflow",
-    problem: "The process feels obvious until ownership, exceptions, inputs, and handoffs are made explicit.",
-    system: "Document the real path, not the idealized version.",
-    proof: "Workflow map, actors, states, artifacts, and bottlenecks.",
-    icon: Workflow,
+    title: "Workflow intake",
+    happens: "We identify one repetitive or messy process worth improving.",
+    provide: "Examples, screenshots, documents, current tools, and pain points.",
+    deliver: "Problem definition and initial scope.",
   },
   {
-    title: "Find the smallest useful system",
-    problem: "Big automation scopes stall quickly.",
-    system: "Pick one useful workflow improvement with clear boundaries and human review.",
-    proof: "Prioritized automation candidate and implementation plan.",
-    icon: ClipboardCheck,
+    title: "Process mapping",
+    happens: "I map inputs, decisions, handoffs, ownership, tools, and failure points.",
+    provide: "Clarifications and real workflow examples.",
+    deliver: "Workflow map and friction analysis.",
   },
   {
-    title: "Prototype and hand over",
-    problem: "A demo is not useful unless the team knows how to operate it.",
-    system: "Build the workflow prototype and package the logic into SOPs, notes, and next steps.",
-    proof: "Working path, review checkpoints, and handover artifacts.",
-    icon: Bot,
+    title: "Automation design",
+    happens: "We define what should be automated, what should stay human-reviewed, and what output is useful.",
+    provide: "Business rules, approval logic, and tool access where needed.",
+    deliver: "Automation design and implementation plan.",
+  },
+  {
+    title: "Prototype build",
+    happens: "I build the smallest useful workflow using automation tools, AI, lightweight databases, or custom UI where needed.",
+    provide: "Feedback on real use cases.",
+    deliver: "Working prototype or automation flow.",
+  },
+  {
+    title: "Review, handover, iteration",
+    happens: "We test the workflow, refine edge cases, and document how to use it.",
+    provide: "Feedback from actual usage.",
+    deliver: "Handover notes, SOP, and next-step recommendations.",
   },
 ];
+
+const aiFit = {
+  good: [
+    "Operations-heavy SMEs",
+    "Logistics and service businesses",
+    "Local companies with manual admin workflows",
+    "MedTech-adjacent operations",
+    "Small teams with scattered knowledge",
+    "Founders who need fast workflow prototypes",
+  ],
+  notIdeal: [
+    "Abstract AI experiments",
+    "Large enterprise transformation programs",
+    "Pure chatbot projects without workflow integration",
+    "Automation without human review where risk is high",
+  ],
+};
 
 const medtechProof = [
   "OR integration and surgical infrastructure",
@@ -421,6 +491,147 @@ function HomeHeroVisual() {
   );
 }
 
+function WorkflowBeforeAfter({ before, after }) {
+  return (
+    <div className="ai-before-after reveal">
+      <div className="ai-before-after__panel ai-before-after__panel--before">
+        <span className="ai-before-after__label">Before</span>
+        <h3>Scattered work</h3>
+        <ul>
+          {before.map((item) => <li key={item}>{item}</li>)}
+        </ul>
+      </div>
+      <div className="ai-before-after__arrow" aria-hidden="true">
+        <ArrowRight size={22} />
+      </div>
+      <div className="ai-before-after__panel ai-before-after__panel--after">
+        <span className="ai-before-after__label">After</span>
+        <h3>Workflow intelligence</h3>
+        <ul>
+          {after.map((item) => <li key={item}>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function CapabilityToolMatrix({ items }) {
+  return (
+    <div className="ai-tool-matrix reveal">
+      <div className="ai-tool-matrix__head">
+        <span>Capability</span>
+        <span>Tools</span>
+        <span>Use case</span>
+      </div>
+      {items.map((item) => (
+        <div className="ai-tool-matrix__row" key={item.capability}>
+          <strong>{item.capability}</strong>
+          <span>{item.tools}</span>
+          <p>{item.useCase}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ProductizedOfferCard({ offer }) {
+  const Icon = offer.icon;
+
+  return (
+    <article className={`ai-offer-card ${offer.featured ? "ai-offer-card--featured" : ""} reveal`}>
+      <header className="ai-offer-card__header">
+        <span className="ai-offer-card__icon" aria-hidden="true">{Icon ? <Icon size={18} /> : null}</span>
+        {offer.badge ? <span className="ai-offer-card__badge">{offer.badge}</span> : null}
+      </header>
+      <h3>{offer.title}</h3>
+      <dl>
+        <div>
+          <dt>Best for</dt>
+          <dd>{offer.bestFor}</dd>
+        </div>
+        <div>
+          <dt>Deliverable</dt>
+          <dd>{offer.deliverable}</dd>
+        </div>
+        <div>
+          <dt>Typical output</dt>
+          <dd>{offer.output}</dd>
+        </div>
+      </dl>
+      <a href={offer.cta.href} className="ai-offer-card__cta">
+        {offer.cta.label} <ArrowRight size={14} aria-hidden="true" />
+      </a>
+    </article>
+  );
+}
+
+function WorkflowExampleStrip({ workflow }) {
+  return (
+    <article className="ai-workflow-strip reveal">
+      <div className="ai-workflow-strip__title">
+        <h3>{workflow.title}</h3>
+        <p>{workflow.value}</p>
+      </div>
+      <div className="ai-workflow-strip__flow" aria-label={`${workflow.title} flow`}>
+        {workflow.steps.map((step, index) => (
+          <span className="ai-workflow-strip__node" key={step}>
+            <span>{["Input", "Automation", "Review", "Output"][index]}</span>
+            {step}
+          </span>
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function ProcessTimeline({ steps }) {
+  return (
+    <div className="ai-process-timeline">
+      {steps.map((step, index) => (
+        <article className="ai-process-step reveal" key={step.title}>
+          <span className="ai-process-step__number">{String(index + 1).padStart(2, "0")}</span>
+          <div className="ai-process-step__body">
+            <h3>{step.title}</h3>
+            <dl>
+              <div>
+                <dt>What happens</dt>
+                <dd>{step.happens}</dd>
+              </div>
+              <div>
+                <dt>You provide</dt>
+                <dd>{step.provide}</dd>
+              </div>
+              <div>
+                <dt>I deliver</dt>
+                <dd>{step.deliver}</dd>
+              </div>
+            </dl>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function FitSection({ good, notIdeal }) {
+  return (
+    <div className="ai-fit-grid reveal">
+      <article className="ai-fit-card ai-fit-card--good">
+        <h3>Good fit</h3>
+        <ul>
+          {good.map((item) => <li key={item}>{item}</li>)}
+        </ul>
+      </article>
+      <article className="ai-fit-card ai-fit-card--not">
+        <h3>Not ideal for</h3>
+        <ul>
+          {notIdeal.map((item) => <li key={item}>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+  );
+}
+
 export function HomePage() {
   const highlights = [
     "Product thinking",
@@ -501,57 +712,84 @@ export function AIPage() {
   const projects = getProjectsByCategory(projectCategories.aiAutomation, { featuredOnly: true });
 
   return (
-    <div className="market-page">
+    <div className="market-page market-page--ai">
       <PageHero
         eyebrow="AI Solutions"
         title="AI Workflow Automation for SMEs"
         subtitle="I help small and medium-sized businesses turn repetitive operational work, scattered documentation, and manual coordination into AI-assisted workflows, automations, dashboards, and SOP systems."
         primaryCta={{ label: "Request AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
         secondaryCta={{ label: "Discuss Automation Sprint", href: `mailto:${EMAIL}?subject=Automation%20Sprint%20Discussion` }}
-        scrollTargetId="ai-problems"
+        scrollTargetId="ai-workflow-intelligence"
+        variant="ai"
       >
-        <p className="market-page__claim">I do not sell AI experiments. I help businesses remove workflow friction.</p>
+        <div className="ai-hero-extra">
+          <p className="market-page__claim">I do not sell AI experiments. I help businesses remove workflow friction.</p>
+          <HomeHeroVisual />
+        </div>
       </PageHero>
 
-      <section id="ai-problems" className="section container market-page__section">
-        <SectionHeader eyebrow="Problems I solve" title="Operational friction that is ready to become a system" text="The right starting point is usually not a grand AI strategy. It is one repeated process with unclear state, ownership, or documentation." />
-        <div className="market-page__system-grid">
-          {aiProblems.map((problem) => <SystemCard {...problem} accent="ai" key={problem.title} />)}
-        </div>
-      </section>
-
-      <section className="section container market-page__section">
-        <SectionHeader eyebrow="Workflow intelligence" title="Useful AI starts with operational friction" text="The work is not to decorate a business with AI. The work is to expose the process, structure the states, and automate where it is genuinely useful." />
+      <section id="ai-workflow-intelligence" className="section container market-page__section">
+        <SectionHeader
+          eyebrow="01 / Workflow intelligence"
+          title="From scattered work to workflow intelligence"
+          text="A workflow intelligence system connects scattered inputs - emails, documents, forms, spreadsheets, and meetings - and turns them into structured tasks, summaries, decisions, dashboards, or SOPs."
+        />
+        <WorkflowBeforeAfter before={aiBeforeAfter.before} after={aiBeforeAfter.after} />
         <ArtifactMap
           accent="ai"
           title="Manual Process becomes AI-Assisted Workflow"
           {...aiArtifact}
         />
-        <WorkflowMap items={aiWorkflow} accent="ai" title="AI workflow automation path" />
       </section>
 
       <section className="section container market-page__section">
-        <SectionHeader eyebrow="Productized offers" title="Small, practical engagements" text="Each offer is scoped around one workflow, one useful outcome, and clear handover." />
-        <div className="market-page__system-grid">
-          {aiOffers.map((offer) => <SystemCard {...offer} accent="ai" key={offer.title} />)}
+        <SectionHeader
+          eyebrow="02 / Tools"
+          title="Tools mapped to workflow capabilities"
+          text="The stack depends on the workflow. I use AI, automation tools, lightweight databases, and custom interfaces only where they remove real operational friction."
+        />
+        <CapabilityToolMatrix items={aiStack} />
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader
+          eyebrow="03 / Productized offers"
+          title="Productized offers"
+          text="Start with one contained workflow. Each offer is designed to produce a usable business artifact, not a vague AI experiment."
+        />
+        <div className="ai-offer-grid">
+          {aiOffers.map((offer) => <ProductizedOfferCard offer={offer} key={offer.title} />)}
         </div>
       </section>
 
       <section className="section container market-page__section">
-        <SectionHeader eyebrow="Example workflows" title="Automation and operating-system examples" />
+        <SectionHeader
+          eyebrow="04 / Example workflows"
+          title="Example workflows"
+          text="These are practical workflow patterns that can be adapted to SMEs, service businesses, logistics, operations, and MedTech-adjacent companies."
+        />
+        <div className="ai-workflow-library">
+          {aiExampleWorkflows.map((workflow) => <WorkflowExampleStrip workflow={workflow} key={workflow.title} />)}
+        </div>
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader
+          eyebrow="05 / Process"
+          title="Process"
+          text="The process is intentionally small-scope: map one workflow, build one useful system, review it with real users, and iterate."
+        />
+        <ProcessTimeline steps={aiProcess} />
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader
+          eyebrow="06 / Fit"
+          title="Best fit"
+          text="This is best suited for SMEs and operational teams that already have real work happening across emails, spreadsheets, documents, forms, meetings, and manual follow-ups - but lack a structured workflow system around it."
+        />
+        <FitSection good={aiFit.good} notIdeal={aiFit.notIdeal} />
         <ProofGrid projects={projects} accent="ai" />
-      </section>
-
-      <section className="section container market-page__section">
-        <SectionHeader eyebrow="Stack / tools" title="Practical tools before heavy engineering" />
-        <PillList items={aiStack} accent="ai" />
-      </section>
-
-      <section className="section container market-page__section">
-        <SectionHeader eyebrow="Process" title="Start with one workflow, then build only what is useful" />
-        <div className="market-page__system-grid">
-          {aiProcess.map((step) => <SystemCard {...step} accent="ai" key={step.title} />)}
-        </div>
       </section>
 
       <section className="section container market-page__section">
@@ -559,7 +797,7 @@ export function AIPage() {
           accent="ai"
           eyebrow="Next step"
           title="Have one messy workflow worth fixing?"
-          text="Start with a focused audit or a scoped automation sprint. No AI theater, just workflow friction made visible."
+          text="Start with one contained process. I can help map it, identify automation opportunities, and build the smallest useful workflow system around it."
           primary={{ label: "Request AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
           secondary={{ label: "Discuss Automation Sprint", href: `mailto:${EMAIL}?subject=Automation%20Sprint%20Discussion` }}
         />
