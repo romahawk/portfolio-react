@@ -2,6 +2,7 @@
 @import "./status-badge.css";
 @import "./navigation.css";
 @import "./page-hero.css";
+@import "./visual-system.css";
 @import "./hero.css";
 @import "./results.css";
 @import "./about.css";
@@ -43,8 +44,20 @@
   --brand: #49d7d1;
   --brand-2: #6fa4ff;
   --brand-warm: #f3b66e;
+  --accent-ai: #4ed7f3;
+  --accent-ai-2: #7aa7ff;
+  --accent-ai-soft: rgba(78, 215, 243, 0.12);
+  --accent-medtech: #37c9bd;
+  --accent-medtech-2: #5d9dff;
+  --accent-medtech-soft: rgba(55, 201, 189, 0.12);
+  --accent-fullstack: #a78bfa;
+  --accent-fullstack-2: #6d7cff;
+  --accent-fullstack-soft: rgba(167, 139, 250, 0.12);
   --border: #213044;
   --border-strong: #314760;
+  --system-border: rgba(190,208,230,0.12);
+  --grid-line: rgba(190,208,230,0.035);
+  --grid-dot: rgba(190,208,230,0.13);
   --surface-soft: rgba(255,255,255,0.03);
   --surface-glow: rgba(73,215,209,0.08);
   --surface-cool: rgba(111,164,255,0.08);
@@ -91,26 +104,38 @@
 /* -------- Light theme tokens -------- */
 [data-theme="light"] {
   color-scheme: light;
-  --bg:            #f4f7fb;
-  --bg-elevated:   #eaeff7;
-  --panel:         #ffffff;
-  --panel-2:       #f7f9fd;
-  --panel-3:       #eef2f9;
-  --panel-hover:   #e6ebf4;
-  --panel-active:  #dde4ef;
-  --border-hover:  #a8b8d0;
-  --text:          #111827;
-  --muted:         #566070;
-  --muted-strong:  #3c4860;
-  --brand:         #0898a3;
-  --brand-2:       #2b6fd4;
-  --brand-warm:    #c4762e;
-  --border:        #d1daea;
-  --border-strong: #b5c4d8;
-  --surface-soft:  rgba(0,0,0,0.04);
-  --surface-glow:  rgba(8,152,163,0.08);
-  --surface-cool:  rgba(43,111,212,0.07);
-  --surface-warm:  rgba(196,118,46,0.08);
+  --bg:            #f7f6f2;
+  --bg-elevated:   #eef2f7;
+  --panel:         #fffefa;
+  --panel-2:       #f8fafc;
+  --panel-3:       #eef4f8;
+  --panel-hover:   #edf3f7;
+  --panel-active:  #e4edf4;
+  --border-hover:  #9fafbf;
+  --text:          #101820;
+  --muted:         #64717f;
+  --muted-strong:  #344253;
+  --brand:         #057984;
+  --brand-2:       #235fca;
+  --brand-warm:    #a86426;
+  --accent-ai:     #057fa6;
+  --accent-ai-2:   #2563eb;
+  --accent-ai-soft: rgba(5,127,166,0.09);
+  --accent-medtech: #047f78;
+  --accent-medtech-2: #2469d8;
+  --accent-medtech-soft: rgba(4,127,120,0.09);
+  --accent-fullstack: #6d4fd8;
+  --accent-fullstack-2: #304fd5;
+  --accent-fullstack-soft: rgba(109,79,216,0.09);
+  --border:        #d6dde6;
+  --border-strong: #aebccc;
+  --system-border: rgba(92,107,125,0.18);
+  --grid-line: rgba(92,107,125,0.055);
+  --grid-dot: rgba(92,107,125,0.16);
+  --surface-soft:  rgba(16,24,32,0.035);
+  --surface-glow:  rgba(5,127,166,0.08);
+  --surface-cool:  rgba(35,95,202,0.065);
+  --surface-warm:  rgba(168,100,38,0.075);
   --surface-success: rgba(40,160,110,0.1);
   --shadow:        0 8px 30px rgba(100,130,170,0.14);
   --shadow-strong: 0 20px 60px rgba(80,110,160,0.2);
@@ -156,18 +181,21 @@ body {
   margin: 0;
   font-family: "Segoe UI", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   color: var(--text);
-  background: radial-gradient(1200px 800px at 76% -10%, rgba(73,215,209,0.12), transparent 58%),
-              radial-gradient(920px 620px at -8% 10%, rgba(111,164,255,0.11), transparent 56%),
+  background: radial-gradient(1200px 800px at 76% -10%, rgba(73,215,209,0.1), transparent 58%),
+              radial-gradient(920px 620px at -8% 10%, rgba(111,164,255,0.09), transparent 56%),
               linear-gradient(180deg, rgba(255,255,255,0.02), transparent 18%),
               var(--bg);
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
 }
 [data-theme="light"] body {
   background:
-    radial-gradient(1200px 800px at 76% -10%, rgba(8,152,163,0.07), transparent 58%),
-    radial-gradient(920px 620px at -8% 10%, rgba(43,111,212,0.06), transparent 56%),
-    linear-gradient(180deg, rgba(255,255,255,0.7), transparent 15%),
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(1200px 800px at 76% -10%, rgba(5,127,166,0.075), transparent 58%),
+    radial-gradient(920px 620px at -8% 10%, rgba(36,105,216,0.055), transparent 56%),
+    linear-gradient(180deg, rgba(255,254,250,0.86), transparent 17%),
     var(--bg);
+  background-size: 44px 44px, 44px 44px, auto, auto, auto, auto;
 }
 a { color: inherit; text-decoration: none; }
 a:hover { color: var(--muted-strong); }

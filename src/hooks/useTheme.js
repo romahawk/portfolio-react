@@ -3,9 +3,7 @@ import { useState, useEffect } from "react";
 const KEY = "theme";
 
 function applyTheme(stored) {
-  const resolved = stored
-    ? stored
-    : window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  const resolved = stored || "light";
   document.documentElement.setAttribute("data-theme", resolved);
 }
 
