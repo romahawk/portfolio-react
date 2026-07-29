@@ -39,7 +39,7 @@ const MEDTECH = {
 const FULLSTACK = {
   title: "AI-Enhanced Full-Stack Product Builder \u2014 Roman Mazuryk",
   description:
-    "Product prototypes, dashboards, workflow tools, and AI-assisted systems built with modern full-stack tools.",
+    "Full-stack product prototypes, dashboards, workflow tools, and AI-assisted systems built with React, Next.js, Python, databases, deployment tools, and AI-native development workflows.",
   url: "https://www.mazuryk.dev/fullstack",
   image: "https://www.mazuryk.dev/images/og-home.png",
   imageAlt: "AI-enhanced full-stack product builder portfolio by Roman Mazuryk.",

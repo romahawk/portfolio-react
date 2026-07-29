@@ -5,7 +5,6 @@ import {
   Code2,
   Github,
   Mail,
-  Network,
   Stethoscope,
   Workflow,
 } from "lucide-react";
@@ -20,7 +19,7 @@ import {
   SystemCard,
   WorkflowMap,
 } from "./system/SystemVisuals.jsx";
-import { getProjectsByCategory, projectCategories, projectPortfolio } from "../data/projects.js";
+import { getProjectsByCategory, projectCategories } from "../data/projects.js";
 
 const EMAIL = "romazuryk@proton.me";
 
@@ -80,13 +79,6 @@ const aiArtifact = {
   outputLabel: "AI-assisted workflow",
   inputs: ["Intake", "Trigger", "Manual task"],
   outputs: ["Automation", "AI summary", "Human review", "Dashboard / output"],
-};
-
-const fullstackArtifact = {
-  inputLabel: "Prompt",
-  outputLabel: "Product system",
-  inputs: ["Idea", "AI-assisted planning", "Code"],
-  outputs: ["Data layer", "UI", "Deployed demo"],
 };
 
 const proofHighlights = [
@@ -451,41 +443,155 @@ const medtechRoleGroups = [
   },
 ];
 
-const fullstackStack = [
-  "React",
-  "Next.js",
-  "TypeScript / JavaScript",
-  "Tailwind",
-  "Python",
-  "Flask / FastAPI",
-  "PostgreSQL / Supabase / Firebase",
-  "REST APIs",
-  "Git / GitHub",
-  "Vercel / Render / Koyeb",
-  "ChatGPT",
-  "Claude",
-  "Codex",
-  "v0",
-  "Cursor",
+const fullstackHeroFlow = [
+  "Idea",
+  "AI-assisted planning",
+  "UI prototype",
+  "Data model",
+  "Working app",
+  "Deployed demo",
+];
+
+const fullstackStackGroups = [
+  { title: "Frontend", items: ["React", "Next.js", "TypeScript / JavaScript", "Tailwind"] },
+  { title: "Backend / APIs", items: ["Python", "Flask / FastAPI", "REST APIs"] },
+  { title: "Data", items: ["PostgreSQL", "Supabase", "Firebase"] },
+  { title: "Deployment", items: ["Vercel", "Render", "Koyeb"] },
+  { title: "AI-assisted development", items: ["ChatGPT", "Claude", "Codex", "v0", "Cursor"] },
 ];
 
 const fullstackWorkflow = [
-  { label: "Product frame", detail: "User, workflow, state, acceptance criteria" },
-  { label: "AI-assisted build", detail: "Codex, Claude, ChatGPT, implementation loops" },
-  { label: "Working system", detail: "Prototype, dashboard, API, handover" },
+  {
+    title: "Discover",
+    text: "Clarify problem, user flow, requirements, constraints, and implementation scope.",
+  },
+  {
+    title: "Prototype",
+    text: "Use v0, React, Tailwind, and AI-assisted UI generation to build fast product interfaces.",
+  },
+  {
+    title: "Build",
+    text: "Implement data models, APIs, state logic, authentication, dashboards, and workflow states.",
+  },
+  {
+    title: "Iterate",
+    text: "Review bugs, improve UX, refactor code, document decisions, and deploy working versions.",
+  },
 ];
 
-const fullstackProjectProof = [
+const fullstackSelectedProjects = [
   {
-    title: "Workflow Intelligence content system",
-    status: "Built",
-    summary: "Reusable visual and content primitives for workflow maps, system cards, proof cards, CTAs, and route-specific accents.",
-    problem: "Generic portfolio cards do not communicate operational complexity becoming structured systems.",
-    solution: "A component layer that expresses Problem, System, Proof, workflow states, connectors, and page-specific accents.",
-    proof: "SystemVisuals components, visual-system CSS, and the three-vector route architecture.",
-    stack: ["React components", "CSS tokens", "Workflow UX", "Design system"],
-    links: [{ label: "View source", href: "https://github.com/romahawk" }],
-    relevance: "Reusable product UI system",
+    title: "mazuryk.dev",
+    type: "Portfolio system / personal operating website",
+    description: "A custom portfolio and positioning system structured around AI automation, MedTech product/project credibility, and full-stack product-building proof.",
+    relevance: "Shows frontend architecture, routing, content structure, UX strategy, responsive design, and personal product positioning.",
+    stack: ["React", "Vite", "Routing", "SEO", "Responsive CSS"],
+    links: [
+      { label: "GitHub", href: "https://github.com/romahawk/portfolio-react" },
+      { label: "Live", href: "https://www.mazuryk.dev/" },
+    ],
+  },
+  {
+    title: "FlowLogix",
+    type: "Operations dashboard / workflow tool",
+    description: "A logistics and operations workflow system for tracking, filtering, and structuring operational records and process visibility.",
+    relevance: "Shows backend logic, API work, filtering, data handling, operations thinking, and workflow-dashboard design.",
+    stack: ["Flask", "SQLite", "SQLAlchemy", "API", "Dashboard UX"],
+    links: [
+      { label: "GitHub", href: "https://github.com/romahawk/flowlogix" },
+      { label: "Live", href: "https://flowlogics.app/" },
+    ],
+  },
+  {
+    title: "LiveSurgery",
+    type: "MedTech product prototype",
+    description: "A surgical video / collaboration product concept and prototype direction for clinical workflows, remote expertise, case visibility, and MedTech collaboration.",
+    relevance: "Shows MedTech product thinking, clinical workflow understanding, UI/product logic, and full-stack prototype capability.",
+    stack: ["React", "FastAPI", "SQLite", "WebSocket", "MedTech UX"],
+    links: [
+      { label: "GitHub", href: "https://github.com/romahawk/livesurgery-poc" },
+      { label: "Live", href: "https://livesurgery-landing.vercel.app/" },
+    ],
+  },
+  {
+    title: "Medintegro",
+    type: "MedTech website / product platform prototype",
+    description: "A MedTech-oriented digital presence and product platform concept connected to OR integration, clinical systems, and implementation-heavy medical technology.",
+    relevance: "Shows domain-specific frontend work, MedTech positioning, product structure, and applied UX/content design.",
+    stack: ["Frontend", "Product UX", "MedTech content", "Responsive design"],
+    links: [
+      { label: "GitHub", href: "https://github.com/romahawk/medintegro-v0" },
+      { label: "Live", href: "https://www.medintegro.com.ua/" },
+    ],
+  },
+  {
+    title: "AlphaRhythm",
+    type: "Trading discipline product / SaaS-style product concept",
+    description: "A product concept for structured trade journaling, discipline tracking, risk logic, and decision-review workflows.",
+    relevance: "Shows product thinking, data-driven UX, user workflow design, landing/app structure, and independent product-building ability.",
+    stack: ["React", "Firebase", "Firestore", "Workflow UX", "Product concept"],
+    links: [{ label: "Live", href: "https://alpharhythm.trade" }],
+  },
+  {
+    title: "Workflow Intelligence Content System",
+    type: "AI-assisted internal product system",
+    description: "A workflow system for planning, structuring, and exporting MedTech / LinkedIn / Substack content assets from a reusable content library.",
+    relevance: "Shows AI-assisted product operations, content workflow design, internal tooling, structured data thinking, and UI system design.",
+    stack: ["React components", "Content model", "AI workflow", "Internal tooling"],
+    links: [{ label: "GitHub", href: "https://github.com/romahawk/portfolio-react" }],
+    status: "WIP / Internal tool",
+  },
+];
+
+const fullstackSecondaryExperiments = [
+  {
+    title: "SmartShooter",
+    type: "Sports tracking product experiment",
+    description: "A basketball shooting tracker concept focused on mobile-first logging, progress visibility, and habit-building mechanics.",
+    relevance: "Shows product experimentation, Firebase/front-end logic, mobile UX thinking, and rapid prototyping.",
+    stack: ["React", "Firebase", "Mobile UX", "Prototype"],
+    links: [
+      { label: "GitHub", href: "https://github.com/romahawk/SmartShooter_" },
+      { label: "Live", href: "https://smart-shooter.vercel.app/" },
+    ],
+  },
+  {
+    title: "JobSprint",
+    type: "Job search operating system experiment",
+    description: "A job-search workflow tool for tracking applications, sources, company research, and compliance/reporting logic.",
+    relevance: "Shows workflow design, data structuring, product thinking, and practical internal tooling.",
+    stack: ["React", "Vite", "Local Storage", "Analytics", "Workflow UX"],
+    links: [
+      { label: "GitHub", href: "https://github.com/romahawk/jobsprint-demo" },
+      { label: "Live", href: "https://jobsprint-demo.vercel.app/" },
+    ],
+  },
+];
+
+const fullstackCapabilities = [
+  {
+    title: "Product prototyping",
+    text: "Turning an idea into a scoped user flow, UI, data model, and deployed demo.",
+  },
+  {
+    title: "Workflow systems",
+    text: "Designing states, inputs, ownership, dashboards, and operational logic around real processes.",
+  },
+  {
+    title: "Frontend implementation",
+    text: "Building responsive interfaces with React, Next.js, Tailwind, and reusable components.",
+  },
+  {
+    title: "Backend and data logic",
+    text: "Working with APIs, databases, authentication, records, and persistence where needed.",
+  },
+  {
+    title: "AI-assisted development",
+    text: "Using AI tools to accelerate planning, implementation, debugging, documentation, and iteration.",
+  },
+  {
+    title: "Product communication",
+    text: "Documenting project logic, trade-offs, architecture, and user value clearly for non-technical stakeholders.",
   },
 ];
 
@@ -771,6 +877,95 @@ function FitSection({ good, notIdeal }) {
   );
 }
 
+function FullStackHeroVisual({ items }) {
+  return (
+    <div className="fullstack-hero-map system-accent--fullstack reveal" aria-label="Idea to deployed artifact">
+      {items.map((item, index) => (
+        <div className="fullstack-hero-map__step" key={item}>
+          <div className="fullstack-hero-map__node">
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{item}</strong>
+          </div>
+          {index < items.length - 1 ? <span className="fullstack-hero-map__connector" aria-hidden="true" /> : null}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function StackGroupGrid({ groups }) {
+  return (
+    <div className="fullstack-stack-grid">
+      {groups.map((group) => (
+        <article className="fullstack-stack-card reveal" key={group.title}>
+          <h3>{group.title}</h3>
+          <div>
+            {group.items.map((item) => <FeaturePill accent="fullstack" key={item}>{item}</FeaturePill>)}
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function FullStackWorkflowRow({ steps }) {
+  return (
+    <div className="fullstack-workflow-row">
+      {steps.map((step, index) => (
+        <article className="fullstack-workflow-card reveal" key={step.title}>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <h3>{step.title}</h3>
+          <p>{step.text}</p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function FullStackProjectCard({ project, compact = false }) {
+  const links = project.links || [];
+
+  return (
+    <article className={`fullstack-project-card ${compact ? "fullstack-project-card--compact" : ""} reveal`}>
+      <header>
+        {project.status ? <span className="fullstack-project-card__status">{project.status}</span> : null}
+        <p>{project.type}</p>
+        <h3>{project.title}</h3>
+      </header>
+      <p className="fullstack-project-card__description">{project.description}</p>
+      <p className="fullstack-project-card__relevance">{project.relevance}</p>
+      <div className="fullstack-project-card__stack">
+        {project.stack.map((item) => <FeaturePill accent="fullstack" key={item}>{item}</FeaturePill>)}
+      </div>
+      {links.length ? (
+        <div className="fullstack-project-card__links">
+          {links.map((link) => {
+            const external = link.href.startsWith("http");
+            return (
+              <a href={link.href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} key={`${project.title}-${link.label}`}>
+                {link.label} <ArrowRight size={13} aria-hidden="true" />
+              </a>
+            );
+          })}
+        </div>
+      ) : null}
+    </article>
+  );
+}
+
+function FullStackCapabilityGrid({ items }) {
+  return (
+    <div className="fullstack-capability-grid">
+      {items.map((item) => (
+        <article className="fullstack-capability-card reveal" key={item.title}>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 export function HomePage() {
   const highlights = [
     "Product thinking",
@@ -1025,97 +1220,69 @@ export function MedTechPage() {
 }
 
 export function FullStackPage() {
-  const featuredProjects = getProjectsByCategory(projectCategories.fullstack, { featuredOnly: true });
-  const secondaryProjects = projectPortfolio.filter((project) => (
-    !project.featured && [projectCategories.fullstack, projectCategories.archived].includes(project.category)
-  ));
-  const selectedProjects = [...fullstackProjectProof, ...featuredProjects];
-
   return (
-    <div className="market-page">
+    <div className="market-page market-page--fullstack">
       <PageHero
-        eyebrow="Proof engine"
+        eyebrow="Product builder / AI-assisted delivery"
         title="AI-Enhanced Full-Stack Product Builder"
         subtitle="I build product prototypes, dashboards, workflow tools, and AI-assisted systems using modern full-stack tools and AI-native development workflows."
-        primaryCta={{ label: "View GitHub", href: "https://github.com/romahawk", external: true, icon: <Github size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: "Discuss Product Prototype", href: `mailto:${EMAIL}?subject=Full-Stack%20Prototype%20Discussion` }}
+        primaryCta={{ label: "View Selected Projects", href: "#fullstack-projects" }}
+        secondaryCta={{ label: "View GitHub", href: "https://github.com/romahawk", external: true, icon: <Github size={15} className="icon ml-1" aria-hidden="true" /> }}
         scrollTargetId="fullstack-stack"
-      />
+      >
+        <div className="market-page__hero-extra fullstack-hero-extra">
+          <p className="fullstack-credibility-line">React, Next.js, Python, APIs, databases, deployment, and AI-assisted development workflows applied to real product and workflow problems.</p>
+          <FullStackHeroVisual items={fullstackHeroFlow} />
+        </div>
+      </PageHero>
 
       <section id="fullstack-stack" className="section container market-page__section">
-        <SectionHeader eyebrow="Technical stack" title="Product-builder toolkit" text="Positioned honestly: not as a senior pure software engineer, but as an AI-enhanced builder who can ship prototypes, dashboards, workflow tools, and useful product systems." />
-        <ArtifactMap
-          accent="fullstack"
-          title="Prompt becomes Prototype becomes Product System"
-          {...fullstackArtifact}
+        <SectionHeader
+          eyebrow="Technical stack"
+          title="Technical stack"
+          text="A compact product-builder toolkit for interfaces, APIs, data, deployment, and AI-assisted implementation loops."
         />
-        <WorkflowMap items={fullstackWorkflow} accent="fullstack" title="AI-assisted full-stack delivery path" />
-        <PillList items={fullstackStack} accent="fullstack" />
+        <StackGroupGrid groups={fullstackStackGroups} />
       </section>
 
       <section className="section container market-page__section">
-        <SectionHeader eyebrow="AI-assisted development workflow" title="Faster discovery, clearer implementation" />
-        <div className="market-page__system-grid">
-          {[
-            {
-              title: "Product framing",
-              problem: "Building starts too early when the user, workflow, state model, and acceptance criteria are fuzzy.",
-              system: "Use AI to pressure-test jobs, workflows, constraints, risks, and requirements before implementation.",
-              proof: "Sharper specs, clearer edge cases, and build loops that start from product logic rather than guesswork.",
-              icon: Network,
-            },
-            {
-              title: "Implementation",
-              problem: "Prototype velocity stalls when every refactor, bug, and UI iteration is handled manually.",
-              system: "Use Codex, Claude, ChatGPT, and related tools for code generation, refactoring support, debugging, and documentation.",
-              proof: "Working prototypes, dashboards, route systems, metadata, and responsive interfaces shipped in short loops.",
-              icon: Code2,
-            },
-            {
-              title: "Handover",
-              problem: "Prototypes lose value when decisions, data assumptions, and next steps are not captured.",
-              system: "Turn builds into readmes, specs, architecture notes, and implementation plans.",
-              proof: "Cleaner project memory and easier continuation for founders, teams, or hiring reviewers.",
-              icon: ClipboardCheck,
-            },
-          ].map((item) => <SystemCard {...item} accent="fullstack" key={item.title} />)}
+        <SectionHeader
+          eyebrow="AI-assisted development workflow"
+          title="AI-assisted development workflow"
+          text="I use AI tools to accelerate product discovery, architecture planning, UI generation, code review, documentation, debugging, and iteration while keeping product logic and implementation decisions explicit."
+        />
+        <FullStackWorkflowRow steps={fullstackWorkflow} />
+      </section>
+
+      <section id="fullstack-projects" className="section container market-page__section">
+        <SectionHeader
+          eyebrow="Selected projects"
+          title="Selected projects"
+          text="A focused selection of deployed products, workflow systems, and technical prototypes showing product thinking, full-stack execution, and AI-assisted development."
+        />
+        <div className="fullstack-project-grid">
+          {fullstackSelectedProjects.map((project) => <FullStackProjectCard project={project} key={project.title} />)}
         </div>
       </section>
 
       <section className="section container market-page__section">
-        <SectionHeader eyebrow="Selected projects" title="Technical execution proof" />
-        <ProofGrid projects={selectedProjects} accent="fullstack" />
-      </section>
-
-      <section className="section container market-page__section">
-        <SectionHeader eyebrow="Secondary experiments" title="Archived and de-emphasized proof" text="Older or less central projects are preserved as supporting workflow-system evidence without competing with the main market routes." />
-        <ProofGrid projects={secondaryProjects} accent="fullstack" />
-      </section>
-
-      <section className="section container market-page__section">
-        <CTAStrip
-          accent="fullstack"
-          eyebrow="Architecture / implementation proof"
-          title="Dashboards, workflow state, APIs, persistence, and deployment"
-          text="Examples include FlowLogix, LiveSurgery, this portfolio system, and archived prototypes such as JobSprint and AlphaRhythm."
-          primary={{ label: "Open proof archive", href: "/proof-of-work" }}
-          secondary={{ label: "Discuss prototype", href: `mailto:${EMAIL}?subject=Full-Stack%20Prototype%20Discussion` }}
+        <SectionHeader
+          eyebrow="Secondary experiments"
+          title="Secondary experiments"
+          text="Smaller product experiments and learning projects that show additional execution range without being the core positioning."
         />
+        <div className="fullstack-secondary-grid">
+          {fullstackSecondaryExperiments.map((project) => <FullStackProjectCard project={project} compact key={project.title} />)}
+        </div>
       </section>
 
       <section className="section container market-page__section">
-        <SectionHeader eyebrow="GitHub / live demos" title="Built proof, demos, and implementation memory" text="The full-stack route is execution evidence for prototypes, dashboards, workflow tools, and AI-assisted build loops." />
-        <PillList
-          accent="fullstack"
-          items={[
-            "Git / GitHub history",
-            "Live demos where available",
-            "Prototype architecture",
-            "Workflow state modeling",
-            "API and persistence patterns",
-            "AI-assisted implementation loops",
-          ]}
+        <SectionHeader
+          eyebrow="Build capabilities"
+          title="What this proves"
+          text="The projects translate into practical product-building capability, not a claim to build everything."
         />
+        <FullStackCapabilityGrid items={fullstackCapabilities} />
       </section>
 
       <section className="section container market-page__section">
@@ -1123,9 +1290,9 @@ export function FullStackPage() {
           accent="fullstack"
           eyebrow="Next step"
           title="Need a prototype, dashboard, or workflow tool built quickly?"
-          text="The strongest fit is product-shaped technical work: a useful prototype, dashboard, internal tool, or AI-assisted workflow system."
-          primary={{ label: "View GitHub", href: "https://github.com/romahawk" }}
-          secondary={{ label: "Discuss Product Prototype", href: `mailto:${EMAIL}?subject=Full-Stack%20Prototype%20Discussion` }}
+          text="The strongest fit is product-shaped technical work: a useful prototype, dashboard, internal tool, or AI-assisted workflow system with clear product logic."
+          primary={{ label: "Discuss Product Prototype", href: `mailto:${EMAIL}?subject=Full-Stack%20Prototype%20Discussion` }}
+          secondary={{ label: "View GitHub", href: "https://github.com/romahawk" }}
         />
       </section>
     </div>
