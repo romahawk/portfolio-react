@@ -19,7 +19,7 @@
 
 .contact__grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1fr 1.1fr;
   gap: 20px;
 }
 @media (max-width: 960px){ .contact__grid { grid-template-columns: 1fr; } }
@@ -38,6 +38,8 @@
 }
 
 .contact__path {
+  --contact-path-accent: var(--accent-ai);
+  --contact-path-soft: var(--accent-ai-soft);
   position: relative;
   overflow: hidden;
   display: grid;
@@ -55,18 +57,45 @@
   transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
 
+.contact__path--ai {
+  --contact-path-accent: var(--accent-ai);
+  --contact-path-soft: var(--accent-ai-soft);
+}
+
+.contact__path--medtech {
+  --contact-path-accent: var(--accent-medtech);
+  --contact-path-soft: var(--accent-medtech-soft);
+}
+
+.contact__path--fullstack {
+  --contact-path-accent: var(--accent-fullstack);
+  --contact-path-soft: var(--accent-fullstack-soft);
+}
+
 .contact__path::before,
-.contact__panel::before,
-.contact__form::before {
+.contact__panel::before {
   content: "";
   position: absolute;
   inset: 0 auto 0 0;
   width: 3px;
-  background: linear-gradient(180deg, var(--accent-ai), transparent);
+  background: linear-gradient(180deg, var(--contact-path-accent, var(--accent-ai)), transparent);
+}
+
+.contact__path::after {
+  content: "";
+  position: absolute;
+  inset: auto 18px 17px auto;
+  width: 42px;
+  height: 1px;
+  background-image: linear-gradient(90deg, var(--contact-path-accent) 45%, transparent 0);
+  background-size: 9px 1px;
+  opacity: 0.65;
+  transform-origin: left;
+  animation: contact-path-pulse 2.6s ease-in-out infinite;
 }
 
 .contact__path svg {
-  color: var(--accent-ai);
+  color: var(--contact-path-accent);
 }
 
 .contact__path strong {
@@ -78,10 +107,30 @@
   line-height: 1.5;
 }
 
+.contact__path em {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  color: var(--contact-path-accent);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: 0.02em;
+}
+
+.contact__path em svg {
+  transition: transform .2s ease;
+}
+
 .contact__path:hover {
-  border-color: color-mix(in srgb, var(--accent-ai) 45%, var(--border));
-  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--contact-path-accent) 45%, var(--border));
+  transform: translateX(4px);
   box-shadow: var(--shadow-strong);
+}
+
+.contact__path:hover em svg {
+  transform: translateX(4px);
 }
 
 .contact__panel, .contact__form {
@@ -165,13 +214,17 @@
 }
 
 [data-theme="dark"] .contact__path,
-[data-theme="dark"] .contact__panel,
-[data-theme="dark"] .contact__form {
+[data-theme="dark"] .contact__panel {
   background:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-    radial-gradient(520px 220px at 100% 0, var(--accent-ai-soft), transparent 66%),
+    radial-gradient(520px 220px at 100% 0, var(--contact-path-soft, var(--accent-ai-soft)), transparent 66%),
     var(--card-bg);
+}
+
+@keyframes contact-path-pulse {
+  0%, 100% { transform: scaleX(0.52); opacity: 0.4; }
+  50% { transform: scaleX(1); opacity: 0.9; }
 }
 
 @media (max-width: 900px) {
@@ -187,5 +240,11 @@
   .contact__actions .btn {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact__path::after {
+    animation: none;
   }
 }
