@@ -17,7 +17,7 @@ const BASE = {
 const AI_SOLUTIONS = {
   title: "AI Workflow Automation for SMEs \u2014 Roman Mazuryk",
   description:
-    "AI workflow audits, automations, SOP systems, internal dashboards, and practical workflow prototypes for small and medium-sized businesses.",
+    "AI-assisted workflow automation, SOP systems, dashboards, and internal tools for SMEs with repetitive operational work and scattered documentation.",
   url: "https://www.mazuryk.dev/ai",
   image: "https://www.mazuryk.dev/images/og-services.png",
   imageAlt: "AI workflow automation services for SMEs by Roman Mazuryk.",
