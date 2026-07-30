@@ -30,21 +30,21 @@ const Contact = () => {
         <div className="contact__paths contact__paths--stack reveal reveal--delay-1" aria-label="Contact paths">
           <a href="mailto:romazuryk@proton.me?subject=AI%20Workflow%20Audit%20Request" className="contact__path contact__path--ai">
             <CalendarCheck size={18} aria-hidden="true" />
-            <strong>I need AI workflow automation</strong>
-            <span>Workflow audit, automation sprint, SOP system, dashboard, or internal tool prototype.</span>
-            <em>Select AI path <ArrowRight size={14} aria-hidden="true" /></em>
+            <strong>Book an AI Workflow Audit</strong>
+            <span>Map one workflow, identify bottlenecks, score AI opportunities, assess risk, and define the first pilot.</span>
+            <em>Start audit path <ArrowRight size={14} aria-hidden="true" /></em>
           </a>
           <a href="mailto:romazuryk@proton.me?subject=MedTech%20Product%20%2F%20Project%20Role" className="contact__path contact__path--medtech">
             <BriefcaseBusiness size={18} aria-hidden="true" />
-            <strong>I am hiring for a MedTech / Product / Project role</strong>
-            <span>Product, project, implementation, product ops, or workflow ownership roles.</span>
-            <em>Select MedTech path <ArrowRight size={14} aria-hidden="true" /></em>
+            <strong>I need regulated-operations context</strong>
+            <span>MedTech, HealthTech, implementation, documentation, handover, or stakeholder-heavy workflow work.</span>
+            <em>Select trust-proof path <ArrowRight size={14} aria-hidden="true" /></em>
           </a>
           <a href="mailto:romazuryk@proton.me?subject=Full-Stack%20Prototype%20Discussion" className="contact__path contact__path--fullstack">
             <Code2 size={18} aria-hidden="true" />
-            <strong>I want to discuss a full-stack prototype or collaboration</strong>
-            <span>Product prototypes, dashboards, workflow tools, APIs, and AI-assisted build work.</span>
-            <em>Select Full-Stack path <ArrowRight size={14} aria-hidden="true" /></em>
+            <strong>I want to turn a workflow into a working system</strong>
+            <span>Prototype sprint, dashboard, internal assistant, workflow tool, API, or deployed custom application.</span>
+            <em>Select build path <ArrowRight size={14} aria-hidden="true" /></em>
           </a>
         </div>
 

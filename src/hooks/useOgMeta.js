@@ -4,9 +4,9 @@ import { getWorkflowBySlug } from "../data/aiWorkflows.js";
 import { useTranslation } from "../context/LangContext.jsx";
 
 const BASE = {
-  title: "Roman Mazuryk \u2014 AI-Augmented Product & Workflow Systems",
+  title: "Roman Mazuryk \u2014 AI Workflow Systems Consultant",
   description:
-    "Product management, MedTech implementation, AI automation, and full-stack development for workflow systems, prototypes, and operational tools.",
+    "AI systems consulting, workflow automation, audit-to-implementation roadmaps, and prototype builds for operations-heavy SMEs, MedTech, HealthTech, and regulated teams.",
   url: "https://www.mazuryk.dev/",
   image: "https://www.mazuryk.dev/images/og-home.png",
   imageAlt: "Mazuryk.dev hero preview with headline, CTA buttons, and a small circular profile photo.",
@@ -15,9 +15,9 @@ const BASE = {
 };
 
 const AI_SOLUTIONS = {
-  title: "AI Workflow Automation for SMEs \u2014 Roman Mazuryk",
+  title: "AI Workflow Systems and Automation for SMEs \u2014 Roman Mazuryk",
   description:
-    "AI-assisted workflow automation, SOP systems, dashboards, and internal tools for SMEs with repetitive operational work and scattered documentation.",
+    "AI Workflow Opportunity Audits, automation pilots, internal assistants, SOP systems, dashboards, and implementation roadmaps for operations-heavy SMEs.",
   url: "https://www.mazuryk.dev/ai",
   image: "https://www.mazuryk.dev/images/og-services.png",
   imageAlt: "AI workflow automation services for SMEs by Roman Mazuryk.",
@@ -26,9 +26,9 @@ const AI_SOLUTIONS = {
 };
 
 const MEDTECH = {
-  title: "MedTech Product & Project Portfolio \u2014 Roman Mazuryk",
+  title: "MedTech and Regulated Operations Proof \u2014 Roman Mazuryk",
   description:
-    "MedTech implementation experience translated into product thinking, project coordination, workflow systems, documentation, handover, and AI-assisted delivery.",
+    "Real MedTech implementation experience used as authority for AI workflow consulting in regulated, documentation-heavy, and handover-heavy environments.",
   url: "https://www.mazuryk.dev/medtech",
   image: "https://www.mazuryk.dev/images/og-home.png",
   imageAlt: "MedTech product and project portfolio by Roman Mazuryk.",
@@ -37,9 +37,9 @@ const MEDTECH = {
 };
 
 const FULLSTACK = {
-  title: "AI-Enhanced Full-Stack Product Builder \u2014 Roman Mazuryk",
+  title: "From Audit to Working System \u2014 Roman Mazuryk",
   description:
-    "Full-stack product prototypes, dashboards, workflow tools, and AI-assisted systems built with React, Next.js, Python, databases, deployment tools, and AI-native development workflows.",
+    "Implementation proof for AI workflow consulting: prototypes, dashboards, internal tools, automations, and deployed workflow applications.",
   url: "https://www.mazuryk.dev/fullstack",
   image: "https://www.mazuryk.dev/images/og-home.png",
   imageAlt: "AI-enhanced full-stack product builder portfolio by Roman Mazuryk.",
@@ -59,9 +59,9 @@ const ABOUT = {
 };
 
 const CONTACT = {
-  title: "Contact - Roman Mazuryk",
+  title: "Discuss One Workflow to Automate - Roman Mazuryk",
   description:
-    "Contact Roman Mazuryk for AI workflow automation, MedTech product/project roles, or full-stack prototype collaboration.",
+    "Book an AI Workflow Opportunity Audit, discuss one workflow to automate, or scope an implementation sprint for an internal assistant, dashboard, or workflow tool.",
   url: "https://www.mazuryk.dev/contact",
   image: "https://www.mazuryk.dev/images/og-home.png",
   imageAlt: "Contact Roman Mazuryk.",
@@ -92,7 +92,7 @@ const AI_WORKFLOW = {
 };
 
 const PROOF_OF_WORK = {
-  title: "Proof of Work - MedTech Product & Workflow Systems",
+  title: "Proof of Work - AI Workflow Systems and Regulated Operations",
   description:
     "Selected workflow systems, product concepts, and AI-assisted prototypes showing how Roman Mazuryk translates operational complexity into structured, auditable systems.",
   url: "https://www.mazuryk.dev/proof-of-work",

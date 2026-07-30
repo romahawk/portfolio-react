@@ -3,9 +3,9 @@ import { Linkedin, Github, Mail, ArrowUpRight } from "lucide-react";
 import { useTranslation } from "../context/LangContext.jsx";
 
 const NAV_LINKS = [
-  { label: "AI Solutions", href: "/ai" },
-  { label: "MedTech", href: "/medtech" },
-  { label: "Full-Stack", href: "/fullstack" },
+  { label: "AI Consulting", href: "/ai" },
+  { label: "Regulated Proof", href: "/medtech" },
+  { label: "Build Proof", href: "/fullstack" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

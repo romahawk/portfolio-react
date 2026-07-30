@@ -56,6 +56,7 @@
   --border: #213044;
   --border-strong: #314760;
   --system-border: rgba(190,208,230,0.12);
+  --background-grid-size: 42px;
   --grid-line: rgba(190,208,230,0.035);
   --grid-dot: rgba(190,208,230,0.13);
   --surface-soft: rgba(255,255,255,0.03);
@@ -130,6 +131,7 @@
   --border:        #d6dde6;
   --border-strong: #aebccc;
   --system-border: rgba(92,107,125,0.18);
+  --background-grid-size: 42px;
   --grid-line: rgba(92,107,125,0.055);
   --grid-dot: rgba(92,107,125,0.16);
   --surface-soft:  rgba(16,24,32,0.035);
@@ -195,7 +197,13 @@ body {
     radial-gradient(920px 620px at -8% 10%, rgba(36,105,216,0.055), transparent 56%),
     linear-gradient(180deg, rgba(255,254,250,0.86), transparent 17%),
     var(--bg);
-  background-size: 44px 44px, 44px 44px, auto, auto, auto, auto;
+  background-size:
+    var(--background-grid-size) var(--background-grid-size),
+    var(--background-grid-size) var(--background-grid-size),
+    auto,
+    auto,
+    auto,
+    auto;
 }
 a { color: inherit; text-decoration: none; }
 a:hover { color: var(--muted-strong); }

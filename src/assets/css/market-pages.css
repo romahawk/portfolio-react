@@ -16,6 +16,63 @@
   background-size: 42px 42px, 42px 42px, auto, auto;
 }
 
+.market-page--home .page-hero__eyebrow {
+  margin-bottom: 22px;
+}
+
+.market-page--home .page-hero__title {
+  margin-bottom: 28px;
+}
+
+.market-page--home .page-hero__subtitle {
+  max-width: 900px;
+  line-height: 1.82;
+}
+
+.market-page--home .page-hero__actions {
+  margin-top: 36px;
+}
+
+.market-page--home .page-hero__extra {
+  margin-top: 34px;
+}
+
+.home-typewriter-title {
+  display: inline;
+}
+
+.home-typewriter-title__word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.home-typewriter-title__word:not(:last-child) {
+  margin-right: 0.24em;
+}
+
+.home-typewriter-title__char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.08em);
+  animation: home-typewriter-char 0.01s linear forwards;
+  animation-delay: calc(var(--char-index) * 0.032s + 0.18s);
+}
+
+.home-typewriter-title__char:nth-child(8n) {
+  animation-duration: 0.08s;
+}
+
+@keyframes home-typewriter-char {
+  from {
+    opacity: 0;
+    transform: translateY(0.08em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .market-page__claim {
   max-width: 720px;
   margin: 0;
@@ -75,6 +132,115 @@
   display: grid;
   gap: 18px;
   margin-top: 2px;
+}
+
+.home-audit-section {
+  padding-top: 64px;
+}
+
+.home-audit-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: 16px;
+}
+
+.home-audit-card {
+  --home-audit-accent: var(--accent-ai);
+  --home-audit-accent-soft: var(--accent-ai-soft);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 13px;
+  align-content: start;
+  padding: 22px;
+  border: 1px solid var(--system-border);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(420px 190px at 100% 0, var(--home-audit-accent-soft), transparent 70%),
+    color-mix(in srgb, var(--panel) 90%, transparent);
+  background-size: 28px 28px, 28px 28px, auto, auto;
+  box-shadow: var(--shadow);
+}
+
+.home-audit-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--home-audit-accent), transparent);
+}
+
+.home-audit-card--primary,
+.home-audit-card--sprint {
+  border-color: color-mix(in srgb, var(--home-audit-accent) 38%, var(--border));
+}
+
+.home-audit-card--medtech {
+  --home-audit-accent: var(--accent-medtech);
+  --home-audit-accent-soft: var(--accent-medtech-soft);
+}
+
+.home-audit-card--fullstack {
+  --home-audit-accent: var(--accent-fullstack);
+  --home-audit-accent-soft: var(--accent-fullstack-soft);
+}
+
+.home-audit-card--included,
+.home-audit-card--outcome {
+  border-color: color-mix(in srgb, var(--home-audit-accent) 28%, var(--border));
+}
+
+.home-audit-card__label {
+  color: var(--home-audit-accent);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.home-audit-card h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.home-audit-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.62;
+}
+
+.home-audit-card ul {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+}
+
+.home-audit-card li {
+  display: flex;
+  gap: 8px;
+  line-height: 1.48;
+}
+
+.home-audit-card li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: var(--home-audit-accent);
+  box-shadow: 0 0 0 4px var(--home-audit-accent-soft);
+  flex: 0 0 auto;
+}
+
+.home-audit-card__deliverables {
+  grid-template-columns: 1fr;
 }
 
 .page-hero--ai .page-hero__content {
@@ -1234,6 +1400,7 @@
   .fullstack-project-grid,
   .fullstack-secondary-grid,
   .fullstack-capability-grid,
+  .home-audit-grid,
   .home-system-visual {
     grid-template-columns: 1fr;
   }
@@ -1316,5 +1483,13 @@
 
   .ai-process-timeline::before {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-typewriter-title__char {
+    opacity: 1;
+    animation: none;
+    transform: none;
   }
 }
