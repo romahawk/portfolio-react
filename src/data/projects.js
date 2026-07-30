@@ -195,29 +195,29 @@ export const projectCategories = {
 
 export const projectPortfolio = [
   {
-    title: "AI Workflow Audit",
+    title: "AI Workflow Opportunity Audit",
     category: projectCategories.aiAutomation,
     status: "Mapped",
-    summary: "Map one messy process, identify automation opportunities, and define the smallest useful AI-assisted workflow.",
+    summary: "Map one messy process, identify automation opportunities, assess feasibility and risk, and define the smallest useful AI-assisted workflow pilot.",
     problem: "Operational work is scattered across spreadsheets, messages, documents, and individual memory.",
-    solution: "A workflow map, friction analysis, automation opportunity matrix, and practical first-step implementation plan.",
+    solution: "A workflow review, bottleneck map, AI opportunity matrix, feasibility/risk assessment, recommended pilot, and implementation roadmap.",
     proof: "Uses the same workflow modeling approach shown across the AI workflow library and internal tool prototypes.",
     stack: ["Workflow mapping", "AI assistants", "SOP logic", "Automation planning"],
-    links: [{ label: "Request audit", href: "mailto:romazuryk@proton.me?subject=AI%20Workflow%20Audit%20Request" }],
-    relevance: "SME automation entry point",
+    links: [{ label: "Book audit", href: "mailto:romazuryk@proton.me?subject=AI%20Workflow%20Audit%20Request" }],
+    relevance: "AI Workflow Audit entry offer",
     featured: true,
   },
   {
-    title: "Automation Sprint",
+    title: "Prototype Sprint",
     category: projectCategories.aiAutomation,
     status: "Prototyped",
-    summary: "Build one working automation or workflow prototype with practical tools and human review points.",
+    summary: "Build one working automation, internal assistant, dashboard, decision-support tool, or workflow prototype with practical tools and human review points.",
     problem: "Teams want automation, but the workflow, data handoffs, ownership, and exception paths are unclear.",
     solution: "A scoped prototype using tools such as n8n, Make, Airtable, Notion, APIs, AI assistants, or a custom UI where useful.",
     proof: "Extends patterns from FlowLogix, JobSprint, and AI-assisted workflow concepts.",
     stack: ["n8n / Make", "APIs", "Airtable / Notion", "React / Next.js"],
     links: [{ label: "Discuss sprint", href: "mailto:romazuryk@proton.me?subject=Automation%20Sprint%20Discussion" }],
-    relevance: "SME automation build path",
+    relevance: "Prototype Sprint and Workflow Automation build path",
     featured: true,
   },
   {
@@ -230,7 +230,7 @@ export const projectPortfolio = [
     proof: "Surgimedia, Surgiris, Medintegro, surgical lights, surgical video/audio, medical equipment implementation, multi-vendor delivery.",
     stack: ["OR integration", "Stakeholder coordination", "Training", "Implementation documentation"],
     links: [{ label: "View proof", href: "/proof-of-work/or-integration" }],
-    relevance: "MedTech Product / Project / Implementation credibility",
+    relevance: "Regulated operations trust layer for AI Workflow Audits and implementation handover systems",
     featured: true,
   },
   {
@@ -243,7 +243,7 @@ export const projectPortfolio = [
     proof: "React workspace, FastAPI backend, SQLite model, WebSocket sync, role-based access, analytics dashboard.",
     stack: ["React", "FastAPI", "SQLite", "WebSocket", "Workflow UX"],
     links: [{ label: "Live demo", href: "https://livesurgery-landing.vercel.app/" }],
-    relevance: "MedTech product concept and full-stack prototype proof",
+    relevance: "Internal Assistant, Prototype Sprint, and decision-support system proof",
     featured: true,
   },
   {
@@ -256,7 +256,7 @@ export const projectPortfolio = [
     proof: "React SPA routing, reusable components, metadata hook, responsive CSS system, i18n and theme controls.",
     stack: ["React", "Vite", "JavaScript", "CSS", "Vercel"],
     links: [{ label: "GitHub", href: "https://github.com/romahawk" }],
-    relevance: "Full-stack product and positioning system",
+    relevance: "Audit-to-implementation proof for a consulting-oriented positioning system",
     featured: true,
   },
   {
@@ -269,7 +269,7 @@ export const projectPortfolio = [
     proof: "Flask API, SQLite schema, SQLAlchemy models, role states, readonly demo mode, dashboard views, Chart.js reporting.",
     stack: ["Flask", "SQLite", "SQLAlchemy", "Vanilla JS", "Tailwind", "Chart.js"],
     links: [{ label: "Live demo", href: "https://flowlogics.app/" }],
-    relevance: "Internal tools and workflow dashboard proof",
+    relevance: "Workflow Automation and reporting/visibility dashboard proof",
     featured: true,
   },
   {

@@ -30,7 +30,7 @@ export const aiWorkflowExamples = [
     auditabilityFeatures: ["Source traceability", "Version history", "Human approval checkpoints", "Responsibility ownership", "Review logs", "No black-box regulatory decisions"],
     expectedBusinessValue: ["Reduced manual work", "Better decision quality", "Faster handover", "Improved visibility", "Better documentation readiness"],
     artifactPlaceholders: ["Workflow map", "Dashboard mockup", "Evidence data table", "Claim mapping diagram", "SOP output", "Implementation roadmap"],
-    relatedServices: ["AI Workflow Audit", "AI Product Discovery Sprint", "Compliance-Aware Automation Setup"],
+    relatedServices: ["AI Workflow Opportunity Audit", "Prototype Sprint", "Compliance-Aware Automation Setup"],
     relatedProofItems: ["Clinical Evidence Workflow", "Regulated Documentation & SOP Assistant"],
   },
   {
@@ -64,7 +64,7 @@ export const aiWorkflowExamples = [
     auditabilityFeatures: ["Decision log", "Owner history", "Requirement-source links", "Handoff versioning", "Review logs"],
     expectedBusinessValue: ["Faster handover", "Lower coordination risk", "Better decision quality", "Improved visibility"],
     artifactPlaceholders: ["Workflow map", "Dashboard mockup", "Requirements table", "Process diagram", "Implementation roadmap"],
-    relatedServices: ["AI Workflow Audit", "MedTech AI Operator-in-Residence", "8-Week AI Workflow Sprint"],
+    relatedServices: ["AI Workflow Opportunity Audit", "Internal Assistant", "Prototype Sprint"],
     relatedProofItems: ["MedTech Implementation Handoff Assistant", "Operational Dashboard System"],
   },
   {
@@ -98,7 +98,7 @@ export const aiWorkflowExamples = [
     auditabilityFeatures: ["Source traceability", "Version history", "Human approval checkpoints", "Responsibility ownership", "Review logs", "No black-box regulatory decisions"],
     expectedBusinessValue: ["Reduced manual work", "Faster handover", "Better documentation readiness", "Lower coordination risk"],
     artifactPlaceholders: ["Workflow map", "SOP output", "Review data table", "Process diagram", "Implementation roadmap"],
-    relatedServices: ["Compliance-Aware Automation Setup", "AI Workflow Audit", "AI Product Discovery Sprint"],
+    relatedServices: ["Compliance-Aware Automation Setup", "AI Workflow Opportunity Audit", "Prototype Sprint"],
     relatedProofItems: ["Regulated Documentation & SOP Assistant", "AI-Generated SOP System"],
   },
   {
@@ -132,7 +132,7 @@ export const aiWorkflowExamples = [
     auditabilityFeatures: ["Timestamped state changes", "Owner notes", "Review logs", "Versioned delay categories", "No automated clinical decisions"],
     expectedBusinessValue: ["Improved visibility", "Lower coordination risk", "Better decision quality", "Faster handover"],
     artifactPlaceholders: ["Workflow map", "OR dashboard mockup", "Delay data table", "Process diagram", "Implementation roadmap"],
-    relatedServices: ["AI Workflow Audit", "8-Week AI Workflow Sprint"],
+    relatedServices: ["AI Workflow Opportunity Audit", "Decision-support system"],
     relatedProofItems: ["OR Workflow Optimization Dashboard", "LiveSurgery"],
   },
   {
@@ -166,7 +166,7 @@ export const aiWorkflowExamples = [
     auditabilityFeatures: ["Case metadata", "Reviewer-approved tags", "Timestamp references", "Access logs", "Version history"],
     expectedBusinessValue: ["Improved visibility", "Faster handover", "Better documentation readiness", "Reduced manual work"],
     artifactPlaceholders: ["Workflow map", "Dashboard mockup", "Video index table", "Process diagram", "Implementation roadmap"],
-    relatedServices: ["AI Product Discovery Sprint", "8-Week AI Workflow Sprint"],
+    relatedServices: ["Prototype Sprint", "Decision-support system"],
     relatedProofItems: ["Surgical Recording Indexing System", "LiveSurgery"],
   },
   {
@@ -200,7 +200,7 @@ export const aiWorkflowExamples = [
     auditabilityFeatures: ["Asset-linked service events", "Triage rationale", "Owner notes", "Maintenance history", "Review logs"],
     expectedBusinessValue: ["Better decision quality", "Improved visibility", "Faster handover", "Lower coordination risk"],
     artifactPlaceholders: ["Workflow map", "Maintenance dashboard mockup", "Asset data table", "Process diagram", "Implementation roadmap"],
-    relatedServices: ["AI Workflow Audit", "8-Week AI Workflow Sprint"],
+    relatedServices: ["AI Workflow Opportunity Audit", "Workflow Automation"],
     relatedProofItems: ["Biomedical Maintenance Workflow System", "MedTech Implementation Handoff Assistant"],
   },
   {
@@ -234,7 +234,7 @@ export const aiWorkflowExamples = [
     auditabilityFeatures: ["Request IDs", "Approval trail", "Supplier references", "Exception notes", "Status history"],
     expectedBusinessValue: ["Reduced manual work", "Improved visibility", "Lower coordination risk", "Better documentation readiness"],
     artifactPlaceholders: ["Workflow map", "Procurement dashboard mockup", "Order data table", "Process diagram", "Implementation roadmap"],
-    relatedServices: ["AI Workflow Audit", "Compliance-Aware Automation Setup"],
+    relatedServices: ["AI Workflow Opportunity Audit", "Compliance-Aware Automation Setup"],
     relatedProofItems: ["Procurement Automation Workflow", "Vendor-Free Supply Tracker"],
   },
   {
@@ -268,7 +268,7 @@ export const aiWorkflowExamples = [
     auditabilityFeatures: ["Automation rules", "Input records", "Checkpoint decisions", "Exceptions", "Release notes"],
     expectedBusinessValue: ["Reduced manual work", "Lower coordination risk", "Better documentation readiness", "Improved visibility"],
     artifactPlaceholders: ["Workflow map", "Automation dashboard mockup", "Rule table", "Process diagram", "SOP output", "Implementation roadmap"],
-    relatedServices: ["Compliance-Aware Automation Setup", "8-Week AI Workflow Sprint"],
+    relatedServices: ["Compliance-Aware Automation Setup", "Workflow Automation"],
     relatedProofItems: ["Compliance-Aware Automation Setup", "Regulated Documentation & SOP Assistant"],
   },
   {
@@ -302,7 +302,7 @@ export const aiWorkflowExamples = [
     auditabilityFeatures: ["Source traceability", "Version history", "Human approval checkpoints", "Review logs", "No black-box regulatory decisions"],
     expectedBusinessValue: ["Reduced manual work", "Faster handover", "Better documentation readiness", "Lower coordination risk"],
     artifactPlaceholders: ["Workflow map", "SOP output", "Review data table", "Process diagram", "Implementation roadmap"],
-    relatedServices: ["Compliance-Aware Automation Setup", "AI Product Discovery Sprint"],
+    relatedServices: ["Compliance-Aware Automation Setup", "Prototype Sprint"],
     relatedProofItems: ["AI-Generated SOP System", "Regulated Documentation & SOP Assistant"],
   },
   {
@@ -336,7 +336,7 @@ export const aiWorkflowExamples = [
     auditabilityFeatures: ["Mapped assumptions", "Integration decisions", "Data ownership", "Risk annotations", "Version history"],
     expectedBusinessValue: ["Lower coordination risk", "Better decision quality", "Faster handover", "Improved visibility"],
     artifactPlaceholders: ["Workflow map", "System boundary diagram", "Data table", "Process diagram", "Implementation roadmap"],
-    relatedServices: ["AI Workflow Audit", "AI Product Discovery Sprint", "MedTech AI Operator-in-Residence"],
+    relatedServices: ["AI Workflow Opportunity Audit", "Prototype Sprint", "Internal Assistant"],
     relatedProofItems: ["Interoperability Workflow Map", "Operational Dashboard System"],
   },
 ];

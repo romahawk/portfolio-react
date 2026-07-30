@@ -388,9 +388,9 @@
   align-items: center;
   min-height: 40px;
   padding: 9px 11px;
-  border: 1px dashed var(--system-border);
+  border: 1px dashed color-mix(in srgb, var(--system-accent, var(--brand)) 28%, var(--system-border));
   border-radius: 12px;
-  background: color-mix(in srgb, var(--panel) 86%, transparent);
+  background: color-mix(in srgb, var(--system-accent-soft, var(--surface-soft)) 34%, var(--panel));
   color: var(--muted-strong);
   font-size: 12px;
   font-weight: 760;

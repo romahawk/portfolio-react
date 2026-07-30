@@ -3,7 +3,6 @@ import {
   Bot,
   ClipboardCheck,
   Code2,
-  Github,
   Mail,
   Stethoscope,
   Workflow,
@@ -14,7 +13,6 @@ import {
   FeaturePill,
   PageHero,
   ProofCard,
-  RouteCard,
   SectionHeader,
   SystemCard,
   WorkflowMap,
@@ -23,56 +21,54 @@ import { getProjectsByCategory, projectCategories } from "../data/projects.js";
 
 const EMAIL = "romazuryk@proton.me";
 
-const routeCards = [
-  {
-    title: "AI Automation for SMEs",
-    text: "Workflow audits, AI automations, SOP systems, internal dashboards, and n8n-based process automation for small and medium-sized businesses.",
-    cta: "Explore AI Solutions",
-    href: "/ai",
-    icon: Bot,
-    accent: "ai",
-  },
-  {
-    title: "MedTech Product & Project Portfolio",
-    text: "MedTech implementation, OR integration, workflow systems, stakeholder coordination, and product/project management proof.",
-    cta: "View MedTech Portfolio",
-    href: "/medtech",
-    icon: Stethoscope,
-    accent: "medtech",
-  },
-  {
-    title: "AI-Enhanced Full-Stack Development",
-    text: "React, Next.js, Python, automation, product prototypes, dashboards, and AI-assisted development workflows.",
-    cta: "View Full-Stack Work",
-    href: "/fullstack",
-    icon: Code2,
-    accent: "fullstack",
-  },
-];
-
 const homeWorkflow = [
-  { label: "Product Thinking", detail: "States, owners, decisions, requirements" },
-  { label: "AI Automation", detail: "Assistants, APIs, workflow triggers" },
-  { label: "Workflow Systems", detail: "Dashboards, SOPs, prototypes, handover" },
+  { label: "Audit", detail: "Map one workflow, bottlenecks, risks, opportunities", accent: "ai" },
+  { label: "Pilot scope", detail: "Recommended automation, assistant, dashboard, or decision-support path", accent: "medtech" },
+  { label: "Implementation", detail: "Prototype, sprint roadmap, handover, next build step", accent: "fullstack" },
 ];
 
-const heroInputs = ["Emails", "Excel", "PDFs", "Calls", "Manual tasks"];
-const heroOutputs = ["Workflow system", "Automation", "Dashboard", "SOP", "Prototype"];
+const heroInputs = ["Emails", "Excel", "PDFs", "Calls", "Manual handoffs"];
+const heroOutputs = ["Audit map", "AI matrix", "Pilot scope", "Roadmap", "Prototype"];
 
 const operatingModelPills = [
-  "Product Thinking",
-  "MedTech / Operations Experience",
-  "AI Automation",
-  "Full-Stack Delivery",
-  "Workflow Systems",
+  { label: "AI systems consulting", accent: "ai" },
+  { label: "Workflow automation", accent: "ai" },
+  { label: "MedTech / regulated operations", accent: "medtech" },
+  { label: "Full-stack implementation", accent: "fullstack" },
+  { label: "Audit to working system", accent: "fullstack" },
 ];
 
 const homeArtifact = {
-  inputLabel: "Capabilities",
-  outputLabel: "System",
-  inputs: ["AI Automation", "MedTech Experience", "Full-Stack Delivery"],
-  outputs: ["Workflow Systems"],
+  inputLabel: "Positioning layers",
+  outputLabel: "Commercial offer",
+  inputs: [
+    { label: "AI workflow systems", accent: "ai" },
+    { label: "Regulated operations credibility", accent: "medtech" },
+    { label: "Full-stack implementation", accent: "fullstack" },
+  ],
+  outputs: [{ label: "AI Workflow Opportunity Audit", accent: "ai" }],
 };
+
+const homeAuditDeliverables = [
+  "Workflow review",
+  "Bottleneck map",
+  "AI opportunity matrix",
+  "Feasibility and risk assessment",
+  "Recommended pilot",
+  "Implementation roadmap",
+];
+
+const homeAuditFit = [
+  "Operations-heavy SMEs with manual coordination and repeated admin work",
+  "MedTech, HealthTech, and regulated teams with documentation or handover friction",
+  "Founders or operators who need a practical AI starting point before spending on a build",
+];
+
+const homeAuditOutcomes = [
+  "A clear view of where AI can help safely",
+  "A prioritized pilot that can become a sprint",
+  "A roadmap for an internal assistant, workflow automation, dashboard, or decision-support system",
+];
 
 const aiArtifact = {
   inputLabel: "Manual process",
@@ -83,28 +79,28 @@ const aiArtifact = {
 
 const proofHighlights = [
   {
-    title: "AI workflow audits",
+    title: "AI Workflow Opportunity Audit",
     problem: "Manual work and scattered documentation hide where automation should start.",
-    system: "Map one workflow, identify automation opportunities, and define a smallest useful system.",
-    proof: "Offer structure, workflow mapping logic, SOP handover, and automation sprint path.",
+    system: "Map one workflow, identify bottlenecks, score AI opportunities, assess risk, and define the first pilot.",
+    proof: "Directly supports the AI Workflow Opportunity Audit entry offer.",
     cta: { label: "Explore AI", href: "/ai" },
     icon: Bot,
     accent: "ai",
   },
   {
-    title: "OR integration proof",
+    title: "Prototype Sprint / Internal Assistant",
     problem: "Clinical workflows depend on equipment, vendors, handover, training, and implementation reality.",
-    system: "Translate operating-room complexity into product/project requirements and workflow ownership.",
-    proof: "Surgimedia, Surgiris, surgical video/audio workflows, stakeholder coordination, and handover.",
+    system: "Translate regulated implementation complexity into assistant, handover, SOP, and dashboard concepts with review points.",
+    proof: "MedTech implementation background: Surgimedia, Surgiris, OR workflows, stakeholder coordination, and handover.",
     cta: { label: "View MedTech", href: "/medtech" },
     icon: Stethoscope,
     accent: "medtech",
   },
   {
-    title: "Workflow tool builds",
+    title: "Workflow Automation / Decision Support",
     problem: "Teams need visible workflow state, not another static document or vague prototype.",
     system: "Build dashboards, product prototypes, APIs, persistence, and AI-assisted development loops.",
-    proof: "FlowLogix, LiveSurgery, mazuryk.dev, and archived technical prototypes.",
+    proof: "Implementation proof from FlowLogix, LiveSurgery, mazuryk.dev, and workflow tool prototypes.",
     cta: { label: "View Full-Stack", href: "/fullstack" },
     icon: Code2,
     accent: "fullstack",
@@ -113,20 +109,20 @@ const proofHighlights = [
 
 const aiOffers = [
   {
-    title: "AI Workflow Audit",
+    title: "AI Workflow Opportunity Audit",
     badge: "Best starting point",
-    bestFor: "Identifying where AI and automation can remove real workflow friction.",
-    deliverable: "Workflow map + automation opportunity roadmap.",
-    output: "Prioritized opportunities, risk points, tool suggestions, and first sprint scope.",
+    bestFor: "Operations-heavy teams that know work is slow or fragmented but do not yet know which AI use case is worth building.",
+    deliverable: "Workflow review, bottleneck map, AI opportunity matrix, feasibility and risk assessment, recommended pilot, and roadmap.",
+    output: "A clear entry point for an implementation sprint: internal assistant, workflow automation, dashboard, or decision-support prototype.",
     cta: { label: "Request audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` },
     icon: ClipboardCheck,
     featured: true,
   },
   {
-    title: "Automation Sprint",
-    bestFor: "Building one useful workflow instead of discussing broad AI strategy.",
-    deliverable: "A working automation or prototype.",
-    output: "Connected forms, emails, documents, spreadsheets, APIs, and AI actions.",
+    title: "Prototype Sprint",
+    bestFor: "Turning an audit recommendation into a tangible workflow system.",
+    deliverable: "A working automation, internal assistant, dashboard, or prototype with human review points.",
+    output: "Connected forms, emails, documents, spreadsheets, APIs, AI actions, and handover notes.",
     cta: { label: "Discuss sprint", href: `mailto:${EMAIL}?subject=Automation%20Sprint%20Discussion` },
     icon: Bot,
   },
@@ -207,32 +203,32 @@ const aiBeforeAfter = {
 
 const aiExampleWorkflows = [
   {
-    title: "Lead qualification workflow",
+    title: "Customer intake or lead qualification",
     steps: ["Website form / email", "AI classifies request", "Human reviews priority", "CRM/task updated"],
     value: "Faster response and cleaner follow-up ownership.",
   },
   {
-    title: "Quote / request intake workflow",
+    title: "Support or request triage",
     steps: ["Customer request", "AI extracts key fields", "Missing data flagged", "Quote task created"],
     value: "Less manual sorting and fewer incomplete requests.",
   },
   {
-    title: "SOP generator",
+    title: "Scattered documentation to SOPs",
     steps: ["Process notes", "AI drafts SOP", "Human review", "Structured documentation"],
     value: "Repeatable procedures instead of scattered knowledge.",
   },
   {
-    title: "Meeting-to-action workflow",
+    title: "Manual coordination after meetings",
     steps: ["Meeting notes", "AI summary", "Decisions and owners extracted", "Tasks assigned"],
     value: "Clearer ownership after calls and meetings.",
   },
   {
-    title: "Document extraction workflow",
+    title: "Implementation handover",
     steps: ["PDF / email attachment", "AI extracts fields", "Review queue", "Database updated"],
-    value: "Less copy-paste and more reliable document handling.",
+    value: "Cleaner handover from scattered project context into structured next actions.",
   },
   {
-    title: "Operations dashboard",
+    title: "Reporting and visibility",
     steps: ["Sheets / forms / tasks", "Workflow state model", "Dashboard", "Weekly visibility"],
     value: "Better status visibility across recurring operational work.",
   },
@@ -358,7 +354,7 @@ const medtechSelectedProof = [
     problem: "OR environments combine devices, people, infrastructure, documentation, and handover - but workflow ownership is often fragmented.",
     system: "Mapped the implementation context around OR integration, surgical video workflows, stakeholder coordination, training, and handover.",
     proof: "Real MedTech implementation background.",
-    relevance: "Product / project management, stakeholder alignment, workflow design, implementation risk.",
+    relevance: "Trust layer for AI Workflow Audits, implementation handover systems, and regulated workflow automation.",
     links: [{ label: "View OR proof", href: "/proof-of-work/or-integration" }],
   },
   {
@@ -367,7 +363,7 @@ const medtechSelectedProof = [
     problem: "Surgical collaboration, recording, remote expertise, and case visibility require structured product logic around clinical workflows.",
     system: "Created a product concept and prototype direction for surgical video / collaboration workflows.",
     proof: "Deployed product artifact and workflow prototype direction.",
-    relevance: "MedTech product thinking, workflow design, clinical collaboration, technical specification.",
+    relevance: "Prototype Sprint and decision-support system proof for clinical collaboration workflows.",
     links: [{ label: "Live demo", href: "https://livesurgery-landing.vercel.app/" }],
   },
   {
@@ -376,7 +372,7 @@ const medtechSelectedProof = [
     problem: "Implementation knowledge is often scattered across emails, PDFs, meetings, notes, and informal handover.",
     system: "Designed an AI-assisted workflow to structure requirements, missing documents, risks, meeting summaries, and customer handover.",
     proof: "Workflow map / product specification / reference system.",
-    relevance: "Product Ops, implementation enablement, documentation, handover, AI-assisted delivery.",
+    relevance: "Internal Assistant and implementation handover proof connected to the AI Workflow Audit path.",
     links: [{ label: "View workflow library", href: "/ai-workflow" }],
   },
   {
@@ -385,7 +381,7 @@ const medtechSelectedProof = [
     problem: "Product data, project knowledge, SOPs, supplier information, and onboarding materials become fragmented over time.",
     system: "Designed a structured knowledge and workflow system for products, projects, SOPs, onboarding, and handover.",
     proof: "Concept, data model, prototype direction, and documentation artifact.",
-    relevance: "Operational visibility, knowledge management, internal tools, structured delivery.",
+    relevance: "Workflow Automation, SOP system, and reporting/visibility proof for regulated operations.",
     links: [{ label: "Explore workflows", href: "/ai-workflow" }],
   },
 ];
@@ -606,8 +602,39 @@ function ProofGrid({ projects, accent }) {
 function PillList({ items, accent = "ai" }) {
   return (
     <div className="market-page__pill-list">
-      {items.map((item) => <FeaturePill accent={accent} key={item}>{item}</FeaturePill>)}
+      {items.map((item) => {
+        const label = typeof item === "string" ? item : item.label;
+        const itemAccent = typeof item === "string" ? accent : item.accent || accent;
+        return <FeaturePill accent={itemAccent} key={label}>{label}</FeaturePill>;
+      })}
     </div>
+  );
+}
+
+function TypewriterTitle({ text }) {
+  let charIndex = 0;
+  const words = text.split(" ");
+
+  return (
+    <span className="home-typewriter-title" aria-label={text}>
+      {words.map((word, wordIndex) => (
+        <span className="home-typewriter-title__word" aria-hidden="true" key={`${word}-${wordIndex}`}>
+          {Array.from(word).map((char) => {
+            const currentIndex = charIndex;
+            charIndex += 1;
+            return (
+              <span
+                className="home-typewriter-title__char"
+                style={{ "--char-index": currentIndex }}
+                key={`${char}-${currentIndex}`}
+              >
+                {char}
+              </span>
+            );
+          })}
+        </span>
+      ))}
+    </span>
   );
 }
 
@@ -779,6 +806,52 @@ function ProductizedOfferCard({ offer }) {
         {offer.cta.label} <ArrowRight size={14} aria-hidden="true" />
       </a>
     </article>
+  );
+}
+
+function HomeAuditSection() {
+  return (
+    <section id="audit" className="section container market-page__section home-audit-section">
+      <SectionHeader
+        eyebrow="Entry offer"
+        title="AI Workflow Opportunity Audit"
+        text="A focused consulting engagement for teams that want practical AI implementation work, but need to know which workflow is worth automating first."
+      />
+      <div className="home-audit-grid">
+        <article className="home-audit-card home-audit-card--primary home-audit-card--ai reveal">
+          <span className="home-audit-card__label">Who it is for</span>
+          <h3>Operations-heavy SMEs and regulated teams with one messy workflow.</h3>
+          <p>
+            Best fit when work is scattered across emails, spreadsheets, PDFs, meetings, support requests, or handover documents, and the team needs a concrete AI starting point.
+          </p>
+          <ul>
+            {homeAuditFit.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </article>
+        <article className="home-audit-card home-audit-card--included home-audit-card--medtech reveal">
+          <span className="home-audit-card__label">What is included</span>
+          <ul className="home-audit-card__deliverables">
+            {homeAuditDeliverables.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </article>
+        <article className="home-audit-card home-audit-card--outcome home-audit-card--fullstack reveal">
+          <span className="home-audit-card__label">What you receive</span>
+          <ul>
+            {homeAuditOutcomes.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </article>
+        <article className="home-audit-card home-audit-card--sprint home-audit-card--ai reveal">
+          <span className="home-audit-card__label">How it leads into implementation</span>
+          <h3>From audit to working system</h3>
+          <p>
+            The audit produces a recommended pilot and sprint scope. From there, I can help build the first useful system: an internal assistant, workflow automation, dashboard, decision-support tool, or deployed custom prototype.
+          </p>
+          <a href={`mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`} className="btn btn--primary">
+            Book an AI Workflow Audit <ArrowRight size={15} className="icon ml-1" aria-hidden="true" />
+          </a>
+        </article>
+      </div>
+    </section>
   );
 }
 
@@ -968,60 +1041,51 @@ function FullStackCapabilityGrid({ items }) {
 
 export function HomePage() {
   const highlights = [
-    "Product thinking",
-    "AI automation",
-    "Full-stack delivery",
+    "AI Systems Consultant",
+    "Operations-heavy SMEs",
+    "Regulated workflow experience",
   ];
+  const homeTitle = "AI Workflow Systems for Operations-Heavy SMEs and Regulated Teams";
 
   return (
     <div className="market-page market-page--home">
       <PageHero
         id="home"
-        eyebrow="Roman Mazuryk"
-        title="AI-Augmented Product & Workflow Systems"
-        subtitle="I turn messy operational workflows into structured software systems using product thinking, AI automation, and full-stack delivery."
-        primaryCta={{ label: "Explore AI Solutions", href: "/ai" }}
-        secondaryCta={{ label: "View MedTech Portfolio", href: "/medtech" }}
-        tertiaryCta={{ label: "View Full-Stack Work", href: "/fullstack" }}
-        scrollTargetId="routes"
+        eyebrow="AI Systems Consultant for operations-heavy SMEs and regulated industries"
+        title={<TypewriterTitle text={homeTitle} />}
+        subtitle="I help operations-heavy SMEs turn manual, fragmented workflows into practical AI systems, internal tools, and implementation roadmaps."
+        primaryCta={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: "View Proof of Work", href: "/proof-of-work" }}
+        tertiaryCta={{ label: "Discuss One Workflow to Automate", href: `mailto:${EMAIL}?subject=One%20Workflow%20to%20Automate` }}
+        scrollTargetId="audit"
       >
         <div className="market-page__hero-extra">
           <PillList items={highlights} accent="ai" />
-          <HomeHeroVisual />
         </div>
       </PageHero>
 
-      <section id="routes" className="section container market-page__section">
-        <SectionHeader
-          eyebrow="Three-vector router"
-          title="Choose the route that matches your intent"
-          text="Three entry points, one operating model: fragmented workflows become visible systems."
-        />
-        <div className="market-page__route-grid">
-          {routeCards.map((card) => <RouteCard {...card} key={card.href} />)}
-        </div>
-      </section>
+      <HomeAuditSection />
 
       <section className="section container market-page__section">
         <SectionHeader
           eyebrow="System map"
-          title="One operating model, three market entry points"
-          text="Product thinking plus MedTech and operations experience plus AI automation plus full-stack delivery equals practical workflow systems."
+          title="From fragmented workflow to implementation roadmap"
+          text="The method starts with one concrete operational workflow, maps the process and risk, identifies the AI opportunity, and turns the best pilot into a buildable system."
         />
         <ArtifactMap
           accent="ai"
-          title="AI Automation plus MedTech Experience plus Full-Stack Delivery becomes Workflow Systems"
+          title="AI Workflow Systems plus Regulated Operations Credibility plus Full-Stack Delivery becomes an Implementation-Ready Audit"
           {...homeArtifact}
         />
-        <WorkflowMap items={homeWorkflow} accent="ai" title="One operating model, three market entry points" />
+        <WorkflowMap items={homeWorkflow} accent="ai" title="Audit to working system" />
         <PillList items={operatingModelPills} accent="ai" />
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow="Selected proof"
-          title="A few signals, not the whole archive"
-          text="The homepage stays concise; deeper proof lives inside the relevant market route."
+          eyebrow="Proof connected to offers"
+          title="Proof that turns workflow problems into AI systems"
+          text="Technology stays secondary here. The important signal is whether a business process can become a visible, reviewable, useful system."
         />
         <div className="market-page__highlight-grid">
           {proofHighlights.map((item) => <SystemCard {...item} key={item.title} />)}
@@ -1032,10 +1096,10 @@ export function HomePage() {
         <CTAStrip
           accent="ai"
           eyebrow="Next step"
-          title="Choose the path that matches your intent."
-          text="Start with one concrete workflow, role need, or prototype idea."
-          primary={{ label: "Discuss a workflow", href: "/contact" }}
-          secondary={{ label: "Explore AI Solutions", href: "/ai" }}
+          title="Have one workflow that feels too manual, scattered, or fragile?"
+          text="Start with an AI Workflow Opportunity Audit. We identify the bottlenecks, the automation opportunity, the risk boundaries, and the first realistic pilot."
+          primary={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
+          secondary={{ label: "View Proof of Work", href: "/proof-of-work" }}
         />
       </section>
     </div>
@@ -1048,16 +1112,16 @@ export function AIPage() {
   return (
     <div className="market-page market-page--ai">
       <PageHero
-        eyebrow="AI Solutions"
-        title="AI Workflow Automation for SMEs"
-        subtitle="I help small and medium-sized businesses turn repetitive operational work, scattered documentation, and manual coordination into AI-assisted workflows, automations, dashboards, and SOP systems."
-        primaryCta={{ label: "Request AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: "Discuss Automation Sprint", href: `mailto:${EMAIL}?subject=Automation%20Sprint%20Discussion` }}
+        eyebrow="AI systems consulting"
+        title="AI Workflow Systems and Automation for Operations-Heavy SMEs"
+        subtitle="I help teams turn repetitive operational work, scattered documentation, manual coordination, and weak handovers into AI-assisted workflows, automations, internal assistants, dashboards, and implementation roadmaps."
+        primaryCta={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: "Discuss One Workflow to Automate", href: `mailto:${EMAIL}?subject=One%20Workflow%20to%20Automate` }}
         scrollTargetId="ai-workflow-intelligence"
         variant="ai"
       >
         <div className="ai-hero-extra">
-          <p className="market-page__claim">I do not sell AI experiments. I help businesses remove workflow friction.</p>
+          <p className="market-page__claim">I do not sell broad AI experiments. I help businesses find one workflow where AI can safely reduce friction, then turn it into a practical system.</p>
           <HomeHeroVisual />
         </div>
       </PageHero>
@@ -1088,8 +1152,8 @@ export function AIPage() {
       <section className="section container market-page__section">
         <SectionHeader
           eyebrow="03 / Productized offers"
-          title="Productized offers"
-          text="Start with one contained workflow. Each offer is designed to produce a usable business artifact, not a vague AI experiment."
+          title="Start with the audit, then build the pilot"
+          text="The AI Workflow Opportunity Audit is the entry offer. It clarifies the workflow, opportunity, risk, and pilot scope before an implementation sprint."
         />
         <div className="ai-offer-grid">
           {aiOffers.map((offer) => <ProductizedOfferCard offer={offer} key={offer.title} />)}
@@ -1099,8 +1163,8 @@ export function AIPage() {
       <section className="section container market-page__section">
         <SectionHeader
           eyebrow="04 / Example workflows"
-          title="Example workflows"
-          text="These are practical workflow patterns that can be adapted to SMEs, service businesses, logistics, operations, and MedTech-adjacent companies."
+          title="Workflow examples grouped by business problem"
+          text="These patterns are framed around operational outcomes: documentation, coordination, triage, handover, reporting, and customer intake."
         />
         <div className="ai-workflow-library">
           {aiExampleWorkflows.map((workflow) => <WorkflowExampleStrip workflow={workflow} key={workflow.title} />)}
@@ -1131,9 +1195,9 @@ export function AIPage() {
           accent="ai"
           eyebrow="Next step"
           title="Have one messy workflow worth fixing?"
-          text="Start with one contained process. I can help map it, identify automation opportunities, and build the smallest useful workflow system around it."
-          primary={{ label: "Request AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
-          secondary={{ label: "Discuss Automation Sprint", href: `mailto:${EMAIL}?subject=Automation%20Sprint%20Discussion` }}
+          text="Start with one contained process. I can help map it, identify automation opportunities, assess risk, and define the smallest useful workflow system around it."
+          primary={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
+          secondary={{ label: "Discuss One Workflow to Automate", href: `mailto:${EMAIL}?subject=One%20Workflow%20to%20Automate` }}
         />
       </section>
     </div>
@@ -1144,11 +1208,11 @@ export function MedTechPage() {
   return (
     <div className="market-page market-page--medtech">
       <PageHero
-        eyebrow="MedTech / Product / Project"
-        title="MedTech Product & Project Portfolio"
-        subtitle="Real MedTech implementation experience translated into product thinking, project coordination, workflow systems, stakeholder alignment, and AI-assisted delivery."
-        primaryCta={{ label: "Discuss MedTech Role", href: `mailto:${EMAIL}?subject=MedTech%20Product%20%2F%20Project%20Role`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: "View Selected Proof", href: "#medtech-proof" }}
+        eyebrow="Trust layer / regulated operations"
+        title="MedTech and Regulated Operations Proof"
+        subtitle="Real MedTech implementation experience translated into AI workflow consulting judgment: clinical context, stakeholder coordination, documentation, handover, risk boundaries, and practical implementation thinking."
+        primaryCta={{ label: "View Selected Proof", href: "#medtech-proof" }}
+        secondaryCta={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
         scrollTargetId="medtech-impact"
       >
         <div className="market-page__hero-extra medtech-hero-extra">
@@ -1209,10 +1273,10 @@ export function MedTechPage() {
         <CTAStrip
           accent="medtech"
           eyebrow="Next step"
-          title="Need product, project, or workflow systems experience in MedTech?"
-          text="I am most useful where clinical workflow understanding, implementation experience, stakeholder coordination, product thinking, and AI-assisted delivery need to come together."
-          primary={{ label: "Discuss MedTech Role", href: `mailto:${EMAIL}?subject=MedTech%20Product%20%2F%20Project%20Role` }}
-          secondary={{ label: "Contact Roman", href: "/contact" }}
+          title="Need AI workflow work with regulated-operations judgment?"
+          text="MedTech is the credibility layer: it shows I understand implementation-heavy environments where workflows, documentation, stakeholders, handover, and risk matter."
+          primary={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
+          secondary={{ label: "View Proof of Work", href: "/proof-of-work" }}
         />
       </section>
     </div>
@@ -1223,15 +1287,15 @@ export function FullStackPage() {
   return (
     <div className="market-page market-page--fullstack">
       <PageHero
-        eyebrow="Product builder / AI-assisted delivery"
-        title="AI-Enhanced Full-Stack Product Builder"
-        subtitle="I build product prototypes, dashboards, workflow tools, and AI-assisted systems using modern full-stack tools and AI-native development workflows."
+        eyebrow="Implementation proof"
+        title="From Audit to Working System"
+        subtitle="I can move from workflow discovery to prototype, internal tool, dashboard, automation, or deployed custom application using modern full-stack tools and AI-assisted development workflows."
         primaryCta={{ label: "View Selected Projects", href: "#fullstack-projects" }}
-        secondaryCta={{ label: "View GitHub", href: "https://github.com/romahawk", external: true, icon: <Github size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
         scrollTargetId="fullstack-stack"
       >
         <div className="market-page__hero-extra fullstack-hero-extra">
-          <p className="fullstack-credibility-line">React, Next.js, Python, APIs, databases, deployment, and AI-assisted development workflows applied to real product and workflow problems.</p>
+          <p className="fullstack-credibility-line">This is implementation proof for the consulting offer: React, Python, APIs, databases, deployment, and AI-assisted development applied to real workflow problems.</p>
           <FullStackHeroVisual items={fullstackHeroFlow} />
         </div>
       </PageHero>
@@ -1279,8 +1343,8 @@ export function FullStackPage() {
       <section className="section container market-page__section">
         <SectionHeader
           eyebrow="Build capabilities"
-          title="What this proves"
-          text="The projects translate into practical product-building capability, not a claim to build everything."
+          title="What this proves for AI consulting clients"
+          text="The projects show the ability to turn an audit or roadmap into a practical artifact: prototype, dashboard, internal tool, data model, or deployed workflow application."
         />
         <FullStackCapabilityGrid items={fullstackCapabilities} />
       </section>
@@ -1289,9 +1353,9 @@ export function FullStackPage() {
         <CTAStrip
           accent="fullstack"
           eyebrow="Next step"
-          title="Need a prototype, dashboard, or workflow tool built quickly?"
-          text="The strongest fit is product-shaped technical work: a useful prototype, dashboard, internal tool, or AI-assisted workflow system with clear product logic."
-          primary={{ label: "Discuss Product Prototype", href: `mailto:${EMAIL}?subject=Full-Stack%20Prototype%20Discussion` }}
+          title="Need the audit recommendation turned into a working tool?"
+          text="The strongest fit is product-shaped technical work after workflow discovery: a useful prototype, dashboard, internal assistant, or AI-assisted workflow system with clear product logic."
+          primary={{ label: "Discuss Prototype Sprint", href: `mailto:${EMAIL}?subject=Prototype%20Sprint%20Discussion` }}
           secondary={{ label: "View GitHub", href: "https://github.com/romahawk" }}
         />
       </section>

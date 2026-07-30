@@ -21,7 +21,12 @@
     radial-gradient(820px 480px at 22% 28%, var(--surface-glow), transparent 62%),
     radial-gradient(760px 440px at 92% 18%, var(--surface-cool), transparent 64%),
     linear-gradient(180deg, rgba(255,255,255,0.025), transparent 42%);
-  background-size: 42px 42px, 42px 42px, auto, auto, auto;
+  background-size:
+    var(--background-grid-size) var(--background-grid-size),
+    var(--background-grid-size) var(--background-grid-size),
+    auto,
+    auto,
+    auto;
   pointer-events: none;
 }
 

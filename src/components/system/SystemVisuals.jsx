@@ -66,17 +66,20 @@ export function WorkflowMap({ items, accent = "ai", title = "Workflow map" }) {
   return (
     <div className={`workflow-map ${getAccentClass(accent)} reveal`} aria-label={title}>
       <div className="workflow-map__grid" aria-hidden="true" />
-      {items.map((item, index) => (
-        <React.Fragment key={item.label}>
-          <WorkflowNode
-            label={item.label}
-            detail={item.detail}
-            index={String(index + 1).padStart(2, "0")}
-            accent={accent}
-          />
-          {index < items.length - 1 ? <WorkflowConnector accent={accent} /> : null}
-        </React.Fragment>
-      ))}
+      {items.map((item, index) => {
+        const itemAccent = item.accent || accent;
+        return (
+          <React.Fragment key={item.label}>
+            <WorkflowNode
+              label={item.label}
+              detail={item.detail}
+              index={String(index + 1).padStart(2, "0")}
+              accent={itemAccent}
+            />
+            {index < items.length - 1 ? <WorkflowConnector accent={itemAccent} /> : null}
+          </React.Fragment>
+        );
+      })}
     </div>
   );
 }
@@ -88,12 +91,16 @@ export function ArtifactMap({ title, inputLabel, outputLabel, inputs = [], outpu
       <div className="artifact-map__group">
         <span className="artifact-map__label">{inputLabel}</span>
         <div className="artifact-map__nodes">
-          {inputs.map((item, index) => (
-            <span className="artifact-map__node" key={item}>
+          {inputs.map((item, index) => {
+            const label = typeof item === "string" ? item : item.label;
+            const itemAccent = typeof item === "string" ? accent : item.accent || accent;
+            return (
+            <span className={`artifact-map__node ${getAccentClass(itemAccent)}`} key={label}>
               <span className="artifact-map__index">{String(index + 1).padStart(2, "0")}</span>
-              {item}
+              {label}
             </span>
-          ))}
+            );
+          })}
         </div>
       </div>
       <div className="artifact-map__transform" aria-hidden="true">
@@ -104,12 +111,16 @@ export function ArtifactMap({ title, inputLabel, outputLabel, inputs = [], outpu
       <div className="artifact-map__group artifact-map__group--output">
         <span className="artifact-map__label">{outputLabel}</span>
         <div className="artifact-map__nodes">
-          {outputs.map((item, index) => (
-            <span className="artifact-map__node artifact-map__node--output" key={item}>
+          {outputs.map((item, index) => {
+            const label = typeof item === "string" ? item : item.label;
+            const itemAccent = typeof item === "string" ? accent : item.accent || accent;
+            return (
+            <span className={`artifact-map__node artifact-map__node--output ${getAccentClass(itemAccent)}`} key={label}>
               <span className="artifact-map__index">{String(index + 1).padStart(2, "0")}</span>
-              {item}
+              {label}
             </span>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
