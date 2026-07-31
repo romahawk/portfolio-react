@@ -1,37 +1,50 @@
 import { ArrowRight } from "lucide-react";
-import { useTranslation } from "../context/LangContext.jsx";
+import TypewriterTitle from "./common/TypewriterTitle.jsx";
 import { ArtifactMap, FeaturePill, PageHero } from "./system/SystemVisuals.jsx";
 import About from "./About.jsx";
 
 const aboutArtifact = {
   inputLabel: "Background",
   outputLabel: "Operating model",
-  inputs: ["MedTech implementation", "Product / project ownership", "AI-assisted delivery"],
-  outputs: ["Workflow systems", "Structured handover", "Product proof"],
+  inputs: [
+    { label: "Product & workflow systems", accent: "ai" },
+    { label: "AI-assisted delivery", accent: "ai" },
+    { label: "Regulated implementation experience", accent: "medtech" },
+  ],
+  outputs: [
+    { label: "Workflow discovery", accent: "ai" },
+    { label: "Human-reviewed AI systems", accent: "ai" },
+    { label: "Prototype-to-delivery proof", accent: "fullstack" },
+  ],
 };
 
-const aboutPills = ["Operator context", "Workflow states", "Product logic", "AI-assisted build"];
+const aboutPills = [
+  { label: "AI workflow systems", accent: "ai" },
+  { label: "Product judgment", accent: "ai" },
+  { label: "Full-stack delivery", accent: "fullstack" },
+  { label: "Regulated operations proof", accent: "medtech" },
+];
 
 export default function AboutPage() {
-  const { t } = useTranslation();
+  const title = "I turn messy workflows into practical AI-assisted systems";
 
   return (
     <>
       <PageHero
         eyebrow="About"
-        title="Operator, Product Thinker, and AI-Enhanced Builder"
-        subtitle="I combine MedTech implementation experience, product/project management, AI automation, and full-stack development to build practical workflow systems."
-        primaryCta={{ label: "Explore MedTech Proof", href: "/medtech", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: t("site.cta.contact"), href: "/contact" }}
+        title={<TypewriterTitle text={title} />}
+        subtitle="I help operations-heavy teams turn fragmented processes into practical AI-assisted systems, combining product strategy, workflow analysis, AI automation, and full-stack delivery. My MedTech background adds real-world judgment from regulated, high-friction environments."
+        primaryCta={{ label: "Explore AI Workflows", href: "/ai-workflow", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: "View Proof of Work", href: "/proof-of-work" }}
         scrollTargetId="about"
       >
         <div className="market-page__hero-extra">
           <div className="market-page__pill-list">
-            {aboutPills.map((pill) => <FeaturePill accent="medtech" key={pill}>{pill}</FeaturePill>)}
+            {aboutPills.map((pill) => <FeaturePill accent={pill.accent} key={pill.label}>{pill.label}</FeaturePill>)}
           </div>
           <ArtifactMap
-            accent="medtech"
-            title="MedTech implementation and product ownership become workflow systems"
+            accent="ai"
+            title="Background becomes workflow discovery, reviewed AI systems, and delivery proof"
             {...aboutArtifact}
           />
         </div>

@@ -16,6 +16,7 @@ import { aiWorkflowExamples, workflowCategories } from "../data/aiWorkflows.js";
 import { useTranslation } from "../context/LangContext.jsx";
 import StatusBadge from "./StatusBadge.jsx";
 import PageHero from "./common/PageHero.jsx";
+import TypewriterTitle from "./common/TypewriterTitle.jsx";
 
 const AUDIT_HREF = "mailto:romazuryk@proton.me?subject=AI%20Workflow%20Audit%20Request";
 
@@ -153,12 +154,13 @@ export default function AIWorkflowLibrary() {
       return haystack.includes(problemFilter.toLowerCase());
     })
     .slice(0, 4);
+  const heroTitle = t("site.aiWorkflow.hero.title");
 
   return (
     <div className="ai-workflow-page">
       <PageHero
         eyebrow={t("site.aiWorkflow.hero.eyebrow")}
-        title={t("site.aiWorkflow.hero.title")}
+        title={<TypewriterTitle text={heroTitle} />}
         subtitle={t("site.aiWorkflow.hero.subtitle")}
         primaryCta={{ label: t("site.aiWorkflow.hero.primary"), href: "#medtech-clinical-or-workflows", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
         secondaryCta={{ label: t("site.cta.startAudit"), href: AUDIT_HREF }}

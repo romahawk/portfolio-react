@@ -1,31 +1,47 @@
 import { CalendarCheck, BriefcaseBusiness } from "lucide-react";
+import TypewriterTitle from "./common/TypewriterTitle.jsx";
 import { ArtifactMap, FeaturePill, PageHero } from "./system/SystemVisuals.jsx";
 import Contact from "./Contact.jsx";
 
 const contactArtifact = {
   inputLabel: "Intent",
   outputLabel: "Next path",
-  inputs: ["Workflow audit", "Automation pilot", "Prototype idea"],
-  outputs: ["Focused scope", "Proof route", "Implementation conversation"],
+  inputs: [
+    { label: "Workflow audit", accent: "ai" },
+    { label: "Automation pilot", accent: "fullstack" },
+    { label: "Prototype idea", accent: "fullstack" },
+  ],
+  outputs: [
+    { label: "Focused scope", accent: "ai" },
+    { label: "Proof route", accent: "medtech" },
+    { label: "Implementation conversation", accent: "fullstack" },
+  ],
 };
 
-const contactPills = ["AI Workflow Audit", "One workflow to automate", "Prototype sprint", "Regulated operations"];
+const contactPills = [
+  { label: "AI Workflow Audit", accent: "ai" },
+  { label: "One workflow to automate", accent: "ai" },
+  { label: "Prototype sprint", accent: "fullstack" },
+  { label: "Regulated operations", accent: "medtech" },
+];
 
 export default function ContactPage() {
+  const title = "Discuss One Workflow to Automate";
+
   return (
     <>
       <PageHero
         eyebrow="Contact"
-        title="Discuss One Workflow to Automate"
+        title={<TypewriterTitle text={title} />}
         subtitle="Use this page to start an AI Workflow Opportunity Audit, scope an automation pilot, or discuss a prototype that turns one fragmented process into a practical system."
         primaryCta={{ label: "Book an AI Workflow Audit", href: "mailto:romazuryk@proton.me?subject=AI%20Workflow%20Audit%20Request", icon: <CalendarCheck size={15} className="icon ml-1" aria-hidden="true" /> }}
         secondaryCta={{ label: "Choose Contact Path", href: "#contact", icon: <BriefcaseBusiness size={15} className="icon ml-1" aria-hidden="true" /> }}
         visualType="contact"
         scrollTargetId="contact"
       >
-        <div className="market-page__hero-extra">
+        <div className="market-page__hero-extra contact-hero__extra">
           <div className="market-page__pill-list">
-            {contactPills.map((pill) => <FeaturePill accent="ai" key={pill}>{pill}</FeaturePill>)}
+            {contactPills.map((pill) => <FeaturePill accent={pill.accent} key={pill.label}>{pill.label}</FeaturePill>)}
           </div>
           <ArtifactMap
             accent="ai"

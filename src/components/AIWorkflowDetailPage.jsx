@@ -17,6 +17,7 @@ import { getWorkflowBySlug } from "../data/aiWorkflows.js";
 import { useTranslation } from "../context/LangContext.jsx";
 import StatusBadge from "./StatusBadge.jsx";
 import PageHero from "./common/PageHero.jsx";
+import TypewriterTitle from "./common/TypewriterTitle.jsx";
 
 const AUDIT_HREF = "mailto:romazuryk@proton.me?subject=AI%20Workflow%20Audit%20Request";
 
@@ -105,7 +106,7 @@ export default function AIWorkflowDetailPage({ slug }) {
     <div className="ai-workflow-detail">
       <PageHero
         eyebrow={t("site.aiWorkflow.detail.heroEyebrow")}
-        title={title}
+        title={<TypewriterTitle text={title} />}
         subtitle={summary}
         primaryCta={{ label: t("site.cta.startAudit"), href: AUDIT_HREF }}
         secondaryCta={{ label: t("site.aiWorkflow.detail.back"), href: "/ai-workflow", icon: <ArrowLeft size={15} className="icon ml-1" aria-hidden="true" /> }}

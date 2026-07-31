@@ -33,7 +33,7 @@
   display: inline-flex;
   align-items: center;
   margin-bottom: 0.7rem;
-  color: var(--accent-medtech);
+  color: var(--about-accent, var(--accent-ai));
   font-size: 11px;
   font-weight: 850;
   letter-spacing: 0.16em;
@@ -71,18 +71,46 @@
 
 .about__panel,
 .about__section-card {
+  --about-accent: var(--accent-ai);
+  --about-soft: var(--accent-ai-soft);
+  --about-glow-x: 100%;
+  --about-glow-y: 0;
+
   position: relative;
   overflow: hidden;
   padding: 1.15rem 1.15rem 1rem;
-  border: 1px solid var(--system-border);
+  border: 1px solid color-mix(in srgb, var(--about-accent) 24%, var(--system-border));
   border-radius: var(--radius);
   background:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(520px 220px at var(--about-glow-x) var(--about-glow-y), var(--about-soft), transparent 66%),
     linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.62)),
     var(--panel);
-  background-size: 28px 28px, 28px 28px, auto, auto;
+  background-size: 28px 28px, 28px 28px, auto, auto, auto;
   box-shadow: var(--shadow);
+}
+
+.about__section-card--implementation {
+  --about-accent: var(--accent-medtech);
+  --about-soft: var(--accent-medtech-soft);
+}
+
+.about__section-card--cool {
+  --about-accent: var(--accent-ai);
+  --about-soft: var(--accent-ai-soft);
+}
+
+.about__section-card--warm {
+  --about-accent: var(--accent-fullstack);
+  --about-soft: var(--accent-fullstack-soft);
+}
+
+.about__section-card--foundation {
+  --about-accent: var(--accent-fullstack);
+  --about-soft: var(--accent-fullstack-soft);
+  --about-glow-x: 0;
+  --about-glow-y: 100%;
 }
 
 .about__panel::before,
@@ -93,7 +121,7 @@
   position: absolute;
   inset: 0 auto 0 0;
   width: 3px;
-  background: linear-gradient(180deg, var(--accent-medtech), transparent);
+  background: linear-gradient(180deg, var(--about-accent, var(--accent-ai)), transparent);
 }
 
 .about__panel {
@@ -135,6 +163,10 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.about__icon {
+  color: var(--about-accent, var(--accent-ai));
 }
 
 .about__subtitle {
@@ -199,7 +231,7 @@
 }
 
 .about__check-list svg {
-  color: var(--accent-medtech);
+  color: var(--about-accent, var(--accent-ai));
   flex-shrink: 0;
   margin-top: 3px;
 }
@@ -286,33 +318,104 @@
 }
 
 .about__value-card {
+  --about-card-accent: var(--accent-ai);
+  --about-card-soft: var(--accent-ai-soft);
+
   position: relative;
   padding: 1.15rem;
-  border: 1px solid var(--system-border);
+  border: 1px solid color-mix(in srgb, var(--about-card-accent) 26%, var(--system-border));
   border-radius: var(--radius);
-  background: color-mix(in srgb, var(--panel) 88%, transparent);
+  background:
+    radial-gradient(340px 160px at 100% 0, var(--about-card-soft), transparent 68%),
+    color-mix(in srgb, var(--panel) 88%, transparent);
   box-shadow: none;
+}
+
+.about__value-card::before,
+.about__role-card::before {
+  content: "";
+  position: absolute;
+  inset: 12px auto 12px 0;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--about-card-accent), transparent);
+}
+
+.about__value-card--1 {
+  --about-card-accent: var(--accent-ai);
+  --about-card-soft: var(--accent-ai-soft);
+}
+
+.about__value-card--2 {
+  --about-card-accent: var(--brand-2);
+  --about-card-soft: var(--surface-cool);
+}
+
+.about__value-card--3 {
+  --about-card-accent: var(--accent-medtech);
+  --about-card-soft: var(--accent-medtech-soft);
 }
 
 .about__value-card h4,
 .about__role-card h4 {
   margin: 0 0 8px;
-  color: var(--text);
+  color: color-mix(in srgb, var(--about-card-accent, var(--about-accent, var(--accent-ai))) 20%, var(--text));
 }
 
 .about__role-card {
+  --about-card-accent: var(--accent-ai);
+  --about-card-soft: var(--accent-ai-soft);
+
   position: relative;
   display: grid;
   gap: 12px;
   align-content: start;
   padding: 1.15rem;
-  border: 1px solid var(--system-border);
+  border: 1px solid color-mix(in srgb, var(--about-card-accent) 26%, var(--system-border));
   border-radius: var(--radius);
-  background: color-mix(in srgb, var(--panel) 88%, transparent);
+  background:
+    radial-gradient(340px 160px at 100% 0, var(--about-card-soft), transparent 68%),
+    color-mix(in srgb, var(--panel) 88%, transparent);
+}
+
+.about__role-card:nth-child(1) {
+  --about-card-accent: var(--accent-ai);
+  --about-card-soft: var(--accent-ai-soft);
+}
+
+.about__role-card:nth-child(2) {
+  --about-card-accent: var(--accent-fullstack);
+  --about-card-soft: var(--accent-fullstack-soft);
+}
+
+.about__role-card:nth-child(3) {
+  --about-card-accent: var(--accent-medtech);
+  --about-card-soft: var(--accent-medtech-soft);
 }
 
 .about__role-card .btn {
   width: fit-content;
+}
+
+.about__foundation-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.about__foundation-item {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 7px 10px;
+  border: 1px solid color-mix(in srgb, var(--accent-fullstack) 26%, var(--tag-border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-fullstack-soft) 72%, var(--panel));
+  color: var(--muted-strong);
+  font-size: 12px;
+  font-weight: 760;
+  line-height: 1.35;
 }
 
 .about__proof-links {
@@ -341,6 +444,9 @@
 }
 
 .about__cta {
+  --about-accent: var(--accent-ai);
+  --about-soft: var(--accent-ai-soft);
+
   position: relative;
   overflow: hidden;
   display: flex;
@@ -348,14 +454,15 @@
   justify-content: space-between;
   gap: 18px;
   padding: 1.15rem;
-  border: 1px solid var(--system-border);
+  border: 1px solid color-mix(in srgb, var(--about-accent) 28%, var(--system-border));
   border-radius: var(--radius);
   background:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(520px 220px at 100% 0, var(--about-soft), transparent 66%),
     linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.62)),
     var(--panel);
-  background-size: 28px 28px, 28px 28px, auto, auto;
+  background-size: 28px 28px, 28px 28px, auto, auto, auto;
   box-shadow: var(--shadow);
 }
 
@@ -441,7 +548,7 @@
   background:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-    radial-gradient(520px 220px at 100% 0, var(--accent-medtech-soft), transparent 66%),
+    radial-gradient(520px 220px at var(--about-glow-x, 100%) var(--about-glow-y, 0), var(--about-soft, var(--accent-ai-soft)), transparent 66%),
     var(--card-bg);
 }
 

@@ -4,6 +4,7 @@ import { aiWorkflowExamples, getWorkflowBySlug } from "../data/aiWorkflows.js";
 import { useTranslation } from "../context/LangContext.jsx";
 import StatusBadge from "./StatusBadge.jsx";
 import PageHero from "./common/PageHero.jsx";
+import TypewriterTitle from "./common/TypewriterTitle.jsx";
 
 const AI_WORKFLOW_SLUGS = [
   "medtech-implementation-handoff-assistant",
@@ -331,12 +332,13 @@ export default function ProofOfWorkPage() {
   const secondaryWorkflows = aiWorkflowExamples.filter(
     (workflow) => workflow.visibility === "secondary" && !primarySlugs.has(workflow.slug)
   );
+  const heroTitle = t("site.proof.hero.title");
 
   return (
     <div className="proof-page">
       <PageHero
         eyebrow={t("site.proof.hero.eyebrow")}
-        title={t("site.proof.hero.title")}
+        title={<TypewriterTitle text={heroTitle} />}
         subtitle={t("site.proof.hero.subtitle")}
         primaryCta={{ label: t("site.proof.hero.primary"), href: "#featured-domain-proof", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
         secondaryCta={{ label: t("site.cta.exploreAiWorkflows"), href: "/ai-workflow" }}

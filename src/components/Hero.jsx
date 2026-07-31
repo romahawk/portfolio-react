@@ -2,15 +2,17 @@ import React from "react";
 import { Linkedin, Github, FileDown } from "lucide-react";
 import { useTranslation } from "../context/LangContext.jsx";
 import PageHero from "./common/PageHero.jsx";
+import TypewriterTitle from "./common/TypewriterTitle.jsx";
 
 const Hero = () => {
   const { t } = useTranslation();
+  const title = t("site.home.hero.title");
 
   return (
     <PageHero
       id="home"
       eyebrow={t("site.home.hero.eyebrow")}
-      title={t("site.home.hero.title")}
+      title={<TypewriterTitle text={title} />}
       subtitle={t("site.home.hero.subtitle")}
       primaryCta={{ label: t("site.cta.viewProof"), href: "/proof-of-work" }}
       secondaryCta={{ label: t("site.cta.exploreAiWorkflows"), href: "/ai-workflow" }}

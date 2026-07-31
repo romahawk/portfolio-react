@@ -18,6 +18,7 @@ import {
   SystemCard,
   WorkflowMap,
 } from "./system/SystemVisuals.jsx";
+import TypewriterTitle from "./common/TypewriterTitle.jsx";
 import { getProjectsByCategory, projectCategories } from "../data/projects.js";
 
 const EMAIL = "romazuryk@proton.me";
@@ -592,33 +593,6 @@ function PillList({ items, accent = "ai" }) {
         return <FeaturePill accent={itemAccent} key={label}>{label}</FeaturePill>;
       })}
     </div>
-  );
-}
-
-function TypewriterTitle({ text }) {
-  let charIndex = 0;
-  const words = text.split(" ");
-
-  return (
-    <span className="home-typewriter-title" aria-label={text}>
-      {words.map((word, wordIndex) => (
-        <span className="home-typewriter-title__word" aria-hidden="true" key={`${word}-${wordIndex}`}>
-          {Array.from(word).map((char) => {
-            const currentIndex = charIndex;
-            charIndex += 1;
-            return (
-              <span
-                className="home-typewriter-title__char"
-                style={{ "--char-index": currentIndex }}
-                key={`${char}-${currentIndex}`}
-              >
-                {char}
-              </span>
-            );
-          })}
-        </span>
-      ))}
-    </span>
   );
 }
 
@@ -1253,11 +1227,13 @@ export function MedTechPage() {
 }
 
 export function FullStackPage() {
+  const fullstackTitle = "From Audit to Working System";
+
   return (
     <div className="market-page market-page--fullstack">
       <PageHero
         eyebrow="Implementation proof"
-        title="From Audit to Working System"
+        title={<TypewriterTitle text={fullstackTitle} />}
         subtitle="I can move from workflow discovery to prototype, internal tool, dashboard, automation, or deployed custom application using modern full-stack tools and AI-assisted development workflows."
         primaryCta={{ label: "View Selected Projects", href: "#fullstack-projects" }}
         secondaryCta={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}

@@ -3,72 +3,67 @@ import {
   ArrowRight,
   BriefcaseBusiness,
   CheckCircle2,
+  Code2,
   ClipboardCheck,
   Layers,
   ShieldCheck,
   Users,
   Workflow,
 } from "lucide-react";
-import { useTranslation } from "../context/LangContext.jsx";
 
 const IMPLEMENTATION_AREAS = [
-  "Operating room surgical lights and video integration",
-  "OR video/audio routing, recording, and surgical workflow support",
-  "Medical gas pendants for OR and ICU environments",
-  "Hyperbaric chamber implementation",
-  "Surgical collaboration and education workflows",
-  "Medical equipment delivery, installation, training, support, and handover",
-  "Coordination between hospitals, vendors, technical teams, and decision-makers",
+  "OR and clinical workflow environments",
+  "Medical equipment implementation and handover",
+  "Stakeholder coordination across hospitals, vendors, and technical teams",
+  "Documentation, training, support, and visibility gaps",
+  "Judgment about where human review must remain",
 ];
 
 const EXPERIENCE_GIVES = [
-  "Practical understanding of how hospital workflows break",
-  "Sensitivity to documentation, ownership, handover, and visibility gaps",
-  "Ability to translate operational complexity into product requirements",
-  "Better judgment about where AI can help and where human review must remain",
-  "Credibility in MedTech, HealthTech, implementation, product, and workflow roles",
+  "Understands where workflows break",
+  "Designs for ownership, review, and handover",
+  "Translates messy operational context into system requirements",
+  "Avoids over-automating high-risk workflows",
 ];
 
 const FOCUS_CARDS = [
+  {
+    title: "AI-assisted delivery",
+    text:
+      "Using AI to accelerate workflow discovery, prototyping, documentation, and implementation support while keeping human judgment visible.",
+  },
   {
     title: "Product & workflow systems",
     text:
       "Turning operational complexity into product concepts, requirements, dashboards, SOPs, and handover-ready systems.",
   },
   {
-    title: "AI-assisted delivery",
+    title: "Regulated operations proof",
     text:
-      "Using AI to accelerate discovery, prototyping, documentation, and implementation support without replacing human judgment.",
-  },
-  {
-    title: "MedTech and regulated operations",
-    text:
-      "Applying workflow-first thinking to HealthTech, MedTech, pharma logistics, clinical operations, and implementation-heavy B2B environments.",
+      "Using MedTech and regulated-operations experience as trust proof for high-friction workflows, not as the primary commercial identity.",
   },
 ];
 
-const HIRING_ROLES = [
+const PROBLEM_SPACES = [
+  "AI Workflow Opportunity Audit",
+  "Prototype Sprint",
+  "Internal Assistant / SOP System",
+  "Dashboard or workflow tool",
+];
+
+const EMPLOYMENT_ROLES = [
   "AI Product Manager",
   "Technical Product Manager",
   "Product Operations Lead",
   "MedTech / HealthTech Product Manager",
-  "Implementation / Solutions Product roles",
 ];
 
-const PROBLEM_SPACES = [
-  "MedTech implementation workflows",
-  "OR / hospital workflow systems",
+const PROOF_AREAS = [
   "Documentation and handover systems",
   "Operational dashboards",
   "Compliance-aware workflow automation",
-];
-
-const COMPANY_PATHS = [
-  "AI Workflow Audit",
-  "Product Discovery Sprint",
-  "Workflow Prototype Support",
-  "SOP / documentation systems",
-  "Operator-in-residence support",
+  "MedTech implementation workflows",
+  "OR / hospital workflow systems",
 ];
 
 const MEDTECH_MILESTONES = [
@@ -79,6 +74,14 @@ const MEDTECH_MILESTONES = [
   "Integrated OR video/audio systems",
   "Surgical education and collaboration workflow concepts",
   "Hospital equipment handover and training projects",
+];
+
+const TECH_FOUNDATION = [
+  "Master's in Software Development",
+  "Applied AI automation and workflow systems",
+  "AI-assisted development",
+  "Full-stack product implementation",
+  "Continuous learning through practical demos, prototypes, and documentation",
 ];
 
 function CheckList({ items }) {
@@ -95,17 +98,15 @@ function CheckList({ items }) {
 }
 
 export default function About() {
-  const { t } = useTranslation();
-  const implementationAreasValue = t("site.about.implementation.areas");
-  const experienceGivesValue = t("site.about.implementation.gives");
-  const focusCardsValue = t("site.about.focus.cards");
-  const roleCardsValue = t("site.about.role.cards");
-  const milestonesValue = t("site.about.milestones.items");
-  const implementationAreas = Array.isArray(implementationAreasValue) ? implementationAreasValue : IMPLEMENTATION_AREAS;
-  const experienceGives = Array.isArray(experienceGivesValue) ? experienceGivesValue : EXPERIENCE_GIVES;
-  const focusCards = Array.isArray(focusCardsValue) ? focusCardsValue : FOCUS_CARDS;
-  const roleCards = Array.isArray(roleCardsValue) ? roleCardsValue : [];
-  const milestones = Array.isArray(milestonesValue) ? milestonesValue : MEDTECH_MILESTONES;
+  const implementationAreas = IMPLEMENTATION_AREAS;
+  const experienceGives = EXPERIENCE_GIVES;
+  const focusCards = FOCUS_CARDS;
+  const roleCards = [
+    { title: "For consulting clients", items: PROBLEM_SPACES },
+    { title: "For product and employment roles", items: EMPLOYMENT_ROLES },
+    { title: "Where regulated proof helps", items: PROOF_AREAS },
+  ];
+  const milestones = MEDTECH_MILESTONES;
 
   return (
     <section id="about" className="section container about">
@@ -114,7 +115,7 @@ export default function About() {
           <div className="about__photo">
             <img
               src="/images/profile.jpg"
-              alt={t("about.profileAlt")}
+              alt="Roman Mazuryk portrait"
               className="about__photo-img"
               loading="lazy"
               decoding="async"
@@ -124,31 +125,49 @@ export default function About() {
           </div>
 
           <div className="about__section-card">
-            <div className="about__eyebrow">{t("site.about.background.eyebrow")}</div>
+            <div className="about__eyebrow">Background</div>
             <h3 className="about__heading">
               <Layers size={18} className="icon about__icon" />
-              {t("site.about.background.title")}
+              A practical operator foundation
             </h3>
-            <p className="about__text">{t("site.about.background.text")}</p>
+            <p className="about__text">My work sits between operational reality and product structure: understanding where workflows break, then designing AI-assisted systems that make the work clearer, reviewable, and easier to execute.</p>
+          </div>
+        </div>
+
+        <div className="about__row reveal">
+          <div className="about__section-card about__section-card--foundation">
+            <div className="about__eyebrow">Technical foundation</div>
+            <h3 className="about__heading">
+              <Code2 size={18} className="icon about__icon" />
+              Technical Foundation & Continuous AI Learning
+            </h3>
+            <p className="about__text">
+              Alongside hands-on product and implementation work, I'm completing a Master's in Software Development and continuously deepening my applied AI skills across automation, AI-assisted development, workflow systems, and practical deployment.
+            </p>
+            <div className="about__foundation-list" aria-label="Technical foundation and AI learning areas">
+              {TECH_FOUNDATION.map((item) => (
+                <span className="about__foundation-item" key={item}>{item}</span>
+              ))}
+            </div>
           </div>
         </div>
 
         <div className="about__row reveal">
           <div className="about__section-card about__section-card--implementation">
-            <div className="about__eyebrow">{t("site.about.implementation.eyebrow")}</div>
+            <div className="about__eyebrow">Regulated operations proof</div>
             <h3 className="about__heading">
               <ClipboardCheck size={18} className="icon about__icon" />
-              {t("site.about.implementation.title")}
+              Regulated operations experience that improves AI system design
             </h3>
-            <p className="about__text">{t("site.about.implementation.text")}</p>
+            <p className="about__text">This experience matters because AI workflow systems fail when they ignore real constraints: handovers, ownership, documentation, training, exceptions, and review points.</p>
 
             <div className="about__implementation-grid">
               <div>
-                <h4>{t("site.about.implementation.areasTitle")}</h4>
+                <h4>Strongest proof points</h4>
                 <CheckList items={implementationAreas} />
               </div>
               <div>
-                <h4>{t("site.about.implementation.givesTitle")}</h4>
+                <h4>How it improves AI workflow design</h4>
                 <CheckList items={experienceGives} />
               </div>
             </div>
@@ -157,28 +176,28 @@ export default function About() {
 
         <div className="about__row reveal">
           <div className="about__section-card about__section-card--cool">
-            <div className="about__eyebrow">{t("site.about.philosophy.eyebrow")}</div>
+            <div className="about__eyebrow">Operating philosophy</div>
             <h3 className="about__heading">
               <Workflow size={18} className="icon about__icon" />
-              {t("site.about.philosophy.title")}
+              Operator-first, AI-assisted
             </h3>
             <p className="about__text about__text--large">
-              {t("site.about.philosophy.text")}
+              I do not start from what AI can do. I start from where the workflow breaks, where risk appears, and what system should exist.
             </p>
-            <p className="about__text">{t("site.about.philosophy.support")}</p>
+            <p className="about__text">AI is the acceleration layer: useful for discovery, prototyping, documentation, and delivery, but the workflow logic, ownership, and review model must stay clear.</p>
           </div>
         </div>
 
         <div className="about__row reveal">
           <div className="about__section-card">
-            <div className="about__eyebrow">{t("site.about.focus.eyebrow")}</div>
+            <div className="about__eyebrow">Current focus</div>
             <h3 className="about__heading">
               <BriefcaseBusiness size={18} className="icon about__icon" />
-              {t("site.about.focus.title")}
+              Where this experience translates today
             </h3>
             <div className="about__focus-grid">
-              {focusCards.map((card) => (
-                <article className="about__value-card" key={card.title}>
+              {focusCards.map((card, index) => (
+                <article className={`about__value-card about__value-card--${index + 1}`} key={card.title}>
                   <h4>{card.title}</h4>
                   <p className="about__text">{card.text}</p>
                 </article>
@@ -189,34 +208,34 @@ export default function About() {
 
         <div className="about__row reveal">
           <div className="about__section-card about__section-card--warm">
-            <div className="about__eyebrow">{t("site.about.role.eyebrow")}</div>
+            <div className="about__eyebrow">Role fit</div>
             <h3 className="about__heading">
               <ShieldCheck size={18} className="icon about__icon" />
-              {t("site.about.role.title")}
+              Where this background creates value
             </h3>
-            <p className="about__text">{t("site.about.role.intro")}</p>
+            <p className="about__text">My strongest fit is AI workflow systems for operations-heavy teams, backed by product judgment, regulated-operations credibility, and implementation proof.</p>
             <div className="about__role-grid">
               <article className="about__role-card">
-                <h4>{roleCards?.[0]?.title || "For product and operations teams"}</h4>
-                <CheckList items={roleCards?.[0]?.items || HIRING_ROLES} />
-                <a href="/proof-of-work" className="btn btn--primary">
-                  {t("site.cta.viewProof")} <ArrowRight size={15} className="icon ml-1" />
+                <h4>{roleCards[0].title}</h4>
+                <CheckList items={roleCards[0].items} />
+                <a href="/contact" className="btn btn--primary">
+                  Discuss a Workflow <ArrowRight size={15} className="icon ml-1" />
                 </a>
               </article>
 
               <article className="about__role-card">
-                <h4>{roleCards?.[1]?.title || "Best-fit problem spaces"}</h4>
-                <CheckList items={roleCards?.[1]?.items || PROBLEM_SPACES} />
-                <a href="/ai-workflow" className="btn btn--ghost">
-                  {t("site.cta.exploreAiWorkflows")}
+                <h4>{roleCards[1].title}</h4>
+                <CheckList items={roleCards[1].items} />
+                <a href="/proof-of-work" className="btn btn--ghost">
+                  View Proof of Work
                 </a>
               </article>
 
               <article className="about__role-card">
-                <h4>{roleCards?.[2]?.title || "For companies"}</h4>
-                <CheckList items={roleCards?.[2]?.items || COMPANY_PATHS} />
-                <a href="/collaborate" className="btn btn--ghost">
-                  {t("site.cta.workWithMe")}
+                <h4>{roleCards[2].title}</h4>
+                <CheckList items={roleCards[2].items} />
+                <a href="/medtech" className="btn btn--ghost">
+                  View Trust Proof
                 </a>
               </article>
             </div>
@@ -225,7 +244,7 @@ export default function About() {
 
         <div className="about__row reveal">
           <details className="about__timeline">
-            <summary>{t("site.about.milestones.title")}</summary>
+            <summary>Selected regulated-operations milestones</summary>
             <ol>
               {milestones.map((milestone) => (
                 <li key={milestone}>{milestone}</li>
@@ -237,15 +256,15 @@ export default function About() {
         <div className="about__row reveal">
           <div className="about__cta">
             <div>
-              <div className="about__eyebrow">{t("site.nextStep")}</div>
-              <h3>{t("site.about.final.title")}</h3>
+              <div className="about__eyebrow">Next step</div>
+              <h3>Discuss one workflow worth fixing</h3>
             </div>
             <div className="about__cta-actions">
               <a href="/contact" className="btn btn--primary">
-                {t("site.cta.contact")} <Users size={15} className="icon ml-1" />
+                Discuss a Workflow <Users size={15} className="icon ml-1" />
               </a>
               <a href="/proof-of-work" className="btn btn--ghost">
-                {t("site.cta.viewProof")}
+                View Proof of Work
               </a>
             </div>
           </div>

@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useTranslation } from "../context/LangContext.jsx";
 import PageHero from "./common/PageHero.jsx";
+import TypewriterTitle from "./common/TypewriterTitle.jsx";
 
 const AUDIT_HREF = "mailto:romazuryk@proton.me?subject=AI%20Workflow%20Audit%20Request";
 
@@ -148,13 +149,14 @@ export default function ServicesPage() {
   }));
   const selectedService = localizedServices.find((service) => service.id === selectedServiceId) || localizedServices[0];
   const SelectedIcon = selectedService.icon;
+  const heroTitle = t("site.services.hero.title");
 
   return (
     <div className="services-page">
       <PageHero
         id="services"
         eyebrow={t("site.services.hero.eyebrow")}
-        title={t("site.services.hero.title")}
+        title={<TypewriterTitle text={heroTitle} />}
         subtitle={t("site.services.hero.subtitle")}
         primaryCta={{ label: t("site.cta.startAudit"), href: AUDIT_HREF, icon: <CalendarCheck size={16} className="icon ml-1" aria-hidden="true" /> }}
         secondaryCta={{ label: t("site.cta.viewAiExamples"), href: "/ai-workflow", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
