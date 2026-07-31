@@ -6,11 +6,24 @@ import Contact from "./Contact.jsx";
 const contactArtifact = {
   inputLabel: "Intent",
   outputLabel: "Next path",
-  inputs: ["Workflow audit", "Automation pilot", "Prototype idea"],
-  outputs: ["Focused scope", "Proof route", "Implementation conversation"],
+  inputs: [
+    { label: "Workflow audit", accent: "ai" },
+    { label: "Automation pilot", accent: "fullstack" },
+    { label: "Prototype idea", accent: "fullstack" },
+  ],
+  outputs: [
+    { label: "Focused scope", accent: "ai" },
+    { label: "Proof route", accent: "medtech" },
+    { label: "Implementation conversation", accent: "fullstack" },
+  ],
 };
 
-const contactPills = ["AI Workflow Audit", "One workflow to automate", "Prototype sprint", "Regulated operations"];
+const contactPills = [
+  { label: "AI Workflow Audit", accent: "ai" },
+  { label: "One workflow to automate", accent: "ai" },
+  { label: "Prototype sprint", accent: "fullstack" },
+  { label: "Regulated operations", accent: "medtech" },
+];
 
 export default function ContactPage() {
   const title = "Discuss One Workflow to Automate";
@@ -26,9 +39,9 @@ export default function ContactPage() {
         visualType="contact"
         scrollTargetId="contact"
       >
-        <div className="market-page__hero-extra">
+        <div className="market-page__hero-extra contact-hero__extra">
           <div className="market-page__pill-list">
-            {contactPills.map((pill) => <FeaturePill accent="ai" key={pill}>{pill}</FeaturePill>)}
+            {contactPills.map((pill) => <FeaturePill accent={pill.accent} key={pill.label}>{pill.label}</FeaturePill>)}
           </div>
           <ArtifactMap
             accent="ai"

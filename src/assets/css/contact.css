@@ -17,6 +17,47 @@
   pointer-events: none;
 }
 
+.contact-hero__extra .artifact-map {
+  --system-accent: var(--accent-ai);
+  --system-accent-2: var(--accent-medtech);
+  --system-accent-soft: var(--accent-ai-soft);
+  border-color: color-mix(in srgb, var(--accent-ai) 24%, var(--system-border));
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(440px 180px at 0 0, var(--accent-ai-soft), transparent 68%),
+    radial-gradient(420px 180px at 100% 0, var(--accent-medtech-soft), transparent 68%),
+    radial-gradient(360px 160px at 100% 100%, var(--accent-fullstack-soft), transparent 70%),
+    linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.66)),
+    var(--panel);
+  background-size: 28px 28px, 28px 28px, auto, auto, auto, auto, auto;
+}
+
+.contact-hero__extra .artifact-map__rail {
+  background-image: linear-gradient(90deg, transparent, var(--accent-ai) 16%, var(--accent-medtech) 58%, var(--accent-fullstack) 86%, transparent);
+  opacity: 0.32;
+}
+
+.contact-hero__extra .artifact-map__group:first-of-type .artifact-map__label {
+  color: var(--accent-ai);
+}
+
+.contact-hero__extra .artifact-map__group--output .artifact-map__label {
+  color: var(--accent-medtech);
+}
+
+.contact-hero__extra .artifact-map__transform {
+  color: var(--accent-medtech);
+}
+
+.contact-hero__extra .artifact-map__transform span:first-child {
+  background-image: linear-gradient(180deg, var(--accent-ai) 45%, transparent 0);
+}
+
+.contact-hero__extra .artifact-map__transform span:last-child {
+  background-image: linear-gradient(180deg, var(--accent-medtech) 45%, transparent 0);
+}
+
 .contact__grid {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
@@ -39,6 +80,7 @@
 
 .contact__path {
   --contact-path-accent: var(--accent-ai);
+  --contact-path-accent-2: var(--accent-ai-2);
   --contact-path-soft: var(--accent-ai-soft);
   position: relative;
   overflow: hidden;
@@ -50,25 +92,29 @@
   background:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.62)),
+    radial-gradient(360px 170px at 100% 0, var(--contact-path-soft), transparent 68%),
+    linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.66)),
     var(--panel);
-  background-size: 28px 28px, 28px 28px, auto, auto;
+  background-size: 28px 28px, 28px 28px, auto, auto, auto;
   box-shadow: var(--shadow);
   transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
 
 .contact__path--ai {
   --contact-path-accent: var(--accent-ai);
+  --contact-path-accent-2: var(--accent-ai-2);
   --contact-path-soft: var(--accent-ai-soft);
 }
 
 .contact__path--medtech {
   --contact-path-accent: var(--accent-medtech);
+  --contact-path-accent-2: var(--accent-medtech-2);
   --contact-path-soft: var(--accent-medtech-soft);
 }
 
 .contact__path--fullstack {
   --contact-path-accent: var(--accent-fullstack);
+  --contact-path-accent-2: var(--accent-fullstack-2);
   --contact-path-soft: var(--accent-fullstack-soft);
 }
 
@@ -78,7 +124,7 @@
   position: absolute;
   inset: 0 auto 0 0;
   width: 3px;
-  background: linear-gradient(180deg, var(--contact-path-accent, var(--accent-ai)), transparent);
+  background: linear-gradient(180deg, var(--contact-path-accent, var(--accent-ai)), var(--contact-path-accent-2, var(--accent-ai-2)), transparent);
 }
 
 .contact__path::after {
@@ -96,6 +142,16 @@
 
 .contact__path svg {
   color: var(--contact-path-accent);
+}
+
+.contact__path > svg {
+  width: 34px;
+  height: 34px;
+  padding: 8px;
+  border: 1px solid color-mix(in srgb, var(--contact-path-accent) 34%, var(--system-border));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--contact-path-soft) 78%, var(--panel));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--contact-path-soft) 54%, transparent);
 }
 
 .contact__path strong {
@@ -134,21 +190,30 @@
 }
 
 .contact__panel, .contact__form {
+  --contact-panel-accent: var(--accent-medtech);
+  --contact-panel-accent-2: var(--accent-ai);
+  --contact-panel-soft: var(--accent-medtech-soft);
   position: relative;
   overflow: hidden;
   background:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.62)),
+    radial-gradient(420px 190px at 100% 0, var(--contact-panel-soft), transparent 68%),
+    radial-gradient(300px 150px at 0 100%, color-mix(in srgb, var(--accent-fullstack-soft) 70%, transparent), transparent 70%),
+    linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.66)),
     var(--panel);
-  background-size: 28px 28px, 28px 28px, auto, auto;
+  background-size: 28px 28px, 28px 28px, auto, auto, auto, auto;
   border: 1px solid var(--system-border);
   border-radius: var(--radius);
   padding: 18px;
   box-shadow: var(--shadow);
 }
 
-.contact__subtitle { color: var(--accent-ai); margin: 0 0 8px; }
+.contact__panel::before {
+  background: linear-gradient(180deg, var(--contact-panel-accent), var(--contact-panel-accent-2), transparent);
+}
+
+.contact__subtitle { color: var(--contact-panel-accent); margin: 0 0 8px; }
 .contact__text { color: var(--muted); margin: 0 0 12px; }
 .contact__best-for {
   margin: -4px 0 16px 18px;
@@ -157,11 +222,39 @@
   display: grid;
   gap: 8px;
 }
+.contact__best-for li::marker {
+  color: var(--contact-panel-accent);
+}
 .contact__best-for .contact__text { margin: 0; }
 
 .contact__info { display: grid; gap: 10px; }
-.contact__row { display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 8px; }
-.contact__label { color: var(--muted); }
+.contact__row {
+  --contact-row-accent: var(--accent-ai);
+  --contact-row-soft: var(--accent-ai-soft);
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid color-mix(in srgb, var(--contact-row-accent) 22%, var(--system-border));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--contact-row-soft) 66%, var(--panel));
+}
+.contact__row:nth-child(2) {
+  --contact-row-accent: var(--accent-medtech);
+  --contact-row-soft: var(--accent-medtech-soft);
+}
+.contact__row:nth-child(3) {
+  --contact-row-accent: var(--accent-fullstack);
+  --contact-row-soft: var(--accent-fullstack-soft);
+}
+.contact__label {
+  color: color-mix(in srgb, var(--contact-row-accent) 38%, var(--muted));
+  font-weight: 760;
+}
+.contact__label .icon {
+  color: var(--contact-row-accent);
+}
 .contact__value { display: flex; align-items: center; gap: 10px; }
 .link-like { color: var(--accent-ai); text-decoration: underline; background: none; border: 0; padding: 0; cursor: pointer; }
 .contact__copied { opacity: 0; transform: translateY(2px); transition: .2s; color: #7ed321; font-size: 12px; }
@@ -169,11 +262,25 @@
 
 .contact__socials { display: flex; flex-wrap: wrap; gap: 8px; }
 .contact__social {
+  --contact-social-accent: var(--accent-fullstack);
+  --contact-social-soft: var(--accent-fullstack-soft);
   display: inline-flex; align-items: center; gap: 6px;
   padding: 8px 10px; border-radius: 10px;
-  border: 1px solid var(--system-border); background: var(--panel); color: var(--text);
+  border: 1px solid color-mix(in srgb, var(--contact-social-accent) 28%, var(--system-border));
+  background: color-mix(in srgb, var(--contact-social-soft) 68%, var(--panel));
+  color: var(--text);
 }
-.contact__social:hover { background: var(--panel-hover); border-color: var(--border-hover); }
+.contact__social:first-child {
+  --contact-social-accent: var(--accent-ai);
+  --contact-social-soft: var(--accent-ai-soft);
+}
+.contact__social svg {
+  color: var(--contact-social-accent);
+}
+.contact__social:hover {
+  background: color-mix(in srgb, var(--contact-social-soft) 88%, var(--panel-hover));
+  border-color: color-mix(in srgb, var(--contact-social-accent) 44%, var(--border-hover));
+}
 
 .field { display: grid; gap: 6px; margin-bottom: 12px; }
 .field label { color: var(--text); font-weight: 600; }
@@ -218,7 +325,18 @@
   background:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-    radial-gradient(520px 220px at 100% 0, var(--contact-path-soft, var(--accent-ai-soft)), transparent 66%),
+    radial-gradient(520px 220px at 100% 0, var(--contact-path-soft, var(--contact-panel-soft, var(--accent-ai-soft))), transparent 66%),
+    radial-gradient(320px 170px at 0 100%, color-mix(in srgb, var(--contact-path-accent-2, var(--contact-panel-accent-2, var(--accent-ai-2))) 10%, transparent), transparent 72%),
+    var(--card-bg);
+}
+
+[data-theme="dark"] .contact-hero__extra .artifact-map {
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(460px 190px at 0 0, var(--accent-ai-soft), transparent 70%),
+    radial-gradient(420px 190px at 100% 0, var(--accent-medtech-soft), transparent 70%),
+    radial-gradient(360px 170px at 100% 100%, var(--accent-fullstack-soft), transparent 72%),
     var(--card-bg);
 }
 
@@ -240,6 +358,14 @@
   .contact__actions .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .contact-hero__extra .artifact-map__transform span:first-child {
+    background-image: linear-gradient(90deg, var(--accent-ai) 45%, transparent 0);
+  }
+
+  .contact-hero__extra .artifact-map__transform span:last-child {
+    background-image: linear-gradient(90deg, var(--accent-medtech) 45%, transparent 0);
   }
 }
 
