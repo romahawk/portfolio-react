@@ -1512,13 +1512,48 @@
 }
 
 .fullstack-hero-map__node {
+  --fullstack-flow-accent: var(--accent-fullstack);
+  --fullstack-flow-soft: var(--accent-fullstack-soft);
+
   position: relative;
   z-index: 1;
   min-width: 0;
   padding: 12px 10px;
-  border: 1px solid var(--system-border);
+  border: 1px solid color-mix(in srgb, var(--fullstack-flow-accent) 30%, var(--system-border));
   border-radius: 12px;
-  background: color-mix(in srgb, var(--panel) 90%, transparent);
+  background:
+    radial-gradient(180px 100px at 100% 0, var(--fullstack-flow-soft), transparent 68%),
+    color-mix(in srgb, var(--panel) 90%, transparent);
+}
+
+.fullstack-hero-map__step:nth-child(1) .fullstack-hero-map__node {
+  --fullstack-flow-accent: var(--brand-2);
+  --fullstack-flow-soft: var(--surface-cool);
+}
+
+.fullstack-hero-map__step:nth-child(2) .fullstack-hero-map__node {
+  --fullstack-flow-accent: var(--accent-ai);
+  --fullstack-flow-soft: var(--accent-ai-soft);
+}
+
+.fullstack-hero-map__step:nth-child(3) .fullstack-hero-map__node {
+  --fullstack-flow-accent: var(--accent-fullstack);
+  --fullstack-flow-soft: var(--accent-fullstack-soft);
+}
+
+.fullstack-hero-map__step:nth-child(4) .fullstack-hero-map__node {
+  --fullstack-flow-accent: var(--accent-medtech);
+  --fullstack-flow-soft: var(--accent-medtech-soft);
+}
+
+.fullstack-hero-map__step:nth-child(5) .fullstack-hero-map__node {
+  --fullstack-flow-accent: var(--brand-warm);
+  --fullstack-flow-soft: var(--surface-warm);
+}
+
+.fullstack-hero-map__step:nth-child(6) .fullstack-hero-map__node {
+  --fullstack-flow-accent: var(--accent-fullstack-2);
+  --fullstack-flow-soft: var(--surface-cool);
 }
 
 .fullstack-hero-map__node span {
@@ -1528,8 +1563,8 @@
   height: 28px;
   margin-bottom: 9px;
   border-radius: 999px;
-  background: var(--accent-fullstack-soft);
-  color: var(--accent-fullstack);
+  background: var(--fullstack-flow-soft);
+  color: var(--fullstack-flow-accent);
   font-size: 11px;
   font-weight: 900;
 }
@@ -1561,15 +1596,21 @@
 .fullstack-workflow-card,
 .fullstack-project-card,
 .fullstack-capability-card {
+  --fullstack-card-accent: var(--accent-fullstack);
+  --fullstack-card-soft: var(--accent-fullstack-soft);
+  --fullstack-card-glow-x: 100%;
+  --fullstack-card-glow-y: 0;
+
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--system-border);
+  border: 1px solid color-mix(in srgb, var(--fullstack-card-accent) 24%, var(--system-border));
   border-radius: 14px;
   background:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(360px 170px at var(--fullstack-card-glow-x) var(--fullstack-card-glow-y), var(--fullstack-card-soft), transparent 70%),
     color-mix(in srgb, var(--panel) 90%, transparent);
-  background-size: 24px 24px, 24px 24px, auto;
+  background-size: 24px 24px, 24px 24px, auto, auto;
   box-shadow: var(--shadow);
 }
 
@@ -1581,11 +1622,36 @@
   position: absolute;
   inset: 0 auto 0 0;
   width: 3px;
-  background: linear-gradient(180deg, var(--accent-fullstack), transparent);
+  background: linear-gradient(180deg, var(--fullstack-card-accent), transparent);
 }
 
 .fullstack-stack-card {
   padding: 18px;
+}
+
+.fullstack-stack-card:nth-child(1) {
+  --fullstack-card-accent: var(--accent-fullstack);
+  --fullstack-card-soft: var(--accent-fullstack-soft);
+}
+
+.fullstack-stack-card:nth-child(2) {
+  --fullstack-card-accent: var(--brand-2);
+  --fullstack-card-soft: var(--surface-cool);
+}
+
+.fullstack-stack-card:nth-child(3) {
+  --fullstack-card-accent: var(--accent-medtech);
+  --fullstack-card-soft: var(--accent-medtech-soft);
+}
+
+.fullstack-stack-card:nth-child(4) {
+  --fullstack-card-accent: var(--brand-warm);
+  --fullstack-card-soft: var(--surface-warm);
+}
+
+.fullstack-stack-card:nth-child(5) {
+  --fullstack-card-accent: var(--accent-ai);
+  --fullstack-card-soft: var(--accent-ai-soft);
 }
 
 .fullstack-stack-card h3,
@@ -1599,6 +1665,7 @@
 
 .fullstack-stack-card h3 {
   margin-bottom: 12px;
+  color: color-mix(in srgb, var(--fullstack-card-accent) 22%, var(--text));
   font-size: 16px;
 }
 
@@ -1610,6 +1677,13 @@
   gap: 8px;
 }
 
+.fullstack-stack-card .feature-pill,
+.fullstack-project-card__stack .feature-pill {
+  --system-accent: var(--fullstack-card-accent);
+  --system-accent-soft: var(--fullstack-card-soft);
+  border-color: color-mix(in srgb, var(--fullstack-card-accent) 26%, var(--tag-border));
+}
+
 .fullstack-workflow-row {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1618,11 +1692,26 @@
 
 .fullstack-workflow-card {
   padding: 18px;
-  background:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-    radial-gradient(260px 150px at 100% 0, var(--accent-fullstack-soft), transparent 70%),
-    color-mix(in srgb, var(--panel) 90%, transparent);
+}
+
+.fullstack-workflow-card:nth-child(1) {
+  --fullstack-card-accent: var(--brand-2);
+  --fullstack-card-soft: var(--surface-cool);
+}
+
+.fullstack-workflow-card:nth-child(2) {
+  --fullstack-card-accent: var(--accent-fullstack);
+  --fullstack-card-soft: var(--accent-fullstack-soft);
+}
+
+.fullstack-workflow-card:nth-child(3) {
+  --fullstack-card-accent: var(--accent-medtech);
+  --fullstack-card-soft: var(--accent-medtech-soft);
+}
+
+.fullstack-workflow-card:nth-child(4) {
+  --fullstack-card-accent: var(--brand-warm);
+  --fullstack-card-soft: var(--surface-warm);
 }
 
 .fullstack-workflow-card span,
@@ -1630,7 +1719,7 @@
 .fullstack-project-card__status {
   display: inline-flex;
   width: fit-content;
-  color: var(--accent-fullstack);
+  color: var(--fullstack-card-accent);
   font-size: 10px;
   font-weight: 900;
   letter-spacing: 0.14em;
@@ -1639,6 +1728,7 @@
 
 .fullstack-workflow-card h3 {
   margin-top: 10px;
+  color: color-mix(in srgb, var(--fullstack-card-accent) 20%, var(--text));
   font-size: 18px;
 }
 
@@ -1660,20 +1750,36 @@
   padding: 20px;
 }
 
-.fullstack-project-card:nth-child(2n) {
-  background:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-    radial-gradient(360px 170px at 100% 0, color-mix(in srgb, var(--accent-fullstack-2) 12%, transparent), transparent 70%),
-    color-mix(in srgb, var(--panel) 91%, transparent);
+.fullstack-project-card:nth-child(1) {
+  --fullstack-card-accent: var(--accent-fullstack);
+  --fullstack-card-soft: var(--accent-fullstack-soft);
 }
 
-.fullstack-project-card:nth-child(3n) {
-  background:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-    radial-gradient(360px 170px at 0 100%, var(--accent-fullstack-soft), transparent 70%),
-    color-mix(in srgb, var(--panel) 91%, transparent);
+.fullstack-project-card:nth-child(2) {
+  --fullstack-card-accent: var(--brand-2);
+  --fullstack-card-soft: var(--surface-cool);
+}
+
+.fullstack-project-card:nth-child(3) {
+  --fullstack-card-accent: var(--accent-medtech);
+  --fullstack-card-soft: var(--accent-medtech-soft);
+}
+
+.fullstack-project-card:nth-child(4) {
+  --fullstack-card-accent: var(--accent-ai);
+  --fullstack-card-soft: var(--accent-ai-soft);
+}
+
+.fullstack-project-card:nth-child(5) {
+  --fullstack-card-accent: var(--brand-warm);
+  --fullstack-card-soft: var(--surface-warm);
+}
+
+.fullstack-project-card:nth-child(6) {
+  --fullstack-card-accent: var(--accent-fullstack-2);
+  --fullstack-card-soft: var(--surface-cool);
+  --fullstack-card-glow-x: 0;
+  --fullstack-card-glow-y: 100%;
 }
 
 .fullstack-project-card--compact {
@@ -1688,13 +1794,14 @@
 
 .fullstack-project-card__status {
   padding: 5px 8px;
-  border: 1px solid color-mix(in srgb, var(--accent-fullstack) 34%, var(--border));
+  border: 1px solid color-mix(in srgb, var(--fullstack-card-accent) 34%, var(--border));
   border-radius: 999px;
-  background: var(--accent-fullstack-soft);
+  background: var(--fullstack-card-soft);
   letter-spacing: 0.08em;
 }
 
 .fullstack-project-card h3 {
+  color: color-mix(in srgb, var(--fullstack-card-accent) 18%, var(--text));
   font-size: 21px;
 }
 
@@ -1727,9 +1834,9 @@
   gap: 6px;
   min-height: 32px;
   padding: 7px 10px;
-  border: 1px solid color-mix(in srgb, var(--accent-fullstack) 30%, var(--border));
+  border: 1px solid color-mix(in srgb, var(--fullstack-card-accent) 30%, var(--border));
   border-radius: 999px;
-  background: var(--accent-fullstack-soft);
+  background: var(--fullstack-card-soft);
   color: var(--text);
   font-size: 13px;
   font-weight: 850;
@@ -1737,8 +1844,8 @@
 }
 
 .fullstack-project-card__links a:hover {
-  border-color: color-mix(in srgb, var(--accent-fullstack) 56%, var(--border-hover));
-  background: color-mix(in srgb, var(--accent-fullstack-soft) 78%, var(--panel-hover));
+  border-color: color-mix(in srgb, var(--fullstack-card-accent) 56%, var(--border-hover));
+  background: color-mix(in srgb, var(--fullstack-card-soft) 78%, var(--panel-hover));
 }
 
 .fullstack-capability-grid {
@@ -1749,7 +1856,38 @@
   padding: 18px;
 }
 
+.fullstack-capability-card:nth-child(1) {
+  --fullstack-card-accent: var(--accent-fullstack);
+  --fullstack-card-soft: var(--accent-fullstack-soft);
+}
+
+.fullstack-capability-card:nth-child(2) {
+  --fullstack-card-accent: var(--accent-medtech);
+  --fullstack-card-soft: var(--accent-medtech-soft);
+}
+
+.fullstack-capability-card:nth-child(3) {
+  --fullstack-card-accent: var(--brand-2);
+  --fullstack-card-soft: var(--surface-cool);
+}
+
+.fullstack-capability-card:nth-child(4) {
+  --fullstack-card-accent: var(--accent-ai);
+  --fullstack-card-soft: var(--accent-ai-soft);
+}
+
+.fullstack-capability-card:nth-child(5) {
+  --fullstack-card-accent: var(--accent-fullstack-2);
+  --fullstack-card-soft: var(--surface-cool);
+}
+
+.fullstack-capability-card:nth-child(6) {
+  --fullstack-card-accent: var(--brand-warm);
+  --fullstack-card-soft: var(--surface-warm);
+}
+
 .fullstack-capability-card h3 {
+  color: color-mix(in srgb, var(--fullstack-card-accent) 18%, var(--text));
   font-size: 17px;
 }
 

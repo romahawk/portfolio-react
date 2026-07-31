@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "../context/LangContext.jsx";
 import PageHero from "./common/PageHero.jsx";
+import TypewriterTitle from "./common/TypewriterTitle.jsx";
 import StatusBadge from "./StatusBadge.jsx";
 
 const complexityElements = [
@@ -71,12 +72,13 @@ export default function ORIntegrationProofPage() {
   const complexity = Array.isArray(complexityValue) ? complexityValue : complexityElements;
   const cards = Array.isArray(cardsValue) ? cardsValue : proofCards;
   const opportunities = Array.isArray(opportunitiesValue) ? opportunitiesValue : futureOpportunities;
+  const heroTitle = t("site.orProof.hero.title");
 
   return (
     <div className="proof-page or-proof-page">
       <PageHero
         eyebrow={t("site.orProof.hero.eyebrow")}
-        title={t("site.orProof.hero.title")}
+        title={<TypewriterTitle text={heroTitle} />}
         subtitle={t("site.orProof.hero.subtitle")}
         primaryCta={{ label: t("site.cta.exploreAiWorkflows"), href: "/ai-workflow", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
         secondaryCta={{ label: t("site.cta.workWithMe"), href: "/collaborate" }}
