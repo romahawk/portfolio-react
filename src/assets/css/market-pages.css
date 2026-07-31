@@ -1165,6 +1165,7 @@
 }
 
 .medtech-impact-grid,
+.medtech-regulated-proof-grid,
 .medtech-proof-grid,
 .medtech-capability-grid,
 .medtech-role-grid {
@@ -1172,7 +1173,8 @@
   gap: 16px;
 }
 
-.medtech-impact-grid {
+.medtech-impact-grid,
+.medtech-regulated-proof-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
@@ -1186,6 +1188,7 @@
 }
 
 .medtech-impact-card,
+.medtech-regulated-proof-card,
 .medtech-proof-card,
 .medtech-capability-card,
 .medtech-role-card,
@@ -1200,6 +1203,7 @@
 }
 
 .medtech-impact-card,
+.medtech-regulated-proof-card,
 .medtech-proof-card,
 .medtech-capability-card,
 .medtech-role-card {
@@ -1209,6 +1213,7 @@
 }
 
 .medtech-impact-card::before,
+.medtech-regulated-proof-card::before,
 .medtech-proof-card::before,
 .medtech-capability-card::before,
 .medtech-role-card::before {
@@ -1219,11 +1224,62 @@
   background: linear-gradient(180deg, var(--accent-medtech), transparent);
 }
 
-.medtech-impact-card {
+.medtech-impact-card,
+.medtech-regulated-proof-card {
   padding: 18px;
 }
 
-.medtech-impact-card span {
+.medtech-regulated-proof-card {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  border-color: color-mix(in srgb, var(--accent-medtech) 28%, var(--system-border));
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(360px 170px at 100% 0, var(--accent-medtech-soft), transparent 70%),
+    color-mix(in srgb, var(--panel) 91%, transparent);
+  background-size: 24px 24px, 24px 24px, auto, auto;
+}
+
+.medtech-regulated-proof-card:nth-child(2) {
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(360px 170px at 100% 0, color-mix(in srgb, var(--accent-medtech-2) 12%, transparent), transparent 70%),
+    color-mix(in srgb, var(--panel) 91%, transparent);
+}
+
+.medtech-regulated-proof-card:nth-child(3) {
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(360px 170px at 100% 0, var(--accent-ai-soft), transparent 70%),
+    color-mix(in srgb, var(--panel) 91%, transparent);
+}
+
+.medtech-regulated-proof-card:nth-child(4) {
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(360px 170px at 100% 0, var(--accent-fullstack-soft), transparent 70%),
+    color-mix(in srgb, var(--panel) 91%, transparent);
+}
+
+.medtech-regulated-proof-card:nth-child(2)::before {
+  background: linear-gradient(180deg, var(--accent-medtech-2), transparent);
+}
+
+.medtech-regulated-proof-card:nth-child(3)::before {
+  background: linear-gradient(180deg, var(--accent-ai), transparent);
+}
+
+.medtech-regulated-proof-card:nth-child(4)::before {
+  background: linear-gradient(180deg, var(--accent-fullstack), transparent);
+}
+
+.medtech-impact-card span,
+.medtech-regulated-proof-card > span {
   color: var(--accent-medtech);
   font-size: 11px;
   font-weight: 900;
@@ -1231,20 +1287,38 @@
 }
 
 .medtech-impact-card h3,
+.medtech-regulated-proof-card h3,
 .medtech-proof-card h3,
 .medtech-capability-card h3,
 .medtech-role-card h3 {
-  margin: 8px 0 8px;
+  margin: 8px 0 0;
   color: var(--text);
   font-size: 17px;
   line-height: 1.25;
 }
 
 .medtech-impact-card p,
+.medtech-regulated-proof-card p,
 .medtech-capability-card p {
   margin: 0;
   color: var(--muted);
   line-height: 1.65;
+}
+
+.medtech-regulated-proof-card div {
+  display: grid;
+  gap: 5px;
+  margin-top: 2px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--system-border);
+}
+
+.medtech-regulated-proof-card strong {
+  color: var(--accent-medtech);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .medtech-field-map {
@@ -1730,6 +1804,7 @@
   .market-page__proof-grid,
   .market-page__highlight-grid,
   .medtech-impact-grid,
+  .medtech-regulated-proof-grid,
   .medtech-proof-grid,
   .medtech-capability-grid,
   .medtech-role-grid,

@@ -299,14 +299,6 @@ const aiFit = {
   ],
 };
 
-const medtechProof = [
-  "OR integration and surgical infrastructure",
-  "Surgimedia / Surgiris / Medintegro implementation context",
-  "Surgical lights and surgical video/audio workflows",
-  "Hospital stakeholder coordination, training, handover, and documentation",
-  "Multi-vendor delivery across medical equipment environments",
-];
-
 const medtechHeroWorkflow = [
   { label: "Clinical need", detail: "User, site, and workflow context" },
   { label: "Technical requirements", detail: "Devices, infrastructure, constraints" },
@@ -316,49 +308,26 @@ const medtechHeroWorkflow = [
   { label: "Workflow system", detail: "Product requirements, SOPs, visibility" },
 ];
 
-const medtechImpact = [
+const regulatedOperationsProof = [
   {
-    title: "Clinical workflow understanding",
-    text: "Worked around real operating room and clinical environments where technical systems, clinicians, infrastructure, documentation, and handover have to work together.",
+    title: "Clinical workflow complexity",
+    body: "Experience with operating-room environments, clinical routines, handovers, and documentation.",
+    relevance: "Designs that respect real workflow constraints.",
   },
   {
     title: "Multi-stakeholder coordination",
-    text: "Coordinated across clinicians, hospital teams, biomedical engineers, suppliers, service partners, and international manufacturers.",
+    body: "Work across clinicians, hospital teams, vendors, suppliers, and internal teams.",
+    relevance: "Systems that support adoption, ownership, and review.",
   },
   {
-    title: "Implementation-to-handover thinking",
-    text: "Supported the transition from requirements and installation planning to training, documentation, operational use, and post-handover support.",
+    title: "Implementation & handover thinking",
+    body: "From requirements and installation planning to training, documentation, and post-handover support.",
+    relevance: "Pilots that can become usable operational systems.",
   },
   {
-    title: "Product / workflow translation",
-    text: "Translates field implementation complexity into product requirements, workflow maps, dashboards, SOP logic, and AI-assisted delivery concepts.",
-  },
-];
-
-const medtechFieldContexts = [
-  {
-    fieldContext: "OR integration and surgical workflow systems",
-    productRelevance: "workflow ownership, stakeholder alignment, handover risk",
-  },
-  {
-    fieldContext: "Surgical video / audio workflows",
-    productRelevance: "data capture, documentation, interoperability, clinical usability",
-  },
-  {
-    fieldContext: "Surgical lights and OR equipment context",
-    productRelevance: "requirements, constraints, training, post-handover support",
-  },
-  {
-    fieldContext: "Medical equipment implementation",
-    productRelevance: "implementation planning, dependencies, acceptance, supportability",
-  },
-  {
-    fieldContext: "Hospital stakeholder coordination",
-    productRelevance: "alignment across clinicians, technical teams, suppliers, and decision-makers",
-  },
-  {
-    fieldContext: "Training, handover, documentation, support logic",
-    productRelevance: "structured operating memory, SOPs, onboarding, workflow state visibility",
+    title: "Documentation & knowledge transfer",
+    body: "Turning scattered implementation context into structured procedures, notes, and support logic.",
+    relevance: "Strong fit for SOPs, internal assistants, and decision-support tools.",
   },
 ];
 
@@ -673,14 +642,18 @@ function HomeHeroVisual() {
   );
 }
 
-function MedTechImpactGrid({ items }) {
+function RegulatedOperationsProofGrid({ items }) {
   return (
-    <div className="medtech-impact-grid">
+    <div className="medtech-regulated-proof-grid">
       {items.map((item, index) => (
-        <article className="medtech-impact-card reveal" key={item.title}>
+        <article className="medtech-regulated-proof-card reveal" key={item.title}>
           <span>{String(index + 1).padStart(2, "0")}</span>
           <h3>{item.title}</h3>
-          <p>{item.text}</p>
+          <p>{item.body}</p>
+          <div>
+            <strong>AI relevance</strong>
+            <p>{item.relevance}</p>
+          </div>
         </article>
       ))}
     </div>
@@ -707,26 +680,6 @@ function WorkflowBeforeAfter({ before, after }) {
           {after.map((item) => <li key={item}>{item}</li>)}
         </ul>
       </div>
-    </div>
-  );
-}
-
-function FieldContextMap({ items }) {
-  return (
-    <div className="medtech-field-map reveal">
-      {items.map((item) => (
-        <article className="medtech-field-row" key={item.fieldContext}>
-          <div>
-            <span>Field context</span>
-            <strong>{item.fieldContext}</strong>
-          </div>
-          <ArrowRight size={16} aria-hidden="true" />
-          <div>
-            <span>Product relevance</span>
-            <p>{item.productRelevance}</p>
-          </div>
-        </article>
-      ))}
     </div>
   );
 }
@@ -1229,11 +1182,13 @@ export function AIPage() {
 }
 
 export function MedTechPage() {
+  const medtechTitle = "MedTech and Regulated Operations Proof";
+
   return (
     <div className="market-page market-page--medtech">
       <PageHero
         eyebrow="Trust layer / regulated operations"
-        title="MedTech and Regulated Operations Proof"
+        title={<TypewriterTitle text={medtechTitle} />}
         subtitle="Real MedTech implementation experience translated into AI workflow consulting judgment: clinical context, stakeholder coordination, documentation, handover, risk boundaries, and practical implementation thinking."
         primaryCta={{ label: "View Selected Proof", href: "#medtech-proof" }}
         secondaryCta={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
@@ -1247,21 +1202,11 @@ export function MedTechPage() {
 
       <section id="medtech-impact" className="section container market-page__section">
         <SectionHeader
-          eyebrow="Impact snapshot"
-          title="Implementation experience with product impact"
-          text="The strongest signal is practical delivery context: clinical workflows, technical constraints, stakeholders, documentation, and handover translated into product/project judgment."
+          eyebrow="Regulated operations proof"
+          title="Why my MedTech background matters for AI workflow systems"
+          text="AI systems fail when they ignore real-world constraints: handovers, stakeholders, documentation, exceptions, training, and review points. My MedTech implementation background helps me design workflows that fit how teams actually work."
         />
-        <MedTechImpactGrid items={medtechImpact} />
-      </section>
-
-      <section className="section container market-page__section">
-        <SectionHeader
-          eyebrow="Implementation proof"
-          title="Real-world MedTech implementation context"
-          text="My MedTech background comes from practical implementation work: operating room systems, medical equipment workflows, hospital stakeholders, supplier coordination, installation support, training, and handover."
-        />
-        <FieldContextMap items={medtechFieldContexts} />
-        <PillList items={medtechProof} accent="medtech" />
+        <RegulatedOperationsProofGrid items={regulatedOperationsProof} />
       </section>
 
       <section id="medtech-proof" className="section container market-page__section">
