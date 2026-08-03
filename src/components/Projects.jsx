@@ -290,7 +290,7 @@ export default function Projects() {
       </div>
 
       <div className="projects__actions reveal">
-        <a href="/proof-of-work" className="btn btn--primary">
+        <a href="/fullstack" className="btn btn--primary">
           {t("site.home.proofPreview.cta")} <ArrowRight size={15} className="icon ml-1" />
         </a>
       </div>

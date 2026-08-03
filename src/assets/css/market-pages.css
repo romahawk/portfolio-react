@@ -1377,9 +1377,31 @@
 }
 
 .medtech-proof-card {
+  --proof-link-accent: var(--accent-medtech);
+  --proof-link-soft: var(--accent-medtech-soft);
   display: flex;
   flex-direction: column;
   padding: 20px;
+}
+
+.medtech-proof-card--surgical {
+  --proof-link-accent: var(--accent-medtech);
+  --proof-link-soft: var(--accent-medtech-soft);
+}
+
+.medtech-proof-card--demo {
+  --proof-link-accent: var(--accent-medtech-2);
+  --proof-link-soft: var(--surface-cool);
+}
+
+.medtech-proof-card--workflow {
+  --proof-link-accent: var(--accent-ai);
+  --proof-link-soft: var(--accent-ai-soft);
+}
+
+.medtech-proof-card--systems {
+  --proof-link-accent: var(--accent-fullstack);
+  --proof-link-soft: var(--accent-fullstack-soft);
 }
 
 .medtech-proof-card:nth-child(1) {
@@ -1457,10 +1479,42 @@
 .medtech-proof-card__links a {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  color: var(--accent-medtech);
-  font-weight: 800;
+  min-height: 34px;
+  padding: 7px 10px;
+  border: 1px solid color-mix(in srgb, var(--proof-link-accent) 38%, var(--border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--proof-link-soft) 72%, transparent);
+  color: color-mix(in srgb, var(--proof-link-accent) 88%, var(--text));
+  font-size: 13px;
+  font-weight: 850;
   text-decoration: none;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--proof-link-accent) 8%, transparent);
+  transition: transform 0.16s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.medtech-proof-card__links a:hover {
+  border-color: color-mix(in srgb, var(--proof-link-accent) 68%, var(--border));
+  background: color-mix(in srgb, var(--proof-link-accent) 18%, var(--panel));
+  color: var(--text);
+  box-shadow:
+    0 10px 24px color-mix(in srgb, var(--proof-link-accent) 18%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--proof-link-accent) 22%, transparent);
+  transform: translateY(-1px);
+}
+
+.medtech-proof-card__links a:focus-visible {
+  outline: 2px solid var(--proof-link-accent);
+  outline-offset: 3px;
+}
+
+.medtech-proof-card__links a svg {
+  transition: transform 0.2s ease;
+}
+
+.medtech-proof-card__links a:hover svg {
+  transform: translateX(2px);
 }
 
 .medtech-capability-card {

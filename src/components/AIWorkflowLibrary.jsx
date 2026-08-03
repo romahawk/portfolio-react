@@ -264,7 +264,7 @@ export default function AIWorkflowLibrary() {
           <div className="ai-workflow-page__actions">
             <a href={AUDIT_HREF} className="btn btn--primary">{t("site.cta.startAudit")}</a>
             <a href="/collaborate" className="btn btn--ghost">{t("site.cta.workWithMe")}</a>
-            <a href="/proof-of-work#projects" className="btn btn--ghost">{t("site.cta.viewProof")}</a>
+            <a href="/fullstack" className="btn btn--ghost">{t("site.cta.viewProof")}</a>
           </div>
         </div>
       </section>

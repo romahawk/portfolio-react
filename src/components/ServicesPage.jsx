@@ -128,7 +128,7 @@ const METHOD_STEPS = [
 ];
 
 const PROOF_LINKS = [
-  { title: "Proof of Work", href: "/proof-of-work" },
+  { title: "Proof of Work", href: "/fullstack" },
   { title: "AI Workflow Library", href: "/ai-workflow" },
 ];
 

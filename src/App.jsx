@@ -13,12 +13,10 @@ import { AIPage, FullStackPage, HomePage, MedTechPage } from "./components/Marke
 import ClinicalEvidenceWorkflowPage from "./components/ClinicalEvidenceWorkflowPage.jsx";
 import AIWorkflowLibrary from "./components/AIWorkflowLibrary.jsx";
 import AIWorkflowDetailPage from "./components/AIWorkflowDetailPage.jsx";
-import ProofOfWorkPage from "./components/ProofOfWorkPage.jsx";
 import ORIntegrationProofPage from "./components/ORIntegrationProofPage.jsx";
 
 const CLINICAL_EVIDENCE_PATH = "/medtech-ai-systems/clinical-evidence-workflow";
 const AI_WORKFLOW_PATH = "/ai-workflow";
-const PROOF_OF_WORK_PATH = "/proof-of-work";
 const OR_INTEGRATION_PROOF_PATH = "/proof-of-work/or-integration";
 const ROUTE_SECTION_MAP = {
   "/about": "about",
@@ -34,7 +32,6 @@ function getPage() {
   if (path === "/about") return "about";
   if (path === "/contact") return "contact";
   if (path === OR_INTEGRATION_PROOF_PATH) return "or-integration-proof";
-  if (path === PROOF_OF_WORK_PATH) return "proof-of-work";
   if (path === AI_WORKFLOW_PATH) return "ai-workflow";
   if (path.startsWith(`${AI_WORKFLOW_PATH}/`)) return "ai-workflow-detail";
   if (path === CLINICAL_EVIDENCE_PATH) return "clinical-evidence-workflow";
@@ -89,8 +86,6 @@ function AppInner() {
           <AboutPage />
         ) : page === "contact" ? (
           <ContactPage />
-        ) : page === "proof-of-work" ? (
-          <ProofOfWorkPage />
         ) : page === "or-integration-proof" ? (
           <ORIntegrationProofPage />
         ) : page === "ai-workflow" ? (

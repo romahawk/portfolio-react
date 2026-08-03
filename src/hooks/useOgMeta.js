@@ -91,17 +91,6 @@ const AI_WORKFLOW = {
   imageHeight: "630",
 };
 
-const PROOF_OF_WORK = {
-  title: "Proof of Work - AI Workflow Systems and Regulated Operations",
-  description:
-    "Selected workflow systems, product concepts, and AI-assisted prototypes showing how Roman Mazuryk translates operational complexity into structured, auditable systems.",
-  url: "https://www.mazuryk.dev/proof-of-work",
-  image: "https://www.mazuryk.dev/images/og-home.png",
-  imageAlt: "Proof of work for MedTech product and workflow systems.",
-  imageWidth: "1200",
-  imageHeight: "630",
-};
-
 const OR_INTEGRATION_PROOF = {
   title: "OR Integration & Surgical Workflow Systems | Roman Mazuryk",
   description:
@@ -202,15 +191,6 @@ export function useOgMeta() {
           ...AI_WORKFLOW,
           title: seo("aiWorkflowTitle", AI_WORKFLOW.title),
           description: seo("aiWorkflowDescription", AI_WORKFLOW.description),
-        });
-        return;
-      }
-
-      if (path === "/proof-of-work") {
-        applyMeta({
-          ...PROOF_OF_WORK,
-          title: seo("proofTitle", PROOF_OF_WORK.title),
-          description: seo("proofDescription", PROOF_OF_WORK.description),
         });
         return;
       }

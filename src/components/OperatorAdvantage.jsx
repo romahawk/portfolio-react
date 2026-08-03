@@ -68,7 +68,7 @@ export default function OperatorAdvantage() {
         </p>
 
         <div className="operator-advantage__actions">
-          <a href="/proof-of-work" className="btn btn--primary">
+          <a href="/medtech#medtech-impact" className="btn btn--primary">
             {t("site.cta.viewProof")} <ArrowRight size={15} className="icon ml-1" />
           </a>
           <a href="/ai-workflow" className="btn btn--ghost">

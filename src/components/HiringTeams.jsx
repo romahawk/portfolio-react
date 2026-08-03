@@ -33,7 +33,7 @@ export default function HiringTeams() {
             and the ability to convert regulated workflow ambiguity into usable system scope.
           </p>
           <div className="hiring-teams__actions">
-            <a href="/proof-of-work" className="btn btn--primary">
+            <a href="/fullstack" className="btn btn--primary">
               View Proof of Work <ArrowRight size={15} className="icon ml-1" />
             </a>
             <a href="/contact" className="btn btn--ghost">Contact</a>

@@ -234,7 +234,7 @@ export default function About() {
               <article className="about__role-card">
                 <h4>{localizedRoleCards[1].title}</h4>
                 <CheckList items={localizedRoleCards[1].items} />
-                <a href="/proof-of-work" className="btn btn--ghost">
+                <a href="/fullstack" className="btn btn--ghost">
                   {deText("View Proof of Work", lang)}
                 </a>
               </article>
@@ -271,7 +271,7 @@ export default function About() {
               <a href="/contact" className="btn btn--primary">
                 {deText("Discuss a Workflow", lang)} <Users size={15} className="icon ml-1" />
               </a>
-              <a href="/proof-of-work" className="btn btn--ghost">
+              <a href="/fullstack" className="btn btn--ghost">
                 {deText("View Proof of Work", lang)}
               </a>
             </div>

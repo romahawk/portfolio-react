@@ -14,7 +14,7 @@ const IDS = [
 
 const CLINICAL_EVIDENCE_PATH = "/medtech-ai-systems/clinical-evidence-workflow";
 const AI_WORKFLOW_PATH = "/ai-workflow";
-const PROOF_OF_WORK_PATH = "/proof-of-work";
+const OR_INTEGRATION_PROOF_PATH = "/proof-of-work/or-integration";
 
 // tuning knobs
 const VIEWPORT_ANCHOR = 0.32; // 32% down the viewport for deciding active section
@@ -32,13 +32,13 @@ export default function Navbar({ themeMode, onThemeChange }) {
     typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === CLINICAL_EVIDENCE_PATH;
   const isAIWorkflowPage =
     typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "").startsWith(AI_WORKFLOW_PATH);
-  const isProofOfWorkPage =
-    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "").startsWith(PROOF_OF_WORK_PATH);
+  const isORIntegrationProofPage =
+    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === OR_INTEGRATION_PROOF_PATH;
   const isAboutPage =
     typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/about";
   const isContactPage =
     typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/contact";
-  const isStandalonePage = isServicesPage || isMedTechPage || isFullStackPage || isClinicalEvidencePage || isAIWorkflowPage || isProofOfWorkPage || isAboutPage || isContactPage;
+  const isStandalonePage = isServicesPage || isMedTechPage || isFullStackPage || isClinicalEvidencePage || isAIWorkflowPage || isORIntegrationProofPage || isAboutPage || isContactPage;
   const navIds = useMemo(
     () => (isStandalonePage ? [] : IDS),
     [isStandalonePage]
@@ -59,12 +59,12 @@ export default function Navbar({ themeMode, onThemeChange }) {
     () => [
       { id: isStandalonePage ? undefined : "home", href: "/", labelKey: "nav.home", current: !isStandalonePage && active === "home" },
       { href: "/ai", labelKey: "nav.aiSolutions", current: isServicesPage || isAIWorkflowPage || isClinicalEvidencePage },
-      { href: "/medtech", labelKey: "nav.medtech", current: isMedTechPage || isProofOfWorkPage },
+      { href: "/medtech", labelKey: "nav.medtech", current: isMedTechPage || isORIntegrationProofPage },
       { href: "/fullstack", labelKey: "nav.fullstack", current: isFullStackPage },
       { id: isStandalonePage ? undefined : "about", href: "/about", labelKey: "nav.about", current: isAboutPage || (!isStandalonePage && active === "about") },
       { id: isStandalonePage ? undefined : "contact", href: "/contact", labelKey: "nav.contact", current: isContactPage || (!isStandalonePage && active === "contact") },
     ],
-    [active, isAIWorkflowPage, isAboutPage, isClinicalEvidencePage, isContactPage, isFullStackPage, isMedTechPage, isProofOfWorkPage, isServicesPage, isStandalonePage]
+    [active, isAIWorkflowPage, isAboutPage, isClinicalEvidencePage, isContactPage, isFullStackPage, isMedTechPage, isORIntegrationProofPage, isServicesPage, isStandalonePage]
   );
 
   const computeActive = useCallback(() => {
