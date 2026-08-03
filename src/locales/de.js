@@ -6,8 +6,8 @@ export default {
     services: "Zusammenarbeiten",
     projects: "Proof of Work",
     aiWorkflow: "KI-Workflows",
-    aiSolutions: "AI Consulting",
-    medtech: "Regulated Proof",
+    aiSolutions: "KI-Consulting",
+    medtech: "Regulierter Proof",
     fullstack: "Build Proof",
     about: "Über mich",
     contact: "Kontakt",
@@ -31,9 +31,9 @@ export default {
     ctaSDLC: "Wie ich baue (KI-Stack)",
     ctaProjects: "Ausgelieferte Systeme ansehen",
     eyebrow: "MEDTECH / HEALTHTECH / REGULIERTE OPS",
-    headline: "KI-Workflow-Systeme fuer MedTech und regulierte Operations",
+    headline: "KI-Workflow-Systeme für MedTech und regulierte Operations",
     subtitle:
-      "Ich helfe MedTech-, HealthTech- und B2B-Operations-Teams, unklare operative Workflows in KI-gestuetzte, auditierbare Systeme zu verwandeln - von Discovery ueber Prototyp, SOPs und Handover.",
+      "Ich helfe MedTech-, HealthTech- und B2B-Operations-Teams, unklare operative Workflows in KI-gestützte, auditierbare Systeme zu verwandeln - von Discovery über Prototyp, SOPs und Handover.",
     ctaAudit: "KI-Workflow-Audit anfragen",
     ctaCaseStudies: "Product Case Studies ansehen",
     downloadCV: "Lebenslauf herunterladen",
@@ -51,18 +51,18 @@ export default {
   },
 
   about: {
-    title: "Ueber mich",
-    eyebrow: "Operator-Hintergrund fuer regulierte KI-Workflow-Systeme.",
-    heading: "AI Product / Technical Product Lead fuer MedTech Workflow Systems",
+    title: "Über mich",
+    eyebrow: "Operator-Hintergrund für regulierte KI-Workflow-Systeme.",
+    heading: "AI Product / Technical Product Lead für MedTech Workflow Systems",
     profileAlt: "Roman Mazuryk Profilbild",
     para1:
-      "Mein Hintergrund ist operator-first: 10+ Jahre rund um MedTech-Implementierung, regulierte B2B-Operations, Product Delivery und cross-funktionale Umsetzung. Ich kenne die unordentliche Mitte, in der klinische, operative, kommerzielle und technische Realitaeten aufeinandertreffen.",
+      "Mein Hintergrund ist operator-first: 10+ Jahre rund um MedTech-Implementierung, regulierte B2B-Operations, Product Delivery und cross-funktionale Umsetzung. Ich kenne die unordentliche Mitte, in der klinische, operative, kommerzielle und technische Realitäten aufeinandertreffen.",
     para2:
-      "Heute fokussiere ich mich auf KI-Workflow-Systeme: Product Discovery, Workflow-Modellierung, Prototyping, SOP-faehiges Handover und praktische Automatisierung fuer regulierte Operations. KI beschleunigt Analyse und Build-Loops, waehrend Human Review, Traceability und System Ownership explizit bleiben.",
+      "Heute fokussiere ich mich auf KI-Workflow-Systeme: Product Discovery, Workflow-Modellierung, Prototyping, SOP-fähiges Handover und praktische Automatisierung für regulierte Operations. KI beschleunigt Analyse und Build-Loops, während Human Review, Traceability und System Ownership explizit bleiben.",
     pillars: {
       strategy: {
         title: "Discovery",
-        text: "Uebersetze unklare Workflow-Probleme in Nutzer, Zustaende, Constraints, Risiken und Produktscope.",
+        text: "Übersetze unklare Workflow-Probleme in Nutzer, Zustände, Constraints, Risiken und Produktscope.",
       },
       architecture: {
         title: "Systeme",
@@ -70,14 +70,14 @@ export default {
       },
       execution: {
         title: "Delivery",
-        text: "Prototypen schnell bauen, mit Operatoren validieren, Entscheidungen dokumentieren und nutzbare Systeme uebergeben.",
+        text: "Prototypen schnell bauen, mit Operatoren validieren, Entscheidungen dokumentieren und nutzbare Systeme übergeben.",
       },
     },
     operatingModel: {
       eyebrow: "Betriebsmodell",
       heading: "Mein Betriebsmodell: Entscheidungskomprimierung",
       text:
-        "Ich reduziere organisationalen Reibungsverlust, indem ich komplexe operative Anforderungen in schlanke Systemprimitiven uebersetze. KI-gestuetzte Workflows verkuerzen die Distanz zwischen Business Requirement und nutzbarem System, ohne Auditierbarkeit und Review Ownership zu verlieren.",
+        "Ich reduziere organisationalen Reibungsverlust, indem ich komplexe operative Anforderungen in schlanke Systemprimitiven übersetze. KI-gestützte Workflows verkürzen die Distanz zwischen Business Requirement und nutzbarem System, ohne Auditierbarkeit und Review Ownership zu verlieren.",
       principles: {
         strategy: {
           label: "Strategie:",
@@ -85,7 +85,7 @@ export default {
         },
         architecture: {
           label: "Systeme:",
-          text: "Workflow-Zustaende, Rollen, Daten, Risiken und Handoffs vor dem Build klaeren.",
+          text: "Workflow-Zustände, Rollen, Daten, Risiken und Handoffs vor dem Build klären.",
         },
         execution: {
           label: "Delivery:",
@@ -98,17 +98,17 @@ export default {
       eyebrow: "Best-fit environment",
       heading: "Wo ich am besten wirke",
       para1:
-        "Best Fit: AI Product Manager, Technical Product Manager, Product Operations, MedTech / HealthTech Product Lead oder Workflow Automation Rollen, in denen Product Judgment und operative Realitaet zusammenkommen muessen.",
+        "Best Fit: AI Product Manager, Technical Product Manager, Product Operations, MedTech / HealthTech Product Lead oder Workflow Automation Rollen, in denen Product Judgment und operative Realität zusammenkommen müssen.",
       para2:
-        "Ich arbeite ueber Business, Product, Operations und Engineering hinweg: Problem framen, Workflow mappen, MVP-Scope schneiden, Akzeptanzkriterien definieren und Trade-offs fuer Leadership sichtbar machen.",
+        "Ich arbeite über Business, Product, Operations und Engineering hinweg: Problem framen, Workflow mappen, MVP-Scope schneiden, Akzeptanzkriterien definieren und Trade-offs für Leadership sichtbar machen.",
       para3:
-        "Regulated-Operations-Mindset: schnell bewegen, wo es moeglich ist, aber Review Ownership, Traceability, Dokumentation und Handover-Disziplin erhalten.",
+        "Regulated-Operations-Mindset: schnell bewegen, wo es möglich ist, aber Review Ownership, Traceability, Dokumentation und Handover-Disziplin erhalten.",
     },
     outside: {
       eyebrow: "Ausserhalb der Plattform",
       heading: "Ausserhalb der Plattform",
       basketball: "Systemdenken auf Teamdynamik angewendet.",
-      training: "Feedback-Schleifen akkumulieren sich ueber Zeit.",
+      training: "Feedback-Schleifen akkumulieren sich über Zeit.",
       travel: "Mustererkennung in verschiedenen Umgebungen.",
       quote:
         "Some people want it to happen, some wish it would happen, others make it happen.",
@@ -261,7 +261,7 @@ export default {
       "Decision Support": "Entscheidungsunterstützung",
       "Real-Time Systems": "Echtzeitsysteme",
       "Internal Tools": "Interne Tools",
-      "AI-Assisted": "KI-gestuetzt",
+      "AI-Assisted": "KI-gestützt",
       "Trading Systems": "Trading-Systeme",
       FinTech: "FinTech",
       Productivity: "Produktivität",
@@ -478,7 +478,7 @@ export default {
     availabilityTextServices:
       "Ich nehme eine begrenzte Anzahl an MedTech-, HealthTech- und regulierten Operations-Projekten an, bei denen ein Workflow-System sichtbaren Hebel erzeugen kann.",
     availabilityText2Services:
-      "Jedes Engagement beginnt mit einem klaren Audit: der schnellste Weg zu sicherer KI-Unterstuetzung, saubereren Workflows und auditierbarem Handover.",
+      "Jedes Engagement beginnt mit einem klaren Audit: der schnellste Weg zu sicherer KI-Unterstützung, saubereren Workflows und auditierbarem Handover.",
     copyright: "Alle Rechte vorbehalten.",
     location: "Deutschland (MEZ) · Selektiv offen für Remote & Hybrid",
     navLinks: {
@@ -515,7 +515,7 @@ export default {
       viewBuildProof: "Build Proof ansehen",
       viewRegulatedProof: "Regulierten Proof ansehen",
       exploreAiWorkflows: "KI-Workflows ansehen",
-      workWithMe: "Discuss a workflow",
+      workWithMe: "Workflow besprechen",
       contact: "Kontakt aufnehmen",
       discussRole: "Rolle oder Workflow besprechen",
       exploreCollaboration: "Zusammenarbeit ansehen",
@@ -541,16 +541,16 @@ export default {
     },
     seo: {
       homeTitle: "Roman Mazuryk \u2014 KI-augmentierte Produkt- und Workflow-Systeme",
-      aiTitle: "KI-Workflow-Automatisierung fuer KMU \u2014 Roman Mazuryk",
-      aiDescription: "KI-gestuetzte Workflow-Automatisierung, SOP-Systeme, Dashboards und interne Tools fuer KMU mit repetitiver operativer Arbeit und verstreuter Dokumentation.",
+      aiTitle: "KI-Workflow-Automatisierung für KMU \u2014 Roman Mazuryk",
+      aiDescription: "KI-gestützte Workflow-Automatisierung, SOP-Systeme, Dashboards und interne Tools für KMU mit repetitiver operativer Arbeit und verstreuter Dokumentation.",
       medtechTitle: "MedTech Produkt- und Projektportfolio \u2014 Roman Mazuryk",
-      medtechDescription: "MedTech-Implementierungserfahrung uebersetzt in Produktdenken, Projektkoordination, Workflow-Systeme, Dokumentation, Handover und KI-gestuetzte Umsetzung.",
+      medtechDescription: "MedTech-Implementierungserfahrung übersetzt in Produktdenken, Projektkoordination, Workflow-Systeme, Dokumentation, Handover und KI-gestützte Umsetzung.",
       fullstackTitle: "KI-erweiterter Full-Stack Product Builder \u2014 Roman Mazuryk",
-      fullstackDescription: "Full-Stack-Produktprototypen, Dashboards, Workflow-Tools und KI-gestuetzte Systeme mit React, Next.js, Python, Datenbanken, Deployment-Tools und KI-nativen Entwicklungsworkflows.",
+      fullstackDescription: "Full-Stack-Produktprototypen, Dashboards, Workflow-Tools und KI-gestützte Systeme mit React, Next.js, Python, Datenbanken, Deployment-Tools und KI-nativen Entwicklungsworkflows.",
       collaborateTitle: "KI-gestützte Workflow-Zusammenarbeit für MedTech-Teams",
       collaborateDescription: "Workflow-Audits, Discovery-Sprints, Prototypen, SOP-Systeme und compliance-bewusste Automatisierungsunterstützung für MedTech, HealthTech und regulierte Operations.",
       aiWorkflowTitle: "KI-Workflow-Bibliothek",
-      homeDescription: "Produktmanagement, MedTech-Implementierung, KI-Automatisierung und Full-Stack-Entwicklung fuer Workflow-Systeme, Prototypen und operative Tools.",
+      homeDescription: "Produktmanagement, MedTech-Implementierung, KI-Automatisierung und Full-Stack-Entwicklung für Workflow-Systeme, Prototypen und operative Tools.",
       aiWorkflowDescription: "Praktische Beispiele für KI-gestützte Workflow-Systeme in MedTech, HealthTech und regulierten operativen Bereichen.",
       proofTitle: "Proof of Work - MedTech-Produkt- und Workflow-Systeme",
       proofDescription: "Ausgewählte Workflow-Systeme, Produktkonzepte und KI-gestützte Prototypen, die zeigen, wie Roman Mazuryk operative Komplexität in strukturierte, nachvollziehbare Systeme übersetzt.",
