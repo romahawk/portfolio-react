@@ -39,10 +39,13 @@
 
 .home-typewriter-title {
   display: inline;
+  overflow-wrap: break-word;
 }
 
 .home-typewriter-title__word {
   display: inline-block;
+  max-width: 100%;
+  overflow-wrap: break-word;
   white-space: nowrap;
 }
 
@@ -70,6 +73,13 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .home-typewriter-title__word {
+    overflow-wrap: anywhere;
+    white-space: normal;
   }
 }
 

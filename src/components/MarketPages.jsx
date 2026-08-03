@@ -20,6 +20,8 @@ import {
 } from "./system/SystemVisuals.jsx";
 import TypewriterTitle from "./common/TypewriterTitle.jsx";
 import { getProjectsByCategory, projectCategories } from "../data/projects.js";
+import { useTranslation } from "../context/LangContext.jsx";
+import { deText, localizeGermanValue } from "../locales/germanCopy.js";
 
 const EMAIL = "romazuryk@proton.me";
 
@@ -577,9 +579,12 @@ const fullstackCapabilities = [
 ];
 
 function ProofGrid({ projects, accent }) {
+  const { lang } = useTranslation();
+  const localizedProjects = localizeGermanValue(projects, lang);
+
   return (
     <div className="market-page__proof-grid">
-      {projects.map((project) => <ProofCard project={project} accent={accent} key={project.title} />)}
+      {localizedProjects.map((project) => <ProofCard project={project} accent={accent} key={project.title} />)}
     </div>
   );
 }
@@ -597,35 +602,42 @@ function PillList({ items, accent = "ai" }) {
 }
 
 function HomeHeroVisual() {
+  const { lang } = useTranslation();
+  const inputs = localizeGermanValue(heroInputs, lang);
+  const outputs = localizeGermanValue(heroOutputs, lang);
+
   return (
-    <div className="home-system-visual system-accent--ai" aria-label="Fragmented inputs become structured outputs">
+    <div className="home-system-visual system-accent--ai" aria-label={deText("Fragmented inputs become structured outputs", lang)}>
       <div className="home-system-visual__column">
-        <span className="home-system-visual__label">Fragmented inputs</span>
-        {heroInputs.map((item) => <span className="home-system-visual__chip" key={item}>{item}</span>)}
+        <span className="home-system-visual__label">{deText("Fragmented inputs", lang)}</span>
+        {inputs.map((item) => <span className="home-system-visual__chip" key={item}>{item}</span>)}
       </div>
       <div className="home-system-visual__core" aria-hidden="true">
         <span className="home-system-visual__pulse" />
-        <strong>Product logic</strong>
-        <span>AI-assisted workflow map</span>
+        <strong>{deText("Product logic", lang)}</strong>
+        <span>{deText("AI-assisted workflow map", lang)}</span>
       </div>
       <div className="home-system-visual__column">
-        <span className="home-system-visual__label">Structured outputs</span>
-        {heroOutputs.map((item) => <span className="home-system-visual__chip home-system-visual__chip--output" key={item}>{item}</span>)}
+        <span className="home-system-visual__label">{deText("Structured outputs", lang)}</span>
+        {outputs.map((item) => <span className="home-system-visual__chip home-system-visual__chip--output" key={item}>{item}</span>)}
       </div>
     </div>
   );
 }
 
 function RegulatedOperationsProofGrid({ items }) {
+  const { lang } = useTranslation();
+  const localizedItems = localizeGermanValue(items, lang);
+
   return (
     <div className="medtech-regulated-proof-grid">
-      {items.map((item, index) => (
+      {localizedItems.map((item, index) => (
         <article className="medtech-regulated-proof-card reveal" key={item.title}>
           <span>{String(index + 1).padStart(2, "0")}</span>
           <h3>{item.title}</h3>
           <p>{item.body}</p>
           <div>
-            <strong>AI relevance</strong>
+            <strong>{deText("AI relevance", lang)}</strong>
             <p>{item.relevance}</p>
           </div>
         </article>
@@ -635,23 +647,27 @@ function RegulatedOperationsProofGrid({ items }) {
 }
 
 function WorkflowBeforeAfter({ before, after }) {
+  const { lang } = useTranslation();
+  const beforeItems = localizeGermanValue(before, lang);
+  const afterItems = localizeGermanValue(after, lang);
+
   return (
     <div className="ai-before-after reveal">
       <div className="ai-before-after__panel ai-before-after__panel--before">
-        <span className="ai-before-after__label">Before</span>
-        <h3>Scattered work</h3>
+        <span className="ai-before-after__label">{deText("Before", lang)}</span>
+        <h3>{deText("Scattered work", lang)}</h3>
         <ul>
-          {before.map((item) => <li key={item}>{item}</li>)}
+          {beforeItems.map((item) => <li key={item}>{item}</li>)}
         </ul>
       </div>
       <div className="ai-before-after__arrow" aria-hidden="true">
         <ArrowRight size={22} />
       </div>
       <div className="ai-before-after__panel ai-before-after__panel--after">
-        <span className="ai-before-after__label">After</span>
-        <h3>Workflow intelligence</h3>
+        <span className="ai-before-after__label">{deText("After", lang)}</span>
+        <h3>{deText("Workflow intelligence", lang)}</h3>
         <ul>
-          {after.map((item) => <li key={item}>{item}</li>)}
+          {afterItems.map((item) => <li key={item}>{item}</li>)}
         </ul>
       </div>
     </div>
@@ -659,14 +675,17 @@ function WorkflowBeforeAfter({ before, after }) {
 }
 
 function CapabilityToolMatrix({ items }) {
+  const { lang } = useTranslation();
+  const localizedItems = localizeGermanValue(items, lang);
+
   return (
     <div className="ai-tool-matrix reveal">
       <div className="ai-tool-matrix__head">
-        <span>Capability</span>
-        <span>Tools</span>
-        <span>Use case</span>
+        <span>{deText("Capability", lang)}</span>
+        <span>{deText("Tools", lang)}</span>
+        <span>{deText("Use case", lang)}</span>
       </div>
-      {items.map((item) => (
+      {localizedItems.map((item) => (
         <div className="ai-tool-matrix__row" key={item.capability}>
           <strong>{item.capability}</strong>
           <span>{item.tools}</span>
@@ -678,30 +697,32 @@ function CapabilityToolMatrix({ items }) {
 }
 
 function SelectedProofCard({ item }) {
-  const links = item.links || [];
+  const { lang } = useTranslation();
+  const localizedItem = localizeGermanValue(item, lang);
+  const links = localizedItem.links || [];
 
   return (
     <article className="medtech-proof-card reveal">
       <header>
-        <p>{item.type}</p>
-        <h3>{item.title}</h3>
+        <p>{localizedItem.type}</p>
+        <h3>{localizedItem.title}</h3>
       </header>
       <dl>
         <div>
-          <dt>Problem</dt>
-          <dd>{item.problem}</dd>
+          <dt>{deText("Problem", lang)}</dt>
+          <dd>{localizedItem.problem}</dd>
         </div>
         <div>
-          <dt>System / contribution</dt>
-          <dd>{item.system}</dd>
+          <dt>{deText("System / contribution", lang)}</dt>
+          <dd>{localizedItem.system}</dd>
         </div>
         <div>
-          <dt>Proof</dt>
-          <dd>{item.proof}</dd>
+          <dt>{deText("Proof", lang)}</dt>
+          <dd>{localizedItem.proof}</dd>
         </div>
         <div>
-          <dt>Relevance</dt>
-          <dd>{item.relevance}</dd>
+          <dt>{deText("Relevance", lang)}</dt>
+          <dd>{localizedItem.relevance}</dd>
         </div>
       </dl>
       {links.length ? (
@@ -721,6 +742,8 @@ function SelectedProofCard({ item }) {
 }
 
 function ProductizedOfferCard({ offer }) {
+  const { lang } = useTranslation();
+  const localizedOffer = localizeGermanValue(offer, lang);
   const Icon = offer.icon;
   const toneClass = offer.tone ? `ai-offer-card--${offer.tone}` : "";
 
@@ -728,69 +751,74 @@ function ProductizedOfferCard({ offer }) {
     <article className={`ai-offer-card ${toneClass} ${offer.featured ? "ai-offer-card--featured" : ""} reveal`}>
       <header className="ai-offer-card__header">
         <span className="ai-offer-card__icon" aria-hidden="true">{Icon ? <Icon size={18} /> : null}</span>
-        {offer.badge ? <span className="ai-offer-card__badge">{offer.badge}</span> : null}
+        {localizedOffer.badge ? <span className="ai-offer-card__badge">{localizedOffer.badge}</span> : null}
       </header>
-      <h3>{offer.title}</h3>
+      <h3>{localizedOffer.title}</h3>
       <dl>
         <div>
-          <dt>Best for</dt>
-          <dd>{offer.bestFor}</dd>
+          <dt>{deText("Best for", lang)}</dt>
+          <dd>{localizedOffer.bestFor}</dd>
         </div>
         <div>
-          <dt>Deliverable</dt>
-          <dd>{offer.deliverable}</dd>
+          <dt>{deText("Deliverable", lang)}</dt>
+          <dd>{localizedOffer.deliverable}</dd>
         </div>
         <div>
-          <dt>Typical output</dt>
-          <dd>{offer.output}</dd>
+          <dt>{deText("Typical output", lang)}</dt>
+          <dd>{localizedOffer.output}</dd>
         </div>
       </dl>
       <a href={offer.cta.href} className="ai-offer-card__cta">
-        {offer.cta.label} <ArrowRight size={14} aria-hidden="true" />
+        {localizedOffer.cta.label} <ArrowRight size={14} aria-hidden="true" />
       </a>
     </article>
   );
 }
 
 function HomeAuditSection() {
+  const { lang } = useTranslation();
+  const fit = localizeGermanValue(homeAuditFit, lang);
+  const deliverables = localizeGermanValue(homeAuditDeliverables, lang);
+  const outcomes = localizeGermanValue(homeAuditOutcomes, lang);
+
   return (
     <section id="audit" className="section container market-page__section home-audit-section">
       <SectionHeader
-        eyebrow="Entry offer"
-        title="AI Workflow Opportunity Audit"
-        text="A focused consulting engagement for teams that want practical AI implementation work, but need to know which workflow is worth automating first."
+        eyebrow={deText("Entry offer", lang)}
+        title={deText("AI Workflow Opportunity Audit", lang)}
+        text={deText("A focused consulting engagement for teams that want practical AI implementation work, but need to know which workflow is worth automating first.", lang)}
       />
       <div className="home-audit-grid">
         <article className="home-audit-card home-audit-card--primary home-audit-card--ai reveal">
-          <span className="home-audit-card__label">Who it is for</span>
-          <h3>Operations-heavy SMEs and regulated teams with one messy workflow.</h3>
+          <span className="home-audit-card__label">{deText("Who it is for", lang)}</span>
+          <h3>{deText("Operations-heavy SMEs and regulated teams with one messy workflow.", lang)}</h3>
           <p>
-            Best fit when work is scattered across emails, spreadsheets, PDFs, meetings, support requests, or handover documents, and the team needs a concrete AI starting point.
+            {deText("Best fit when work is scattered across emails, spreadsheets, PDFs, meetings, support requests, or handover documents, and the team needs a concrete AI starting point.", lang)}
           </p>
           <ul>
-            {homeAuditFit.map((item) => <li key={item}>{item}</li>)}
+            {fit.map((item) => <li key={item}>{item}</li>)}
           </ul>
         </article>
         <article className="home-audit-card home-audit-card--included home-audit-card--medtech reveal">
-          <span className="home-audit-card__label">What is included</span>
+          <span className="home-audit-card__label">{deText("What is included", lang)}</span>
           <ul className="home-audit-card__deliverables">
-            {homeAuditDeliverables.map((item) => <li key={item}>{item}</li>)}
+            {deliverables.map((item) => <li key={item}>{item}</li>)}
           </ul>
         </article>
         <article className="home-audit-card home-audit-card--outcome home-audit-card--fullstack reveal">
-          <span className="home-audit-card__label">What you receive</span>
+          <span className="home-audit-card__label">{deText("What you receive", lang)}</span>
           <ul>
-            {homeAuditOutcomes.map((item) => <li key={item}>{item}</li>)}
+            {outcomes.map((item) => <li key={item}>{item}</li>)}
           </ul>
         </article>
         <article className="home-audit-card home-audit-card--sprint home-audit-card--ai reveal">
-          <span className="home-audit-card__label">How it leads into implementation</span>
-          <h3>From audit to working system</h3>
+          <span className="home-audit-card__label">{deText("How it leads into implementation", lang)}</span>
+          <h3>{deText("From audit to working system", lang)}</h3>
           <p>
-            The audit produces a recommended pilot and sprint scope. From there, I can help build the first useful system: an internal assistant, workflow automation, dashboard, decision-support tool, or deployed custom prototype.
+            {deText("The audit produces a recommended pilot and sprint scope. From there, I can help build the first useful system: an internal assistant, workflow automation, dashboard, decision-support tool, or deployed custom prototype.", lang)}
           </p>
           <a href={`mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`} className="btn btn--primary">
-            Book an AI Workflow Audit <ArrowRight size={15} className="icon ml-1" aria-hidden="true" />
+            {deText("Book an AI Workflow Audit", lang)} <ArrowRight size={15} className="icon ml-1" aria-hidden="true" />
           </a>
         </article>
       </div>
@@ -799,9 +827,12 @@ function HomeAuditSection() {
 }
 
 function CapabilityGrid({ items }) {
+  const { lang } = useTranslation();
+  const localizedItems = localizeGermanValue(items, lang);
+
   return (
     <div className="medtech-capability-grid">
-      {items.map((item) => (
+      {localizedItems.map((item) => (
         <article className="medtech-capability-card reveal" key={item.title}>
           <h3>{item.title}</h3>
           <p>{item.text}</p>
@@ -812,16 +843,20 @@ function CapabilityGrid({ items }) {
 }
 
 function WorkflowExampleStrip({ workflow }) {
+  const { lang } = useTranslation();
+  const localizedWorkflow = localizeGermanValue(workflow, lang);
+  const flowLabels = ["Input", "AI Step", "Human Review", "Output"].map((label) => deText(label, lang));
+
   return (
     <article className="ai-workflow-strip reveal">
       <div className="ai-workflow-strip__title">
-        <h3>{workflow.title}</h3>
-        <p>{workflow.value}</p>
+        <h3>{localizedWorkflow.title}</h3>
+        <p>{localizedWorkflow.value}</p>
       </div>
-      <div className="ai-workflow-strip__flow" aria-label={`${workflow.title} flow`}>
-        {workflow.steps.map((step, index) => (
+      <div className="ai-workflow-strip__flow" aria-label={`${localizedWorkflow.title} flow`}>
+        {localizedWorkflow.steps.map((step, index) => (
           <span className="ai-workflow-strip__node" key={step}>
-            <span>{["Input", "AI Step", "Human Review", "Output"][index]}</span>
+            <span>{flowLabels[index]}</span>
             {step}
           </span>
         ))}
@@ -831,24 +866,27 @@ function WorkflowExampleStrip({ workflow }) {
 }
 
 function ProcessTimeline({ steps }) {
+  const { lang } = useTranslation();
+  const localizedSteps = localizeGermanValue(steps, lang);
+
   return (
     <div className="ai-process-timeline">
-      {steps.map((step, index) => (
+      {localizedSteps.map((step, index) => (
         <article className="ai-process-step reveal" key={step.title}>
           <span className="ai-process-step__number">{String(index + 1).padStart(2, "0")}</span>
           <div className="ai-process-step__body">
             <h3>{step.title}</h3>
             <dl>
               <div>
-                <dt>What happens</dt>
+                <dt>{deText("What happens", lang)}</dt>
                 <dd>{step.happens}</dd>
               </div>
               <div>
-                <dt>You provide</dt>
+                <dt>{deText("You provide", lang)}</dt>
                 <dd>{step.provide}</dd>
               </div>
               <div>
-                <dt>I deliver</dt>
+                <dt>{deText("I deliver", lang)}</dt>
                 <dd>{step.deliver}</dd>
               </div>
             </dl>
@@ -860,9 +898,12 @@ function ProcessTimeline({ steps }) {
 }
 
 function RoleFitSection({ groups }) {
+  const { lang } = useTranslation();
+  const localizedGroups = localizeGermanValue(groups, lang);
+
   return (
     <div className="medtech-role-grid">
-      {groups.map((group) => (
+      {localizedGroups.map((group) => (
         <article className="medtech-role-card reveal" key={group.title}>
           <h3>{group.title}</h3>
           <ul>
@@ -875,18 +916,22 @@ function RoleFitSection({ groups }) {
 }
 
 function FitSection({ good, notIdeal }) {
+  const { lang } = useTranslation();
+  const goodItems = localizeGermanValue(good, lang);
+  const notIdealItems = localizeGermanValue(notIdeal, lang);
+
   return (
     <div className="ai-fit-grid reveal">
       <article className="ai-fit-card ai-fit-card--good">
-        <h3>Good fit</h3>
+        <h3>{deText("Good fit", lang)}</h3>
         <ul>
-          {good.map((item) => <li key={item}>{item}</li>)}
+          {goodItems.map((item) => <li key={item}>{item}</li>)}
         </ul>
       </article>
       <article className="ai-fit-card ai-fit-card--not">
-        <h3>Not ideal for</h3>
+        <h3>{deText("Not ideal for", lang)}</h3>
         <ul>
-          {notIdeal.map((item) => <li key={item}>{item}</li>)}
+          {notIdealItems.map((item) => <li key={item}>{item}</li>)}
         </ul>
       </article>
     </div>
@@ -894,9 +939,12 @@ function FitSection({ good, notIdeal }) {
 }
 
 function FullStackHeroVisual({ items }) {
+  const { lang } = useTranslation();
+  const localizedItems = localizeGermanValue(items, lang);
+
   return (
-    <div className="fullstack-hero-map system-accent--fullstack reveal" aria-label="Idea to deployed artifact">
-      {items.map((item, index) => (
+    <div className="fullstack-hero-map system-accent--fullstack reveal" aria-label={deText("Idea to deployed artifact", lang)}>
+      {localizedItems.map((item, index) => (
         <div className="fullstack-hero-map__step" key={item}>
           <div className="fullstack-hero-map__node">
             <span>{String(index + 1).padStart(2, "0")}</span>
@@ -910,9 +958,12 @@ function FullStackHeroVisual({ items }) {
 }
 
 function StackGroupGrid({ groups }) {
+  const { lang } = useTranslation();
+  const localizedGroups = localizeGermanValue(groups, lang);
+
   return (
     <div className="fullstack-stack-grid">
-      {groups.map((group) => (
+      {localizedGroups.map((group) => (
         <article className="fullstack-stack-card reveal" key={group.title}>
           <h3>{group.title}</h3>
           <div>
@@ -925,9 +976,12 @@ function StackGroupGrid({ groups }) {
 }
 
 function FullStackWorkflowRow({ steps }) {
+  const { lang } = useTranslation();
+  const localizedSteps = localizeGermanValue(steps, lang);
+
   return (
     <div className="fullstack-workflow-row">
-      {steps.map((step, index) => (
+      {localizedSteps.map((step, index) => (
         <article className="fullstack-workflow-card reveal" key={step.title}>
           <span>{String(index + 1).padStart(2, "0")}</span>
           <h3>{step.title}</h3>
@@ -939,19 +993,21 @@ function FullStackWorkflowRow({ steps }) {
 }
 
 function FullStackProjectCard({ project, compact = false }) {
-  const links = project.links || [];
+  const { lang } = useTranslation();
+  const localizedProject = localizeGermanValue(project, lang);
+  const links = localizedProject.links || [];
 
   return (
     <article className={`fullstack-project-card ${compact ? "fullstack-project-card--compact" : ""} reveal`}>
       <header>
-        {project.status ? <span className="fullstack-project-card__status">{project.status}</span> : null}
-        <p>{project.type}</p>
-        <h3>{project.title}</h3>
+        {localizedProject.status ? <span className="fullstack-project-card__status">{localizedProject.status}</span> : null}
+        <p>{localizedProject.type}</p>
+        <h3>{localizedProject.title}</h3>
       </header>
-      <p className="fullstack-project-card__description">{project.description}</p>
-      <p className="fullstack-project-card__relevance">{project.relevance}</p>
+      <p className="fullstack-project-card__description">{localizedProject.description}</p>
+      <p className="fullstack-project-card__relevance">{localizedProject.relevance}</p>
       <div className="fullstack-project-card__stack">
-        {project.stack.map((item) => <FeaturePill accent="fullstack" key={item}>{item}</FeaturePill>)}
+        {localizedProject.stack.map((item) => <FeaturePill accent="fullstack" key={item}>{item}</FeaturePill>)}
       </div>
       {links.length ? (
         <div className="fullstack-project-card__links">
@@ -970,9 +1026,12 @@ function FullStackProjectCard({ project, compact = false }) {
 }
 
 function FullStackCapabilityGrid({ items }) {
+  const { lang } = useTranslation();
+  const localizedItems = localizeGermanValue(items, lang);
+
   return (
     <div className="fullstack-capability-grid">
-      {items.map((item) => (
+      {localizedItems.map((item) => (
         <article className="fullstack-capability-card reveal" key={item.title}>
           <h3>{item.title}</h3>
           <p>{item.text}</p>
@@ -983,27 +1042,33 @@ function FullStackCapabilityGrid({ items }) {
 }
 
 export function HomePage() {
+  const { lang } = useTranslation();
   const highlights = [
     "AI Systems Consultant",
     "Operations-heavy SMEs",
     "Regulated workflow experience",
   ];
   const homeTitle = "AI Workflow Systems for Operations-Heavy SMEs and Regulated Teams";
+  const localizedHighlights = localizeGermanValue(highlights, lang);
+  const localizedHomeArtifact = localizeGermanValue(homeArtifact, lang);
+  const localizedHomeWorkflow = localizeGermanValue(homeWorkflow, lang);
+  const localizedOperatingModelPills = localizeGermanValue(operatingModelPills, lang);
+  const localizedProofHighlights = localizeGermanValue(proofHighlights, lang);
 
   return (
     <div className="market-page market-page--home">
       <PageHero
         id="home"
-        eyebrow="AI Systems Consultant for operations-heavy SMEs and regulated industries"
-        title={<TypewriterTitle text={homeTitle} />}
-        subtitle="I help operations-heavy SMEs turn manual, fragmented workflows into practical AI systems, internal tools, and implementation roadmaps."
-        primaryCta={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: "View Build Proof", href: "/fullstack" }}
-        tertiaryCta={{ label: "Discuss One Workflow to Automate", href: `mailto:${EMAIL}?subject=One%20Workflow%20to%20Automate` }}
+        eyebrow={deText("AI Systems Consultant for operations-heavy SMEs and regulated industries", lang)}
+        title={<TypewriterTitle text={deText(homeTitle, lang)} />}
+        subtitle={deText("I help operations-heavy SMEs turn manual, fragmented workflows into practical AI systems, internal tools, and implementation roadmaps.", lang)}
+        primaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: deText("View Build Proof", lang), href: "/fullstack" }}
+        tertiaryCta={{ label: deText("Discuss One Workflow to Automate", lang), href: `mailto:${EMAIL}?subject=One%20Workflow%20to%20Automate` }}
         scrollTargetId="audit"
       >
         <div className="market-page__hero-extra">
-          <PillList items={highlights} accent="ai" />
+          <PillList items={localizedHighlights} accent="ai" />
         </div>
       </PageHero>
 
@@ -1011,38 +1076,38 @@ export function HomePage() {
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow="System map"
-          title="From fragmented workflow to implementation roadmap"
-          text="The method starts with one concrete operational workflow, maps the process and risk, identifies the AI opportunity, and turns the best pilot into a buildable system."
+          eyebrow={deText("System map", lang)}
+          title={deText("From fragmented workflow to implementation roadmap", lang)}
+          text={deText("The method starts with one concrete operational workflow, maps the process and risk, identifies the AI opportunity, and turns the best pilot into a buildable system.", lang)}
         />
         <ArtifactMap
           accent="ai"
-          title="AI Workflow Systems plus Regulated Operations Credibility plus Full-Stack Delivery becomes an Implementation-Ready Audit"
-          {...homeArtifact}
+          title={deText("AI Workflow Systems plus Regulated Operations Credibility plus Full-Stack Delivery becomes an Implementation-Ready Audit", lang)}
+          {...localizedHomeArtifact}
         />
-        <WorkflowMap items={homeWorkflow} accent="ai" title="Audit to working system" />
-        <PillList items={operatingModelPills} accent="ai" />
+        <WorkflowMap items={localizedHomeWorkflow} accent="ai" title={deText("Audit to working system", lang)} />
+        <PillList items={localizedOperatingModelPills} accent="ai" />
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow="Proof connected to offers"
-          title="Proof that turns workflow problems into AI systems"
-          text="Technology stays secondary here. The important signal is whether a business process can become a visible, reviewable, useful system."
+          eyebrow={deText("Proof connected to offers", lang)}
+          title={deText("Proof that turns workflow problems into AI systems", lang)}
+          text={deText("Technology stays secondary here. The important signal is whether a business process can become a visible, reviewable, useful system.", lang)}
         />
         <div className="market-page__highlight-grid">
-          {proofHighlights.map((item) => <SystemCard {...item} key={item.title} />)}
+          {localizedProofHighlights.map((item) => <SystemCard {...item} key={item.title} />)}
         </div>
       </section>
 
       <section className="section container market-page__section">
         <CTAStrip
           accent="ai"
-          eyebrow="Next step"
-          title="Have one workflow that feels too manual, scattered, or fragile?"
-          text="Start with an AI Workflow Opportunity Audit. We identify the bottlenecks, the automation opportunity, the risk boundaries, and the first realistic pilot."
-          primary={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
-          secondary={{ label: "View Build Proof", href: "/fullstack" }}
+          eyebrow={deText("Next step", lang)}
+          title={deText("Have one workflow that feels too manual, scattered, or fragile?", lang)}
+          text={deText("Start with an AI Workflow Opportunity Audit. We identify the bottlenecks, the automation opportunity, the risk boundaries, and the first realistic pilot.", lang)}
+          primary={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
+          secondary={{ label: deText("View Build Proof", lang), href: "/fullstack" }}
         />
       </section>
     </div>
@@ -1050,60 +1115,67 @@ export function HomePage() {
 }
 
 export function AIPage() {
+  const { lang } = useTranslation();
   const projects = getProjectsByCategory(projectCategories.aiAutomation, { featuredOnly: true });
   const aiTitle = "AI Workflow Systems and Automation for Operations-Heavy SMEs";
+  const localizedAiArtifact = localizeGermanValue(aiArtifact, lang);
+  const localizedAiStack = localizeGermanValue(aiStack, lang);
+  const localizedAiExampleWorkflows = localizeGermanValue(aiExampleWorkflows, lang);
+  const localizedAiProcess = localizeGermanValue(aiProcess, lang);
+  const localizedAiFit = localizeGermanValue(aiFit, lang);
+  const localizedAiBeforeAfter = localizeGermanValue(aiBeforeAfter, lang);
 
   return (
     <div className="market-page market-page--ai">
       <PageHero
-        eyebrow="AI systems consulting"
-        title={<TypewriterTitle text={aiTitle} />}
-        subtitle="I help teams turn repetitive operational work, scattered documentation, manual coordination, and weak handovers into AI-assisted workflows, automations, internal assistants, dashboards, and implementation roadmaps."
-        primaryCta={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: "Discuss One Workflow to Automate", href: `mailto:${EMAIL}?subject=One%20Workflow%20to%20Automate` }}
+        eyebrow={deText("AI systems consulting", lang)}
+        title={<TypewriterTitle text={deText(aiTitle, lang)} />}
+        subtitle={deText("I help teams turn repetitive operational work, scattered documentation, manual coordination, and weak handovers into AI-assisted workflows, automations, internal assistants, dashboards, and implementation roadmaps.", lang)}
+        primaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: deText("Discuss One Workflow to Automate", lang), href: `mailto:${EMAIL}?subject=One%20Workflow%20to%20Automate` }}
         scrollTargetId="ai-workflow-intelligence"
         variant="ai"
       >
         <div className="ai-hero-extra">
-          <p className="market-page__claim">I do not sell broad AI experiments. I help businesses find one workflow where AI can safely reduce friction, then turn it into a practical system.</p>
+          <p className="market-page__claim">{deText("I do not sell broad AI experiments. I help businesses find one workflow where AI can safely reduce friction, then turn it into a practical system.", lang)}</p>
           <HomeHeroVisual />
         </div>
       </PageHero>
 
       <section id="ai-workflow-intelligence" className="section container market-page__section">
         <SectionHeader
-          eyebrow="01 / Workflow intelligence"
-          title="From scattered work to workflow intelligence"
-          text="A workflow intelligence system connects scattered inputs - emails, documents, forms, spreadsheets, and meetings - and turns them into structured tasks, summaries, decisions, dashboards, or SOPs."
+          eyebrow={deText("01 / Workflow intelligence", lang)}
+          title={deText("From scattered work to workflow intelligence", lang)}
+          text={deText("A workflow intelligence system connects scattered inputs - emails, documents, forms, spreadsheets, and meetings - and turns them into structured tasks, summaries, decisions, dashboards, or SOPs.", lang)}
         />
-        <WorkflowBeforeAfter before={aiBeforeAfter.before} after={aiBeforeAfter.after} />
+        <WorkflowBeforeAfter before={localizedAiBeforeAfter.before} after={localizedAiBeforeAfter.after} />
         <ArtifactMap
           accent="ai"
-          title="Manual Process becomes AI-Assisted Workflow"
-          {...aiArtifact}
+          title={deText("Manual Process becomes AI-Assisted Workflow", lang)}
+          {...localizedAiArtifact}
         />
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow="02 / Process"
-          title="Process"
-          text="The process is intentionally small-scope: map one workflow, build one useful system, review it with real users, and iterate."
+          eyebrow={deText("02 / Process", lang)}
+          title={deText("Process", lang)}
+          text={deText("The process is intentionally small-scope: map one workflow, build one useful system, review it with real users, and iterate.", lang)}
         />
-        <ProcessTimeline steps={aiProcess} />
+        <ProcessTimeline steps={localizedAiProcess} />
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow="03 / Productized offers"
-          title="Start with an audit, then build the right pilot"
-          text="The AI Workflow Opportunity Audit clarifies the workflow, opportunity, risk, and pilot scope before committing to a build sprint."
+          eyebrow={deText("03 / Productized offers", lang)}
+          title={deText("Start with an audit, then build the right pilot", lang)}
+          text={deText("The AI Workflow Opportunity Audit clarifies the workflow, opportunity, risk, and pilot scope before committing to a build sprint.", lang)}
         />
         <div className="ai-offer-grid">
           {aiOffers.map((offer, index) => (
             <Fragment key={offer.title}>
               {index === 2 ? (
-                <p className="ai-offer-grid__row-label">Common pilot types</p>
+                <p className="ai-offer-grid__row-label">{deText("Common pilot types", lang)}</p>
               ) : null}
               <ProductizedOfferCard offer={offer} />
             </Fragment>
@@ -1113,42 +1185,42 @@ export function AIPage() {
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow="04 / Example workflows"
-          title="Practical AI workflows for operational bottlenecks"
-          text="These examples show where AI can structure incoming information, reduce manual coordination, and create reviewable outputs without replacing human judgment."
+          eyebrow={deText("04 / Example workflows", lang)}
+          title={deText("Practical AI workflows for operational bottlenecks", lang)}
+          text={deText("These examples show where AI can structure incoming information, reduce manual coordination, and create reviewable outputs without replacing human judgment.", lang)}
         />
         <div className="ai-workflow-library">
-          {aiExampleWorkflows.map((workflow) => <WorkflowExampleStrip workflow={workflow} key={workflow.title} />)}
+          {localizedAiExampleWorkflows.map((workflow) => <WorkflowExampleStrip workflow={workflow} key={workflow.title} />)}
         </div>
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow="05 / Tools"
-          title="Tools mapped to workflow capabilities"
-          text="The stack depends on the workflow. I use AI, automation tools, lightweight databases, and custom interfaces only where they remove real operational friction."
+          eyebrow={deText("05 / Tools", lang)}
+          title={deText("Tools mapped to workflow capabilities", lang)}
+          text={deText("The stack depends on the workflow. I use AI, automation tools, lightweight databases, and custom interfaces only where they remove real operational friction.", lang)}
         />
-        <CapabilityToolMatrix items={aiStack} />
+        <CapabilityToolMatrix items={localizedAiStack} />
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow="06 / Fit"
-          title="Best fit"
-          text="This is best suited for SMEs and operational teams that already have real work happening across emails, spreadsheets, documents, forms, meetings, and manual follow-ups - but lack a structured workflow system around it."
+          eyebrow={deText("06 / Fit", lang)}
+          title={deText("Best fit", lang)}
+          text={deText("This is best suited for SMEs and operational teams that already have real work happening across emails, spreadsheets, documents, forms, meetings, and manual follow-ups - but lack a structured workflow system around it.", lang)}
         />
-        <FitSection good={aiFit.good} notIdeal={aiFit.notIdeal} />
+        <FitSection good={localizedAiFit.good} notIdeal={localizedAiFit.notIdeal} />
         <ProofGrid projects={projects} accent="ai" />
       </section>
 
       <section className="section container market-page__section">
         <CTAStrip
           accent="ai"
-          eyebrow="Next step"
-          title="Have one messy workflow worth fixing?"
-          text="Start with one contained process. I can help map it, identify automation opportunities, assess risk, and define the smallest useful workflow system around it."
-          primary={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
-          secondary={{ label: "Discuss One Workflow to Automate", href: `mailto:${EMAIL}?subject=One%20Workflow%20to%20Automate` }}
+          eyebrow={deText("Next step", lang)}
+          title={deText("Have one messy workflow worth fixing?", lang)}
+          text={deText("Start with one contained process. I can help map it, identify automation opportunities, assess risk, and define the smallest useful workflow system around it.", lang)}
+          primary={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
+          secondary={{ label: deText("Discuss One Workflow to Automate", lang), href: `mailto:${EMAIL}?subject=One%20Workflow%20to%20Automate` }}
         />
       </section>
     </div>
@@ -1156,70 +1228,76 @@ export function AIPage() {
 }
 
 export function MedTechPage() {
+  const { lang } = useTranslation();
   const medtechTitle = "MedTech and Regulated Operations Proof";
+  const localizedMedtechHeroWorkflow = localizeGermanValue(medtechHeroWorkflow, lang);
+  const localizedRegulatedOperationsProof = localizeGermanValue(regulatedOperationsProof, lang);
+  const localizedMedtechSelectedProof = localizeGermanValue(medtechSelectedProof, lang);
+  const localizedMedtechCapabilityCards = localizeGermanValue(medtechCapabilityCards, lang);
+  const localizedMedtechRoleGroups = localizeGermanValue(medtechRoleGroups, lang);
 
   return (
     <div className="market-page market-page--medtech">
       <PageHero
-        eyebrow="Trust layer / regulated operations"
-        title={<TypewriterTitle text={medtechTitle} />}
-        subtitle="Real MedTech implementation experience translated into AI workflow consulting judgment: clinical context, stakeholder coordination, documentation, handover, risk boundaries, and practical implementation thinking."
-        primaryCta={{ label: "View Regulated Proof", href: "/proof-of-work" }}
-        secondaryCta={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
+        eyebrow={deText("Trust layer / regulated operations", lang)}
+        title={<TypewriterTitle text={deText(medtechTitle, lang)} />}
+        subtitle={deText("Real MedTech implementation experience translated into AI workflow consulting judgment: clinical context, stakeholder coordination, documentation, handover, risk boundaries, and practical implementation thinking.", lang)}
+        primaryCta={{ label: deText("View Regulated Proof", lang), href: "/proof-of-work" }}
+        secondaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
         scrollTargetId="medtech-impact"
       >
         <div className="market-page__hero-extra medtech-hero-extra">
-          <p className="medtech-credibility-line">10+ years across MedTech, OR integration, clinical equipment workflows, supplier coordination, training, handover, and healthcare operations.</p>
-          <WorkflowMap items={medtechHeroWorkflow} accent="medtech" title="Clinical need to workflow system" />
+          <p className="medtech-credibility-line">{deText("10+ years across MedTech, OR integration, clinical equipment workflows, supplier coordination, training, handover, and healthcare operations.", lang)}</p>
+          <WorkflowMap items={localizedMedtechHeroWorkflow} accent="medtech" title={deText("Clinical need to workflow system", lang)} />
         </div>
       </PageHero>
 
       <section id="medtech-impact" className="section container market-page__section">
         <SectionHeader
-          eyebrow="Regulated operations proof"
-          title="Why my MedTech background matters for AI workflow systems"
-          text="AI systems fail when they ignore real-world constraints: handovers, stakeholders, documentation, exceptions, training, and review points. My MedTech implementation background helps me design workflows that fit how teams actually work."
+          eyebrow={deText("Regulated operations proof", lang)}
+          title={deText("Why my MedTech background matters for AI workflow systems", lang)}
+          text={deText("AI systems fail when they ignore real-world constraints: handovers, stakeholders, documentation, exceptions, training, and review points. My MedTech implementation background helps me design workflows that fit how teams actually work.", lang)}
         />
-        <RegulatedOperationsProofGrid items={regulatedOperationsProof} />
+        <RegulatedOperationsProofGrid items={localizedRegulatedOperationsProof} />
       </section>
 
       <section id="medtech-proof" className="section container market-page__section">
         <SectionHeader
-          eyebrow="Selected proof"
-          title="Selected proof of work"
-          text="A focused selection of MedTech and workflow-system projects that connect implementation experience with product thinking and AI-assisted delivery."
+          eyebrow={deText("Selected proof", lang)}
+          title={deText("Selected proof of work", lang)}
+          text={deText("A focused selection of MedTech and workflow-system projects that connect implementation experience with product thinking and AI-assisted delivery.", lang)}
         />
         <div className="medtech-proof-grid">
-          {medtechSelectedProof.map((item) => <SelectedProofCard item={item} key={item.title} />)}
+          {localizedMedtechSelectedProof.map((item) => <SelectedProofCard item={item} key={item.title} />)}
         </div>
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow="Capabilities"
-          title="Product & project capabilities"
-          text="Capability is framed around what implementation-heavy teams need: requirements, alignment, workflow mapping, rollout thinking, documentation, and practical AI support."
+          eyebrow={deText("Capabilities", lang)}
+          title={deText("Product & project capabilities", lang)}
+          text={deText("Capability is framed around what implementation-heavy teams need: requirements, alignment, workflow mapping, rollout thinking, documentation, and practical AI support.", lang)}
         />
-        <CapabilityGrid items={medtechCapabilityCards} />
+        <CapabilityGrid items={localizedMedtechCapabilityCards} />
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow="Role fit"
-          title="Best-fit roles and environments"
-          text="Clear fit for teams where clinical workflow understanding, implementation reality, and product/project structure need to meet."
+          eyebrow={deText("Role fit", lang)}
+          title={deText("Best-fit roles and environments", lang)}
+          text={deText("Clear fit for teams where clinical workflow understanding, implementation reality, and product/project structure need to meet.", lang)}
         />
-        <RoleFitSection groups={medtechRoleGroups} />
+        <RoleFitSection groups={localizedMedtechRoleGroups} />
       </section>
 
       <section className="section container market-page__section">
         <CTAStrip
           accent="medtech"
-          eyebrow="Next step"
-          title="Need AI workflow work with regulated-operations judgment?"
-          text="MedTech is the credibility layer: it shows I understand implementation-heavy environments where workflows, documentation, stakeholders, handover, and risk matter."
-          primary={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
-          secondary={{ label: "View Regulated Proof", href: "/proof-of-work" }}
+          eyebrow={deText("Next step", lang)}
+          title={deText("Need AI workflow work with regulated-operations judgment?", lang)}
+          text={deText("MedTech is the credibility layer: it shows I understand implementation-heavy environments where workflows, documentation, stakeholders, handover, and risk matter.", lang)}
+          primary={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
+          secondary={{ label: deText("View Regulated Proof", lang), href: "/proof-of-work" }}
         />
       </section>
     </div>
@@ -1227,81 +1305,88 @@ export function MedTechPage() {
 }
 
 export function FullStackPage() {
+  const { lang } = useTranslation();
   const fullstackTitle = "From Audit to Working System";
+  const localizedFullstackHeroFlow = localizeGermanValue(fullstackHeroFlow, lang);
+  const localizedFullstackStackGroups = localizeGermanValue(fullstackStackGroups, lang);
+  const localizedFullstackWorkflow = localizeGermanValue(fullstackWorkflow, lang);
+  const localizedFullstackSelectedProjects = localizeGermanValue(fullstackSelectedProjects, lang);
+  const localizedFullstackSecondaryExperiments = localizeGermanValue(fullstackSecondaryExperiments, lang);
+  const localizedFullstackCapabilities = localizeGermanValue(fullstackCapabilities, lang);
 
   return (
     <div className="market-page market-page--fullstack">
       <PageHero
-        eyebrow="Implementation proof"
-        title={<TypewriterTitle text={fullstackTitle} />}
-        subtitle="I can move from workflow discovery to prototype, internal tool, dashboard, automation, or deployed custom application using modern full-stack tools and AI-assisted development workflows."
-        primaryCta={{ label: "View Selected Projects", href: "#fullstack-projects" }}
-        secondaryCta={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
+        eyebrow={deText("Implementation proof", lang)}
+        title={<TypewriterTitle text={deText(fullstackTitle, lang)} />}
+        subtitle={deText("I can move from workflow discovery to prototype, internal tool, dashboard, automation, or deployed custom application using modern full-stack tools and AI-assisted development workflows.", lang)}
+        primaryCta={{ label: deText("View Selected Projects", lang), href: "#fullstack-projects" }}
+        secondaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
         scrollTargetId="fullstack-stack"
       >
         <div className="market-page__hero-extra fullstack-hero-extra">
-          <p className="fullstack-credibility-line">This is implementation proof for the consulting offer: React, Python, APIs, databases, deployment, and AI-assisted development applied to real workflow problems.</p>
-          <FullStackHeroVisual items={fullstackHeroFlow} />
+          <p className="fullstack-credibility-line">{deText("This is implementation proof for the consulting offer: React, Python, APIs, databases, deployment, and AI-assisted development applied to real workflow problems.", lang)}</p>
+          <FullStackHeroVisual items={localizedFullstackHeroFlow} />
         </div>
       </PageHero>
 
       <section id="fullstack-stack" className="section container market-page__section">
         <SectionHeader
-          eyebrow="Technical stack"
-          title="Technical stack"
-          text="A compact product-builder toolkit for interfaces, APIs, data, deployment, and AI-assisted implementation loops."
+          eyebrow={deText("Technical stack", lang)}
+          title={deText("Technical stack", lang)}
+          text={deText("A compact product-builder toolkit for interfaces, APIs, data, deployment, and AI-assisted implementation loops.", lang)}
         />
-        <StackGroupGrid groups={fullstackStackGroups} />
+        <StackGroupGrid groups={localizedFullstackStackGroups} />
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow="AI-assisted development workflow"
-          title="AI-assisted development workflow"
-          text="I use AI tools to accelerate product discovery, architecture planning, UI generation, code review, documentation, debugging, and iteration while keeping product logic and implementation decisions explicit."
+          eyebrow={deText("AI-assisted development workflow", lang)}
+          title={deText("AI-assisted development workflow", lang)}
+          text={deText("I use AI tools to accelerate product discovery, architecture planning, UI generation, code review, documentation, debugging, and iteration while keeping product logic and implementation decisions explicit.", lang)}
         />
-        <FullStackWorkflowRow steps={fullstackWorkflow} />
+        <FullStackWorkflowRow steps={localizedFullstackWorkflow} />
       </section>
 
       <section id="fullstack-projects" className="section container market-page__section">
         <SectionHeader
-          eyebrow="Selected projects"
-          title="Selected projects"
-          text="A focused selection of deployed products, workflow systems, and technical prototypes showing product thinking, full-stack execution, and AI-assisted development."
+          eyebrow={deText("Selected projects", lang)}
+          title={deText("Selected projects", lang)}
+          text={deText("A focused selection of deployed products, workflow systems, and technical prototypes showing product thinking, full-stack execution, and AI-assisted development.", lang)}
         />
         <div className="fullstack-project-grid">
-          {fullstackSelectedProjects.map((project) => <FullStackProjectCard project={project} key={project.title} />)}
+          {localizedFullstackSelectedProjects.map((project) => <FullStackProjectCard project={project} key={project.title} />)}
         </div>
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow="Secondary experiments"
-          title="Secondary experiments"
-          text="Smaller product experiments and learning projects that show additional execution range without being the core positioning."
+          eyebrow={deText("Secondary experiments", lang)}
+          title={deText("Secondary experiments", lang)}
+          text={deText("Smaller product experiments and learning projects that show additional execution range without being the core positioning.", lang)}
         />
         <div className="fullstack-secondary-grid">
-          {fullstackSecondaryExperiments.map((project) => <FullStackProjectCard project={project} compact key={project.title} />)}
+          {localizedFullstackSecondaryExperiments.map((project) => <FullStackProjectCard project={project} compact key={project.title} />)}
         </div>
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow="Build capabilities"
-          title="What this proves for AI consulting clients"
-          text="The projects show the ability to turn an audit or roadmap into a practical artifact: prototype, dashboard, internal tool, data model, or deployed workflow application."
+          eyebrow={deText("Build capabilities", lang)}
+          title={deText("What this proves for AI consulting clients", lang)}
+          text={deText("The projects show the ability to turn an audit or roadmap into a practical artifact: prototype, dashboard, internal tool, data model, or deployed workflow application.", lang)}
         />
-        <FullStackCapabilityGrid items={fullstackCapabilities} />
+        <FullStackCapabilityGrid items={localizedFullstackCapabilities} />
       </section>
 
       <section className="section container market-page__section">
         <CTAStrip
           accent="fullstack"
-          eyebrow="Next step"
-          title="Need the audit recommendation turned into a working tool?"
-          text="The strongest fit is product-shaped technical work after workflow discovery: a useful prototype, dashboard, internal assistant, or AI-assisted workflow system with clear product logic."
-          primary={{ label: "Discuss Prototype Sprint", href: `mailto:${EMAIL}?subject=Prototype%20Sprint%20Discussion` }}
-          secondary={{ label: "View GitHub", href: "https://github.com/romahawk" }}
+          eyebrow={deText("Next step", lang)}
+          title={deText("Need the audit recommendation turned into a working tool?", lang)}
+          text={deText("The strongest fit is product-shaped technical work after workflow discovery: a useful prototype, dashboard, internal assistant, or AI-assisted workflow system with clear product logic.", lang)}
+          primary={{ label: deText("Discuss Prototype Sprint", lang), href: `mailto:${EMAIL}?subject=Prototype%20Sprint%20Discussion` }}
+          secondary={{ label: deText("View GitHub", lang), href: "https://github.com/romahawk" }}
         />
       </section>
     </div>
