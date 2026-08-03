@@ -40,7 +40,7 @@ export default function AboutPage() {
         title={<TypewriterTitle text={deText(title, lang)} />}
         subtitle={deText("I help operations-heavy teams turn fragmented processes into practical AI-assisted systems, combining product strategy, workflow analysis, AI automation, and full-stack delivery. My MedTech background adds real-world judgment from regulated, high-friction environments.", lang)}
         primaryCta={{ label: deText("Explore AI Workflows", lang), href: "/ai-workflow", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: deText("View Proof of Work", lang), href: "/proof-of-work" }}
+        secondaryCta={{ label: deText("View Proof of Work", lang), href: "/fullstack" }}
         scrollTargetId="about"
       >
         <div className="market-page__hero-extra">

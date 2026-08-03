@@ -696,13 +696,14 @@ function CapabilityToolMatrix({ items }) {
   );
 }
 
-function SelectedProofCard({ item }) {
+function SelectedProofCard({ item, index = 0 }) {
   const { lang } = useTranslation();
   const localizedItem = localizeGermanValue(item, lang);
   const links = localizedItem.links || [];
+  const tone = ["surgical", "demo", "workflow", "systems"][index % 4];
 
   return (
-    <article className="medtech-proof-card reveal">
+    <article className={`medtech-proof-card medtech-proof-card--${tone} reveal`}>
       <header>
         <p>{localizedItem.type}</p>
         <h3>{localizedItem.title}</h3>
@@ -1242,7 +1243,7 @@ export function MedTechPage() {
         eyebrow={deText("Trust layer / regulated operations", lang)}
         title={<TypewriterTitle text={deText(medtechTitle, lang)} />}
         subtitle={deText("Real MedTech implementation experience translated into AI workflow consulting judgment: clinical context, stakeholder coordination, documentation, handover, risk boundaries, and practical implementation thinking.", lang)}
-        primaryCta={{ label: deText("View Regulated Proof", lang), href: "/proof-of-work" }}
+        primaryCta={{ label: deText("View Regulated Proof", lang), href: "#medtech-impact" }}
         secondaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
         scrollTargetId="medtech-impact"
       >
@@ -1268,7 +1269,7 @@ export function MedTechPage() {
           text={deText("A focused selection of MedTech and workflow-system projects that connect implementation experience with product thinking and AI-assisted delivery.", lang)}
         />
         <div className="medtech-proof-grid">
-          {localizedMedtechSelectedProof.map((item) => <SelectedProofCard item={item} key={item.title} />)}
+          {localizedMedtechSelectedProof.map((item, index) => <SelectedProofCard item={item} index={index} key={item.title} />)}
         </div>
       </section>
 
@@ -1297,7 +1298,7 @@ export function MedTechPage() {
           title={deText("Need AI workflow work with regulated-operations judgment?", lang)}
           text={deText("MedTech is the credibility layer: it shows I understand implementation-heavy environments where workflows, documentation, stakeholders, handover, and risk matter.", lang)}
           primary={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
-          secondary={{ label: deText("View Regulated Proof", lang), href: "/proof-of-work" }}
+          secondary={{ label: deText("View Regulated Proof", lang), href: "#medtech-impact" }}
         />
       </section>
     </div>

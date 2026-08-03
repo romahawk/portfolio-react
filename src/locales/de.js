@@ -719,7 +719,7 @@ export default {
       },
       labels: { problemSolved: "Gelöstes Problem", deliverables: "Deliverables", outcome: "Typisches Ergebnis" },
       method: { eyebrow: "Methode", title: "Operator-first, KI-gestützt", text: "Ich starte nicht mit der Frage, was KI kann. Ich starte dort, wo der Workflow bricht, wo Risiko entsteht und welches System eigentlich existieren sollte.", steps: ["Workflow mappen", "Engpässe und Risiken identifizieren", "Systemmodell definieren", "KI dort ergänzen, wo sie nützlich ist", "Review- und Traceability-Checkpoints gestalten", "Prototypisieren, dokumentieren und übergeben"] },
-      proof: { eyebrow: "Proof", title: "Praktische Workflow-Beispiele ansehen", text: "Die Workflow-Bibliothek zeigt transparente Konzept-Workflows, Referenzsysteme, Prototyp-Konzepte und Proof-of-Work-Artefakte mit klaren Maturity Labels.", links: [{ title: "Proof of Work", href: "/proof-of-work" }, { title: "KI-Workflow-Bibliothek", href: "/ai-workflow" }] },
+      proof: { eyebrow: "Proof", title: "Praktische Workflow-Beispiele ansehen", text: "Die Workflow-Bibliothek zeigt transparente Konzept-Workflows, Referenzsysteme, Prototyp-Konzepte und Proof-of-Work-Artefakte mit klaren Maturity Labels.", links: [{ title: "Proof of Work", href: "/fullstack" }, { title: "KI-Workflow-Bibliothek", href: "/ai-workflow" }] },
       final: { title: "Mit einem Workflow starten", text: "Bringen Sie einen fragmentierten Workflow, einen Implementierungsengpass oder eine KI-Idee mit. Ich helfe, den aktuellen Prozess zu mappen, sichere KI-Unterstützungspunkte zu identifizieren und den ersten nachvollziehbaren Systempfad zu definieren." },
     },
     proof: {

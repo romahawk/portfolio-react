@@ -730,7 +730,7 @@ export default {
         eyebrow: "Proof",
         title: "See practical workflow examples",
         text: "The workflow library shows transparent concept workflows, reference systems, prototype concepts, and proof-of-work artifacts with explicit maturity labels.",
-        links: [{ title: "Proof of Work", href: "/proof-of-work" }, { title: "AI Workflow Library", href: "/ai-workflow" }],
+        links: [{ title: "Proof of Work", href: "/fullstack" }, { title: "AI Workflow Library", href: "/ai-workflow" }],
       },
       final: {
         title: "Start with one workflow",
