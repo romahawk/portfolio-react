@@ -511,6 +511,8 @@ export default {
     workflowSteps: ["Capture", "Structure", "Assist", "Review", "Handover"],
     cta: {
       viewProof: "View Proof of Work",
+      viewBuildProof: "View Build Proof",
+      viewRegulatedProof: "View Regulated Proof",
       exploreAiWorkflows: "Explore AI Workflows",
       workWithMe: "Discuss a workflow",
       contact: "Contact",

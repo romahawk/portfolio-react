@@ -998,7 +998,7 @@ export function HomePage() {
         title={<TypewriterTitle text={homeTitle} />}
         subtitle="I help operations-heavy SMEs turn manual, fragmented workflows into practical AI systems, internal tools, and implementation roadmaps."
         primaryCta={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: "View Proof of Work", href: "/proof-of-work" }}
+        secondaryCta={{ label: "View Build Proof", href: "/fullstack" }}
         tertiaryCta={{ label: "Discuss One Workflow to Automate", href: `mailto:${EMAIL}?subject=One%20Workflow%20to%20Automate` }}
         scrollTargetId="audit"
       >
@@ -1042,7 +1042,7 @@ export function HomePage() {
           title="Have one workflow that feels too manual, scattered, or fragile?"
           text="Start with an AI Workflow Opportunity Audit. We identify the bottlenecks, the automation opportunity, the risk boundaries, and the first realistic pilot."
           primary={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
-          secondary={{ label: "View Proof of Work", href: "/proof-of-work" }}
+          secondary={{ label: "View Build Proof", href: "/fullstack" }}
         />
       </section>
     </div>
@@ -1164,7 +1164,7 @@ export function MedTechPage() {
         eyebrow="Trust layer / regulated operations"
         title={<TypewriterTitle text={medtechTitle} />}
         subtitle="Real MedTech implementation experience translated into AI workflow consulting judgment: clinical context, stakeholder coordination, documentation, handover, risk boundaries, and practical implementation thinking."
-        primaryCta={{ label: "View Selected Proof", href: "#medtech-proof" }}
+        primaryCta={{ label: "View Regulated Proof", href: "/proof-of-work" }}
         secondaryCta={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
         scrollTargetId="medtech-impact"
       >
@@ -1219,7 +1219,7 @@ export function MedTechPage() {
           title="Need AI workflow work with regulated-operations judgment?"
           text="MedTech is the credibility layer: it shows I understand implementation-heavy environments where workflows, documentation, stakeholders, handover, and risk matter."
           primary={{ label: "Book an AI Workflow Audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
-          secondary={{ label: "View Proof of Work", href: "/proof-of-work" }}
+          secondary={{ label: "View Regulated Proof", href: "/proof-of-work" }}
         />
       </section>
     </div>

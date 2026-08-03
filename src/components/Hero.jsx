@@ -14,7 +14,7 @@ const Hero = () => {
       eyebrow={t("site.home.hero.eyebrow")}
       title={<TypewriterTitle text={title} />}
       subtitle={t("site.home.hero.subtitle")}
-      primaryCta={{ label: t("site.cta.viewProof"), href: "/proof-of-work" }}
+      primaryCta={{ label: t("site.cta.viewBuildProof"), href: "/fullstack" }}
       secondaryCta={{ label: t("site.cta.exploreAiWorkflows"), href: "/ai-workflow" }}
       tertiaryCta={{ label: t("site.cta.workWithMe"), href: "/collaborate" }}
       visualType="home"
