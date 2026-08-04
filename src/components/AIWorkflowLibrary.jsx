@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
   ClipboardCheck,
@@ -58,6 +58,9 @@ function WorkflowCard({ workflow }) {
   const auditabilityFeatures = getWorkflowArray(t, workflow, "auditabilityFeatures", workflow.auditabilityFeatures);
   const expectedBusinessValue = getWorkflowArray(t, workflow, "expectedBusinessValue", workflow.expectedBusinessValue);
   const bottlenecks = getWorkflowArray(t, workflow, "bottlenecks", workflow.currentWorkflow.bottlenecks);
+  const currentSteps = getWorkflowArray(t, workflow, "currentSteps", workflow.currentWorkflow.steps);
+  const aiSteps = getWorkflowArray(t, workflow, "aiSteps", workflow.aiAssistedWorkflow.steps);
+  const aiAssists = getWorkflowArray(t, workflow, "aiAssists", workflow.aiAssistedWorkflow.aiAssists);
 
   return (
     <article
@@ -104,25 +107,47 @@ function WorkflowCard({ workflow }) {
         <div>
           <h4>{t("site.aiWorkflow.labels.components")}</h4>
           <ul>
-            {systemComponents.slice(0, 5).map((item) => <li key={item}>{item}</li>)}
+            {systemComponents.map((item) => <li key={item}>{item}</li>)}
           </ul>
         </div>
         <div>
           <h4>{t("site.aiWorkflow.labels.review")}</h4>
           <ul>
-            {humanReviewPoints.slice(0, 4).map((item) => <li key={item}>{item}</li>)}
+            {humanReviewPoints.map((item) => <li key={item}>{item}</li>)}
           </ul>
         </div>
+      </div>
+
+      <div className="ai-workflow-card__systems ai-workflow-card__systems--expanded">
+        <div>
+          <h4>{t("site.aiWorkflow.detail.manualSteps")}</h4>
+          <ul>
+            {currentSteps.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </div>
+        <div>
+          <h4>{t("site.aiWorkflow.detail.aiAssists")}</h4>
+          <ul>
+            {aiAssists.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+
+      <div className="ai-workflow-card__full-flow">
+        <span>{t("site.aiWorkflow.detail.aiTitle")}</span>
+        <ol>
+          {aiSteps.map((item) => <li key={item}>{item}</li>)}
+        </ol>
       </div>
 
       <div className="ai-workflow-card__trace">
         <div>
           <span>{t("site.aiWorkflow.labels.traceability")}</span>
-          <p>{auditabilityFeatures.slice(0, 4).join(", ")}.</p>
+          <p>{auditabilityFeatures.join(", ")}.</p>
         </div>
         <div>
           <span>{t("site.aiWorkflow.labels.value")}</span>
-          <p>{expectedBusinessValue.slice(0, 4).join(", ")}.</p>
+          <p>{expectedBusinessValue.join(", ")}.</p>
         </div>
       </div>
 
@@ -139,9 +164,10 @@ export default function AIWorkflowLibrary() {
   const [domainFilter, setDomainFilter] = useState("All");
   const [statusFilter, setStatusFilter] = useState("All");
   const [problemFilter, setProblemFilter] = useState("All");
+  const [selectedWorkflowSlug, setSelectedWorkflowSlug] = useState("");
   const selectedCategory = workflowCategories.find((category) => category.title === activeCategory) || workflowCategories[0];
-  const featuredWorkflow = selectedCategory?.workflows[0];
-  const otherWorkflows = selectedCategory?.workflows.slice(1) || [];
+  const selectedWorkflow = aiWorkflowExamples.find((workflow) => workflow.slug === selectedWorkflowSlug);
+  const featuredWorkflow = selectedWorkflow?.category === selectedCategory?.title ? selectedWorkflow : selectedCategory?.workflows[0];
   const domains = useMemo(() => ["All", ...new Set(aiWorkflowExamples.map((workflow) => workflow.category))], []);
   const statuses = useMemo(() => ["All", ...new Set(aiWorkflowExamples.map((workflow) => workflow.status))], []);
   const problemTypes = ["All", "Traceability", "Handover", "Coordination", "Documentation", "Automation"];
@@ -155,6 +181,29 @@ export default function AIWorkflowLibrary() {
     })
     .slice(0, 4);
   const heroTitle = t("site.aiWorkflow.hero.title");
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const syncSelectedWorkflow = () => {
+      const slug = window.location.hash.replace("#", "");
+      const workflow = aiWorkflowExamples.find((item) => item.slug === slug);
+      if (!workflow) return;
+      setSelectedWorkflowSlug(workflow.slug);
+      setActiveCategory(workflow.category);
+    };
+
+    syncSelectedWorkflow();
+    window.addEventListener("hashchange", syncSelectedWorkflow);
+    return () => window.removeEventListener("hashchange", syncSelectedWorkflow);
+  }, []);
+
+  useEffect(() => {
+    if (!selectedWorkflowSlug || featuredWorkflow?.slug !== selectedWorkflowSlug) return;
+    window.requestAnimationFrame(() => {
+      document.getElementById(selectedWorkflowSlug)?.scrollIntoView({ block: "start" });
+    });
+  }, [featuredWorkflow?.slug, selectedWorkflowSlug]);
 
   return (
     <div className="ai-workflow-page">
@@ -195,7 +244,13 @@ export default function AIWorkflowLibrary() {
             <button
               type="button"
               className={`ux-tab ${category.title === activeCategory ? "ux-tab--active" : ""}`}
-              onClick={() => setActiveCategory(category.title)}
+              onClick={() => {
+                setSelectedWorkflowSlug("");
+                setActiveCategory(category.title);
+                if (typeof window !== "undefined" && window.location.hash) {
+                  window.history.replaceState(null, "", window.location.pathname);
+                }
+              }}
               key={category.title}
             >
               {t(`site.aiWorkflow.categories.${category.title}`) === `site.aiWorkflow.categories.${category.title}`
@@ -207,15 +262,6 @@ export default function AIWorkflowLibrary() {
         {featuredWorkflow ? (
           <div className="ai-workflow-page__featured">
             <WorkflowCard workflow={featuredWorkflow} />
-            <aside className="ai-workflow-page__other-list">
-              <p className="ai-workflow-page__kicker">{t("site.aiWorkflow.other")}</p>
-              {otherWorkflows.map((workflow) => (
-                <a href={`/ai-workflow/${workflow.slug}`} key={workflow.slug}>
-                  <span>{getWorkflowText(t, workflow, "title")}</span>
-                  <StatusBadge status={workflow.status} />
-                </a>
-              ))}
-            </aside>
           </div>
         ) : null}
       </section>

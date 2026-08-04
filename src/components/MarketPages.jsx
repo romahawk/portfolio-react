@@ -360,7 +360,7 @@ const medtechSelectedProof = [
     system: "Designed an AI-assisted workflow to structure requirements, missing documents, risks, meeting summaries, and customer handover.",
     proof: "Workflow map / product specification / reference system.",
     relevance: "Internal Assistant and implementation handover proof connected to the AI Workflow Audit path.",
-    links: [{ label: "View workflow library", href: "/ai-workflow" }],
+    links: [{ label: "View workflow library", href: "/ai-workflow#medtech-implementation-handoff-assistant" }],
   },
   {
     title: "MedTech Operations Knowledge / Workflow OS",
@@ -369,7 +369,7 @@ const medtechSelectedProof = [
     system: "Designed a structured knowledge and workflow system for products, projects, SOPs, onboarding, and handover.",
     proof: "Concept, data model, prototype direction, and documentation artifact.",
     relevance: "Workflow Automation, SOP system, and reporting/visibility proof for regulated operations.",
-    links: [{ label: "Explore workflows", href: "/ai-workflow" }],
+    links: [{ label: "Explore workflows", href: "/ai-workflow#medtech-operations-knowledge-workflow-os" }],
   },
 ];
 

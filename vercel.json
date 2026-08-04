@@ -7,18 +7,18 @@
     { "source": "/services/(.*)", "destination": "/services/index.html" },
     { "source": "/collaborate", "destination": "/collaborate/index.html" },
     { "source": "/collaborate/(.*)", "destination": "/collaborate/index.html" },
-    { "source": "/ai", "destination": "/index.html" },
-    { "source": "/ai/(.*)", "destination": "/index.html" },
-    { "source": "/medtech", "destination": "/index.html" },
-    { "source": "/medtech/(.*)", "destination": "/index.html" },
-    { "source": "/fullstack", "destination": "/index.html" },
-    { "source": "/fullstack/(.*)", "destination": "/index.html" },
+    { "source": "/ai", "destination": "/ai/index.html" },
+    { "source": "/ai/(.*)", "destination": "/ai/index.html" },
+    { "source": "/medtech", "destination": "/medtech/index.html" },
+    { "source": "/medtech/(.*)", "destination": "/medtech/index.html" },
+    { "source": "/fullstack", "destination": "/fullstack/index.html" },
+    { "source": "/fullstack/(.*)", "destination": "/fullstack/index.html" },
     { "source": "/proof-of-work/or-integration", "destination": "/proof-of-work/or-integration/index.html" },
     { "source": "/about", "destination": "/index.html" },
     { "source": "/contact", "destination": "/index.html" },
     { "source": "/ai-workflow", "destination": "/ai-workflow/index.html" },
-    { "source": "/ai-workflow/(.*)", "destination": "/index.html" },
-    { "source": "/medtech-ai-systems/clinical-evidence-workflow", "destination": "/index.html" }
+    { "source": "/ai-workflow/(.*)", "destination": "/ai-workflow/index.html" },
+    { "source": "/medtech-ai-systems/clinical-evidence-workflow", "destination": "/medtech-ai-systems/clinical-evidence-workflow/index.html" }
   ],
   "headers": [
     {
