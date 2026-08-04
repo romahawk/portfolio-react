@@ -1133,6 +1133,10 @@
   padding: 14px;
 }
 
+.medtech-hero-extra .workflow-map::after {
+  inset-inline: 34px;
+}
+
 .medtech-hero-extra .workflow-node {
   grid-template-columns: 1fr;
   gap: 8px;
@@ -1151,9 +1155,13 @@
   left: calc(100% + 2px);
   width: 10px;
   height: 1px;
-  background-image: linear-gradient(90deg, var(--accent-medtech) 45%, transparent 0);
-  background-size: 8px 1px;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--accent-medtech) 34%, transparent), transparent),
+    linear-gradient(90deg, var(--accent-medtech) 45%, transparent 0);
+  background-size: 100% 100%, 8px 1px;
   opacity: 0.75;
+  animation: medtech-hero-connector-flow 1.8s ease-in-out infinite;
+  animation-delay: calc(var(--workflow-step-index, 0) * 0.22s);
 }
 
 .medtech-hero-extra .workflow-node:nth-last-child(1)::after {
@@ -1559,6 +1567,8 @@
 }
 
 .fullstack-hero-map {
+  position: relative;
+  overflow: hidden;
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 8px;
@@ -1575,6 +1585,36 @@
   box-shadow: var(--shadow);
 }
 
+.fullstack-hero-map::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 50% 34px auto;
+  height: 2px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--accent-ai-soft) 18%,
+      var(--accent-ai) 34%,
+      var(--accent-fullstack) 52%,
+      var(--brand-warm) 70%,
+      transparent 90%
+    );
+  background-size: 230% 100%;
+  border-radius: 999px;
+  opacity: 0.66;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--accent-fullstack) 45%, transparent));
+  transform: translateY(-50%);
+  pointer-events: none;
+  animation: workflow-flow-rail 3.8s linear infinite;
+}
+
+.fullstack-hero-map__step {
+  position: relative;
+  min-width: 0;
+}
+
 .fullstack-hero-map__node {
   --fullstack-flow-accent: var(--accent-fullstack);
   --fullstack-flow-soft: var(--accent-fullstack-soft);
@@ -1588,6 +1628,8 @@
   background:
     radial-gradient(180px 100px at 100% 0, var(--fullstack-flow-soft), transparent 68%),
     color-mix(in srgb, var(--panel) 90%, transparent);
+  animation: fullstack-node-flow 3.8s ease-in-out infinite;
+  animation-delay: calc(var(--fullstack-flow-index, 0) * 0.24s);
 }
 
 .fullstack-hero-map__step:nth-child(1) .fullstack-hero-map__node {
@@ -1595,9 +1637,17 @@
   --fullstack-flow-soft: var(--surface-cool);
 }
 
+.fullstack-hero-map__step:nth-child(1) .fullstack-hero-map__connector {
+  --fullstack-flow-accent: var(--brand-2);
+}
+
 .fullstack-hero-map__step:nth-child(2) .fullstack-hero-map__node {
   --fullstack-flow-accent: var(--accent-ai);
   --fullstack-flow-soft: var(--accent-ai-soft);
+}
+
+.fullstack-hero-map__step:nth-child(2) .fullstack-hero-map__connector {
+  --fullstack-flow-accent: var(--accent-ai);
 }
 
 .fullstack-hero-map__step:nth-child(3) .fullstack-hero-map__node {
@@ -1605,14 +1655,26 @@
   --fullstack-flow-soft: var(--accent-fullstack-soft);
 }
 
+.fullstack-hero-map__step:nth-child(3) .fullstack-hero-map__connector {
+  --fullstack-flow-accent: var(--accent-fullstack);
+}
+
 .fullstack-hero-map__step:nth-child(4) .fullstack-hero-map__node {
   --fullstack-flow-accent: var(--accent-medtech);
   --fullstack-flow-soft: var(--accent-medtech-soft);
 }
 
+.fullstack-hero-map__step:nth-child(4) .fullstack-hero-map__connector {
+  --fullstack-flow-accent: var(--accent-medtech);
+}
+
 .fullstack-hero-map__step:nth-child(5) .fullstack-hero-map__node {
   --fullstack-flow-accent: var(--brand-warm);
   --fullstack-flow-soft: var(--surface-warm);
+}
+
+.fullstack-hero-map__step:nth-child(5) .fullstack-hero-map__connector {
+  --fullstack-flow-accent: var(--brand-warm);
 }
 
 .fullstack-hero-map__step:nth-child(6) .fullstack-hero-map__node {
@@ -1641,7 +1703,53 @@
 }
 
 .fullstack-hero-map__connector {
-  display: none;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: calc(100% + 2px);
+  display: block;
+  width: 10px;
+  height: 1px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--fullstack-flow-accent, var(--accent-fullstack)) 34%, transparent), transparent),
+    linear-gradient(90deg, var(--fullstack-flow-accent, var(--accent-fullstack)) 45%, transparent 0);
+  background-size: 100% 100%, 8px 1px;
+  opacity: 0.75;
+}
+
+.fullstack-hero-map__connector::before {
+  content: "";
+  position: absolute;
+  inset: -1px 100% -1px -60%;
+  background: linear-gradient(90deg, transparent, var(--fullstack-flow-accent, var(--accent-fullstack)), transparent);
+  filter: drop-shadow(0 0 7px var(--fullstack-flow-accent, var(--accent-fullstack)));
+  animation: workflow-connector-flow 1.8s ease-in-out infinite;
+  animation-delay: calc(var(--fullstack-flow-index, 0) * 0.22s);
+}
+
+@keyframes medtech-hero-connector-flow {
+  0%, 100% {
+    opacity: 0.38;
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  42%, 58% {
+    opacity: 1;
+    filter: drop-shadow(0 0 7px color-mix(in srgb, var(--accent-medtech) 62%, transparent));
+  }
+}
+
+@keyframes fullstack-node-flow {
+  0%, 100% {
+    border-color: color-mix(in srgb, var(--fullstack-flow-accent) 30%, var(--system-border));
+    box-shadow: none;
+  }
+  38%, 52% {
+    border-color: color-mix(in srgb, var(--fullstack-flow-accent) 58%, var(--system-border));
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--fullstack-flow-accent) 14%, transparent),
+      0 0 18px color-mix(in srgb, var(--fullstack-flow-accent) 16%, transparent);
+  }
 }
 
 .fullstack-stack-grid,
@@ -2040,6 +2148,24 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .medtech-hero-extra .workflow-map::after {
+    inset: 22px auto 22px 50%;
+    width: 2px;
+    height: auto;
+    background:
+      linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--accent-medtech-soft) 22%,
+        var(--accent-medtech) 48%,
+        var(--accent-medtech-2) 62%,
+        transparent 86%
+      );
+    background-size: 100% 220%;
+    transform: translateX(-50%);
+    animation-name: workflow-flow-rail-vertical;
+  }
+
   .medtech-hero-extra .workflow-node::after {
     display: none;
   }
@@ -2047,6 +2173,44 @@
   .fullstack-hero-map,
   .fullstack-workflow-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fullstack-hero-map::after {
+    inset: 22px auto 22px 50%;
+    width: 2px;
+    height: auto;
+    background:
+      linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--accent-ai-soft) 18%,
+        var(--accent-ai) 34%,
+        var(--accent-fullstack) 52%,
+        var(--brand-warm) 70%,
+        transparent 90%
+      );
+    background-size: 100% 230%;
+    transform: translateX(-50%);
+    animation-name: workflow-flow-rail-vertical;
+  }
+
+  .fullstack-hero-map__connector {
+    top: auto;
+    left: 50%;
+    bottom: -9px;
+    width: 1px;
+    height: 9px;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--fullstack-flow-accent, var(--accent-fullstack)) 34%, transparent), transparent),
+      linear-gradient(180deg, var(--fullstack-flow-accent, var(--accent-fullstack)) 45%, transparent 0);
+    background-size: 100% 100%, 1px 8px;
+    transform: translateX(-50%);
+  }
+
+  .fullstack-hero-map__connector::before {
+    inset: -60% -1px 100% -1px;
+    background: linear-gradient(180deg, transparent, var(--fullstack-flow-accent, var(--accent-fullstack)), transparent);
+    animation-name: workflow-connector-flow-vertical;
   }
 }
 
@@ -2112,5 +2276,12 @@
     opacity: 1;
     animation: none;
     transform: none;
+  }
+
+  .medtech-hero-extra .workflow-node::after,
+  .fullstack-hero-map::after,
+  .fullstack-hero-map__node,
+  .fullstack-hero-map__connector::before {
+    animation: none;
   }
 }

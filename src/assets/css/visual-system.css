@@ -281,6 +281,30 @@
   pointer-events: none;
 }
 
+.workflow-map::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 50% 22px auto;
+  height: 2px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--system-accent-soft, var(--surface-glow)) 22%,
+      var(--system-accent, var(--brand)) 48%,
+      var(--system-accent-2, var(--brand-2)) 62%,
+      transparent 86%
+    );
+  background-size: 220% 100%;
+  border-radius: 999px;
+  opacity: 0.62;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--system-accent, var(--brand)) 46%, transparent));
+  transform: translateY(-50%);
+  pointer-events: none;
+  animation: workflow-flow-rail 3.8s linear infinite;
+}
+
 .workflow-node {
   position: relative;
   z-index: 1;
@@ -293,6 +317,8 @@
   border: 1px solid var(--system-border);
   border-radius: 12px;
   background: color-mix(in srgb, var(--panel) 88%, transparent);
+  animation: workflow-node-flow 3.8s ease-in-out infinite;
+  animation-delay: calc(var(--workflow-step-index, 0) * 0.24s);
 }
 
 .workflow-node__index {
@@ -326,9 +352,21 @@
   z-index: 1;
   width: 54px;
   height: 1px;
-  background-image: linear-gradient(90deg, var(--system-accent, var(--brand)) 45%, transparent 0);
-  background-size: 9px 1px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--system-accent, var(--brand)) 28%, transparent), transparent),
+    linear-gradient(90deg, var(--system-accent, var(--brand)) 45%, transparent 0);
+  background-size: 100% 100%, 9px 1px;
   opacity: 0.75;
+}
+
+.workflow-connector::before {
+  content: "";
+  position: absolute;
+  inset: -1px 100% -1px -45%;
+  background: linear-gradient(90deg, transparent, var(--system-accent, var(--brand)), transparent);
+  filter: drop-shadow(0 0 7px var(--system-accent, var(--brand)));
+  animation: workflow-connector-flow 1.9s ease-in-out infinite;
 }
 
 .workflow-connector::after {
@@ -463,6 +501,30 @@
   50% { transform: scale(1.18); opacity: 1; }
 }
 
+@keyframes workflow-flow-rail {
+  from { background-position: 120% 0; }
+  to { background-position: -120% 0; }
+}
+
+@keyframes workflow-connector-flow {
+  0% { transform: translateX(0); opacity: 0; }
+  18%, 72% { opacity: 0.95; }
+  100% { transform: translateX(230%); opacity: 0; }
+}
+
+@keyframes workflow-node-flow {
+  0%, 100% {
+    border-color: var(--system-border);
+    box-shadow: none;
+  }
+  38%, 52% {
+    border-color: color-mix(in srgb, var(--system-accent, var(--brand)) 52%, var(--system-border));
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--system-accent, var(--brand)) 14%, transparent),
+      0 0 18px color-mix(in srgb, var(--system-accent, var(--brand)) 16%, transparent);
+  }
+}
+
 @media (max-width: 900px) {
   .workflow-map,
   .cta-strip,
@@ -495,8 +557,34 @@
     width: 1px;
     height: 34px;
     justify-self: center;
-    background-image: linear-gradient(180deg, var(--system-accent, var(--brand)) 45%, transparent 0);
-    background-size: 1px 9px;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--system-accent, var(--brand)) 28%, transparent), transparent),
+      linear-gradient(180deg, var(--system-accent, var(--brand)) 45%, transparent 0);
+    background-size: 100% 100%, 1px 9px;
+  }
+
+  .workflow-map::after {
+    inset: 22px auto 22px 50%;
+    width: 2px;
+    height: auto;
+    background:
+      linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--system-accent-soft, var(--surface-glow)) 22%,
+        var(--system-accent, var(--brand)) 48%,
+        var(--system-accent-2, var(--brand-2)) 62%,
+        transparent 86%
+      );
+    background-size: 100% 220%;
+    transform: translateX(-50%);
+    animation-name: workflow-flow-rail-vertical;
+  }
+
+  .workflow-connector::before {
+    inset: -45% -1px 100% -1px;
+    background: linear-gradient(180deg, transparent, var(--system-accent, var(--brand)), transparent);
+    animation-name: workflow-connector-flow-vertical;
   }
 
   .workflow-connector::after {
@@ -508,6 +596,17 @@
   .cta-strip__actions {
     justify-content: flex-start;
   }
+}
+
+@keyframes workflow-flow-rail-vertical {
+  from { background-position: 0 120%; }
+  to { background-position: 0 -120%; }
+}
+
+@keyframes workflow-connector-flow-vertical {
+  0% { transform: translateY(0); opacity: 0; }
+  18%, 72% { opacity: 0.95; }
+  100% { transform: translateY(230%); opacity: 0; }
 }
 
 @media (max-width: 640px) {
@@ -530,6 +629,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .workflow-map::after,
+  .workflow-node,
+  .workflow-connector::before,
   .workflow-connector::after {
     animation: none;
   }
