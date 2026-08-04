@@ -1,223 +1,264 @@
 # Architecture Document
-## Roman Mazuryk — Portfolio & Proof-of-Work Site
+## mazuryk.dev - AI Consulting and Proof-of-Work Platform
 
-**Version:** 1.0
-**Last Updated:** 2026-02-26
+**Version:** 2.0
+**Last Updated:** 2026-08-04
 **Status:** Active
 
 ---
 
 ## High-Level Overview
 
-This is a **static single-page application (SPA)** with no backend. All content is hardcoded in static data files and React components. The site is deployed as a pre-built static bundle on Vercel's CDN.
+`mazuryk.dev` is a static React/Vite website deployed on Vercel. It presents Roman Mazuryk's AI consulting positioning, productized offers, workflow examples, regulated-operations proof, and full-stack implementation evidence.
 
-```
+The architecture is intentionally lightweight:
+
+- no application backend
+- no user accounts
+- no database
+- no CMS
+- no runtime API dependency for core content
+
+The site is mostly static content rendered by React components and backed by version-controlled JavaScript data files. This keeps the system easy to inspect, fast to deploy, and useful as public proof of product and engineering discipline.
+
+```text
 Browser
-  └── Vercel CDN (static files)
-        └── index.html
-              └── React SPA (Vite bundle)
-                    ├── Navbar (scroll-spy)
-                    ├── Sections (Hero → Contact)
-                    └── CaseStudyModal (overlay)
+  -> Vercel CDN
+    -> route-specific static HTML entry
+      -> Vite React bundle
+        -> route resolver in App.jsx
+          -> market page / proof page / workflow page component
+            -> static data modules + localized copy
 ```
-
-**No server, no database, no API calls, no auth.** Intentional: eliminates operational complexity, cold starts, and attack surface for a static portfolio.
 
 ---
 
-## Key Components
+## Strategic Architecture Role
+
+The site is not only a portfolio. It is the public product surface for the current business direction:
+
+> AI Systems Consultant for operations-heavy SMEs and regulated industries.
+
+The page hierarchy supports three proof layers:
+
+1. **AI consulting** - primary commercial path and calls to action.
+2. **MedTech and regulated operations** - authority proof from high-friction implementation environments.
+3. **Full-stack delivery** - implementation proof for prototypes, dashboards, internal tools, and workflow systems.
+
+---
+
+## Runtime Model
 
 ### Entry Chain
+
+```text
+index.html or route-specific index.html
+  -> src/main.jsx
+    -> App.jsx
+      -> LangProvider
+      -> AppInner
+        -> useTheme
+        -> useScrollReveal
+        -> useOgMeta
+        -> route resolver
+        -> selected page component
+        -> Footer + BackToTop + Vercel Analytics
 ```
+
+### Route Resolution
+
+The app uses lightweight path inspection in `App.jsx` rather than a routing library. Vite emits separate static HTML entries for major routes so social crawlers and preview tools receive route-specific metadata where needed.
+
+Major routes:
+
+| Route | Component / Role |
+|-------|------------------|
+| `/` | `HomePage` - homepage positioning and proof routing |
+| `/ai` | `AIPage` - productized AI consulting offers |
+| `/services` | `AIPage` compatibility route for service positioning |
+| `/collaborate` | `AIPage` compatibility route for collaboration entry |
+| `/medtech` | `MedTechPage` - regulated operations authority proof |
+| `/fullstack` | `FullStackPage` - implementation proof |
+| `/about` | `AboutPage` - background, principles, fit |
+| `/contact` | `ContactPage` - workflow discussion and collaboration entry |
+| `/ai-workflow` | `AIWorkflowLibrary` - workflow pattern library |
+| `/ai-workflow/:slug` | `AIWorkflowDetailPage` - individual workflow reference |
+| `/proof-of-work/or-integration` | `ORIntegrationProofPage` - detailed regulated proof |
+| `/medtech-ai-systems/clinical-evidence-workflow` | `ClinicalEvidenceWorkflowPage` - concept workflow proof |
+
+---
+
+## Build Entries
+
+`vite.config.js` defines multiple static HTML entries:
+
+```text
 index.html
-  └── src/main.jsx          — createRoot, mounts App
-        └── src/App.jsx     — composes all sections, runs useScrollReveal()
+ai/index.html
+medtech/index.html
+fullstack/index.html
+services/index.html
+collaborate/index.html
+ai-workflow/index.html
+proof-of-work/or-integration/index.html
+medtech-ai-systems/clinical-evidence-workflow/index.html
 ```
 
-### Section Components (`src/components/`)
-| Component | Role | State |
-|-----------|------|-------|
-| `Navbar` | Fixed header, scroll-spy active section, mobile menu | `useState` (activeSection, menuOpen) |
-| `Hero` | Landing pitch, CTA buttons, scroll hint | None |
-| `About` | Multi-panel narrative with profile photo | None |
-| `AIAugmentedSDLC` | Framework cards explaining methodology | None |
-| `TimelineSwitch` | Toggle between 3-card summary and full timeline | `useState` + `localStorage` |
-| `Milestones` | 3 key milestone cards | None |
-| `JourneyFull` | 11-entry horizontal scrollable timeline | `useState` (sort, filter) |
-| `Skills` | 5-category skill grid | None |
-| `Projects` | Project grid with filters + case study modal | `useState` (filter, activeModal) |
-| `Certifications` | Certificate cards with status badges | None |
-| `Contact` | Email copy, socials, location | `useState` (copied, status) |
-| `Footer` | Links, socials, availability CTA | None |
-| `BackToTop` | Appears after 400px scroll | `useState` (visible) |
-| `CaseStudyModal` | Accessible modal wrapper (focus trap, Escape) | None (controlled externally) |
-
-### Case Study Components (`src/components/case-studies/`)
-Six self-contained JSX components, each rendering a detailed case study:
-- `LivesurgeryCaseStudy` — Real-time surgical collaboration platform
-- `SmartShooterCaseStudy` — Training analytics and shooting log
-- `FlowLogixCaseStudy` — Supply chain visibility platform
-- `AlphorythmCaseStudy` — Strategy analytics system
-- `PortfolioCaseStudy` — This portfolio (meta)
-- `MedintegroCaseStudy` — B2B MedTech platform rebuild
-
-### Data Layer (`src/data/`)
-All content is imported from static JS modules. No network calls.
-
-| File | Contents |
-|------|----------|
-| `projects.js` | 6 tech projects + 11 MedTech projects (id, title, summary, stack, tags, link, caseStudy flag) |
-| `skillsCards.js` | 5 skill category arrays (hardSkills, pmSkills, softSkills, leverageSkills, techStack) |
-| `timeline.js` | Full career timeline entries (year, title, role, company, tags, summary, highlights, icon) |
-| `milestones.js` | 3 milestone summary cards |
-| `journey.js` | 11-entry journey array for JourneyFull horizontal scroller |
-
-### Hooks (`src/hooks/`)
-| Hook | Purpose |
-|------|---------|
-| `useScrollReveal` | IntersectionObserver that adds `.reveal--visible` class to `.reveal` elements; fires once per element; respects `prefers-reduced-motion` |
+This gives the site static route entry points without moving to a heavier framework.
 
 ---
 
-## Data Flow
+## Content Architecture
 
-```
-Static data files (src/data/*.js)
-        ↓ imported by
-Section components (props or direct import)
-        ↓ render
-DOM elements with .reveal class
-        ↓ observed by
-useScrollReveal (IntersectionObserver)
-        ↓ triggers
-CSS animation classes (.reveal--visible)
-```
+Most content lives in either React components or static data modules.
 
-**Navigation flow:**
-```
-User clicks nav link → anchor href="#section-id"
-        → browser smooth-scrolls to section
-        → Navbar scroll listener updates activeSection
-        → active nav item highlights
-```
+| Area | Source |
+|------|--------|
+| Market pages and offer copy | `src/components/MarketPages.jsx` |
+| AI workflow examples | `src/data/aiWorkflows.js` |
+| Project/proof items | `src/data/projects.js` and proof components |
+| Career/journey data | `src/data/timeline.js`, `src/data/journey.js`, `src/data/milestones.js` |
+| Skills | `src/data/skillsCards.js` |
+| English/German copy | `src/locales/en.js`, `src/locales/de.js` |
+| Route metadata | `src/hooks/useOgMeta.js` plus route HTML entries |
 
-**Case study modal flow:**
-```
-User clicks "Case Study" on ProjectCard
-        → Projects sets activeModal = project.id
-        → CaseStudyModal renders with correct case study component
-        → focus trapped inside modal
-        → Escape / backdrop click → closes modal, returns focus
-```
+This structure is intentionally simple for a solo-founder site. Content changes are versioned, reviewed, built, and deployed with the same discipline as code changes.
 
 ---
 
-## Storage / Auth Choices
+## Page/Component Map
 
-**No authentication.** Public portfolio — no user accounts needed.
+| Component | Role |
+|-----------|------|
+| `Navbar` | Main navigation, route awareness, language/theme controls |
+| `MarketPages.jsx` | Home, AI, MedTech, and Full-stack page compositions |
+| `AIWorkflowLibrary` | Overview of practical AI workflow patterns |
+| `AIWorkflowDetailPage` | Detail page for one workflow pattern |
+| `ProofOfWorkPage` | Regulated proof and selected workflow systems |
+| `ORIntegrationProofPage` | Detailed OR integration and clinical workflow authority proof |
+| `AboutPage` | Positioning narrative and background explanation |
+| `ContactPage` | Conversion route for workflow/audit/collaboration discussions |
+| `Footer` | Secondary navigation and persistent trust links |
+| `BackToTop` | Usability support for long pages |
 
-**localStorage:**
-- `timeline:view` — persists the user's choice of "summary" vs "full" timeline view across page reloads
-- No other persistent state
-
-**No cookies, no session storage, no IndexedDB.**
-
----
-
-## Styling Architecture
-
-**Pure CSS with custom properties.** 16 CSS files, 1,735 lines total.
-
-```
-src/assets/css/main.css         — imports all other CSS files, defines :root tokens
-  ├── animations.css            — scroll reveal, hero entrance, stagger delays
-  ├── navigation.css            — navbar, mobile menu, active states
-  ├── hero.css                  — hero typography and scroll hint
-  ├── about.css                 — about section layout
-  ├── ai-sdlc.css               — AI SDLC section
-  ├── timeline.css              — timeline track and cards
-  ├── skills.css                — skills grid and cards
-  ├── projects.css              — project grid, filters, modal
-  ├── modal.css                 — case study modal overlay
-  ├── certifications.css        — cert card grid
-  ├── contact.css               — contact form layout
-  ├── footer.css                — footer grid and socials
-  ├── header.css                — fixed header positioning
-  ├── layout.css                — container and section padding
-  └── utilities.css             — buttons, back-to-top, focus rings
-```
-
-**Design tokens (CSS custom properties):**
-```css
-:root {
-  --bg: #0b0d12;       /* dark background */
-  --panel: #10141c;    /* card/panel background */
-  --text: #e7ebf3;     /* primary text */
-  --muted: #9aa4b2;    /* secondary text */
-  --brand: #00ddeb;    /* cyan accent */
-  --brand-2: #5b9dff;  /* blue accent */
-  --border: #1b2130;   /* border color */
-  --radius: 14px;      /* standard border radius */
-  --shadow: 0 10px 30px rgba(0,0,0,0.35);
-}
-```
+Legacy case study components remain part of the proof layer where still relevant, but the current commercial surface is the AI workflow/audit path.
 
 ---
 
-## Build & Deploy
+## Metadata And SEO
 
-**Build tool:** Vite 7 (`npm run build` → `/dist/`)
+The site uses two complementary metadata mechanisms:
 
-**Deploy platform:** Vercel (auto-deploy on push to `main`)
+1. **Static HTML entries** for route-specific social preview metadata where crawlers may not execute JavaScript.
+2. **`useOgMeta` hook** for client-side metadata updates after route changes.
 
-**Deploy pipeline:**
-```
-git push origin main
-  → Vercel detects push
-  → runs: npm run build
-  → deploys /dist/ to CDN
-  → live at https://roman-mazuryk.vercel.app/
-```
-
-**No environment variables required** for current feature set.
+This is a pragmatic compromise: static enough for social previews, lightweight enough to avoid a framework migration.
 
 ---
 
-## Key Trade-offs
+## Internationalization
 
-| Decision | Chose | Alternatives | Reason |
-|----------|-------|--------------|--------|
-| Routing | Hash-based anchors | React Router | SPA with no separate pages; anchor links are simpler and SEO-safe |
-| State | Component `useState` | Redux, Zustand | No shared cross-component state; local state is sufficient |
-| Styling | Pure CSS + custom properties | Tailwind, CSS-in-JS | Full control, no class noise in JSX, easy to audit |
-| Content | Static JS data files | Contentful, Sanity, MDX | No CMS cost, no build complexity, fast iteration |
-| TypeScript | JavaScript | TypeScript | Prototyped quickly; TS migration is a planned future sprint |
-| Testing | None (current) | Vitest + RTL | Deferred; priority is documentation and CI/CD first |
-| Analytics | None (current) | Plausible, Vercel Analytics | Planned for Week 3 sprint |
+The site supports English and German through:
 
----
+- `LangProvider`
+- `useTranslation()`
+- `src/locales/en.js`
+- `src/locales/de.js`
+- `LanguageSwitcher`
 
-## Accessibility Architecture
-
-- Semantic HTML5 landmarks (`<header>`, `<nav>`, `<main>`, `<footer>`, `<section>`, `<article>`)
-- ARIA labels on all interactive elements without visible text
-- Focus rings preserved (not removed in CSS resets)
-- Modal focus trap (Tab cycles within modal, Shift+Tab reverses)
-- Escape key closes modals and restores focus to trigger element
-- `prefers-reduced-motion: reduce` — all animations disabled at CSS and JS level
-- Color contrast: all text meets WCAG AA (4.5:1 for normal, 3:1 for large)
-- Keyboard navigation: all interactive elements reachable and operable via keyboard
+Language preference persists in browser storage and updates `document.lang` reactively. The German copy supports Germany-based opportunities without creating a separate site.
 
 ---
 
-## Future Scaling Notes
+## Theme And UI State
 
-| Feature | Trigger | Approach |
-|---------|---------|----------|
-| More case studies | > 8 case studies | Extract case study content to JSON/MDX data files; render dynamically |
-| Multilingual | International roles | `i18next` + JSON translation files; no architecture change needed |
-| Blog/writing | Content publishing | Add `/blog` route with React Router; static MDX rendering via Vite plugin |
-| TypeScript | Next major refactor sprint | Rename `.jsx` → `.tsx`; add `tsconfig.json`; start with data files and hooks |
-| Analytics | After deploy stabilizes | Plausible (privacy-first) or Vercel Analytics (zero config) |
-| CMS | Frequent content updates | Contentful or Sanity; update data layer to fetch from API; no component changes |
-| E2E testing | Before major version | Playwright; test core loop (land → case study → contact) |
+State remains intentionally local and small:
+
+| State | Owner |
+|-------|-------|
+| Current page | `AppInner` route resolver |
+| Theme mode | `useTheme` |
+| Language | `LangProvider` |
+| Navigation/menu state | `Navbar` |
+| Reveal animation lifecycle | `useScrollReveal` |
+| Metadata update | `useOgMeta` |
+
+No global state manager is needed.
+
+---
+
+## Analytics
+
+Vercel Analytics is included through `@vercel/analytics/react` and rendered in `App.jsx`.
+
+Purpose:
+
+- understand which pages receive attention
+- validate whether AI consulting pages and proof pages are used
+- support future offer and content decisions
+
+---
+
+## Build And Deployment
+
+| Concern | Choice |
+|---------|--------|
+| Framework | React 19 |
+| Build tool | Vite 7 |
+| Deployment | Vercel |
+| Output | Static `/dist` bundle |
+| Main command | `npm run build` |
+| Quality command | `npm run lint` |
+| Analytics | Vercel Analytics |
+
+Vercel builds and deploys the static output on push. No environment variables are required for the current feature set.
+
+---
+
+## Key Trade-Offs
+
+| Decision | Chose | Why |
+|----------|-------|-----|
+| Routing | Lightweight path resolver + static entries | Supports current routes without React Router or Next.js |
+| Content | Static JS data and components | Version-controlled, simple, fast, adequate for solo-founder iteration |
+| Framework | React + Vite | Fast static site delivery with low operational complexity |
+| Styling | Custom CSS and component-scoped files | High control over positioning-focused UI without framework churn |
+| i18n | Local context and locale files | Enough for EN/DE without adding a full i18n framework |
+| Metadata | Static entries + `useOgMeta` | Good social preview support without SSR |
+| Analytics | Vercel Analytics | Lightweight validation signal with minimal setup |
+
+---
+
+## Accessibility And UX Principles
+
+- semantic landmarks and page structure
+- skip link for keyboard users
+- focus-visible styles preserved
+- reduced-motion support
+- clear CTA hierarchy
+- responsive layouts for desktop and mobile
+- long pages structured with strong section headings and cards
+
+---
+
+## Current Constraints
+
+- No backend means no automated audit intake form yet.
+- No CMS means content updates require code changes.
+- Static route entries require manual maintenance when adding major routes.
+- Client-specific proof must respect permission and confidentiality boundaries.
+
+These constraints are acceptable for the current phase: positioning and first-client validation.
+
+---
+
+## Future Architecture Triggers
+
+| Trigger | Possible Change |
+|---------|-----------------|
+| Audit intake becomes repeatable | Add a lightweight form backend or automation workflow |
+| Content publishing becomes frequent | Introduce MDX or a small CMS |
+| Workflow library grows substantially | Move workflow examples into structured content files or MDX |
+| Route/metadata complexity increases | Consider React Router or a static/SSR framework |
+| Productized audit tool is validated | Add backend, database, authentication, and payment flow |
+| Client/project data enters the system | Add privacy, access control, and data-retention design |
