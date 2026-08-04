@@ -8,7 +8,7 @@ const BASE = {
   description:
     "AI systems consulting, workflow automation, audit-to-implementation roadmaps, and prototype builds for operations-heavy SMEs, MedTech, HealthTech, and regulated teams.",
   url: "https://www.mazuryk.dev/",
-  image: "https://www.mazuryk.dev/images/og-home.png",
+  image: "https://www.mazuryk.dev/images/og/og-home.png",
   imageAlt: "Mazuryk.dev hero preview with headline, CTA buttons, and a small circular profile photo.",
   imageWidth: "1200",
   imageHeight: "630",
@@ -19,7 +19,7 @@ const AI_SOLUTIONS = {
   description:
     "AI Workflow Opportunity Audits, automation pilots, internal assistants, SOP systems, dashboards, and implementation roadmaps for operations-heavy SMEs.",
   url: "https://www.mazuryk.dev/ai",
-  image: "https://www.mazuryk.dev/images/og-services.png",
+  image: "https://www.mazuryk.dev/images/og/og-ai.png",
   imageAlt: "AI workflow automation services for SMEs by Roman Mazuryk.",
   imageWidth: "1200",
   imageHeight: "630",
@@ -30,7 +30,7 @@ const MEDTECH = {
   description:
     "Real MedTech implementation experience used as authority for AI workflow consulting in regulated, documentation-heavy, and handover-heavy environments.",
   url: "https://www.mazuryk.dev/medtech",
-  image: "https://www.mazuryk.dev/images/og-home.png",
+  image: "https://www.mazuryk.dev/images/og/og-medtech.png",
   imageAlt: "MedTech product and project portfolio by Roman Mazuryk.",
   imageWidth: "1200",
   imageHeight: "630",
@@ -41,7 +41,7 @@ const FULLSTACK = {
   description:
     "Implementation proof for AI workflow consulting: prototypes, dashboards, internal tools, automations, and deployed workflow applications.",
   url: "https://www.mazuryk.dev/fullstack",
-  image: "https://www.mazuryk.dev/images/og-home.png",
+  image: "https://www.mazuryk.dev/images/og/og-fullstack.png",
   imageAlt: "AI-enhanced full-stack product builder portfolio by Roman Mazuryk.",
   imageWidth: "1200",
   imageHeight: "630",
@@ -52,7 +52,7 @@ const ABOUT = {
   description:
     "MedTech implementation experience, product/project management, AI automation, and full-stack development unified around practical workflow systems.",
   url: "https://www.mazuryk.dev/about",
-  image: "https://www.mazuryk.dev/images/og-home.png",
+  image: "https://www.mazuryk.dev/images/og/og-home.png",
   imageAlt: "About Roman Mazuryk.",
   imageWidth: "1200",
   imageHeight: "630",
@@ -63,7 +63,7 @@ const CONTACT = {
   description:
     "Book an AI Workflow Opportunity Audit, discuss one workflow to automate, or scope an implementation sprint for an internal assistant, dashboard, or workflow tool.",
   url: "https://www.mazuryk.dev/contact",
-  image: "https://www.mazuryk.dev/images/og-home.png",
+  image: "https://www.mazuryk.dev/images/og/og-home.png",
   imageAlt: "Contact Roman Mazuryk.",
   imageWidth: "1200",
   imageHeight: "630",
@@ -74,7 +74,7 @@ const CLINICAL_EVIDENCE = {
   description:
     "Compliance-aware workflow concept for turning scattered clinical evidence, product claims, PDFs, studies, and internal knowledge into a structured, traceable review system.",
   url: "https://www.mazuryk.dev/medtech-ai-systems/clinical-evidence-workflow",
-  image: "https://www.mazuryk.dev/images/og-home.png",
+  image: "https://www.mazuryk.dev/images/og/og-medtech.png",
   imageAlt: "AI-assisted clinical evidence workflow concept for MedTech teams.",
   imageWidth: "1200",
   imageHeight: "630",
@@ -85,7 +85,7 @@ const AI_WORKFLOW = {
   description:
     "Practical examples of AI-assisted workflow systems for MedTech, HealthTech, and regulated operations.",
   url: "https://www.mazuryk.dev/ai-workflow",
-  image: "https://www.mazuryk.dev/images/og-ai-workflows.png",
+  image: "https://www.mazuryk.dev/images/og/og-ai-workflows.png",
   imageAlt: "AI workflow solution library for MedTech and regulated operations.",
   imageWidth: "1200",
   imageHeight: "630",
@@ -96,7 +96,7 @@ const OR_INTEGRATION_PROOF = {
   description:
     "Real-world MedTech implementation experience across operating room infrastructure, surgical equipment integration, video/audio workflows, clinical handover, and hospital stakeholder coordination.",
   url: "https://www.mazuryk.dev/proof-of-work/or-integration",
-  image: "https://www.mazuryk.dev/images/og-or_workflow.png",
+  image: "https://www.mazuryk.dev/images/og/og-or_workflow.png",
   imageAlt: "OR integration and surgical workflow systems proof page for Roman Mazuryk.",
   imageWidth: "1200",
   imageHeight: "630",
