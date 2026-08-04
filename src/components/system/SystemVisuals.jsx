@@ -46,9 +46,9 @@ export function RouteCard({ title, text, cta, href, icon, accent = "ai" }) {
   );
 }
 
-export function WorkflowNode({ label, detail, index, accent = "ai" }) {
+export function WorkflowNode({ label, detail, index, accent = "ai", style }) {
   return (
-    <div className={`workflow-node ${getAccentClass(accent)}`}>
+    <div className={`workflow-node ${getAccentClass(accent)}`} style={style}>
       <span className="workflow-node__index">{index}</span>
       <div>
         <strong>{label}</strong>
@@ -75,6 +75,7 @@ export function WorkflowMap({ items, accent = "ai", title = "Workflow map" }) {
               detail={item.detail}
               index={String(index + 1).padStart(2, "0")}
               accent={itemAccent}
+              style={{ "--workflow-step-index": index }}
             />
             {index < items.length - 1 ? <WorkflowConnector accent={itemAccent} /> : null}
           </React.Fragment>

@@ -947,11 +947,11 @@ function FullStackHeroVisual({ items }) {
     <div className="fullstack-hero-map system-accent--fullstack reveal" aria-label={deText("Idea to deployed artifact", lang)}>
       {localizedItems.map((item, index) => (
         <div className="fullstack-hero-map__step" key={item}>
-          <div className="fullstack-hero-map__node">
+          <div className="fullstack-hero-map__node" style={{ "--fullstack-flow-index": index }}>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <strong>{item}</strong>
           </div>
-          {index < items.length - 1 ? <span className="fullstack-hero-map__connector" aria-hidden="true" /> : null}
+          {index < items.length - 1 ? <span className="fullstack-hero-map__connector" style={{ "--fullstack-flow-index": index }} aria-hidden="true" /> : null}
         </div>
       ))}
     </div>
