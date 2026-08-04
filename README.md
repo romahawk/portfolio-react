@@ -1,20 +1,67 @@
-# Roman Mazuryk — Portfolio & Proof-of-Work Site
+# Roman Mazuryk - AI Workflow Consulting & Proof-of-Work Platform
 
-> Technical Product Manager and Founder-Operator with 10+ years in MedTech and regulated B2B environments. This portfolio proves product leadership through documented case studies, an AI-augmented SDLC framework, and a disciplined build history.
+> AI Systems Consultant for operations-heavy SMEs and regulated teams. This site presents practical AI workflow offers, public proof of work, MedTech/regulatory authority, and full-stack implementation evidence.
 
-**Live:** [mazuryk.dev](https://mazuryk.dev)
+**Live:** [mazuryk.dev](https://www.mazuryk.dev)
 
 ---
 
-## What This Is
+## What This Repository Is
 
-A single-page proof-of-work portfolio that demonstrates:
+This repository powers `mazuryk.dev`: a public consulting and proof-of-work platform built around one commercial thesis:
 
-- **3 in-depth case studies** — problem → solution → stack → results
-- **AI-Augmented SDLC framework** — how I use AI to accelerate product delivery without losing discipline
-- **Career timeline** — MedTech operator (2012) → Technical PM / Founder-Operator (2025)
-- **Skills taxonomy** — PM, systems, tech stack, soft skills, leverage patterns
-- **Certifications** and contact
+> Start with a workflow audit, then build the right AI-assisted pilot.
+
+The site supports two audiences:
+
+- **SME and regulated-operations clients** who need practical help finding, scoping, and implementing useful AI workflows.
+- **AI/product employers and collaborators** who need evidence of product judgment, systems thinking, and hands-on implementation ability.
+
+---
+
+## Positioning
+
+I help operations-heavy SMEs and regulated teams turn fragmented workflows into practical AI-assisted systems: audits, prototypes, internal tools, SOP systems, dashboards, and implementation roadmaps.
+
+The portfolio hierarchy is intentional:
+
+1. **AI consulting** - the primary commercial pillar.
+2. **MedTech and regulated operations** - authority proof from real implementation-heavy environments.
+3. **Full-stack product delivery** - implementation proof that the ideas can become working systems.
+
+---
+
+## Productized Offers Represented
+
+| Offer | Purpose | Site entry point |
+|-------|---------|------------------|
+| AI Workflow Opportunity Audit | Identify the right AI use case before building | [AI Consulting](https://www.mazuryk.dev/ai) |
+| Prototype Sprint | Turn the selected workflow into a tangible pilot | [AI Consulting](https://www.mazuryk.dev/ai) |
+| Knowledge & SOP System | Structure scattered knowledge, procedures, onboarding, and guidance | [AI Workflow Library](https://www.mazuryk.dev/ai-workflow) |
+| Dashboard & Internal Tool | Improve visibility, ownership, reporting, and workflow state | [Build Proof](https://www.mazuryk.dev/fullstack) |
+
+---
+
+## What This Repository Proves
+
+- AI consulting positioning translated into a live public website.
+- A clear offer system for SME workflow discovery, prototyping, and implementation.
+- MedTech and regulated-operations background used as credibility, not as a limiting niche.
+- Full-stack implementation proof through React, Vite, structured content, deployment, and documentation.
+- AI-assisted delivery discipline through PRD, architecture notes, roadmap, decisions log, changelog, and Git workflow.
+
+---
+
+## Main Routes
+
+| Route | Role |
+|-------|------|
+| [`/ai`](https://www.mazuryk.dev/ai) | Productized AI consulting offers and first CTA |
+| [`/ai-workflow`](https://www.mazuryk.dev/ai-workflow) | Practical workflow examples and reusable AI system patterns |
+| [`/proof-of-work`](https://www.mazuryk.dev/proof-of-work) | Regulated and MedTech domain proof |
+| [`/fullstack`](https://www.mazuryk.dev/fullstack) | Implementation proof: prototypes, dashboards, internal tools, and build capability |
+| [`/about`](https://www.mazuryk.dev/about) | Background, operating principles, and role fit |
+| [`/contact`](https://www.mazuryk.dev/contact) | Workflow discussion and collaboration entry point |
 
 ---
 
@@ -22,36 +69,25 @@ A single-page proof-of-work portfolio that demonstrates:
 
 | Layer | Choice | Why |
 |-------|--------|-----|
-| Framework | React 19 + Vite 7 | Fast builds, modern React, no CRA bloat |
-| Styling | Pure CSS + custom properties | Full control, no class noise, great browser support |
-| State | React `useState` + localStorage | No shared cross-component state needed |
-| Routing | Hash-based anchor links | Single scrollable page, no router bundle |
-| Deploy | Vercel | Zero config, instant CDN, auto-deploy on push |
+| Framework | React 19 + Vite 7 | Fast builds, modern React, simple deployment |
+| Styling | CSS modules by concern + custom properties | Precise control over a portfolio/consulting UI |
+| Icons | lucide-react | Consistent product-style iconography |
+| Analytics | Vercel Analytics | Lightweight feedback loop |
+| Deployment | Vercel | Automatic deploys, CDN hosting, preview URLs |
+| Documentation | Markdown in `/docs` | Public evidence of product and engineering discipline |
 
 ---
 
 ## Getting Started
 
-**Prerequisites:** Node.js ≥ 18
+**Prerequisites:** Node.js >= 18
 
 ```bash
-# Clone the repo
 git clone https://github.com/romahawk/portfolio-react.git
 cd portfolio-react
-
-# Install dependencies
 npm install
-
-# Start dev server (localhost:5173)
 npm run dev
-
-# Build for production
 npm run build
-
-# Preview production build locally
-npm run preview
-
-# Lint
 npm run lint
 ```
 
@@ -59,24 +95,24 @@ npm run lint
 
 ## Project Structure
 
-```
+```text
 src/
-├── components/          # All React components
-│   ├── case-studies/    # 6 detailed case study components
-│   └── ...              # Section components (Hero, About, Skills, etc.)
-├── data/                # Static content (projects, skills, timeline)
-├── hooks/               # Custom React hooks
-└── assets/css/          # 16 component-scoped CSS files
+  components/          React page and section components
+  components/case-studies/
+                       Detailed project and proof components
+  data/                Static content and workflow examples
+  hooks/               Metadata, language, and UI hooks
+  locales/             English and German copy
+  assets/css/          Component-scoped CSS
 
 docs/
-├── PRD.md               # Product requirements and acceptance criteria
-├── ARCHITECTURE.md      # System design and key trade-offs
-├── ROADMAP.md           # 12-week outcome-based roadmap
-└── DECISIONS_LOG.md     # Architectural decision records (ADRs)
+  PRD.md               Product requirements and target audiences
+  ARCHITECTURE.md      System design and key trade-offs
+  ROADMAP.md           Consulting-first site roadmap
+  DECISIONS_LOG.md     Architectural and product decisions
 
 public/
-├── images/              # Profile photo and certificates
-└── livesurgery/         # Standalone LiveSurgery demo page
+  images/              Profile, proof, and Open Graph assets
 ```
 
 ---
@@ -85,32 +121,28 @@ public/
 
 | Doc | Purpose |
 |-----|---------|
-| [PRD](docs/PRD.md) | Problem, target user, MVP scope, acceptance criteria |
-| [Architecture](docs/ARCHITECTURE.md) | System design, components, data flow, trade-offs |
-| [Roadmap](docs/ROADMAP.md) | 12-week plan with weekly outcomes and DoD |
-| [Decisions Log](docs/DECISIONS_LOG.md) | ADRs explaining every major technical choice |
-| [Changelog](CHANGELOG.md) | Visible history of all shipped improvements |
+| [PRD](docs/PRD.md) | Why the site exists, who it serves, and what it must prove |
+| [Architecture](docs/ARCHITECTURE.md) | Static site architecture, content structure, and trade-offs |
+| [Roadmap](docs/ROADMAP.md) | Current consulting-first improvement plan |
+| [Decisions Log](docs/DECISIONS_LOG.md) | Decision history and implementation rationale |
+| [Changelog](CHANGELOG.md) | Visible history of shipped improvements |
 
 ---
 
-## Contributing / Workflow
+## Workflow
 
-All changes follow Issue → PR → Deploy discipline. See [CONTRIBUTING.md](CONTRIBUTING.md) for branch naming, commit rules, and PR checklist.
+All meaningful changes should follow:
 
----
+```text
+Issue or task -> branch -> focused change -> build/lint -> PR -> deploy
+```
 
-## Deployment
-
-Auto-deploys to Vercel on push to `main`. No manual steps required.
-
-Build command: `npm run build`
-Output directory: `dist/`
-Node version: 18+
+The repository is not only a codebase. It is part of the proof: it should show how I think, document, build, and iterate.
 
 ---
 
-## Roadmap
+## Next Improvements
 
-See [docs/ROADMAP.md](docs/ROADMAP.md) for the full 12-week plan.
-
-**Current sprint (Week 1–2):** Production-grade scaffolding — docs, workflow templates, SEO fixes, OG image fix.
+- Add README screenshots for the homepage, AI offer section, AI workflow library, and proof-of-work pages.
+- Update GitHub repository topics around AI consulting, workflow automation, internal tools, MedTech, and regulated operations.
+- Keep documentation aligned with the current commercial positioning as the offers evolve.

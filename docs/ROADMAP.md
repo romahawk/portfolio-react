@@ -1,167 +1,147 @@
 # Roadmap
-## Roman Mazuryk — Portfolio & Proof-of-Work Site
+## mazuryk.dev - AI Consulting and Proof-of-Work Platform
 
-**Version:** 1.0
-**Last Updated:** 2026-03-09 (progress updated)
-**Horizon:** 12 weeks (3 months)
-
----
-
-## Guiding Principles
-
-1. **Ship visible improvements** — every week must produce a diff a recruiter can see
-2. **Proof-of-work discipline** — every change must follow Issue → PR → Deploy
-3. **Minimum viable everything** — prefer a shipped simple thing over a planned perfect thing
-4. **Freeze the refactor itch** — no TypeScript migration, no Tailwind rewrite during active sprint
+**Version:** 2.0
+**Last Updated:** 2026-08-04
+**Horizon:** Consulting-first validation, then scalable product discovery
 
 ---
 
-## Week 1–2: Stabilize + Production-Grade Scaffolding
+## North Star
 
-**Outcome:** The repo looks and behaves like a professionally maintained production project. Documentation exists. Workflow infrastructure is in place. Regressions are caught before they ship.
+Build an AI consulting and implementation business generating EUR 10k-20k/month in reliable cash flow, then reinvest a defined portion into scalable software products.
 
-### Issues
-- [x] `[CHORE]` Add `/docs/` folder with PRD, Architecture, Roadmap, Decisions Log
-- [x] `[CHORE]` Add GitHub issue templates (feature + bug) and PR template
-- [x] `[CHORE]` Add `CHANGELOG.md` and `CONTRIBUTING.md`
-- [x] `[BUG]` Fix OG image URL — change from relative `/images/profile.jpg` to absolute `https://roman-mazuryk.vercel.app/images/profile.jpg` in `index.html`
-- [x] `[CHORE]` Add `public/sitemap.xml` and `public/robots.txt`
-- [x] `[CHORE]` Update `README.md` with setup steps, deploy link, stack, screenshots
-- [x] `[CHORE]` Add `vercel.json` for explicit build configuration and security headers
-
-### Definition of Done
-- [x] `docs/` folder has all 4 files with substantive content
-- [x] GitHub repo has issue + PR templates visible when creating new issues
-- [x] `CHANGELOG.md` exists and has at least one entry
-- [ ] OG image renders on LinkedIn Post Inspector — **needs manual verification**
-- [ ] `sitemap.xml` is accessible at `https://www.mazuryk.dev/sitemap.xml` — **needs manual verification**
-- [x] `npm run build` exits 0, `npm run lint` exits 0
-- [ ] README has a screenshot — **not yet added**
-
-### Demo Artifact Required
-Screenshot of LinkedIn post preview showing OG image rendering correctly.
+The website and this repository support that path by making the positioning, offers, proof, and implementation capability visible.
 
 ---
 
-## Week 3–4: Signal Feature — Analytics + Performance Hardening
+## Strategic Principles
 
-**Outcome:** You have a feedback loop. You know who visits, what they look at, and how long they stay. Site passes Lighthouse 90+ on all metrics.
+1. **Services fund the business first.**
+   Prioritize audits, implementation projects, and retainers before major SaaS investment.
 
-### Issues
-- [x] `[FEATURE]` Add Vercel Analytics (zero-config, privacy-respecting, free tier)
-- [x] `[FEATURE]` Add Lighthouse CI to verify no regressions on build
-- [x] `[BUG]` Audit and fix any Lighthouse score < 90 — Performance 38→99, others 96–100
-- [x] `[CHORE]` Add `<link rel="preload">` for profile image with `fetchpriority="high"`
-- [ ] `[CHORE]` Verify all case study modals work on mobile (iOS Safari + Android Chrome)
-- [x] `[FEATURE]` Add "Last updated" timestamp to each case study component (visible in footer of modal)
+2. **Products emerge from repeated client problems.**
+   Use consulting work to identify recurring workflow problems, reusable components, and willingness to pay.
 
-### Definition of Done
-- [x] Vercel Analytics dashboard shows real visitor data
-- [x] Lighthouse score ≥ 90 — Performance 99, Accessibility 100, Best Practices 96, SEO 100
-- [ ] All 6 case study modals tested on mobile — no layout breaks
-- [x] Profile image preloaded — no layout shift
-- [x] Each case study footer shows "Last updated: [Month YYYY]"
+3. **AI is the commercial lead.**
+   The site should make practical AI workflow consulting understandable before visitors inspect MedTech or full-stack proof.
 
-### Demo Artifact Required
-Loom or screenshot: Lighthouse report showing 4x 90+ scores. ✅ Confirmed 99/100/96/100.
-Lighthouse CI: `.github/workflows/lighthouse.yml` runs on every PR to `main`.
+4. **MedTech is authority, not the whole niche.**
+   Regulated and implementation-heavy experience proves judgment for complex workflows.
+
+5. **Full-stack is implementation proof.**
+   Technical work should show that workflow strategy can become prototypes, dashboards, tools, and deployed systems.
 
 ---
 
-## Month 2 (Weeks 5–8): Capability Expansion
+## Current Phase
 
-**Outcome:** Portfolio is feature-complete for senior PM job search. New case study added. Content is easier to update.
+**Positioning -> First-client validation**
 
-### Week 5–6: New Case Study + Content Refresh
+Immediate objective:
 
-**Outcome:** Add one new project or case study that is directly relevant to current job search focus (B2B SaaS / internal tools / regulated industry).
-
-- [ ] `[FEATURE]` Add case study: [new project — to be determined based on active work]
-- [ ] `[CHORE]` Upload OG screenshots for remaining 5 projects (SmartShooter, Flowlogics, Alphorythm, Portfolio, Medintegro) and wire up `og:image` meta tags per case study
-- [ ] `[CHORE]` Refresh Skills section with any new tools/frameworks from active work
-- [ ] `[FEATURE]` Add "Open to Work" availability banner (dismissible, toggleable)
-- [ ] `[CHORE]` Update Timeline with any 2025–2026 entries
-
-### Definition of Done
-- [ ] New case study live in production
-- [ ] Skills section reflects current stack
-- [ ] Timeline is up-to-date through current month
-
-### Demo Artifact Required
-Screenshot of new case study modal with all sections populated.
+> Make the AI Workflow Opportunity Audit credible enough to support real prospect conversations, while keeping the site useful for AI-related product and implementation roles.
 
 ---
 
-### Week 7–8: Data-Driven Case Studies (Decoupled Content)
+## Roadmap Phases
 
-**Outcome:** Case study content extracted from JSX into data files, making it possible to update copy without touching component code.
-
-- [ ] `[REFACTOR]` Define `CaseStudy` data schema (title, problem, solution, stack, results, lastUpdated)
-- [ ] `[REFACTOR]` Migrate 2–3 case studies to data-driven rendering
-- [ ] `[CHORE]` Update `ARCHITECTURE.md` to document new data layer
-
-> **Note:** This is a refactor sprint. No new UI changes. Branch: `refactor/case-study-data-layer`.
-
-### Definition of Done
-- [ ] At least 2 case studies render from data files (not hardcoded JSX)
-- [ ] Visual output is identical to before (no regression)
-- [ ] Architecture doc updated
-
-### Demo Artifact Required
-Side-by-side diff showing old JSX component vs new data file + renderer.
+| Phase | Goal | Exit Gate |
+|-------|------|-----------|
+| 1. Positioning | Clear audience, problem, offer, and proof hierarchy | Homepage, LinkedIn, GitHub, and `/ai` tell one coherent story |
+| 2. First Clients | Validate audit-first consulting with real conversations | 2-3 serious discovery conversations or one paid/permissioned audit |
+| 3. Repeatable Service | Turn the audit and prototype sprint into a repeatable offer | Same offer sold or seriously requested 3 times |
+| 4. Retainers | Convert implementation support into recurring revenue | 2 recurring clients or ongoing support agreements |
+| 5. EUR 10k/month Baseline | Establish stable consulting cash flow | EUR 10k/month maintained for 3 consecutive months |
+| 6. Product Discovery | Identify recurring client workflow problems | Same problem observed across 5+ clients/prospects |
+| 7. Paid Product Pilot | Build the smallest productized solution | 3+ prospects willing to pay or pilot |
+| 8. Scalable Product | Grow beyond services | Product revenue or strong paid commitments justify reinvestment |
+| 9. EUR 20k/month Combined | Combine consulting, retainers, and product income | Reliable blended revenue with clear growth path |
 
 ---
 
-## Month 3 (Weeks 9–12): Production Hardening + TypeScript Migration
+## Sprint 1 Website/GitHub Priorities
 
-**Outcome:** Repo is fully TypeScript, has E2E tests for the core loop, and is ready to be referenced in job applications as a production-grade example.
+### P0 - Support the first consulting conversations
 
-### Week 9–10: TypeScript Migration
+- Keep `/ai` aligned around the four productized offers.
+- Keep `/ai-workflow` general enough for SMEs, not only MedTech.
+- Ensure `/proof-of-work` keeps MedTech as regulated proof.
+- Use Medintegro-inspired material as public proof where permission and data boundaries are safe.
+- Keep CT-T as private validation until there is data and permission to reference it.
 
-- [ ] `[CHORE]` Add `tsconfig.json`, update Vite config for TypeScript
-- [ ] `[REFACTOR]` Migrate `src/data/*.js` → `src/data/*.ts` with typed interfaces
-- [ ] `[REFACTOR]` Migrate `src/hooks/*.js` → `src/hooks/*.ts`
-- [ ] `[REFACTOR]` Migrate components in priority order: data-layer → hooks → leaf components → page components
+### P1 - Strengthen GitHub proof
 
-### Definition of Done
-- [ ] `npm run build` succeeds with zero TypeScript errors
-- [ ] No `any` types in data layer or hooks
-- [ ] All existing ESLint rules still pass
+- Rewrite README around AI consulting and proof-of-work positioning.
+- Update PRD target users from recruiter-only to dual audience: SME clients and AI/product employers.
+- Refresh this roadmap to show consulting-first priorities.
+- Add screenshots to the README once final page views are selected.
+- Update GitHub repo description and topics manually.
 
----
+### P2 - Build public activity loop
 
-### Week 11–12: E2E Tests + Final Polish
-
-- [ ] `[CHORE]` Add Playwright for E2E testing
-- [ ] `[TEST]` Core loop test: land → open case study → close modal → click contact
-- [ ] `[TEST]` Mobile nav test: open menu → click link → menu closes, section activates
-- [ ] `[FEATURE]` Add print/PDF stylesheet for resume-style print view
-- [ ] `[CHORE]` Record a Loom walkthrough for the README
-
-### Definition of Done
-- [ ] Playwright tests pass in CI
-- [ ] Print view renders cleanly (optional but high-credibility)
-- [ ] README has a Loom video link
-- [ ] All CHANGELOG entries are current
+- Publish short build logs around the four offers.
+- Tie each public artifact to one offer and one proof type.
+- Use Medintegro as public proof until new client permission exists.
 
 ---
 
-## Freeze List (What Won't Be Touched)
+## Public Proof Tracks
 
-These are explicitly out of scope for this 12-week roadmap:
+| Track | Purpose | Example Assets |
+|-------|---------|----------------|
+| AI consultancy entrepreneurship | Show what SMEs can buy and how the work creates value | Audit examples, workflow maps, opportunity matrices, pilot plans |
+| AI-related employment roles | Show product judgment, AI delivery thinking, and implementation discipline | Case studies, repo docs, build logs, architecture notes, prototypes |
 
-| Item | Reason |
-|------|--------|
-| CMS integration (Contentful, Sanity) | Not needed until content updates become frequent pain |
-| Blog / writing section | Separate product; don't conflate with portfolio |
-| Dark/light mode toggle | Already dark-only; adding toggle is scope creep |
-| React Router | Hash navigation works; no separate pages needed |
-| Redux / Zustand | No shared state between sections |
-| Tailwind CSS migration | 1,735 lines of clean CSS is working fine |
-| Authentication | No user accounts needed |
-| Backend / API | Static site is the right architecture |
-| Multi-page routing | Single scrollable page is the UX model |
-| Comment system | Not a blog |
+---
+
+## Offer-Aligned Content Plan
+
+| Offer | Public Proof Needed |
+|-------|---------------------|
+| AI Workflow Opportunity Audit | Explain how to choose the right workflow before building |
+| Prototype Sprint | Show how an audit recommendation becomes a tangible pilot |
+| Knowledge & SOP System | Show how scattered documents/procedures become usable guidance |
+| Dashboard & Internal Tool | Show how spreadsheet chaos becomes workflow visibility and ownership |
+
+---
+
+## Reinvestment Rule
+
+Before stable EUR 10k/month:
+
+- 80-90% of business capacity goes toward consulting, offers, proof, and prospect conversations.
+- 10-20% goes toward reusable components and product discovery.
+- Avoid major SaaS development costs.
+
+After stable EUR 10k/month for 3 months:
+
+- Allocate a defined share of operating profit toward product development, sales assets, tools, contractors, and infrastructure.
+- Build products only from repeated workflow evidence, not from isolated ideas.
+
+---
+
+## Definition of Done for This Repository
+
+The repository supports the business roadmap when:
+
+- README communicates AI consulting first.
+- PRD target users include SME clients and AI/product employers.
+- Roadmap reflects consulting-first revenue before product investment.
+- MedTech proof is framed as authority for regulated workflow judgment.
+- Full-stack proof is framed as implementation capability.
+- Build and lint pass before PRs are merged.
+
+---
+
+## Deferred
+
+- Automated booking/payment flow.
+- CMS migration.
+- Full SaaS/product build.
+- Broad blog platform.
+- Large framework migrations unrelated to current positioning.
+- Publishing client-specific CT-T material before permission exists.
 
 ---
 
@@ -169,5 +149,6 @@ These are explicitly out of scope for this 12-week roadmap:
 
 | Version | Date | Summary |
 |---------|------|---------|
-| 1.0 | 2026-02-26 | Initial roadmap created via AI Production OS v1 audit |
-| 1.1 | 2026-03-09 | Mark vercel.json, Lighthouse CI, and "Last updated" timestamps as complete; update canonical domain to www.mazuryk.dev |
+| 1.0 | 2026-02-26 | Initial portfolio stabilization roadmap |
+| 1.1 | 2026-03-09 | Production-grade scaffolding and canonical domain updates |
+| 2.0 | 2026-08-04 | Reframed roadmap around AI consulting, first-client validation, and product discovery after cash flow |
