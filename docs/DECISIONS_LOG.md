@@ -1,189 +1,265 @@
 # Architectural Decisions Log
-## Roman Mazuryk — Portfolio & Proof-of-Work Site
+## mazuryk.dev - AI Consulting and Proof-of-Work Platform
 
 **Format:** Lightweight ADR (Architecture Decision Record)
-**Last Updated:** 2026-02-26 (ADR-007, ADR-008 added)
+**Last Updated:** 2026-08-04
+**Status:** Active
 
 ---
 
-## ADR-001: No Routing Library — Hash-Based Anchor Navigation
+## ADR-001: Lightweight Routing Without a Routing Library
 
-**Date:** 2025-11 (retroactive)
+**Date:** 2025-11, revised 2026-08-04
 **Status:** Accepted
 **Decider:** Roman Mazuryk
 
 ### Context
-Portfolio is a single scrollable page. All "pages" are sections visible within one scroll container. The question was whether to use React Router to enable `/projects`, `/about`, etc. as distinct routes.
+The original portfolio began as a single-page proof-of-work site. It later evolved into a multi-route consulting and proof platform with `/ai`, `/ai-workflow`, `/proof-of-work`, `/fullstack`, `/about`, and `/contact` routes.
+
+The question is whether to introduce React Router or a heavier framework.
 
 ### Decision
-Use native browser anchor links (`#section-id`) with scroll-spy in the Navbar. No React Router.
+Keep a lightweight path resolver in `App.jsx` and generate static HTML entries for major routes through Vite.
 
 ### Consequences
-- ✅ Zero dependency; no router bundle weight
-- ✅ Direct linking to sections works (`/#projects`, `/#contact`)
-- ✅ Back/forward browser buttons work naturally
-- ✅ No route mismatch on refresh
-- ⚠️ Individual case studies not directly linkable as separate pages (mitigated: hash-based modal routing `/#projects/livesurgery` implemented)
-- ⚠️ Cannot add a `/blog` route without introducing React Router later (acceptable: blog is in freeze list)
+- Keeps the architecture simple and understandable.
+- Avoids adding routing dependency and migration work before it is necessary.
+- Supports current route-specific page rendering and social preview needs.
+- Requires manual care when adding a new major route.
+- If route complexity grows, React Router or a static/SSR framework can be reconsidered.
 
 ---
 
-## ADR-002: Pure CSS with Custom Properties — No Tailwind or CSS-in-JS
+## ADR-002: Static Content First, No CMS Yet
 
-**Date:** 2025-11 (retroactive)
+**Date:** 2025-11, revised 2026-08-04
 **Status:** Accepted
 **Decider:** Roman Mazuryk
 
 ### Context
-Three styling options were considered: Tailwind CSS utility classes, CSS-in-JS (styled-components or Emotion), or plain CSS with custom properties.
+The site needs frequent positioning and proof updates, but it is still a solo-founder site. A CMS would make editing easier but would add operational overhead and another dependency.
 
 ### Decision
-Plain CSS organized into 16 component-scoped files, with CSS custom properties for design tokens.
+Keep content in React components, locale files, and static data modules such as `src/data/aiWorkflows.js`.
 
 ### Consequences
-- ✅ No build-time CSS purge/JIT complexity
-- ✅ CSS files are readable and auditable by any developer
-- ✅ CSS custom properties (variables) provide the theming capability of a design token system without the toolchain
-- ✅ `prefers-reduced-motion` and `prefers-color-scheme` are trivial to support in plain CSS
-- ✅ No React-specific styling dependency — CSS works if component is extracted
-- ⚠️ 1,735 lines of CSS requires discipline to keep organized (mitigated: one file per major section)
-- ⚠️ No automatic TypeScript type-checking for class names (acceptable trade-off at current scale)
+- Content is version-controlled and reviewable.
+- Changes produce visible GitHub proof of iteration.
+- No CMS cost, login, schema, or API dependency.
+- Non-technical editing is not optimized.
+- A CMS or MDX layer can be added later if publishing volume justifies it.
 
 ---
 
-## ADR-003: Static Data Files — No CMS or Backend
+## ADR-003: Pure CSS With Custom Properties
 
-**Date:** 2025-11 (retroactive)
+**Date:** 2025-11
 **Status:** Accepted
 **Decider:** Roman Mazuryk
 
 ### Context
-Portfolio content (projects, skills, timeline, milestones) needs to be maintained and occasionally updated. Options: headless CMS (Contentful/Sanity), JSON files, hardcoded in JSX, or JS module data files.
+The site needs a distinctive portfolio/consulting visual system, responsive layouts, dark UI, cards, proof sections, and precise control over typography and spacing.
 
 ### Decision
-All content lives in `/src/data/*.js` as exported JavaScript arrays/objects. Case study narratives are in dedicated JSX components under `/src/components/case-studies/`.
+Use plain CSS organized by concern, with custom properties for shared design tokens.
 
 ### Consequences
-- ✅ Zero CMS cost, zero API latency, zero runtime dependency
-- ✅ Content changes trigger a build/deploy — forces intentional updates
-- ✅ Content is version-controlled with code (full history)
-- ✅ No CMS schema to maintain
-- ⚠️ Case study text in JSX components is harder to update than data files (planned fix: Week 7–8 roadmap item to extract to data layer)
-- ⚠️ Non-developers cannot edit content without code access (acceptable: solo founder, no content collaborators)
+- No styling framework dependency.
+- CSS is transparent and easy to inspect in GitHub.
+- Design can remain highly tailored to the consulting/proof experience.
+- Requires discipline to prevent CSS sprawl.
+- A design-system extraction is deferred until repetition becomes painful.
 
 ---
 
-## ADR-004: Component-Level State Only — No Global State Manager
+## ADR-004: Component-Level State And Small Contexts Only
 
-**Date:** 2025-11 (retroactive)
+**Date:** 2025-11, revised 2026-08-04
 **Status:** Accepted
 **Decider:** Roman Mazuryk
 
 ### Context
-Portfolio uses several pieces of UI state: active nav section, mobile menu open/closed, timeline view mode, project modal open/closed, email copied status. Question: should this use Redux, Zustand, React Context, or component `useState`?
+The site has limited UI state: page resolution, nav state, theme, language, scroll reveal behavior, and metadata updates.
 
 ### Decision
-All state is managed with React `useState` in the component that owns it. `localStorage` is used for the one piece of state that needs to persist across page loads (timeline view preference).
+Use local component state plus focused hooks/contexts (`LangProvider`, `useTheme`, `useScrollReveal`, `useOgMeta`). Do not add Redux, Zustand, or a broad app store.
 
 ### Consequences
-- ✅ Zero additional dependency
-- ✅ No "prop drilling" needed — state is co-located with the UI that uses it
-- ✅ Each component is independently understandable and testable
-- ✅ No global store to debug or serialize
-- ⚠️ If cross-component state is ever needed (e.g., theme toggle affecting all components), state will need to be lifted or Context introduced (acceptable: not in current scope)
+- State remains close to the UI that owns it.
+- The app remains easy to reason about.
+- No global state dependency or boilerplate.
+- If future product features add logged-in users or editable data, this decision should be revisited.
 
 ---
 
-## ADR-005: Retroactive OS Adoption — AI Production OS v1 Framework
+## ADR-005: Documentation As Public Proof Of Work
+
+**Date:** 2026-02-26, revised 2026-08-04
+**Status:** Accepted
+**Decider:** Roman Mazuryk
+
+### Context
+The repository is not only a codebase. It is part of the trust layer for AI consulting clients and AI/product employers. Stale or missing documentation weakens that proof.
+
+### Decision
+Maintain a small documentation set:
+
+- `README.md` for public repo positioning
+- `docs/PRD.md` for product intent and audiences
+- `docs/ARCHITECTURE.md` for system structure and trade-offs
+- `docs/ROADMAP.md` for business-aligned evolution
+- `docs/DECISIONS_LOG.md` for key decisions
+
+### Consequences
+- GitHub becomes evidence of thinking, not only source code.
+- The docs support both consulting entrepreneurship and AI-related employment roles.
+- Documentation must be updated when positioning changes.
+- Over-documentation should be avoided; each doc must have a clear job.
+
+---
+
+## ADR-006: Vite Over Next.js For Current Phase
+
+**Date:** 2025-11, revised 2026-08-04
+**Status:** Accepted
+**Decider:** Roman Mazuryk
+
+### Context
+The site is mostly static, with no authenticated product, backend data, or dynamic server-rendered experience. Next.js would add routing and metadata advantages but also a migration and operational cost.
+
+### Decision
+Continue with Vite and static Vercel deployment for the current phase.
+
+### Consequences
+- Fast local development and simple deployment.
+- Low operational complexity.
+- Good enough for positioning, proof, and first-client validation.
+- Route metadata requires static entries and explicit maintenance.
+- If a productized audit tool emerges, the architecture can be reconsidered.
+
+---
+
+## ADR-007: Named Lucide Imports And Manual Chunking
 
 **Date:** 2026-02-26
 **Status:** Accepted
 **Decider:** Roman Mazuryk
 
 ### Context
-The portfolio repo was built prototype-first: code quality and visual design were prioritized over workflow discipline and documentation. At the point of this audit (2026-02-26), the repo had:
-- 0 documentation files
-- 0 CI/CD configuration
-- 0 tests
-- 0 issue/PR templates
-- Minimal README (6 lines)
-
-As a solo founder using this repo as proof-of-work for senior PM and technical roles, the absence of workflow scaffolding undermines the repo's credibility as a signal of production discipline.
+Wildcard icon imports and large bundles weakened performance. Case study and proof pages should not slow the first impression.
 
 ### Decision
-Apply AI Production OS v1 framework retroactively: create all missing documentation (PRD, Architecture, Roadmap, Decisions Log), establish GitHub workflow templates, add CHANGELOG, and follow Issue → PR → Deploy discipline for all future changes.
+Use named icon imports and Vite manual chunking for React vendor code.
 
 ### Consequences
-- ✅ Repo now reads as a production-grade project, not a prototype
-- ✅ Future contributors (or future self) have clear context for every decision
-- ✅ CHANGELOG provides visible proof-of-work over time
-- ✅ Issue and PR templates enforce scoped, reviewable changes
-- ⚠️ Documentation needs to be kept current — stale docs are worse than no docs (mitigation: add "Update docs" to every PR checklist)
-- ⚠️ Does not retroactively add test coverage or CI/CD (addressed in Weeks 3–4 roadmap)
+- Better tree-shaking.
+- Smaller initial JavaScript payload.
+- More explicit icon maintenance when new icons are added.
+- Good fit for a static proof site where performance matters for credibility.
 
 ---
 
-## ADR-006: Vite over Create React App
-
-**Date:** 2025-11 (retroactive)
-**Status:** Accepted
-**Decider:** Roman Mazuryk
-
-### Context
-React project initialization choice: Create React App (deprecated), Vite, or Next.js.
-
-### Decision
-Use Vite with `@vitejs/plugin-react`. No Next.js.
-
-### Consequences
-- ✅ CRA is deprecated; Vite is the current community standard for SPAs
-- ✅ Vite build is 10–50x faster than Webpack/CRA
-- ✅ HMR (Hot Module Replacement) is near-instant
-- ✅ Vite produces a static bundle deployable to any CDN (Vercel, Netlify, GitHub Pages)
-- ✅ No server-side rendering needed for a static portfolio
-- ⚠️ No SSR/SSG built-in — if SEO becomes critical, Next.js migration would be needed (acceptable: static OG tags + sitemap.xml are sufficient for current SEO goals)
-
----
-
-## ADR-007: Named Lucide Imports + Static Icon Maps Over Wildcard Import
+## ADR-008: Lazy-Load Heavy Proof Components Where Useful
 
 **Date:** 2026-02-26
 **Status:** Accepted
 **Decider:** Roman Mazuryk
 
 ### Context
-Three components (`Projects`, `Milestones`, `JourneyFull`) used `import * as Lucide from "lucide-react"` to resolve icon names stored as strings in data files. This pattern is convenient — no lookup map needed — but wildcard namespace imports prevent Rollup from tree-shaking the lucide-react package, forcing all 1,000+ icons into the bundle (~850 kB).
+Detailed proof and case study content is important, but it should not all load before the visitor has chosen to inspect it.
 
 ### Decision
-Replace wildcard imports with explicit named imports for only the icons actually referenced in the data files. Build a `const COMPONENT_ICONS = { ... }` static lookup map in each component and use it for dynamic resolution.
+Lazy-load modal-only or heavier proof components where appropriate.
 
 ### Consequences
-- ✅ Rollup can tree-shake lucide-react — only imported icons are bundled
-- ✅ Bundle reduction: ~800 kB removed from initial load
-- ✅ No runtime behavior change — same dynamic icon resolution via string key
-- ⚠️ When adding a new icon to a data file, the named import and the map entry must also be added to the consuming component (acceptable: icons change rarely; easy to spot at PR review)
+- Faster initial load.
+- Proof remains available on demand.
+- Slight async delay when opening some detailed content.
+- New proof components should consider whether they belong in the initial bundle.
 
 ---
 
-## ADR-008: Lazy-Load Case Study Components (React.lazy + Suspense)
+## ADR-009: Reposition Site Around AI Consulting, Not Recruiter-Only Portfolio
 
-**Date:** 2026-02-26
+**Date:** 2026-08-04
 **Status:** Accepted
 **Decider:** Roman Mazuryk
 
 ### Context
-Six case study components (LiveSurgery, Flowlogics, SmartShooter, Alphorythm, Portfolio, Medintegro) were statically imported in `Projects.jsx`. They are only ever rendered inside a modal that opens on user interaction. Including them in the initial bundle adds ~50 kB of JSX that is never needed until a user explicitly clicks "Case Study".
+The original site was optimized for technical PM / senior role credibility. The business direction changed toward AI consulting and implementation for operations-heavy SMEs, with AI-related employment roles as a parallel credibility track.
 
 ### Decision
-Convert all six case study imports to `React.lazy(() => import(...))` and wrap the modal body in `<Suspense fallback={<div className="cs-loading">Loading…</div>}>`.
+Reframe the site and repository around:
+
+> AI Systems Consultant for operations-heavy SMEs and regulated industries.
+
+Use the hierarchy:
+
+1. AI as primary commercial pillar.
+2. MedTech/regulatory experience as authority proof.
+3. Full-stack delivery as implementation proof.
 
 ### Consequences
-- ✅ Case study code is split into 6 separate chunks, loaded on demand
-- ✅ Initial bundle reduced; faster first paint and LCP
-- ✅ Each case study chunk is small (3–11 kB gzip) — loads in < 100ms on any reasonable connection
-- ✅ `<Suspense>` fallback handles the brief loading state gracefully
-- ⚠️ First open of a case study has a tiny async delay (imperceptible on broadband; acceptable trade-off)
-- ⚠️ New case study components must also use `React.lazy` to stay consistent (documented in CONTRIBUTING)
+- `/ai` and `/ai-workflow` become primary commercial surfaces.
+- `/proof-of-work` and MedTech material support authority rather than owning the whole identity.
+- `/fullstack` proves ability to build pilots and internal tools.
+- README, PRD, roadmap, architecture, and decisions docs must stay aligned with this positioning.
 
-### Outcome
-Lighthouse Performance score: **38 → 99**. Initial JS gzip: **242 kB → 78 kB**.
+---
+
+## ADR-010: Audit-First Offer Model
+
+**Date:** 2026-08-04
+**Status:** Accepted
+**Decider:** Roman Mazuryk
+
+### Context
+SMEs often want AI but do not know which workflow is worth automating. Jumping directly into implementation risks building the wrong thing.
+
+### Decision
+Lead with the AI Workflow Opportunity Audit, then move to Prototype Sprint, Knowledge & SOP System, or Dashboard & Internal Tool depending on the workflow.
+
+### Consequences
+- The first conversion path is lower-risk and easier to understand.
+- The site can publish workflow examples without overclaiming client outcomes.
+- Consulting revenue can fund later product discovery.
+- Public proof should show workflow maps, opportunity matrices, pilot scopes, and implementation roadmaps.
+
+---
+
+## ADR-011: Keep CT-T Private Until Permission; Use Medintegro As Public Proof
+
+**Date:** 2026-08-04
+**Status:** Accepted
+**Decider:** Roman Mazuryk
+
+### Context
+CT-T is the first intended validation prospect, but there is no real data or permission to present them publicly as a use case. Public proof should not imply client approval or results that do not exist.
+
+### Decision
+Keep CT-T as private validation context. Use Medintegro and Medintegro-inspired patterns as public proof where data boundaries are safe.
+
+### Consequences
+- Public messaging stays credible and ethical.
+- The site can still show relevant proof without inventing client outcomes.
+- CT-T learnings can inform internal templates and future offers until permission exists.
+
+---
+
+## ADR-012: Lightweight English/German Localization
+
+**Date:** 2026-08-04
+**Status:** Accepted
+**Decider:** Roman Mazuryk
+
+### Context
+Roman is Germany-based and wants the site to support both international AI/product opportunities and local/regional prospects. A full i18n framework is not yet necessary.
+
+### Decision
+Use a lightweight language context and locale files for English and German.
+
+### Consequences
+- German copy can support local credibility.
+- English remains the primary international proof language.
+- No external i18n dependency is needed.
+- Locale maintenance must be part of copy changes.
