@@ -40,7 +40,9 @@
   color: var(--text);
   margin: 0;
   line-height: 1.3;
-  word-break: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 /* Responsive tuning: less space when titles wrap into fewer lines */
