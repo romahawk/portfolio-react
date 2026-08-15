@@ -269,7 +269,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="section container">
-      <h2 className="section__title reveal">&gt; {t("projects.title")}</h2>
+      <h2 className="section__title heading-accent--fullstack reveal">&gt; {t("projects.title")}</h2>
 
       <h3 className="projects__section-title">
         <Boxes size={18} className="icon" /> {t("site.home.proofPreview.title")}

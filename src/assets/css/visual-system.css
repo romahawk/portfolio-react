@@ -17,6 +17,27 @@
   --system-accent-soft: var(--accent-fullstack-soft);
 }
 
+.heading-accent--ai {
+  background: linear-gradient(135deg, var(--accent-ai) 0%, var(--accent-ai-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heading-accent--medtech {
+  background: linear-gradient(135deg, var(--accent-medtech) 0%, var(--accent-medtech-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heading-accent--fullstack {
+  background: linear-gradient(135deg, var(--accent-fullstack) 0%, var(--accent-fullstack-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .section-header {
   max-width: 880px;
   margin-bottom: 22px;
@@ -629,6 +650,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .heading-accent--ai,
+  .heading-accent--medtech,
+  .heading-accent--fullstack {
+    background: none;
+    -webkit-text-fill-color: var(--text);
+    color: var(--text);
+  }
+
   .workflow-map::after,
   .workflow-node,
   .workflow-connector::before,

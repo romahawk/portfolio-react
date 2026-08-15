@@ -77,20 +77,24 @@
 
 /* ==== Card base ==== */
 .project-card {
+  --project-card-surface: var(--card-bg) padding-box;
+  --project-card-border-gradient: linear-gradient(135deg, rgba(73, 215, 209, 0.2), rgba(111, 164, 255, 0.12));
   display: flex;
   flex-direction: column;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
+  background:
+    var(--project-card-surface),
+    var(--project-card-border-gradient) border-box;
+  border: 1px solid transparent;
   border-radius: var(--radius);
   padding: 16px;
   color: var(--muted);
-  transition: transform 0.18s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0, 221, 235, 0.45);
-  box-shadow: 0 12px 26px rgba(0, 221, 235, 0.18);
+  --project-card-border-gradient: linear-gradient(135deg, rgba(73, 215, 209, 0.45), rgba(111, 164, 255, 0.32));
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px rgba(73, 215, 209, 0.15), 0 20px 60px rgba(73, 215, 209, 0.05);
 }
 
 .project-card__head {
@@ -184,40 +188,36 @@
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.25));
 }
 .project-card--signal {
-  background:
-    radial-gradient(560px 240px at 100% 0, var(--surface-glow), transparent 60%),
-    var(--card-bg);
+  --project-card-surface:
+    radial-gradient(560px 240px at 100% 0, var(--surface-glow), transparent 60%) padding-box,
+    var(--card-bg) padding-box;
 }
 .project-card--signal:hover {
-  border-color: rgba(73, 215, 209, 0.45);
-  box-shadow: 0 12px 26px rgba(73, 215, 209, 0.16);
+  box-shadow: 0 0 0 1px rgba(73, 215, 209, 0.15), 0 20px 60px rgba(73, 215, 209, 0.07);
 }
 .project-card--workflow {
-  background:
-    radial-gradient(560px 240px at 100% 0, var(--surface-cool), transparent 60%),
-    var(--card-bg);
+  --project-card-surface:
+    radial-gradient(560px 240px at 100% 0, var(--surface-cool), transparent 60%) padding-box,
+    var(--card-bg) padding-box;
 }
 .project-card--workflow:hover {
-  border-color: rgba(111, 164, 255, 0.42);
-  box-shadow: 0 12px 26px rgba(111, 164, 255, 0.16);
+  box-shadow: 0 0 0 1px rgba(111, 164, 255, 0.15), 0 20px 60px rgba(111, 164, 255, 0.07);
 }
 .project-card--insight {
-  background:
-    radial-gradient(560px 240px at 100% 0, var(--surface-warm), transparent 60%),
-    var(--card-bg);
+  --project-card-surface:
+    radial-gradient(560px 240px at 100% 0, var(--surface-warm), transparent 60%) padding-box,
+    var(--card-bg) padding-box;
 }
 .project-card--insight:hover {
-  border-color: rgba(243, 182, 110, 0.42);
-  box-shadow: 0 12px 26px rgba(243, 182, 110, 0.14);
+  box-shadow: 0 0 0 1px rgba(243, 182, 110, 0.15), 0 20px 60px rgba(243, 182, 110, 0.06);
 }
 
 .project-card--flagship {
   grid-column: 1 / -1;
-  background:
-    radial-gradient(760px 320px at 100% 0, var(--surface-glow), transparent 62%),
-    radial-gradient(620px 300px at 0 100%, var(--surface-cool), transparent 64%),
-    var(--card-bg);
-  border-color: rgba(0, 221, 235, 0.45);
+  --project-card-surface:
+    radial-gradient(760px 320px at 100% 0, var(--surface-glow), transparent 62%) padding-box,
+    radial-gradient(620px 300px at 0 100%, var(--surface-cool), transparent 64%) padding-box,
+    var(--card-bg) padding-box;
 }
 
 .project-card--flagship .project-card__title {
@@ -243,22 +243,19 @@
 
 /* ==== MedTech variants ==== */
 .project-card--med {
-  border-color: var(--border-strong);
-  background:
-    radial-gradient(600px 300px at 110% -10%, var(--surface-cool), transparent),
-    var(--card-bg);
+  --project-card-surface:
+    radial-gradient(600px 300px at 110% -10%, var(--surface-cool), transparent) padding-box,
+    var(--card-bg) padding-box;
 }
 
 .project-card--med:hover {
-  border-color: rgba(91, 157, 255, 0.55);
-  box-shadow: 0 12px 28px rgba(91, 157, 255, 0.2);
+  box-shadow: 0 0 0 1px rgba(111, 164, 255, 0.18), 0 20px 60px rgba(111, 164, 255, 0.08);
 }
 
 .project-card--mgmt {
-  border-color: var(--border-strong);
-  background:
-    radial-gradient(600px 300px at 110% -10%, var(--surface-warm), transparent),
-    var(--card-bg);
+  --project-card-surface:
+    radial-gradient(600px 300px at 110% -10%, var(--surface-warm), transparent) padding-box,
+    var(--card-bg) padding-box;
 }
 
 .project-card--mgmt .project-card__title {
@@ -316,6 +313,17 @@
 .project-card__link--ghost:hover {
   border-color: rgba(0, 221, 235, 0.5);
   color: var(--brand);
+}
+
+[data-theme="light"] .project-card {
+  --project-card-surface: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(247,249,253,0.95)) padding-box;
+  --project-card-border-gradient: linear-gradient(135deg, rgba(5,127,166,0.3), rgba(35,95,202,0.2));
+  border: 1px solid transparent;
+}
+
+[data-theme="light"] .project-card:hover {
+  --project-card-border-gradient: linear-gradient(135deg, rgba(5,127,166,0.55), rgba(35,95,202,0.42));
+  box-shadow: 0 0 0 1px rgba(5,127,166,0.18), 0 16px 44px rgba(5,127,166,0.08);
 }
 
 /* ==== In development badge ==== */

@@ -11,12 +11,12 @@
   border-radius: var(--radius);
   padding: 16px;
   color: var(--muted);
-  transition: transform .18s ease, box-shadow .25s ease, border-color .2s ease;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
   display: flex;
   flex-direction: column;
 }
 .cert-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   border-color: rgba(0,221,235,.45);
   box-shadow: 0 12px 26px rgba(0,221,235,.18);
 }
@@ -148,4 +148,10 @@
 .badge--ongoing {
   border-color: rgba(0,221,235,.45);
   color: var(--brand);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cert-card__ph::after {
+    animation: none;
+  }
 }

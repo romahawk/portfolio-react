@@ -1148,6 +1148,7 @@ export function AIPage() {
           eyebrow={deText("01 / Workflow intelligence", lang)}
           title={deText("From scattered work to workflow intelligence", lang)}
           text={deText("A workflow intelligence system connects scattered inputs - emails, documents, forms, spreadsheets, and meetings - and turns them into structured tasks, summaries, decisions, dashboards, or SOPs.", lang)}
+          headingAccent="ai"
         />
         <WorkflowBeforeAfter before={localizedAiBeforeAfter.before} after={localizedAiBeforeAfter.after} />
         <ArtifactMap
@@ -1258,6 +1259,7 @@ export function MedTechPage() {
           eyebrow={deText("Regulated operations proof", lang)}
           title={deText("Why my MedTech background matters for AI workflow systems", lang)}
           text={deText("AI systems fail when they ignore real-world constraints: handovers, stakeholders, documentation, exceptions, training, and review points. My MedTech implementation background helps me design workflows that fit how teams actually work.", lang)}
+          headingAccent="medtech"
         />
         <RegulatedOperationsProofGrid items={localizedRegulatedOperationsProof} />
       </section>
@@ -1336,6 +1338,7 @@ export function FullStackPage() {
           eyebrow={deText("Technical stack", lang)}
           title={deText("Technical stack", lang)}
           text={deText("A compact product-builder toolkit for interfaces, APIs, data, deployment, and AI-assisted implementation loops.", lang)}
+          headingAccent="fullstack"
         />
         <StackGroupGrid groups={localizedFullstackStackGroups} />
       </section>
