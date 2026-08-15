@@ -166,15 +166,21 @@
   gap: 13px;
   align-content: start;
   padding: 22px;
-  border: 1px solid var(--system-border);
+  border: 1px solid transparent;
   border-radius: var(--radius);
   background:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-    radial-gradient(420px 190px at 100% 0, var(--home-audit-accent-soft), transparent 70%),
-    color-mix(in srgb, var(--panel) 90%, transparent);
-  background-size: 28px 28px, 28px 28px, auto, auto;
+    var(--card-bg) padding-box,
+    linear-gradient(135deg, rgba(73, 215, 209, 0.18), rgba(111, 164, 255, 0.12)) border-box;
   box-shadow: var(--shadow);
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.home-audit-card:hover {
+  background:
+    var(--card-bg) padding-box,
+    linear-gradient(135deg, rgba(73, 215, 209, 0.42), rgba(111, 164, 255, 0.30)) border-box;
+  box-shadow: 0 0 0 1px rgba(73, 215, 209, 0.12), 0 16px 48px rgba(73, 215, 209, 0.05);
+  transform: translateY(-2px);
 }
 
 .home-audit-card::before {
@@ -187,7 +193,7 @@
 
 .home-audit-card--primary,
 .home-audit-card--sprint {
-  border-color: color-mix(in srgb, var(--home-audit-accent) 38%, var(--border));
+  border-color: transparent;
 }
 
 .home-audit-card--medtech {
@@ -202,7 +208,34 @@
 
 .home-audit-card--included,
 .home-audit-card--outcome {
-  border-color: color-mix(in srgb, var(--home-audit-accent) 28%, var(--border));
+  border-color: transparent;
+}
+
+.home-audit-card--sprint {
+  background:
+    var(--card-bg-deep) padding-box,
+    linear-gradient(135deg, rgba(73, 215, 209, 0.35), rgba(111, 164, 255, 0.25)) border-box;
+  box-shadow: 0 8px 32px rgba(73, 215, 209, 0.08);
+}
+
+[data-theme="light"] .home-audit-card {
+  background:
+    linear-gradient(180deg, #ffffff, #f7f9fd) padding-box,
+    linear-gradient(135deg, rgba(5, 121, 132, 0.22), rgba(35, 95, 202, 0.15)) border-box;
+}
+
+[data-theme="light"] .home-audit-card:hover {
+  background:
+    linear-gradient(180deg, #ffffff, #f7f9fd) padding-box,
+    linear-gradient(135deg, rgba(5, 121, 132, 0.48), rgba(35, 95, 202, 0.34)) border-box;
+  box-shadow: 0 0 0 1px rgba(5, 121, 132, 0.14), 0 12px 36px rgba(5, 121, 132, 0.06);
+}
+
+[data-theme="light"] .home-audit-card--sprint {
+  background:
+    linear-gradient(180deg, #f0fafa, #f7f9fd) padding-box,
+    linear-gradient(135deg, rgba(5, 121, 132, 0.38), rgba(35, 95, 202, 0.24)) border-box;
+  box-shadow: 0 8px 32px rgba(5, 121, 132, 0.09);
 }
 
 .home-audit-card__label {
@@ -254,6 +287,47 @@
 
 .home-audit-card__deliverables {
   grid-template-columns: 1fr;
+}
+
+.market-page--home .market-page__highlight-grid .system-card {
+  border: 1px solid transparent;
+  background:
+    var(--card-bg) padding-box,
+    linear-gradient(135deg, rgba(73, 215, 209, 0.18), rgba(111, 164, 255, 0.12)) border-box;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.market-page--home .market-page__highlight-grid .system-card:hover {
+  background:
+    var(--card-bg) padding-box,
+    linear-gradient(135deg, rgba(73, 215, 209, 0.42), rgba(111, 164, 255, 0.30)) border-box;
+  box-shadow: 0 0 0 1px rgba(73, 215, 209, 0.12), 0 16px 48px rgba(73, 215, 209, 0.05);
+  transform: translateY(-2px);
+}
+
+.market-page--home .market-page__highlight-grid .system-card.system-accent--ai::before {
+  background: linear-gradient(180deg, var(--accent-ai), transparent);
+}
+
+.market-page--home .market-page__highlight-grid .system-card.system-accent--medtech::before {
+  background: linear-gradient(180deg, var(--accent-medtech), transparent);
+}
+
+.market-page--home .market-page__highlight-grid .system-card.system-accent--fullstack::before {
+  background: linear-gradient(180deg, var(--accent-fullstack), transparent);
+}
+
+[data-theme="light"] .market-page--home .market-page__highlight-grid .system-card {
+  background:
+    linear-gradient(180deg, #ffffff, #f7f9fd) padding-box,
+    linear-gradient(135deg, rgba(5, 121, 132, 0.22), rgba(35, 95, 202, 0.15)) border-box;
+}
+
+[data-theme="light"] .market-page--home .market-page__highlight-grid .system-card:hover {
+  background:
+    linear-gradient(180deg, #ffffff, #f7f9fd) padding-box,
+    linear-gradient(135deg, rgba(5, 121, 132, 0.48), rgba(35, 95, 202, 0.34)) border-box;
+  box-shadow: 0 0 0 1px rgba(5, 121, 132, 0.14), 0 12px 36px rgba(5, 121, 132, 0.06);
 }
 
 .page-hero--ai .page-hero__content {

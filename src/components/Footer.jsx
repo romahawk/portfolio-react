@@ -44,7 +44,7 @@ export default function Footer() {
                 aria-label={label}
                 title={label}
               >
-                {React.createElement(icon, { size: 16, "aria-hidden": "true" })}
+                {React.createElement(icon, { size: 18, "aria-hidden": "true" })}
               </a>
             ))}
           </div>

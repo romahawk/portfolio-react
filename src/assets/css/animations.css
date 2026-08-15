@@ -103,4 +103,11 @@
     transform: none;
     transition: none;
   }
+
+  /* Card hover - disable transform and extended shadow */
+  [class*="card"]:hover,
+  [class*="proof"]:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }
