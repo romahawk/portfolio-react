@@ -39,13 +39,17 @@
 
 .home-typewriter-title {
   display: inline;
-  overflow-wrap: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  text-wrap: balance;
 }
 
 .home-typewriter-title__word {
   display: inline-block;
-  max-width: 100%;
-  overflow-wrap: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
   white-space: nowrap;
 }
 
@@ -78,8 +82,7 @@
 
 @media (max-width: 760px) {
   .home-typewriter-title__word {
-    overflow-wrap: anywhere;
-    white-space: normal;
+    white-space: nowrap;
   }
 }
 

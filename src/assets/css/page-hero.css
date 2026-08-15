@@ -69,6 +69,10 @@
   font-size: clamp(38px, 6.4vw, 72px);
   letter-spacing: -0.02em;
   line-height: 1.01;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  text-wrap: balance;
 }
 
 .page-hero__subtitle {
@@ -345,7 +349,7 @@
   }
 
   .page-hero__title {
-    font-size: clamp(34px, 11vw, 46px);
+    font-size: clamp(32px, 10.2vw, 46px);
   }
 
   .page-hero__subtitle {
