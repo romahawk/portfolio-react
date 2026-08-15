@@ -9,6 +9,16 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed
+- Typography upgraded to Space Grotesk (headings) + Inter (body) from system font stack
+- Hero title lead now renders with cyan-blue gradient text treatment
+- Project and milestone cards use gradient border (padding-box/border-box technique)
+- Hero background aurora animates with slow CSS keyframe drift (14s loop, GPU-composited)
+- Added `.heading-accent--ai/medtech/fullstack` utility classes for 3-track section differentiation
+- Card hover micro-interactions standardized: translateY(-2px) + glow shadow
+- All gradient text and animations include prefers-reduced-motion fallbacks
+- Light theme overrides added for all new visual treatments
+
 ### Fixed
 - `ServicesPage.jsx` — situation selector cards now always visible; removed `reveal` class that was being reset on language-switch re-renders, making cards disappear
 - `modal.css` — case study "On this page" chips now wrap to multiple rows instead of overflowing off-screen; replaced horizontal scroll with `flex-wrap: wrap`

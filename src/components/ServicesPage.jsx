@@ -187,7 +187,7 @@ export default function ServicesPage() {
       <section id="services-overview" className="section container services-page__section">
         <div className="services-page__section-head reveal">
           <p className="services-page__kicker">{t("site.services.offers.eyebrow")}</p>
-          <h2 className="section__title">
+          <h2 className="section__title heading-accent--ai">
             <span className="about__chev">&gt;</span> {t("site.services.offers.title")}
           </h2>
           <p>{t("site.services.offers.text")}</p>

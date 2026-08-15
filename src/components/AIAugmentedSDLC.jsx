@@ -18,7 +18,7 @@ const AIAugmentedSDLC = () => {
 
   return (
     <section id="framework" className="section container ai-sdlc">
-      <h2 className="section__title reveal">
+      <h2 className="section__title heading-accent--ai reveal">
         <span className="about__chev">&gt;</span> {t("aiSdlc.title")}
       </h2>
       <p className="about__text reveal">{t("aiSdlc.intro")}</p>

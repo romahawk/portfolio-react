@@ -33,11 +33,11 @@
   border-radius: var(--radius);
   padding: 16px 18px;
   color: var(--muted);
-  transition: transform .2s ease, box-shadow .3s ease, border-color .2s ease;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
 
 .skill-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   border-color: rgba(0,221,235,.5);
   box-shadow: 0 12px 26px rgba(0,221,235,.2);
 }

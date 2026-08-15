@@ -9,11 +9,11 @@ function getAccentClass(accent = "ai") {
 
 export { PageHero, StatusBadge };
 
-export function SectionHeader({ eyebrow, title, text, align = "left" }) {
+export function SectionHeader({ eyebrow, title, text, align = "left", headingAccent }) {
   return (
     <div className={`section-header section-header--${align} reveal`}>
       {eyebrow ? <p className="section-header__eyebrow">{eyebrow}</p> : null}
-      <h2>{title}</h2>
+      <h2 className={headingAccent ? `heading-accent--${headingAccent}` : undefined}>{title}</h2>
       {text ? <p>{text}</p> : null}
     </div>
   );
