@@ -1,9 +1,9 @@
 /* -------- Global animations -------- */
 
-/* Scroll-reveal: elements start hidden, become visible via JS adding .reveal--visible */
+/* Scroll-reveal: animation is progressive enhancement; content stays visible if JS misses it. */
 .reveal {
-  opacity: 0;
-  transform: translateY(20px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .reveal--visible {
