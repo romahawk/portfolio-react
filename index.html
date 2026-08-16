@@ -71,6 +71,10 @@
     </style>
     <script>
       (function(){
+        try {
+          if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+          if (!location.hash) scrollTo(0, 0);
+        } catch (e) {}
         var m=localStorage.getItem('theme');
         var t=m?m:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
         document.documentElement.setAttribute('data-theme',t);

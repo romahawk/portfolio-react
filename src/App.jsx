@@ -87,6 +87,13 @@ function AppInner() {
   useOgMeta();
 
   React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+  }, []);
+
+  React.useEffect(() => {
     const onPopState = () => setPage(getPage());
     const onHashChange = () => setPage(getPage());
     window.addEventListener("popstate", onPopState);
@@ -98,10 +105,13 @@ function AppInner() {
   }, []);
 
   React.useEffect(() => {
-    if (page !== "home") return;
     const path = window.location.pathname.replace(/\/+$/, "") || "/";
     const id = window.location.hash.slice(1) || ROUTE_SECTION_MAP[path];
-    if (!id) return;
+    if (!id) {
+      window.requestAnimationFrame(() => window.scrollTo(0, 0));
+      return;
+    }
+    if (page !== "home") return;
     window.requestAnimationFrame(() => {
       document.getElementById(id)?.scrollIntoView();
     });
