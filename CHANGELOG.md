@@ -9,6 +9,9 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Fixed
+- `index.html` — Google Fonts (Space Grotesk / Inter) now load with `display=optional` instead of `display=swap`; the late webfont swap was reflowing the hero title and shifting everything below it (footer CLS up to 0.93 in Lighthouse CI, flaky on `main`). `optional` keeps the non-blocking preload but never swaps in the font after first paint, eliminating the shift.
+
 ### Changed
 - Background: dot grid now renders in dark mode too (`--grid-dot` token no longer transparent by default); added SVG fractal-noise grain overlay on `body::after` with theme-aware blend modes, hidden under `prefers-reduced-motion`
 - Light mode: enabled subtle 42px dot grid background (`--grid-line` / `--grid-dot` tokens)
