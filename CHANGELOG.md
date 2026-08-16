@@ -10,6 +10,14 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 ## [Unreleased]
 
 ### Changed
+- Light mode: enabled subtle 42px dot grid background (`--grid-line` / `--grid-dot` tokens)
+- Cards: gradient border treatment using padding-box/border-box technique (`market-pages.css`)
+- Three-column proof cards: differentiated accent colors per track (AI/MedTech/Fullstack)
+- Entry offer grid: CTA card elevated with deeper gradient border and shadow
+- Homepage hero: eyebrow shortened, reduced from 3 CTAs to 2, keyword tag chips removed
+- System Map section: replaced with client journey steps
+- Homepage sections: tag chip rows removed from section footers
+- Footer: social icon size increased to 18px
 - Typography upgraded to Space Grotesk (headings) + Inter (body) from system font stack
 - Hero title lead now renders with cyan-blue gradient text treatment
 - Project and milestone cards use gradient border (padding-box/border-box technique)

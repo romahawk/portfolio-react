@@ -26,32 +26,13 @@ import { deText, localizeGermanValue } from "../locales/germanCopy.js";
 const EMAIL = "romazuryk@proton.me";
 
 const homeWorkflow = [
-  { label: "Audit", detail: "Map one workflow, bottlenecks, risks, opportunities", accent: "ai" },
-  { label: "Pilot scope", detail: "Recommended automation, assistant, dashboard, or decision-support path", accent: "medtech" },
-  { label: "Implementation", detail: "Prototype, sprint roadmap, handover, next build step", accent: "fullstack" },
+  { label: "You bring one messy workflow", detail: "A real process with repeated manual work, handoffs, or reporting friction", accent: "ai" },
+  { label: "We map it, score it, pilot it", detail: "Workflow map, bottleneck analysis, AI opportunity score, and pilot scope", accent: "medtech" },
+  { label: "You get a working system", detail: "A practical assistant, automation, dashboard, SOP flow, or implementation roadmap", accent: "fullstack" },
 ];
 
 const heroInputs = ["Emails", "Excel", "PDFs", "Calls", "Manual handoffs"];
 const heroOutputs = ["Audit map", "AI matrix", "Pilot scope", "Roadmap", "Prototype"];
-
-const operatingModelPills = [
-  { label: "AI systems consulting", accent: "ai" },
-  { label: "Workflow automation", accent: "ai" },
-  { label: "MedTech / regulated operations", accent: "medtech" },
-  { label: "Full-stack implementation", accent: "fullstack" },
-  { label: "Audit to working system", accent: "fullstack" },
-];
-
-const homeArtifact = {
-  inputLabel: "Positioning layers",
-  outputLabel: "Commercial offer",
-  inputs: [
-    { label: "AI workflow systems", accent: "ai" },
-    { label: "Regulated operations credibility", accent: "medtech" },
-    { label: "Full-stack implementation", accent: "fullstack" },
-  ],
-  outputs: [{ label: "AI Workflow Opportunity Audit", accent: "ai" }],
-};
 
 const homeAuditDeliverables = [
   "Workflow review",
@@ -589,18 +570,6 @@ function ProofGrid({ projects, accent }) {
   );
 }
 
-function PillList({ items, accent = "ai" }) {
-  return (
-    <div className="market-page__pill-list">
-      {items.map((item) => {
-        const label = typeof item === "string" ? item : item.label;
-        const itemAccent = typeof item === "string" ? accent : item.accent || accent;
-        return <FeaturePill accent={itemAccent} key={label}>{label}</FeaturePill>;
-      })}
-    </div>
-  );
-}
-
 function HomeHeroVisual() {
   const { lang } = useTranslation();
   const inputs = localizeGermanValue(heroInputs, lang);
@@ -1044,50 +1013,31 @@ function FullStackCapabilityGrid({ items }) {
 
 export function HomePage() {
   const { lang } = useTranslation();
-  const highlights = [
-    "AI Systems Consultant",
-    "Operations-heavy SMEs",
-    "Regulated workflow experience",
-  ];
   const homeTitle = "AI Workflow Systems for Operations-Heavy SMEs and Regulated Teams";
-  const localizedHighlights = localizeGermanValue(highlights, lang);
-  const localizedHomeArtifact = localizeGermanValue(homeArtifact, lang);
   const localizedHomeWorkflow = localizeGermanValue(homeWorkflow, lang);
-  const localizedOperatingModelPills = localizeGermanValue(operatingModelPills, lang);
   const localizedProofHighlights = localizeGermanValue(proofHighlights, lang);
 
   return (
     <div className="market-page market-page--home">
       <PageHero
         id="home"
-        eyebrow={deText("AI Systems Consultant for operations-heavy SMEs and regulated industries", lang)}
+        eyebrow={deText("AI Systems Consultant", lang)}
         title={<TypewriterTitle text={deText(homeTitle, lang)} />}
         subtitle={deText("I help operations-heavy SMEs turn manual, fragmented workflows into practical AI systems, internal tools, and implementation roadmaps.", lang)}
         primaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
         secondaryCta={{ label: deText("View Build Proof", lang), href: "/fullstack" }}
-        tertiaryCta={{ label: deText("Discuss One Workflow to Automate", lang), href: `mailto:${EMAIL}?subject=One%20Workflow%20to%20Automate` }}
         scrollTargetId="audit"
-      >
-        <div className="market-page__hero-extra">
-          <PillList items={localizedHighlights} accent="ai" />
-        </div>
-      </PageHero>
+      />
 
       <HomeAuditSection />
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow={deText("System map", lang)}
-          title={deText("From fragmented workflow to implementation roadmap", lang)}
-          text={deText("The method starts with one concrete operational workflow, maps the process and risk, identifies the AI opportunity, and turns the best pilot into a buildable system.", lang)}
+          eyebrow={deText("Client journey", lang)}
+          title={deText("From one messy workflow to a working system", lang)}
+          text={deText("The method starts with one concrete operational workflow, maps the process and risk, identifies the AI opportunity, and turns the best pilot into something usable.", lang)}
         />
-        <ArtifactMap
-          accent="ai"
-          title={deText("AI Workflow Systems plus Regulated Operations Credibility plus Full-Stack Delivery becomes an Implementation-Ready Audit", lang)}
-          {...localizedHomeArtifact}
-        />
-        <WorkflowMap items={localizedHomeWorkflow} accent="ai" title={deText("Audit to working system", lang)} />
-        <PillList items={localizedOperatingModelPills} accent="ai" />
+        <WorkflowMap items={localizedHomeWorkflow} accent="ai" title={deText("Messy workflow to working system", lang)} />
       </section>
 
       <section className="section container market-page__section">
