@@ -218,6 +218,14 @@ img { display: block; max-width: 100%; }
 }
 .section { padding: 80px 0; }
 
+@supports (content-visibility: auto) {
+  .section,
+  .site-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 760px;
+  }
+}
+
 /* add top padding for fixed header */
 main { padding-top: 72px; }
 
