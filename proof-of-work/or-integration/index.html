@@ -38,15 +38,67 @@
       content="Real-world MedTech implementation experience across operating room infrastructure, surgical equipment integration, video/audio workflows, clinical handover, and hospital stakeholder coordination."
     />
     <meta name="twitter:image" content="https://www.mazuryk.dev/images/og/og-or_workflow.png" />
+    <style>
+      .app-shell-header {
+        position: fixed;
+        inset: 0 0 auto;
+        height: 72px;
+        display: grid;
+        place-items: center;
+        z-index: 49;
+        pointer-events: none;
+        background: rgba(8, 16, 24, 0.82);
+        border-bottom: 1px solid #213044;
+      }
+      [data-theme="light"] .app-shell-header {
+        background: rgba(244, 247, 251, 0.88);
+        border-bottom-color: #d6dde6;
+      }
+      .app-shell-nav {
+        width: min(1100px, 92vw);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #ecf2fb;
+        font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: 0.4px;
+      }
+      [data-theme="light"] .app-shell-nav { color: #101820; }
+      .app-shell-dot {
+        width: 6px;
+        height: 6px;
+        margin-left: 2px;
+        border-radius: 999px;
+        background: #49d7d1;
+      }
+      [data-theme="light"] .app-shell-dot { background: #057984; }
+    </style>
     <script>
       (function(){
+        try {
+          if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+          if (!location.hash) scrollTo(0, 0);
+        } catch (e) {}
         var m=localStorage.getItem('theme');
         var t=m?m:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
         document.documentElement.setAttribute('data-theme',t);
       })();
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;450;500;600&display=optional" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;450;500;600&display=optional" rel="stylesheet" /></noscript>
   </head>
   <body>
+    <header class="app-shell-header" aria-hidden="true">
+      <div class="app-shell-nav">
+        <span>{ }</span>
+        <span>ROMAZ</span>
+        <span class="app-shell-dot"></span>
+      </div>
+    </header>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

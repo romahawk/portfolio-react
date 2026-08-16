@@ -15,6 +15,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 - `market-page__claim` blockquote restyled (accent left border, italic, larger max-width-constrained text)
 
 ### Fixed
+- `ai/index.html`, `medtech/index.html`, `fullstack/index.html`, `services/index.html`, `collaborate/index.html`, `ai-workflow/index.html`, `proof-of-work/or-integration/index.html`, `medtech-ai-systems/clinical-evidence-workflow/index.html` — these 8 route entry files had no Google Fonts `<link>`, no `.app-shell-header` skeleton, and no scroll-restoration script at all (only the root `index.html` had them). In production, a direct/fresh visit to any page other than home rendered in fallback system fonts permanently. In local dev this was invisible because client-side navigation stays on whichever single `index.html` first loaded. All 8 entries now match root's `<head>`/`<body>` font-loading and app-shell markup.
 - `src/App.jsx` — `Footer`/`BackToTop` now render inside the same `Suspense` boundary as the lazy-loaded page content instead of next to it. Previously they mounted immediately while the page's JS chunk was still loading, so the footer painted right below the navbar and then jumped ~5000px once the real content arrived — the actual cause of the flaky footer CLS (up to 0.93) in Lighthouse CI. Verified locally: CLS is now 0 across 5 consecutive runs (was 0/0.84/0.93, non-deterministic).
 - `index.html` — Google Fonts (Space Grotesk / Inter) now load with `display=optional` instead of `display=swap` as a secondary safeguard against webfont-swap reflow.
 
