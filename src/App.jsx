@@ -121,8 +121,8 @@ function AppInner() {
     <>
       <a href="#main" className="skip-link">Skip to main content</a>
       <Navbar themeMode={themeMode} onThemeChange={setThemeMode} />
-      <main id="main">
-        <React.Suspense fallback={null}>
+      <React.Suspense fallback={null}>
+        <main id="main">
           {page === "ai" ? (
             <AIPage />
           ) : page === "medtech" ? (
@@ -144,10 +144,10 @@ function AppInner() {
           ) : (
             <HomePage />
           )}
-        </React.Suspense>
-      </main>
-      <Footer />
-      <BackToTop />
+        </main>
+        <Footer />
+        <BackToTop />
+      </React.Suspense>
       <DeferredAnalytics />
     </>
   );
