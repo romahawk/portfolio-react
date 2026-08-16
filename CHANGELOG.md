@@ -10,6 +10,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 ## [Unreleased]
 
 ### Changed
+- Background: dot grid now renders in dark mode too (`--grid-dot` token no longer transparent by default); added SVG fractal-noise grain overlay on `body::after` with theme-aware blend modes, hidden under `prefers-reduced-motion`
 - Light mode: enabled subtle 42px dot grid background (`--grid-line` / `--grid-dot` tokens)
 - Cards: gradient border treatment using padding-box/border-box technique (`market-pages.css`)
 - Three-column proof cards: differentiated accent colors per track (AI/MedTech/Fullstack)
