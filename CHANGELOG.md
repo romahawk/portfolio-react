@@ -9,7 +9,12 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Fixed
+- `src/App.jsx` — `Footer`/`BackToTop` now render inside the same `Suspense` boundary as the lazy-loaded page content instead of next to it. Previously they mounted immediately while the page's JS chunk was still loading, so the footer painted right below the navbar and then jumped ~5000px once the real content arrived — the actual cause of the flaky footer CLS (up to 0.93) in Lighthouse CI. Verified locally: CLS is now 0 across 5 consecutive runs (was 0/0.84/0.93, non-deterministic).
+- `index.html` — Google Fonts (Space Grotesk / Inter) now load with `display=optional` instead of `display=swap` as a secondary safeguard against webfont-swap reflow.
+
 ### Changed
+- Background: dot grid now renders in dark mode too (`--grid-dot` token no longer transparent by default); added SVG fractal-noise grain overlay on `body::after` with theme-aware blend modes, hidden under `prefers-reduced-motion`
 - Light mode: enabled subtle 42px dot grid background (`--grid-line` / `--grid-dot` tokens)
 - Cards: gradient border treatment using padding-box/border-box technique (`market-pages.css`)
 - Three-column proof cards: differentiated accent colors per track (AI/MedTech/Fullstack)
