@@ -87,15 +87,17 @@
 }
 
 .market-page__claim {
-  max-width: 720px;
-  margin: 0;
-  padding: 13px 15px;
-  border: 1px solid var(--system-border);
-  border-left: 3px solid var(--accent-ai);
-  border-radius: 12px;
+  max-width: 680px;
+  margin: 0 0 32px;
+  padding: 18px 22px;
+  border: none;
+  border-left: 4px solid var(--accent-ai);
+  border-radius: 0 10px 10px 0;
   background: var(--accent-ai-soft);
-  color: var(--muted-strong);
-  line-height: 1.65;
+  color: var(--text);
+  font-size: clamp(16px, 1.5vw, 18px);
+  font-style: italic;
+  line-height: 1.7;
 }
 
 .market-page__section {
@@ -776,32 +778,19 @@
 }
 
 .ai-process-step:nth-child(1) {
-  --process-accent: var(--workflow-negative);
-  --process-soft: var(--workflow-negative-soft);
   --process-glow-x: 0;
 }
 
-.ai-process-step:nth-child(2) {
-  --process-accent: var(--brand-2);
-  --process-soft: var(--surface-cool);
-}
-
 .ai-process-step:nth-child(3) {
-  --process-accent: var(--brand-warm);
-  --process-soft: var(--surface-warm);
   --process-glow-x: 0;
   --process-glow-y: 100%;
 }
 
 .ai-process-step:nth-child(4) {
-  --process-accent: var(--accent-fullstack);
-  --process-soft: var(--accent-fullstack-soft);
   --process-glow-y: 100%;
 }
 
 .ai-process-step:nth-child(5) {
-  --process-accent: var(--workflow-positive);
-  --process-soft: var(--workflow-positive-soft);
   --process-glow-x: 50%;
 }
 
@@ -946,15 +935,33 @@
   --fit-soft: var(--workflow-positive-soft);
 }
 
-.ai-fit-card--not li::before {
-  background: var(--fit-accent);
-  box-shadow: 0 0 0 4px var(--fit-soft);
-}
-
 .ai-fit-card--not {
   --fit-accent: var(--workflow-negative);
   --fit-soft: var(--workflow-negative-soft);
   --fit-glow-x: 0;
+}
+
+/* Suppress dot bullet — icons replace them */
+.ai-fit-card li::before {
+  display: none;
+}
+
+.ai-fit-card li {
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.ai-fit-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ai-fit-icon--good {
+  color: var(--workflow-positive);
+}
+
+.ai-fit-icon--not {
+  color: var(--workflow-negative);
 }
 
 @keyframes ai-fit-pulse {

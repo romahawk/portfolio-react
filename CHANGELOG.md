@@ -9,6 +9,11 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed
+- `/ai` page: rewrote hero title/subtitle and secondary CTA copy, moved the "I do not sell broad AI experiments" claim from the hero into the workflow-intelligence section, renamed "Process" section to "How a workflow engagement works", trimmed redundant section subtext, split proof-of-work into its own "07 / Proof" section
+- `/ai` fit section: good/not-ideal list items now show a check/x icon (`CheckCircle2`/`XCircle`) instead of a plain bullet
+- `market-page__claim` blockquote restyled (accent left border, italic, larger max-width-constrained text)
+
 ### Fixed
 - `src/App.jsx` — `Footer`/`BackToTop` now render inside the same `Suspense` boundary as the lazy-loaded page content instead of next to it. Previously they mounted immediately while the page's JS chunk was still loading, so the footer painted right below the navbar and then jumped ~5000px once the real content arrived — the actual cause of the flaky footer CLS (up to 0.93) in Lighthouse CI. Verified locally: CLS is now 0 across 5 consecutive runs (was 0/0.84/0.93, non-deterministic).
 - `index.html` — Google Fonts (Space Grotesk / Inter) now load with `display=optional` instead of `display=swap` as a secondary safeguard against webfont-swap reflow.

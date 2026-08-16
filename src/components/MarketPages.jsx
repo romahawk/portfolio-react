@@ -2,11 +2,13 @@ import { Fragment } from "react";
 import {
   ArrowRight,
   Bot,
+  CheckCircle2,
   ClipboardCheck,
   Code2,
   Mail,
   Stethoscope,
   Workflow,
+  XCircle,
 } from "lucide-react";
 import {
   ArtifactMap,
@@ -895,13 +897,23 @@ function FitSection({ good, notIdeal }) {
       <article className="ai-fit-card ai-fit-card--good">
         <h3>{deText("Good fit", lang)}</h3>
         <ul>
-          {goodItems.map((item) => <li key={item}>{item}</li>)}
+          {goodItems.map((item) => (
+            <li key={item}>
+              <CheckCircle2 size={15} className="ai-fit-icon ai-fit-icon--good" aria-hidden="true" />
+              {item}
+            </li>
+          ))}
         </ul>
       </article>
       <article className="ai-fit-card ai-fit-card--not">
         <h3>{deText("Not ideal for", lang)}</h3>
         <ul>
-          {notIdealItems.map((item) => <li key={item}>{item}</li>)}
+          {notIdealItems.map((item) => (
+            <li key={item}>
+              <XCircle size={15} className="ai-fit-icon ai-fit-icon--not" aria-hidden="true" />
+              {item}
+            </li>
+          ))}
         </ul>
       </article>
     </div>
@@ -1068,7 +1080,7 @@ export function HomePage() {
 export function AIPage() {
   const { lang } = useTranslation();
   const projects = getProjectsByCategory(projectCategories.aiAutomation, { featuredOnly: true });
-  const aiTitle = "AI Workflow Systems and Automation for Operations-Heavy SMEs";
+  const aiTitle = "AI Workflow Systems for Operations-Heavy Teams";
   const localizedAiArtifact = localizeGermanValue(aiArtifact, lang);
   const localizedAiStack = localizeGermanValue(aiStack, lang);
   const localizedAiExampleWorkflows = localizeGermanValue(aiExampleWorkflows, lang);
@@ -1081,14 +1093,13 @@ export function AIPage() {
       <PageHero
         eyebrow={deText("AI systems consulting", lang)}
         title={<TypewriterTitle text={deText(aiTitle, lang)} />}
-        subtitle={deText("I help teams turn repetitive operational work, scattered documentation, manual coordination, and weak handovers into AI-assisted workflows, automations, internal assistants, dashboards, and implementation roadmaps.", lang)}
+        subtitle={deText("I help operations teams replace fragmented manual workflows with AI-assisted systems — automations, internal tools, and implementation roadmaps that fit how your team actually works.", lang)}
         primaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: deText("Discuss One Workflow to Automate", lang), href: `mailto:${EMAIL}?subject=One%20Workflow%20to%20Automate` }}
+        secondaryCta={{ label: deText("Ask about one workflow", lang), href: `mailto:${EMAIL}?subject=One%20Workflow%20to%20Automate` }}
         scrollTargetId="ai-workflow-intelligence"
         variant="ai"
       >
         <div className="ai-hero-extra">
-          <p className="market-page__claim">{deText("I do not sell broad AI experiments. I help businesses find one workflow where AI can safely reduce friction, then turn it into a practical system.", lang)}</p>
           <HomeHeroVisual />
         </div>
       </PageHero>
@@ -1100,6 +1111,7 @@ export function AIPage() {
           text={deText("A workflow intelligence system connects scattered inputs - emails, documents, forms, spreadsheets, and meetings - and turns them into structured tasks, summaries, decisions, dashboards, or SOPs.", lang)}
           headingAccent="ai"
         />
+        <p className="market-page__claim">{deText("I do not sell broad AI experiments. I help businesses find one workflow where AI can safely reduce friction, then turn it into a practical system.", lang)}</p>
         <WorkflowBeforeAfter before={localizedAiBeforeAfter.before} after={localizedAiBeforeAfter.after} />
         <ArtifactMap
           accent="ai"
@@ -1111,7 +1123,7 @@ export function AIPage() {
       <section className="section container market-page__section">
         <SectionHeader
           eyebrow={deText("02 / Process", lang)}
-          title={deText("Process", lang)}
+          title={deText("How a workflow engagement works", lang)}
           text={deText("The process is intentionally small-scope: map one workflow, build one useful system, review it with real users, and iterate.", lang)}
         />
         <ProcessTimeline steps={localizedAiProcess} />
@@ -1139,7 +1151,6 @@ export function AIPage() {
         <SectionHeader
           eyebrow={deText("04 / Example workflows", lang)}
           title={deText("Practical AI workflows for operational bottlenecks", lang)}
-          text={deText("These examples show where AI can structure incoming information, reduce manual coordination, and create reviewable outputs without replacing human judgment.", lang)}
         />
         <div className="ai-workflow-library">
           {localizedAiExampleWorkflows.map((workflow) => <WorkflowExampleStrip workflow={workflow} key={workflow.title} />)}
@@ -1150,7 +1161,6 @@ export function AIPage() {
         <SectionHeader
           eyebrow={deText("05 / Tools", lang)}
           title={deText("Tools mapped to workflow capabilities", lang)}
-          text={deText("The stack depends on the workflow. I use AI, automation tools, lightweight databases, and custom interfaces only where they remove real operational friction.", lang)}
         />
         <CapabilityToolMatrix items={localizedAiStack} />
       </section>
@@ -1162,6 +1172,14 @@ export function AIPage() {
           text={deText("This is best suited for SMEs and operational teams that already have real work happening across emails, spreadsheets, documents, forms, meetings, and manual follow-ups - but lack a structured workflow system around it.", lang)}
         />
         <FitSection good={localizedAiFit.good} notIdeal={localizedAiFit.notIdeal} />
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader
+          eyebrow={deText("07 / Proof", lang)}
+          title={deText("Work connected to these workflows", lang)}
+          headingAccent="ai"
+        />
         <ProofGrid projects={projects} accent="ai" />
       </section>
 
