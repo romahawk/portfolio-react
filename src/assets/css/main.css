@@ -132,7 +132,7 @@
   --border-strong: #aebccc;
   --system-border: rgba(92,107,125,0.18);
   --background-grid-size: 42px;
-  --grid-line: rgba(16, 24, 40, 0.045);
+  --grid-line: transparent;
   --grid-dot:  rgba(16, 24, 40, 0.08);
   --surface-soft:  rgba(16,24,32,0.035);
   --surface-glow:  rgba(5,127,166,0.08);
@@ -196,16 +196,13 @@ h1, h2, h3, h4, h5, h6 {
 
 [data-theme="light"] body {
   background:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(circle at 1px 1px, var(--grid-dot) 1px, transparent 1.5px),
     radial-gradient(1200px 800px at 76% -10%, rgba(5,127,166,0.075), transparent 58%),
     radial-gradient(920px 620px at -8% 10%, rgba(36,105,216,0.055), transparent 56%),
     linear-gradient(180deg, rgba(255,254,250,0.86), transparent 17%),
     var(--bg);
   background-size:
     var(--background-grid-size) var(--background-grid-size),
-    var(--background-grid-size) var(--background-grid-size),
-    auto,
     auto,
     auto,
     auto;
