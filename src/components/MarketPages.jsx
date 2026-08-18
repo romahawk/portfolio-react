@@ -1063,7 +1063,7 @@ export function HomePage() {
     <div className="market-page market-page--home">
       <PageHero
         id="home"
-        eyebrow={deText("AI Systems Consultant", lang)}
+        eyebrow={deText("AI Implementation Specialist", lang)}
         title={<TypewriterTitle text={deText(homeTitle, lang)} />}
         subtitle={deText("I help operations-heavy SMEs turn manual, fragmented workflows into practical AI systems, internal tools, and implementation roadmaps.", lang)}
         primaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}

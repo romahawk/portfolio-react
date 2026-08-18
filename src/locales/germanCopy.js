@@ -298,6 +298,7 @@ const GERMAN_COPY = {
   "Best fit when work is scattered across emails, spreadsheets, PDFs, meetings, support requests, or handover documents, and the team needs a concrete AI starting point.": "Passend, wenn Arbeit über E-Mails, Tabellen, PDFs, Meetings, Support-Anfragen oder Handover-Dokumente verstreut ist und das Team einen konkreten KI-Startpunkt braucht.",
   "The audit produces a recommended pilot and sprint scope. From there, I can help build the first useful system: an internal assistant, workflow automation, dashboard, decision-support tool, or deployed custom prototype.": "Das Audit liefert einen empfohlenen Piloten und Sprint-Scope. Danach kann ich helfen, das erste nützliche System zu bauen: interner Assistent, Workflow-Automation, Dashboard, Decision-Support-Tool oder deployter Custom-Prototyp.",
   "Book an AI Workflow Audit": "AI Workflow Audit buchen",
+  "AI Implementation Specialist": "KI-Implementierungsspezialist",
   "AI Systems Consultant for operations-heavy SMEs and regulated industries": "KI-Systemberater für operations-lastige KMU und regulierte Branchen",
   "AI Workflow Systems for Operations-Heavy SMEs and Regulated Teams": "KI-Systeme für operative KMU und regulierte Teams",
   "I help operations-heavy SMEs turn manual, fragmented workflows into practical AI systems, internal tools, and implementation roadmaps.": "Ich helfe operations-lastigen KMU, manuelle und fragmentierte Workflows in praktische KI-Systeme, interne Tools und Umsetzungs-Roadmaps zu übersetzen.",
