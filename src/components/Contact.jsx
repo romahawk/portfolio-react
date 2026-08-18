@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { ArrowRight, Copy, Linkedin, Github, Mail, MapPin, BriefcaseBusiness, CalendarCheck, Code2 } from "lucide-react";
+import { ArrowRight, Copy, Linkedin, Mail, MapPin, BriefcaseBusiness, CalendarCheck, Code2 } from "lucide-react";
 import { useTranslation } from "../context/LangContext.jsx";
 
 const Contact = () => {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
-  const bestForItemsValue = t("site.contact.details.bestForItems");
-  const bestForItems = Array.isArray(bestForItemsValue) ? bestForItemsValue : [];
 
   const email = "romazuryk@proton.me";
 
@@ -22,10 +20,6 @@ const Contact = () => {
 
   return (
     <section id="contact" className="section container contact">
-      <h2 className="section__title reveal">
-        <span className="about__chev">&gt;</span> {t("site.contact.details.title")}
-      </h2>
-
       <div className="contact__grid">
         <div className="contact__paths contact__paths--stack reveal reveal--delay-1" aria-label="Contact paths">
           <a href="mailto:romazuryk@proton.me?subject=AI%20Workflow%20Audit%20Request" className="contact__path contact__path--ai">
@@ -34,11 +28,11 @@ const Contact = () => {
             <span>Map one workflow, identify bottlenecks, score AI opportunities, assess risk, and define the first pilot.</span>
             <em>Start audit path <ArrowRight size={14} aria-hidden="true" /></em>
           </a>
-          <a href="mailto:romazuryk@proton.me?subject=MedTech%20Product%20%2F%20Project%20Role" className="contact__path contact__path--medtech">
+          <a href="mailto:romazuryk@proton.me?subject=MedTech%20Workflow%20Discussion" className="contact__path contact__path--medtech">
             <BriefcaseBusiness size={18} aria-hidden="true" />
-            <strong>I need regulated-operations context</strong>
-            <span>MedTech, HealthTech, implementation, documentation, handover, or stakeholder-heavy workflow work.</span>
-            <em>Select trust-proof path <ArrowRight size={14} aria-hidden="true" /></em>
+            <strong>Working in a regulated or MedTech environment?</strong>
+            <span>Clinical workflows, implementation handovers, documentation gaps, or stakeholder-heavy coordination that needs structure.</span>
+            <em>Select regulated-workflow path <ArrowRight size={14} aria-hidden="true" /></em>
           </a>
           <a href="mailto:romazuryk@proton.me?subject=Full-Stack%20Prototype%20Discussion" className="contact__path contact__path--fullstack">
             <Code2 size={18} aria-hidden="true" />
@@ -49,22 +43,7 @@ const Contact = () => {
         </div>
 
         <div className="contact__panel reveal reveal--delay-2">
-          <h3 className="contact__subtitle">{t("site.contact.details.subtitle")}</h3>
-          <p className="contact__text">{t("site.contact.details.text")}</p>
-          <p className="contact__text">
-            <strong>{t("site.contact.details.bestForLabel")}</strong>
-          </p>
-          {Array.isArray(bestForItems) ? (
-            <ul className="contact__best-for">
-              {bestForItems.map((item, index) => (
-                <li key={index} className="contact__text">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="contact__text">{t("site.contact.details.note")}</p>
-          )}
+          <p className="contact__panel-intro">Choose a path on the left, or reach out directly — I'll route the conversation to the right scope.</p>
 
           <div className="contact__info">
             <div className="contact__row">
@@ -94,12 +73,10 @@ const Contact = () => {
                 <a href="https://www.linkedin.com/in/roman-mazuryk/" target="_blank" rel="noreferrer" className="contact__social">
                   <Linkedin size={16} className="icon" /> LinkedIn
                 </a>
-                <a href="https://github.com/romahawk" target="_blank" rel="noreferrer" className="contact__social">
-                  <Github size={16} className="icon" /> GitHub
-                </a>
               </div>
             </div>
           </div>
+          <p className="contact__response-note">I typically respond within 24–48 hours.</p>
         </div>
       </div>
     </section>
