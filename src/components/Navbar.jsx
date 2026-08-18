@@ -180,9 +180,7 @@ export default function Navbar({ themeMode, onThemeChange }) {
       />
       <nav className="nav container">
         <a href="/" className="nav__logo" aria-label="ROMAZ home" onClick={() => handleClick("home")}>
-          <span className="nav__logo-brace">{'{ }'}</span>
-          <span className="nav__logo-text">ROMAZ</span>
-          <span className="nav__logo-accent" />
+          <img src="/images/rm-logo.png" alt="Roman Mazuryk" className="nav__logo-img" />
         </a>
 
         <ul
