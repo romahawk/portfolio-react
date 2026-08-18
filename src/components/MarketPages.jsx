@@ -100,7 +100,7 @@ const aiOffers = [
     badge: "Best starting point",
     bestFor: "Operations-heavy teams that know work is slow or fragmented but do not yet know which AI use case is worth building.",
     deliverable: "Workflow review, bottleneck map, AI opportunity matrix, feasibility and risk assessment, recommended pilot, and roadmap.",
-    output: "A clear entry point for a build sprint: internal assistant, workflow automation, dashboard, or decision-support prototype.",
+    output: "A clear entry point for a build sprint: internal assistant, workflow automation, dashboard, or decision-support prototype. Delivered within 5 business days.",
     cta: { label: "Discuss an audit", href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` },
     icon: ClipboardCheck,
     tone: "audit",
@@ -108,7 +108,7 @@ const aiOffers = [
   },
   {
     title: "Prototype Sprint",
-    bestFor: "Turning an audit recommendation into a tangible workflow system.",
+    bestFor: "Teams that have completed an audit or already know which workflow to fix, and need someone to build the first working version.",
     deliverable: "A working pilot: automation, internal assistant, dashboard, or prototype with human review points.",
     output: "Connected forms, emails, documents, spreadsheets, APIs, AI actions, and handover notes.",
     cta: { label: "Plan a pilot", href: `mailto:${EMAIL}?subject=Pilot%20Planning%20Discussion` },
@@ -117,7 +117,7 @@ const aiOffers = [
   },
   {
     title: "Knowledge & SOP System",
-    bestFor: "Turning scattered operational knowledge into repeatable procedures and searchable guidance.",
+    bestFor: "SMEs where critical procedures live in people's heads, scattered notes, or outdated documents — and onboarding or handover is consistently slow.",
     deliverable: "Structured SOPs, onboarding materials, and reusable documentation flows.",
     output: "Process library, SOP drafts, handover templates, and AI-assisted documentation logic.",
     cta: { label: "Structure knowledge", href: `mailto:${EMAIL}?subject=SOP%20Knowledge%20System` },
@@ -126,7 +126,7 @@ const aiOffers = [
   },
   {
     title: "Dashboard & Internal Tool",
-    bestFor: "Replacing spreadsheet chaos with shared workflow visibility.",
+    bestFor: "Operators and founders who need workflow status visible across the team but have no timeline or budget for a full custom build.",
     deliverable: "A lightweight dashboard or internal workflow tool prototype.",
     output: "Status tracking, task ownership, simple reporting, and workflow state visibility.",
     cta: { label: "Discuss prototype", href: `mailto:${EMAIL}?subject=Internal%20Tool%20Prototype` },
@@ -204,24 +204,24 @@ const aiBeforeAfter = {
 
 const aiExampleWorkflows = [
   {
-    title: "Customer Intake & Lead Qualification",
-    steps: ["Website form / email", "AI classifies request", "Human reviews priority", "CRM/task updated"],
-    value: "Faster response and cleaner follow-up ownership.",
+    title: "Supplier & Vendor Onboarding",
+    steps: ["Email / form submission", "AI extracts key fields", "Missing data flagged", "Onboarding record created"],
+    value: "Faster vendor setup with fewer back-and-forth emails and cleaner records from day one.",
   },
   {
-    title: "Support & Request Triage",
-    steps: ["Customer request", "AI extracts key fields", "Missing data flagged", "Task or ticket created"],
-    value: "Less manual sorting and fewer incomplete requests.",
+    title: "Equipment or Service Request Triage",
+    steps: ["Service request received", "AI classifies urgency and type", "Routed to correct owner", "Status tracked"],
+    value: "Correct routing without manually reading every request \u2014 nothing sits unassigned.",
   },
   {
     title: "Scattered Documentation \u2192 SOPs",
     steps: ["Process notes", "AI drafts procedure", "Human review", "Structured documentation"],
-    value: "Repeatable procedures instead of scattered knowledge.",
+    value: "Repeatable procedures instead of scattered knowledge that leaves with the person.",
   },
   {
-    title: "Meeting Notes \u2192 Tasks & Owners",
-    steps: ["Meeting notes", "AI summary", "Decisions and owners extracted", "Tasks assigned"],
-    value: "Clearer ownership after calls and meetings.",
+    title: "Project Handover & Closeout",
+    steps: ["Emails, notes, docs", "AI extracts decisions and open items", "Human reviews completeness", "Handover document created"],
+    value: "Nothing falls through the gap between project phases or between people.",
   },
   {
     title: "Implementation Handover",
@@ -229,9 +229,9 @@ const aiExampleWorkflows = [
     value: "Cleaner handover from scattered project context into structured next actions.",
   },
   {
-    title: "Reporting & Workflow Visibility",
-    steps: ["Sheets / forms / tasks", "Workflow status structured", "Dashboard", "Weekly visibility"],
-    value: "Better status visibility across recurring operational work.",
+    title: "Weekly Ops Status Report",
+    steps: ["Task trackers, sheets, notes", "AI structures status by owner", "Exceptions flagged", "Report or dashboard output"],
+    value: "Management visibility without three hours of manual consolidation each week.",
   },
 ];
 
@@ -278,10 +278,10 @@ const aiFit = {
     "Founders who need fast workflow prototypes",
   ],
   notIdeal: [
-    "Abstract AI experiments",
-    "Large enterprise transformation programs",
-    "Pure chatbot projects without workflow integration",
-    "Automation without human review where risk is high",
+    "Teams looking for a fully managed AI product, not a consultant",
+    "Enterprise orgs with existing digital transformation programs",
+    "Businesses wanting a chatbot without any workflow or backend change",
+    "Projects requiring regulatory compliance certification (HIPAA, MDR, ISO 13485)",
   ],
 };
 
@@ -1080,7 +1080,7 @@ export function HomePage() {
 export function AIPage() {
   const { lang } = useTranslation();
   const projects = getProjectsByCategory(projectCategories.aiAutomation, { featuredOnly: true });
-  const aiTitle = "AI Workflow Systems for Operations-Heavy Teams";
+  const aiTitle = "AI Workflow Systems for Operations-Heavy SMEs";
   const localizedAiArtifact = localizeGermanValue(aiArtifact, lang);
   const localizedAiStack = localizeGermanValue(aiStack, lang);
   const localizedAiExampleWorkflows = localizeGermanValue(aiExampleWorkflows, lang);
@@ -1188,7 +1188,7 @@ export function AIPage() {
           accent="ai"
           eyebrow={deText("Next step", lang)}
           title={deText("Have one messy workflow worth fixing?", lang)}
-          text={deText("Start with one contained process. I can help map it, identify automation opportunities, assess risk, and define the smallest useful workflow system around it.", lang)}
+          text={deText("Start with one contained process. I can map it, score the automation opportunity, assess risk, and define a build scope. Audits deliver within 5 business days. Sprints typically run 2–4 weeks.", lang)}
           primary={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
           secondary={{ label: deText("Discuss One Workflow to Automate", lang), href: `mailto:${EMAIL}?subject=One%20Workflow%20to%20Automate` }}
         />
