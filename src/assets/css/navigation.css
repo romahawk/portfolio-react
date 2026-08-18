@@ -42,29 +42,23 @@
 
 .nav__work-cta:hover {
   color: var(--brand);
-  border-color: rgba(73, 215, 209, 0.45);
+  border-color: rgba(62, 207, 108, 0.45);
 }
 
-/* logo — now an anchor; reset link styles */
+/* logo — image mark */
 .nav__logo {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-weight: 800;
-  font-size: 18px;
-  letter-spacing: 0.4px;
-  color: var(--text);
   text-decoration: none;
+  flex-shrink: 0;
 }
-.nav__logo-brace { opacity: .85; }
-.nav__logo-text { text-transform: uppercase; }
-.nav__logo-accent {
-  width: 6px;
-  height: 6px;
-  background: var(--brand);
-  border-radius: 999px;
-  display: inline-block;
-  margin-left: 2px;
+
+.nav__logo-img {
+  display: block;
+  height: 38px;
+  width: 38px;
+  border-radius: 9px;
+  object-fit: cover;
 }
 
 /* ==== Hamburger (hidden by default on desktop) ==== */

@@ -41,12 +41,12 @@
   --text: #ecf2fb;
   --muted: #9ca8ba;
   --muted-strong: #bec8d6;
-  --brand: #49d7d1;
-  --brand-2: #6fa4ff;
+  --brand: #3ecf6c;
+  --brand-2: #65e090;
   --brand-warm: #f3b66e;
-  --accent-ai: #4ed7f3;
-  --accent-ai-2: #7aa7ff;
-  --accent-ai-soft: rgba(78, 215, 243, 0.12);
+  --accent-ai: #3ecf6c;
+  --accent-ai-2: #65e090;
+  --accent-ai-soft: rgba(62, 207, 108, 0.12);
   --accent-medtech: #37c9bd;
   --accent-medtech-2: #5d9dff;
   --accent-medtech-soft: rgba(55, 201, 189, 0.12);
@@ -60,8 +60,8 @@
   --grid-line: transparent;
   --grid-dot: rgba(255, 255, 255, 0.18);
   --surface-soft: rgba(255,255,255,0.03);
-  --surface-glow: rgba(73,215,209,0.08);
-  --surface-cool: rgba(111,164,255,0.08);
+  --surface-glow: rgba(62,207,108,0.08);
+  --surface-cool: rgba(62,207,108,0.05);
   --surface-warm: rgba(243,182,110,0.09);
   --surface-success: rgba(101,212,168,0.1);
   --radius: 16px;
@@ -116,12 +116,12 @@
   --text:          #101820;
   --muted:         #64717f;
   --muted-strong:  #344253;
-  --brand:         #057984;
-  --brand-2:       #235fca;
+  --brand:         #1a9e4a;
+  --brand-2:       #2eb860;
   --brand-warm:    #a86426;
-  --accent-ai:     #057fa6;
-  --accent-ai-2:   #2563eb;
-  --accent-ai-soft: rgba(5,127,166,0.09);
+  --accent-ai:     #1a9e4a;
+  --accent-ai-2:   #2eb860;
+  --accent-ai-soft: rgba(26,158,74,0.09);
   --accent-medtech: #047f78;
   --accent-medtech-2: #2469d8;
   --accent-medtech-soft: rgba(4,127,120,0.09);
@@ -135,8 +135,8 @@
   --grid-line: transparent;
   --grid-dot:  rgba(16, 24, 40, 0.08);
   --surface-soft:  rgba(16,24,32,0.035);
-  --surface-glow:  rgba(5,127,166,0.08);
-  --surface-cool:  rgba(35,95,202,0.065);
+  --surface-glow:  rgba(26,158,74,0.08);
+  --surface-cool:  rgba(26,158,74,0.05);
   --surface-warm:  rgba(168,100,38,0.075);
   --surface-success: rgba(40,160,110,0.1);
   --shadow:        0 8px 30px rgba(100,130,170,0.14);
@@ -186,8 +186,8 @@ body {
   background-color: var(--bg);
   background-image:
     radial-gradient(circle, var(--grid-dot) 1.5px, transparent 1.5px),
-    radial-gradient(1200px 800px at 76% -10%, rgba(73,215,209,0.1), transparent 58%),
-    radial-gradient(920px 620px at -8% 10%, rgba(111,164,255,0.09), transparent 56%),
+    radial-gradient(1200px 800px at 76% -10%, rgba(62,207,108,0.09), transparent 58%),
+    radial-gradient(920px 620px at -8% 10%, rgba(62,207,108,0.06), transparent 56%),
     linear-gradient(180deg, rgba(255,255,255,0.02), transparent 18%);
   background-size: 28px 28px, auto, auto, auto;
   letter-spacing: 0;
@@ -201,8 +201,8 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--bg);
   background-image:
     radial-gradient(circle, var(--grid-dot) 1.5px, transparent 1.5px),
-    radial-gradient(1200px 800px at 76% -10%, rgba(5,127,166,0.075), transparent 58%),
-    radial-gradient(920px 620px at -8% 10%, rgba(36,105,216,0.055), transparent 56%),
+    radial-gradient(1200px 800px at 76% -10%, rgba(26,158,74,0.065), transparent 58%),
+    radial-gradient(920px 620px at -8% 10%, rgba(26,158,74,0.045), transparent 56%),
     linear-gradient(180deg, rgba(255,254,250,0.86), transparent 17%);
   background-size: 28px 28px, auto, auto, auto;
 }

@@ -27,9 +27,7 @@ export default function Footer() {
       <div className="container footer__inner">
         <div className="footer__brand-col">
           <a href="/" className="footer__brand" aria-label="ROMAZ home">
-            <span className="footer__brand-brace">{"{ }"}</span>
-            <span className="footer__brand-name">ROMAZ</span>
-            <span className="footer__brand-dot" />
+            <img src="/images/rm-logo.png" alt="Roman Mazuryk" className="footer__brand-img" />
           </a>
           <h2 className="footer__headline">{t("site.footer.headline")}</h2>
           <p className="footer__tagline">{t("site.footer.tagline")}</p>
