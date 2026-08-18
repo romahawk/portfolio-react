@@ -294,42 +294,21 @@ const medtechHeroWorkflow = [
   { label: "Workflow system", detail: "Product requirements, SOPs, visibility" },
 ];
 
-const regulatedOperationsProof = [
-  {
-    title: "Clinical workflow complexity",
-    body: "Experience with operating-room environments, clinical routines, handovers, and documentation.",
-    relevance: "Designs that respect real workflow constraints.",
-  },
-  {
-    title: "Multi-stakeholder coordination",
-    body: "Work across clinicians, hospital teams, vendors, suppliers, and internal teams.",
-    relevance: "Systems that support adoption, ownership, and review.",
-  },
-  {
-    title: "Implementation & handover thinking",
-    body: "From requirements and installation planning to training, documentation, and post-handover support.",
-    relevance: "Pilots that can become usable operational systems.",
-  },
-  {
-    title: "Documentation & knowledge transfer",
-    body: "Turning scattered implementation context into structured procedures, notes, and support logic.",
-    relevance: "Strong fit for SOPs, internal assistants, and decision-support tools.",
-  },
-];
-
 const medtechSelectedProof = [
   {
     title: "OR Integration & Surgical Workflow Systems",
     type: "Domain proof / implementation experience",
-    problem: "OR environments combine devices, people, infrastructure, documentation, and handover - but workflow ownership is often fragmented.",
+    status: "Domain proof",
+    problem: "OR environments combine devices, people, infrastructure, documentation, and handover — but workflow ownership is often fragmented.",
     system: "Mapped the implementation context around OR integration, surgical video workflows, stakeholder coordination, training, and handover.",
-    proof: "Real MedTech implementation background.",
+    proof: "Real MedTech implementation background across OR environments, surgical equipment, and clinical coordination.",
     relevance: "Trust layer for AI Workflow Audits, implementation handover systems, and regulated workflow automation.",
     links: [{ label: "View OR proof", href: "/proof-of-work/or-integration" }],
   },
   {
     title: "LiveSurgery",
     type: "Product concept / MedTech platform prototype",
+    status: "Live demo",
     problem: "Surgical collaboration, recording, remote expertise, and case visibility require structured product logic around clinical workflows.",
     system: "Created a product concept and prototype direction for surgical video / collaboration workflows.",
     proof: "Deployed product artifact and workflow prototype direction.",
@@ -339,6 +318,7 @@ const medtechSelectedProof = [
   {
     title: "MedTech Implementation Handoff Assistant",
     type: "AI-assisted workflow concept",
+    status: "Workflow concept",
     problem: "Implementation knowledge is often scattered across emails, PDFs, meetings, notes, and informal handover.",
     system: "Designed an AI-assisted workflow to structure requirements, missing documents, risks, meeting summaries, and customer handover.",
     proof: "Workflow map / product specification / reference system.",
@@ -348,6 +328,7 @@ const medtechSelectedProof = [
   {
     title: "MedTech Operations Knowledge / Workflow OS",
     type: "Internal workflow system concept",
+    status: "System concept",
     problem: "Product data, project knowledge, SOPs, supplier information, and onboarding materials become fragmented over time.",
     system: "Designed a structured knowledge and workflow system for products, projects, SOPs, onboarding, and handover.",
     proof: "Concept, data model, prototype direction, and documentation artifact.",
@@ -358,20 +339,20 @@ const medtechSelectedProof = [
 
 const medtechCapabilityCards = [
   {
-    title: "Requirements structuring",
+    title: "Requirements structuring in regulated environments",
     text: "Translate clinical, operational, and technical input into clear requirements, workflow states, and implementation tasks.",
   },
   {
-    title: "Stakeholder alignment",
-    text: "Coordinate between clinical users, technical teams, suppliers, service partners, and business stakeholders.",
+    title: "Multi-stakeholder coordination",
+    text: "Coordinate between clinical users, technical teams, suppliers, service partners, and business stakeholders across implementation cycles.",
   },
   {
-    title: "Workflow mapping",
+    title: "Clinical & operational workflow mapping",
     text: "Map how devices, people, data, documents, approvals, and handover steps interact in real clinical or operational environments.",
   },
   {
-    title: "Implementation planning",
-    text: "Support rollout thinking across scope, constraints, dependencies, risks, training, and handover.",
+    title: "Implementation planning & rollout",
+    text: "Support rollout thinking across scope, constraints, dependencies, risks, training, and handover in implementation-heavy settings.",
   },
   {
     title: "Documentation & SOP logic",
@@ -405,6 +386,36 @@ const medtechRoleGroups = [
       "Regulated workflow environments",
       "Medical equipment and clinical systems companies",
       "Teams with fragmented documentation or handover processes",
+    ],
+  },
+];
+
+const medtechTranslationLayer = [
+  {
+    category: "MedTech reality",
+    items: [
+      "Implementation handovers are fragmented across emails, PDFs, and informal calls",
+      "Coordination spans clinicians, vendors, hospital IT, and service partners simultaneously",
+      "Documentation gaps create risk at training, acceptance, and post-handover stages",
+      "Workflow exceptions and edge cases are rarely captured in formal requirements",
+    ],
+  },
+  {
+    category: "What AI systems miss without it",
+    items: [
+      "AI outputs that ignore handover friction produce automation nobody uses",
+      "Systems designed without stakeholder context fail at adoption, not at build",
+      "Documentation tools that don't match real knowledge gaps add noise instead of value",
+      "Pilots scoped without implementation reality never reach production",
+    ],
+  },
+  {
+    category: "What I add",
+    items: [
+      "Workflow mapping that captures real constraints, owners, and exception states",
+      "AI scope defined around what teams can actually adopt and review",
+      "Documentation and SOP systems that match how knowledge already flows",
+      "Pilots that account for implementation reality from day one",
     ],
   },
 ];
@@ -617,6 +628,24 @@ function RegulatedOperationsProofGrid({ items }) {
   );
 }
 
+function MedTechTranslationLayer() {
+  const { lang } = useTranslation();
+  const localizedItems = localizeGermanValue(medtechTranslationLayer, lang);
+
+  return (
+    <div className="medtech-translation-layer">
+      {localizedItems.map((col, i) => (
+        <article className={`medtech-translation-col medtech-translation-col--${i} reveal`} key={col.category}>
+          <h3>{col.category}</h3>
+          <ul>
+            {col.items.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 function WorkflowBeforeAfter({ before, after }) {
   const { lang } = useTranslation();
   const beforeItems = localizeGermanValue(before, lang);
@@ -676,6 +705,7 @@ function SelectedProofCard({ item, index = 0 }) {
   return (
     <article className={`medtech-proof-card medtech-proof-card--${tone} reveal`}>
       <header>
+        {localizedItem.status ? <span className="medtech-proof-card__status">{localizedItem.status}</span> : null}
         <p>{localizedItem.type}</p>
         <h3>{localizedItem.title}</h3>
       </header>
@@ -1201,20 +1231,21 @@ export function MedTechPage() {
   const { lang } = useTranslation();
   const medtechTitle = "MedTech and Regulated Operations Proof";
   const localizedMedtechHeroWorkflow = localizeGermanValue(medtechHeroWorkflow, lang);
-  const localizedRegulatedOperationsProof = localizeGermanValue(regulatedOperationsProof, lang);
   const localizedMedtechSelectedProof = localizeGermanValue(medtechSelectedProof, lang);
   const localizedMedtechCapabilityCards = localizeGermanValue(medtechCapabilityCards, lang);
   const localizedMedtechRoleGroups = localizeGermanValue(medtechRoleGroups, lang);
 
   return (
     <div className="market-page market-page--medtech">
+
+      {/* Section 1: Hero — primary CTA is the audit (conversion), secondary scrolls to proof */}
       <PageHero
         eyebrow={deText("Trust layer / regulated operations", lang)}
         title={<TypewriterTitle text={deText(medtechTitle, lang)} />}
         subtitle={deText("Real MedTech implementation experience translated into AI workflow consulting judgment: clinical context, stakeholder coordination, documentation, handover, risk boundaries, and practical implementation thinking.", lang)}
-        primaryCta={{ label: deText("View Regulated Proof", lang), href: "#medtech-impact" }}
-        secondaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
-        scrollTargetId="medtech-impact"
+        primaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: deText("View Regulated Proof", lang), href: "#medtech-proof" }}
+        scrollTargetId="medtech-role-fit"
       >
         <div className="market-page__hero-extra medtech-hero-extra">
           <p className="medtech-credibility-line">{deText("10+ years across MedTech, OR integration, clinical equipment workflows, supplier coordination, training, handover, and healthcare operations.", lang)}</p>
@@ -1222,20 +1253,32 @@ export function MedTechPage() {
         </div>
       </PageHero>
 
-      <section id="medtech-impact" className="section container market-page__section">
+      {/* Section 2: Role Fit — moved up for fast recruiter scan */}
+      <section id="medtech-role-fit" className="section container market-page__section">
         <SectionHeader
-          eyebrow={deText("Regulated operations proof", lang)}
-          title={deText("Why my MedTech background matters for AI workflow systems", lang)}
-          text={deText("AI systems fail when they ignore real-world constraints: handovers, stakeholders, documentation, exceptions, training, and review points. My MedTech implementation background helps me design workflows that fit how teams actually work.", lang)}
+          eyebrow={deText("Role fit", lang)}
+          title={deText("Best-fit roles and environments", lang)}
+          text={deText("Clear fit for teams where clinical workflow understanding, implementation reality, and product/project structure need to meet.", lang)}
           headingAccent="medtech"
         />
-        <RegulatedOperationsProofGrid items={localizedRegulatedOperationsProof} />
+        <RoleFitSection groups={localizedMedtechRoleGroups} />
       </section>
 
+      {/* Section 3: Translation Layer — new; bridges MedTech experience to AI workflow value */}
+      <section className="section container market-page__section">
+        <SectionHeader
+          eyebrow={deText("Why it matters", lang)}
+          title={deText("MedTech implementation background. Applied to AI workflow systems.", lang)}
+          text={deText("AI systems built without domain grounding ignore the constraints that make or break adoption. Here is what implementation experience changes.", lang)}
+        />
+        <MedTechTranslationLayer />
+      </section>
+
+      {/* Section 4: Selected Proof — with status badges; OR Integration featured first */}
       <section id="medtech-proof" className="section container market-page__section">
         <SectionHeader
           eyebrow={deText("Selected proof", lang)}
-          title={deText("Selected proof of work", lang)}
+          title={deText("Reference work and workflow concepts", lang)}
           text={deText("A focused selection of MedTech and workflow-system projects that connect implementation experience with product thinking and AI-assisted delivery.", lang)}
         />
         <div className="medtech-proof-grid">
@@ -1243,6 +1286,7 @@ export function MedTechPage() {
         </div>
       </section>
 
+      {/* Section 5: Capabilities — updated titles carry MedTech context */}
       <section className="section container market-page__section">
         <SectionHeader
           eyebrow={deText("Capabilities", lang)}
@@ -1252,23 +1296,15 @@ export function MedTechPage() {
         <CapabilityGrid items={localizedMedtechCapabilityCards} />
       </section>
 
-      <section className="section container market-page__section">
-        <SectionHeader
-          eyebrow={deText("Role fit", lang)}
-          title={deText("Best-fit roles and environments", lang)}
-          text={deText("Clear fit for teams where clinical workflow understanding, implementation reality, and product/project structure need to meet.", lang)}
-        />
-        <RoleFitSection groups={localizedMedtechRoleGroups} />
-      </section>
-
+      {/* Section 6: CTA — rewritten to speak to client pain, not self-justification */}
       <section className="section container market-page__section">
         <CTAStrip
           accent="medtech"
           eyebrow={deText("Next step", lang)}
-          title={deText("Need AI workflow work with regulated-operations judgment?", lang)}
-          text={deText("MedTech is the credibility layer: it shows I understand implementation-heavy environments where workflows, documentation, stakeholders, handover, and risk matter.", lang)}
+          title={deText("You need AI workflow work that understands clinical reality.", lang)}
+          text={deText("Handovers fail, documentation gaps hide risks, and stakeholder coordination breaks without domain understanding. That is what 10+ years of MedTech implementation adds to AI workflow work.", lang)}
           primary={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
-          secondary={{ label: deText("View Regulated Proof", lang), href: "#medtech-impact" }}
+          secondary={{ label: deText("Explore OR Integration Proof", lang), href: "/proof-of-work/or-integration" }}
         />
       </section>
     </div>
