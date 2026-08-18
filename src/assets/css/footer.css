@@ -19,25 +19,15 @@
 .footer__brand {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-weight: 800;
-  font-size: 18px;
-  letter-spacing: 0.4px;
-  color: var(--text);
   margin-bottom: 10px;
 }
-.footer__brand:hover {
-  color: var(--text);
-}
-.footer__brand-brace  { opacity: .85; }
-.footer__brand-name   { text-transform: uppercase; }
-.footer__brand-dot {
-  width: 6px;
-  height: 6px;
-  background: var(--brand);
-  border-radius: 999px;
-  display: inline-block;
-  margin-left: 2px;
+
+.footer__brand-img {
+  display: block;
+  height: 44px;
+  width: 44px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .footer__headline {
