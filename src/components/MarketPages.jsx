@@ -421,16 +421,14 @@ const medtechTranslationLayer = [
 ];
 
 const fullstackHeroFlow = [
-  "Idea",
-  "AI-assisted planning",
-  "UI prototype",
-  "Data model",
-  "Working app",
-  "Deployed demo",
+  "Workflow discovery",
+  "Scope & spec",
+  "AI-assisted build",
+  "Deployed system",
 ];
 
 const fullstackStackGroups = [
-  { title: "Frontend", items: ["React", "Next.js", "TypeScript / JavaScript", "Tailwind"] },
+  { title: "Frontend", items: ["React", "Next.js", "TypeScript / JavaScript", "Tailwind (prototypes)"] },
   { title: "Backend / APIs", items: ["Python", "Flask / FastAPI", "REST APIs"] },
   { title: "Data", items: ["PostgreSQL", "Supabase", "Firebase"] },
   { title: "Deployment", items: ["Vercel", "Render", "Koyeb"] },
@@ -444,7 +442,7 @@ const fullstackWorkflow = [
   },
   {
     title: "Prototype",
-    text: "Use v0, React, Tailwind, and AI-assisted UI generation to build fast product interfaces.",
+    text: "Use v0, React, and AI-assisted UI generation to build fast product interfaces and user flows.",
   },
   {
     title: "Build",
@@ -467,6 +465,7 @@ const fullstackSelectedProjects = [
       { label: "GitHub", href: "https://github.com/romahawk/portfolio-react" },
       { label: "Live", href: "https://www.mazuryk.dev/" },
     ],
+    status: "Live",
   },
   {
     title: "FlowLogix",
@@ -478,6 +477,7 @@ const fullstackSelectedProjects = [
       { label: "GitHub", href: "https://github.com/romahawk/flowlogix" },
       { label: "Live", href: "https://flowlogics.app/" },
     ],
+    status: "Live",
   },
   {
     title: "LiveSurgery",
@@ -489,6 +489,7 @@ const fullstackSelectedProjects = [
       { label: "GitHub", href: "https://github.com/romahawk/livesurgery-poc" },
       { label: "Live", href: "https://livesurgery-landing.vercel.app/" },
     ],
+    status: "Live demo",
   },
   {
     title: "Medintegro",
@@ -500,6 +501,7 @@ const fullstackSelectedProjects = [
       { label: "GitHub", href: "https://github.com/romahawk/medintegro-v0" },
       { label: "Live", href: "https://www.medintegro.com.ua/" },
     ],
+    status: "Live demo",
   },
   {
     title: "AlphaRhythm",
@@ -508,7 +510,11 @@ const fullstackSelectedProjects = [
     relevance: "Shows product thinking, data-driven UX, user workflow design, landing/app structure, and independent product-building ability.",
     stack: ["React", "Firebase", "Firestore", "Workflow UX", "Product concept"],
     links: [{ label: "Live", href: "https://alpharhythm.trade" }],
+    status: "Live",
   },
+];
+
+const fullstackSecondaryExperiments = [
   {
     title: "Workflow Intelligence Content System",
     type: "AI-assisted internal product system",
@@ -516,11 +522,8 @@ const fullstackSelectedProjects = [
     relevance: "Shows AI-assisted product operations, content workflow design, internal tooling, structured data thinking, and UI system design.",
     stack: ["React components", "Content model", "AI workflow", "Internal tooling"],
     links: [{ label: "GitHub", href: "https://github.com/romahawk/portfolio-react" }],
-    status: "WIP / Internal tool",
+    status: "Internal / WIP",
   },
-];
-
-const fullstackSecondaryExperiments = [
   {
     title: "SmartShooter",
     type: "Sports tracking product experiment",
@@ -548,27 +551,27 @@ const fullstackSecondaryExperiments = [
 const fullstackCapabilities = [
   {
     title: "Product prototyping",
-    text: "Turning an idea into a scoped user flow, UI, data model, and deployed demo.",
+    text: "An audit recommendation or workflow concept becomes a scoped prototype a client can evaluate, test, and hand to a dev team — not a slide deck.",
   },
   {
     title: "Workflow systems",
-    text: "Designing states, inputs, ownership, dashboards, and operational logic around real processes.",
+    text: "Real operational logic — states, handoffs, ownership, edge cases — structured into dashboards and tools that match how work actually happens.",
   },
   {
     title: "Frontend implementation",
-    text: "Building responsive interfaces with React, Next.js, Tailwind, and reusable components.",
+    text: "Deployed interfaces with React and reusable components: fast to build, readable by engineers, and shaped around actual user tasks.",
   },
   {
     title: "Backend and data logic",
-    text: "Working with APIs, databases, authentication, records, and persistence where needed.",
+    text: "APIs, databases, and persistence wired where the workflow requires it — not added for show, structured around what the system actually needs to store and surface.",
   },
   {
     title: "AI-assisted development",
-    text: "Using AI tools to accelerate planning, implementation, debugging, documentation, and iteration.",
+    text: "Faster discovery-to-build cycles using AI for planning, code generation, debugging, and documentation — without outsourcing the product decisions.",
   },
   {
     title: "Product communication",
-    text: "Documenting project logic, trade-offs, architecture, and user value clearly for non-technical stakeholders.",
+    text: "Architecture decisions, trade-offs, and user value documented clearly enough for non-technical stakeholders to evaluate, approve, and brief an engineering team.",
   },
 ];
 
@@ -1329,28 +1332,37 @@ export function FullStackPage() {
         subtitle={deText("I can move from workflow discovery to prototype, internal tool, dashboard, automation, or deployed custom application using modern full-stack tools and AI-assisted development workflows.", lang)}
         primaryCta={{ label: deText("View Selected Projects", lang), href: "#fullstack-projects" }}
         secondaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
-        scrollTargetId="fullstack-stack"
+        scrollTargetId="fullstack-capabilities"
       >
         <div className="market-page__hero-extra fullstack-hero-extra">
-          <p className="fullstack-credibility-line">{deText("This is implementation proof for the consulting offer: React, Python, APIs, databases, deployment, and AI-assisted development applied to real workflow problems.", lang)}</p>
+          <p className="fullstack-credibility-line">{deText("5+ deployed products. React, Python, APIs, databases, and AI-assisted development from discovery to launch.", lang)}</p>
           <FullStackHeroVisual items={localizedFullstackHeroFlow} />
         </div>
       </PageHero>
 
+      <section id="fullstack-capabilities" className="section container market-page__section">
+        <SectionHeader
+          eyebrow={deText("Build capabilities", lang)}
+          title={deText("What this proves for AI consulting clients", lang)}
+          text={deText("The projects show the ability to turn an audit or roadmap into a practical artifact: prototype, dashboard, internal tool, data model, or deployed workflow application.", lang)}
+          headingAccent="fullstack"
+        />
+        <FullStackCapabilityGrid items={localizedFullstackCapabilities} />
+      </section>
+
       <section id="fullstack-stack" className="section container market-page__section">
         <SectionHeader
           eyebrow={deText("Technical stack", lang)}
-          title={deText("Technical stack", lang)}
+          title={deText("Tools used across deployed products", lang)}
           text={deText("A compact product-builder toolkit for interfaces, APIs, data, deployment, and AI-assisted implementation loops.", lang)}
-          headingAccent="fullstack"
         />
         <StackGroupGrid groups={localizedFullstackStackGroups} />
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow={deText("AI-assisted development workflow", lang)}
-          title={deText("AI-assisted development workflow", lang)}
+          eyebrow={deText("Development workflow", lang)}
+          title={deText("From discovery to deployed system", lang)}
           text={deText("I use AI tools to accelerate product discovery, architecture planning, UI generation, code review, documentation, debugging, and iteration while keeping product logic and implementation decisions explicit.", lang)}
         />
         <FullStackWorkflowRow steps={localizedFullstackWorkflow} />
@@ -1359,7 +1371,7 @@ export function FullStackPage() {
       <section id="fullstack-projects" className="section container market-page__section">
         <SectionHeader
           eyebrow={deText("Selected projects", lang)}
-          title={deText("Selected projects", lang)}
+          title={deText("Deployed products and workflow systems", lang)}
           text={deText("A focused selection of deployed products, workflow systems, and technical prototypes showing product thinking, full-stack execution, and AI-assisted development.", lang)}
         />
         <div className="fullstack-project-grid">
@@ -1369,22 +1381,13 @@ export function FullStackPage() {
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow={deText("Secondary experiments", lang)}
-          title={deText("Secondary experiments", lang)}
+          eyebrow={deText("Experiments and internal tools", lang)}
+          title={deText("Additional execution range", lang)}
           text={deText("Smaller product experiments and learning projects that show additional execution range without being the core positioning.", lang)}
         />
         <div className="fullstack-secondary-grid">
           {localizedFullstackSecondaryExperiments.map((project) => <FullStackProjectCard project={project} compact key={project.title} />)}
         </div>
-      </section>
-
-      <section className="section container market-page__section">
-        <SectionHeader
-          eyebrow={deText("Build capabilities", lang)}
-          title={deText("What this proves for AI consulting clients", lang)}
-          text={deText("The projects show the ability to turn an audit or roadmap into a practical artifact: prototype, dashboard, internal tool, data model, or deployed workflow application.", lang)}
-        />
-        <FullStackCapabilityGrid items={localizedFullstackCapabilities} />
       </section>
 
       <section className="section container market-page__section">
@@ -1394,7 +1397,7 @@ export function FullStackPage() {
           title={deText("Need the audit recommendation turned into a working tool?", lang)}
           text={deText("The strongest fit is product-shaped technical work after workflow discovery: a useful prototype, dashboard, internal assistant, or AI-assisted workflow system with clear product logic.", lang)}
           primary={{ label: deText("Discuss Prototype Sprint", lang), href: `mailto:${EMAIL}?subject=Prototype%20Sprint%20Discussion` }}
-          secondary={{ label: deText("View GitHub", lang), href: "https://github.com/romahawk" }}
+          secondary={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
         />
       </section>
     </div>
