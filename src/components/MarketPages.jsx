@@ -294,42 +294,21 @@ const medtechHeroWorkflow = [
   { label: "Workflow system", detail: "Product requirements, SOPs, visibility" },
 ];
 
-const regulatedOperationsProof = [
-  {
-    title: "Clinical workflow complexity",
-    body: "Experience with operating-room environments, clinical routines, handovers, and documentation.",
-    relevance: "Designs that respect real workflow constraints.",
-  },
-  {
-    title: "Multi-stakeholder coordination",
-    body: "Work across clinicians, hospital teams, vendors, suppliers, and internal teams.",
-    relevance: "Systems that support adoption, ownership, and review.",
-  },
-  {
-    title: "Implementation & handover thinking",
-    body: "From requirements and installation planning to training, documentation, and post-handover support.",
-    relevance: "Pilots that can become usable operational systems.",
-  },
-  {
-    title: "Documentation & knowledge transfer",
-    body: "Turning scattered implementation context into structured procedures, notes, and support logic.",
-    relevance: "Strong fit for SOPs, internal assistants, and decision-support tools.",
-  },
-];
-
 const medtechSelectedProof = [
   {
     title: "OR Integration & Surgical Workflow Systems",
     type: "Domain proof / implementation experience",
-    problem: "OR environments combine devices, people, infrastructure, documentation, and handover - but workflow ownership is often fragmented.",
+    status: "Domain proof",
+    problem: "OR environments combine devices, people, infrastructure, documentation, and handover — but workflow ownership is often fragmented.",
     system: "Mapped the implementation context around OR integration, surgical video workflows, stakeholder coordination, training, and handover.",
-    proof: "Real MedTech implementation background.",
+    proof: "Real MedTech implementation background across OR environments, surgical equipment, and clinical coordination.",
     relevance: "Trust layer for AI Workflow Audits, implementation handover systems, and regulated workflow automation.",
     links: [{ label: "View OR proof", href: "/proof-of-work/or-integration" }],
   },
   {
     title: "LiveSurgery",
     type: "Product concept / MedTech platform prototype",
+    status: "Live demo",
     problem: "Surgical collaboration, recording, remote expertise, and case visibility require structured product logic around clinical workflows.",
     system: "Created a product concept and prototype direction for surgical video / collaboration workflows.",
     proof: "Deployed product artifact and workflow prototype direction.",
@@ -339,6 +318,7 @@ const medtechSelectedProof = [
   {
     title: "MedTech Implementation Handoff Assistant",
     type: "AI-assisted workflow concept",
+    status: "Workflow concept",
     problem: "Implementation knowledge is often scattered across emails, PDFs, meetings, notes, and informal handover.",
     system: "Designed an AI-assisted workflow to structure requirements, missing documents, risks, meeting summaries, and customer handover.",
     proof: "Workflow map / product specification / reference system.",
@@ -348,6 +328,7 @@ const medtechSelectedProof = [
   {
     title: "MedTech Operations Knowledge / Workflow OS",
     type: "Internal workflow system concept",
+    status: "System concept",
     problem: "Product data, project knowledge, SOPs, supplier information, and onboarding materials become fragmented over time.",
     system: "Designed a structured knowledge and workflow system for products, projects, SOPs, onboarding, and handover.",
     proof: "Concept, data model, prototype direction, and documentation artifact.",
@@ -358,20 +339,20 @@ const medtechSelectedProof = [
 
 const medtechCapabilityCards = [
   {
-    title: "Requirements structuring",
+    title: "Requirements structuring in regulated environments",
     text: "Translate clinical, operational, and technical input into clear requirements, workflow states, and implementation tasks.",
   },
   {
-    title: "Stakeholder alignment",
-    text: "Coordinate between clinical users, technical teams, suppliers, service partners, and business stakeholders.",
+    title: "Multi-stakeholder coordination",
+    text: "Coordinate between clinical users, technical teams, suppliers, service partners, and business stakeholders across implementation cycles.",
   },
   {
-    title: "Workflow mapping",
+    title: "Clinical & operational workflow mapping",
     text: "Map how devices, people, data, documents, approvals, and handover steps interact in real clinical or operational environments.",
   },
   {
-    title: "Implementation planning",
-    text: "Support rollout thinking across scope, constraints, dependencies, risks, training, and handover.",
+    title: "Implementation planning & rollout",
+    text: "Support rollout thinking across scope, constraints, dependencies, risks, training, and handover in implementation-heavy settings.",
   },
   {
     title: "Documentation & SOP logic",
@@ -409,17 +390,45 @@ const medtechRoleGroups = [
   },
 ];
 
+const medtechTranslationLayer = [
+  {
+    category: "MedTech reality",
+    items: [
+      "Implementation handovers are fragmented across emails, PDFs, and informal calls",
+      "Coordination spans clinicians, vendors, hospital IT, and service partners simultaneously",
+      "Documentation gaps create risk at training, acceptance, and post-handover stages",
+      "Workflow exceptions and edge cases are rarely captured in formal requirements",
+    ],
+  },
+  {
+    category: "What AI systems miss without it",
+    items: [
+      "AI outputs that ignore handover friction produce automation nobody uses",
+      "Systems designed without stakeholder context fail at adoption, not at build",
+      "Documentation tools that don't match real knowledge gaps add noise instead of value",
+      "Pilots scoped without implementation reality never reach production",
+    ],
+  },
+  {
+    category: "What I add",
+    items: [
+      "Workflow mapping that captures real constraints, owners, and exception states",
+      "AI scope defined around what teams can actually adopt and review",
+      "Documentation and SOP systems that match how knowledge already flows",
+      "Pilots that account for implementation reality from day one",
+    ],
+  },
+];
+
 const fullstackHeroFlow = [
-  "Idea",
-  "AI-assisted planning",
-  "UI prototype",
-  "Data model",
-  "Working app",
-  "Deployed demo",
+  "Workflow discovery",
+  "Scope & spec",
+  "AI-assisted build",
+  "Deployed system",
 ];
 
 const fullstackStackGroups = [
-  { title: "Frontend", items: ["React", "Next.js", "TypeScript / JavaScript", "Tailwind"] },
+  { title: "Frontend", items: ["React", "Next.js", "TypeScript / JavaScript", "Tailwind (prototypes)"] },
   { title: "Backend / APIs", items: ["Python", "Flask / FastAPI", "REST APIs"] },
   { title: "Data", items: ["PostgreSQL", "Supabase", "Firebase"] },
   { title: "Deployment", items: ["Vercel", "Render", "Koyeb"] },
@@ -433,7 +442,7 @@ const fullstackWorkflow = [
   },
   {
     title: "Prototype",
-    text: "Use v0, React, Tailwind, and AI-assisted UI generation to build fast product interfaces.",
+    text: "Use v0, React, and AI-assisted UI generation to build fast product interfaces and user flows.",
   },
   {
     title: "Build",
@@ -456,6 +465,7 @@ const fullstackSelectedProjects = [
       { label: "GitHub", href: "https://github.com/romahawk/portfolio-react" },
       { label: "Live", href: "https://www.mazuryk.dev/" },
     ],
+    status: "Live",
   },
   {
     title: "FlowLogix",
@@ -467,6 +477,7 @@ const fullstackSelectedProjects = [
       { label: "GitHub", href: "https://github.com/romahawk/flowlogix" },
       { label: "Live", href: "https://flowlogics.app/" },
     ],
+    status: "Live",
   },
   {
     title: "LiveSurgery",
@@ -478,6 +489,7 @@ const fullstackSelectedProjects = [
       { label: "GitHub", href: "https://github.com/romahawk/livesurgery-poc" },
       { label: "Live", href: "https://livesurgery-landing.vercel.app/" },
     ],
+    status: "Live demo",
   },
   {
     title: "Medintegro",
@@ -489,6 +501,7 @@ const fullstackSelectedProjects = [
       { label: "GitHub", href: "https://github.com/romahawk/medintegro-v0" },
       { label: "Live", href: "https://www.medintegro.com.ua/" },
     ],
+    status: "Live demo",
   },
   {
     title: "AlphaRhythm",
@@ -497,7 +510,11 @@ const fullstackSelectedProjects = [
     relevance: "Shows product thinking, data-driven UX, user workflow design, landing/app structure, and independent product-building ability.",
     stack: ["React", "Firebase", "Firestore", "Workflow UX", "Product concept"],
     links: [{ label: "Live", href: "https://alpharhythm.trade" }],
+    status: "Live",
   },
+];
+
+const fullstackSecondaryExperiments = [
   {
     title: "Workflow Intelligence Content System",
     type: "AI-assisted internal product system",
@@ -505,11 +522,8 @@ const fullstackSelectedProjects = [
     relevance: "Shows AI-assisted product operations, content workflow design, internal tooling, structured data thinking, and UI system design.",
     stack: ["React components", "Content model", "AI workflow", "Internal tooling"],
     links: [{ label: "GitHub", href: "https://github.com/romahawk/portfolio-react" }],
-    status: "WIP / Internal tool",
+    status: "Internal / WIP",
   },
-];
-
-const fullstackSecondaryExperiments = [
   {
     title: "SmartShooter",
     type: "Sports tracking product experiment",
@@ -537,27 +551,27 @@ const fullstackSecondaryExperiments = [
 const fullstackCapabilities = [
   {
     title: "Product prototyping",
-    text: "Turning an idea into a scoped user flow, UI, data model, and deployed demo.",
+    text: "An audit recommendation or workflow concept becomes a scoped prototype a client can evaluate, test, and hand to a dev team — not a slide deck.",
   },
   {
     title: "Workflow systems",
-    text: "Designing states, inputs, ownership, dashboards, and operational logic around real processes.",
+    text: "Real operational logic — states, handoffs, ownership, edge cases — structured into dashboards and tools that match how work actually happens.",
   },
   {
     title: "Frontend implementation",
-    text: "Building responsive interfaces with React, Next.js, Tailwind, and reusable components.",
+    text: "Deployed interfaces with React and reusable components: fast to build, readable by engineers, and shaped around actual user tasks.",
   },
   {
     title: "Backend and data logic",
-    text: "Working with APIs, databases, authentication, records, and persistence where needed.",
+    text: "APIs, databases, and persistence wired where the workflow requires it — not added for show, structured around what the system actually needs to store and surface.",
   },
   {
     title: "AI-assisted development",
-    text: "Using AI tools to accelerate planning, implementation, debugging, documentation, and iteration.",
+    text: "Faster discovery-to-build cycles using AI for planning, code generation, debugging, and documentation — without outsourcing the product decisions.",
   },
   {
     title: "Product communication",
-    text: "Documenting project logic, trade-offs, architecture, and user value clearly for non-technical stakeholders.",
+    text: "Architecture decisions, trade-offs, and user value documented clearly enough for non-technical stakeholders to evaluate, approve, and brief an engineering team.",
   },
 ];
 
@@ -611,6 +625,24 @@ function RegulatedOperationsProofGrid({ items }) {
             <strong>{deText("AI relevance", lang)}</strong>
             <p>{item.relevance}</p>
           </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function MedTechTranslationLayer() {
+  const { lang } = useTranslation();
+  const localizedItems = localizeGermanValue(medtechTranslationLayer, lang);
+
+  return (
+    <div className="medtech-translation-layer">
+      {localizedItems.map((col, i) => (
+        <article className={`medtech-translation-col medtech-translation-col--${i} reveal`} key={col.category}>
+          <h3>{col.category}</h3>
+          <ul>
+            {col.items.map((item) => <li key={item}>{item}</li>)}
+          </ul>
         </article>
       ))}
     </div>
@@ -676,6 +708,7 @@ function SelectedProofCard({ item, index = 0 }) {
   return (
     <article className={`medtech-proof-card medtech-proof-card--${tone} reveal`}>
       <header>
+        {localizedItem.status ? <span className="medtech-proof-card__status">{localizedItem.status}</span> : null}
         <p>{localizedItem.type}</p>
         <h3>{localizedItem.title}</h3>
       </header>
@@ -1201,20 +1234,21 @@ export function MedTechPage() {
   const { lang } = useTranslation();
   const medtechTitle = "MedTech and Regulated Operations Proof";
   const localizedMedtechHeroWorkflow = localizeGermanValue(medtechHeroWorkflow, lang);
-  const localizedRegulatedOperationsProof = localizeGermanValue(regulatedOperationsProof, lang);
   const localizedMedtechSelectedProof = localizeGermanValue(medtechSelectedProof, lang);
   const localizedMedtechCapabilityCards = localizeGermanValue(medtechCapabilityCards, lang);
   const localizedMedtechRoleGroups = localizeGermanValue(medtechRoleGroups, lang);
 
   return (
     <div className="market-page market-page--medtech">
+
+      {/* Section 1: Hero — primary CTA is the audit (conversion), secondary scrolls to proof */}
       <PageHero
         eyebrow={deText("Trust layer / regulated operations", lang)}
         title={<TypewriterTitle text={deText(medtechTitle, lang)} />}
         subtitle={deText("Real MedTech implementation experience translated into AI workflow consulting judgment: clinical context, stakeholder coordination, documentation, handover, risk boundaries, and practical implementation thinking.", lang)}
-        primaryCta={{ label: deText("View Regulated Proof", lang), href: "#medtech-impact" }}
-        secondaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
-        scrollTargetId="medtech-impact"
+        primaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: deText("View Regulated Proof", lang), href: "#medtech-proof" }}
+        scrollTargetId="medtech-role-fit"
       >
         <div className="market-page__hero-extra medtech-hero-extra">
           <p className="medtech-credibility-line">{deText("10+ years across MedTech, OR integration, clinical equipment workflows, supplier coordination, training, handover, and healthcare operations.", lang)}</p>
@@ -1222,20 +1256,32 @@ export function MedTechPage() {
         </div>
       </PageHero>
 
-      <section id="medtech-impact" className="section container market-page__section">
+      {/* Section 2: Role Fit — moved up for fast recruiter scan */}
+      <section id="medtech-role-fit" className="section container market-page__section">
         <SectionHeader
-          eyebrow={deText("Regulated operations proof", lang)}
-          title={deText("Why my MedTech background matters for AI workflow systems", lang)}
-          text={deText("AI systems fail when they ignore real-world constraints: handovers, stakeholders, documentation, exceptions, training, and review points. My MedTech implementation background helps me design workflows that fit how teams actually work.", lang)}
+          eyebrow={deText("Role fit", lang)}
+          title={deText("Best-fit roles and environments", lang)}
+          text={deText("Clear fit for teams where clinical workflow understanding, implementation reality, and product/project structure need to meet.", lang)}
           headingAccent="medtech"
         />
-        <RegulatedOperationsProofGrid items={localizedRegulatedOperationsProof} />
+        <RoleFitSection groups={localizedMedtechRoleGroups} />
       </section>
 
+      {/* Section 3: Translation Layer — new; bridges MedTech experience to AI workflow value */}
+      <section className="section container market-page__section">
+        <SectionHeader
+          eyebrow={deText("Why it matters", lang)}
+          title={deText("MedTech implementation background. Applied to AI workflow systems.", lang)}
+          text={deText("AI systems built without domain grounding ignore the constraints that make or break adoption. Here is what implementation experience changes.", lang)}
+        />
+        <MedTechTranslationLayer />
+      </section>
+
+      {/* Section 4: Selected Proof — with status badges; OR Integration featured first */}
       <section id="medtech-proof" className="section container market-page__section">
         <SectionHeader
           eyebrow={deText("Selected proof", lang)}
-          title={deText("Selected proof of work", lang)}
+          title={deText("Reference work and workflow concepts", lang)}
           text={deText("A focused selection of MedTech and workflow-system projects that connect implementation experience with product thinking and AI-assisted delivery.", lang)}
         />
         <div className="medtech-proof-grid">
@@ -1243,6 +1289,7 @@ export function MedTechPage() {
         </div>
       </section>
 
+      {/* Section 5: Capabilities — updated titles carry MedTech context */}
       <section className="section container market-page__section">
         <SectionHeader
           eyebrow={deText("Capabilities", lang)}
@@ -1252,23 +1299,15 @@ export function MedTechPage() {
         <CapabilityGrid items={localizedMedtechCapabilityCards} />
       </section>
 
-      <section className="section container market-page__section">
-        <SectionHeader
-          eyebrow={deText("Role fit", lang)}
-          title={deText("Best-fit roles and environments", lang)}
-          text={deText("Clear fit for teams where clinical workflow understanding, implementation reality, and product/project structure need to meet.", lang)}
-        />
-        <RoleFitSection groups={localizedMedtechRoleGroups} />
-      </section>
-
+      {/* Section 6: CTA — rewritten to speak to client pain, not self-justification */}
       <section className="section container market-page__section">
         <CTAStrip
           accent="medtech"
           eyebrow={deText("Next step", lang)}
-          title={deText("Need AI workflow work with regulated-operations judgment?", lang)}
-          text={deText("MedTech is the credibility layer: it shows I understand implementation-heavy environments where workflows, documentation, stakeholders, handover, and risk matter.", lang)}
+          title={deText("You need AI workflow work that understands clinical reality.", lang)}
+          text={deText("Handovers fail, documentation gaps hide risks, and stakeholder coordination breaks without domain understanding. That is what 10+ years of MedTech implementation adds to AI workflow work.", lang)}
           primary={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
-          secondary={{ label: deText("View Regulated Proof", lang), href: "#medtech-impact" }}
+          secondary={{ label: deText("Explore OR Integration Proof", lang), href: "/proof-of-work/or-integration" }}
         />
       </section>
     </div>
@@ -1293,28 +1332,37 @@ export function FullStackPage() {
         subtitle={deText("I can move from workflow discovery to prototype, internal tool, dashboard, automation, or deployed custom application using modern full-stack tools and AI-assisted development workflows.", lang)}
         primaryCta={{ label: deText("View Selected Projects", lang), href: "#fullstack-projects" }}
         secondaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
-        scrollTargetId="fullstack-stack"
+        scrollTargetId="fullstack-capabilities"
       >
         <div className="market-page__hero-extra fullstack-hero-extra">
-          <p className="fullstack-credibility-line">{deText("This is implementation proof for the consulting offer: React, Python, APIs, databases, deployment, and AI-assisted development applied to real workflow problems.", lang)}</p>
+          <p className="fullstack-credibility-line">{deText("5+ deployed products. React, Python, APIs, databases, and AI-assisted development from discovery to launch.", lang)}</p>
           <FullStackHeroVisual items={localizedFullstackHeroFlow} />
         </div>
       </PageHero>
 
+      <section id="fullstack-capabilities" className="section container market-page__section">
+        <SectionHeader
+          eyebrow={deText("Build capabilities", lang)}
+          title={deText("What this proves for AI consulting clients", lang)}
+          text={deText("The projects show the ability to turn an audit or roadmap into a practical artifact: prototype, dashboard, internal tool, data model, or deployed workflow application.", lang)}
+          headingAccent="fullstack"
+        />
+        <FullStackCapabilityGrid items={localizedFullstackCapabilities} />
+      </section>
+
       <section id="fullstack-stack" className="section container market-page__section">
         <SectionHeader
           eyebrow={deText("Technical stack", lang)}
-          title={deText("Technical stack", lang)}
+          title={deText("Tools used across deployed products", lang)}
           text={deText("A compact product-builder toolkit for interfaces, APIs, data, deployment, and AI-assisted implementation loops.", lang)}
-          headingAccent="fullstack"
         />
         <StackGroupGrid groups={localizedFullstackStackGroups} />
       </section>
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow={deText("AI-assisted development workflow", lang)}
-          title={deText("AI-assisted development workflow", lang)}
+          eyebrow={deText("Development workflow", lang)}
+          title={deText("From discovery to deployed system", lang)}
           text={deText("I use AI tools to accelerate product discovery, architecture planning, UI generation, code review, documentation, debugging, and iteration while keeping product logic and implementation decisions explicit.", lang)}
         />
         <FullStackWorkflowRow steps={localizedFullstackWorkflow} />
@@ -1323,7 +1371,7 @@ export function FullStackPage() {
       <section id="fullstack-projects" className="section container market-page__section">
         <SectionHeader
           eyebrow={deText("Selected projects", lang)}
-          title={deText("Selected projects", lang)}
+          title={deText("Deployed products and workflow systems", lang)}
           text={deText("A focused selection of deployed products, workflow systems, and technical prototypes showing product thinking, full-stack execution, and AI-assisted development.", lang)}
         />
         <div className="fullstack-project-grid">
@@ -1333,22 +1381,13 @@ export function FullStackPage() {
 
       <section className="section container market-page__section">
         <SectionHeader
-          eyebrow={deText("Secondary experiments", lang)}
-          title={deText("Secondary experiments", lang)}
+          eyebrow={deText("Experiments and internal tools", lang)}
+          title={deText("Additional execution range", lang)}
           text={deText("Smaller product experiments and learning projects that show additional execution range without being the core positioning.", lang)}
         />
         <div className="fullstack-secondary-grid">
           {localizedFullstackSecondaryExperiments.map((project) => <FullStackProjectCard project={project} compact key={project.title} />)}
         </div>
-      </section>
-
-      <section className="section container market-page__section">
-        <SectionHeader
-          eyebrow={deText("Build capabilities", lang)}
-          title={deText("What this proves for AI consulting clients", lang)}
-          text={deText("The projects show the ability to turn an audit or roadmap into a practical artifact: prototype, dashboard, internal tool, data model, or deployed workflow application.", lang)}
-        />
-        <FullStackCapabilityGrid items={localizedFullstackCapabilities} />
       </section>
 
       <section className="section container market-page__section">
@@ -1358,7 +1397,7 @@ export function FullStackPage() {
           title={deText("Need the audit recommendation turned into a working tool?", lang)}
           text={deText("The strongest fit is product-shaped technical work after workflow discovery: a useful prototype, dashboard, internal assistant, or AI-assisted workflow system with clear product logic.", lang)}
           primary={{ label: deText("Discuss Prototype Sprint", lang), href: `mailto:${EMAIL}?subject=Prototype%20Sprint%20Discussion` }}
-          secondary={{ label: deText("View GitHub", lang), href: "https://github.com/romahawk" }}
+          secondary={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
         />
       </section>
     </div>

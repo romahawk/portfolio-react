@@ -1,12 +1,10 @@
 import React from "react";
 import {
-  ArrowRight,
   BriefcaseBusiness,
   CheckCircle2,
   Code2,
   ClipboardCheck,
   Layers,
-  ShieldCheck,
   Users,
   Workflow,
 } from "lucide-react";
@@ -28,45 +26,6 @@ const EXPERIENCE_GIVES = [
   "Avoids over-automating high-risk workflows",
 ];
 
-const FOCUS_CARDS = [
-  {
-    title: "AI-assisted delivery",
-    text:
-      "Using AI to accelerate workflow discovery, prototyping, documentation, and implementation support while keeping human judgment visible.",
-  },
-  {
-    title: "Product & workflow systems",
-    text:
-      "Turning operational complexity into product concepts, requirements, dashboards, SOPs, and handover-ready systems.",
-  },
-  {
-    title: "Regulated operations proof",
-    text:
-      "Using MedTech and regulated-operations experience as trust proof for high-friction workflows, not as the primary commercial identity.",
-  },
-];
-
-const PROBLEM_SPACES = [
-  "AI Workflow Opportunity Audit",
-  "Prototype Sprint",
-  "Internal Assistant / SOP System",
-  "Dashboard or workflow tool",
-];
-
-const EMPLOYMENT_ROLES = [
-  "AI Product Manager",
-  "Technical Product Manager",
-  "Product Operations Lead",
-  "MedTech / HealthTech Product Manager",
-];
-
-const PROOF_AREAS = [
-  "Documentation and handover systems",
-  "Operational dashboards",
-  "Compliance-aware workflow automation",
-  "MedTech implementation workflows",
-  "OR / hospital workflow systems",
-];
 
 const MEDTECH_MILESTONES = [
   "First EP lab implementation support in Ukraine",
@@ -83,7 +42,7 @@ const TECH_FOUNDATION = [
   "Applied AI automation and workflow systems",
   "AI-assisted development",
   "Full-stack product implementation",
-  "Continuous learning through practical demos, prototypes, and documentation",
+  "Practical learning via prototypes and demos",
 ];
 
 function CheckList({ items }) {
@@ -106,13 +65,6 @@ export default function About() {
   const { lang } = useTranslation();
   const implementationAreas = IMPLEMENTATION_AREAS;
   const experienceGives = EXPERIENCE_GIVES;
-  const focusCards = localizeGermanValue(FOCUS_CARDS, lang);
-  const roleCards = [
-    { title: "For consulting clients", items: PROBLEM_SPACES },
-    { title: "For product and employment roles", items: EMPLOYMENT_ROLES },
-    { title: "Where regulated proof helps", items: PROOF_AREAS },
-  ];
-  const localizedRoleCards = localizeGermanValue(roleCards, lang);
   const milestones = localizeGermanValue(MEDTECH_MILESTONES, lang);
   const techFoundation = localizeGermanValue(TECH_FOUNDATION, lang);
 
@@ -147,7 +99,7 @@ export default function About() {
             <div className="about__eyebrow">{deText("Technical foundation", lang)}</div>
             <h3 className="about__heading">
               <Code2 size={18} className="icon about__icon" />
-              {deText("Technical Foundation & Continuous AI Learning", lang)}
+              {deText("Master's in Software Development, applied to AI workflow delivery", lang)}
             </h3>
             <p className="about__text">
               {deText("Alongside hands-on product and implementation work, I'm completing a Master's in Software Development and continuously deepening my applied AI skills across automation, AI-assisted development, workflow systems, and practical deployment.", lang)}
@@ -162,7 +114,7 @@ export default function About() {
 
         <div className="about__row reveal">
           <div className="about__section-card about__section-card--implementation">
-            <div className="about__eyebrow">{deText("Regulated operations proof", lang)}</div>
+            <div className="about__eyebrow">{deText("MedTech background", lang)}</div>
             <h3 className="about__heading">
               <ClipboardCheck size={18} className="icon about__icon" />
               {deText("Regulated operations experience that improves AI system design", lang)}
@@ -197,68 +149,21 @@ export default function About() {
         </div>
 
         <div className="about__row reveal">
-          <div className="about__section-card">
-            <div className="about__eyebrow">{deText("Current focus", lang)}</div>
+          <div className="about__section-card about__section-card--milestones">
+            <div className="about__eyebrow">{deText("Selected milestones", lang)}</div>
             <h3 className="about__heading">
               <BriefcaseBusiness size={18} className="icon about__icon" />
-              {deText("Where this experience translates today", lang)}
+              {deText("MedTech implementation record", lang)}
             </h3>
-            <div className="about__focus-grid">
-              {focusCards.map((card, index) => (
-                <article className={`about__value-card about__value-card--${index + 1}`} key={card.title}>
-                  <h4>{card.title}</h4>
-                  <p className="about__text">{card.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="about__row reveal">
-          <div className="about__section-card about__section-card--warm">
-            <div className="about__eyebrow">{deText("Role fit", lang)}</div>
-            <h3 className="about__heading">
-              <ShieldCheck size={18} className="icon about__icon" />
-              {deText("Where this background creates value", lang)}
-            </h3>
-            <p className="about__text">{deText("My strongest fit is AI workflow systems for operations-heavy teams, backed by product judgment, regulated-operations credibility, and implementation proof.", lang)}</p>
-            <div className="about__role-grid">
-              <article className="about__role-card">
-                <h4>{localizedRoleCards[0].title}</h4>
-                <CheckList items={localizedRoleCards[0].items} />
-                <a href="/contact" className="btn btn--primary">
-                  {deText("Discuss a Workflow", lang)} <ArrowRight size={15} className="icon ml-1" />
-                </a>
-              </article>
-
-              <article className="about__role-card">
-                <h4>{localizedRoleCards[1].title}</h4>
-                <CheckList items={localizedRoleCards[1].items} />
-                <a href="/fullstack" className="btn btn--ghost">
-                  {deText("View Proof of Work", lang)}
-                </a>
-              </article>
-
-              <article className="about__role-card">
-                <h4>{localizedRoleCards[2].title}</h4>
-                <CheckList items={localizedRoleCards[2].items} />
-                <a href="/medtech" className="btn btn--ghost">
-                  {deText("View Trust Proof", lang)}
-                </a>
-              </article>
-            </div>
-          </div>
-        </div>
-
-        <div className="about__row reveal">
-          <details className="about__timeline">
-            <summary>{deText("Selected regulated-operations milestones", lang)}</summary>
-            <ol>
-              {milestones.map((milestone) => (
-                <li key={milestone}>{milestone}</li>
+            <ol className="about__milestone-list">
+              {milestones.map((milestone, i) => (
+                <li key={milestone}>
+                  <span className="about__milestone-num">{String(i + 1).padStart(2, "0")}</span>
+                  <span>{milestone}</span>
+                </li>
               ))}
             </ol>
-          </details>
+          </div>
         </div>
 
         <div className="about__row reveal">
@@ -271,8 +176,8 @@ export default function About() {
               <a href="/contact" className="btn btn--primary">
                 {deText("Discuss a Workflow", lang)} <Users size={15} className="icon ml-1" />
               </a>
-              <a href="/fullstack" className="btn btn--ghost">
-                {deText("View Proof of Work", lang)}
+              <a href="/ai" className="btn btn--ghost">
+                {deText("Explore AI Consulting", lang)}
               </a>
             </div>
           </div>

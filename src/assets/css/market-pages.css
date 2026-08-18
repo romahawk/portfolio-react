@@ -1540,6 +1540,120 @@
   background: linear-gradient(180deg, var(--accent-fullstack), transparent);
 }
 
+/* ── MedTech Translation Layer ─────────────────────────────────────────── */
+
+.medtech-translation-layer {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 860px) {
+  .medtech-translation-layer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.medtech-translation-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 22px;
+  border: 1px solid var(--system-border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--panel) 90%, transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.medtech-translation-col::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--accent-medtech);
+  opacity: 0.5;
+}
+
+.medtech-translation-col--1::before {
+  background: color-mix(in srgb, var(--accent-medtech) 60%, var(--accent-ai));
+  opacity: 0.6;
+}
+
+.medtech-translation-col--2::before {
+  background: var(--accent-medtech);
+  opacity: 1;
+}
+
+.medtech-translation-col h3 {
+  margin: 0;
+  color: var(--accent-medtech);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.medtech-translation-col--0 h3 {
+  color: var(--muted);
+}
+
+.medtech-translation-col--1 h3 {
+  color: color-mix(in srgb, var(--accent-medtech) 55%, var(--accent-ai));
+}
+
+.medtech-translation-col ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.medtech-translation-col li {
+  position: relative;
+  padding-left: 16px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.medtech-translation-col li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--system-border);
+  font-size: 12px;
+}
+
+.medtech-translation-col--2 li {
+  color: var(--text);
+}
+
+.medtech-translation-col--2 li::before {
+  content: "✓";
+  color: var(--accent-medtech);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+/* ── Proof card status badge ────────────────────────────────────────────── */
+
+.medtech-proof-card__status {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 3px 9px;
+  border: 1px solid var(--proof-link-accent, var(--accent-medtech));
+  border-radius: 20px;
+  background: var(--proof-link-soft, var(--accent-medtech-soft));
+  color: var(--proof-link-accent, var(--accent-medtech));
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .medtech-proof-card dl {
   display: grid;
   gap: 12px;

@@ -1,35 +1,37 @@
-import { ArrowRight } from "lucide-react";
+import { Mail } from "lucide-react";
 import TypewriterTitle from "./common/TypewriterTitle.jsx";
 import { ArtifactMap, FeaturePill, PageHero } from "./system/SystemVisuals.jsx";
 import About from "./About.jsx";
 import { useTranslation } from "../context/LangContext.jsx";
 import { deText, localizeGermanValue } from "../locales/germanCopy.js";
 
+const EMAIL = "romazuryk@proton.me";
+
 const aboutArtifact = {
-  inputLabel: "Background",
-  outputLabel: "Operating model",
+  inputLabel: "What I bring",
+  outputLabel: "What I build",
   inputs: [
-    { label: "Product & workflow systems", accent: "ai" },
-    { label: "AI-assisted delivery", accent: "ai" },
-    { label: "Regulated implementation experience", accent: "medtech" },
+    { label: "MedTech field experience", accent: "medtech" },
+    { label: "Product & workflow thinking", accent: "ai" },
+    { label: "AI-assisted development", accent: "fullstack" },
   ],
   outputs: [
-    { label: "Workflow discovery", accent: "ai" },
-    { label: "Human-reviewed AI systems", accent: "ai" },
-    { label: "Prototype-to-delivery proof", accent: "fullstack" },
+    { label: "Workflow audits & maps", accent: "ai" },
+    { label: "Internal tools & prototypes", accent: "fullstack" },
+    { label: "Reviewed AI systems", accent: "ai" },
   ],
 };
 
 const aboutPills = [
-  { label: "AI workflow systems", accent: "ai" },
-  { label: "Product judgment", accent: "ai" },
-  { label: "Full-stack delivery", accent: "fullstack" },
-  { label: "Regulated operations proof", accent: "medtech" },
+  { label: "Technical PM", accent: "ai" },
+  { label: "10+ years MedTech", accent: "medtech" },
+  { label: "AI-assisted builds", accent: "fullstack" },
+  { label: "Operator background", accent: "medtech" },
 ];
 
 export default function AboutPage() {
   const { lang } = useTranslation();
-  const title = "I turn messy workflows into practical AI-assisted systems";
+  const title = "Technical PM. Operator background. AI-assisted delivery.";
   const localizedAboutPills = localizeGermanValue(aboutPills, lang);
   const localizedAboutArtifact = localizeGermanValue(aboutArtifact, lang);
 
@@ -38,9 +40,9 @@ export default function AboutPage() {
       <PageHero
         eyebrow={deText("About", lang)}
         title={<TypewriterTitle text={deText(title, lang)} />}
-        subtitle={deText("I help operations-heavy teams turn fragmented processes into practical AI-assisted systems, combining product strategy, workflow analysis, AI automation, and full-stack delivery. My MedTech background adds real-world judgment from regulated, high-friction environments.", lang)}
-        primaryCta={{ label: deText("Explore AI Workflows", lang), href: "/ai-workflow", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: deText("View Proof of Work", lang), href: "/fullstack" }}
+        subtitle={deText("I'm a Technical PM with 10+ years in MedTech implementation — OR integration, clinical equipment handover, multi-stakeholder coordination. That background now drives how I design and build practical AI workflow systems.", lang)}
+        primaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: deText("Download CV", lang), href: "/roman-mazuryk-cv.pdf" }}
         scrollTargetId="about"
       >
         <div className="market-page__hero-extra">
@@ -49,7 +51,7 @@ export default function AboutPage() {
           </div>
           <ArtifactMap
             accent="ai"
-            title={deText("Background becomes workflow discovery, reviewed AI systems, and delivery proof", lang)}
+            title={deText("Operator experience becomes workflow audits, prototypes, and reviewed AI systems", lang)}
             {...localizedAboutArtifact}
           />
         </div>
