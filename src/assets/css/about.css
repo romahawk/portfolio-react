@@ -473,6 +473,38 @@
 
 .about__list li { color: var(--muted); line-height: 1.8; }
 
+.about__section-card--milestones {
+  --about-accent: var(--accent-medtech);
+  --about-soft: var(--accent-medtech-soft);
+  --about-glow-x: 50%;
+  --about-glow-y: 100%;
+}
+
+.about__milestone-list {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about__milestone-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.about__milestone-num {
+  flex-shrink: 0;
+  color: var(--accent-medtech);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+}
+
 .about__quote {
   margin-top: 1rem;
   padding: 1rem;
