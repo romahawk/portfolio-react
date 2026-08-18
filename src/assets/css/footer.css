@@ -62,12 +62,12 @@
   transition: color .2s, border-color .2s, background .2s;
 }
 .footer__social:hover {
-  color: var(--brand);
-  border-color: rgba(0, 221, 235, 0.4);
-  background: rgba(0, 221, 235, 0.06);
+  color: var(--accent-ai);
+  border-color: color-mix(in srgb, var(--accent-ai) 40%, var(--border));
+  background: color-mix(in srgb, var(--accent-ai-soft) 66%, var(--panel));
 }
 .footer__social:focus-visible {
-  outline: 2px solid var(--brand);
+  outline: 2px solid var(--accent-ai);
   outline-offset: 2px;
 }
 
@@ -77,7 +77,7 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--brand);
+  color: var(--accent-ai);
   margin: 0 0 14px;
 }
 
@@ -122,39 +122,24 @@
   gap: 6px;
   padding: 9px 16px;
   border-radius: 10px;
-  border: 1px solid rgba(0, 221, 235, 0.35);
-  background: rgba(0, 221, 235, 0.06);
-  color: var(--brand);
+  border: 1px solid color-mix(in srgb, var(--accent-ai) 35%, var(--system-border));
+  background: color-mix(in srgb, var(--accent-ai-soft) 58%, var(--panel));
+  color: var(--accent-ai);
   font-size: 14px;
   font-weight: 600;
   transition: background .2s, border-color .2s, color .2s;
 }
 .footer__cta-btn:hover {
-  background: rgba(0, 221, 235, 0.14);
-  border-color: rgba(0, 221, 235, 0.6);
+  background: color-mix(in srgb, var(--accent-ai-soft) 88%, var(--panel-hover));
+  border-color: color-mix(in srgb, var(--accent-ai) 60%, var(--border));
   color: var(--text);
 }
 .footer__cta-btn:focus-visible {
-  outline: 2px solid var(--brand);
+  outline: 2px solid var(--accent-ai);
   outline-offset: 2px;
 }
 .footer__cta-icon { flex-shrink: 0; }
 
-[data-theme="light"] .footer__col-heading {
-  color: #056f78;
-}
-
-[data-theme="light"] .footer__cta-btn {
-  border-color: rgba(5, 111, 120, 0.42);
-  background: rgba(5, 111, 120, 0.08);
-  color: #056f78;
-}
-
-[data-theme="light"] .footer__cta-btn:hover {
-  border-color: rgba(5, 111, 120, 0.62);
-  background: rgba(5, 111, 120, 0.14);
-  color: var(--text);
-}
 
 .footer__secondary-link {
   display: inline-flex;
@@ -168,11 +153,11 @@
 }
 
 .footer__secondary-link:hover {
-  color: var(--brand);
+  color: var(--accent-ai);
 }
 
 .footer__secondary-link:focus-visible {
-  outline: 2px solid var(--brand);
+  outline: 2px solid var(--accent-ai);
   outline-offset: 2px;
   border-radius: 6px;
 }
