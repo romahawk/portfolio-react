@@ -1286,7 +1286,7 @@
 }
 
 .medtech-role-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
 }
 
 .medtech-impact-card,
@@ -2482,4 +2482,21 @@
   .fullstack-hero-map__connector::before {
     animation: none;
   }
+}
+
+/* Concept-stage proof: held visually below delivered work */
+.medtech-proof-grid--concepts .medtech-proof-card {
+  --proof-link-accent: var(--muted);
+  --proof-link-soft: transparent;
+  padding: 16px;
+  border-style: dashed;
+  background: transparent;
+}
+
+.medtech-proof-grid--concepts .medtech-proof-card h3 {
+  font-size: 1rem;
+}
+
+.medtech-proof-grid--concepts .medtech-proof-card__status {
+  color: var(--muted);
 }

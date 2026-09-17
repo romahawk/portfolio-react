@@ -2,6 +2,8 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 import PageHero from "../common/PageHero.jsx";
 import StatusBadge from "../StatusBadge.jsx";
+import { useTranslation } from "../../context/LangContext.jsx";
+import { localizeGermanValue } from "../../locales/germanCopy.js";
 
 function getAccentClass(accent = "ai") {
   return `system-accent--${accent}`;
@@ -229,6 +231,24 @@ export function CTAStrip({ eyebrow, title, text, primary, secondary, accent = "a
         {primary ? <a href={primary.href} className="btn btn--primary">{primary.label}</a> : null}
         {secondary ? <a href={secondary.href} className="btn btn--ghost">{secondary.label}</a> : null}
       </div>
+    </div>
+  );
+}
+
+export function RoleFitSection({ groups }) {
+  const { lang } = useTranslation();
+  const localizedGroups = localizeGermanValue(groups, lang);
+
+  return (
+    <div className="medtech-role-grid">
+      {localizedGroups.map((group) => (
+        <article className="medtech-role-card reveal" key={group.title}>
+          <h3>{group.title}</h3>
+          <ul>
+            {group.items.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </article>
+      ))}
     </div>
   );
 }
