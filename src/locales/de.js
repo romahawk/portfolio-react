@@ -9,6 +9,7 @@ export default {
     aiSolutions: "KI-Consulting",
     medtech: "Regulierter Proof",
     fullstack: "Build Proof",
+    kb: "KI-Leitfaden",
     about: "Über mich",
     contact: "Kontakt",
     toggleNav: "Navigation umschalten",

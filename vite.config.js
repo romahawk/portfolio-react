@@ -18,6 +18,7 @@ export default defineConfig({
         services: resolve(__dirname, 'services/index.html'),
         collaborate: resolve(__dirname, 'collaborate/index.html'),
         aiWorkflow: resolve(__dirname, 'ai-workflow/index.html'),
+        kb: resolve(__dirname, 'kb/index.html'),
         orIntegration: resolve(__dirname, 'proof-of-work/or-integration/index.html'),
         clinicalEvidenceWorkflow: resolve(__dirname, 'medtech-ai-systems/clinical-evidence-workflow/index.html'),
       },

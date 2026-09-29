@@ -9,6 +9,7 @@ export default {
     aiSolutions: "AI Consulting",
     medtech: "Regulated Proof",
     fullstack: "Build Proof",
+    kb: "AI Field Guide",
     about: "About",
     contact: "Contact",
     toggleNav: "Toggle navigation",

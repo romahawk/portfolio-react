@@ -47,6 +47,17 @@ const FULLSTACK = {
   imageHeight: "630",
 };
 
+const KB = {
+  title: "AI Field Guide \u2014 Harness, Skills, Memory, Tools, Cost",
+  description:
+    "A practical reference for building with AI agents: terminology, best practices and tool choices, applied to real projects by Roman Mazuryk.",
+  url: "https://www.mazuryk.dev/kb",
+  image: "https://www.mazuryk.dev/images/og/og-ai.png",
+  imageAlt: "AI Field Guide by Roman Mazuryk.",
+  imageWidth: "1200",
+  imageHeight: "630",
+};
+
 const ABOUT = {
   title: "About - Roman Mazuryk",
   description:
@@ -147,6 +158,11 @@ export function useOgMeta() {
           title: seo("aiTitle", AI_SOLUTIONS.title),
           description: seo("aiDescription", AI_SOLUTIONS.description),
         });
+        return;
+      }
+
+      if (path === "/kb" || path.startsWith("/kb/")) {
+        applyMeta(KB);
         return;
       }
 

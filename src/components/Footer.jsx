@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { label: "Build Proof", href: "/fullstack" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+  { label: "AI Field Guide", href: "/kb" },
 ];
 
 const SOCIAL_LINKS = [

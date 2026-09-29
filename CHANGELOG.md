@@ -9,6 +9,11 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Added
+- `/kb` — AI Field Guide: five pillars (Harness, Skills, Memory, Tools, Cost) with definitions, best practices, pitfalls, per-project applications (status-labelled In use / In build / Planned), tool verdicts (Use / Try / Skip), a project × pillar matrix and a searchable glossary
+- Content lives in `src/data/aiKnowledgeBase.js` (single source; matrix and glossary are generated from it). No new dependencies
+- New entry `kb/index.html`, Vite input, Vercel rewrite, sitemap entry, OG meta and footer link. Not added to the header nav (it already wraps at 1366px); page copy is English-only
+
 ### Changed
 - `/ai` page: rewrote hero title/subtitle and secondary CTA copy, moved the "I do not sell broad AI experiments" claim from the hero into the workflow-intelligence section, renamed "Process" section to "How a workflow engagement works", trimmed redundant section subtext, split proof-of-work into its own "07 / Proof" section
 - `/ai` fit section: good/not-ideal list items now show a check/x icon (`CheckCircle2`/`XCircle`) instead of a plain bullet

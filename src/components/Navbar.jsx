@@ -36,9 +36,11 @@ export default function Navbar({ themeMode, onThemeChange }) {
     typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === OR_INTEGRATION_PROOF_PATH;
   const isAboutPage =
     typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/about";
+  const isKBPage =
+    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "").startsWith("/kb");
   const isContactPage =
     typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/contact";
-  const isStandalonePage = isServicesPage || isMedTechPage || isFullStackPage || isClinicalEvidencePage || isAIWorkflowPage || isORIntegrationProofPage || isAboutPage || isContactPage;
+  const isStandalonePage = isServicesPage || isMedTechPage || isFullStackPage || isClinicalEvidencePage || isAIWorkflowPage || isORIntegrationProofPage || isAboutPage || isContactPage || isKBPage;
   const navIds = useMemo(
     () => (isStandalonePage ? [] : IDS),
     [isStandalonePage]

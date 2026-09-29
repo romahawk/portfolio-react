@@ -28,6 +28,7 @@ const ORIntegrationProofPage = React.lazy(() => import("./components/ORIntegrati
 const AIWorkflowLibrary = React.lazy(() => import("./components/AIWorkflowLibrary.jsx"));
 const AIWorkflowDetailPage = React.lazy(() => import("./components/AIWorkflowDetailPage.jsx"));
 const ClinicalEvidenceWorkflowPage = React.lazy(() => import("./components/ClinicalEvidenceWorkflowPage.jsx"));
+const KnowledgeBasePage = React.lazy(() => import("./components/KnowledgeBasePage.jsx"));
 
 function DeferredAnalytics() {
   const [enabled, setEnabled] = React.useState(false);
@@ -53,6 +54,7 @@ function DeferredAnalytics() {
 
 const CLINICAL_EVIDENCE_PATH = "/medtech-ai-systems/clinical-evidence-workflow";
 const AI_WORKFLOW_PATH = "/ai-workflow";
+const KB_PATH = "/kb";
 const OR_INTEGRATION_PROOF_PATH = "/proof-of-work/or-integration";
 const ROUTE_SECTION_MAP = {
   "/about": "about",
@@ -71,6 +73,7 @@ function getPage() {
   if (path === AI_WORKFLOW_PATH) return "ai-workflow";
   if (path.startsWith(`${AI_WORKFLOW_PATH}/`)) return "ai-workflow-detail";
   if (path === CLINICAL_EVIDENCE_PATH) return "clinical-evidence-workflow";
+  if (path === KB_PATH || path.startsWith(`${KB_PATH}/`)) return "kb";
   return "home";
 }
 
@@ -141,6 +144,8 @@ function AppInner() {
             <AIWorkflowDetailPage slug={getWorkflowSlug()} />
           ) : page === "clinical-evidence-workflow" ? (
             <ClinicalEvidenceWorkflowPage />
+          ) : page === "kb" ? (
+            <KnowledgeBasePage />
           ) : (
             <HomePage />
           )}
