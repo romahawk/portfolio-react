@@ -1,11 +1,11 @@
 // AI Field Guide — single source of truth for /kb.
 // Edit content here; the page, project matrix and glossary are generated from it.
-// Status values for project applications: "In use" | "In build" | "Planned"
+// Status values for project applications: "In use" | "In build". Only list work that exists today.
 // Verdict values for tools: "Use" | "Try" | "Skip"
 
 export const kbMeta = {
   title: "AI Field Guide",
-  lastReviewed: "29 Sep 2026",
+  lastReviewed: "30 Sep 2026",
   intro:
     "My working reference for building with AI agents: the terms, the practices that hold up, and the tools I actually use across my own projects. Five pillars, each tied back to a real build.",
   mentalModel:
@@ -16,7 +16,6 @@ export const kbProjects = [
   { id: "deutschon", name: "DeutschOn-AI", note: "MSc capstone — human-in-the-loop AI assessment for German B1 learners" },
   { id: "magic-kick", name: "Magic Kick", note: "AI-augmented personal execution OS" },
   { id: "alpharhythm", name: "AlphaRhythm", note: "Trading rule-compliance micro-SaaS" },
-  { id: "recruiter-api", name: "MedTech Recruiter Intelligence API", note: "API service with a built-in eval harness" },
   { id: "proof-engine", name: "Proof Engine", note: "90-day plan tracker where tasks close only with evidence" },
   { id: "business-os", name: "AI-Business-OS", note: "Markdown + Git strategic OS that agents read first" },
   { id: "portfolio", name: "mazuryk.dev", note: "This site" },
@@ -55,8 +54,6 @@ export const kbPillars = [
       { project: "portfolio", status: "In use", text: "CLAUDE.md defines the orient → branch → lint → build → PR loop, a freeze list and architecture rules the agent must not break." },
       { project: "business-os", status: "In use", text: "AGENTS.md defines the entry protocol every agent follows before it touches a project." },
       { project: "deutschon", status: "In use", text: "Sessions start from docs/STATE.md and decisions.md; work ships as small, bounded issues." },
-      { project: "alpharhythm", status: "Planned", text: "Best fit for unattended goal-driven iteration: clear P0 list, tests as the stop condition." },
-      { project: "magic-kick", status: "Planned", text: "Plan → test → implement discipline for each small GitHub issue." },
     ],
     tools: [
       { name: "Claude Code", href: "https://docs.claude.com/en/docs/claude-code/overview", verdict: "Use", note: "Primary harness." },
@@ -96,7 +93,6 @@ export const kbPillars = [
     projects: [
       { project: "deutschon", status: "In use", text: "A sync skill orients each strategy session from the repo's STATE and decision log, and flags what needs a ruling." },
       { project: "alpharhythm", status: "In use", text: "A sync skill reads NEXT_SESSION_START and the decisions log before any work begins." },
-      { project: "portfolio", status: "Planned", text: "One design skill (not two) for consistent UI on new pages." },
       { project: "business-os", status: "In use", text: "Custom skills — recruiter research, VC-style pitch review, a German tutor — packaged once and reused across Claude apps." },
     ],
     tools: [
@@ -140,7 +136,6 @@ export const kbPillars = [
       { project: "deutschon", status: "In use", text: "docs/STATE.md and decisions.md are the handover between strategy and build sessions." },
       { project: "alpharhythm", status: "In use", text: "NEXT_SESSION_START.md and DECISIONS_LOG.md make every session resumable in one read." },
       { project: "proof-engine", status: "In build", text: "The 90-day plan lives as Markdown in AI-Business-OS; the app generates its data from it — one source, two views." },
-      { project: "magic-kick", status: "Planned", text: "A Personal Inbox as durable state between ingestion, AI triage and human approval." },
     ],
     tools: [
       { name: "CLAUDE.md / AGENTS.md", href: "https://docs.claude.com/en/docs/claude-code/memory", verdict: "Use", note: "Built in. Keep it lean." },
@@ -178,10 +173,6 @@ export const kbPillars = [
     ],
     projects: [
       { project: "deutschon", status: "In build", text: "Claude via the Vercel AI SDK returns structured assessments checked against a schema; the teacher accepts, edits or rejects before a student sees anything." },
-      { project: "deutschon", status: "Planned", text: "Browser-driven end-to-end tests of the teacher approval flow." },
-      { project: "magic-kick", status: "Planned", text: "Ingestion tools feed an inbox; no autonomous messaging or calendar changes — human approval is the control boundary." },
-      { project: "recruiter-api", status: "Planned", text: "Web extraction for public company career pages as the data layer." },
-      { project: "alpharhythm", status: "Planned", text: "Browser tests of the pre-trade rule check before each beta release." },
     ],
     tools: [
       { name: "playwright-mcp", href: "https://github.com/microsoft/playwright-mcp", verdict: "Use", note: "Lets the agent test in a real browser." },
@@ -219,9 +210,6 @@ export const kbPillars = [
       "Cutting tokens by making output unreadable — cheaper, but slower to review.",
     ],
     projects: [
-      { project: "deutschon", status: "Planned", text: "Track cost per assessment next to teacher time saved, so the workload result includes what it costs to run." },
-      { project: "recruiter-api", status: "Planned", text: "The eval harness tracks quality and cost per run together, so a cheaper model is only accepted if it scores the same." },
-      { project: "alpharhythm", status: "Planned", text: "Unattended build runs capped by budget and a test-based stop condition." },
       { project: "business-os", status: "In use", text: "A written usage discipline: one task per session, lean instruction files, periodic usage audits." },
     ],
     tools: [

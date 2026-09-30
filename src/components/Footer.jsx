@@ -2,13 +2,14 @@ import React from "react";
 import { Linkedin, Github, Mail, ArrowUpRight } from "lucide-react";
 import { useTranslation } from "../context/LangContext.jsx";
 
+// Labels come from the same nav.* keys as the header, so each label always matches its href.
 const NAV_LINKS = [
-  { label: "AI Consulting", href: "/ai" },
-  { label: "Regulated Proof", href: "/medtech" },
-  { label: "Build Proof", href: "/fullstack" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-  { label: "AI Field Guide", href: "/kb" },
+  { labelKey: "nav.aiSolutions", href: "/ai" },
+  { labelKey: "nav.medtech", href: "/medtech" },
+  { labelKey: "nav.fullstack", href: "/fullstack" },
+  { labelKey: "nav.about", href: "/about" },
+  { labelKey: "nav.contact", href: "/contact" },
+  { labelKey: "nav.kb", href: "/kb" },
 ];
 
 const SOCIAL_LINKS = [
@@ -20,8 +21,6 @@ const SOCIAL_LINKS = [
 export default function Footer() {
   const { t } = useTranslation();
   const year = new Date().getFullYear();
-  const navLinksValue = t("site.footer.navLinks");
-  const navLinks = Array.isArray(navLinksValue) ? navLinksValue : NAV_LINKS.map((link) => link.label);
 
   return (
     <footer className="site-footer">
@@ -52,10 +51,10 @@ export default function Footer() {
         <nav className="footer__nav-col" aria-label="Footer navigation">
           <p className="footer__col-heading">{t("site.footer.navigation")}</p>
           <ul className="footer__nav">
-            {NAV_LINKS.map(({ label, href }, index) => (
+            {NAV_LINKS.map(({ labelKey, href }) => (
               <li key={href}>
                 <a href={href} className="footer__nav-link">
-                  {navLinks[index] || label}
+                  {t(labelKey)}
                 </a>
               </li>
             ))}

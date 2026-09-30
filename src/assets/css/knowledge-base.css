@@ -11,7 +11,7 @@
 [data-theme="light"] .kb-page {
   --kb-harness: #2469d8;
   --kb-skills: #6d4fd8;
-  --kb-memory: #1a8a42;
+  --kb-memory: #167a3a; /* 5.4:1 on light panels (WCAG AA) */
   --kb-tools: #946200;
   --kb-cost: #b8481c;
 }
@@ -240,7 +240,6 @@
 .kb-pill--verdict-use { color: var(--kb-memory); }
 .kb-pill--status-in-build,
 .kb-pill--verdict-try { color: var(--kb-harness); }
-.kb-pill--status-planned { color: var(--muted-strong); }
 .kb-pill--verdict-skip { color: var(--muted); }
 
 /* Matrix */

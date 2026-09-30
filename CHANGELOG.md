@@ -10,7 +10,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 ## [Unreleased]
 
 ### Added
-- `/kb` — AI Field Guide: five pillars (Harness, Skills, Memory, Tools, Cost) with definitions, best practices, pitfalls, per-project applications (status-labelled In use / In build / Planned), tool verdicts (Use / Try / Skip), a project × pillar matrix and a searchable glossary
+- `/kb` — AI Field Guide: five pillars (Harness, Skills, Memory, Tools, Cost) with definitions, best practices, pitfalls, per-project applications (status-labelled In use / In build; plans are not listed until built), tool verdicts (Use / Try / Skip), a project × pillar matrix and a searchable glossary
 - Content lives in `src/data/aiKnowledgeBase.js` (single source; matrix and glossary are generated from it). No new dependencies
 - New entry `kb/index.html`, Vite input, Vercel rewrite, sitemap entry, OG meta and footer link. Not added to the header nav (it already wraps at 1366px); page copy is English-only
 
@@ -20,6 +20,9 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 - `market-page__claim` blockquote restyled (accent left border, italic, larger max-width-constrained text)
 
 ### Fixed
+- `/kb` — removed all 11 `Planned` project applications and the MedTech Recruiter Intelligence API project entry; the page now lists only work that exists. Matrix hides projects with no listed application (data kept in `kbProjects`). `kbMeta.lastReviewed` → 30 Sep 2026. Light-mode "In use" / "Use" pill green darkened (`--kb-memory` #1a8a42 → #167a3a) to pass WCAG AA contrast (4.37 → 5.4:1)
+- Footer — nav labels now use the same `nav.*` keys as the header (incl. `nav.kb`), fixing labels that did not match their links (e.g. `/ai` showed "Proof of Work"). Removed the index-matched `site.footer.navLinks` arrays from EN/DE
+- `.gitattributes` — `*.sh` and `.githooks/*` pinned to LF so the commit-msg hook runs in Linux/macOS shells
 - `ai/index.html`, `medtech/index.html`, `fullstack/index.html`, `services/index.html`, `collaborate/index.html`, `ai-workflow/index.html`, `proof-of-work/or-integration/index.html`, `medtech-ai-systems/clinical-evidence-workflow/index.html` — these 8 route entry files had no Google Fonts `<link>`, no `.app-shell-header` skeleton, and no scroll-restoration script at all (only the root `index.html` had them). In production, a direct/fresh visit to any page other than home rendered in fallback system fonts permanently. In local dev this was invisible because client-side navigation stays on whichever single `index.html` first loaded. All 8 entries now match root's `<head>`/`<body>` font-loading and app-shell markup.
 - `src/App.jsx` — `Footer`/`BackToTop` now render inside the same `Suspense` boundary as the lazy-loaded page content instead of next to it. Previously they mounted immediately while the page's JS chunk was still loading, so the footer painted right below the navbar and then jumped ~5000px once the real content arrived — the actual cause of the flaky footer CLS (up to 0.93) in Lighthouse CI. Verified locally: CLS is now 0 across 5 consecutive runs (was 0/0.84/0.93, non-deterministic).
 - `index.html` — Google Fonts (Space Grotesk / Inter) now load with `display=optional` instead of `display=swap` as a secondary safeguard against webfont-swap reflow.

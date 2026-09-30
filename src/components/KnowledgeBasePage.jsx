@@ -7,6 +7,10 @@ const ICONS = { Brain, Cpu, Gauge, Sparkles, Wrench };
 
 const PROJECT_BY_ID = Object.fromEntries(kbProjects.map((project) => [project.id, project]));
 const PILLAR_BY_ID = Object.fromEntries(kbPillars.map((pillar) => [pillar.id, pillar]));
+// Matrix rows only for projects with at least one listed application; the rest stay in kbProjects for later.
+const MATRIX_PROJECTS = kbProjects.filter((project) =>
+  kbPillars.some((pillar) => pillar.projects.some((item) => item.project === project.id)),
+);
 
 const slug = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -114,7 +118,7 @@ function ProjectMatrix() {
             </tr>
           </thead>
           <tbody>
-            {kbProjects.map((project) => (
+            {MATRIX_PROJECTS.map((project) => (
               <tr key={project.id}>
                 <th scope="row">
                   <strong>{project.name}</strong>
@@ -223,7 +227,7 @@ export default function KnowledgeBasePage() {
           <h3>How this guide is maintained</h3>
           <p>
             Reviewed monthly against what I actually run. Status labels are literal: <Pill kind="status" value="In use" /> runs today,{" "}
-            <Pill kind="status" value="In build" /> is being built, <Pill kind="status" value="Planned" /> is the next step. Tool verdicts
+            <Pill kind="status" value="In build" /> is being built. Plans are not listed until they are built. Tool verdicts
             reflect a solo builder working across a few repos — your context may differ.
           </p>
         </div>
