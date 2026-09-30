@@ -1,6 +1,6 @@
 import { Mail } from "lucide-react";
 import TypewriterTitle from "./common/TypewriterTitle.jsx";
-import { ArtifactMap, FeaturePill, PageHero } from "./system/SystemVisuals.jsx";
+import { ArtifactMap, FeaturePill, PageHero, RoleFitSection, SectionHeader } from "./system/SystemVisuals.jsx";
 import About from "./About.jsx";
 import { useTranslation } from "../context/LangContext.jsx";
 import { deText, localizeGermanValue } from "../locales/germanCopy.js";
@@ -21,6 +21,21 @@ const aboutArtifact = {
     { label: "Reviewed AI systems", accent: "ai" },
   ],
 };
+
+const aboutRoleGroups = [
+  {
+    title: "Best-fit roles",
+    items: [
+      "Technical Product Manager",
+      "MedTech Product Manager",
+      "Product / Project Manager",
+      "Product Operations",
+      "Implementation / Solutions roles",
+      "Clinical workflow systems roles",
+      "AI-assisted workflow / internal tools roles",
+    ],
+  },
+];
 
 const aboutPills = [
   { label: "Technical PM", accent: "ai" },
@@ -57,6 +72,14 @@ export default function AboutPage() {
         </div>
       </PageHero>
       <About />
+      <section id="about-role-fit" className="section container market-page__section">
+        <SectionHeader
+          eyebrow={deText("Role fit", lang)}
+          title={deText("Where this background fits", lang)}
+          text={deText("For hiring teams: the roles where MedTech implementation experience, product structure, and AI-assisted delivery combine.", lang)}
+        />
+        <RoleFitSection groups={aboutRoleGroups} />
+      </section>
     </>
   );
 }

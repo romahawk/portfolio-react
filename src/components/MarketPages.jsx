@@ -16,6 +16,7 @@ import {
   FeaturePill,
   PageHero,
   ProofCard,
+  RoleFitSection,
   SectionHeader,
   SystemCard,
   WorkflowMap,
@@ -273,7 +274,7 @@ const aiFit = {
     "Operations-heavy SMEs",
     "Logistics and service businesses",
     "Local companies with manual admin workflows",
-    "MedTech-adjacent operations",
+    "MedTech, HealthTech, and regulated operations teams",
     "Small teams with scattered knowledge",
     "Founders who need fast workflow prototypes",
   ],
@@ -281,7 +282,7 @@ const aiFit = {
     "Teams looking for a fully managed AI product, not a consultant",
     "Enterprise orgs with existing digital transformation programs",
     "Businesses wanting a chatbot without any workflow or backend change",
-    "Projects requiring regulatory compliance certification (HIPAA, MDR, ISO 13485)",
+    "Teams needing regulatory certification or sign-off rather than workflow implementation",
   ],
 };
 
@@ -307,14 +308,17 @@ const medtechSelectedProof = [
   },
   {
     title: "LiveSurgery",
-    type: "Product concept / MedTech platform prototype",
+    type: "MedTech platform prototype",
     status: "Live demo",
     problem: "Surgical collaboration, recording, remote expertise, and case visibility require structured product logic around clinical workflows.",
-    system: "Created a product concept and prototype direction for surgical video / collaboration workflows.",
-    proof: "Deployed product artifact and workflow prototype direction.",
+    system: "Designed and deployed a prototype for surgical video and collaboration workflows.",
+    proof: "Deployed, publicly accessible prototype.",
     relevance: "Prototype Sprint and decision-support system proof for clinical collaboration workflows.",
     links: [{ label: "Live demo", href: "https://livesurgery-landing.vercel.app/" }],
   },
+];
+
+const medtechConceptDirections = [
   {
     title: "MedTech Implementation Handoff Assistant",
     type: "AI-assisted workflow concept",
@@ -366,19 +370,7 @@ const medtechCapabilityCards = [
 
 const medtechRoleGroups = [
   {
-    title: "Best-fit roles",
-    items: [
-      "Technical Product Manager",
-      "MedTech Product Manager",
-      "Product / Project Manager",
-      "Product Operations",
-      "Implementation / Solutions roles",
-      "Clinical workflow systems roles",
-      "AI-assisted workflow / internal tools roles",
-    ],
-  },
-  {
-    title: "Best-fit environments",
+    title: "Clinical and operational environments",
     items: [
       "MedTech and HealthTech companies",
       "OR integration / digital surgery teams",
@@ -482,7 +474,7 @@ const fullstackSelectedProjects = [
   {
     title: "LiveSurgery",
     type: "MedTech product prototype",
-    description: "A surgical video / collaboration product concept and prototype direction for clinical workflows, remote expertise, case visibility, and MedTech collaboration.",
+    description: "A deployed surgical video / collaboration prototype for clinical workflows, remote expertise, case visibility, and MedTech collaboration.",
     relevance: "Shows MedTech product thinking, clinical workflow understanding, UI/product logic, and full-stack prototype capability.",
     stack: ["React", "FastAPI", "SQLite", "WebSocket", "MedTech UX"],
     links: [
@@ -493,8 +485,8 @@ const fullstackSelectedProjects = [
   },
   {
     title: "Medintegro",
-    type: "MedTech website / product platform prototype",
-    description: "A MedTech-oriented digital presence and product platform concept connected to OR integration, clinical systems, and implementation-heavy medical technology.",
+    type: "MedTech website / product platform",
+    description: "A MedTech-oriented digital presence and product platform for OR integration, clinical systems, and implementation-heavy medical technology.",
     relevance: "Shows domain-specific frontend work, MedTech positioning, product structure, and applied UX/content design.",
     stack: ["Frontend", "Product UX", "MedTech content", "Responsive design"],
     links: [
@@ -505,10 +497,10 @@ const fullstackSelectedProjects = [
   },
   {
     title: "AlphaRhythm",
-    type: "Trading discipline product / SaaS-style product concept",
-    description: "A product concept for structured trade journaling, discipline tracking, risk logic, and decision-review workflows.",
+    type: "Trading discipline product / decision-review system",
+    description: "A deployed product for structured trade journaling, discipline tracking, risk logic, and decision-review workflows.",
     relevance: "Shows product thinking, data-driven UX, user workflow design, landing/app structure, and independent product-building ability.",
-    stack: ["React", "Firebase", "Firestore", "Workflow UX", "Product concept"],
+    stack: ["React", "Firebase", "Firestore", "Workflow UX", "Product design"],
     links: [{ label: "Live", href: "https://alpharhythm.trade" }],
     status: "Live",
   },
@@ -902,24 +894,6 @@ function ProcessTimeline({ steps }) {
   );
 }
 
-function RoleFitSection({ groups }) {
-  const { lang } = useTranslation();
-  const localizedGroups = localizeGermanValue(groups, lang);
-
-  return (
-    <div className="medtech-role-grid">
-      {localizedGroups.map((group) => (
-        <article className="medtech-role-card reveal" key={group.title}>
-          <h3>{group.title}</h3>
-          <ul>
-            {group.items.map((item) => <li key={item}>{item}</li>)}
-          </ul>
-        </article>
-      ))}
-    </div>
-  );
-}
-
 function FitSection({ good, notIdeal }) {
   const { lang } = useTranslation();
   const goodItems = localizeGermanValue(good, lang);
@@ -1235,6 +1209,7 @@ export function MedTechPage() {
   const medtechTitle = "MedTech and Regulated Operations Proof";
   const localizedMedtechHeroWorkflow = localizeGermanValue(medtechHeroWorkflow, lang);
   const localizedMedtechSelectedProof = localizeGermanValue(medtechSelectedProof, lang);
+  const localizedMedtechConceptDirections = localizeGermanValue(medtechConceptDirections, lang);
   const localizedMedtechCapabilityCards = localizeGermanValue(medtechCapabilityCards, lang);
   const localizedMedtechRoleGroups = localizeGermanValue(medtechRoleGroups, lang);
 
@@ -1256,12 +1231,12 @@ export function MedTechPage() {
         </div>
       </PageHero>
 
-      {/* Section 2: Role Fit — moved up for fast recruiter scan */}
+      {/* Section 2: Environment Fit — buyer-facing; role fit lives on /about */}
       <section id="medtech-role-fit" className="section container market-page__section">
         <SectionHeader
-          eyebrow={deText("Role fit", lang)}
-          title={deText("Best-fit roles and environments", lang)}
-          text={deText("Clear fit for teams where clinical workflow understanding, implementation reality, and product/project structure need to meet.", lang)}
+          eyebrow={deText("Environment fit", lang)}
+          title={deText("Best-fit environments", lang)}
+          text={deText("Clear fit for teams where clinical workflow understanding and implementation reality decide whether an AI system gets adopted.", lang)}
           headingAccent="medtech"
         />
         <RoleFitSection groups={localizedMedtechRoleGroups} />
@@ -1281,11 +1256,23 @@ export function MedTechPage() {
       <section id="medtech-proof" className="section container market-page__section">
         <SectionHeader
           eyebrow={deText("Selected proof", lang)}
-          title={deText("Reference work and workflow concepts", lang)}
-          text={deText("A focused selection of MedTech and workflow-system projects that connect implementation experience with product thinking and AI-assisted delivery.", lang)}
+          title={deText("Delivered work and implementation proof", lang)}
+          text={deText("Work that exists: real MedTech implementation experience and a deployed prototype. Designs that have not been built are kept in a separate section below.", lang)}
         />
         <div className="medtech-proof-grid">
           {localizedMedtechSelectedProof.map((item, index) => <SelectedProofCard item={item} index={index} key={item.title} />)}
+        </div>
+      </section>
+
+      {/* Section 4b: Concepts — held apart so shipped work is not read at the same weight */}
+      <section id="medtech-concepts" className="section container market-page__section">
+        <SectionHeader
+          eyebrow={deText("Concepts and directions", lang)}
+          title={deText("Designed, not yet built", lang)}
+          text={deText("Workflow designs and system specifications. They show how a problem would be structured — not what has shipped.", lang)}
+        />
+        <div className="medtech-proof-grid medtech-proof-grid--concepts">
+          {localizedMedtechConceptDirections.map((item, index) => <SelectedProofCard item={item} index={index + 2} key={item.title} />)}
         </div>
       </section>
 
