@@ -1190,16 +1190,6 @@ export function AIPage() {
         <ProofGrid projects={projects} accent="ai" />
       </section>
 
-      <section id="ai-in-build" className="section container market-page__section">
-        <SectionHeader
-          eyebrow={deText("08 / In build", lang)}
-          title={deText("Evaluation-backed decision support, shipping November 2026", lang)}
-          text={deText("One regulated-operations decision-support system, built end to end: severity classification, requirement retrieval with citations, an explicit human approval step, and a published evaluation scorecard covering accuracy, citation correctness, refusal behaviour, latency, and cost per case.", lang)}
-          headingAccent="ai"
-        />
-        <p className="market-page__claim">{deText("The measured results and the method will be published here — including the failure modes that were not solved.", lang)}</p>
-      </section>
-
       <section className="section container market-page__section">
         <CTAStrip
           accent="ai"

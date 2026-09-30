@@ -20,7 +20,6 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 - `/about`: new Role Fit section after the About block, rendering the relocated role list
 - `/medtech` proof: split into "Delivered work and implementation proof" (OR Integration, LiveSurgery) and a new, visually demoted "Concepts and directions" section (Handoff Assistant, Workflow OS) so unbuilt designs no longer read at the same weight as delivered work
 - `/fullstack` and `/medtech` copy: removed "concept" / "prototype direction" hedges from items that are deployed and linked (LiveSurgery, Medintegro, AlphaRhythm)
-- `/ai`: new "08 / In build" section stating the evaluation-backed decision-support system shipping November 2026 and what will be published
 - `RoleFitSection` moved from `MarketPages.jsx` into `system/SystemVisuals.jsx` so `/about` can use it without pulling in the MarketPages chunk
 - `.medtech-role-grid` switched to `auto-fit` columns; new `.medtech-proof-grid--concepts` modifier (dashed border, muted accent, tighter padding)
 - German copy: 25 new entries in `germanCopy.js` for the strings above
