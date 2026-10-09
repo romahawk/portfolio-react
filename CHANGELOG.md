@@ -9,6 +9,15 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed (recruiter-first homepage)
+- Homepage rebuilt for hiring teams: static H1 (no typewriter) "AI & Software Implementation in MedTech and Regulated Environments", Technical PM eyebrow, Download CV / Email me CTAs, LinkedIn and GitHub links, 4-fact credibility strip, "Selected delivery work" (Medintegro, PharmaLogis with the FlowLogix demo, AI Field Guide), "How I run delivery" with a `/kb` link, and a hiring CTA with a small link to services
+- New `common/ProofCaseCard.jsx` (Problem / My role / What I did / Outcome), reusing the `medtech-proof-card` styles and `StatusBadge`
+- `/ai` (also `/services`, `/collaborate`): now holds the AI Workflow Audit section, the "Client journey" map and the "Proof connected to offers" cards moved from the homepage, above its existing closing CTA. Nothing was deleted
+- `/about`: static title "Technical PM. 20+ years in regulated industries.", new body copy and a facts block (education, languages, location). Hero CTAs are now Download CV / Email me. "10+ years" pills replaced with the CV facts
+- Identity: footer headline, tagline and copyright line, home meta (`useOgMeta.js`, `index.html`) and DE equivalents now read "Technical PM, AI & Software Implementation". The nav and footer label for `/ai` is now "Services" ("Leistungen" in DE)
+- Facts aligned with the CV: "10+ years" changed to "12+ years" across MedTech copy; degree is now "M.Sc. Computer Science (Specialization in Software Engineering)"
+- German copy: 22 new entries in `germanCopy.js` for the homepage hero, facts, card titles and CTAs
+
 ### Added
 - `/kb` — AI Field Guide: five pillars (Harness, Skills, Memory, Tools, Cost) with definitions, best practices, pitfalls, per-project applications (status-labelled In use / In build; plans are not listed until built), tool verdicts (Use / Try / Skip), a project × pillar matrix and a searchable glossary
 - Content lives in `src/data/aiKnowledgeBase.js` (single source; matrix and glossary are generated from it). No new dependencies

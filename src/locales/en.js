@@ -6,7 +6,7 @@ export default {
     projects: "Proof of Work",
     services: "Services",
     aiWorkflow: "AI Workflows",
-    aiSolutions: "AI Consulting",
+    aiSolutions: "Services",
     medtech: "Regulated Proof",
     fullstack: "Build Proof",
     kb: "AI Field Guide",
@@ -57,7 +57,7 @@ export default {
     heading: "AI Product / Technical Product Leader for MedTech Workflow Systems",
     profileAlt: "Roman Mazuryk profile",
     para1:
-      "My background is operator-first: 10+ years around MedTech implementation, regulated B2B operations, product delivery, and cross-functional execution. I understand the messy middle where clinical, operational, commercial, and technical realities collide.",
+      "My background is operator-first: 12+ years around MedTech implementation, regulated B2B operations, product delivery, and cross-functional execution. I understand the messy middle where clinical, operational, commercial, and technical realities collide.",
     para2:
       "Today I focus on AI workflow systems: product discovery, workflow modeling, prototype delivery, SOP-ready handover, and practical automation for regulated operations. I use AI to accelerate analysis and build loops while keeping human review, traceability, and system ownership explicit.",
     pillars: {
@@ -406,7 +406,7 @@ export default {
         ],
       },
       {
-        title: "Neoversity \u2014 Master\u2019s in Software Development (Technical Deepening)",
+        title: "Neoversity, M.Sc. Computer Science (Specialization in Software Engineering)",
         issuer: "Woolf University (2024\u20132026)",
         summary:
           "Formal technical deepening to lead product systems with less abstraction \u2014 strengthening architecture fluency, data modeling, and engineering collaboration.",
@@ -540,8 +540,8 @@ export default {
       "regulated-operations-pattern": "Regulated Operations Pattern",
     },
     seo: {
-      homeTitle: "Roman Mazuryk \u2014 AI Workflow Systems Consultant",
-      homeDescription: "AI systems consulting, workflow automation, audit-to-implementation roadmaps, and prototype builds for operations-heavy SMEs, MedTech, HealthTech, and regulated teams.",
+      homeTitle: "Roman Mazuryk \u00b7 Technical PM, AI & Software Implementation",
+      homeDescription: "Technical project manager with 12+ years delivering system implementations in MedTech, pharma and logistics. 20+ systems from discovery to adoption. Hamburg / Remote (EU).",
       aiTitle: "AI Workflow Systems and Automation for SMEs \u2014 Roman Mazuryk",
       aiDescription: "AI Workflow Opportunity Audits, automation pilots, internal assistants, SOP systems, dashboards, and implementation roadmaps for operations-heavy SMEs.",
       medtechTitle: "MedTech and Regulated Operations Proof \u2014 Roman Mazuryk",
@@ -570,7 +570,7 @@ export default {
       credibility: {
         eyebrow: "Credibility layer",
         title: "Real MedTech implementation background",
-        text: "Before designing AI workflow systems, I spent 10+ years in MedTech operations, medical equipment implementation, hospital stakeholder coordination, and clinical workflow handover. That experience shapes how I approach AI: not as a generic automation layer, but as a way to reduce operational friction, improve traceability, and turn messy workflows into reliable systems.",
+        text: "Before designing AI workflow systems, I spent 12+ years in MedTech operations, medical equipment implementation, hospital stakeholder coordination, and clinical workflow handover. That experience shapes how I approach AI: not as a generic automation layer, but as a way to reduce operational friction, improve traceability, and turn messy workflows into reliable systems.",
         compact: "Selected implementation areas: surgical lights, OR video/audio integration, medical gas pendants, hyperbaric systems, surgical collaboration and education workflows.",
         cards: [
           { title: "OR & hospital workflows", text: "Hands-on exposure to operating room environments, surgical equipment implementation, clinical handovers, and coordination with hospital teams." },
@@ -597,13 +597,13 @@ export default {
       },
     },
     footer: {
-      headline: "AI Workflow Systems for Operations-Heavy Teams",
-      tagline: "AI systems consulting backed by MedTech implementation credibility and full-stack build proof.",
+      headline: "Technical PM, AI & Software Implementation",
+      tagline: "Technical PM for AI and software implementation in MedTech and regulated environments. Hamburg / Remote (EU).",
       navigation: "Navigation",
       focus: "Selective focus",
       focusText: "I focus on selected AI workflow audits, automation pilots, internal assistants, dashboards, and implementation roadmaps where operational friction is concrete.",
       bestFit: "Best fit: operations-heavy SMEs, MedTech, HealthTech, and regulated teams with scattered documentation, handover gaps, manual coordination, or weak visibility.",
-      bottomLeft: "Roman Mazuryk. AI Workflow Systems Consultant.",
+      bottomLeft: "Roman Mazuryk. Technical PM, AI & Software Implementation.",
       bottomRight: "Built with React, workflow thinking, and AI-assisted delivery.",
     },
     about: {

@@ -6,7 +6,7 @@ export default {
     services: "Zusammenarbeiten",
     projects: "Proof of Work",
     aiWorkflow: "KI-Workflows",
-    aiSolutions: "KI-Consulting",
+    aiSolutions: "Leistungen",
     medtech: "Regulierter Proof",
     fullstack: "Build Proof",
     kb: "KI-Leitfaden",
@@ -57,7 +57,7 @@ export default {
     heading: "AI Product / Technical Product Lead für MedTech Workflow Systems",
     profileAlt: "Roman Mazuryk Profilbild",
     para1:
-      "Mein Hintergrund ist operator-first: 10+ Jahre rund um MedTech-Implementierung, regulierte B2B-Operations, Product Delivery und cross-funktionale Umsetzung. Ich kenne die unordentliche Mitte, in der klinische, operative, kommerzielle und technische Realitäten aufeinandertreffen.",
+      "Mein Hintergrund ist operator-first: 12+ Jahre rund um MedTech-Implementierung, regulierte B2B-Operations, Product Delivery und cross-funktionale Umsetzung. Ich kenne die unordentliche Mitte, in der klinische, operative, kommerzielle und technische Realitäten aufeinandertreffen.",
     para2:
       "Heute fokussiere ich mich auf KI-Workflow-Systeme: Product Discovery, Workflow-Modellierung, Prototyping, SOP-fähiges Handover und praktische Automatisierung für regulierte Operations. KI beschleunigt Analyse und Build-Loops, während Human Review, Traceability und System Ownership explizit bleiben.",
     pillars: {
@@ -407,7 +407,7 @@ export default {
         ],
       },
       {
-        title: "Neoversity — Master’s in Software Development (Technical Deepening)",
+        title: "Neoversity, M.Sc. Computer Science (Specialization in Software Engineering)",
         issuer: "Woolf University (2024–2026)",
         summary:
           "Formale technische Vertiefung zur Leitung von Produktsystemen mit weniger Abstraktion – Stärkung von Architekturkompetenz, Datenmodellierung und Engineering-Zusammenarbeit.",
@@ -467,7 +467,7 @@ export default {
 
   footer: {
     tagline:
-      "Technical Product Manager | Systeme & KI-Automatisierung\nIch architektiere skalierbare Systeme in regulierten Branchen. Mit 10+ Jahren Domänenexpertise und KI-orchestrierter Delivery mache ich Ergebnisse vorhersehbar.",
+      "Technical Product Manager | Systeme & KI-Automatisierung\nIch architektiere skalierbare Systeme in regulierten Branchen. Mit 12+ Jahren Domänenexpertise und KI-orchestrierter Delivery mache ich Ergebnisse vorhersehbar.",
     nav: "Navigation",
     availability: "Selektiver Fokus",
     availabilityText:
@@ -541,7 +541,7 @@ export default {
       "regulated-operations-pattern": "Muster für regulierte Operations",
     },
     seo: {
-      homeTitle: "Roman Mazuryk \u2014 KI-augmentierte Produkt- und Workflow-Systeme",
+      homeTitle: "Roman Mazuryk \u00b7 Technical PM, AI & Software Implementation",
       aiTitle: "KI-Workflow-Automatisierung für KMU \u2014 Roman Mazuryk",
       aiDescription: "KI-gestützte Workflow-Automatisierung, SOP-Systeme, Dashboards und interne Tools für KMU mit repetitiver operativer Arbeit und verstreuter Dokumentation.",
       medtechTitle: "MedTech Produkt- und Projektportfolio \u2014 Roman Mazuryk",
@@ -551,7 +551,7 @@ export default {
       collaborateTitle: "KI-gestützte Workflow-Zusammenarbeit für MedTech-Teams",
       collaborateDescription: "Workflow-Audits, Discovery-Sprints, Prototypen, SOP-Systeme und compliance-bewusste Automatisierungsunterstützung für MedTech, HealthTech und regulierte Operations.",
       aiWorkflowTitle: "KI-Workflow-Bibliothek",
-      homeDescription: "Produktmanagement, MedTech-Implementierung, KI-Automatisierung und Full-Stack-Entwicklung für Workflow-Systeme, Prototypen und operative Tools.",
+      homeDescription: "Technical Project Manager mit 12+ Jahren Erfahrung in Systemimplementierungen in MedTech, Pharma und Logistik. 20+ Systeme von der Discovery bis zur Nutzung. Hamburg / Remote (EU).",
       aiWorkflowDescription: "Praktische Beispiele für KI-gestützte Workflow-Systeme in MedTech, HealthTech und regulierten operativen Bereichen.",
       proofTitle: "Proof of Work - MedTech-Produkt- und Workflow-Systeme",
       proofDescription: "Ausgewählte Workflow-Systeme, Produktkonzepte und KI-gestützte Prototypen, die zeigen, wie Roman Mazuryk operative Komplexität in strukturierte, nachvollziehbare Systeme übersetzt.",
@@ -621,13 +621,13 @@ export default {
       },
     },
     footer: {
-      headline: "MedTech-Produkt- und Workflow-Systeme",
-      tagline: "Reale MedTech-Implementierungserfahrung, übersetzt in Produkt-Systeme, Workflow-Design und KI-gestützte Umsetzung.",
+      headline: "Technical PM, AI & Software Implementation",
+      tagline: "Technical PM für KI- und Software-Implementierung in MedTech und regulierten Umfeldern. Hamburg / Remote (EU).",
       navigation: "Navigation",
       focus: "Selektiver Fokus",
       focusText: "Ich fokussiere mich auf ausgewählte Rollen und Projekte, bei denen MedTech-Domänenerfahrung, Produktdenken und Workflow-Systeme echten operativen Hebel schaffen können.",
       bestFit: "Best Fit: MedTech-Produktrollen, Workflow-Systeme, KI-gestützte Umsetzung und regulierte Operations.",
-      bottomLeft: "Roman Mazuryk. MedTech-Produkt- und Workflow-Systeme.",
+      bottomLeft: "Roman Mazuryk. Technical PM, AI & Software Implementation.",
       bottomRight: "Gebaut mit React, Produktdenken und KI-gestützter Umsetzung.",
     },
     about: {
