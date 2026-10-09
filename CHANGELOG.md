@@ -17,6 +17,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 - German removed: no language switcher, English-only rendering; a stored `lang=de` is ignored. `de.js` and `germanCopy.js` are no longer imported and are deleted in the cleanup PR
 - `en.js` is no longer in the main bundle (only the OR page reads it). Main JS: 109.5 kB to 66.2 kB gzip
 - OR page: CTAs point to `/#work`, the CV and email instead of retired routes; the "bridge" and closing copy no longer present an AI-consulting identity
+- `main.css` no longer imports the stylesheets of retired pages (16 files, kept on disk for the cleanup PR). CSS: 219 kB to 126 kB (34.4 kB to 20.5 kB gzip); `/`, `/services`, `/kb` and the OR page are pixel-identical at 390/1366 in both themes
 - Light-theme footer text and accent colours darkened to meet WCAG AA
 - Sitemap reduced to `/`, `/services`, `/kb`, `/proof-of-work/or-integration`; home and services meta (title, description, OG, Twitter) come from `site.js`
 
