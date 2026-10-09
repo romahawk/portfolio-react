@@ -1,5 +1,4 @@
-import { Mail } from "lucide-react";
-import TypewriterTitle from "./common/TypewriterTitle.jsx";
+import { FileDown, Mail } from "lucide-react";
 import { ArtifactMap, FeaturePill, PageHero, RoleFitSection, SectionHeader } from "./system/SystemVisuals.jsx";
 import About from "./About.jsx";
 import { useTranslation } from "../context/LangContext.jsx";
@@ -39,14 +38,14 @@ const aboutRoleGroups = [
 
 const aboutPills = [
   { label: "Technical PM", accent: "ai" },
-  { label: "10+ years MedTech", accent: "medtech" },
-  { label: "AI-assisted builds", accent: "fullstack" },
-  { label: "Operator background", accent: "medtech" },
+  { label: "12+ years of system implementation", accent: "medtech" },
+  { label: "20+ systems delivered end to end", accent: "fullstack" },
+  { label: "GDP, ISO 9001, DICOM, PACS/RIS", accent: "medtech" },
 ];
 
 export default function AboutPage() {
   const { lang } = useTranslation();
-  const title = "Technical PM. Operator background. AI-assisted delivery.";
+  const title = "Technical PM. 20+ years in regulated industries.";
   const localizedAboutPills = localizeGermanValue(aboutPills, lang);
   const localizedAboutArtifact = localizeGermanValue(aboutArtifact, lang);
 
@@ -54,10 +53,10 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow={deText("About", lang)}
-        title={<TypewriterTitle text={deText(title, lang)} />}
-        subtitle={deText("I'm a Technical PM with 10+ years in MedTech implementation — OR integration, clinical equipment handover, multi-stakeholder coordination. That background now drives how I design and build practical AI workflow systems.", lang)}
-        primaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: deText("Download CV", lang), href: "/roman-mazuryk-cv.pdf" }}
+        title={deText(title, lang)}
+        subtitle={deText("I'm Roman, a technical project manager based near Hamburg. I've worked in medical technology, pharma and logistics for over 20 years. For the last 12+ of them I've delivered client-facing system implementations: integrated operating rooms, imaging and PACS/RIS connectivity, and internal logistics systems under GDP and ISO 9001.", lang)}
+        primaryCta={{ label: deText("Download CV", lang), href: "/roman-mazuryk-cv.pdf", download: true, icon: <FileDown size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: deText("Email me", lang), href: `mailto:${EMAIL}`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
         scrollTargetId="about"
       >
         <div className="market-page__hero-extra">

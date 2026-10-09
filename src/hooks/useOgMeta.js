@@ -4,9 +4,9 @@ import { getWorkflowBySlug } from "../data/aiWorkflows.js";
 import { useTranslation } from "../context/LangContext.jsx";
 
 const BASE = {
-  title: "Roman Mazuryk \u2014 AI Workflow Systems Consultant",
+  title: "Roman Mazuryk \u00b7 Technical PM, AI & Software Implementation",
   description:
-    "AI systems consulting, workflow automation, audit-to-implementation roadmaps, and prototype builds for operations-heavy SMEs, MedTech, HealthTech, and regulated teams.",
+    "Technical project manager with 12+ years delivering system implementations in MedTech, pharma and logistics. 20+ systems from discovery to adoption. Hamburg / Remote (EU).",
   url: "https://www.mazuryk.dev/",
   image: "https://www.mazuryk.dev/images/og/og-home.png",
   imageAlt: "Mazuryk.dev hero preview with headline, CTA buttons, and a small circular profile photo.",

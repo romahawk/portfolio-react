@@ -2500,3 +2500,44 @@
 .medtech-proof-grid--concepts .medtech-proof-card__status {
   color: var(--muted);
 }
+
+/* ── Recruiter-first homepage ───────────────────────────────────────────── */
+
+.home-hero__meta-line {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.home-credibility {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.market-page--home .medtech-proof-card .status-badge {
+  margin-bottom: 8px;
+}
+
+.home-delivery-note,
+.home-services-link {
+  margin: 18px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.home-delivery-note a,
+.home-services-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-medtech);
+  font-weight: 800;
+}
+
+@media (min-width: 1101px) {
+  .market-page--home .medtech-proof-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
