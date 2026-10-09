@@ -1,5 +1,4 @@
 import React from "react";
-import { useTranslation } from "../context/LangContext.jsx";
 
 const getStatusSlug = (status = "") =>
   status
@@ -10,14 +9,12 @@ const getStatusSlug = (status = "") =>
     .replace(/^-|-$/g, "");
 
 export default function StatusBadge({ status }) {
-  const { t } = useTranslation();
   if (!status) return null;
   const slug = getStatusSlug(status);
-  const label = t(`site.status.${slug}`);
 
   return (
     <span className={`status-badge status-badge--${slug}`}>
-      {label === `site.status.${slug}` ? status : label}
+      {status}
     </span>
   );
 }

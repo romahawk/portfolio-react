@@ -1,7 +1,5 @@
 import { ArrowRight } from "lucide-react";
 import StatusBadge from "../StatusBadge.jsx";
-import { useTranslation } from "../../context/LangContext.jsx";
-import { deText } from "../../locales/germanCopy.js";
 
 const FIELDS = [
   ["problem", "Problem"],
@@ -14,7 +12,6 @@ const TONES = ["surgical", "workflow", "systems", "demo"];
 
 // Delivery proof card: reuses the medtech-proof-card styles; renders only the fields it is given.
 export default function ProofCaseCard({ item, index = 0 }) {
-  const { lang } = useTranslation();
   const links = item.links || [];
 
   return (
@@ -26,7 +23,7 @@ export default function ProofCaseCard({ item, index = 0 }) {
       <dl>
         {FIELDS.filter(([key]) => item[key]).map(([key, label]) => (
           <div key={key}>
-            <dt>{deText(label, lang)}</dt>
+            <dt>{label}</dt>
             <dd>{item[key]}</dd>
           </div>
         ))}

@@ -2541,3 +2541,132 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+/* ── Two-page site: other builds, about, services ───────────────────────── */
+
+.other-builds__title {
+  margin: 36px 0 12px;
+  font-size: 18px;
+}
+
+.other-builds {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.other-build {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 16px 18px;
+  border: 1px solid var(--system-border, var(--border));
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--panel) 90%, transparent);
+}
+
+.other-build p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.other-build a,
+.home-services-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-medtech);
+  font-weight: 800;
+}
+
+.home-services-link {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+.home-about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.home-about__text p {
+  margin: 0 0 14px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.home-about__side {
+  display: grid;
+  gap: 16px;
+}
+
+.home-about__card {
+  padding: 18px 20px;
+  border: 1px solid var(--system-border, var(--border));
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--panel) 90%, transparent);
+}
+
+.home-about__card h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.home-experience {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-experience li,
+.home-facts div {
+  display: grid;
+  gap: 2px;
+  line-height: 1.5;
+}
+
+.home-experience span,
+.home-facts dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.home-experience__meta {
+  font-size: 13px;
+}
+
+.home-facts {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.home-facts dt {
+  font-weight: 800;
+}
+
+.services-offer-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.market-page--services .ai-process-step__body p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 920px) {
+  .home-about,
+  .services-offer-grid {
+    grid-template-columns: 1fr;
+  }
+}

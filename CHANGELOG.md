@@ -9,6 +9,21 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed (two-page site)
+- Site collapsed to two pages: `/` (portfolio landing for recruiters: hero, facts, Work, Delivery, About, Contact) and `/services` (AI workflow offer: problem, 3 offers, process, proof links, fit, contact). `/kb` and `/proof-of-work/or-integration` stay as detail pages with the shared header and footer
+- Single content source: `src/content/site.js` holds identity, facts, cases, other builds, delivery, about, experience, education, languages, location, contact, services copy and SEO. New `components/site/HomePage.jsx` and `components/site/ServicesPage.jsx` hold no copy
+- Identity is now the CV headline: "Technical Project Manager, system implementation in regulated environments". Contact email is romazuryk@gmail.com everywhere on the live pages
+- Navbar: Work, Delivery, About, Contact (anchors, `/#id` from other pages), Services, theme toggle. Language switcher and "Work with me" CTA removed. Footer: tagline, same nav, LinkedIn, GitHub, email, CV
+- German removed: no language switcher, English-only rendering; a stored `lang=de` is ignored. `de.js` and `germanCopy.js` are no longer imported and are deleted in the cleanup PR
+- `en.js` is no longer in the main bundle (only the OR page reads it). Main JS: 109.5 kB to 66.2 kB gzip
+- OR page: CTAs point to `/#work`, the CV and email instead of retired routes; the "bridge" and closing copy no longer present an AI-consulting identity
+- Light-theme footer text and accent colours darkened to meet WCAG AA
+- Sitemap reduced to `/`, `/services`, `/kb`, `/proof-of-work/or-integration`; home and services meta (title, description, OG, Twitter) come from `site.js`
+
+### Added (two-page site)
+- Permanent redirects in `vercel.json`: `/ai`, `/ai-workflow`, `/collaborate`, `/medtech-ai-systems/*`, `/services/*` to `/services`; `/medtech`, `/fullstack` to `/#work`; `/about` to `/#about`; `/contact` to `/#contact`. Retired Vite inputs removed (their HTML files and components are deleted in the cleanup PR)
+- `scripts/check-consistency.mjs`, run as `prebuild`: fails the build on retired role labels, "10+ years" / "13+ years", "proton.me", or an em dash in `site.js`. Files awaiting deletion are listed in the script and skipped until the cleanup PR
+
 ### Changed (recruiter-first homepage)
 - Homepage rebuilt for hiring teams: static H1 (no typewriter) "AI & Software Implementation in MedTech and Regulated Environments", Technical PM eyebrow, Download CV / Email me CTAs, LinkedIn and GitHub links, 4-fact credibility strip, "Selected delivery work" (Medintegro, PharmaLogis with the FlowLogix demo, AI Field Guide), "How I run delivery" with a `/kb` link, and a hiring CTA with a small link to services
 - New `common/ProofCaseCard.jsx` (Problem / My role / What I did / Outcome), reusing the `medtech-proof-card` styles and `StatusBadge`

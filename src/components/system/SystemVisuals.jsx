@@ -2,8 +2,6 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 import PageHero from "../common/PageHero.jsx";
 import StatusBadge from "../StatusBadge.jsx";
-import { useTranslation } from "../../context/LangContext.jsx";
-import { localizeGermanValue } from "../../locales/germanCopy.js";
 
 function getAccentClass(accent = "ai") {
   return `system-accent--${accent}`;
@@ -236,12 +234,9 @@ export function CTAStrip({ eyebrow, title, text, primary, secondary, accent = "a
 }
 
 export function RoleFitSection({ groups }) {
-  const { lang } = useTranslation();
-  const localizedGroups = localizeGermanValue(groups, lang);
-
   return (
     <div className="medtech-role-grid">
-      {localizedGroups.map((group) => (
+      {groups.map((group) => (
         <article className="medtech-role-card reveal" key={group.title}>
           <h3>{group.title}</h3>
           <ul>
