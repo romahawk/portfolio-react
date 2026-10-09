@@ -5,12 +5,13 @@ import { useTheme } from "./hooks/useTheme.js";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import BackToTop from "./components/BackToTop.jsx";
+// The two main pages are small and render the LCP element, so they load eagerly; detail pages stay lazy.
+import HomePage from "./components/site/HomePage.jsx";
+import ServicesPage from "./components/site/ServicesPage.jsx";
 
 const Analytics = React.lazy(() =>
   import("@vercel/analytics/react").then((module) => ({ default: module.Analytics })),
 );
-const HomePage = React.lazy(() => import("./components/site/HomePage.jsx"));
-const ServicesPage = React.lazy(() => import("./components/site/ServicesPage.jsx"));
 const ORIntegrationProofPage = React.lazy(() => import("./components/ORIntegrationProofPage.jsx"));
 const KnowledgeBasePage = React.lazy(() => import("./components/KnowledgeBasePage.jsx"));
 
