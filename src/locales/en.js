@@ -18,9 +18,9 @@ export default {
 
   results: {
     title: "Results",
-    intro: "10+ years of delivery evidence across regulated industries and multi-domain product systems.",
+    intro: "12+ years of delivery evidence across regulated industries and multi-domain product systems.",
     tiles: [
-      { metric: "10+ Years", label: "Product & Systems Leadership in regulated industries." },
+      { metric: "12+ Years", label: "Product & Systems Leadership in regulated industries." },
       { metric: "$50M+", label: "Annual turnover managed under executive leadership." },
       { metric: "Full-Stack", label: "Architecting systems via AI-augmented SDLC." },
       { metric: "4+ Domains", label: "MedTech, Pharma, Logistics, and B2B SaaS expertise." },
@@ -99,7 +99,7 @@ export default {
       eyebrow: "Best-fit environment",
       heading: "Where I Operate Best",
       para1:
-        "Best fit: AI Product Manager, Technical Product Manager, Product Operations, MedTech / HealthTech Product Lead, or Workflow Automation roles where the work requires both product judgment and operational realism.",
+        "Best fit: AI Product Manager, Technical Project Manager, Product Operations, MedTech / HealthTech Product Lead, or Workflow Automation roles where the work requires both product judgment and operational realism.",
       para2:
         "I work across business, product, operations, and engineering: framing the problem, mapping the workflow, shaping MVP scope, defining acceptance criteria, and making trade-offs visible to leadership.",
       para3: "Regulated operations mindset: move fast where possible, but keep review ownership, traceability, documentation, and handover discipline intact.",
@@ -438,7 +438,7 @@ export default {
     title: "Contact",
     subtitle: "Roles, product teams, and workflow systems",
     para1:
-      "Open to AI Product Manager, Technical Product Manager, Product Operations, and MedTech / HealthTech product roles where operator context and AI-assisted systems thinking matter.",
+      "Open to AI Product Manager, Technical Project Manager, Product Operations, and MedTech / HealthTech product roles where operator context and AI-assisted systems thinking matter.",
     para2label: "Best for:",
     para2items: [
       "Hiring teams evaluating workflow automation, AI product, or regulated operations leadership.",
@@ -608,7 +608,7 @@ export default {
     },
     about: {
       hero: {
-        eyebrow: "AI SYSTEMS CONSULTANT / WORKFLOW AUTOMATION / REGULATED OPERATIONS",
+        eyebrow: "TECHNICAL PROJECT MANAGER / SYSTEM IMPLEMENTATION / REGULATED ENVIRONMENTS",
         title: "I turn messy workflows into practical AI-assisted systems",
         subtitle: "I help operations-heavy teams turn fragmented processes into practical AI-assisted systems, combining product strategy, workflow analysis, AI automation, and full-stack delivery. My MedTech background adds real-world judgment from regulated, high-friction environments.",
       },
@@ -647,7 +647,7 @@ export default {
         intro: "My strongest fit is AI workflow systems for operations-heavy teams, backed by product judgment, regulated-operations credibility, and implementation proof.",
         cards: [
           { title: "For consulting clients", items: ["AI Workflow Opportunity Audit", "Prototype Sprint", "Internal Assistant / SOP System", "Dashboard or workflow tool"] },
-          { title: "For product and employment roles", items: ["AI Product Manager", "Technical Product Manager", "Product Operations Lead", "MedTech / HealthTech Product Manager"] },
+          { title: "For product and employment roles", items: ["AI Product Manager", "Technical Project Manager", "Product Operations Lead", "MedTech / HealthTech Product Manager"] },
           { title: "Where regulated proof helps", items: ["Documentation and handover systems", "Operational dashboards", "Compliance-aware workflow automation", "MedTech implementation workflows", "OR / hospital workflow systems"] },
         ],
       },
@@ -814,9 +814,9 @@ export default {
       complexity: { eyebrow: "Workflow complexity", title: "Connected elements inside the operating room system", items: ["Surgical lighting", "OR video/audio signals", "Medical displays", "Imaging / DICOM / PACS context where relevant", "Medical gas / room infrastructure where relevant", "Recording and streaming workflows", "Hospital IT / technical teams", "Surgeons and clinical users", "Implementation and handover documentation"] },
       role: { eyebrow: "Role / exposure", title: "Roman's real-world role and exposure", text: "Experience included business development, project coordination, implementation support, equipment delivery/installation coordination, training/handover support, and stakeholder communication around MedTech and OR environments." },
       proves: { eyebrow: "What this proves", title: "Credibility for product, workflow, implementation, and solutions roles", hubTop: "OR / Hospital", hubBottom: "Workflow Reality", cards: [{ title: "Domain understanding", text: "Exposure to operating room environments, surgical infrastructure, equipment implementation, and hospital workflow constraints." }, { title: "Workflow/system thinking", text: "Ability to see how equipment, people, documentation, signals, room readiness, and handover states interact as one operational system." }, { title: "Stakeholder coordination", text: "Experience communicating across hospitals, vendors, technical teams, clinical users, and decision-makers during implementation work." }, { title: "Implementation reality", text: "Understanding of delivery, installation coordination, training, support, documentation, acceptance, and practical handover friction." }, { title: "Foundation for AI-assisted workflow systems", text: "A grounded base for mapping workflow risk, traceability, auditability, documentation gaps, and operational visibility opportunities." }] },
-      bridge: { eyebrow: "Bridge to current positioning", title: "Real implementation background, translated into AI-assisted systems", text: "This real-world implementation background now informs my AI workflow systems consulting, especially where discovery, documentation, handover, traceability, prototyping, and delivery need to stay practical." },
+      bridge: { eyebrow: "How it carries over", title: "Real implementation background, applied to delivery", text: "This implementation background shapes how I run delivery today: discovery, scope and plan, integration and acceptance testing, rollout, training and handover." },
       opportunities: { eyebrow: "Future workflow opportunities", title: "Concept workflows this experience can inform", text: "These are future opportunities and concept workflows, not completed client projects.", items: ["OR utilization optimization", "Surgical recording indexing", "AI documentation and handover", "Equipment readiness workflows", "Biomedical maintenance systems", "Surgical collaboration systems"] },
-      final: { title: "From OR workflow exposure to structured systems", text: "Explore the AI workflow library for reference systems and concept implementations built around documentation, handover, operational visibility, and traceability." },
+      final: { title: "From OR workflow exposure to structured systems", text: "See the other delivery work, or download the CV for the full picture." },
     },
     workflows: {},
   },

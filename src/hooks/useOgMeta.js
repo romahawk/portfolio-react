@@ -1,105 +1,33 @@
 import { useEffect } from "react";
-import { techProjects } from "../data/projects.js";
-import { getWorkflowBySlug } from "../data/aiWorkflows.js";
-import { useTranslation } from "../context/LangContext.jsx";
+import { seo } from "../content/site.js";
 
-const BASE = {
-  title: "Roman Mazuryk \u00b7 Technical PM, AI & Software Implementation",
-  description:
-    "Technical project manager with 12+ years delivering system implementations in MedTech, pharma and logistics. 20+ systems from discovery to adoption. Hamburg / Remote (EU).",
-  url: "https://www.mazuryk.dev/",
+const IMAGE = {
+  imageWidth: "1200",
+  imageHeight: "630",
+};
+
+const HOME = {
+  ...seo.home,
   image: "https://www.mazuryk.dev/images/og/og-home.png",
-  imageAlt: "Mazuryk.dev hero preview with headline, CTA buttons, and a small circular profile photo.",
-  imageWidth: "1200",
-  imageHeight: "630",
+  imageAlt: "Roman Mazuryk, Technical Project Manager.",
+  ...IMAGE,
 };
 
-const AI_SOLUTIONS = {
-  title: "AI Workflow Systems and Automation for SMEs \u2014 Roman Mazuryk",
-  description:
-    "AI Workflow Opportunity Audits, automation pilots, internal assistants, SOP systems, dashboards, and implementation roadmaps for operations-heavy SMEs.",
-  url: "https://www.mazuryk.dev/ai",
+const SERVICES = {
+  ...seo.services,
   image: "https://www.mazuryk.dev/images/og/og-ai.png",
-  imageAlt: "AI workflow automation services for SMEs by Roman Mazuryk.",
-  imageWidth: "1200",
-  imageHeight: "630",
-};
-
-const MEDTECH = {
-  title: "MedTech and Regulated Operations Proof \u2014 Roman Mazuryk",
-  description:
-    "Real MedTech implementation experience used as authority for AI workflow consulting in regulated, documentation-heavy, and handover-heavy environments.",
-  url: "https://www.mazuryk.dev/medtech",
-  image: "https://www.mazuryk.dev/images/og/og-medtech.png",
-  imageAlt: "MedTech product and project portfolio by Roman Mazuryk.",
-  imageWidth: "1200",
-  imageHeight: "630",
-};
-
-const FULLSTACK = {
-  title: "From Audit to Working System \u2014 Roman Mazuryk",
-  description:
-    "Implementation proof for AI workflow consulting: prototypes, dashboards, internal tools, automations, and deployed workflow applications.",
-  url: "https://www.mazuryk.dev/fullstack",
-  image: "https://www.mazuryk.dev/images/og/og-fullstack.png",
-  imageAlt: "AI-enhanced full-stack product builder portfolio by Roman Mazuryk.",
-  imageWidth: "1200",
-  imageHeight: "630",
+  imageAlt: "AI workflow audits and prototype sprints by Roman Mazuryk.",
+  ...IMAGE,
 };
 
 const KB = {
-  title: "AI Field Guide \u2014 Harness, Skills, Memory, Tools, Cost",
+  title: "AI Field Guide: Harness, Skills, Memory, Tools, Cost",
   description:
     "A practical reference for building with AI agents: terminology, best practices and tool choices, applied to real projects by Roman Mazuryk.",
   url: "https://www.mazuryk.dev/kb",
   image: "https://www.mazuryk.dev/images/og/og-ai.png",
   imageAlt: "AI Field Guide by Roman Mazuryk.",
-  imageWidth: "1200",
-  imageHeight: "630",
-};
-
-const ABOUT = {
-  title: "About - Roman Mazuryk",
-  description:
-    "MedTech implementation experience, product/project management, AI automation, and full-stack development unified around practical workflow systems.",
-  url: "https://www.mazuryk.dev/about",
-  image: "https://www.mazuryk.dev/images/og/og-home.png",
-  imageAlt: "About Roman Mazuryk.",
-  imageWidth: "1200",
-  imageHeight: "630",
-};
-
-const CONTACT = {
-  title: "Discuss One Workflow to Automate - Roman Mazuryk",
-  description:
-    "Book an AI Workflow Opportunity Audit, discuss one workflow to automate, or scope an implementation sprint for an internal assistant, dashboard, or workflow tool.",
-  url: "https://www.mazuryk.dev/contact",
-  image: "https://www.mazuryk.dev/images/og/og-home.png",
-  imageAlt: "Contact Roman Mazuryk.",
-  imageWidth: "1200",
-  imageHeight: "630",
-};
-
-const CLINICAL_EVIDENCE = {
-  title: "AI-Assisted Clinical Evidence Workflow for MedTech Teams | mazuryk.dev",
-  description:
-    "Compliance-aware workflow concept for turning scattered clinical evidence, product claims, PDFs, studies, and internal knowledge into a structured, traceable review system.",
-  url: "https://www.mazuryk.dev/medtech-ai-systems/clinical-evidence-workflow",
-  image: "https://www.mazuryk.dev/images/og/og-medtech.png",
-  imageAlt: "AI-assisted clinical evidence workflow concept for MedTech teams.",
-  imageWidth: "1200",
-  imageHeight: "630",
-};
-
-const AI_WORKFLOW = {
-  title: "AI Workflow Library",
-  description:
-    "Practical examples of AI-assisted workflow systems for MedTech, HealthTech, and regulated operations.",
-  url: "https://www.mazuryk.dev/ai-workflow",
-  image: "https://www.mazuryk.dev/images/og/og-ai-workflows.png",
-  imageAlt: "AI workflow solution library for MedTech and regulated operations.",
-  imageWidth: "1200",
-  imageHeight: "630",
+  ...IMAGE,
 };
 
 const OR_INTEGRATION_PROOF = {
@@ -109,8 +37,7 @@ const OR_INTEGRATION_PROOF = {
   url: "https://www.mazuryk.dev/proof-of-work/or-integration",
   image: "https://www.mazuryk.dev/images/og/og-or_workflow.png",
   imageAlt: "OR integration and surgical workflow systems proof page for Roman Mazuryk.",
-  imageWidth: "1200",
-  imageHeight: "630",
+  ...IMAGE,
 };
 
 function setMeta(selector, attr, value) {
@@ -141,140 +68,11 @@ function applyMeta({ title, description, url, image, imageAlt = "", imageWidth =
 }
 
 export function useOgMeta() {
-  const { lang, t } = useTranslation();
-
   useEffect(() => {
-    const seo = (key, fallback) => {
-      const value = t(`site.seo.${key}`);
-      return value === `site.seo.${key}` ? fallback : value;
-    };
-
-    function update() {
-      const path = window.location.pathname.replace(/\/+$/, "") || "/";
-
-      if (path === "/ai" || path === "/services" || path === "/collaborate") {
-        applyMeta({
-          ...AI_SOLUTIONS,
-          title: seo("aiTitle", AI_SOLUTIONS.title),
-          description: seo("aiDescription", AI_SOLUTIONS.description),
-        });
-        return;
-      }
-
-      if (path === "/kb" || path.startsWith("/kb/")) {
-        applyMeta(KB);
-        return;
-      }
-
-      if (path === "/medtech") {
-        applyMeta({
-          ...MEDTECH,
-          title: seo("medtechTitle", MEDTECH.title),
-          description: seo("medtechDescription", MEDTECH.description),
-        });
-        return;
-      }
-
-      if (path === "/fullstack") {
-        applyMeta({
-          ...FULLSTACK,
-          title: seo("fullstackTitle", FULLSTACK.title),
-          description: seo("fullstackDescription", FULLSTACK.description),
-        });
-        return;
-      }
-
-      if (path === "/about") {
-        applyMeta({
-          ...ABOUT,
-          title: seo("aboutTitle", ABOUT.title),
-          description: seo("aboutDescription", ABOUT.description),
-        });
-        return;
-      }
-
-      if (path === "/contact") {
-        applyMeta({
-          ...CONTACT,
-          title: seo("contactTitle", CONTACT.title),
-          description: seo("contactDescription", CONTACT.description),
-        });
-        return;
-      }
-
-      if (path === "/ai-workflow") {
-        applyMeta({
-          ...AI_WORKFLOW,
-          title: seo("aiWorkflowTitle", AI_WORKFLOW.title),
-          description: seo("aiWorkflowDescription", AI_WORKFLOW.description),
-        });
-        return;
-      }
-
-      if (path === "/proof-of-work/or-integration") {
-        applyMeta({
-          ...OR_INTEGRATION_PROOF,
-          title: seo("orProofTitle", OR_INTEGRATION_PROOF.title),
-          description: seo("orProofDescription", OR_INTEGRATION_PROOF.description),
-        });
-        return;
-      }
-
-      if (path.startsWith("/ai-workflow/")) {
-        const slug = path.slice("/ai-workflow/".length);
-        const workflow = getWorkflowBySlug(slug);
-        if (workflow) {
-          const titleKey = `site.workflows.${workflow.slug}.title`;
-          const summaryKey = `site.workflows.${workflow.slug}.summary`;
-          const title = t(titleKey) === titleKey ? workflow.title : t(titleKey);
-          const summary = t(summaryKey) === summaryKey ? workflow.summary : t(summaryKey);
-          applyMeta({
-            title: `${title} - ${seo("workflowReference", "AI Workflow Reference")}`,
-            description: summary,
-            url: `https://www.mazuryk.dev/ai-workflow/${workflow.slug}`,
-            image: AI_WORKFLOW.image,
-            imageAlt: `${title} ${seo("workflowImageAltSuffix", "reference workflow for MedTech and regulated operations.")}`,
-          });
-          return;
-        }
-      }
-
-      if (path === "/medtech-ai-systems/clinical-evidence-workflow") {
-        applyMeta({
-          ...CLINICAL_EVIDENCE,
-          title: seo("clinicalEvidenceTitle", CLINICAL_EVIDENCE.title),
-          description: seo("clinicalEvidenceDescription", CLINICAL_EVIDENCE.description),
-        });
-        return;
-      }
-
-      const match = window.location.hash.match(/^#projects\/(.+)$/);
-      if (match) {
-        const project = techProjects.find((p) => p.caseStudy === match[1]);
-        if (project) {
-          applyMeta({
-            title: `${project.title} - mazuryk.dev`,
-            description: project.summary,
-            url: `https://www.mazuryk.dev/#projects/${match[1]}`,
-            image: BASE.image,
-          });
-          return;
-        }
-      }
-
-      applyMeta({
-        ...BASE,
-        title: seo("homeTitle", BASE.title),
-        description: seo("homeDescription", BASE.description),
-      });
-    }
-
-    update();
-    window.addEventListener("hashchange", update);
-    window.addEventListener("popstate", update);
-    return () => {
-      window.removeEventListener("hashchange", update);
-      window.removeEventListener("popstate", update);
-    };
-  }, [lang, t]);
+    const path = window.location.pathname.replace(/\/+$/, "") || "/";
+    if (path === "/services") applyMeta(SERVICES);
+    else if (path === "/kb" || path.startsWith("/kb/")) applyMeta(KB);
+    else if (path === "/proof-of-work/or-integration") applyMeta(OR_INTEGRATION_PROOF);
+    else applyMeta(HOME);
+  }, []);
 }

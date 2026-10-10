@@ -1,16 +1,14 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect } from "react";
 import en from "../locales/en.js";
-import de from "../locales/de.js";
 
-const LOCALES = { en, de };
-const STORAGE_KEY = "lang";
-const DEFAULT_LANG = "en";
+// English only (German removed Oct 2026). A stored localStorage "lang" value is ignored.
+// t() remains for detail-page components that still read en.js; site copy lives in src/content/site.js.
+const LANG = "en";
 
 const LangContext = createContext(null);
 
-// Resolve a dot-notation key against a locale object.
-// Returns the value at that path (string, array, or object), or undefined.
+// Resolve a dot-notation key against the locale object.
 function resolve(obj, key) {
   const parts = key.split(".");
   let cur = obj;
@@ -21,34 +19,21 @@ function resolve(obj, key) {
   return cur;
 }
 
+const setLang = () => {};
+
 export function LangProvider({ children }) {
-  const [lang, setLangState] = useState(
-    () => localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG
-  );
-
-  // Keep document.lang in sync on every render so it's correct after hydration too
   useEffect(() => {
-    document.documentElement.lang = lang;
-  }, [lang]);
-
-  const setLang = useCallback((newLang) => {
-    localStorage.setItem(STORAGE_KEY, newLang);
-    setLangState(newLang);
+    document.documentElement.lang = LANG;
   }, []);
 
-  // t(key) → translated value for current lang, fallback to English, fallback to key string
-  const t = useCallback(
-    (key) => {
-      const val = resolve(LOCALES[lang], key);
-      if (val !== undefined) return val;
-      const fallback = resolve(LOCALES.en, key);
-      return fallback !== undefined ? fallback : key;
-    },
-    [lang]
-  );
+  // t(key) → English value, falling back to the key string
+  const t = useCallback((key) => {
+    const val = resolve(en, key);
+    return val !== undefined ? val : key;
+  }, []);
 
   return (
-    <LangContext.Provider value={{ lang, setLang, t }}>
+    <LangContext.Provider value={{ lang: LANG, setLang, t }}>
       {children}
     </LangContext.Provider>
   );

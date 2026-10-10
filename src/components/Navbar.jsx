@@ -1,52 +1,29 @@
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import ThemeSwitcher from "./ThemeSwitcher.jsx";
-import LanguageSwitcher from "./LanguageSwitcher.jsx";
 import NavControls from "./NavControls.jsx";
-import { useTranslation } from "../context/LangContext.jsx";
+import { identity, labels, nav, navServices } from "../content/site.js";
 
 // 800px matches the CSS mobile breakpoint
 const MOBILE_MQ = "(max-width: 800px)";
-
-const IDS = [
-  "home",
-  "routes",
-];
-
-const CLINICAL_EVIDENCE_PATH = "/medtech-ai-systems/clinical-evidence-workflow";
-const AI_WORKFLOW_PATH = "/ai-workflow";
-const OR_INTEGRATION_PROOF_PATH = "/proof-of-work/or-integration";
 
 // tuning knobs
 const VIEWPORT_ANCHOR = 0.32; // 32% down the viewport for deciding active section
 const SWITCH_BUFFER = 24;     // px hysteresis to avoid flicker on boundaries
 
+function currentPath() {
+  if (typeof window === "undefined") return "/";
+  return window.location.pathname.replace(/\/+$/, "") || "/";
+}
+
 export default function Navbar({ themeMode, onThemeChange }) {
-  const { t } = useTranslation();
-  const isServicesPage =
-    typeof window !== "undefined" && ["/ai", "/services", "/collaborate"].includes(window.location.pathname.replace(/\/+$/, ""));
-  const isMedTechPage =
-    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/medtech";
-  const isFullStackPage =
-    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/fullstack";
-  const isClinicalEvidencePage =
-    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === CLINICAL_EVIDENCE_PATH;
-  const isAIWorkflowPage =
-    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "").startsWith(AI_WORKFLOW_PATH);
-  const isORIntegrationProofPage =
-    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === OR_INTEGRATION_PROOF_PATH;
-  const isAboutPage =
-    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/about";
-  const isKBPage =
-    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "").startsWith("/kb");
-  const isContactPage =
-    typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/contact";
-  const isStandalonePage = isServicesPage || isMedTechPage || isFullStackPage || isClinicalEvidencePage || isAIWorkflowPage || isORIntegrationProofPage || isAboutPage || isContactPage || isKBPage;
-  const navIds = useMemo(
-    () => (isStandalonePage ? [] : IDS),
-    [isStandalonePage]
-  );
+  const path = currentPath();
+  const isHome = path === "/";
+  const isServicesPage = path === navServices.href;
+  // Anchors scroll on the landing page and link back to it from every other page.
+  const navIds = useMemo(() => (isHome ? nav.map((item) => item.id) : []), [isHome]);
+
   const [isOpen, setIsOpen] = useState(false);
-  const [active, setActive] = useState(() => "home");
+  const [active, setActive] = useState("");
   const [progress, setProgress] = useState(0);
   const [isMobile, setIsMobile] = useState(
     () => typeof window !== "undefined" && window.matchMedia(MOBILE_MQ).matches
@@ -57,22 +34,10 @@ export default function Navbar({ themeMode, onThemeChange }) {
   const navScrollRef = useRef(false);
   const navScrollTimeoutRef = useRef(null);
 
-  const navItems = useMemo(
-    () => [
-      { id: isStandalonePage ? undefined : "home", href: "/", labelKey: "nav.home", current: !isStandalonePage && active === "home" },
-      { href: "/ai", labelKey: "nav.aiSolutions", current: isServicesPage || isAIWorkflowPage || isClinicalEvidencePage },
-      { href: "/medtech", labelKey: "nav.medtech", current: isMedTechPage || isORIntegrationProofPage },
-      { href: "/fullstack", labelKey: "nav.fullstack", current: isFullStackPage },
-      { id: isStandalonePage ? undefined : "about", href: "/about", labelKey: "nav.about", current: isAboutPage || (!isStandalonePage && active === "about") },
-      { id: isStandalonePage ? undefined : "contact", href: "/contact", labelKey: "nav.contact", current: isContactPage || (!isStandalonePage && active === "contact") },
-    ],
-    [active, isAIWorkflowPage, isAboutPage, isClinicalEvidencePage, isContactPage, isFullStackPage, isMedTechPage, isORIntegrationProofPage, isServicesPage, isStandalonePage]
-  );
-
   const computeActive = useCallback(() => {
     const anchor = window.scrollY + window.innerHeight * VIEWPORT_ANCHOR;
 
-    let current = navIds[0] || "";
+    let current = "";
     for (const { id, top, bottom } of sectionsRef.current) {
       if (anchor >= top + SWITCH_BUFFER && anchor < bottom - SWITCH_BUFFER) {
         current = id;
@@ -80,7 +45,7 @@ export default function Navbar({ themeMode, onThemeChange }) {
       }
     }
     setActive((prev) => (prev !== current ? current : prev));
-  }, [navIds]);
+  }, []);
 
   const onScroll = useCallback(() => {
     if (navScrollRef.current) return;
@@ -112,6 +77,7 @@ export default function Navbar({ themeMode, onThemeChange }) {
   const handleClick = useCallback(
     (id) => {
       setIsOpen(false);
+      if (!isHome) return;
       setActive(id);
 
       if (navScrollTimeoutRef.current) {
@@ -124,7 +90,7 @@ export default function Navbar({ themeMode, onThemeChange }) {
         computeActive();
       }, 700);
     },
-    [computeActive]
+    [computeActive, isHome]
   );
 
   useEffect(() => {
@@ -168,11 +134,6 @@ export default function Navbar({ themeMode, onThemeChange }) {
     };
   }, [collectSections, onScroll]);
 
-  useEffect(() => {
-    setActive(navIds[0]);
-    setTimeout(collectSections, 0);
-  }, [collectSections, navIds]);
-
   return (
     <header className="site-header">
       <div
@@ -180,45 +141,40 @@ export default function Navbar({ themeMode, onThemeChange }) {
         onClick={() => setIsOpen(false)}
         aria-hidden="true"
       />
-      <nav className="nav container">
-        <a href="/" className="nav__logo" aria-label="ROMAZ home" onClick={() => handleClick("home")}>
-          <img src="/images/rm-logo.png" alt="Roman Mazuryk" className="nav__logo-img" />
+      <nav className="nav container" aria-label="Main">
+        <a href={isHome ? "#top" : "/"} className="nav__logo" aria-label={`${identity.name} home`} onClick={() => handleClick("top")}>
+          <img src="/images/rm-logo.png" alt={identity.name} className="nav__logo-img" />
         </a>
 
         <ul
           className={`nav__list ${isOpen ? "nav__list--open" : ""}`}
           inert={isMobile && !isOpen ? "" : undefined}
         >
-          {navItems.map(({ id, href, labelKey, current }) => (
-            <li key={href}>
+          {nav.map(({ id, label }) => (
+            <li key={id}>
               <a
-                href={href}
-                className={`nav__link ${current ? "nav__link--active" : ""}`}
-                onClick={() => (id ? handleClick(id) : setIsOpen(false))}
+                href={isHome ? `#${id}` : `/#${id}`}
+                className={`nav__link ${isHome && active === id ? "nav__link--active" : ""}`}
+                aria-current={isHome && active === id ? "location" : undefined}
+                onClick={() => handleClick(id)}
               >
-                {t(labelKey)}
+                {label}
               </a>
             </li>
           ))}
-          {/* Language switcher inside mobile menu */}
-          {isMobile && !isContactPage && (
-            <li>
-              <a href="/contact" className="nav__link nav__link--cta" onClick={() => setIsOpen(false)}>
-                {t("site.cta.workWithMe")}
-              </a>
-            </li>
-          )}
-          {isMobile && (
-            <li className="nav__lang-mobile">
-              <LanguageSwitcher />
-            </li>
-          )}
+          <li>
+            <a
+              href={navServices.href}
+              className={`nav__link ${isServicesPage ? "nav__link--active" : ""}`}
+              aria-current={isServicesPage ? "page" : undefined}
+              onClick={() => setIsOpen(false)}
+            >
+              {navServices.label}
+            </a>
+          </li>
         </ul>
 
         <div className="nav__actions">
-          {!isContactPage && (
-            <a href="/contact" className="nav__work-cta">{t("site.cta.workWithMe")}</a>
-          )}
           {isMobile
             ? <ThemeSwitcher mode={themeMode} onChange={onThemeChange} />
             : <NavControls mode={themeMode} onThemeChange={onThemeChange} />
@@ -226,7 +182,7 @@ export default function Navbar({ themeMode, onThemeChange }) {
           <button
             className={`nav__toggle ${isOpen ? "x" : ""}`}
             onClick={() => setIsOpen((p) => !p)}
-            aria-label={t("nav.toggleNav")}
+            aria-label={labels.toggleNav}
             aria-expanded={isOpen}
           >
             <span className="nav__toggle-bar" />
