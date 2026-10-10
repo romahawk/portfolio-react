@@ -56,7 +56,7 @@ export const facts = [
 
 export const work = {
   title: "Selected delivery work",
-  intro: "Two delivery projects with the problem, my role, what I did and the result, plus how I run my own builds.",
+  intro: "Three projects, each with the problem, my role, what I did and the result.",
   otherBuildsTitle: "Other builds",
 };
 
@@ -84,9 +84,10 @@ export const cases = [
   },
   {
     title: "AI Field Guide, how I run my own builds",
+    problem: "A model forgets everything when a session ends, and the same model behaves very differently inside a good or a bad setup. AI-assisted builds need structure to stay reliable.",
     role: "Designed and built it myself",
-    work: "For my own builds I also run an AI-assisted delivery system: defined roles, one source of truth, decision logs and review gates.",
-    outcome: "My working reference for building with AI agents: the terms, the practices that hold up, and the tools I actually use across my own projects.",
+    work: "For my own builds I also run an AI-assisted delivery system: defined roles, one source of truth, decision logs and review gates. I documented it as a public field guide: five pillars (harness, skills, memory, tools, cost), tool verdicts, a project matrix and a glossary.",
+    outcome: "My working reference for building with AI agents: the terms, the practices that hold up, and the tools I actually use. Tied to six of my own projects, including my M.Sc. capstone and this site, and reviewed monthly against what I actually run.",
     links: [{ label: "How I work with AI", href: "/kb" }],
   },
 ];

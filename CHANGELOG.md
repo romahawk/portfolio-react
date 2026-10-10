@@ -18,6 +18,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 - `en.js` is no longer in the main bundle (only the OR page reads it). Main JS: 109.5 kB to 66.2 kB gzip
 - OR page: CTAs point to `/#work`, the CV and email instead of retired routes; the "bridge" and closing copy no longer present an AI-consulting identity
 - `main.css` no longer imports the stylesheets of retired pages (16 files, kept on disk for the cleanup PR). CSS: 219 kB to 126 kB (34.4 kB to 20.5 kB gzip); `/`, `/services`, `/kb` and the OR page are pixel-identical at 390/1366 in both themes
+- AI Field Guide card: added a Problem line and expanded What I did / Outcome, using wording from `/kb`; the section intro is back to Part B ("Three projects, each with the problem, my role, what I did and the result.")
 - Proof cards: status badge moved to the right of the title, and at 3 columns each card is a CSS subgrid so titles and the Problem / My role / What I did / Outcome rows align across cards (a card without Problem keeps an empty row)
 - `/` and `/services` page components load eagerly (one less sequential request before the hero renders); `/kb` and the OR page stay lazy
 - Light-theme footer text and accent colours darkened to meet WCAG AA
