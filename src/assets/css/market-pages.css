@@ -2516,8 +2516,47 @@
   list-style: none;
 }
 
-.market-page--home .medtech-proof-card .status-badge {
-  margin-bottom: 8px;
+/* Title left, status badge right, so titles align across cards with and without a badge. */
+.proof-case-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.proof-case-card__header .status-badge {
+  flex-shrink: 0;
+}
+
+.proof-case-card__empty {
+  display: none;
+}
+
+/* Three columns: each card is a subgrid (header, 4 fields, links), so Problem, My role,
+   What I did and Outcome start on the same line in every card. */
+@media (min-width: 1101px) {
+  .market-page--home .medtech-proof-grid .medtech-proof-card {
+    display: grid;
+    grid-row: span 6;
+    grid-template-rows: subgrid;
+    row-gap: 12px;
+  }
+
+  .market-page--home .proof-case-card__fields {
+    display: grid;
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+    row-gap: 12px;
+    margin: 0;
+  }
+
+  .market-page--home .proof-case-card__empty {
+    display: block;
+  }
+
+  .market-page--home .medtech-proof-grid .medtech-proof-card__links {
+    align-self: end;
+  }
 }
 
 .home-delivery-note,

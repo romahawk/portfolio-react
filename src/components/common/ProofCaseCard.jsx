@@ -16,17 +16,20 @@ export default function ProofCaseCard({ item, index = 0 }) {
 
   return (
     <article className={`medtech-proof-card medtech-proof-card--${TONES[index % TONES.length]} reveal`}>
-      <header>
-        {item.status ? <StatusBadge status={item.status} /> : null}
+      <header className="proof-case-card__header">
         <h3>{item.title}</h3>
+        {item.status ? <StatusBadge status={item.status} /> : null}
       </header>
-      <dl>
-        {FIELDS.filter(([key]) => item[key]).map(([key, label]) => (
+      {/* Every field keeps its row (empty when missing) so rows line up across cards in the subgrid layout. */}
+      <dl className="proof-case-card__fields">
+        {FIELDS.map(([key, label]) => (item[key] ? (
           <div key={key}>
             <dt>{label}</dt>
             <dd>{item[key]}</dd>
           </div>
-        ))}
+        ) : (
+          <div className="proof-case-card__empty" aria-hidden="true" key={key} />
+        )))}
       </dl>
       {links.length ? (
         <div className="medtech-proof-card__links">
