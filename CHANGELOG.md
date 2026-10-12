@@ -10,6 +10,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 ## [Unreleased]
 
 ### Changed (About section)
+- About copy: "based near Hamburg" is now "based in the Hamburg area"
 - Profile photo added at the top left of the About text (new portrait, served as a 400px WebP, 7 kB); the paragraphs wrap to its right and continue below it (112px wide on phones)
 - Experience is now a vertical milestone timeline: a circle per role joined by connectors, with the current role filled. On scroll-in, the line draws from the oldest role at the bottom up to the newest, lighting each circle as it arrives. Static under `prefers-reduced-motion`
 

@@ -54,7 +54,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow={deText("About", lang)}
         title={deText(title, lang)}
-        subtitle={deText("I'm Roman, a technical project manager based near Hamburg. I've worked in medical technology, pharma and logistics for over 20 years. For the last 12+ of them I've delivered client-facing system implementations: integrated operating rooms, imaging and PACS/RIS connectivity, and internal logistics systems under GDP and ISO 9001.", lang)}
+        subtitle={deText("I'm Roman, a technical project manager based in the Hamburg area. I've worked in medical technology, pharma and logistics for over 20 years. For the last 12+ of them I've delivered client-facing system implementations: integrated operating rooms, imaging and PACS/RIS connectivity, and internal logistics systems under GDP and ISO 9001.", lang)}
         primaryCta={{ label: deText("Download CV", lang), href: "/roman-mazuryk-cv.pdf", download: true, icon: <FileDown size={15} className="icon ml-1" aria-hidden="true" /> }}
         secondaryCta={{ label: deText("Email me", lang), href: `mailto:${EMAIL}`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
         scrollTargetId="about"
