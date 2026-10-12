@@ -11,6 +11,8 @@ export const contact = {
   linkedin: "https://www.linkedin.com/in/roman-mazuryk/",
   github: "https://github.com/romahawk",
   cvUrl: "/roman-mazuryk-cv.pdf",
+  // Intro-call booking link. Email fallback until the Cal.com link is set; replace with the full https://cal.com/... URL.
+  calUrl: `mailto:${EMAIL}?subject=Intro%20call%20request`,
 };
 
 export const identity = {
@@ -154,79 +156,156 @@ export const contactSection = {
 // Condensed from the former /ai, /services and /collaborate pages. No prices, no client results.
 export const services = {
   hero: {
-    eyebrow: "Services · Roman Mazuryk, Technical Project Manager",
-    headline: "Turn one manual workflow into a working system",
-    subline: "For operations-heavy SMEs and regulated teams. I map one workflow, find where AI can safely reduce friction, and build the first useful version with human review points.",
-    primary: { label: "Book an AI Workflow Audit", href: contact.auditHref },
-    secondary: { label: "Email me", href: contact.emailHref },
+    eyebrow: "Services · AI workflows for regulated operations",
+    headline: "Practical AI for regulated operations",
+    subline: "Built by someone who has implemented systems in hospitals and GDP-certified warehouses. A 5-day audit finds where AI belongs. A 2 to 4 week build delivers it with human review and an audit trail.",
+    primary: { label: "Book a 20-min intro call", href: contact.calUrl },
+    secondary: { label: "See a sample audit", href: "#sample" },
+    credibility: ["12+ years of system implementation", "20+ systems delivered", "GDP, ISO 9001", "DICOM, PACS/RIS"],
   },
-  problem: {
-    title: "The problem: work that lives in emails, spreadsheets and people's heads",
-    text: "Work is scattered across emails, spreadsheets, PDFs, meetings and handover documents. Follow-ups are manual, ownership is unclear and nobody can see where a case stands.",
-    beforeLabel: "Before",
-    afterLabel: "After",
-    before: ["Emails", "Spreadsheets", "PDFs", "Manual follow-ups", "Unclear ownership", "No workflow memory"],
-    after: ["Structured intake", "AI-assisted summaries", "Task ownership", "Status visibility", "SOPs and handover", "Reusable workflow system"],
+  patterns: {
+    kicker: "01 · Where AI fits",
+    title: "The model reads and drafts. Rules check. People decide.",
+    intro: "Every workflow I build splits the work three ways, so it stays fast, explainable and auditable.",
+    legend: { ai: "AI", rules: "Rules", human: "You decide" },
+    items: [
+      {
+        title: "Document intake into structured data",
+        text: "Delivery notes, certificates, forms and emails, read into a fixed schema and checked against your records.",
+        ai: "Reads documents and extracts fields",
+        rules: "Compares with orders and master data",
+        human: "Confirms flagged fields",
+      },
+      {
+        title: "Case and deviation records",
+        text: "Free text, photos and emails turned into complete, categorised records with an owner and a status.",
+        ai: "Structures the record, suggests a category",
+        rules: "Required fields, routing, deadlines",
+        human: "Decides and closes the case",
+      },
+      {
+        title: "Status summaries and drafts",
+        text: "Daily status, handover notes and supplier letters drafted from the records you already have.",
+        ai: "Drafts the text",
+        rules: "Uses only approved record data",
+        human: "Edits and sends",
+      },
+    ],
+    footnote: "Patterns, not client case studies.",
   },
-  offersTitle: "Three ways to start",
-  offers: [
-    {
-      title: "AI Workflow Opportunity Audit",
-      badge: "Best starting point",
-      get: "Workflow review, bottleneck map, AI opportunity matrix, feasibility and risk assessment, recommended pilot and roadmap.",
-      duration: "Delivered within 5 business days.",
-      outcome: "A clear entry point for a build sprint: internal assistant, workflow automation, dashboard or decision-support prototype.",
+  sample: {
+    kicker: "02 · Sample audit",
+    title: "See exactly what an audit delivers",
+    // "not" is set in bold, as in the copy deck.
+    text: {
+      before: "A full sample audit of goods receipt and deviation handling in GDP pharmaceutical logistics. It covers the process map, opportunity matrix, pilot design with controls, measurement plan, roadmap and risks. It includes the part most audits skip: where AI should ",
+      strong: "not",
+      after: " be used.",
     },
-    {
-      title: "Prototype Sprint",
-      get: "A working pilot for one workflow: automation, internal assistant, dashboard or prototype with human review points.",
-      duration: "Typically 2 to 4 weeks.",
-      outcome: "Connected forms, emails, documents, spreadsheets, APIs and AI actions, with handover notes.",
+    label: "Illustrative example. Fictional company, typical workflow, not a client project.",
+    image: {
+      src: "/images/services/sample-audit-pipeline.webp",
+      srcSet: "/images/services/sample-audit-pipeline-800.webp 800w, /images/services/sample-audit-pipeline.webp 1545w",
+      sizes: "(max-width: 900px) calc(100vw - 32px), 640px",
+      fullSrc: "/images/services/sample-audit-pipeline.png",
+      width: 1545,
+      height: 512,
     },
-    {
-      title: "Workflow automation",
-      get: "Automations, structured SOPs and a lightweight dashboard or internal tool around one workflow.",
-      duration: "Run as a 2 to 4 week sprint.",
-      outcome: "Status tracking, task ownership, simple reporting and documentation the team can maintain.",
-    },
-  ],
-  labels: { get: "What you get", duration: "Typical duration", outcome: "Outcome", good: "Good fit", notIdeal: "Not ideal for" },
-  processTitle: "How it works",
-  process: [
-    { title: "Workflow intake", text: "We pick one repetitive or messy process worth improving. You share examples, documents, current tools and pain points." },
-    { title: "Process mapping", text: "I map inputs, decisions, handoffs, ownership, tools and failure points." },
-    { title: "Automation design", text: "We define what gets automated, what stays human-reviewed and which output is useful." },
-    { title: "Prototype build", text: "I build the smallest useful workflow with automation tools, AI, a lightweight database or a custom UI where needed." },
-    { title: "Review, handover, iteration", text: "We test with real use, refine edge cases and document how to run it." },
-  ],
+    imageAlt: "Pilot design from the sample audit: AI extracts, rules check, warehouse confirms, AI structures the deviation, QA decides",
+    cta: { label: "Download the sample audit (PDF, 8 pages)", href: "/sample-ai-workflow-audit.pdf" },
+  },
   proof: {
-    title: "Proof",
-    text: "The delivery background behind this work is on the portfolio page. Example workflows are available on request.",
-    links: [
-      { label: "Selected delivery work", href: "/#work" },
-      { label: "How I work with AI", href: "/kb" },
+    kicker: "03 · Proof",
+    title: "What backs this up",
+    rows: [
+      {
+        label: "Implementation",
+        text: "20+ system implementations in hospitals, imaging and regulated logistics, from discovery to adoption.",
+        links: [{ label: "Selected delivery work", href: "/#work" }],
+      },
+      {
+        label: "Workflow system · Demo",
+        text: "FlowLogics: role-gated intake, status tracking and ETA risk for logistics operations. No AI inside. It shows the system-of-record side that AI steps plug into.",
+        links: [
+          { label: "Live demo", href: "https://flowlogics.app/", external: true },
+          { label: "Code", href: "https://github.com/romahawk/flowlogix", external: true },
+        ],
+      },
+      {
+        label: "AI practice",
+        text: "The practices, tools and review gates I use to build with AI agents.",
+        links: [{ label: "How I build with AI", href: "/kb" }],
+      },
     ],
   },
-  fitTitle: "Who it fits",
+  engagements: {
+    kicker: "04 · Engagements",
+    title: "Two ways to work together",
+    labels: { format: "Format", get: "You get", outcome: "Outcome", price: "Price" },
+    items: [
+      {
+        title: "AI Workflow Audit",
+        badge: "Start here",
+        format: "Fixed scope, 5 business days",
+        get: "Process map, bottleneck analysis, AI opportunity matrix including where AI should not be used, pilot design with controls, measurement plan and roadmap",
+        outcome: "A pilot scope your management and QA can sign off",
+        price: "Fixed fee, quoted on request",
+      },
+      {
+        title: "Build Sprint",
+        format: "2 to 4 weeks, scoped from the audit",
+        get: "A working pilot for one workflow: extraction, rules, review screens and records, connected to your existing systems where possible",
+        outcome: "Tested in shadow mode against a baseline before any go-live decision. Handover docs included",
+        price: "Quoted after the audit",
+      },
+    ],
+  },
+  guardrails: {
+    kicker: "05 · Data and risk",
+    title: "How I handle data and risk",
+    items: [
+      "AI prepares, people decide. No automated decisions where accountability matters.",
+      "Every AI output is editable and logged with user and time.",
+      "Model hosting and data processing are agreed before the build. I sign a data processing agreement (AVV) where personal data is involved.",
+      "Your data is not used to train models.",
+      "Least-privilege access, removed at the end of the engagement.",
+      "Tested against your own historical data before anyone relies on it.",
+    ],
+  },
+  about: {
+    title: "Who you work with",
+    photo: { src: "/images/profile-400.webp", alt: "Roman Mazuryk portrait" },
+    text: "I'm Roman. For 12+ years I've implemented systems where mistakes are expensive: integrated operating rooms, imaging connected to hospital PACS, and internal systems in GDP-certified pharma logistics. Now I also build the software, including AI workflows. You work with me directly, from the first call to handover.",
+    link: { label: "Full background", href: "/#about" },
+  },
   fit: {
+    title: "Fit",
+    goodLabel: "Good fit",
+    notIdealLabel: "Not a fit",
     good: [
-      "Operations-heavy SMEs",
-      "Logistics and service businesses",
-      "MedTech, HealthTech and regulated operations teams",
-      "Small teams with scattered knowledge",
-      "Founders who need fast workflow prototypes",
+      "Operations teams in logistics, pharma, MedTech and healthcare",
+      "One document-heavy workflow that eats team time",
+      "Managers who need a pilot their QA can sign off",
     ],
     notIdeal: [
-      "Teams looking for a fully managed AI product, not a consultant",
-      "Enterprise organisations with existing digital transformation programs",
-      "Businesses wanting a chatbot without any workflow or backend change",
-      "Teams needing regulatory certification or sign-off rather than workflow implementation",
+      "A chatbot without any workflow change",
+      "Large transformation programmes",
+      "Regulatory certification or validation sign-off as the main need",
+    ],
+  },
+  faq: {
+    title: "FAQ",
+    items: [
+      { q: "Which AI models do you use?", a: "Commercial models via API, chosen to fit your hosting and data rules. Outputs are structured and logged, so every result can be checked." },
+      { q: "Do you replace our WMS or ERP?", a: "No. Your existing system stays the system of record. The pilot sits next to it or feeds it." },
+      { q: "What if AI is not the answer?", a: "Then the audit says so and recommends the simpler fix. When the logic is fixed, rules beat models." },
+      { q: "What do you need from us?", a: "Three short interviews, sample documents and records, and read access where possible." },
     ],
   },
   cta: {
-    title: "Have one messy workflow worth fixing?",
-    text: "Start with one contained process. I map it, score the automation opportunity, assess risk and define a build scope.",
-    primary: { label: "Book an AI Workflow Audit", href: contact.auditHref },
+    title: "One workflow eating your team's time?",
+    text: "In 20 minutes we'll know whether an audit makes sense.",
+    primary: { label: "Book a 20-min intro call", href: contact.calUrl },
     secondary: { label: "Email me", href: contact.emailHref },
   },
 };
@@ -238,8 +317,8 @@ export const seo = {
     url: "https://www.mazuryk.dev/",
   },
   services: {
-    title: "Services · AI Workflow Audits and Prototype Sprints · Roman Mazuryk",
-    description: "AI Workflow Opportunity Audits, prototype sprints and workflow automation for operations-heavy SMEs and regulated teams. Map one workflow, then build the first working version.",
+    title: "AI Workflow Audits for Regulated Operations · Roman Mazuryk",
+    description: "A 5-day AI workflow audit and 2 to 4 week build sprints for logistics, pharma and MedTech operations. AI reads and drafts, rules check, people decide. Book a 20-minute intro call.",
     url: "https://www.mazuryk.dev/services",
   },
 };
