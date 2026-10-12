@@ -1,0 +1,490 @@
+/* /services v2: calm, evidence-led layout. Everything is scoped to .services-v2.
+   One accent (--brand) for kickers, AI rows, links and the primary button.
+   Kickers and the AI / Rules / You decide legend mirror the sample audit PDF. */
+
+.services-v2 {
+  --sv2-section-pad: 104px;
+  --sv2-text-width: 66ch;
+  --sv2-ai-soft: color-mix(in srgb, var(--brand) 10%, transparent);
+  /* Accent for text. The light-theme brand green is 3.2:1 on the page background,
+     too low for small text, so light mode uses a darker green (6.0:1, WCAG AA). */
+  --sv2-accent-text: var(--brand);
+}
+
+[data-theme="light"] .services-v2 {
+  --sv2-accent-text: #136c33;
+}
+
+/* Hero: content height, no scroll hint */
+.services-v2 .page-hero {
+  min-height: auto;
+  padding: 120px 0 88px;
+}
+
+/* The first section's top border is the divider; the hero's own line would double it. */
+.services-v2 .page-hero::after {
+  display: none;
+}
+
+.services-v2 .page-hero__subtitle {
+  max-width: var(--sv2-text-width);
+}
+
+.services-v2__credibility {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.01em;
+}
+
+/* Sections: thin dividers instead of boxed panels */
+.services-v2__section {
+  padding-top: var(--sv2-section-pad);
+  padding-bottom: var(--sv2-section-pad);
+  border-top: 1px solid var(--system-border, var(--border));
+  scroll-margin-top: calc(var(--nav-h, 72px) + 12px);
+}
+
+.services-v2__section h2 {
+  margin: 0 0 14px;
+  max-width: 28ch;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1.2;
+}
+
+.services-v2__head {
+  margin-bottom: 36px;
+}
+
+.services-v2__kicker {
+  margin: 0 0 14px;
+  color: var(--sv2-accent-text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.services-v2__lead {
+  max-width: var(--sv2-text-width);
+  margin: 0;
+  color: var(--muted-strong, var(--text));
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.services-v2__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 12px 0 0;
+}
+
+.services-v2__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--sv2-accent-text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.services-v2__links a:hover {
+  text-decoration: underline;
+}
+
+/* 01 · Patterns */
+.services-v2__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.services-v2__legend-item::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  border: 1px solid var(--system-border, var(--border));
+  border-radius: 3px;
+  vertical-align: -1px;
+}
+
+.services-v2__legend-item--ai::before {
+  border-color: var(--brand);
+  background: var(--sv2-ai-soft);
+}
+
+.services-v2__legend-item--human::before {
+  border-color: var(--text);
+}
+
+.services-v2__patterns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.services-v2__pattern {
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  border: 1px solid var(--system-border, var(--border));
+  border-radius: var(--radius);
+}
+
+.services-v2__pattern h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.services-v2__pattern > p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.services-v2__split {
+  display: grid;
+  gap: 8px;
+  margin: auto 0 0;
+}
+
+.services-v2__split-row {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+  padding: 9px 12px;
+  border: 1px solid var(--system-border, var(--border));
+  border-radius: 8px;
+}
+
+.services-v2__split-row dt {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.services-v2__split-row dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.services-v2__split-row--ai {
+  border-color: var(--brand);
+  background: var(--sv2-ai-soft);
+}
+
+.services-v2__split-row--ai dt {
+  color: var(--sv2-accent-text);
+}
+
+.services-v2__split-row--human {
+  border-color: color-mix(in srgb, var(--text) 60%, transparent);
+}
+
+.services-v2__split-row--human dt {
+  color: var(--text);
+}
+
+.services-v2__footnote {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* 02 · Sample audit */
+.services-v2__sample {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.services-v2__sample-text .services-v2__lead {
+  margin-bottom: 16px;
+}
+
+.services-v2__label {
+  margin: 0 0 24px;
+  padding-left: 10px;
+  border-left: 2px solid var(--brand-warm);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* The diagram is drawn on white, so it sits on a white "paper" surface in both themes. */
+.services-v2__sample-figure {
+  display: block;
+  padding: 14px;
+  border: 1px solid var(--system-border, var(--border));
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.services-v2__sample-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 03 · Proof */
+.services-v2__proof-row {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 24px;
+  padding: 22px 0;
+  border-top: 1px solid var(--system-border, var(--border));
+}
+
+.services-v2__proof-row p {
+  max-width: var(--sv2-text-width);
+  margin: 0;
+  line-height: 1.65;
+}
+
+.services-v2__proof-label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* 04 · Engagements */
+.services-v2__engagements {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.services-v2__engagement {
+  padding: 26px;
+  border: 1px solid var(--system-border, var(--border));
+  border-radius: var(--radius);
+}
+
+.services-v2__engagement--first {
+  border-color: var(--brand);
+}
+
+.services-v2__engagement header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.services-v2__engagement h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.services-v2__badge {
+  padding: 3px 10px;
+  border: 1px solid var(--brand);
+  border-radius: 999px;
+  color: var(--sv2-accent-text);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.services-v2__engagement dl {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+
+.services-v2__engagement dt {
+  margin-bottom: 3px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.services-v2__engagement dd {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* 05 · Data and risk */
+.services-v2__guardrails {
+  display: grid;
+  gap: 14px;
+  max-width: var(--sv2-text-width);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.services-v2__guardrails li {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
+  gap: 12px;
+  line-height: 1.6;
+}
+
+.services-v2__guardrails svg {
+  margin-top: 4px;
+  color: var(--brand);
+}
+
+/* Who you work with */
+.services-v2__who {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.services-v2__who-photo {
+  width: 160px;
+  height: auto;
+  aspect-ratio: 1;
+  border: 1px solid var(--system-border, var(--border));
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+/* Fit */
+.services-v2__fit {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.services-v2__fit h3 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+}
+
+.services-v2__fit ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.services-v2__fit li {
+  display: grid;
+  grid-template-columns: 15px minmax(0, 1fr);
+  gap: 10px;
+  line-height: 1.55;
+}
+
+.services-v2__fit li svg {
+  margin-top: 4px;
+}
+
+.services-v2__fit-icon--good {
+  color: var(--brand);
+}
+
+.services-v2__fit-icon--not {
+  color: var(--muted);
+}
+
+/* FAQ: native details/summary, keyboard accessible without JS */
+.services-v2__faq {
+  max-width: 76ch;
+  border-top: 1px solid var(--system-border, var(--border));
+}
+
+.services-v2__faq details {
+  border-bottom: 1px solid var(--system-border, var(--border));
+}
+
+.services-v2__faq summary {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.services-v2__faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.services-v2__faq summary::after {
+  content: "+";
+  flex: 0 0 auto;
+  color: var(--sv2-accent-text);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.services-v2__faq details[open] summary::after {
+  content: "\2212";
+}
+
+.services-v2__faq summary:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.services-v2__faq details p {
+  max-width: var(--sv2-text-width);
+  margin: 0 0 18px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .services-v2__patterns,
+  .services-v2__sample,
+  .services-v2__engagements,
+  .services-v2__fit {
+    grid-template-columns: 1fr;
+  }
+
+  .services-v2__sample {
+    gap: 28px;
+  }
+
+  .services-v2__proof-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-v2 {
+    --sv2-section-pad: 64px;
+  }
+
+  .services-v2 .page-hero {
+    padding: 72px 0 48px;
+  }
+
+  .services-v2__who {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .services-v2__who-photo {
+    width: 104px;
+  }
+
+  .services-v2__engagement,
+  .services-v2__pattern {
+    padding: 20px;
+  }
+}
