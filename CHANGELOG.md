@@ -9,6 +9,10 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed (About section)
+- Profile photo added at the top left of the About text; the paragraphs wrap to its right and continue below it (112px wide on phones)
+- Experience is now a vertical milestone timeline: a circle per role joined by connectors, with the current role filled. On scroll-in, the line draws from the oldest role at the bottom up to the newest, lighting each circle as it arrives. Static under `prefers-reduced-motion`
+
 ### Changed (PR workflow)
 - One PR per change, straight from the feature branch into `main`. The `dev` integration branch is retired; the Vercel PR preview is the staging check
 - New PR template: What and why, Changes, Verification, How to test on the Vercel preview, what was not tested, quality gates (mobile, a11y, icons, redirects), docs, screenshots

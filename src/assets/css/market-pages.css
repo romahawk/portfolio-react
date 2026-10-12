@@ -2635,6 +2635,23 @@
   align-items: start;
 }
 
+/* flow-root contains the floated photo, so the text wraps beside and below it */
+.home-about__text {
+  display: flow-root;
+}
+
+.home-about__photo {
+  float: left;
+  width: 168px;
+  height: auto;
+  aspect-ratio: 1;
+  margin: 6px 22px 12px 0;
+  border: 1px solid var(--system-border, var(--border));
+  border-radius: var(--radius);
+  object-fit: cover;
+  box-shadow: var(--shadow);
+}
+
 .home-about__text p {
   margin: 0 0 14px;
   color: var(--text);
@@ -2658,12 +2675,76 @@
   font-size: 16px;
 }
 
+/* Vertical milestone timeline: a circle per role, joined by a connector that
+   runs from each circle down to the next one. The newest role (top) is filled. */
 .home-experience {
   display: grid;
-  gap: 12px;
+  gap: 16px;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 28px;
   list-style: none;
+}
+
+.home-experience li {
+  position: relative;
+}
+
+.home-experience li::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: -28px;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--brand);
+  border-radius: 50%;
+  background: var(--panel);
+}
+
+.home-experience li:first-child::before {
+  background: var(--brand);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 22%, transparent);
+}
+
+/* Connector from this circle's centre to the next circle's centre (one gap below). */
+.home-experience li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 11px;
+  bottom: -27px;
+  left: -22px;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to top, var(--brand-2), var(--brand));
+  transform-origin: bottom;
+}
+
+/* Runs once, when the card's .reveal turns visible: the bottom circle lights,
+   then each connector draws upward and lights the circle it reaches. */
+@media (prefers-reduced-motion: no-preference) {
+  .home-about__card.reveal .home-experience li::before {
+    opacity: 0;
+    transform: scale(0.3);
+    transition:
+      opacity 0.3s ease var(--milestone-delay, 0s),
+      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) var(--milestone-delay, 0s);
+  }
+
+  .home-about__card.reveal .home-experience li:not(:last-child)::after {
+    transform: scaleY(0);
+    transition: transform var(--milestone-step, 0.3s) linear var(--segment-delay, 0s);
+  }
+
+  .home-about__card.reveal--visible .home-experience li::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .home-about__card.reveal--visible .home-experience li:not(:last-child)::after {
+    transform: scaleY(1);
+  }
 }
 
 .home-experience li,
@@ -2707,5 +2788,12 @@
   .home-about,
   .services-offer-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .home-about__photo {
+    width: 112px;
+    margin-right: 16px;
   }
 }

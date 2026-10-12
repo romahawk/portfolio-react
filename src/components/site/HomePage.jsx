@@ -27,6 +27,21 @@ function TextLink({ href, children }) {
   );
 }
 
+// The experience timeline animates from the oldest role (bottom) up to the
+// newest: each circle lights up when the connector below it finishes drawing.
+const MILESTONE_START_MS = 200;
+const MILESTONE_TOTAL_MS = 1400;
+
+function milestoneTiming(index, count) {
+  const step = MILESTONE_TOTAL_MS / Math.max(count - 1, 1);
+  const fromBottom = count - 1 - index;
+  return {
+    "--milestone-delay": `${Math.round(MILESTONE_START_MS + step * fromBottom)}ms`,
+    "--milestone-step": `${Math.round(step)}ms`,
+    "--segment-delay": `${Math.round(MILESTONE_START_MS + step * (fromBottom - 1))}ms`,
+  };
+}
+
 export default function HomePage() {
   return (
     <div className="market-page market-page--home">
@@ -91,14 +106,26 @@ export default function HomePage() {
         <SectionHeader title={about.title} />
         <div className="home-about">
           <div className="home-about__text reveal">
+            <img
+              src={about.photo.src}
+              alt={about.photo.alt}
+              className="home-about__photo"
+              width="400"
+              height="400"
+              loading="lazy"
+              decoding="async"
+            />
             {about.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
           <div className="home-about__side">
             <article className="home-about__card reveal">
               <h3>{about.experienceTitle}</h3>
               <ol className="home-experience">
-                {experience.map((item) => (
-                  <li key={item.role}>
+                {experience.map((item, index) => (
+                  <li
+                    key={item.role}
+                    style={milestoneTiming(index, experience.length)}
+                  >
                     <strong>{item.role}</strong>
                     <span className="home-experience__meta">{item.org} · {item.dates}</span>
                     <span>{item.line}</span>
