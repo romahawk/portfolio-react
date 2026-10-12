@@ -154,11 +154,32 @@
   margin: auto 0 0;
 }
 
+/* Align title, description and each AI / Rules / You decide row across the three cards:
+   every card spans the same 5 grid rows (title, text, 3 split rows) via subgrid.
+   Without subgrid support, the flex layout above still pins the rows to the card bottom. */
+@supports (grid-template-rows: subgrid) {
+  .services-v2__pattern {
+    display: grid;
+    grid-row: span 5;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+
+  .services-v2__split {
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    row-gap: 8px;
+    margin: 0;
+  }
+}
+
 .services-v2__split-row {
   display: grid;
   grid-template-columns: 84px minmax(0, 1fr);
   gap: 10px;
   align-items: baseline;
+  /* Rows stretch to the tallest row across the cards; keep the text centred in them. */
+  align-content: center;
   padding: 9px 12px;
   border: 1px solid var(--system-border, var(--border));
   border-radius: 8px;

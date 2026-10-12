@@ -11,6 +11,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ### Changed (/services v2)
 - `/services` rebuilt as an evidence-led page in this order: hero (intro call, sample audit, credibility line), 01 Where AI fits (three AI / Rules / You decide patterns), 02 Sample audit (pilot diagram and 8-page PDF), 03 Proof, 04 Engagements (audit and build sprint, price on request), 05 Data and risk, Who you work with, Fit, FAQ (native `details`), closing CTA
+- Pattern cards use CSS subgrid so the title, description and each AI / Rules / You decide row line up across the three cards
 - Removed from `/services`: the scroll hint, the before/after boxes and the process timeline. Shared components are untouched
 - New assets: `public/sample-ai-workflow-audit.pdf` and the pilot diagram in `public/images/services/` (WebP at 800px and full size, PNG original)
 - `contact.calUrl` added. It is an email fallback until the Cal.com link is set
