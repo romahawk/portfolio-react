@@ -122,7 +122,7 @@ export const delivery = {
 
 export const about = {
   title: "Technical PM. 20+ years in regulated industries.",
-  photo: { src: "/images/profile.jpg", alt: "Roman Mazuryk portrait" },
+  photo: { src: "/images/profile-400.webp", alt: "Roman Mazuryk portrait" },
   paragraphs: [
     "I'm Roman, a technical project manager based near Hamburg. I've worked in medical technology, pharma and logistics for over 20 years. For the last 12+ of them I've delivered client-facing system implementations: integrated operating rooms, imaging and PACS/RIS connectivity, and internal logistics systems under GDP and ISO 9001.",
     "I founded and ran Medintegro, a MedTech systems integrator, and delivered 20+ projects for hospitals and clinics with vendors across the EU, US and Asia. Most recently, at FlowLogics, I built and rolled out internal systems that cut manual coordination by an estimated 30%.",
