@@ -5,6 +5,9 @@ import {
   CheckCircle2,
   ClipboardCheck,
   Code2,
+  FileDown,
+  Github,
+  Linkedin,
   Mail,
   Stethoscope,
   Workflow,
@@ -16,16 +19,63 @@ import {
   FeaturePill,
   PageHero,
   ProofCard,
+  RoleFitSection,
   SectionHeader,
   SystemCard,
   WorkflowMap,
 } from "./system/SystemVisuals.jsx";
 import TypewriterTitle from "./common/TypewriterTitle.jsx";
+import ProofCaseCard from "./common/ProofCaseCard.jsx";
 import { getProjectsByCategory, projectCategories } from "../data/projects.js";
 import { useTranslation } from "../context/LangContext.jsx";
 import { deText, localizeGermanValue } from "../locales/germanCopy.js";
 
 const EMAIL = "romazuryk@proton.me";
+const CV_HREF = "/roman-mazuryk-cv.pdf";
+
+const homeCredibility = [
+  "12+ years of system implementation",
+  "20+ systems delivered end to end",
+  "GDP, ISO 9001, DICOM, PACS/RIS",
+  "M.Sc. Computer Science, expected 12/2026",
+];
+
+const homeProofCases = [
+  {
+    title: "Medintegro, OR imaging and PACS/RIS integration",
+    problem: "Hospitals buying integrated ORs and imaging from several vendors needed image flows into PACS and RIS to work from day one.",
+    role: "Founder and Technical Project Manager, senior client lead · 2012 to 2024",
+    work: "Ran 20+ client projects across OR video, imaging and automation, from technical discovery through installation, acceptance testing and training. Configured DICOM image flows, coordinated PACS/RIS connectivity and vendors across three continents.",
+    outcome: "Post-handover queries and open items down an estimated 20 to 25%, through standard workflows, checklists and handover docs. Repeat business from long-term clients.",
+    links: [{ label: "See the OR integration case", href: "/proof-of-work/or-integration" }],
+  },
+  {
+    title: "PharmaLogis, internal systems rollout under GDP and ISO 9001",
+    status: "Demo",
+    problem: "Trading and supply chain processes ran across separate systems and manual alignment, in a GDP and ISO 9001 certified pharma logistics company.",
+    role: "Owned the full project lifecycle · 2024 to 2025",
+    work: "Built and rolled out an internal software solution. Brought a role-based dashboard with order lifecycle tracking to production. Managed integrations and data flows for end-to-end traceability, and kept delivery GDP and ISO 9001 compliant. Public demo (FlowLogix): Flask API, SQLAlchemy data model, role-gated workflows, ETA risk timeline, read-only demo mode.",
+    outcome: "Manual coordination effort down an estimated ~30%, measured by recurring alignment steps removed. Full traceability across the order lifecycle. Live demo and public repo.",
+    links: [
+      { label: "Live demo", href: "https://flowlogics.app/" },
+      { label: "Code", href: "https://github.com/romahawk/flowlogix" },
+    ],
+  },
+  {
+    title: "AI Field Guide, how I run my own builds",
+    role: "Designed and built it myself",
+    work: "For my own builds I also run an AI-assisted delivery system: defined roles, one source of truth, decision logs and review gates.",
+    outcome: "My working reference for building with AI agents: the terms, the practices that hold up, and the tools I actually use across my own projects.",
+    links: [{ label: "How I work with AI", href: "/kb" }],
+  },
+];
+
+const homeDeliverySteps = [
+  { title: "Discovery", text: "Requirements and workflows with clinical, operations and management stakeholders." },
+  { title: "Scope and plan", text: "Delivery scope, vendor alignment, risks and timeline." },
+  { title: "Build and integrate", text: "Configuration, integrations and data flows, acceptance testing with vendors and engineers." },
+  { title: "Rollout and adoption", text: "Go-live, training, handover docs and support." },
+];
 
 const homeWorkflow = [
   { label: "You bring one messy workflow", detail: "A real process with repeated manual work, handoffs, or reporting friction", accent: "ai" },
@@ -273,7 +323,7 @@ const aiFit = {
     "Operations-heavy SMEs",
     "Logistics and service businesses",
     "Local companies with manual admin workflows",
-    "MedTech-adjacent operations",
+    "MedTech, HealthTech, and regulated operations teams",
     "Small teams with scattered knowledge",
     "Founders who need fast workflow prototypes",
   ],
@@ -281,7 +331,7 @@ const aiFit = {
     "Teams looking for a fully managed AI product, not a consultant",
     "Enterprise orgs with existing digital transformation programs",
     "Businesses wanting a chatbot without any workflow or backend change",
-    "Projects requiring regulatory compliance certification (HIPAA, MDR, ISO 13485)",
+    "Teams needing regulatory certification or sign-off rather than workflow implementation",
   ],
 };
 
@@ -307,14 +357,17 @@ const medtechSelectedProof = [
   },
   {
     title: "LiveSurgery",
-    type: "Product concept / MedTech platform prototype",
+    type: "MedTech platform prototype",
     status: "Live demo",
     problem: "Surgical collaboration, recording, remote expertise, and case visibility require structured product logic around clinical workflows.",
-    system: "Created a product concept and prototype direction for surgical video / collaboration workflows.",
-    proof: "Deployed product artifact and workflow prototype direction.",
+    system: "Designed and deployed a prototype for surgical video and collaboration workflows.",
+    proof: "Deployed, publicly accessible prototype.",
     relevance: "Prototype Sprint and decision-support system proof for clinical collaboration workflows.",
     links: [{ label: "Live demo", href: "https://livesurgery-landing.vercel.app/" }],
   },
+];
+
+const medtechConceptDirections = [
   {
     title: "MedTech Implementation Handoff Assistant",
     type: "AI-assisted workflow concept",
@@ -366,19 +419,7 @@ const medtechCapabilityCards = [
 
 const medtechRoleGroups = [
   {
-    title: "Best-fit roles",
-    items: [
-      "Technical Product Manager",
-      "MedTech Product Manager",
-      "Product / Project Manager",
-      "Product Operations",
-      "Implementation / Solutions roles",
-      "Clinical workflow systems roles",
-      "AI-assisted workflow / internal tools roles",
-    ],
-  },
-  {
-    title: "Best-fit environments",
+    title: "Clinical and operational environments",
     items: [
       "MedTech and HealthTech companies",
       "OR integration / digital surgery teams",
@@ -482,7 +523,7 @@ const fullstackSelectedProjects = [
   {
     title: "LiveSurgery",
     type: "MedTech product prototype",
-    description: "A surgical video / collaboration product concept and prototype direction for clinical workflows, remote expertise, case visibility, and MedTech collaboration.",
+    description: "A deployed surgical video / collaboration prototype for clinical workflows, remote expertise, case visibility, and MedTech collaboration.",
     relevance: "Shows MedTech product thinking, clinical workflow understanding, UI/product logic, and full-stack prototype capability.",
     stack: ["React", "FastAPI", "SQLite", "WebSocket", "MedTech UX"],
     links: [
@@ -493,8 +534,8 @@ const fullstackSelectedProjects = [
   },
   {
     title: "Medintegro",
-    type: "MedTech website / product platform prototype",
-    description: "A MedTech-oriented digital presence and product platform concept connected to OR integration, clinical systems, and implementation-heavy medical technology.",
+    type: "MedTech website / product platform",
+    description: "A MedTech-oriented digital presence and product platform for OR integration, clinical systems, and implementation-heavy medical technology.",
     relevance: "Shows domain-specific frontend work, MedTech positioning, product structure, and applied UX/content design.",
     stack: ["Frontend", "Product UX", "MedTech content", "Responsive design"],
     links: [
@@ -505,10 +546,10 @@ const fullstackSelectedProjects = [
   },
   {
     title: "AlphaRhythm",
-    type: "Trading discipline product / SaaS-style product concept",
-    description: "A product concept for structured trade journaling, discipline tracking, risk logic, and decision-review workflows.",
+    type: "Trading discipline product / decision-review system",
+    description: "A deployed product for structured trade journaling, discipline tracking, risk logic, and decision-review workflows.",
     relevance: "Shows product thinking, data-driven UX, user workflow design, landing/app structure, and independent product-building ability.",
-    stack: ["React", "Firebase", "Firestore", "Workflow UX", "Product concept"],
+    stack: ["React", "Firebase", "Firestore", "Workflow UX", "Product design"],
     links: [{ label: "Live", href: "https://alpharhythm.trade" }],
     status: "Live",
   },
@@ -902,24 +943,6 @@ function ProcessTimeline({ steps }) {
   );
 }
 
-function RoleFitSection({ groups }) {
-  const { lang } = useTranslation();
-  const localizedGroups = localizeGermanValue(groups, lang);
-
-  return (
-    <div className="medtech-role-grid">
-      {localizedGroups.map((group) => (
-        <article className="medtech-role-card reveal" key={group.title}>
-          <h3>{group.title}</h3>
-          <ul>
-            {group.items.map((item) => <li key={item}>{item}</li>)}
-          </ul>
-        </article>
-      ))}
-    </div>
-  );
-}
-
 function FitSection({ good, notIdeal }) {
   const { lang } = useTranslation();
   const goodItems = localizeGermanValue(good, lang);
@@ -1058,53 +1081,60 @@ function FullStackCapabilityGrid({ items }) {
 
 export function HomePage() {
   const { lang } = useTranslation();
-  const homeTitle = "AI Workflow Systems for Operations-Heavy SMEs and Regulated Teams";
-  const localizedHomeWorkflow = localizeGermanValue(homeWorkflow, lang);
-  const localizedProofHighlights = localizeGermanValue(proofHighlights, lang);
+  const credibility = localizeGermanValue(homeCredibility, lang);
+  const proofCases = localizeGermanValue(homeProofCases, lang);
 
   return (
     <div className="market-page market-page--home">
       <PageHero
         id="home"
-        eyebrow={deText("AI Implementation Specialist", lang)}
-        title={<TypewriterTitle text={deText(homeTitle, lang)} />}
-        subtitle={deText("I help operations-heavy SMEs turn manual, fragmented workflows into practical AI systems, internal tools, and implementation roadmaps.", lang)}
-        primaryCta={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: deText("View Build Proof", lang), href: "/fullstack" }}
-        scrollTargetId="audit"
-      />
+        eyebrow={deText("Technical PM · Hamburg / Remote (EU)", lang)}
+        title={deText("AI & Software Implementation in MedTech and Regulated Environments", lang)}
+        subtitle={deText("12+ years delivering complex system implementations in MedTech, pharma and logistics. 20+ systems taken from discovery to rollout and user adoption.", lang)}
+        primaryCta={{ label: deText("Download CV", lang), href: CV_HREF, download: true, icon: <FileDown size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: deText("Email me", lang), href: `mailto:${EMAIL}`, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
+        metaLinks={[
+          { label: "LinkedIn", href: "https://www.linkedin.com/in/roman-mazuryk/", external: true, icon: <Linkedin size={14} aria-hidden="true" /> },
+          { label: "GitHub", href: "https://github.com/romahawk", external: true, icon: <Github size={14} aria-hidden="true" /> },
+        ]}
+        scrollTargetId="proof"
+      >
+        <p className="home-hero__meta-line">{deText("EU work authorisation · English C1 · German B1", lang)}</p>
+        <ul className="market-page__pill-list home-credibility" aria-label={deText("Key facts", lang)}>
+          {credibility.map((fact) => <li key={fact}><FeaturePill accent="medtech">{fact}</FeaturePill></li>)}
+        </ul>
+      </PageHero>
 
-      <HomeAuditSection />
-
-      <section className="section container market-page__section">
+      <section id="proof" className="section container market-page__section">
         <SectionHeader
-          eyebrow={deText("Client journey", lang)}
-          title={deText("From one messy workflow to a working system", lang)}
-          text={deText("The method starts with one concrete operational workflow, maps the process and risk, identifies the AI opportunity, and turns the best pilot into something usable.", lang)}
+          title={deText("Selected delivery work", lang)}
+          text={deText("Two delivery projects with the problem, my role, what I did and the result, plus how I run my own builds.", lang)}
         />
-        <WorkflowMap items={localizedHomeWorkflow} accent="ai" title={deText("Messy workflow to working system", lang)} />
-      </section>
-
-      <section className="section container market-page__section">
-        <SectionHeader
-          eyebrow={deText("Proof connected to offers", lang)}
-          title={deText("Proof that turns workflow problems into AI systems", lang)}
-          text={deText("Technology stays secondary here. The important signal is whether a business process can become a visible, reviewable, useful system.", lang)}
-        />
-        <div className="market-page__highlight-grid">
-          {localizedProofHighlights.map((item) => <SystemCard {...item} key={item.title} />)}
+        <div className="medtech-proof-grid">
+          {proofCases.map((item, index) => <ProofCaseCard item={item} index={index} key={item.title} />)}
         </div>
       </section>
 
       <section className="section container market-page__section">
+        <SectionHeader title={deText("How I run delivery", lang)} />
+        <CapabilityGrid items={homeDeliverySteps} />
+        <p className="home-delivery-note reveal">
+          {deText("For my own builds I also run an AI-assisted delivery system: defined roles, one source of truth, decision logs and review gates.", lang)}{" "}
+          <a href="/kb">{deText("How I work with AI", lang)} <ArrowRight size={14} aria-hidden="true" /></a>
+        </p>
+      </section>
+
+      <section className="section container market-page__section">
         <CTAStrip
-          accent="ai"
-          eyebrow={deText("Next step", lang)}
-          title={deText("Have one workflow that feels too manual, scattered, or fragile?", lang)}
-          text={deText("Start with an AI Workflow Opportunity Audit. We identify the bottlenecks, the automation opportunity, the risk boundaries, and the first realistic pilot.", lang)}
-          primary={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
-          secondary={{ label: deText("View Build Proof", lang), href: "/fullstack" }}
+          accent="medtech"
+          title={deText("Hiring for a TPM or implementation role?", lang)}
+          text={deText("The CV has the full picture. Happy to talk about a role in Hamburg or remote across the EU.", lang)}
+          primary={{ label: deText("Download CV", lang), href: CV_HREF }}
+          secondary={{ label: deText("Email me", lang), href: `mailto:${EMAIL}` }}
         />
+        <p className="home-services-link">
+          <a href="/ai">{deText("Looking for project support instead? See services", lang)} <ArrowRight size={14} aria-hidden="true" /></a>
+        </p>
       </section>
     </div>
   );
@@ -1120,6 +1150,8 @@ export function AIPage() {
   const localizedAiProcess = localizeGermanValue(aiProcess, lang);
   const localizedAiFit = localizeGermanValue(aiFit, lang);
   const localizedAiBeforeAfter = localizeGermanValue(aiBeforeAfter, lang);
+  const localizedHomeWorkflow = localizeGermanValue(homeWorkflow, lang);
+  const localizedProofHighlights = localizeGermanValue(proofHighlights, lang);
 
   return (
     <div className="market-page market-page--ai">
@@ -1216,6 +1248,29 @@ export function AIPage() {
         <ProofGrid projects={projects} accent="ai" />
       </section>
 
+      {/* Moved from the homepage in the recruiter-first release. */}
+      <HomeAuditSection />
+
+      <section className="section container market-page__section">
+        <SectionHeader
+          eyebrow={deText("Client journey", lang)}
+          title={deText("From one messy workflow to a working system", lang)}
+          text={deText("The method starts with one concrete operational workflow, maps the process and risk, identifies the AI opportunity, and turns the best pilot into something usable.", lang)}
+        />
+        <WorkflowMap items={localizedHomeWorkflow} accent="ai" title={deText("Messy workflow to working system", lang)} />
+      </section>
+
+      <section className="section container market-page__section">
+        <SectionHeader
+          eyebrow={deText("Proof connected to offers", lang)}
+          title={deText("Proof that turns workflow problems into AI systems", lang)}
+          text={deText("Technology stays secondary here. The important signal is whether a business process can become a visible, reviewable, useful system.", lang)}
+        />
+        <div className="market-page__highlight-grid">
+          {localizedProofHighlights.map((item) => <SystemCard {...item} key={item.title} />)}
+        </div>
+      </section>
+
       <section className="section container market-page__section">
         <CTAStrip
           accent="ai"
@@ -1235,6 +1290,7 @@ export function MedTechPage() {
   const medtechTitle = "MedTech and Regulated Operations Proof";
   const localizedMedtechHeroWorkflow = localizeGermanValue(medtechHeroWorkflow, lang);
   const localizedMedtechSelectedProof = localizeGermanValue(medtechSelectedProof, lang);
+  const localizedMedtechConceptDirections = localizeGermanValue(medtechConceptDirections, lang);
   const localizedMedtechCapabilityCards = localizeGermanValue(medtechCapabilityCards, lang);
   const localizedMedtechRoleGroups = localizeGermanValue(medtechRoleGroups, lang);
 
@@ -1251,17 +1307,17 @@ export function MedTechPage() {
         scrollTargetId="medtech-role-fit"
       >
         <div className="market-page__hero-extra medtech-hero-extra">
-          <p className="medtech-credibility-line">{deText("10+ years across MedTech, OR integration, clinical equipment workflows, supplier coordination, training, handover, and healthcare operations.", lang)}</p>
+          <p className="medtech-credibility-line">{deText("12+ years across MedTech, OR integration, clinical equipment workflows, supplier coordination, training, handover, and healthcare operations.", lang)}</p>
           <WorkflowMap items={localizedMedtechHeroWorkflow} accent="medtech" title={deText("Clinical need to workflow system", lang)} />
         </div>
       </PageHero>
 
-      {/* Section 2: Role Fit — moved up for fast recruiter scan */}
+      {/* Section 2: Environment Fit — buyer-facing; role fit lives on /about */}
       <section id="medtech-role-fit" className="section container market-page__section">
         <SectionHeader
-          eyebrow={deText("Role fit", lang)}
-          title={deText("Best-fit roles and environments", lang)}
-          text={deText("Clear fit for teams where clinical workflow understanding, implementation reality, and product/project structure need to meet.", lang)}
+          eyebrow={deText("Environment fit", lang)}
+          title={deText("Best-fit environments", lang)}
+          text={deText("Clear fit for teams where clinical workflow understanding and implementation reality decide whether an AI system gets adopted.", lang)}
           headingAccent="medtech"
         />
         <RoleFitSection groups={localizedMedtechRoleGroups} />
@@ -1281,11 +1337,23 @@ export function MedTechPage() {
       <section id="medtech-proof" className="section container market-page__section">
         <SectionHeader
           eyebrow={deText("Selected proof", lang)}
-          title={deText("Reference work and workflow concepts", lang)}
-          text={deText("A focused selection of MedTech and workflow-system projects that connect implementation experience with product thinking and AI-assisted delivery.", lang)}
+          title={deText("Delivered work and implementation proof", lang)}
+          text={deText("Work that exists: real MedTech implementation experience and a deployed prototype. Designs that have not been built are kept in a separate section below.", lang)}
         />
         <div className="medtech-proof-grid">
           {localizedMedtechSelectedProof.map((item, index) => <SelectedProofCard item={item} index={index} key={item.title} />)}
+        </div>
+      </section>
+
+      {/* Section 4b: Concepts — held apart so shipped work is not read at the same weight */}
+      <section id="medtech-concepts" className="section container market-page__section">
+        <SectionHeader
+          eyebrow={deText("Concepts and directions", lang)}
+          title={deText("Designed, not yet built", lang)}
+          text={deText("Workflow designs and system specifications. They show how a problem would be structured — not what has shipped.", lang)}
+        />
+        <div className="medtech-proof-grid medtech-proof-grid--concepts">
+          {localizedMedtechConceptDirections.map((item, index) => <SelectedProofCard item={item} index={index + 2} key={item.title} />)}
         </div>
       </section>
 
@@ -1305,7 +1373,7 @@ export function MedTechPage() {
           accent="medtech"
           eyebrow={deText("Next step", lang)}
           title={deText("You need AI workflow work that understands clinical reality.", lang)}
-          text={deText("Handovers fail, documentation gaps hide risks, and stakeholder coordination breaks without domain understanding. That is what 10+ years of MedTech implementation adds to AI workflow work.", lang)}
+          text={deText("Handovers fail, documentation gaps hide risks, and stakeholder coordination breaks without domain understanding. That is what 12+ years of MedTech implementation adds to AI workflow work.", lang)}
           primary={{ label: deText("Book an AI Workflow Audit", lang), href: `mailto:${EMAIL}?subject=AI%20Workflow%20Audit%20Request` }}
           secondary={{ label: deText("Explore OR Integration Proof", lang), href: "/proof-of-work/or-integration" }}
         />

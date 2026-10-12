@@ -201,3 +201,15 @@
   }
   .footer__tagline { max-width: 100%; }
 }
+
+/* Light theme: footer text and accents darkened to meet WCAG AA (4.5:1) on the light footer background. */
+[data-theme="light"] .footer__tagline,
+[data-theme="light"] .footer__nav-link,
+[data-theme="light"] .footer__copy {
+  color: #56626f;
+}
+
+[data-theme="light"] .footer__col-heading,
+[data-theme="light"] .footer__cta-btn {
+  color: #11702f;
+}

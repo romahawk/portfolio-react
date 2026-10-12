@@ -9,12 +9,56 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed (two-page site)
+- Site collapsed to two pages: `/` (portfolio landing for recruiters: hero, facts, Work, Delivery, About, Contact) and `/services` (AI workflow offer: problem, 3 offers, process, proof links, fit, contact). `/kb` and `/proof-of-work/or-integration` stay as detail pages with the shared header and footer
+- Single content source: `src/content/site.js` holds identity, facts, cases, other builds, delivery, about, experience, education, languages, location, contact, services copy and SEO. New `components/site/HomePage.jsx` and `components/site/ServicesPage.jsx` hold no copy
+- Identity is now the CV headline: "Technical Project Manager, system implementation in regulated environments". Contact email is romazuryk@gmail.com everywhere on the live pages
+- Navbar: Work, Delivery, About, Contact (anchors, `/#id` from other pages), Services, theme toggle. Language switcher and "Work with me" CTA removed. Footer: tagline, same nav, LinkedIn, GitHub, email, CV
+- German removed: no language switcher, English-only rendering; a stored `lang=de` is ignored. `de.js` and `germanCopy.js` are no longer imported and are deleted in the cleanup PR
+- `en.js` is no longer in the main bundle (only the OR page reads it). Main JS: 109.5 kB to 66.2 kB gzip
+- OR page: CTAs point to `/#work`, the CV and email instead of retired routes; the "bridge" and closing copy no longer present an AI-consulting identity
+- `main.css` no longer imports the stylesheets of retired pages (16 files, kept on disk for the cleanup PR). CSS: 219 kB to 126 kB (34.4 kB to 20.5 kB gzip); `/`, `/services`, `/kb` and the OR page are pixel-identical at 390/1366 in both themes
+- AI Field Guide card: added a Problem line and expanded What I did / Outcome, using wording from `/kb`; the section intro is back to Part B ("Three projects, each with the problem, my role, what I did and the result.")
+- Proof cards: status badge moved to the right of the title, and at 3 columns each card is a CSS subgrid so titles and the Problem / My role / What I did / Outcome rows align across cards (a card without Problem keeps an empty row)
+- `/` and `/services` page components load eagerly (one less sequential request before the hero renders); `/kb` and the OR page stay lazy
+- Light-theme footer text and accent colours darkened to meet WCAG AA
+- Sitemap reduced to `/`, `/services`, `/kb`, `/proof-of-work/or-integration`; home and services meta (title, description, OG, Twitter) come from `site.js`
+
+### Added (two-page site)
+- Permanent redirects in `vercel.json`: `/ai`, `/ai-workflow`, `/collaborate`, `/medtech-ai-systems/*`, `/services/*` to `/services`; `/medtech`, `/fullstack` to `/#work`; `/about` to `/#about`; `/contact` to `/#contact`. Retired Vite inputs removed (their HTML files and components are deleted in the cleanup PR)
+- `scripts/check-consistency.mjs`, run as `prebuild`: fails the build on retired role labels, "10+ years" / "13+ years", "proton.me", or an em dash in `site.js`. Files awaiting deletion are listed in the script and skipped until the cleanup PR
+
+### Changed (recruiter-first homepage)
+- Homepage rebuilt for hiring teams: static H1 (no typewriter) "AI & Software Implementation in MedTech and Regulated Environments", Technical PM eyebrow, Download CV / Email me CTAs, LinkedIn and GitHub links, 4-fact credibility strip, "Selected delivery work" (Medintegro, PharmaLogis with the FlowLogix demo, AI Field Guide), "How I run delivery" with a `/kb` link, and a hiring CTA with a small link to services
+- New `common/ProofCaseCard.jsx` (Problem / My role / What I did / Outcome), reusing the `medtech-proof-card` styles and `StatusBadge`
+- `/ai` (also `/services`, `/collaborate`): now holds the AI Workflow Audit section, the "Client journey" map and the "Proof connected to offers" cards moved from the homepage, above its existing closing CTA. Nothing was deleted
+- `/about`: static title "Technical PM. 20+ years in regulated industries.", new body copy and a facts block (education, languages, location). Hero CTAs are now Download CV / Email me. "10+ years" pills replaced with the CV facts
+- Identity: footer headline, tagline and copyright line, home meta (`useOgMeta.js`, `index.html`) and DE equivalents now read "Technical PM, AI & Software Implementation". The nav and footer label for `/ai` is now "Services" ("Leistungen" in DE)
+- Facts aligned with the CV: "10+ years" changed to "12+ years" across MedTech copy; degree is now "M.Sc. Computer Science (Specialization in Software Engineering)"
+- German copy: 22 new entries in `germanCopy.js` for the homepage hero, facts, card titles and CTAs
+
+### Added
+- `/kb` — AI Field Guide: five pillars (Harness, Skills, Memory, Tools, Cost) with definitions, best practices, pitfalls, per-project applications (status-labelled In use / In build; plans are not listed until built), tool verdicts (Use / Try / Skip), a project × pillar matrix and a searchable glossary
+- Content lives in `src/data/aiKnowledgeBase.js` (single source; matrix and glossary are generated from it). No new dependencies
+- New entry `kb/index.html`, Vite input, Vercel rewrite, sitemap entry, OG meta and footer link. Not added to the header nav (it already wraps at 1366px); page copy is English-only
+
 ### Changed
+- `/ai` fit section: replaced the "Projects requiring regulatory compliance certification (HIPAA, MDR, ISO 13485)" exclusion with a scope statement ("Teams needing regulatory certification or sign-off rather than workflow implementation"); good-fit list now reads "MedTech, HealthTech, and regulated operations teams"
+- `/medtech`: "Best-fit roles" group moved to `/about` — the trust page is buyer-facing, the role list is for hiring teams. Section 2 is now "Environment fit" / "Best-fit environments"
+- `/about`: new Role Fit section after the About block, rendering the relocated role list
+- `/medtech` proof: split into "Delivered work and implementation proof" (OR Integration, LiveSurgery) and a new, visually demoted "Concepts and directions" section (Handoff Assistant, Workflow OS) so unbuilt designs no longer read at the same weight as delivered work
+- `/fullstack` and `/medtech` copy: removed "concept" / "prototype direction" hedges from items that are deployed and linked (LiveSurgery, Medintegro, AlphaRhythm)
+- `RoleFitSection` moved from `MarketPages.jsx` into `system/SystemVisuals.jsx` so `/about` can use it without pulling in the MarketPages chunk
+- `.medtech-role-grid` switched to `auto-fit` columns; new `.medtech-proof-grid--concepts` modifier (dashed border, muted accent, tighter padding)
+- German copy: 25 new entries in `germanCopy.js` for the strings above
 - `/ai` page: rewrote hero title/subtitle and secondary CTA copy, moved the "I do not sell broad AI experiments" claim from the hero into the workflow-intelligence section, renamed "Process" section to "How a workflow engagement works", trimmed redundant section subtext, split proof-of-work into its own "07 / Proof" section
 - `/ai` fit section: good/not-ideal list items now show a check/x icon (`CheckCircle2`/`XCircle`) instead of a plain bullet
 - `market-page__claim` blockquote restyled (accent left border, italic, larger max-width-constrained text)
 
 ### Fixed
+- `/kb` — removed all 11 `Planned` project applications and the MedTech Recruiter Intelligence API project entry; the page now lists only work that exists. Matrix hides projects with no listed application (data kept in `kbProjects`). `kbMeta.lastReviewed` → 30 Sep 2026. Light-mode "In use" / "Use" pill green darkened (`--kb-memory` #1a8a42 → #167a3a) to pass WCAG AA contrast (4.37 → 5.4:1)
+- Footer — nav labels now use the same `nav.*` keys as the header (incl. `nav.kb`), fixing labels that did not match their links (e.g. `/ai` showed "Proof of Work"). Removed the index-matched `site.footer.navLinks` arrays from EN/DE
+- `.gitattributes` — `*.sh` and `.githooks/*` pinned to LF so the commit-msg hook runs in Linux/macOS shells
 - `ai/index.html`, `medtech/index.html`, `fullstack/index.html`, `services/index.html`, `collaborate/index.html`, `ai-workflow/index.html`, `proof-of-work/or-integration/index.html`, `medtech-ai-systems/clinical-evidence-workflow/index.html` — these 8 route entry files had no Google Fonts `<link>`, no `.app-shell-header` skeleton, and no scroll-restoration script at all (only the root `index.html` had them). In production, a direct/fresh visit to any page other than home rendered in fallback system fonts permanently. In local dev this was invisible because client-side navigation stays on whichever single `index.html` first loaded. All 8 entries now match root's `<head>`/`<body>` font-loading and app-shell markup.
 - `src/App.jsx` — `Footer`/`BackToTop` now render inside the same `Suspense` boundary as the lazy-loaded page content instead of next to it. Previously they mounted immediately while the page's JS chunk was still loading, so the footer painted right below the navbar and then jumped ~5000px once the real content arrived — the actual cause of the flaky footer CLS (up to 0.93) in Lighthouse CI. Verified locally: CLS is now 0 across 5 consecutive runs (was 0/0.84/0.93, non-deterministic).
 - `index.html` — Google Fonts (Space Grotesk / Inter) now load with `display=optional` instead of `display=swap` as a secondary safeguard against webfont-swap reflow.

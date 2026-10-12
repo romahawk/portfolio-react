@@ -37,12 +37,16 @@ const MEDTECH_MILESTONES = [
   "Hospital equipment handover and training projects",
 ];
 
-const TECH_FOUNDATION = [
-  "Master's in Software Development",
-  "Applied AI automation and workflow systems",
-  "AI-assisted development",
-  "Full-stack product implementation",
-  "Practical learning via prototypes and demos",
+const ABOUT_BODY = [
+  "I founded and ran Medintegro, a MedTech systems integrator, and delivered 20+ projects for hospitals and clinics with vendors across the EU, US and Asia. Most recently, at PharmaLogis, I built and rolled out internal systems that cut manual coordination by an estimated 30%.",
+  "I know APIs and data flows well enough to steer engineering teams, and clinical and operational work well enough to run discovery, workshops and go-live. I also build software myself, including LLM-based workflows.",
+  "I'm looking for a permanent TPM or implementation role in Hamburg or remote across the EU.",
+];
+
+const ABOUT_FACTS = [
+  { label: "Education", value: "M.Sc. Computer Science (Specialization in Software Engineering) · Woolf University / Neoversity · expected 12/2026" },
+  { label: "Languages", value: "Ukrainian and Russian (native) · English C1 · German B1, certification exam Dec 2026" },
+  { label: "Location", value: "Hamburg area · EU work authorisation · open to remote across the EU" },
 ];
 
 function CheckList({ items }) {
@@ -66,7 +70,8 @@ export default function About() {
   const implementationAreas = IMPLEMENTATION_AREAS;
   const experienceGives = EXPERIENCE_GIVES;
   const milestones = localizeGermanValue(MEDTECH_MILESTONES, lang);
-  const techFoundation = localizeGermanValue(TECH_FOUNDATION, lang);
+  const body = localizeGermanValue(ABOUT_BODY, lang);
+  const facts = localizeGermanValue(ABOUT_FACTS, lang);
 
   return (
     <section id="about" className="section container about">
@@ -90,25 +95,22 @@ export default function About() {
               <Layers size={18} className="icon about__icon" />
               {deText("A practical operator foundation", lang)}
             </h3>
-            <p className="about__text">{deText("My work sits between operational reality and product structure: understanding where workflows break, then designing AI-assisted systems that make the work clearer, reviewable, and easier to execute.", lang)}</p>
+            {body.map((paragraph) => <p className="about__text" key={paragraph}>{paragraph}</p>)}
           </div>
         </div>
 
         <div className="about__row reveal">
           <div className="about__section-card about__section-card--foundation">
-            <div className="about__eyebrow">{deText("Technical foundation", lang)}</div>
+            <div className="about__eyebrow">{deText("Facts", lang)}</div>
             <h3 className="about__heading">
               <Code2 size={18} className="icon about__icon" />
-              {deText("Master's in Software Development, applied to AI workflow delivery", lang)}
+              {deText("Education, languages and location", lang)}
             </h3>
-            <p className="about__text">
-              {deText("Alongside hands-on product and implementation work, I'm completing a Master's in Software Development and continuously deepening my applied AI skills across automation, AI-assisted development, workflow systems, and practical deployment.", lang)}
-            </p>
-            <div className="about__foundation-list" aria-label="Technical foundation and AI learning areas">
-              {techFoundation.map((item) => (
-                <span className="about__foundation-item" key={item}>{item}</span>
-              ))}
-            </div>
+            {facts.map((fact) => (
+              <p className="about__text" key={fact.label}>
+                <strong>{fact.label}:</strong> {fact.value}
+              </p>
+            ))}
           </div>
         </div>
 

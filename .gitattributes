@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Shell scripts and git hooks must keep LF endings; with CRLF they fail on Linux/macOS
+*.sh text eol=lf
+.githooks/* text eol=lf

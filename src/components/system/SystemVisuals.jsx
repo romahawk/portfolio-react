@@ -232,3 +232,18 @@ export function CTAStrip({ eyebrow, title, text, primary, secondary, accent = "a
     </div>
   );
 }
+
+export function RoleFitSection({ groups }) {
+  return (
+    <div className="medtech-role-grid">
+      {groups.map((group) => (
+        <article className="medtech-role-card reveal" key={group.title}>
+          <h3>{group.title}</h3>
+          <ul>
+            {group.items.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  );
+}
