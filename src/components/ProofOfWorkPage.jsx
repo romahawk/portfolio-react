@@ -126,7 +126,7 @@ const SECONDARY_MEDTECH_IMPLEMENTATION = [
 
 const ARCHIVE_ITEMS = [
   {
-    title: "FlowLogix",
+    title: "FlowLogics",
     status: "Built System",
     note: "Operations visibility dashboard for status, handoffs, ETA risk, and accountability.",
     proves: "Dashboard architecture, operational state modeling, and decision-support UX.",

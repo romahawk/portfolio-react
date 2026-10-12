@@ -73,7 +73,7 @@ const sprints = [
   },
 ];
 
-export default function FlowLogixCaseStudy() {
+export default function FlowLogicsCaseStudy() {
   const [sprintsOpen, setSprintsOpen] = useState(false);
 
   return (

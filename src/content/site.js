@@ -71,11 +71,11 @@ export const cases = [
     links: [{ label: "See the OR integration case", href: "/proof-of-work/or-integration" }],
   },
   {
-    title: "PharmaLogis, internal systems rollout under GDP and ISO 9001",
+    title: "FlowLogics, internal systems rollout under GDP and ISO 9001",
     status: "Demo",
     problem: "Trading and supply chain processes ran across separate systems and manual alignment, in a GDP and ISO 9001 certified pharma logistics company.",
     role: "Owned the full project lifecycle · 2024 to 2025",
-    work: "Built and rolled out an internal software solution. Brought a role-based dashboard with order lifecycle tracking to production. Managed integrations and data flows for end-to-end traceability, and kept delivery GDP and ISO 9001 compliant. Public demo (FlowLogix): Flask API, SQLAlchemy data model, role-gated workflows, ETA risk timeline, read-only demo mode.",
+    work: "Built and rolled out an internal software solution. Brought a role-based dashboard with order lifecycle tracking to production. Managed integrations and data flows for end-to-end traceability, and kept delivery GDP and ISO 9001 compliant. Public demo (FlowLogics): Flask API, SQLAlchemy data model, role-gated workflows, ETA risk timeline, read-only demo mode.",
     outcome: "Manual coordination effort down an estimated ~30%, measured by recurring alignment steps removed. Full traceability across the order lifecycle. Live demo and public repo.",
     links: [
       { label: "Live demo", href: "https://flowlogics.app/" },
@@ -92,7 +92,7 @@ export const cases = [
   },
 ];
 
-// Max 3 items. FlowLogix is already in the PharmaLogis card.
+// Max 3 items. FlowLogics already has its own delivery card.
 export const otherBuilds = [
   {
     status: "Live",
@@ -124,7 +124,7 @@ export const about = {
   title: "Technical PM. 20+ years in regulated industries.",
   paragraphs: [
     "I'm Roman, a technical project manager based near Hamburg. I've worked in medical technology, pharma and logistics for over 20 years. For the last 12+ of them I've delivered client-facing system implementations: integrated operating rooms, imaging and PACS/RIS connectivity, and internal logistics systems under GDP and ISO 9001.",
-    "I founded and ran Medintegro, a MedTech systems integrator, and delivered 20+ projects for hospitals and clinics with vendors across the EU, US and Asia. Most recently, at PharmaLogis, I built and rolled out internal systems that cut manual coordination by an estimated 30%.",
+    "I founded and ran Medintegro, a MedTech systems integrator, and delivered 20+ projects for hospitals and clinics with vendors across the EU, US and Asia. Most recently, at FlowLogics, I built and rolled out internal systems that cut manual coordination by an estimated 30%.",
     "I know APIs and data flows well enough to steer engineering teams, and clinical and operational work well enough to run discovery, workshops and go-live. I also build software myself, including LLM-based workflows.",
     "I'm looking for a permanent TPM or implementation role in Hamburg or remote across the EU.",
   ],
@@ -135,7 +135,7 @@ export const about = {
 // From the CV, newest first.
 export const experience = [
   { role: "Independent Project Manager and IT Consultant", org: "mazuryk.dev, Hamburg", dates: "01/2026 to present", line: "Project-based consulting for mid-sized companies on process digitalisation and internal systems." },
-  { role: "Commercial Specialist, Freight Forwarding and Logistics", org: "PharmaLogis GmbH, Reinbek near Hamburg", dates: "08/2024 to 10/2025", line: "Introduction of internal systems and process digitalisation across operations." },
+  { role: "Commercial Specialist, Freight Forwarding and Logistics", org: "FlowLogics, Reinbek near Hamburg", dates: "08/2024 to 10/2025", line: "Introduction of internal systems and process digitalisation across operations." },
   { role: "Founder and Technical Project Manager", org: "Medintegro, Kyiv", dates: "12/2012 to 05/2024", line: "Delivered 20+ client-facing system projects across OR video, imaging and automation." },
   { role: "CEO and Head of International Business Development", org: "Acropolus Biosciences, Kyiv", dates: "06/2011 to 08/2012", line: "Full P&L and operational ownership of a business with 70+ employees." },
   { role: "Sales and Project Roles, Pharma and Medical Technology", org: "International manufacturers and distributors, Kyiv", dates: "2005 to 2011", line: "Built the domain foundation in regulated environments." },

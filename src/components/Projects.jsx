@@ -26,7 +26,7 @@ const CARD_ICONS = {
 
 const ClinicalEvidenceCaseStudy = React.lazy(() => import("./case-studies/ClinicalEvidenceCaseStudy.jsx"));
 const LivesurgeryCaseStudy = React.lazy(() => import("./case-studies/LivesurgeryCaseStudy.jsx"));
-const FlowLogixCaseStudy = React.lazy(() => import("./case-studies/FlowLogixCaseStudy.jsx"));
+const FlowLogicsCaseStudy = React.lazy(() => import("./case-studies/FlowLogicsCaseStudy.jsx"));
 const VendorFreeSupplyCaseStudy = React.lazy(() => import("./case-studies/VendorFreeSupplyCaseStudy.jsx"));
 const AlphorythmCaseStudy = React.lazy(() => import("./case-studies/AlphorythmCaseStudy.jsx"));
 const JobSprintCaseStudy = React.lazy(() => import("./case-studies/JobSprintCaseStudy.jsx"));
@@ -34,7 +34,7 @@ const JobSprintCaseStudy = React.lazy(() => import("./case-studies/JobSprintCase
 const CASE_STUDY_COMPONENTS = {
   "clinical-evidence-workflow": ClinicalEvidenceCaseStudy,
   livesurgery: LivesurgeryCaseStudy,
-  flowlogics: FlowLogixCaseStudy,
+  flowlogics: FlowLogicsCaseStudy,
   "vendor-free-supply-tracker": VendorFreeSupplyCaseStudy,
   alphorythm: AlphorythmCaseStudy,
   jobsprint: JobSprintCaseStudy,

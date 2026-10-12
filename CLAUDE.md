@@ -90,7 +90,7 @@ All 6 are loaded via `React.lazy()` + `<Suspense>` — never in the initial bund
 |------|---------|
 | `LivesurgeryCaseStudy.jsx` | Real-time surgical collaboration platform |
 | `SmartShooterCaseStudy.jsx` | Training analytics and shooting log |
-| `FlowLogixCaseStudy.jsx` | Supply chain visibility platform |
+| `FlowLogicsCaseStudy.jsx` | Supply chain visibility platform |
 | `AlphorythmCaseStudy.jsx` | Strategy analytics system |
 | `PortfolioCaseStudy.jsx` | This portfolio (meta) |
 | `MedintegroCaseStudy.jsx` | B2B MedTech platform rebuild |
@@ -285,6 +285,27 @@ refactor/<description>   # internal change, no behavior change
 
 Never work directly on `main`. Always branch from `main`.
 
+## Pull Requests (one step: feature branch → `main`)
+
+There is no `dev` integration branch. Each feature branch gets **one** PR, straight into `main`.
+Vercel builds a preview for every PR, and that preview is the staging check.
+
+Open the PR from the session, with the body already written:
+
+```bash
+npm run lint && npm run build
+git push -u origin <branch>
+gh pr create --base main --title "<type>: <summary>" --body-file <filled-template.md>
+```
+
+- The body follows `.github/pull_request_template.md` with every section filled in: What and why,
+  Changes, Verification (only what was actually run), How to test (steps on the Vercel preview),
+  **Not tested**, Quality gates, Docs, Screenshots, Notes for review.
+- **Never `gh pr create --fill`.** It builds the body from commit messages and skips the template.
+- CI (`.github/workflows/ci.yml`: lint, consistency check, build, already-in-main) and Lighthouse CI
+  run on the PR. Merge only when both are green: squash-merge, then delete the branch.
+- Never keep committing to a branch after its PR has merged. Branch again from `main`.
+
 ---
 
 ## Commit Format
@@ -335,8 +356,8 @@ LINT    → npm run lint (fix all errors)
 BUILD   → npm run build (must exit 0)
 QA      → test on mobile, click through core loop (hero → case study → contact)
 ARTIFACT → screenshot or Loom for every visible change
-PR      → fill PR template, update CHANGELOG, link issue
-SHIP    → merge to main, verify Vercel deploy, close issue
+PR      → gh pr create --base main with the filled template body, CHANGELOG updated, issue linked
+SHIP    → CI + Lighthouse green → squash-merge to main, delete branch, verify Vercel deploy, close issue
 PARK    → leave comment on next open issue: "Next session starts here: [exact action]"
 ```
 

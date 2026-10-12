@@ -305,7 +305,7 @@ export default {
           "Surgical workflow intelligence for multi-source OR video, session structuring, education, and surgical collaboration.",
       },
       flowlogics: {
-        title: "FlowLogix",
+        title: "FlowLogics",
         summary:
           "Operations visibility dashboard for workflow visibility and operational decision support.",
       },
