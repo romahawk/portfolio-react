@@ -1,33 +1,18 @@
 import React from "react";
-import { LangProvider } from "./context/LangContext.jsx";
 import { useScrollReveal } from "./hooks/useScrollReveal.js";
 import { useOgMeta } from "./hooks/useOgMeta.js";
 import { useTheme } from "./hooks/useTheme.js";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import BackToTop from "./components/BackToTop.jsx";
+// The two main pages are small and render the LCP element, so they load eagerly; detail pages stay lazy.
+import HomePage from "./components/site/HomePage.jsx";
+import ServicesPage from "./components/site/ServicesPage.jsx";
 
 const Analytics = React.lazy(() =>
   import("@vercel/analytics/react").then((module) => ({ default: module.Analytics })),
 );
-const HomePage = React.lazy(() =>
-  import("./components/MarketPages.jsx").then((module) => ({ default: module.HomePage })),
-);
-const AIPage = React.lazy(() =>
-  import("./components/MarketPages.jsx").then((module) => ({ default: module.AIPage })),
-);
-const MedTechPage = React.lazy(() =>
-  import("./components/MarketPages.jsx").then((module) => ({ default: module.MedTechPage })),
-);
-const FullStackPage = React.lazy(() =>
-  import("./components/MarketPages.jsx").then((module) => ({ default: module.FullStackPage })),
-);
-const AboutPage = React.lazy(() => import("./components/AboutPage.jsx"));
-const ContactPage = React.lazy(() => import("./components/ContactPage.jsx"));
 const ORIntegrationProofPage = React.lazy(() => import("./components/ORIntegrationProofPage.jsx"));
-const AIWorkflowLibrary = React.lazy(() => import("./components/AIWorkflowLibrary.jsx"));
-const AIWorkflowDetailPage = React.lazy(() => import("./components/AIWorkflowDetailPage.jsx"));
-const ClinicalEvidenceWorkflowPage = React.lazy(() => import("./components/ClinicalEvidenceWorkflowPage.jsx"));
 const KnowledgeBasePage = React.lazy(() => import("./components/KnowledgeBasePage.jsx"));
 
 function DeferredAnalytics() {
@@ -52,35 +37,18 @@ function DeferredAnalytics() {
   );
 }
 
-const CLINICAL_EVIDENCE_PATH = "/medtech-ai-systems/clinical-evidence-workflow";
-const AI_WORKFLOW_PATH = "/ai-workflow";
+// Two pages (/ and /services) plus two detail pages. Every other route is redirected in vercel.json.
+const SERVICES_PATH = "/services";
 const KB_PATH = "/kb";
 const OR_INTEGRATION_PROOF_PATH = "/proof-of-work/or-integration";
-const ROUTE_SECTION_MAP = {
-  "/about": "about",
-  "/contact": "contact",
-};
 
 function getPage() {
   if (typeof window === "undefined") return "home";
   const path = window.location.pathname.replace(/\/+$/, "") || "/";
-  if (path === "/ai" || path === "/services" || path === "/collaborate") return "ai";
-  if (path === "/medtech") return "medtech";
-  if (path === "/fullstack") return "fullstack";
-  if (path === "/about") return "about";
-  if (path === "/contact") return "contact";
+  if (path === SERVICES_PATH) return "services";
   if (path === OR_INTEGRATION_PROOF_PATH) return "or-integration-proof";
-  if (path === AI_WORKFLOW_PATH) return "ai-workflow";
-  if (path.startsWith(`${AI_WORKFLOW_PATH}/`)) return "ai-workflow-detail";
-  if (path === CLINICAL_EVIDENCE_PATH) return "clinical-evidence-workflow";
   if (path === KB_PATH || path.startsWith(`${KB_PATH}/`)) return "kb";
   return "home";
-}
-
-function getWorkflowSlug() {
-  if (typeof window === "undefined") return "";
-  const path = window.location.pathname.replace(/\/+$/, "") || "/";
-  return path.startsWith(`${AI_WORKFLOW_PATH}/`) ? path.slice(`${AI_WORKFLOW_PATH}/`.length) : "";
 }
 
 function AppInner() {
@@ -108,16 +76,23 @@ function AppInner() {
   }, []);
 
   React.useEffect(() => {
-    const path = window.location.pathname.replace(/\/+$/, "") || "/";
-    const id = window.location.hash.slice(1) || ROUTE_SECTION_MAP[path];
+    const id = window.location.hash.slice(1);
     if (!id) {
       window.requestAnimationFrame(() => window.scrollTo(0, 0));
       return;
     }
     if (page !== "home") return;
-    window.requestAnimationFrame(() => {
-      document.getElementById(id)?.scrollIntoView();
-    });
+    // The page is lazy-loaded, so wait for the target section to exist before scrolling.
+    let tries = 0;
+    const scrollToTarget = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView();
+        return;
+      }
+      if (tries++ < 40) window.requestAnimationFrame(scrollToTarget);
+    };
+    window.requestAnimationFrame(scrollToTarget);
   }, [page]);
 
   return (
@@ -126,24 +101,10 @@ function AppInner() {
       <Navbar themeMode={themeMode} onThemeChange={setThemeMode} />
       <React.Suspense fallback={null}>
         <main id="main">
-          {page === "ai" ? (
-            <AIPage />
-          ) : page === "medtech" ? (
-            <MedTechPage />
-          ) : page === "fullstack" ? (
-            <FullStackPage />
-          ) : page === "about" ? (
-            <AboutPage />
-          ) : page === "contact" ? (
-            <ContactPage />
+          {page === "services" ? (
+            <ServicesPage />
           ) : page === "or-integration-proof" ? (
             <ORIntegrationProofPage />
-          ) : page === "ai-workflow" ? (
-            <AIWorkflowLibrary />
-          ) : page === "ai-workflow-detail" ? (
-            <AIWorkflowDetailPage slug={getWorkflowSlug()} />
-          ) : page === "clinical-evidence-workflow" ? (
-            <ClinicalEvidenceWorkflowPage />
           ) : page === "kb" ? (
             <KnowledgeBasePage />
           ) : (
@@ -160,9 +121,7 @@ function AppInner() {
 
 function App() {
   return (
-    <LangProvider>
-      <AppInner />
-    </LangProvider>
+    <AppInner />
   );
 }
 

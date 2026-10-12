@@ -2,46 +2,134 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "redirects": [
+    {
+      "source": "/ai",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/ai/(.*)",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/(.*)",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/collaborate",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/collaborate/(.*)",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/medtech-ai-systems/(.*)",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/services/(.*)",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/medtech",
+      "destination": "/#work",
+      "permanent": true
+    },
+    {
+      "source": "/medtech/(.*)",
+      "destination": "/#work",
+      "permanent": true
+    },
+    {
+      "source": "/fullstack",
+      "destination": "/#work",
+      "permanent": true
+    },
+    {
+      "source": "/fullstack/(.*)",
+      "destination": "/#work",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/#about",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/#contact",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/services", "destination": "/services/index.html" },
-    { "source": "/services/(.*)", "destination": "/services/index.html" },
-    { "source": "/collaborate", "destination": "/collaborate/index.html" },
-    { "source": "/collaborate/(.*)", "destination": "/collaborate/index.html" },
-    { "source": "/ai", "destination": "/ai/index.html" },
-    { "source": "/ai/(.*)", "destination": "/ai/index.html" },
-    { "source": "/medtech", "destination": "/medtech/index.html" },
-    { "source": "/medtech/(.*)", "destination": "/medtech/index.html" },
-    { "source": "/fullstack", "destination": "/fullstack/index.html" },
-    { "source": "/fullstack/(.*)", "destination": "/fullstack/index.html" },
-    { "source": "/proof-of-work/or-integration", "destination": "/proof-of-work/or-integration/index.html" },
-    { "source": "/about", "destination": "/index.html" },
-    { "source": "/contact", "destination": "/index.html" },
-    { "source": "/kb", "destination": "/kb/index.html" },
-    { "source": "/kb/(.*)", "destination": "/kb/index.html" },
-    { "source": "/ai-workflow", "destination": "/ai-workflow/index.html" },
-    { "source": "/ai-workflow/(.*)", "destination": "/ai-workflow/index.html" },
-    { "source": "/medtech-ai-systems/clinical-evidence-workflow", "destination": "/medtech-ai-systems/clinical-evidence-workflow/index.html" }
+    {
+      "source": "/services",
+      "destination": "/services/index.html"
+    },
+    {
+      "source": "/proof-of-work/or-integration",
+      "destination": "/proof-of-work/or-integration/index.html"
+    },
+    {
+      "source": "/kb",
+      "destination": "/kb/index.html"
+    },
+    {
+      "source": "/kb/(.*)",
+      "destination": "/kb/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/(.*).html",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     }
   ]

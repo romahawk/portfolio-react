@@ -1,9 +1,16 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
-import { useTranslation } from "../context/LangContext.jsx";
+import en from "../locales/en.js";
 import PageHero from "./common/PageHero.jsx";
 import TypewriterTitle from "./common/TypewriterTitle.jsx";
 import StatusBadge from "./StatusBadge.jsx";
+import { contact, labels } from "../content/site.js";
+
+// Copy for this detail page still lives in en.js; reading it here keeps en.js out of the main bundle.
+function translate(key) {
+  const value = key.split(".").reduce((cur, part) => (cur == null ? undefined : cur[part]), en);
+  return value === undefined ? key : value;
+}
 
 const complexityElements = [
   "Surgical lighting",
@@ -65,7 +72,7 @@ const contextImages = [
 ];
 
 export default function ORIntegrationProofPage() {
-  const { t } = useTranslation();
+  const t = translate;
   const complexityValue = t("site.orProof.complexity.items");
   const cardsValue = t("site.orProof.proves.cards");
   const opportunitiesValue = t("site.orProof.opportunities.items");
@@ -80,9 +87,8 @@ export default function ORIntegrationProofPage() {
         eyebrow={t("site.orProof.hero.eyebrow")}
         title={<TypewriterTitle text={heroTitle} />}
         subtitle={t("site.orProof.hero.subtitle")}
-        primaryCta={{ label: t("site.cta.exploreAiWorkflows"), href: "/ai-workflow", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: t("site.cta.workWithMe"), href: "/collaborate" }}
-        tertiaryCta={{ label: t("site.cta.contact"), href: "/contact" }}
+        primaryCta={{ label: labels.backToWork, href: "/#work", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
+        secondaryCta={{ label: labels.downloadCv, href: contact.cvUrl, download: true }}
         scrollTargetId="or-context"
       >
         <div className="or-proof__hero-meta">
@@ -189,9 +195,9 @@ export default function ORIntegrationProofPage() {
             <p>{t("site.orProof.final.text")}</p>
           </div>
           <div className="or-proof__actions">
-            <a href="/ai-workflow" className="btn btn--primary">{t("site.cta.exploreAiWorkflows")}</a>
-            <a href="/collaborate" className="btn btn--ghost">{t("site.cta.workWithMe")}</a>
-            <a href="/contact" className="btn btn--ghost">{t("site.cta.contact")}</a>
+            <a href="/#work" className="btn btn--primary">{labels.backToWork}</a>
+            <a href={contact.cvUrl} className="btn btn--ghost" download>{labels.downloadCv}</a>
+            <a href={contact.emailHref} className="btn btn--ghost">{labels.emailMe}</a>
           </div>
         </div>
       </section>
