@@ -749,7 +749,7 @@ export default {
         title: "Archivierte Systeme und frühere Experimente",
         text: "Frühere Projekte, die meine Produkt-, Workflow- und KI-gestützte Delivery-Fähigkeit entwickelt haben. Sie bleiben als Hintergrundnachweis zugänglich, sind aber nicht der Schwerpunkt meiner aktuellen Positionierung rund um MedTech-Produkt- und Workflow-Systeme.",
         items: [
-          { title: "FlowLogix", status: "Built System", note: "Operations-Visibility-Dashboard für Status, Handoffs, ETA-Risiko und Verantwortlichkeit.", proves: "Dashboard-Architektur, operatives State Modeling und Decision-Support-UX.", href: "https://flowlogics.app/" },
+          { title: "FlowLogics", status: "Built System", note: "Operations-Visibility-Dashboard für Status, Handoffs, ETA-Risiko und Verantwortlichkeit.", proves: "Dashboard-Architektur, operatives State Modeling und Decision-Support-UX.", href: "https://flowlogics.app/" },
           { title: "LiveSurgery", status: "Prototype", note: "Echtzeit-Workspace für OP-Kollaboration und chirurgische Education.", proves: "Multi-Source-Session-Design, rollenbasierte Kollaboration und chirurgische Workflow Intelligence.", links: [{ label: "View", href: "https://livesurgery-landing.vercel.app/" }, { label: "Pitch Deck", href: "https://livesurgery-pitch-deck.vercel.app/", icon: "pitch" }] },
         ],
       },

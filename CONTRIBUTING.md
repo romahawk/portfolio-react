@@ -55,17 +55,18 @@ Rules:
 
 1. **Create an issue first** — no PR without a linked issue
 2. **Branch from `main`** — always `git checkout -b <type>/<description> main`
-3. **Fill the PR template** — all checklist items must be addressed
-4. **Run before submitting:**
+3. **Open one PR, straight into `main`** — there is no `dev` branch. Use `gh pr create --base main --body-file <file>` with the template filled in (never `--fill`), or the GitHub UI with `main` as the base
+4. **Fill the PR template** — every section, including "How to test" steps on the Vercel preview and what was **not** tested
+5. **Run before submitting:**
    ```bash
    npm run lint    # must exit 0
    npm run build   # must exit 0
    ```
-5. **Test on mobile** — at minimum, check on iOS Safari or Android Chrome
-6. **Update CHANGELOG.md** — add entry under `[Unreleased]`
-7. **Update docs if needed** — if you changed architecture or scope, update `docs/`
-8. **Add a demo artifact** — screenshot or "n/a — chore only"
-9. **Merge to `main`** — squash merge preferred for cleaner history
+6. **Test on mobile** — at minimum, check on iOS Safari or Android Chrome
+7. **Update CHANGELOG.md** — add entry under `[Unreleased]`
+8. **Update docs if needed** — if you changed architecture or scope, update `docs/`
+9. **Add a demo artifact** — screenshot or "n/a — chore only"
+10. **Merge to `main` when CI and Lighthouse CI are green** — squash merge, then delete the branch. Never push more work to a branch whose PR already merged
 
 ---
 

@@ -60,7 +60,7 @@ const PENDING_DELETION = new Set([
   "src/components/TimelineSwitch.jsx",
   "src/components/case-studies/AlphorythmCaseStudy.jsx",
   "src/components/case-studies/ClinicalEvidenceCaseStudy.jsx",
-  "src/components/case-studies/FlowLogixCaseStudy.jsx",
+  "src/components/case-studies/FlowLogicsCaseStudy.jsx",
   "src/components/case-studies/JobSprintCaseStudy.jsx",
   "src/components/case-studies/LivesurgeryCaseStudy.jsx",
   "src/components/case-studies/MedintegroCaseStudy.jsx",

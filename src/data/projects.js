@@ -39,7 +39,7 @@ export const techProjects = [
   },
   {
     id: "flowlogics",
-    title: "FlowLogix",
+    title: "FlowLogics",
     summary:
       "Operations visibility dashboard for workflow visibility and operational decision support.",
     proof: {
@@ -214,7 +214,7 @@ export const projectPortfolio = [
     summary: "Build one working automation, internal assistant, dashboard, decision-support tool, or workflow prototype with practical tools and human review points.",
     problem: "Teams want automation, but the workflow, data handoffs, ownership, and exception paths are unclear.",
     solution: "A scoped prototype using tools such as n8n, Make, Airtable, Notion, APIs, AI assistants, or a custom UI where useful.",
-    proof: "Extends patterns from FlowLogix, JobSprint, and AI-assisted workflow concepts.",
+    proof: "Extends patterns from FlowLogics, JobSprint, and AI-assisted workflow concepts.",
     stack: ["n8n / Make", "APIs", "Airtable / Notion", "React / Next.js"],
     links: [{ label: "Discuss sprint", href: "mailto:romazuryk@proton.me?subject=Automation%20Sprint%20Discussion" }],
     relevance: "Prototype Sprint and Workflow Automation build path",
@@ -260,7 +260,7 @@ export const projectPortfolio = [
     featured: true,
   },
   {
-    title: "FlowLogix",
+    title: "FlowLogics",
     category: projectCategories.fullstack,
     status: "Built",
     summary: "Operations visibility dashboard for workflow visibility, status handoffs, ETA risk, and accountability.",

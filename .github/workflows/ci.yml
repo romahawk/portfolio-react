@@ -1,0 +1,70 @@
+name: CI
+
+# Every branch merges straight into main, so a PR to main is the one place to verify it.
+# Push is scoped to main so the merged result is checked once more where it landed.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+# A newer push to the same branch makes the older run irrelevant.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: lint · build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      # `prebuild` runs scripts/check-consistency.mjs, so this step also fails on
+      # stale names, broken internal references and copy drift.
+      - name: Build
+        run: npm run build
+
+  # Refuses a PR whose branch adds nothing to main, e.g. work continued on a
+  # branch after its PR was squash-merged. Two-dot diff compares the trees
+  # directly; three-dot would diff from a stale merge-base and look like real work.
+  already-in-main:
+    name: branch adds something to main
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Refuse a branch that is already in main
+        env:
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          if git diff --quiet origin/main.."$HEAD_SHA"; then
+            echo "This branch's tree already matches main. Merging it would add nothing."
+            echo "Rebuild the branch from main instead."
+            exit 1
+          fi
+          echo "Branch contributes a real change."

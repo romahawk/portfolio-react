@@ -50,11 +50,11 @@ const homeProofCases = [
     links: [{ label: "See the OR integration case", href: "/proof-of-work/or-integration" }],
   },
   {
-    title: "PharmaLogis, internal systems rollout under GDP and ISO 9001",
+    title: "FlowLogics, internal systems rollout under GDP and ISO 9001",
     status: "Demo",
     problem: "Trading and supply chain processes ran across separate systems and manual alignment, in a GDP and ISO 9001 certified pharma logistics company.",
     role: "Owned the full project lifecycle · 2024 to 2025",
-    work: "Built and rolled out an internal software solution. Brought a role-based dashboard with order lifecycle tracking to production. Managed integrations and data flows for end-to-end traceability, and kept delivery GDP and ISO 9001 compliant. Public demo (FlowLogix): Flask API, SQLAlchemy data model, role-gated workflows, ETA risk timeline, read-only demo mode.",
+    work: "Built and rolled out an internal software solution. Brought a role-based dashboard with order lifecycle tracking to production. Managed integrations and data flows for end-to-end traceability, and kept delivery GDP and ISO 9001 compliant. Public demo (FlowLogics): Flask API, SQLAlchemy data model, role-gated workflows, ETA risk timeline, read-only demo mode.",
     outcome: "Manual coordination effort down an estimated ~30%, measured by recurring alignment steps removed. Full traceability across the order lifecycle. Live demo and public repo.",
     links: [
       { label: "Live demo", href: "https://flowlogics.app/" },
@@ -137,7 +137,7 @@ const proofHighlights = [
     title: "Workflow Automation / Decision Support",
     problem: "Teams need visible workflow state, not another static document or vague prototype.",
     system: "Build dashboards, product prototypes, APIs, persistence, and AI-assisted development loops.",
-    proof: "Implementation proof from FlowLogix, LiveSurgery, mazuryk.dev, and workflow tool prototypes.",
+    proof: "Implementation proof from FlowLogics, LiveSurgery, mazuryk.dev, and workflow tool prototypes.",
     cta: { label: "View Full-Stack", href: "/fullstack" },
     icon: Code2,
     accent: "fullstack",
@@ -509,7 +509,7 @@ const fullstackSelectedProjects = [
     status: "Live",
   },
   {
-    title: "FlowLogix",
+    title: "FlowLogics",
     type: "Operations dashboard / workflow tool",
     description: "A logistics and operations workflow system for tracking, filtering, and structuring operational records and process visibility.",
     relevance: "Shows backend logic, API work, filtering, data handling, operations thinking, and workflow-dashboard design.",

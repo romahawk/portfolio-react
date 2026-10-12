@@ -287,7 +287,7 @@ Likely high-value proof includes:
 - real MedTech / OR integration work,
 - regulated implementation work,
 - strongest practical AI workflow / audit work,
-- FlowLogix,
+- FlowLogics,
 - LiveSurgery.
 
 Projects such as SmartShooter or JobSprint can support technical breadth but should not displace stronger evidence unless their maturity becomes substantially higher.

@@ -297,7 +297,7 @@ Role on portfolio:
 
 ---
 
-## 6.2 FlowLogix
+## 6.2 FlowLogics
 
 Operations / logistics platform concept and capstone candidate.
 
@@ -353,7 +353,7 @@ Known ideas:
 
 Role:
 - proof of practical workflow/product thinking.
-- likely secondary compared with AlphaRhythm / FlowLogix.
+- likely secondary compared with AlphaRhythm / FlowLogics.
 
 ---
 
@@ -702,7 +702,7 @@ Suggested hierarchy:
 - strongest AI workflow audit / consulting example
 
 ### Tier B
-- FlowLogix
+- FlowLogics
 - LiveSurgery
 
 ### Tier C
@@ -1011,7 +1011,7 @@ These items should be validated rather than assumed:
 9. Exact primary CTA.
 10. Analytics stack.
 11. Whether a blog / insights section has enough strategic value.
-12. Whether FlowLogix becomes the capstone and therefore deserves elevated visibility.
+12. Whether FlowLogics becomes the capstone and therefore deserves elevated visibility.
 13. Whether DeutschOn-AI eventually belongs in the public portfolio.
 
 ---

@@ -9,7 +9,14 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed (PR workflow)
+- One PR per change, straight from the feature branch into `main`. The `dev` integration branch is retired; the Vercel PR preview is the staging check
+- New PR template: What and why, Changes, Verification, How to test on the Vercel preview, what was not tested, quality gates (mobile, a11y, icons, redirects), docs, screenshots
+- New CI workflow (`.github/workflows/ci.yml`): lint and build (with the consistency check) on every PR to `main`, plus a check that refuses a branch already merged into `main`. Lighthouse CI is unchanged
+- `CLAUDE.md` and `CONTRIBUTING.md` document opening PRs with `gh pr create --base main` and a filled body, never `--fill`
+
 ### Changed (two-page site)
+- Former employer name removed from all copy; the internal systems rollout and its public demo are now both named FlowLogics (formerly FlowLogix). Case study component renamed to `FlowLogicsCaseStudy.jsx`; GitHub repo links still point to `romahawk/flowlogix` and the legacy `#projects/flowlogix` hash still redirects
 - Site collapsed to two pages: `/` (portfolio landing for recruiters: hero, facts, Work, Delivery, About, Contact) and `/services` (AI workflow offer: problem, 3 offers, process, proof links, fit, contact). `/kb` and `/proof-of-work/or-integration` stay as detail pages with the shared header and footer
 - Single content source: `src/content/site.js` holds identity, facts, cases, other builds, delivery, about, experience, education, languages, location, contact, services copy and SEO. New `components/site/HomePage.jsx` and `components/site/ServicesPage.jsx` hold no copy
 - Identity is now the CV headline: "Technical Project Manager, system implementation in regulated environments". Contact email is romazuryk@gmail.com everywhere on the live pages
@@ -29,7 +36,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 - `scripts/check-consistency.mjs`, run as `prebuild`: fails the build on retired role labels, "10+ years" / "13+ years", "proton.me", or an em dash in `site.js`. Files awaiting deletion are listed in the script and skipped until the cleanup PR
 
 ### Changed (recruiter-first homepage)
-- Homepage rebuilt for hiring teams: static H1 (no typewriter) "AI & Software Implementation in MedTech and Regulated Environments", Technical PM eyebrow, Download CV / Email me CTAs, LinkedIn and GitHub links, 4-fact credibility strip, "Selected delivery work" (Medintegro, PharmaLogis with the FlowLogix demo, AI Field Guide), "How I run delivery" with a `/kb` link, and a hiring CTA with a small link to services
+- Homepage rebuilt for hiring teams: static H1 (no typewriter) "AI & Software Implementation in MedTech and Regulated Environments", Technical PM eyebrow, Download CV / Email me CTAs, LinkedIn and GitHub links, 4-fact credibility strip, "Selected delivery work" (Medintegro, FlowLogics, AI Field Guide), "How I run delivery" with a `/kb` link, and a hiring CTA with a small link to services
 - New `common/ProofCaseCard.jsx` (Problem / My role / What I did / Outcome), reusing the `medtech-proof-card` styles and `StatusBadge`
 - `/ai` (also `/services`, `/collaborate`): now holds the AI Workflow Audit section, the "Client journey" map and the "Proof connected to offers" cards moved from the homepage, above its existing closing CTA. Nothing was deleted
 - `/about`: static title "Technical PM. 20+ years in regulated industries.", new body copy and a facts block (education, languages, location). Hero CTAs are now Download CV / Email me. "10+ years" pills replaced with the CV facts
@@ -146,7 +153,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 ### Fixed
 - `Footer.jsx` — replace `icon: Icon` destructuring alias (invisible to ESLint `no-unused-vars`) with direct `icon` + `React.createElement(icon, ...)` pattern
 - `Contact.jsx` — add `/* clipboard unavailable */` comment to empty `catch {}` block to satisfy `no-empty` rule
-- `AlphorythmCaseStudy.jsx`, `FlowLogixCaseStudy.jsx` — replace literal `->` arrows in JSX text with Unicode `→` to fix parser error
+- `AlphorythmCaseStudy.jsx`, `FlowLogicsCaseStudy.jsx` — replace literal `->` arrows in JSX text with Unicode `→` to fix parser error
 
 ### Performance
 - Replace all `import * as Lucide` wildcard imports with named imports + static lookup maps in `Projects.jsx`, `Milestones.jsx`, `JourneyFull.jsx` — enables tree-shaking, removes ~800 kB of unused icon code from bundle
