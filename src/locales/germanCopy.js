@@ -546,7 +546,7 @@ const GERMAN_COPY = {
   "Selected delivery work": "Ausgewählte Projekte",
   "Two delivery projects with the problem, my role, what I did and the result, plus how I run my own builds.": "Zwei Umsetzungsprojekte mit Problem, meiner Rolle, meinem Beitrag und dem Ergebnis, dazu wie ich eigene Builds umsetze.",
   "Medintegro, OR imaging and PACS/RIS integration": "Medintegro, OP-Bildgebung und PACS/RIS-Integration",
-  "FlowLogics, internal systems rollout under GDP and ISO 9001": "FlowLogics, Rollout interner Systeme unter GDP und ISO 9001",
+  "PharmaLogis, internal systems rollout under GDP and ISO 9001": "PharmaLogis, Rollout interner Systeme unter GDP und ISO 9001",
   "AI Field Guide, how I run my own builds": "AI Field Guide, so setze ich eigene Builds um",
   "My role": "Meine Rolle",
   "What I did": "Mein Beitrag",

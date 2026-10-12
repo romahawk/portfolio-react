@@ -7,6 +7,8 @@
 // - Years are 12+ (implementation) and 20+ (industry), as in the CV. "10+" and "13+" were earlier drafts.
 // - Contact email is romazuryk@gmail.com, as in the CV. The proton.me address is retired.
 // - No em dashes in site copy (src/content/site.js).
+// - Employer is PharmaLogis, FlowLogics is the system (see CLAUDE.md). The CV names the employer
+//   "PharmaLogis GmbH", so FlowLogics must never read as an employer.
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, relative, sep } from "node:path";
 
@@ -19,7 +21,15 @@ const BANNED_PHRASES = [
   "10+ years",
   "13+ years",
   "proton.me",
+  // employer is PharmaLogis, FlowLogics is the system
+  "at FlowLogics,",
+  "FlowLogics, Reinbek",
+  "FlowLogics, internal systems rollout",
 ];
+
+// Matched case-sensitively, unlike BANNED_PHRASES.
+// employer is PharmaLogis, FlowLogics is the system: "Pharmalogis" is the wrong capitalisation.
+const BANNED_EXACT = ["Pharmalogis"];
 
 const EM_DASH_FILES = ["src/content/site.js"];
 const EM_DASH = "—";
@@ -105,6 +115,9 @@ for (const file of files) {
     const lower = line.toLowerCase();
     lowerPhrases.forEach((phrase, j) => {
       if (lower.includes(phrase)) problems.push(`${file}:${i + 1}  banned "${BANNED_PHRASES[j]}"`);
+    });
+    BANNED_EXACT.forEach((phrase) => {
+      if (line.includes(phrase)) problems.push(`${file}:${i + 1}  banned "${phrase}" (case-sensitive)`);
     });
     if (EM_DASH_FILES.includes(file) && line.includes(EM_DASH)) {
       problems.push(`${file}:${i + 1}  em dash`);

@@ -9,6 +9,10 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Fixed
+- Employer name restored to PharmaLogis (PharmaLogis GmbH in the experience line), as on the CV. FlowLogics is now used only for the system and its public demo. Covers the About text, the experience timeline and the delivery card on `/`, plus the same strings in legacy components
+- Consistency guard bans "at FlowLogics,", "FlowLogics, Reinbek", "FlowLogics, internal systems rollout" and the misspelling "Pharmalogis" (case-sensitive)
+
 ### Changed (About section)
 - About copy: "based near Hamburg" is now "based in the Hamburg area"
 - Profile photo added at the top left of the About text (new portrait, served as a 400px WebP, 7 kB); the paragraphs wrap to its right and continue below it (112px wide on phones)
