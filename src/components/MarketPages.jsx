@@ -50,7 +50,7 @@ const homeProofCases = [
     links: [{ label: "See the OR integration case", href: "/proof-of-work/or-integration" }],
   },
   {
-    title: "FlowLogics, internal systems rollout under GDP and ISO 9001",
+    title: "PharmaLogis, internal systems rollout under GDP and ISO 9001",
     status: "Demo",
     problem: "Trading and supply chain processes ran across separate systems and manual alignment, in a GDP and ISO 9001 certified pharma logistics company.",
     role: "Owned the full project lifecycle · 2024 to 2025",

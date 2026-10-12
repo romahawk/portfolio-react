@@ -215,6 +215,12 @@ Common pitfalls:
 
 ---
 
+## Content Rules
+
+- Employer = PharmaLogis GmbH (as on the CV). FlowLogics = the system and public demo. Never use FlowLogics as an employer name.
+
+---
+
 ## Accessibility Requirements (Lighthouse: 100)
 
 - Semantic HTML5 landmarks (`<header>`, `<nav>`, `<main>`, `<footer>`, `<section>`, `<article>`)
