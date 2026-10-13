@@ -9,6 +9,9 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Added (/services section navigation)
+- In-page navigation on `/services` for 01 Where AI fits, 02 Sample audit, 03 Proof, 04 Engagements, 05 Data and risk and FAQ. From 1360px wide it is a rail in the left margin that fades in after the hero and marks the section in view; below that it is an "On this page" list under the hero. Plain anchor links, keyboard reachable, no new dependency
+
 ### Changed (navigation on /services)
 - On `/services`, the header "Contact" link now goes to that page's own contact section (`#contact`) instead of the landing page's recruiter contact block. Work, Delivery and About still link to the landing page
 - A "Book a call" button appears in the header on `/services` only (desktop and mobile), using the same link as the page's intro-call buttons (`contact.calUrl`)

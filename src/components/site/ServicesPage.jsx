@@ -2,6 +2,7 @@ import { track } from "@vercel/analytics";
 import { ArrowRight, Calendar, CheckCircle2, FileDown, XCircle } from "lucide-react";
 import { CTAStrip, PageHero } from "../system/SystemVisuals.jsx";
 import { contact, services } from "../../content/site.js";
+import { ServicesSectionIndex, ServicesSectionRail } from "./ServicesSectionNav.jsx";
 
 // Section ids where a booking click counts as the hero or the closing CTA.
 const BOOKING_POSITIONS = { top: "hero", contact: "cta" };
@@ -55,7 +56,10 @@ export default function ServicesPage() {
         showScrollCue={false}
       >
         <p className="services-v2__credibility">{hero.credibility.join(" · ")}</p>
+        <ServicesSectionIndex nav={services.sectionNav} />
       </PageHero>
+
+      <ServicesSectionRail nav={services.sectionNav} heroId="top" />
 
       <section id="patterns" className="services-v2__section container" aria-labelledby="patterns-title">
         <SectionHead kicker={patterns.kicker} title={patterns.title} id="patterns-title">

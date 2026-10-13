@@ -509,3 +509,132 @@
     padding: 20px;
   }
 }
+
+/* In-page navigation (ServicesSectionNav.jsx).
+   Below 1360px: a static "On this page" index under the hero.
+   From 1360px: a fixed rail in the left margin (the content column is 1100px, so the margin
+   is at least 130px there), which fades in after the hero and marks the section in view. */
+.sv2-index {
+  margin-top: 28px;
+}
+
+.sv2-index__label {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sv2-index ol,
+.sv2-rail ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sv2-index ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sv2-index a {
+  display: inline-flex;
+  gap: 6px;
+  align-items: baseline;
+  padding: 6px 12px;
+  border: 1px solid var(--system-border, var(--border));
+  border-radius: 999px;
+  color: var(--muted-strong, var(--text));
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.sv2-index a:hover {
+  border-color: var(--sv2-accent-text);
+  color: var(--text);
+}
+
+.sv2-nav__num {
+  color: var(--sv2-accent-text);
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.sv2-rail {
+  display: none;
+}
+
+@media (min-width: 1360px) {
+  .sv2-index {
+    display: none;
+  }
+
+  .sv2-rail {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: max(12px, calc((100vw - 1100px) / 2 - 124px));
+    z-index: 20;
+    width: 108px;
+    transform: translateY(-50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  /* Visible after the hero, and whenever a keyboard user tabs into it. */
+  .sv2-rail--shown,
+  .sv2-rail:focus-within {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .sv2-rail ol {
+    border-left: 1px solid var(--system-border, var(--border));
+  }
+
+  .sv2-rail a {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr);
+    gap: 2px;
+    align-items: baseline;
+    margin-left: -1px;
+    padding: 7px 0 7px 10px;
+    border-left: 2px solid transparent;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.3;
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  /* FAQ has no number: keep its label in the label column. */
+  .sv2-rail a > span:only-child {
+    grid-column: 2;
+  }
+
+  .sv2-rail a:hover {
+    color: var(--text);
+  }
+
+  .sv2-rail a.is-active {
+    border-left-color: var(--sv2-accent-text);
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .sv2-rail .sv2-nav__num {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sv2-rail,
+  .sv2-rail a {
+    transition: none;
+  }
+}
