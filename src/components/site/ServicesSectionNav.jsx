@@ -3,7 +3,9 @@ import { useEffect, useMemo, useState } from "react";
 // In-page navigation for /services, in two forms:
 // - "index": a static list under the hero, shown below 1360px (phones, tablets, small laptops).
 // - "rail": a fixed list in the left margin, shown from 1360px. It fades in after the hero
-//   and highlights the section in view. Both are plain anchor lists, so they work without JS.
+//   and highlights the section in view. Up to 1599px it shows numbers only (labels on hover
+//   and focus); from 1600px it shows full labels. Both are plain anchor lists, so they work
+//   without JS.
 
 // Horizontal band (as rootMargin) a section must cross to count as "in view".
 const ACTIVE_BAND = "-40% 0px -55% 0px";
@@ -65,7 +67,7 @@ function SectionLinks({ items, active }) {
             aria-current={active === item.id ? "location" : undefined}
           >
             {item.number ? <span className="sv2-nav__num">{item.number}</span> : null}
-            <span>{item.label}</span>
+            <span className="sv2-nav__label">{item.label}</span>
           </a>
         </li>
       ))}
