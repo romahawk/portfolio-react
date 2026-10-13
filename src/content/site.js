@@ -32,7 +32,12 @@ export const nav = [
   { id: "contact", label: "Contact" },
 ];
 
-export const navServices = { label: "Services", href: "/services" };
+export const navServices = {
+  label: "Services",
+  href: "/services",
+  // Header button shown only on /services; same link as the page's intro-call buttons.
+  bookCall: { label: "Book a call", href: contact.calUrl },
+};
 
 export const labels = {
   downloadCv: "Download CV",

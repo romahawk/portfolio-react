@@ -9,6 +9,10 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed (navigation on /services)
+- On `/services`, the header "Contact" link now goes to that page's own contact section (`#contact`) instead of the landing page's recruiter contact block. Work, Delivery and About still link to the landing page
+- A "Book a call" button appears in the header on `/services` only (desktop and mobile), using the same link as the page's intro-call buttons (`contact.calUrl`)
+
 ### Changed (/services v2)
 - `/services` rebuilt as an evidence-led page in this order: hero (intro call, sample audit, credibility line), 01 Where AI fits (three AI / Rules / You decide patterns), 02 Sample audit (pilot diagram and 8-page PDF), 03 Proof, 04 Engagements (audit and build sprint, price on request), 05 Data and risk, Who you work with, Fit, FAQ (native `details`), closing CTA
 - Pattern cards use CSS subgrid so the title, description and each AI / Rules / You decide row line up across the three cards
