@@ -21,6 +21,10 @@ export default function Navbar({ themeMode, onThemeChange }) {
   const isServicesPage = path === navServices.href;
   // Anchors scroll on the landing page and link back to it from every other page.
   const navIds = useMemo(() => (isHome ? nav.map((item) => item.id) : []), [isHome]);
+  // Exception: on /services, Contact points to that page's own #contact section, because the
+  // landing page's contact block is written for recruiters. It is not highlighted on scroll,
+  // so Services stays the only active item there.
+  const isLocal = (id) => isHome || (isServicesPage && id === "contact");
 
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("");
@@ -153,7 +157,7 @@ export default function Navbar({ themeMode, onThemeChange }) {
           {nav.map(({ id, label }) => (
             <li key={id}>
               <a
-                href={isHome ? `#${id}` : `/#${id}`}
+                href={isLocal(id) ? `#${id}` : `/#${id}`}
                 className={`nav__link ${isHome && active === id ? "nav__link--active" : ""}`}
                 aria-current={isHome && active === id ? "location" : undefined}
                 onClick={() => handleClick(id)}
@@ -175,6 +179,11 @@ export default function Navbar({ themeMode, onThemeChange }) {
         </ul>
 
         <div className="nav__actions">
+          {isServicesPage ? (
+            <a href={navServices.bookCall.href} className="btn btn--primary nav__book-cta">
+              {navServices.bookCall.label}
+            </a>
+          ) : null}
           {isMobile
             ? <ThemeSwitcher mode={themeMode} onChange={onThemeChange} />
             : <NavControls mode={themeMode} onThemeChange={onThemeChange} />

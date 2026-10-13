@@ -45,6 +45,14 @@
   border-color: rgba(62, 207, 108, 0.45);
 }
 
+/* "Book a call" header button, rendered only on /services */
+.nav__book-cta {
+  min-height: 36px;
+  padding: 0 14px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
 /* logo — image mark */
 .nav__logo {
   display: flex;
@@ -227,6 +235,11 @@
 
   .nav__work-cta {
     display: none;
+  }
+
+  .nav__book-cta {
+    min-height: 34px;
+    padding: 0 12px;
   }
 
   .nav__link--cta {
