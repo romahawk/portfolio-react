@@ -168,6 +168,18 @@ export const services = {
     secondary: { label: "See a sample audit", href: "#sample" },
     credibility: ["12+ years of system implementation", "20+ systems delivered", "GDP, ISO 9001", "DICOM, PACS/RIS"],
   },
+  // In-page navigation: numbered sections plus FAQ. Labels follow the section kickers.
+  sectionNav: {
+    label: "On this page",
+    items: [
+      { id: "patterns", number: "01", label: "Where AI fits" },
+      { id: "sample", number: "02", label: "Sample audit" },
+      { id: "proof", number: "03", label: "Proof" },
+      { id: "engagements", number: "04", label: "Engagements" },
+      { id: "guardrails", number: "05", label: "Data and risk" },
+      { id: "faq", label: "FAQ" },
+    ],
+  },
   patterns: {
     kicker: "01 · Where AI fits",
     title: "The model reads and drafts. Rules check. People decide.",
