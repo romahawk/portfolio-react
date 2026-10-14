@@ -166,7 +166,7 @@ export const services = {
     subline: "Built by someone who has implemented systems in hospitals and GDP-certified warehouses. A 5-day audit finds where AI belongs. A 2 to 4 week build delivers it with human review and an audit trail.",
     primary: { label: "Book a 20-min intro call", href: contact.calUrl },
     secondary: { label: "See a sample audit", href: "#sample" },
-    credibility: ["12+ years of system implementation", "20+ systems delivered", "GDP, ISO 9001", "DICOM, PACS/RIS"],
+    credibility: ["20+ years in regulated industries", "20+ systems delivered", "GDP, ISO 9001", "DICOM, PACS/RIS"],
   },
   // In-page navigation: numbered sections plus FAQ. Labels follow the section kickers.
   sectionNav: {
@@ -292,7 +292,7 @@ export const services = {
   about: {
     title: "Who you work with",
     photo: { src: "/images/profile-400.webp", alt: "Roman Mazuryk portrait" },
-    text: "I'm Roman. For 12+ years I've implemented systems where mistakes are expensive: integrated operating rooms, imaging connected to hospital PACS, and internal systems in GDP-certified pharma logistics. Now I also build the software, including AI workflows. You work with me directly, from the first call to handover.",
+    text: "I'm Roman. Since 2012 I've implemented systems where mistakes are expensive: integrated operating rooms, imaging connected to hospital PACS, and internal systems in GDP-certified pharma logistics. Now I also build the software, including AI workflows. You work with me directly, from the first call to handover.",
     link: { label: "Full background", href: "/#about" },
   },
   fit: {
@@ -330,7 +330,7 @@ export const services = {
 export const seo = {
   home: {
     title: "Roman Mazuryk · Technical Project Manager, System Implementation",
-    description: "Technical project manager with 12+ years delivering system implementations in MedTech, pharma and logistics. 20+ systems from discovery to adoption. Hamburg / Remote (EU).",
+    description: "Technical project manager with 20+ years in MedTech, pharma and logistics. 20+ system projects from discovery to adoption. Hamburg / Remote (EU).",
     url: "https://www.mazuryk.dev/",
   },
   services: {

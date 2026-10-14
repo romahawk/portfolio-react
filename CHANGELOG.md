@@ -9,6 +9,11 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Fixed (remaining years figure and review claim)
+- `/services` credibility line reads "20+ years in regulated industries" and the intro says "Since 2012 I've implemented systems…", matching the homepage
+- Home meta description (search results, OG and Twitter previews) reads "20+ years in MedTech, pharma and logistics. 20+ system projects…"
+- `/ai` "How this guide is maintained" box no longer claims a monthly review; the dated "Last reviewed" eyebrow stays
+
 ### Changed (AI Field Guide moves to /ai)
 - The AI Field Guide is now served at `/ai` instead of `/kb`. Links on `/` and `/services`, canonical, OG and Twitter URLs, the sitemap and the consistency check use the new path
 - `/kb` and `/kb/*` redirect permanently to `/ai`. The old `/ai` → `/services` redirect (from the retired AI page) is removed, and the stale `ai/index.html` entry is replaced by the guide's entry HTML
