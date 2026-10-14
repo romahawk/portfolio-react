@@ -13,7 +13,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         services: resolve(__dirname, 'services/index.html'),
-        kb: resolve(__dirname, 'kb/index.html'),
+        ai: resolve(__dirname, 'ai/index.html'),
         orIntegration: resolve(__dirname, 'proof-of-work/or-integration/index.html'),
       },
       output: {

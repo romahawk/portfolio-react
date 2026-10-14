@@ -4,13 +4,13 @@
   "framework": "vite",
   "redirects": [
     {
-      "source": "/ai",
-      "destination": "/services",
+      "source": "/kb",
+      "destination": "/ai",
       "permanent": true
     },
     {
-      "source": "/ai/(.*)",
-      "destination": "/services",
+      "source": "/kb/(.*)",
+      "destination": "/ai",
       "permanent": true
     },
     {
@@ -84,12 +84,12 @@
       "destination": "/proof-of-work/or-integration/index.html"
     },
     {
-      "source": "/kb",
-      "destination": "/kb/index.html"
+      "source": "/ai",
+      "destination": "/ai/index.html"
     },
     {
-      "source": "/kb/(.*)",
-      "destination": "/kb/index.html"
+      "source": "/ai/(.*)",
+      "destination": "/ai/index.html"
     }
   ],
   "headers": [

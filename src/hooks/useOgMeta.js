@@ -24,7 +24,7 @@ const KB = {
   title: "AI Field Guide: Harness, Skills, Memory, Tools, Cost",
   description:
     "A practical reference for building with AI agents: terminology, best practices and tool choices, applied to real projects by Roman Mazuryk.",
-  url: "https://www.mazuryk.dev/kb",
+  url: "https://www.mazuryk.dev/ai",
   image: "https://www.mazuryk.dev/images/og/og-ai.png",
   imageAlt: "AI Field Guide by Roman Mazuryk.",
   ...IMAGE,
@@ -71,7 +71,7 @@ export function useOgMeta() {
   useEffect(() => {
     const path = window.location.pathname.replace(/\/+$/, "") || "/";
     if (path === "/services") applyMeta(SERVICES);
-    else if (path === "/kb" || path.startsWith("/kb/")) applyMeta(KB);
+    else if (path === "/ai" || path.startsWith("/ai/")) applyMeta(KB);
     else if (path === "/proof-of-work/or-integration") applyMeta(OR_INTEGRATION_PROOF);
     else applyMeta(HOME);
   }, []);

@@ -34,7 +34,7 @@ const BANNED_EXACT = ["Pharmalogis"];
 const EM_DASH_FILES = ["src/content/site.js"];
 const EM_DASH = "—";
 
-const SCAN_FILES = ["index.html", "services/index.html", "kb/index.html"];
+const SCAN_FILES = ["index.html", "services/index.html", "ai/index.html"];
 const SCAN_DIRS = ["src"];
 const EXTENSIONS = /\.(js|jsx|mjs|css|html|json)$/;
 

@@ -95,7 +95,7 @@ export const cases = [
     role: "Designed and built it myself",
     work: "For my own builds I also run an AI-assisted delivery system: defined roles, one source of truth, decision logs and review gates. I documented it as a public field guide: five pillars (harness, skills, memory, tools, cost), tool verdicts, a project matrix and a glossary.",
     outcome: "My working reference for building with AI agents: the terms, the practices that hold up, and the tools I actually use. Tied to six of my own projects, including my M.Sc. capstone (DeutschOn-AI) and this site.",
-    links: [{ label: "How I work with AI", href: "/kb" }],
+    links: [{ label: "How I work with AI", href: "/ai" }],
   },
 ];
 
@@ -124,7 +124,7 @@ export const delivery = {
     { title: "Rollout and adoption", text: "Go-live, training, handover docs and support." },
   ],
   note: "For my own builds I also run an AI-assisted delivery system: defined roles, one source of truth, decision logs and review gates.",
-  noteLink: { label: "How I work with AI", href: "/kb" },
+  noteLink: { label: "How I work with AI", href: "/ai" },
 };
 
 export const about = {
@@ -251,7 +251,7 @@ export const services = {
       {
         label: "AI practice",
         text: "The practices, tools and review gates I use to build with AI agents.",
-        links: [{ label: "How I build with AI", href: "/kb" }],
+        links: [{ label: "How I build with AI", href: "/ai" }],
       },
     ],
   },

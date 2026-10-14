@@ -1,4 +1,4 @@
-// AI Field Guide: single source of truth for /kb.
+// AI Field Guide: single source of truth for /ai.
 // Edit content here; the page, project matrix and glossary are generated from it.
 // Status values for project applications: "In use" | "In build" | "Pre-beta". Only list work that exists today.
 // Verdict values for tools: "Use" | "Try" | "Skip"
