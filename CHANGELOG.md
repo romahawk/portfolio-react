@@ -9,6 +9,9 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed (/ai project matrix)
+- Empty matrix cells show "n/a" instead of an em dash; the "Not applicable" label for screen readers is unchanged
+
 ### Fixed (remaining years figure and review claim)
 - `/services` credibility line reads "20+ years in regulated industries" and the intro says "Since 2012 I've implemented systems…", matching the homepage
 - Home meta description (search results, OG and Twitter previews) reads "20+ years in MedTech, pharma and logistics. 20+ system projects…"

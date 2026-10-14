@@ -130,7 +130,7 @@ function ProjectMatrix() {
                     <td key={pillar.id}>
                       {items.length ? items.map((item) => (
                         <p key={item.text}><Pill kind="status" value={item.status} /> {item.text}</p>
-                      )) : <span className="kb-matrix__empty" aria-label="Not applicable">—</span>}
+                      )) : <span className="kb-matrix__empty" aria-label="Not applicable">n/a</span>}
                     </td>
                   );
                 })}
