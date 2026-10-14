@@ -39,7 +39,7 @@ function DeferredAnalytics() {
 
 // Two pages (/ and /services) plus two detail pages. Every other route is redirected in vercel.json.
 const SERVICES_PATH = "/services";
-const KB_PATH = "/kb";
+const AI_PATH = "/ai";
 const OR_INTEGRATION_PROOF_PATH = "/proof-of-work/or-integration";
 
 function getPage() {
@@ -47,7 +47,7 @@ function getPage() {
   const path = window.location.pathname.replace(/\/+$/, "") || "/";
   if (path === SERVICES_PATH) return "services";
   if (path === OR_INTEGRATION_PROOF_PATH) return "or-integration-proof";
-  if (path === KB_PATH || path.startsWith(`${KB_PATH}/`)) return "kb";
+  if (path === AI_PATH || path.startsWith(`${AI_PATH}/`)) return "ai";
   return "home";
 }
 
@@ -105,7 +105,7 @@ function AppInner() {
             <ServicesPage />
           ) : page === "or-integration-proof" ? (
             <ORIntegrationProofPage />
-          ) : page === "kb" ? (
+          ) : page === "ai" ? (
             <KnowledgeBasePage />
           ) : (
             <HomePage />

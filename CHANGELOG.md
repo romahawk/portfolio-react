@@ -9,6 +9,10 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed (AI Field Guide moves to /ai)
+- The AI Field Guide is now served at `/ai` instead of `/kb`. Links on `/` and `/services`, canonical, OG and Twitter URLs, the sitemap and the consistency check use the new path
+- `/kb` and `/kb/*` redirect permanently to `/ai`. The old `/ai` → `/services` redirect (from the retired AI page) is removed, and the stale `ai/index.html` entry is replaced by the guide's entry HTML
+
 ### Fixed (homepage, /kb and 404 content audit)
 - One years figure on the homepage: hero sub-line reads "20+ years in MedTech, pharma and logistics", the stat tile reads "20+ years in regulated industries" (matching the About heading), and About says "Since 2012" instead of a second "12+ years"
 - Hero language line says "German B1 in progress"; education uses the official wording "Master of Science in Computer Science · Woolf / GoIT Neoversity"
