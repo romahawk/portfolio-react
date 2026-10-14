@@ -102,9 +102,9 @@ export const cases = [
 // Max 3 items. PharmaLogis / FlowLogics already has its own delivery card.
 export const otherBuilds = [
   {
-    status: "Live",
+    status: "Pre-beta",
     title: "AlphaRhythm",
-    line: "A deployed product for structured trade journaling, discipline tracking, risk logic and decision-review workflows.",
+    line: "A pre-beta product for structured trade journaling, discipline tracking, risk logic and decision-review workflows.",
     url: "https://alpharhythm.trade",
   },
   {

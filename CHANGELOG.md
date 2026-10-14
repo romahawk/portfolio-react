@@ -9,6 +9,9 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Fixed (AlphaRhythm status on the homepage)
+- The homepage "Other builds" card for AlphaRhythm now says "Pre-beta" and "A pre-beta product" instead of "Live" and "A deployed product"
+
 ### Added (/services section navigation)
 - In-page navigation on `/services` for 01 Where AI fits, 02 Sample audit, 03 Proof, 04 Engagements, 05 Data and risk and FAQ. From 1360px wide it is a rail in the left margin that fades in after the hero and marks the section in view: numbers only with label tooltips up to 1599px (56px from the content), full labels from 1600px (40px from the content); below that it is an "On this page" list under the hero. Plain anchor links, keyboard reachable, no new dependency
 
