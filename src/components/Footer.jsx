@@ -1,6 +1,6 @@
 import React from "react";
 import { Linkedin, Github, Mail, FileDown, ArrowUpRight } from "lucide-react";
-import { contact, identity, labels, nav, navServices } from "../content/site.js";
+import { contact, identity, labels, nav, navAi, navServices } from "../content/site.js";
 
 const SOCIAL_LINKS = [
   { label: "LinkedIn", href: contact.linkedin, icon: Linkedin },
@@ -11,7 +11,10 @@ const SOCIAL_LINKS = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const isHome = typeof window !== "undefined" && (window.location.pathname.replace(/\/+$/, "") || "/") === "/";
+  const path = typeof window !== "undefined" ? window.location.pathname.replace(/\/+$/, "") || "/" : "/";
+  const isHome = path === "/";
+  // Matches the header: no Services link on /ai.
+  const isAiPage = path === navAi.href;
 
   return (
     <footer className="site-footer">
@@ -49,8 +52,13 @@ export default function Footer() {
               </li>
             ))}
             <li>
-              <a href={navServices.href} className="footer__nav-link">{navServices.label}</a>
+              <a href={navAi.href} className="footer__nav-link">{navAi.label}</a>
             </li>
+            {isAiPage ? null : (
+              <li>
+                <a href={navServices.href} className="footer__nav-link">{navServices.label}</a>
+              </li>
+            )}
           </ul>
         </nav>
 

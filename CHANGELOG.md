@@ -9,6 +9,16 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed (/ai for hiring teams: intro, proof, mobile, navigation)
+- `/ai` hero uses the approved copy: "I help organisations move AI from pilot to everyday use, safely.", a sub-line, three proof points (Medintegro, PharmaLogis, own AI operating system) and Download CV / Email me buttons
+- `/ai` closes with "Hiring a Technical PM or AI Implementation Lead?" (CV and email links) and a quieter line for AI product or pilot builders. No services or prices on `/ai`: the Services link is hidden in the header and footer on that page only
+- New Public proof section on `/ai`: Magic Kick, the private-use planner kept public as implementation proof (GitHub and live app links). Its issue-to-PR workflow, ADRs and AI routes are listed in the Harness, Memory and Tools pillars and in the project matrix
+- Privacy: `/ai` no longer names the personal OS or the language app. They are "My personal agent operating system" and "AI learning product" (Capstone, Dec 2026); AGENTS.md references are reduced to CLAUDE.md
+- Mobile (below 768px): the project matrix becomes one card per project (name, status, short description), and best practices, project applications, tool verdicts and the glossary show 3 items with a "Show all" toggle. A glossary search always shows every match. Desktop layout unchanged
+- Navigation: "AI" link to `/ai` in the header (desktop and mobile menu) and the footer
+- `/ai` section navigation, the same component as `/services`: an "On this page" list under the hero below 1360px, and from 1360px a rail in the left margin that fades in after the hero and marks the section in view (Proof, 01 Harness to 05 Cost, Projects, Glossary, Contact). The component moved from `site/ServicesSectionNav.jsx` to `common/SectionNav.jsx` (`SectionIndex`, `SectionRail`); `/services` is unchanged
+- Homepage: a "How I work with AI" teaser section after Delivery links to `/ai`. It replaces the one-line AI note that closed the Delivery section
+
 ### Changed (/ai project matrix)
 - Empty matrix cells show "n/a" instead of an em dash; the "Not applicable" label for screen readers is unchanged
 

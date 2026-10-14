@@ -6,19 +6,62 @@
 export const kbMeta = {
   title: "AI Field Guide",
   lastReviewed: "30 Sep 2026",
-  intro:
-    "My working reference for building with AI agents: the terms, the practices that hold up, and the tools I actually use across my own projects. Five pillars, each tied back to a real build.",
   mentalModel:
     "The model is the engine. The harness is the car around it. Skills are the driving lessons. Memory is the logbook. Tools are the roads it can reach. Cost is the fuel budget.",
 };
 
+// Hero and closing copy approved by Roman; keep it verbatim.
+export const kbHero = {
+  title: "I help organisations move AI from pilot to everyday use, safely.",
+  subtitle:
+    "20+ years delivering software in regulated MedTech, pharma and logistics. This page shows how I build and run AI workflows in practice.",
+  proofPoints: [
+    "20+ multi-vendor OR and imaging integrations delivered at Medintegro, from requirements to acceptance testing and go-live.",
+    "Owned a system rollout at PharmaLogis, a GDP and ISO 9001 certified pharma logistics provider, steering engineers and vendors.",
+    "Built and run my own AI operating system: a team of AI agents working daily from one versioned source of truth.",
+  ],
+};
+
+export const kbClosing = {
+  title: "Hiring a Technical PM or AI Implementation Lead?",
+  quiet: "Building an AI product or pilot? Happy to compare notes.",
+};
+
+// In-page navigation (same component as /services). Pillars keep their numbers; other sections have none.
+export const kbSectionNav = {
+  label: "On this page",
+  items: [
+    { id: "kb-proof", label: "Proof" },
+    { id: "harness", number: "01", label: "Harness" },
+    { id: "skills", number: "02", label: "Skills" },
+    { id: "memory", number: "03", label: "Memory" },
+    { id: "tools", number: "04", label: "Tools" },
+    { id: "cost", number: "05", label: "Cost" },
+    { id: "kb-matrix", label: "Projects" },
+    { id: "kb-glossary", label: "Glossary" },
+    { id: "kb-contact", label: "Contact" },
+  ],
+};
+
+// Public repos only. No users or revenue claims.
+export const kbPublicProof = {
+  name: "Magic Kick",
+  text:
+    "The private-use planner I keep public as implementation proof. It has AI routes for coaching, weekly summaries and risk patterns, and is built with ADRs plus an issue-to-PR workflow.",
+  links: [
+    { label: "Code on GitHub", href: "https://github.com/romahawk/magic-kick" },
+    { label: "Live app", href: "https://magic-kick.vercel.app" },
+  ],
+};
+
+// status: the project's own state, shown on the mobile project cards.
 export const kbProjects = [
-  { id: "deutschon", name: "DeutschOn-AI", note: "MSc capstone: human-in-the-loop AI assessment for German B1 learners" },
-  { id: "magic-kick", name: "Magic Kick", note: "AI-augmented personal execution OS" },
-  { id: "alpharhythm", name: "AlphaRhythm", note: "Trading rule-compliance micro-SaaS" },
-  { id: "proof-engine", name: "Proof Engine", note: "90-day plan tracker where tasks close only with evidence" },
-  { id: "business-os", name: "AI-Business-OS", note: "Markdown + Git strategic OS that agents read first" },
-  { id: "portfolio", name: "mazuryk.dev", note: "This site" },
+  { id: "learning-product", name: "AI learning product", status: "In build", note: "Capstone, Dec 2026" },
+  { id: "magic-kick", name: "Magic Kick", status: "In use", note: "Private-use planner, public as implementation proof" },
+  { id: "alpharhythm", name: "AlphaRhythm", status: "Pre-beta", note: "Trading rule-compliance micro-SaaS" },
+  { id: "proof-engine", name: "Proof Engine", status: "In build", note: "90-day plan tracker where tasks close only with evidence" },
+  { id: "agent-os", name: "My personal agent operating system", status: "In use", note: "Markdown + Git strategic OS that agents read first" },
+  { id: "portfolio", name: "mazuryk.dev", status: "In use", note: "This site" },
 ];
 
 export const kbPillars = [
@@ -32,7 +75,7 @@ export const kbPillars = [
       "A harness is everything wrapped around the model that turns it into an agent: the loop that calls the model, the system prompt, the tools it may use, the permissions, and the rules for planning, checking and stopping. Claude Code is a harness. The same model behaves very differently inside a good or a bad one.",
     parts: [
       { term: "Agent loop", text: "Model thinks → calls a tool → reads the result → repeats until the task is done or it hands back control." },
-      { term: "Project instructions", text: "CLAUDE.md / AGENTS.md: the standing brief the agent reads at the start of every session." },
+      { term: "Project instructions", text: "CLAUDE.md: the standing brief the agent reads at the start of every session." },
       { term: "Plan mode", text: "The agent proposes a plan and waits for approval before touching files." },
       { term: "Hooks", text: "Deterministic scripts that fire on events (before a tool call, after an edit, on stop). Rules that must always hold belong here, not in prose." },
       { term: "Subagents", text: "Separate agents with their own context for a bounded job (search, review), so the main session stays clean." },
@@ -52,8 +95,9 @@ export const kbPillars = [
     ],
     projects: [
       { project: "portfolio", status: "In use", text: "CLAUDE.md defines the orient → branch → lint → build → PR loop, a freeze list and architecture rules the agent must not break." },
-      { project: "business-os", status: "In use", text: "AGENTS.md defines the entry protocol every agent follows before it touches a project." },
-      { project: "deutschon", status: "In use", text: "Sessions start from docs/STATE.md and decisions.md; work ships as small, bounded issues." },
+      { project: "agent-os", status: "In use", text: "An entry file defines the protocol every agent follows before it touches a project." },
+      { project: "magic-kick", status: "In use", text: "An issue-to-PR workflow: every change starts as a GitHub issue and lands as a pull request." },
+      { project: "learning-product", status: "In use", text: "Sessions start from docs/STATE.md and decisions.md; work ships as small, bounded issues." },
     ],
     tools: [
       { name: "Claude Code", href: "https://docs.claude.com/en/docs/claude-code/overview", verdict: "Use", note: "Primary harness." },
@@ -91,9 +135,9 @@ export const kbPillars = [
       "Two skills that cover the same job with different rules.",
     ],
     projects: [
-      { project: "deutschon", status: "In use", text: "A sync skill orients each strategy session from the repo's STATE and decision log, and flags what needs a ruling." },
+      { project: "learning-product", status: "In use", text: "A sync skill orients each strategy session from the repo's STATE and decision log, and flags what needs a ruling." },
       { project: "alpharhythm", status: "Pre-beta", text: "A sync skill reads NEXT_SESSION_START and the decisions log before any work begins." },
-      { project: "business-os", status: "In use", text: "Custom skills, packaged once and reused across Claude apps: recruiter research, VC-style pitch review, a German tutor." },
+      { project: "agent-os", status: "In use", text: "Custom skills, packaged once and reused across Claude apps: recruiter research, VC-style pitch review, a German tutor." },
     ],
     tools: [
       { name: "anthropics/skills", href: "https://github.com/anthropics/skills", verdict: "Use", note: "Reference for structure; skill-creator for building and testing." },
@@ -132,13 +176,14 @@ export const kbPillars = [
       "Storing personal or regulated data in memory tools that leave your control.",
     ],
     projects: [
-      { project: "business-os", status: "In use", text: "The strategic memory layer: goals, current focus, decision rules and a decision log in Markdown + Git." },
-      { project: "deutschon", status: "In use", text: "docs/STATE.md and decisions.md are the handover between strategy and build sessions." },
+      { project: "agent-os", status: "In use", text: "The strategic memory layer: goals, current focus, decision rules and a decision log in Markdown + Git." },
+      { project: "learning-product", status: "In use", text: "docs/STATE.md and decisions.md are the handover between strategy and build sessions." },
       { project: "alpharhythm", status: "Pre-beta", text: "NEXT_SESSION_START.md and DECISIONS_LOG.md make every session resumable in one read." },
-      { project: "proof-engine", status: "In build", text: "The 90-day plan lives as Markdown in AI-Business-OS; the app generates its data from it: one source, two views." },
+      { project: "magic-kick", status: "In use", text: "Architecture decisions are recorded as ADRs in the repo." },
+      { project: "proof-engine", status: "In build", text: "The 90-day plan lives as Markdown in my personal agent operating system; the app generates its data from it, so there is one source and two views." },
     ],
     tools: [
-      { name: "CLAUDE.md / AGENTS.md", href: "https://docs.claude.com/en/docs/claude-code/memory", verdict: "Use", note: "Built in. Keep it lean." },
+      { name: "CLAUDE.md", href: "https://docs.claude.com/en/docs/claude-code/memory", verdict: "Use", note: "Built in. Keep it lean." },
       { name: "repomix", href: "https://github.com/yamadashy/repomix", verdict: "Try", note: "Pack a repo into one file for a chat-based strategy session." },
       { name: "planning-with-files", href: "https://github.com/OthmanAdi/planning-with-files", verdict: "Skip", note: "Good pattern, but I already run it with my own state files." },
       { name: "claude-mem", href: "https://github.com/thedotmack/claude-mem", verdict: "Skip", note: "Would compete with existing state files as a second source of truth." },
@@ -172,7 +217,8 @@ export const kbPillars = [
       "Scraping sites whose terms forbid it.",
     ],
     projects: [
-      { project: "deutschon", status: "In build", text: "Claude via the Vercel AI SDK returns structured assessments checked against a schema; the teacher accepts, edits or rejects before a student sees anything." },
+      { project: "magic-kick", status: "In use", text: "AI routes for coaching, weekly summaries and risk patterns." },
+      { project: "learning-product", status: "In build", text: "Claude via the Vercel AI SDK returns structured assessments checked against a schema; the teacher accepts, edits or rejects before a student sees anything." },
     ],
     tools: [
       { name: "playwright-mcp", href: "https://github.com/microsoft/playwright-mcp", verdict: "Use", note: "Lets the agent test in a real browser." },
@@ -210,7 +256,7 @@ export const kbPillars = [
       "Cutting tokens by making output unreadable: cheaper, but slower to review.",
     ],
     projects: [
-      { project: "business-os", status: "In use", text: "A written usage discipline: one task per session, lean instruction files, periodic usage audits." },
+      { project: "agent-os", status: "In use", text: "A written usage discipline: one task per session, lean instruction files, periodic usage audits." },
     ],
     tools: [
       { name: "claude-hud", href: "https://github.com/jarrodwatts/claude-hud", verdict: "Use", note: "Shows context, tools and agents live in the status line." },
@@ -227,7 +273,7 @@ export const kbGlossary = [
   { term: "Agent loop", pillar: "harness", def: "The cycle of think → act (tool call) → observe result → repeat." },
   { term: "Harness", pillar: "harness", def: "The software around a model that makes it an agent: loop, prompt, tools, permissions, rules." },
   { term: "System prompt", pillar: "harness", def: "Standing instructions the harness gives the model before any user input." },
-  { term: "CLAUDE.md / AGENTS.md", pillar: "memory", def: "Project instruction files an agent loads at session start." },
+  { term: "CLAUDE.md", pillar: "memory", def: "A project instruction file an agent loads at session start." },
   { term: "Plan mode", pillar: "harness", def: "A mode where the agent proposes a plan and makes no changes until approved." },
   { term: "Hook", pillar: "harness", def: "A script that runs automatically on an agent event, used to enforce rules deterministically." },
   { term: "Subagent", pillar: "harness", def: "A helper agent with its own context window, used to isolate a bounded task." },
