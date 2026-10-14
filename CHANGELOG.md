@@ -9,6 +9,9 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed (CV PDF, Oct 2026)
+- `public/roman-mazuryk-cv.pdf` replaced with the Oct 2026 CV: headline "Technical Project Manager / Implementation Lead", romazuryk@gmail.com, PharmaLogis 08/2024 to 11/2025, M.Sc. Computer Science, Rolevoice capstone. The May CV ("Technical Product Manager", proton.me email, P&L figure) is gone
+
 ### Fixed (footer contact spacing)
 - Footer Contact column: the Download CV button and the email link now have a 20px gap side by side and a 12px gap when they wrap, on desktop and mobile
 
