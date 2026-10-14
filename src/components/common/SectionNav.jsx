@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-// In-page navigation for /services, in two forms:
+// In-page navigation for long pages (/services, /ai), in two forms:
 // - "index": a static list under the hero, shown below 1360px (phones, tablets, small laptops).
 // - "rail": a fixed list in the left margin, shown from 1360px. It fades in after the hero
 //   and highlights the section in view. Up to 1599px it shows numbers only (labels on hover
@@ -24,7 +24,7 @@ function useActiveSection(ids) {
           if (entry.isIntersecting) inBand.add(entry.target.id);
           else inBand.delete(entry.target.id);
         }
-        // Unlisted sections (Who you work with, Fit) leave nothing highlighted.
+        // Unlisted sections leave nothing highlighted.
         setActive(ids.find((id) => inBand.has(id)) || "");
       },
       { rootMargin: ACTIVE_BAND }
@@ -75,7 +75,7 @@ function SectionLinks({ items, active }) {
   );
 }
 
-export function ServicesSectionIndex({ nav }) {
+export function SectionIndex({ nav }) {
   return (
     <nav className="sv2-index" aria-label={nav.label}>
       <p className="sv2-index__label">{nav.label}</p>
@@ -84,7 +84,7 @@ export function ServicesSectionIndex({ nav }) {
   );
 }
 
-export function ServicesSectionRail({ nav, heroId }) {
+export function SectionRail({ nav, heroId }) {
   const ids = useMemo(() => nav.items.map((item) => item.id), [nav.items]);
   const active = useActiveSection(ids);
   const shown = usePastHero(heroId);

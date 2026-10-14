@@ -1,8 +1,9 @@
 import React, { useId, useMemo, useState } from "react";
 import { ArrowUpRight, Brain, Cpu, FileDown, Gauge, Mail, Search, Sparkles, Wrench } from "lucide-react";
 import PageHero from "./common/PageHero.jsx";
+import { SectionIndex, SectionRail } from "./common/SectionNav.jsx";
 import { contact, labels } from "../content/site.js";
-import { kbClosing, kbGlossary, kbHero, kbMeta, kbPillars, kbProjects, kbPublicProof } from "../data/aiKnowledgeBase.js";
+import { kbClosing, kbGlossary, kbHero, kbMeta, kbPillars, kbProjects, kbPublicProof, kbSectionNav } from "../data/aiKnowledgeBase.js";
 
 const ICONS = { Brain, Cpu, Gauge, Sparkles, Wrench };
 
@@ -280,6 +281,7 @@ export default function KnowledgeBasePage() {
   return (
     <div className="kb-page">
       <PageHero
+        id="kb-top"
         eyebrow={`${kbMeta.title} · Last reviewed ${kbMeta.lastReviewed}`}
         title={kbHero.title}
         subtitle={kbHero.subtitle}
@@ -296,7 +298,10 @@ export default function KnowledgeBasePage() {
             {labels.emailMe} <Mail size={15} className="icon ml-1" aria-hidden="true" />
           </a>
         </div>
+        <SectionIndex nav={kbSectionNav} />
       </PageHero>
+
+      <SectionRail nav={kbSectionNav} heroId="kb-top" />
 
       <PublicProof />
 

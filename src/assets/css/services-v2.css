@@ -510,7 +510,7 @@
   }
 }
 
-/* In-page navigation (ServicesSectionNav.jsx).
+/* In-page navigation (common/SectionNav.jsx), shared with /ai (which sets --sv2-accent-text in knowledge-base.css).
    Below 1360px: a static "On this page" index under the hero.
    1360 to 1599px: a compact rail in the left margin, numbers only, 56px from the content;
    the label shows as a tooltip on hover and focus (and is always the link's accessible name).

@@ -5,6 +5,8 @@
   --kb-memory: #3ecf6c;
   --kb-tools: #f3c14e;
   --kb-cost: #f38b5e;
+  /* Accent for the shared section nav (common/SectionNav.jsx); same values as on /services. */
+  --sv2-accent-text: var(--brand);
   padding-bottom: 40px;
 }
 
@@ -14,6 +16,7 @@
   --kb-memory: #167a3a; /* 5.4:1 on light panels (WCAG AA) */
   --kb-tools: #946200;
   --kb-cost: #b8481c;
+  --sv2-accent-text: #136c33;
 }
 
 .kb-accent--harness { --kb-accent: var(--kb-harness); }
@@ -34,7 +37,10 @@
   border: 0;
 }
 
-.kb-section { padding-top: 56px; }
+.kb-section {
+  padding-top: 56px;
+  scroll-margin-top: calc(var(--nav-h, 72px) + 12px);
+}
 
 .kb-section__head,
 .kb-pillar__head {

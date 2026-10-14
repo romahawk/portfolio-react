@@ -27,6 +27,22 @@ export const kbClosing = {
   quiet: "Building an AI product or pilot? Happy to compare notes.",
 };
 
+// In-page navigation (same component as /services). Pillars keep their numbers; other sections have none.
+export const kbSectionNav = {
+  label: "On this page",
+  items: [
+    { id: "kb-proof", label: "Proof" },
+    { id: "harness", number: "01", label: "Harness" },
+    { id: "skills", number: "02", label: "Skills" },
+    { id: "memory", number: "03", label: "Memory" },
+    { id: "tools", number: "04", label: "Tools" },
+    { id: "cost", number: "05", label: "Cost" },
+    { id: "kb-matrix", label: "Projects" },
+    { id: "kb-glossary", label: "Glossary" },
+    { id: "kb-contact", label: "Contact" },
+  ],
+};
+
 // Public repos only. No users or revenue claims.
 export const kbPublicProof = {
   name: "Magic Kick",

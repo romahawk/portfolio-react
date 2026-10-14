@@ -16,6 +16,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 - Privacy: `/ai` no longer names the personal OS or the language app. They are "My personal agent operating system" and "AI learning product" (Capstone, Dec 2026); AGENTS.md references are reduced to CLAUDE.md
 - Mobile (below 768px): the project matrix becomes one card per project (name, status, short description), and best practices, project applications, tool verdicts and the glossary show 3 items with a "Show all" toggle. A glossary search always shows every match. Desktop layout unchanged
 - Navigation: "AI" link to `/ai` in the header (desktop and mobile menu) and the footer
+- `/ai` section navigation, the same component as `/services`: an "On this page" list under the hero below 1360px, and from 1360px a rail in the left margin that fades in after the hero and marks the section in view (Proof, 01 Harness to 05 Cost, Projects, Glossary, Contact). The component moved from `site/ServicesSectionNav.jsx` to `common/SectionNav.jsx` (`SectionIndex`, `SectionRail`); `/services` is unchanged
 - Homepage: a "How I work with AI" teaser section after Delivery links to `/ai`. It replaces the one-line AI note that closed the Delivery section
 
 ### Changed (/ai project matrix)
