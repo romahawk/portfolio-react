@@ -15,27 +15,30 @@ export const contact = {
   calUrl: `mailto:${EMAIL}?subject=Intro%20call%20request`,
 };
 
+// Same title as the CV and LinkedIn headline. roleShort only where space is tight.
 export const identity = {
   name: "Roman Mazuryk",
-  role: "Technical Project Manager",
-  eyebrow: "Technical Project Manager · Hamburg / Remote (EU)",
-  headline: "System implementation in regulated environments",
-  subline: "20+ years in MedTech, pharma and logistics. 20+ system projects taken from discovery to rollout and user adoption, most of them at Medintegro, the integrator I ran.",
+  role: "Technical Project Manager / Implementation Lead",
+  roleShort: "TPM / Implementation Lead",
+  eyebrow: "Hamburg area · Open to remote across the EU",
+  subtitle: "I get complex systems live in regulated environments. MedTech and pharma logistics, from vendor selection to go-live and support. Now with hands-on AI.",
+  // Not rendered since homepage v3 (credibility strip hidden); kept for reuse.
   metaLine: "EU work authorisation · English C1 · German B1 in progress",
-  footerTagline: "Technical Project Manager for system implementation in regulated environments. Hamburg / Remote (EU).",
+  footerTagline: "Technical Project Manager / Implementation Lead · Ahrensburg / Hamburg",
 };
-
-export const nav = [
-  { id: "work", label: "Work" },
-  { id: "delivery", label: "Delivery" },
-  { id: "about", label: "About" },
-  { id: "contact", label: "Contact" },
-];
 
 export const navAi = {
   label: "AI",
   href: "/ai",
 };
+
+// Header and footer order: Work · About · AI · Contact. Items with an id are homepage anchors.
+export const nav = [
+  { id: "work", label: "Work" },
+  { id: "about", label: "About" },
+  { href: navAi.href, label: navAi.label },
+  { id: "contact", label: "Contact" },
+];
 
 export const navServices = {
   label: "Services",
@@ -47,6 +50,7 @@ export const navServices = {
 export const labels = {
   downloadCv: "Download CV",
   emailMe: "Email me",
+  linkedin: "LinkedIn",
   backToWork: "See all delivery work",
   keyFacts: "Key facts",
   howIWorkWithAi: "How I work with AI",
@@ -57,6 +61,11 @@ export const labels = {
   backToTop: "Back to top",
   navigation: "Navigation",
   contact: "Contact",
+};
+
+// Consulting is reachable only from this small footer link (no services pitch on the homepage).
+export const footer = {
+  consulting: { label: "Consulting", href: "/services" },
 };
 
 export const facts = [
@@ -99,7 +108,7 @@ export const cases = [
     problem: "A model forgets everything when a session ends, and the same model behaves very differently inside a good or a bad setup. AI-assisted builds need structure to stay reliable.",
     role: "Designed and built it myself",
     work: "For my own builds I also run an AI-assisted delivery system: defined roles, one source of truth, decision logs and review gates. I documented it as a public field guide: five pillars (harness, skills, memory, tools, cost), tool verdicts, a project matrix and a glossary.",
-    outcome: "My working reference for building with AI agents: the terms, the practices that hold up, and the tools I actually use. Tied to six of my own projects, including my M.Sc. capstone (DeutschOn-AI) and this site.",
+    outcome: "My working reference for building with AI agents: the terms, the practices that hold up, and the tools I actually use. Tied to six of my own projects, including my M.Sc. capstone (Rolevoice) and this site.",
     links: [{ label: "How I work with AI", href: "/ai" }],
   },
 ];
@@ -139,13 +148,13 @@ export const aiTeaser = {
 };
 
 export const about = {
-  title: "Technical PM. 20+ years in regulated industries.",
+  title: "About",
   photo: { src: "/images/profile-400.webp", alt: "Roman Mazuryk portrait" },
   paragraphs: [
-    "I'm Roman, a technical project manager based in the Hamburg area. I've worked in medical technology, pharma and logistics for over 20 years. Since 2012 I've delivered client-facing system implementations: integrated operating rooms, imaging and PACS/RIS connectivity, and internal logistics systems under GDP and ISO 9001.",
-    "I founded and ran Medintegro, a MedTech systems integrator, and delivered 20+ projects for hospitals and clinics with vendors across the EU, US and Asia. Most recently, at PharmaLogis, a GDP-certified pharmaceutical logistics provider, I built and rolled out an internal order and warehouse system that cut manual coordination by an estimated 30%.",
-    "I know APIs and data flows well enough to steer engineering teams, and clinical and operational work well enough to run discovery, workshops and go-live. I also build software myself, including LLM-based workflows.",
-    "I'm looking for a permanent TPM or implementation role in Hamburg or remote across the EU.",
+    "For over a decade I owned the whole MedTech delivery chain at Medintegro, the integrator I founded. That meant picking manufacturers, planning the integration, getting hospitals live, supporting them after go-live and selling the next project. I ran delivery and the P&L.",
+    "Then I moved into pharma logistics at PharmaLogis, where I built and rolled out internal systems under GDP and ISO 9001.",
+    "Since leaving PharmaLogis in late 2025 I've upskilled full time. I'm finishing a Master of Science in Computer Science (due Dec 2026) and I build with AI every day, including my personal agent operating system, which I run my own work on.",
+    "My job is making implementations land: clear scope, vendors aligned, users live and supported. AI is how I now do that faster.",
   ],
   experienceTitle: "Experience",
   factsTitle: "Education, languages and location",
@@ -153,7 +162,7 @@ export const about = {
 
 // From the CV, newest first.
 export const experience = [
-  { role: "Independent projects and Master's work", org: "mazuryk.dev, Hamburg", dates: "01/2026 to present", line: "DeutschOn-AI (capstone, preparing for pilot), AlphaRhythm (pre-beta)." },
+  { role: "Independent projects and Master's work", org: "mazuryk.dev, Hamburg", dates: "01/2026 to present", line: "Rolevoice (M.Sc. capstone): AI-assisted foreign-language assessment for professionals. First pilot: German. AlphaRhythm (pre-beta)." },
   { role: "Commercial Specialist, Freight Forwarding and Logistics", org: "PharmaLogis GmbH, Reinbek near Hamburg", dates: "08/2024 to 11/2025", line: "Introduction of internal systems and process digitalisation across operations." },
   { role: "Founder and Technical Project Manager", org: "Medintegro, Kyiv", dates: "12/2012 to 05/2024", line: "Delivered 20+ client-facing system projects across OR video, imaging and automation." },
   { role: "CEO and Head of International Business Development", org: "Acropolus Biosciences, Kyiv", dates: "06/2011 to 08/2012", line: "Full P&L and operational ownership of a business with 70+ employees." },
@@ -340,8 +349,8 @@ export const services = {
 
 export const seo = {
   home: {
-    title: "Roman Mazuryk · Technical Project Manager, System Implementation",
-    description: "Technical project manager with 20+ years in MedTech, pharma and logistics. 20+ system projects from discovery to adoption. Hamburg / Remote (EU).",
+    title: "Roman Mazuryk | Technical Project Manager / Implementation Lead",
+    description: "Technical Project Manager and Implementation Lead. 20+ years in regulated MedTech, pharma and logistics, taking systems live since 2012, now adding hands-on AI. Hamburg area, open to remote across the EU.",
     url: "https://www.mazuryk.dev/",
   },
   services: {

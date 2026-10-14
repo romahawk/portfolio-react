@@ -1,28 +1,26 @@
-import { ArrowRight, FileDown, Github, Linkedin, Mail } from "lucide-react";
-import { CTAStrip, FeaturePill, PageHero, SectionHeader, StatusBadge } from "../system/SystemVisuals.jsx";
+import { ArrowRight, FileDown, Linkedin } from "lucide-react";
+import { CTAStrip, PageHero, SectionHeader } from "../system/SystemVisuals.jsx";
 import ProofCaseCard from "../common/ProofCaseCard.jsx";
+// Homepage v3 renders Hero, Work, About and Contact only. The credibility strip (facts),
+// otherBuilds, delivery and aiTeaser stay in site.js but are not rendered here.
 import {
   about,
-  aiTeaser,
   cases,
   contact,
   contactSection,
-  delivery,
   education,
   experience,
-  facts,
   identity,
   labels,
   languages,
   location,
-  otherBuilds,
   work,
 } from "../../content/site.js";
 
 function TextLink({ href, children }) {
   const external = href.startsWith("http");
   return (
-    <a href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>
+    <a href={href} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
       {children} <ArrowRight size={14} aria-hidden="true" />
     </a>
   );
@@ -49,61 +47,19 @@ export default function HomePage() {
       <PageHero
         id="top"
         eyebrow={identity.eyebrow}
-        title={identity.headline}
-        subtitle={identity.subline}
+        title={identity.name}
+        titleLine={identity.role}
+        subtitle={identity.subtitle}
         primaryCta={{ label: labels.downloadCv, href: contact.cvUrl, download: true, icon: <FileDown size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: labels.emailMe, href: contact.emailHref, icon: <Mail size={15} className="icon ml-1" aria-hidden="true" /> }}
-        metaLinks={[
-          { label: "LinkedIn", href: contact.linkedin, external: true, icon: <Linkedin size={14} aria-hidden="true" /> },
-          { label: "GitHub", href: contact.github, external: true, icon: <Github size={14} aria-hidden="true" /> },
-        ]}
+        secondaryCta={{ label: labels.linkedin, href: contact.linkedin, external: true, icon: <Linkedin size={15} className="icon ml-1" aria-hidden="true" /> }}
         scrollTargetId="work"
-      >
-        <p className="home-hero__meta-line">{identity.metaLine}</p>
-        <ul className="market-page__pill-list home-credibility" aria-label={labels.keyFacts}>
-          {facts.map((fact) => <li key={fact}><FeaturePill accent="medtech">{fact}</FeaturePill></li>)}
-        </ul>
-      </PageHero>
+      />
 
       <section id="work" className="section container market-page__section">
         <SectionHeader title={work.title} text={work.intro} />
         <div className="medtech-proof-grid">
           {cases.map((item, index) => <ProofCaseCard item={item} index={index} key={item.title} />)}
         </div>
-
-        <h3 className="other-builds__title">{work.otherBuildsTitle}</h3>
-        <ul className="other-builds">
-          {otherBuilds.map((build) => (
-            <li className="other-build reveal" key={build.title}>
-              <StatusBadge status={build.status} />
-              <strong>{build.title}</strong>
-              <p>{build.line}</p>
-              <TextLink href={build.url}>{build.title}</TextLink>
-            </li>
-          ))}
-        </ul>
-        <p className="home-delivery-note">
-          <TextLink href={delivery.noteLink.href}>{labels.howIWorkWithAi}</TextLink>
-        </p>
-      </section>
-
-      <section id="delivery" className="section container market-page__section">
-        <SectionHeader title={delivery.title} />
-        <div className="medtech-capability-grid">
-          {delivery.steps.map((step) => (
-            <article className="medtech-capability-card reveal" key={step.title}>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="ai" className="section container market-page__section">
-        <SectionHeader title={aiTeaser.title} text={aiTeaser.text} />
-        <p className="home-delivery-note reveal">
-          <TextLink href={aiTeaser.link.href}>{aiTeaser.link.label}</TextLink>
-        </p>
       </section>
 
       <section id="about" className="section container market-page__section">
@@ -161,8 +117,7 @@ export default function HomePage() {
           secondary={{ label: labels.emailMe, href: contact.emailHref }}
         />
         <p className="home-services-link">
-          <TextLink href={contact.linkedin}>LinkedIn</TextLink>
-          <TextLink href="/services">{labels.seeServices}</TextLink>
+          <TextLink href={contact.linkedin}>{labels.linkedin}</TextLink>
         </p>
       </section>
     </div>

@@ -9,6 +9,14 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed (homepage v3: Technical Project Manager / Implementation Lead)
+- Title everywhere is "Technical Project Manager / Implementation Lead" (same as the CV and LinkedIn): meta, OG and Twitter tags, hero, footer tagline and copyright line, OG image alt
+- Hero: H1 is the name, the title sits directly under it, new subtitle, and two buttons: Download CV (download) and LinkedIn (new tab, `rel="noopener noreferrer"`). `PageHero` gets an optional `titleLine` prop
+- Homepage renders Hero, Work (cards unchanged), About (new copy, photo, experience timeline, education/languages/location) and Contact. The credibility strip, Other builds, "How I run delivery" and the AI teaser are no longer rendered; their data stays in `src/content/site.js`
+- Header nav is Work · About · AI · Contact on every page. The Services link shows only on `/services` (with its Book a call button). The footer drops the Services and GitHub links and gets a small "Consulting" link to `/services`
+- Capstone is Rolevoice: the AI Field Guide card and the experience timeline no longer say DeutschOn-AI. `/ai` drops the teacher and student wording from the capstone entry and the hosted-tools practice
+- Consistency guard: header comment updated; bans "System implementation in regulated environments", "Technical Project Manager for system implementation", "upskilling on purpose", "20+ years taking software" and "DeutschOn"
+
 ### Changed (CV PDF, Oct 2026)
 - `public/roman-mazuryk-cv.pdf` replaced with the Oct 2026 CV: headline "Technical Project Manager / Implementation Lead", romazuryk@gmail.com, PharmaLogis 08/2024 to 11/2025, M.Sc. Computer Science, Rolevoice capstone. The May CV ("Technical Product Manager", proton.me email, P&L figure) is gone
 

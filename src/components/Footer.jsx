@@ -1,10 +1,10 @@
 import React from "react";
-import { Linkedin, Github, Mail, FileDown, ArrowUpRight } from "lucide-react";
-import { contact, identity, labels, nav, navAi, navServices } from "../content/site.js";
+import { Linkedin, Mail, FileDown, ArrowUpRight } from "lucide-react";
+import { contact, footer, identity, labels, nav } from "../content/site.js";
 
+// Footer links per homepage v3: LinkedIn, email and CV. Consulting is a small text link in the Contact column.
 const SOCIAL_LINKS = [
-  { label: "LinkedIn", href: contact.linkedin, icon: Linkedin },
-  { label: "GitHub", href: contact.github, icon: Github },
+  { label: labels.linkedin, href: contact.linkedin, icon: Linkedin },
   { label: "Email", href: contact.emailHref, icon: Mail },
   { label: labels.downloadCv, href: contact.cvUrl, icon: FileDown, download: true },
 ];
@@ -13,8 +13,6 @@ export default function Footer() {
   const year = new Date().getFullYear();
   const path = typeof window !== "undefined" ? window.location.pathname.replace(/\/+$/, "") || "/" : "/";
   const isHome = path === "/";
-  // Matches the header: no Services link on /ai.
-  const isAiPage = path === navAi.href;
 
   return (
     <footer className="site-footer">
@@ -32,7 +30,7 @@ export default function Footer() {
                 href={href}
                 className="footer__social"
                 target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noreferrer" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                 download={download || undefined}
                 aria-label={label}
                 title={label}
@@ -46,19 +44,11 @@ export default function Footer() {
         <nav className="footer__nav-col" aria-label="Footer navigation">
           <p className="footer__col-heading">{labels.navigation}</p>
           <ul className="footer__nav">
-            {nav.map(({ id, label }) => (
-              <li key={id}>
-                <a href={isHome ? `#${id}` : `/#${id}`} className="footer__nav-link">{label}</a>
+            {nav.map(({ id, href, label }) => (
+              <li key={id || href}>
+                <a href={href || (isHome ? `#${id}` : `/#${id}`)} className="footer__nav-link">{label}</a>
               </li>
             ))}
-            <li>
-              <a href={navAi.href} className="footer__nav-link">{navAi.label}</a>
-            </li>
-            {isAiPage ? null : (
-              <li>
-                <a href={navServices.href} className="footer__nav-link">{navServices.label}</a>
-              </li>
-            )}
           </ul>
         </nav>
 
@@ -69,6 +59,9 @@ export default function Footer() {
           </a>
           <a href={contact.emailHref} className="footer__secondary-link">
             {contact.email} <ArrowUpRight size={13} aria-hidden="true" />
+          </a>
+          <a href={footer.consulting.href} className="footer__consulting-link">
+            {footer.consulting.label}
           </a>
         </div>
       </div>
