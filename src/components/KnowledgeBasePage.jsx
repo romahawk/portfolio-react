@@ -227,8 +227,9 @@ export default function KnowledgeBasePage() {
           <h3>How this guide is maintained</h3>
           <p>
             Reviewed monthly against what I actually run. Status labels are literal: <Pill kind="status" value="In use" /> runs today,{" "}
-            <Pill kind="status" value="In build" /> is being built. Plans are not listed until they are built. Tool verdicts
-            reflect a solo builder working across a few repos — your context may differ.
+            <Pill kind="status" value="In build" /> is being built, <Pill kind="status" value="Pre-beta" /> runs in a product that is
+            not released yet. Plans are not listed until they are built. Tool verdicts reflect a solo builder working across a
+            few repos. Your context may differ.
           </p>
         </div>
       </section>

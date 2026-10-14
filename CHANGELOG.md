@@ -9,8 +9,14 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
-### Fixed (AlphaRhythm status on the homepage)
-- The homepage "Other builds" card for AlphaRhythm now says "Pre-beta" and "A pre-beta product" instead of "Live" and "A deployed product"
+### Fixed (homepage, /kb and 404 content audit)
+- One years figure on the homepage: hero sub-line reads "20+ years in MedTech, pharma and logistics", the stat tile reads "20+ years in regulated industries" (matching the About heading), and About says "Since 2012" instead of a second "12+ years"
+- Hero language line says "German B1 in progress"; education uses the official wording "Master of Science in Computer Science · Woolf / GoIT Neoversity"
+- AlphaRhythm is called pre-beta only: "Pre-beta" badge and shorter line on the homepage card, and its two /kb matrix entries use a new "Pre-beta" status (added to the legend) instead of "In use"
+- Experience: the 01/2026 entry is now "Independent projects and Master's work" (DeutschOn-AI, AlphaRhythm) with no client work implied; PharmaLogis ends 11/2025
+- About names the PharmaLogis system as "an internal order and warehouse system"; the FlowLogics result says "based on" instead of "measured by"
+- AI Field Guide card drops "reviewed monthly" and names the capstone (DeutschOn-AI)
+- No em dashes in /kb copy or on the 404 page
 
 ### Added (/services section navigation)
 - In-page navigation on `/services` for 01 Where AI fits, 02 Sample audit, 03 Proof, 04 Engagements, 05 Data and risk and FAQ. From 1360px wide it is a rail in the left margin that fades in after the hero and marks the section in view: numbers only with label tooltips up to 1599px (56px from the content), full labels from 1600px (40px from the content); below that it is an "On this page" list under the hero. Plain anchor links, keyboard reachable, no new dependency

@@ -1,6 +1,6 @@
-// AI Field Guide — single source of truth for /kb.
+// AI Field Guide: single source of truth for /kb.
 // Edit content here; the page, project matrix and glossary are generated from it.
-// Status values for project applications: "In use" | "In build". Only list work that exists today.
+// Status values for project applications: "In use" | "In build" | "Pre-beta". Only list work that exists today.
 // Verdict values for tools: "Use" | "Try" | "Skip"
 
 export const kbMeta = {
@@ -13,7 +13,7 @@ export const kbMeta = {
 };
 
 export const kbProjects = [
-  { id: "deutschon", name: "DeutschOn-AI", note: "MSc capstone — human-in-the-loop AI assessment for German B1 learners" },
+  { id: "deutschon", name: "DeutschOn-AI", note: "MSc capstone: human-in-the-loop AI assessment for German B1 learners" },
   { id: "magic-kick", name: "Magic Kick", note: "AI-augmented personal execution OS" },
   { id: "alpharhythm", name: "AlphaRhythm", note: "Trading rule-compliance micro-SaaS" },
   { id: "proof-engine", name: "Proof Engine", note: "90-day plan tracker where tasks close only with evidence" },
@@ -32,7 +32,7 @@ export const kbPillars = [
       "A harness is everything wrapped around the model that turns it into an agent: the loop that calls the model, the system prompt, the tools it may use, the permissions, and the rules for planning, checking and stopping. Claude Code is a harness. The same model behaves very differently inside a good or a bad one.",
     parts: [
       { term: "Agent loop", text: "Model thinks → calls a tool → reads the result → repeats until the task is done or it hands back control." },
-      { term: "Project instructions", text: "CLAUDE.md / AGENTS.md — the standing brief the agent reads at the start of every session." },
+      { term: "Project instructions", text: "CLAUDE.md / AGENTS.md: the standing brief the agent reads at the start of every session." },
       { term: "Plan mode", text: "The agent proposes a plan and waits for approval before touching files." },
       { term: "Hooks", text: "Deterministic scripts that fire on events (before a tool call, after an edit, on stop). Rules that must always hold belong here, not in prose." },
       { term: "Subagents", text: "Separate agents with their own context for a bounded job (search, review), so the main session stays clean." },
@@ -41,12 +41,12 @@ export const kbPillars = [
     practices: [
       "Pick one harness methodology and commit to it. Stacked harness packs give the model conflicting rules.",
       "Keep CLAUDE.md short and specific: commands, conventions, what not to touch. Point to docs instead of pasting them.",
-      "Plan first, then build in small, reviewable steps — one issue, one branch, one session.",
+      "Plan first, then build in small, reviewable steps: one issue, one branch, one session.",
       "Close the loop with verification: lint, build and tests the agent must run before it calls a task done.",
       "Enforce hard rules with hooks or CI, not with capital letters in a prompt.",
     ],
     pitfalls: [
-      "Installing every popular pack at once — context fills with instructions before any work starts.",
+      "Installing every popular pack at once: context fills with instructions before any work starts.",
       "Letting the agent mark its own work as done without a check it cannot fake.",
       "Unattended runs without a stop condition or a budget.",
     ],
@@ -71,33 +71,33 @@ export const kbPillars = [
     title: "Skills",
     tagline: "The jobs it repeats",
     definition:
-      "A skill is a packaged procedure: a folder with a SKILL.md (instructions) plus optional scripts, templates and references. Only its name and description sit in context until a task matches — then the full instructions load. Skills turn a workflow you explained once into one the agent runs the same way every time.",
+      "A skill is a packaged procedure: a folder with a SKILL.md (instructions) plus optional scripts, templates and references. Only its name and description sit in context until a task matches. Then the full instructions load. Skills turn a workflow you explained once into one the agent runs the same way every time.",
     parts: [
       { term: "SKILL.md", text: "Frontmatter (name, description) and step-by-step instructions." },
       { term: "Description", text: "The trigger. It decides when the skill fires, so it must name the situations, not just the topic." },
-      { term: "Progressive disclosure", text: "Metadata first, full body on demand, bundled files only when needed — cheap to keep many installed." },
+      { term: "Progressive disclosure", text: "Metadata first, full body on demand, bundled files only when needed. Cheap to keep many installed." },
       { term: "Plugin", text: "A bundle of skills, subagents, hooks and MCP servers installed together from a marketplace." },
     ],
     practices: [
-      "Turn a workflow into a skill after you have done it by hand three times — not before.",
+      "Turn a workflow into a skill after you have done it by hand three times, not before.",
       "Write the description as trigger phrases: when to use it, and when not to.",
       "Keep one job per skill. Put long reference material in separate files the skill reads on demand.",
       "Put deterministic steps in scripts; keep judgement in the instructions.",
       "Test a skill against real inputs before trusting it.",
     ],
     pitfalls: [
-      "Vague descriptions — the skill never fires, or fires on everything.",
+      "Vague descriptions: the skill never fires, or fires on everything.",
       "Installing skill packs you have not read. Skills can run code on your machine.",
       "Two skills that cover the same job with different rules.",
     ],
     projects: [
       { project: "deutschon", status: "In use", text: "A sync skill orients each strategy session from the repo's STATE and decision log, and flags what needs a ruling." },
-      { project: "alpharhythm", status: "In use", text: "A sync skill reads NEXT_SESSION_START and the decisions log before any work begins." },
-      { project: "business-os", status: "In use", text: "Custom skills — recruiter research, VC-style pitch review, a German tutor — packaged once and reused across Claude apps." },
+      { project: "alpharhythm", status: "Pre-beta", text: "A sync skill reads NEXT_SESSION_START and the decisions log before any work begins." },
+      { project: "business-os", status: "In use", text: "Custom skills, packaged once and reused across Claude apps: recruiter research, VC-style pitch review, a German tutor." },
     ],
     tools: [
       { name: "anthropics/skills", href: "https://github.com/anthropics/skills", verdict: "Use", note: "Reference for structure; skill-creator for building and testing." },
-      { name: "claude-plugins-official", href: "https://github.com/anthropics/claude-plugins-official", verdict: "Use", note: "Official plugin directory — browse before building." },
+      { name: "claude-plugins-official", href: "https://github.com/anthropics/claude-plugins-official", verdict: "Use", note: "Official plugin directory. Browse before building." },
       { name: "ui-ux-pro-max", href: "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill", verdict: "Try", note: "Pick this or taste-skill, not both." },
       { name: "taste-skill", href: "https://github.com/leonxlnx/taste-skill", verdict: "Try", note: "Anti-generic frontend design rules." },
       { name: "awesome-claude-skills", href: "https://github.com/ComposioHQ/awesome-claude-skills", verdict: "Skip", note: "Bookmark as a directory; do not bulk-install." },
@@ -113,11 +113,11 @@ export const kbPillars = [
     definition:
       "A model forgets everything when a session ends. Memory is how context carries over: what is loaded every time (project instructions), what is written down as state (plans, decisions), what is retrieved on demand (search, code indexes), and what the context window holds right now.",
     parts: [
-      { term: "Context window", text: "Working memory for one session. Everything the model sees — prompt, files, tool output — competes for it." },
+      { term: "Context window", text: "Working memory for one session. Everything the model sees competes for it: prompt, files, tool output." },
       { term: "Instruction memory", text: "CLAUDE.md and similar files, loaded automatically at session start." },
       { term: "State files", text: "STATE.md, decision logs, next-session notes: the handover between sessions, written for the next agent." },
       { term: "Retrieval", text: "Search, embeddings (RAG) or code graphs that fetch only the relevant slice when needed." },
-      { term: "Compaction", text: "Summarising a long session to free the window. Lossy — important decisions belong in files, not in chat." },
+      { term: "Compaction", text: "Summarising a long session to free the window. Lossy: important decisions belong in files, not in chat." },
     ],
     practices: [
       "One source of truth per fact. Two memory systems for the same thing will drift.",
@@ -127,20 +127,20 @@ export const kbPillars = [
       "Start a fresh session for a new task instead of dragging old context along.",
     ],
     pitfalls: [
-      "Trusting a long chat as memory — it gets compacted, or it ends.",
+      "Trusting a long chat as memory: it gets compacted, or it ends.",
       "Adding a memory plugin on top of an existing state-file system.",
       "Storing personal or regulated data in memory tools that leave your control.",
     ],
     projects: [
       { project: "business-os", status: "In use", text: "The strategic memory layer: goals, current focus, decision rules and a decision log in Markdown + Git." },
       { project: "deutschon", status: "In use", text: "docs/STATE.md and decisions.md are the handover between strategy and build sessions." },
-      { project: "alpharhythm", status: "In use", text: "NEXT_SESSION_START.md and DECISIONS_LOG.md make every session resumable in one read." },
-      { project: "proof-engine", status: "In build", text: "The 90-day plan lives as Markdown in AI-Business-OS; the app generates its data from it — one source, two views." },
+      { project: "alpharhythm", status: "Pre-beta", text: "NEXT_SESSION_START.md and DECISIONS_LOG.md make every session resumable in one read." },
+      { project: "proof-engine", status: "In build", text: "The 90-day plan lives as Markdown in AI-Business-OS; the app generates its data from it: one source, two views." },
     ],
     tools: [
       { name: "CLAUDE.md / AGENTS.md", href: "https://docs.claude.com/en/docs/claude-code/memory", verdict: "Use", note: "Built in. Keep it lean." },
       { name: "repomix", href: "https://github.com/yamadashy/repomix", verdict: "Try", note: "Pack a repo into one file for a chat-based strategy session." },
-      { name: "planning-with-files", href: "https://github.com/OthmanAdi/planning-with-files", verdict: "Skip", note: "Good pattern — I already run it with my own state files." },
+      { name: "planning-with-files", href: "https://github.com/OthmanAdi/planning-with-files", verdict: "Skip", note: "Good pattern, but I already run it with my own state files." },
       { name: "claude-mem", href: "https://github.com/thedotmack/claude-mem", verdict: "Skip", note: "Would compete with existing state files as a second source of truth." },
       { name: "graphify / codegraph", href: "https://github.com/colbymchenry/codegraph", verdict: "Skip", note: "Pays off on large codebases; revisit when a repo outgrows direct reading." },
     ],
@@ -155,7 +155,7 @@ export const kbPillars = [
       "Tools are the actions an agent can take beyond writing text: read files, run commands, search the web, call an API, drive a browser. MCP (Model Context Protocol) is the open standard for plugging external systems in as tools, so one integration works across agents.",
     parts: [
       { term: "Tool call", text: "The model asks to run a named action with arguments; the harness executes it and returns the result." },
-      { term: "MCP server", text: "A small service that exposes tools (and data) from a system — GitHub, a browser, a database — to any MCP client." },
+      { term: "MCP server", text: "A small service that exposes tools (and data) from a system, such as GitHub, a browser or a database, to any MCP client." },
       { term: "Connector", text: "A hosted MCP integration you switch on in the app, e.g. Drive or Notion." },
       { term: "Structured output", text: "Forcing a response into a schema so software, not a human, can consume it safely." },
     ],
@@ -179,7 +179,7 @@ export const kbPillars = [
       { name: "gh CLI / github-mcp", href: "https://github.com/github/github-mcp-server", verdict: "Use", note: "Issue-driven work. The CLI is often enough." },
       { name: "firecrawl", href: "https://github.com/firecrawl/firecrawl", verdict: "Try", note: "Clean web extraction. Respect site terms." },
       { name: "awesome-mcp-servers", href: "https://github.com/punkpeye/awesome-mcp-servers", verdict: "Skip", note: "Directory to search, not to install." },
-      { name: "multica / vibe-kanban", href: "https://github.com/BloopAI/vibe-kanban", verdict: "Skip", note: "Multi-agent orchestration — overkill at solo scale." },
+      { name: "multica / vibe-kanban", href: "https://github.com/BloopAI/vibe-kanban", verdict: "Skip", note: "Multi-agent orchestration: overkill at solo scale." },
       { name: "cc-switch / claude-code-router", href: "https://github.com/musistudio/claude-code-router", verdict: "Skip", note: "Provider switching adds complexity without a need." },
     ],
   },
@@ -190,7 +190,7 @@ export const kbPillars = [
     title: "Cost",
     tagline: "What it costs to run",
     definition:
-      "Every agent action is paid in tokens — input (everything in context) and output (what the model writes). Cost is driven less by the question than by what the harness loads: instructions, tool definitions, file reads and long histories. On a subscription the same drivers show up as usage limits.",
+      "Every agent action is paid in tokens: input (everything in context) and output (what the model writes). Cost is driven less by the question than by what the harness loads: instructions, tool definitions, file reads and long histories. On a subscription the same drivers show up as usage limits.",
     parts: [
       { term: "Tokens", text: "The unit of text the model reads and writes. Context is re-read on every turn." },
       { term: "Model choice", text: "Smaller models for routine or high-volume steps; the strongest model for planning and hard reasoning." },
@@ -200,14 +200,14 @@ export const kbPillars = [
     practices: [
       "Measure before optimising: watch context usage live, then fix the biggest consumer.",
       "One task per session. Clear context between unrelated tasks.",
-      "Route by difficulty — do not pay top-model prices for formatting or extraction.",
+      "Route by difficulty: do not pay top-model prices for formatting or extraction.",
       "Keep stable content (instructions, schemas) at the front so caching works.",
       "Cap unattended runs with a budget and a stop condition.",
     ],
     pitfalls: [
       "Dozens of MCP tools loaded in every session whether used or not.",
       "Re-pasting whole repos when a targeted read would do.",
-      "Cutting tokens by making output unreadable — cheaper, but slower to review.",
+      "Cutting tokens by making output unreadable: cheaper, but slower to review.",
     ],
     projects: [
       { project: "business-os", status: "In use", text: "A written usage discipline: one task per session, lean instruction files, periodic usage audits." },
@@ -216,7 +216,7 @@ export const kbPillars = [
       { name: "claude-hud", href: "https://github.com/jarrodwatts/claude-hud", verdict: "Use", note: "Shows context, tools and agents live in the status line." },
       { name: "claude-code-best-practice", href: "https://github.com/shanraisshan/claude-code-best-practice", verdict: "Try", note: "Reading material, not an install." },
       { name: "system-prompts-and-models-of-ai-tools", href: "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools", verdict: "Try", note: "Study how production agents are prompted." },
-      { name: "codex-plugin-cc", href: "https://github.com/openai/codex-plugin-cc", verdict: "Try", note: "Second-opinion review — only if you already pay for Codex." },
+      { name: "codex-plugin-cc", href: "https://github.com/openai/codex-plugin-cc", verdict: "Try", note: "Second-opinion review, only if you already pay for Codex." },
       { name: "caveman", href: "https://github.com/juliusbrussee/caveman", verdict: "Skip", note: "Saves tokens by trading away readability." },
     ],
   },
@@ -250,7 +250,7 @@ export const kbGlossary = [
   { term: "Structured output", pillar: "tools", def: "Model output constrained to a schema, e.g. JSON, so code can use it safely." },
   { term: "Human-in-the-loop", pillar: "tools", def: "A design where a person reviews or approves AI output before it takes effect." },
   { term: "Guardrail", pillar: "tools", def: "A check that blocks or corrects unsafe or invalid model behaviour." },
-  { term: "Token", pillar: "cost", def: "A chunk of text (roughly ¾ of a word in English) — the unit of model input, output and billing." },
+  { term: "Token", pillar: "cost", def: "A chunk of text, roughly ¾ of a word in English. The unit of model input, output and billing." },
   { term: "Prompt caching", pillar: "cost", def: "Reusing a processed prompt prefix to cut cost and latency on repeat calls." },
   { term: "Model routing", pillar: "cost", def: "Sending each task to the cheapest model that does it well enough." },
   { term: "Eval", pillar: "cost", def: "A repeatable test set that scores model or agent output, used to compare prompts, models and cost." },

@@ -239,6 +239,7 @@
 .kb-pill--status-in-use,
 .kb-pill--verdict-use { color: var(--kb-memory); }
 .kb-pill--status-in-build,
+.kb-pill--status-pre-beta,
 .kb-pill--verdict-try { color: var(--kb-harness); }
 .kb-pill--verdict-skip { color: var(--muted); }
 
