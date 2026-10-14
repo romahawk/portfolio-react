@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import ThemeSwitcher from "./ThemeSwitcher.jsx";
 import NavControls from "./NavControls.jsx";
-import { identity, labels, nav, navServices } from "../content/site.js";
+import { identity, labels, nav, navAi, navServices } from "../content/site.js";
 
 // 800px matches the CSS mobile breakpoint
 const MOBILE_MQ = "(max-width: 800px)";
@@ -19,6 +19,8 @@ export default function Navbar({ themeMode, onThemeChange }) {
   const path = currentPath();
   const isHome = path === "/";
   const isServicesPage = path === navServices.href;
+  // /ai is written for hiring teams, so the Services link is hidden there.
+  const isAiPage = path === navAi.href;
   // Anchors scroll on the landing page and link back to it from every other page.
   const navIds = useMemo(() => (isHome ? nav.map((item) => item.id) : []), [isHome]);
   // Exception: on /services, Contact points to that page's own #contact section, because the
@@ -168,14 +170,26 @@ export default function Navbar({ themeMode, onThemeChange }) {
           ))}
           <li>
             <a
-              href={navServices.href}
-              className={`nav__link ${isServicesPage ? "nav__link--active" : ""}`}
-              aria-current={isServicesPage ? "page" : undefined}
+              href={navAi.href}
+              className={`nav__link ${isAiPage ? "nav__link--active" : ""}`}
+              aria-current={isAiPage ? "page" : undefined}
               onClick={() => setIsOpen(false)}
             >
-              {navServices.label}
+              {navAi.label}
             </a>
           </li>
+          {isAiPage ? null : (
+            <li>
+              <a
+                href={navServices.href}
+                className={`nav__link ${isServicesPage ? "nav__link--active" : ""}`}
+                aria-current={isServicesPage ? "page" : undefined}
+                onClick={() => setIsOpen(false)}
+              >
+                {navServices.label}
+              </a>
+            </li>
+          )}
         </ul>
 
         <div className="nav__actions">

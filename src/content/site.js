@@ -32,6 +32,11 @@ export const nav = [
   { id: "contact", label: "Contact" },
 ];
 
+export const navAi = {
+  label: "AI",
+  href: "/ai",
+};
+
 export const navServices = {
   label: "Services",
   href: "/services",
@@ -123,8 +128,14 @@ export const delivery = {
     { title: "Build and integrate", text: "Configuration, integrations and data flows, acceptance testing with vendors and engineers." },
     { title: "Rollout and adoption", text: "Go-live, training, handover docs and support." },
   ],
-  note: "For my own builds I also run an AI-assisted delivery system: defined roles, one source of truth, decision logs and review gates.",
   noteLink: { label: "How I work with AI", href: "/ai" },
+};
+
+// Homepage teaser for /ai. Replaces the one-line note that used to close the Delivery section.
+export const aiTeaser = {
+  title: "How I work with AI",
+  text: "For my own builds I run a team of AI agents working daily from one versioned source of truth, with defined roles, decision logs and review gates. The AI page shows the setup, the practices that hold up, the tools I use and a public project you can inspect.",
+  link: { label: "See how I work with AI", href: "/ai" },
 };
 
 export const about = {

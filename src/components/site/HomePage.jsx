@@ -3,6 +3,7 @@ import { CTAStrip, FeaturePill, PageHero, SectionHeader, StatusBadge } from "../
 import ProofCaseCard from "../common/ProofCaseCard.jsx";
 import {
   about,
+  aiTeaser,
   cases,
   contact,
   contactSection,
@@ -96,9 +97,12 @@ export default function HomePage() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section id="ai" className="section container market-page__section">
+        <SectionHeader title={aiTeaser.title} text={aiTeaser.text} />
         <p className="home-delivery-note reveal">
-          {delivery.note}{" "}
-          <TextLink href={delivery.noteLink.href}>{delivery.noteLink.label}</TextLink>
+          <TextLink href={aiTeaser.link.href}>{aiTeaser.link.label}</TextLink>
         </p>
       </section>
 

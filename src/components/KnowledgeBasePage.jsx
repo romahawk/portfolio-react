@@ -1,7 +1,8 @@
-import React, { useMemo, useState } from "react";
-import { ArrowRight, ArrowUpRight, Brain, Cpu, Gauge, Search, Sparkles, Wrench } from "lucide-react";
+import React, { useId, useMemo, useState } from "react";
+import { ArrowUpRight, Brain, Cpu, FileDown, Gauge, Mail, Search, Sparkles, Wrench } from "lucide-react";
 import PageHero from "./common/PageHero.jsx";
-import { kbGlossary, kbMeta, kbPillars, kbProjects } from "../data/aiKnowledgeBase.js";
+import { contact, labels } from "../content/site.js";
+import { kbClosing, kbGlossary, kbHero, kbMeta, kbPillars, kbProjects, kbPublicProof } from "../data/aiKnowledgeBase.js";
 
 const ICONS = { Brain, Cpu, Gauge, Sparkles, Wrench };
 
@@ -12,10 +13,43 @@ const MATRIX_PROJECTS = kbProjects.filter((project) =>
   kbPillars.some((pillar) => pillar.projects.some((item) => item.project === project.id)),
 );
 
+// On mobile, long lists show this many items until expanded. Desktop always shows everything (CSS).
+const PREVIEW_COUNT = 3;
+
 const slug = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 function Pill({ kind, value }) {
   return <span className={`kb-pill kb-pill--${kind}-${slug(value)}`}>{value}</span>;
+}
+
+// Renders every item; items past PREVIEW_COUNT get a class that CSS hides below 768px until opened.
+// renderItem(item, extraClass) must return a keyed element and apply extraClass to it.
+function CollapsibleList({ as = "ul", className = "", items, renderItem, forceOpen = false }) {
+  const [open, setOpen] = useState(false);
+  const id = useId();
+  const expanded = open || forceOpen;
+  const collapsible = items.length > PREVIEW_COUNT && !forceOpen;
+
+  return (
+    <>
+      {React.createElement(
+        as,
+        { id, className: `${className} kb-collapse ${expanded ? "kb-collapse--open" : ""}`.trim() },
+        items.map((item, index) => renderItem(item, index >= PREVIEW_COUNT ? "kb-collapse__extra" : "")),
+      )}
+      {collapsible ? (
+        <button
+          type="button"
+          className="kb-collapse__toggle"
+          aria-expanded={expanded}
+          aria-controls={id}
+          onClick={() => setOpen((value) => !value)}
+        >
+          {expanded ? "Show fewer" : `Show all ${items.length}`}
+        </button>
+      ) : null}
+    </>
+  );
 }
 
 function PillarNav() {
@@ -60,42 +94,71 @@ function PillarSection({ pillar }) {
       <div className="kb-two-col">
         <div className="kb-box kb-box--do">
           <h3>Best practices</h3>
-          <ul>{pillar.practices.map((item) => <li key={item}>{item}</li>)}</ul>
+          <CollapsibleList
+            items={pillar.practices}
+            renderItem={(item, extra) => <li key={item} className={extra || undefined}>{item}</li>}
+          />
         </div>
         <div className="kb-box kb-box--dont">
           <h3>Pitfalls</h3>
-          <ul>{pillar.pitfalls.map((item) => <li key={item}>{item}</li>)}</ul>
+          <CollapsibleList
+            items={pillar.pitfalls}
+            renderItem={(item, extra) => <li key={item} className={extra || undefined}>{item}</li>}
+          />
         </div>
       </div>
 
       <div className="kb-box kb-box--projects">
         <h3>In my projects</h3>
-        <ul className="kb-applications">
-          {pillar.projects.map((item) => (
-            <li key={`${item.project}-${item.text}`}>
+        <CollapsibleList
+          className="kb-applications"
+          items={pillar.projects}
+          renderItem={(item, extra) => (
+            <li key={`${item.project}-${item.text}`} className={extra || undefined}>
               <div className="kb-applications__meta">
                 <strong>{PROJECT_BY_ID[item.project]?.name || item.project}</strong>
                 <Pill kind="status" value={item.status} />
               </div>
               <p>{item.text}</p>
             </li>
-          ))}
-        </ul>
+          )}
+        />
       </div>
 
       <div className="kb-box">
         <h3>Tools: use, try, skip</h3>
-        <ul className="kb-tools">
-          {pillar.tools.map((tool) => (
-            <li key={tool.name}>
+        <CollapsibleList
+          className="kb-tools"
+          items={pillar.tools}
+          renderItem={(tool, extra) => (
+            <li key={tool.name} className={extra || undefined}>
               <Pill kind="verdict" value={tool.verdict} />
               <a href={tool.href} target="_blank" rel="noreferrer">
                 {tool.name} <ArrowUpRight size={13} aria-hidden="true" />
               </a>
               <span>{tool.note}</span>
             </li>
-          ))}
-        </ul>
+          )}
+        />
+      </div>
+    </section>
+  );
+}
+
+function PublicProof() {
+  return (
+    <section id="kb-proof" className="section container kb-section" aria-labelledby="kb-proof-title">
+      <header className="kb-section__head reveal">
+        <p className="kb-kicker">Public proof</p>
+        <h2 id="kb-proof-title"><span className="about__chev">&gt;</span> {kbPublicProof.name}</h2>
+        <p>{kbPublicProof.text}</p>
+      </header>
+      <div className="kb-proof-links">
+        {kbPublicProof.links.map((link) => (
+          <a key={link.href} href={link.href} className="btn btn--ghost" target="_blank" rel="noreferrer">
+            {link.label} <ArrowUpRight size={15} className="icon ml-1" aria-hidden="true" />
+          </a>
+        ))}
       </div>
     </section>
   );
@@ -139,6 +202,18 @@ function ProjectMatrix() {
           </tbody>
         </table>
       </div>
+      {/* Below 768px the table is hidden and each project is a card. */}
+      <ul className="kb-matrix-cards" aria-label="Projects">
+        {MATRIX_PROJECTS.map((project) => (
+          <li key={project.id} className="kb-matrix-card">
+            <div className="kb-matrix-card__head">
+              <strong>{project.name}</strong>
+              <Pill kind="status" value={project.status} />
+            </div>
+            <p>{project.note}</p>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
@@ -181,17 +256,22 @@ function Glossary() {
         </div>
       </div>
       <p className="kb-glossary__count" aria-live="polite">{entries.length} terms</p>
-      <dl className="kb-glossary">
-        {entries.map((entry) => (
-          <div key={entry.term} className={`kb-glossary__item kb-accent--${entry.pillar}`}>
+      {/* A search shows every match, so the mobile preview only applies to browsing. */}
+      <CollapsibleList
+        as="dl"
+        className="kb-glossary"
+        items={entries}
+        forceOpen={query.trim() !== ""}
+        renderItem={(entry, extra) => (
+          <div key={entry.term} className={`kb-glossary__item kb-accent--${entry.pillar} ${extra}`.trim()}>
             <dt>
               {entry.term}
               <a href={`#${entry.pillar}`} className="kb-glossary__tag">{PILLAR_BY_ID[entry.pillar]?.title}</a>
             </dt>
             <dd>{entry.def}</dd>
           </div>
-        ))}
-      </dl>
+        )}
+      />
     </section>
   );
 }
@@ -201,12 +281,24 @@ export default function KnowledgeBasePage() {
     <div className="kb-page">
       <PageHero
         eyebrow={`${kbMeta.title} · Last reviewed ${kbMeta.lastReviewed}`}
-        title="How I build with AI agents"
-        subtitle={kbMeta.intro}
-        primaryCta={{ label: "Start with the five pillars", href: "#kb-pillars", icon: <ArrowRight size={15} className="icon ml-1" aria-hidden="true" /> }}
-        secondaryCta={{ label: "Jump to glossary", href: "#kb-glossary" }}
+        title={kbHero.title}
+        subtitle={kbHero.subtitle}
         showScrollCue={false}
-      />
+      >
+        <ul className="kb-hero-points" aria-label="Proof points">
+          {kbHero.proofPoints.map((point) => <li key={point}>{point}</li>)}
+        </ul>
+        <div className="page-hero__actions">
+          <a href={contact.cvUrl} className="btn btn--primary" download>
+            {labels.downloadCv} <FileDown size={15} className="icon ml-1" aria-hidden="true" />
+          </a>
+          <a href={contact.emailHref} className="btn btn--ghost">
+            {labels.emailMe} <Mail size={15} className="icon ml-1" aria-hidden="true" />
+          </a>
+        </div>
+      </PageHero>
+
+      <PublicProof />
 
       <section id="kb-pillars" className="section container kb-section" aria-labelledby="kb-pillars-title">
         <header className="kb-section__head reveal">
@@ -231,6 +323,17 @@ export default function KnowledgeBasePage() {
             not released yet. Plans are not listed until they are built. Tool verdicts reflect a solo builder working across a
             few repos. Your context may differ.
           </p>
+        </div>
+      </section>
+
+      <section id="kb-contact" className="section container kb-section" aria-labelledby="kb-closing-title">
+        <div className="kb-box kb-closing">
+          <h2 id="kb-closing-title">{kbClosing.title}</h2>
+          <p>
+            {"Here's "}<a href={contact.cvUrl} download>my CV</a>, or email{" "}
+            <a href={contact.emailHref}>{contact.email}</a>.
+          </p>
+          <p className="kb-closing__quiet">{kbClosing.quiet}</p>
         </div>
       </section>
     </div>
