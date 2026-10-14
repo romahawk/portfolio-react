@@ -9,6 +9,9 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Fixed (footer contact spacing)
+- Footer Contact column: the Download CV button and the email link now have a 20px gap side by side and a 12px gap when they wrap, on desktop and mobile
+
 ### Changed (/ai for hiring teams: intro, proof, mobile, navigation)
 - `/ai` hero uses the approved copy: "I help organisations move AI from pilot to everyday use, safely.", a sub-line, three proof points (Medintegro, PharmaLogis, own AI operating system) and Download CV / Email me buttons
 - `/ai` closes with "Hiring a Technical PM or AI Implementation Lead?" (CV and email links) and a quieter line for AI product or pilot builders. No services or prices on `/ai`: the Services link is hidden in the header and footer on that page only

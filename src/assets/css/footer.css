@@ -116,6 +116,18 @@
   color: var(--muted-strong);
   margin-bottom: 16px;
 }
+/* CV button and email link: side by side with a gap, wrapping to two rows when narrow. */
+.footer__cta-col {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+.footer__cta-col .footer__col-heading {
+  flex-basis: 100%;
+  margin-bottom: 2px; /* + the 12px row gap = the 14px other columns use */
+}
+
 .footer__cta-btn {
   display: inline-flex;
   align-items: center;
@@ -146,7 +158,6 @@
   align-items: center;
   gap: 5px;
   width: fit-content;
-  margin-top: 12px;
   color: var(--muted-strong);
   font-size: 13px;
   font-weight: 750;
