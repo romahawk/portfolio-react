@@ -20,8 +20,8 @@ export const identity = {
   role: "Technical Project Manager",
   eyebrow: "Technical Project Manager · Hamburg / Remote (EU)",
   headline: "System implementation in regulated environments",
-  subline: "12+ years delivering complex system implementations in MedTech, pharma and logistics. 20+ systems taken from discovery to rollout and user adoption.",
-  metaLine: "EU work authorisation · English C1 · German B1",
+  subline: "20+ years in MedTech, pharma and logistics. 20+ system projects taken from discovery to rollout and user adoption, most of them at Medintegro, the integrator I ran.",
+  metaLine: "EU work authorisation · English C1 · German B1 in progress",
   footerTagline: "Technical Project Manager for system implementation in regulated environments. Hamburg / Remote (EU).",
 };
 
@@ -55,7 +55,7 @@ export const labels = {
 };
 
 export const facts = [
-  "12+ years of system implementation",
+  "20+ years in regulated industries",
   "20+ systems delivered end to end",
   "GDP, ISO 9001, DICOM, PACS/RIS",
   "M.Sc. Computer Science, expected 12/2026",
@@ -83,7 +83,7 @@ export const cases = [
     problem: "Trading and supply chain processes ran across separate systems and manual alignment, in a GDP and ISO 9001 certified pharma logistics company.",
     role: "Owned the full project lifecycle · 2024 to 2025",
     work: "Built and rolled out an internal software solution. Brought a role-based dashboard with order lifecycle tracking to production. Managed integrations and data flows for end-to-end traceability, and kept delivery GDP and ISO 9001 compliant. Public demo of the system (FlowLogics): Flask API, SQLAlchemy data model, role-gated workflows, ETA risk timeline, read-only demo mode.",
-    outcome: "Manual coordination effort down an estimated ~30%, measured by recurring alignment steps removed. Full traceability across the order lifecycle. Live demo and public repo.",
+    outcome: "Manual coordination effort down an estimated ~30%, based on recurring alignment steps removed. Full traceability across the order lifecycle. Live demo and public repo.",
     links: [
       { label: "Live demo", href: "https://flowlogics.app/" },
       { label: "Code", href: "https://github.com/romahawk/flowlogix" },
@@ -94,7 +94,7 @@ export const cases = [
     problem: "A model forgets everything when a session ends, and the same model behaves very differently inside a good or a bad setup. AI-assisted builds need structure to stay reliable.",
     role: "Designed and built it myself",
     work: "For my own builds I also run an AI-assisted delivery system: defined roles, one source of truth, decision logs and review gates. I documented it as a public field guide: five pillars (harness, skills, memory, tools, cost), tool verdicts, a project matrix and a glossary.",
-    outcome: "My working reference for building with AI agents: the terms, the practices that hold up, and the tools I actually use. Tied to six of my own projects, including my M.Sc. capstone and this site, and reviewed monthly against what I actually run.",
+    outcome: "My working reference for building with AI agents: the terms, the practices that hold up, and the tools I actually use. Tied to six of my own projects, including my M.Sc. capstone (DeutschOn-AI) and this site.",
     links: [{ label: "How I work with AI", href: "/kb" }],
   },
 ];
@@ -102,9 +102,9 @@ export const cases = [
 // Max 3 items. PharmaLogis / FlowLogics already has its own delivery card.
 export const otherBuilds = [
   {
-    status: "Live",
+    status: "Pre-beta",
     title: "AlphaRhythm",
-    line: "A deployed product for structured trade journaling, discipline tracking, risk logic and decision-review workflows.",
+    line: "AlphaRhythm (pre-beta): trade journaling, discipline tracking and decision review.",
     url: "https://alpharhythm.trade",
   },
   {
@@ -131,8 +131,8 @@ export const about = {
   title: "Technical PM. 20+ years in regulated industries.",
   photo: { src: "/images/profile-400.webp", alt: "Roman Mazuryk portrait" },
   paragraphs: [
-    "I'm Roman, a technical project manager based in the Hamburg area. I've worked in medical technology, pharma and logistics for over 20 years. For the last 12+ of them I've delivered client-facing system implementations: integrated operating rooms, imaging and PACS/RIS connectivity, and internal logistics systems under GDP and ISO 9001.",
-    "I founded and ran Medintegro, a MedTech systems integrator, and delivered 20+ projects for hospitals and clinics with vendors across the EU, US and Asia. Most recently, at PharmaLogis, a GDP-certified pharmaceutical logistics provider, I built and rolled out FlowLogics, an internal system that cut manual coordination by an estimated 30%.",
+    "I'm Roman, a technical project manager based in the Hamburg area. I've worked in medical technology, pharma and logistics for over 20 years. Since 2012 I've delivered client-facing system implementations: integrated operating rooms, imaging and PACS/RIS connectivity, and internal logistics systems under GDP and ISO 9001.",
+    "I founded and ran Medintegro, a MedTech systems integrator, and delivered 20+ projects for hospitals and clinics with vendors across the EU, US and Asia. Most recently, at PharmaLogis, a GDP-certified pharmaceutical logistics provider, I built and rolled out an internal order and warehouse system that cut manual coordination by an estimated 30%.",
     "I know APIs and data flows well enough to steer engineering teams, and clinical and operational work well enough to run discovery, workshops and go-live. I also build software myself, including LLM-based workflows.",
     "I'm looking for a permanent TPM or implementation role in Hamburg or remote across the EU.",
   ],
@@ -142,14 +142,14 @@ export const about = {
 
 // From the CV, newest first.
 export const experience = [
-  { role: "Independent Project Manager and IT Consultant", org: "mazuryk.dev, Hamburg", dates: "01/2026 to present", line: "Project-based consulting for mid-sized companies on process digitalisation and internal systems." },
-  { role: "Commercial Specialist, Freight Forwarding and Logistics", org: "PharmaLogis GmbH, Reinbek near Hamburg", dates: "08/2024 to 10/2025", line: "Introduction of internal systems and process digitalisation across operations." },
+  { role: "Independent projects and Master's work", org: "mazuryk.dev, Hamburg", dates: "01/2026 to present", line: "DeutschOn-AI (capstone, preparing for pilot), AlphaRhythm (pre-beta)." },
+  { role: "Commercial Specialist, Freight Forwarding and Logistics", org: "PharmaLogis GmbH, Reinbek near Hamburg", dates: "08/2024 to 11/2025", line: "Introduction of internal systems and process digitalisation across operations." },
   { role: "Founder and Technical Project Manager", org: "Medintegro, Kyiv", dates: "12/2012 to 05/2024", line: "Delivered 20+ client-facing system projects across OR video, imaging and automation." },
   { role: "CEO and Head of International Business Development", org: "Acropolus Biosciences, Kyiv", dates: "06/2011 to 08/2012", line: "Full P&L and operational ownership of a business with 70+ employees." },
   { role: "Sales and Project Roles, Pharma and Medical Technology", org: "International manufacturers and distributors, Kyiv", dates: "2005 to 2011", line: "Built the domain foundation in regulated environments." },
 ];
 
-export const education = { label: "Education", value: "M.Sc. Computer Science (Specialization in Software Engineering) · Woolf University / Neoversity · expected 12/2026" };
+export const education = { label: "Education", value: "Master of Science in Computer Science · Woolf / GoIT Neoversity · expected 12/2026" };
 export const languages = { label: "Languages", value: "Ukrainian and Russian (native) · English C1 · German B1, certification exam Dec 2026" };
 export const location = { label: "Location", value: "Hamburg area · EU work authorisation · open to remote across the EU" };
 
