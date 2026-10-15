@@ -19,7 +19,7 @@ function CtaLink({ cta, fallbackClass }) {
       href={href}
       className={classes}
       target={external ? "_blank" : undefined}
-      rel={external ? "noreferrer" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
       download={download}
     >
       {label} {icon || null}
@@ -30,6 +30,7 @@ function CtaLink({ cta, fallbackClass }) {
 export default function PageHero({
   eyebrow,
   title,
+  titleLine,
   subtitle,
   primaryCta,
   secondaryCta,
@@ -48,6 +49,7 @@ export default function PageHero({
         <div className="page-hero__content reveal">
           {eyebrow ? <p className="page-hero__eyebrow">{eyebrow}</p> : null}
           <h1 className="page-hero__title">{title}</h1>
+          {titleLine ? <p className="page-hero__title-line">{titleLine}</p> : null}
           {subtitle ? <p className="page-hero__subtitle">{subtitle}</p> : null}
 
           {(primaryCta || secondaryCta || tertiaryCta) ? (

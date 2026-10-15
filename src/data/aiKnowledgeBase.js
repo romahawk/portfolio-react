@@ -213,12 +213,12 @@ export const kbPillars = [
     ],
     pitfalls: [
       "Connecting a tool with write access \"just in case\".",
-      "Sending personal or student data through third-party hosted tools.",
+      "Sending personal data through third-party hosted tools.",
       "Scraping sites whose terms forbid it.",
     ],
     projects: [
       { project: "magic-kick", status: "In use", text: "AI routes for coaching, weekly summaries and risk patterns." },
-      { project: "learning-product", status: "In build", text: "Claude via the Vercel AI SDK returns structured assessments checked against a schema; the teacher accepts, edits or rejects before a student sees anything." },
+      { project: "learning-product", status: "In build", text: "Claude via the Vercel AI SDK returns structured assessments checked against a schema." },
     ],
     tools: [
       { name: "playwright-mcp", href: "https://github.com/microsoft/playwright-mcp", verdict: "Use", note: "Lets the agent test in a real browser." },

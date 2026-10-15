@@ -9,7 +9,7 @@ const IMAGE = {
 const HOME = {
   ...seo.home,
   image: "https://www.mazuryk.dev/images/og/og-home.png",
-  imageAlt: "Roman Mazuryk, Technical Project Manager.",
+  imageAlt: "Roman Mazuryk, Technical Project Manager / Implementation Lead.",
   ...IMAGE,
 };
 

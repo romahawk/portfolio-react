@@ -2,8 +2,9 @@
 // wrong numbers, the old email address or em dashes creep back into the site.
 //
 // Why these are banned:
-// - Identity is "Technical Project Manager, system implementation in regulated environments" (CV headline).
+// - Identity is "Technical Project Manager / Implementation Lead" (CV and LinkedIn headline).
 //   Older role labels contradict the CV that recruiters download.
+// - The M.Sc. capstone is Rolevoice. "DeutschOn" is its retired name and must not appear in site copy.
 // - Years are 12+ (implementation) and 20+ (industry), as in the CV. "10+" and "13+" were earlier drafts.
 // - Contact email is romazuryk@gmail.com, as in the CV. The proton.me address is retired.
 // - No em dashes in site copy (src/content/site.js).
@@ -25,6 +26,13 @@ const BANNED_PHRASES = [
   "at FlowLogics,",
   "FlowLogics, Reinbek",
   "FlowLogics, internal systems rollout",
+  // retired homepage identity and draft wording (homepage v3, Oct 2026)
+  "System implementation in regulated environments",
+  "Technical Project Manager for system implementation",
+  "upskilling on purpose",
+  "20+ years taking software",
+  // capstone is Rolevoice (D10)
+  "DeutschOn",
 ];
 
 // Matched case-sensitively, unlike BANNED_PHRASES.
