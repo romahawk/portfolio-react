@@ -5,33 +5,31 @@
 
 export const kbMeta = {
   title: "AI Field Guide",
-  lastReviewed: "30 Sep 2026",
+  lastReviewed: "Oct 2026",
   mentalModel:
     "The model is the engine. The harness is the car around it. Skills are the driving lessons. Memory is the logbook. Tools are the roads it can reach. Cost is the fuel budget.",
 };
 
 // Hero and closing copy approved by Roman; keep it verbatim.
 export const kbHero = {
-  title: "I help organisations move AI from pilot to everyday use, safely.",
+  title: "How I build and run AI workflows",
   subtitle:
-    "20+ years delivering software in regulated MedTech, pharma and logistics. This page shows how I build and run AI workflows in practice.",
+    "The practices, tools and projects behind my AI work, kept as a living reference. Written by a Technical Project Manager with 20+ years in regulated MedTech, pharma and logistics.",
   proofPoints: [
-    "20+ multi-vendor OR and imaging integrations delivered at Medintegro, from requirements to acceptance testing and go-live.",
-    "Owned a system rollout at PharmaLogis, a GDP and ISO 9001 certified pharma logistics provider, steering engineers and vendors.",
-    "Built and run my own AI operating system: a team of AI agents working daily from one versioned source of truth.",
+    "One source of truth: every AI tool I use reads the same versioned context first.",
+    "A human approves anything irreversible. AI drafts and proposes, I decide.",
+    "Checks before done: lint, build, tests and schema checks, and a baseline before any pilot is called a win.",
   ],
 };
 
 export const kbClosing = {
-  title: "Hiring a Technical PM or AI Implementation Lead?",
-  quiet: "Building an AI product or pilot? Happy to compare notes.",
+  title: "Hiring a Technical Project Manager / Implementation Lead who already works with AI every day?",
 };
 
 // In-page navigation (same component as /services). Pillars keep their numbers; other sections have none.
 export const kbSectionNav = {
   label: "On this page",
   items: [
-    { id: "kb-proof", label: "Proof" },
     { id: "harness", number: "01", label: "Harness" },
     { id: "skills", number: "02", label: "Skills" },
     { id: "memory", number: "03", label: "Memory" },
@@ -43,23 +41,11 @@ export const kbSectionNav = {
   ],
 };
 
-// Public repos only. No users or revenue claims.
-export const kbPublicProof = {
-  name: "Magic Kick",
-  text:
-    "The private-use planner I keep public as implementation proof. It has AI routes for coaching, weekly summaries and risk patterns, and is built with ADRs plus an issue-to-PR workflow.",
-  links: [
-    { label: "Code on GitHub", href: "https://github.com/romahawk/magic-kick" },
-    { label: "Live app", href: "https://magic-kick.vercel.app" },
-  ],
-};
-
 // status: the project's own state, shown on the mobile project cards.
 export const kbProjects = [
   { id: "learning-product", name: "AI learning product", status: "In build", note: "Capstone, Dec 2026" },
   { id: "magic-kick", name: "Magic Kick", status: "In use", note: "Private-use planner, public as implementation proof" },
   { id: "alpharhythm", name: "AlphaRhythm", status: "Pre-beta", note: "Trading rule-compliance micro-SaaS" },
-  { id: "proof-engine", name: "Proof Engine", status: "In build", note: "90-day plan tracker where tasks close only with evidence" },
   { id: "agent-os", name: "My personal agent operating system", status: "In use", note: "Markdown + Git strategic OS that agents read first" },
   { id: "portfolio", name: "mazuryk.dev", status: "In use", note: "This site" },
 ];
@@ -180,7 +166,6 @@ export const kbPillars = [
       { project: "learning-product", status: "In use", text: "docs/STATE.md and decisions.md are the handover between strategy and build sessions." },
       { project: "alpharhythm", status: "Pre-beta", text: "NEXT_SESSION_START.md and DECISIONS_LOG.md make every session resumable in one read." },
       { project: "magic-kick", status: "In use", text: "Architecture decisions are recorded as ADRs in the repo." },
-      { project: "proof-engine", status: "In build", text: "The 90-day plan lives as Markdown in my personal agent operating system; the app generates its data from it, so there is one source and two views." },
     ],
     tools: [
       { name: "CLAUDE.md", href: "https://docs.claude.com/en/docs/claude-code/memory", verdict: "Use", note: "Built in. Keep it lean." },

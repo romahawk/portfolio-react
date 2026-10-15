@@ -382,12 +382,20 @@
   background: var(--brand);
 }
 
-/* Public proof */
-.kb-proof-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+/* Hero email: a text link next to the Download CV button (44px tap target). */
+.kb-page .page-hero__actions .kb-hero-email {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 650;
+  text-decoration: underline;
+  text-decoration-color: var(--brand);
+  text-underline-offset: 4px;
 }
+
+.kb-page .page-hero__actions .kb-hero-email:hover { color: var(--brand); }
 
 /* Mobile project cards (replace the matrix below 768px) */
 .kb-matrix-cards {
@@ -430,12 +438,6 @@
   text-decoration: underline;
   text-underline-offset: 3px;
   overflow-wrap: anywhere;
-}
-
-.kb-box .kb-closing__quiet {
-  margin-top: 14px;
-  color: var(--muted);
-  font-size: 14px;
 }
 
 @media (max-width: 767px) {

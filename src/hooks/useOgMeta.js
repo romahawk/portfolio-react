@@ -21,9 +21,9 @@ const SERVICES = {
 };
 
 const KB = {
-  title: "AI Field Guide: Harness, Skills, Memory, Tools, Cost",
+  title: "AI Field Guide: How I build and run AI workflows | Roman Mazuryk",
   description:
-    "A practical reference for building with AI agents: terminology, best practices and tool choices, applied to real projects by Roman Mazuryk.",
+    "How a Technical Project Manager with 20+ years in regulated MedTech, pharma and logistics builds and runs AI workflows: practices, tools and projects, kept as a living reference.",
   url: "https://www.mazuryk.dev/ai",
   image: "https://www.mazuryk.dev/images/og/og-ai.png",
   imageAlt: "AI Field Guide by Roman Mazuryk.",
