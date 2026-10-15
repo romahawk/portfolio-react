@@ -1,9 +1,9 @@
 import React, { useId, useMemo, useState } from "react";
-import { ArrowUpRight, Brain, Cpu, FileDown, Gauge, Mail, Search, Sparkles, Wrench } from "lucide-react";
+import { ArrowUpRight, Brain, Cpu, FileDown, Gauge, Search, Sparkles, Wrench } from "lucide-react";
 import PageHero from "./common/PageHero.jsx";
 import { SectionIndex, SectionRail } from "./common/SectionNav.jsx";
 import { contact, labels } from "../content/site.js";
-import { kbClosing, kbGlossary, kbHero, kbMeta, kbPillars, kbProjects, kbPublicProof, kbSectionNav } from "../data/aiKnowledgeBase.js";
+import { kbClosing, kbGlossary, kbHero, kbMeta, kbPillars, kbProjects, kbSectionNav } from "../data/aiKnowledgeBase.js";
 
 const ICONS = { Brain, Cpu, Gauge, Sparkles, Wrench };
 
@@ -146,25 +146,6 @@ function PillarSection({ pillar }) {
   );
 }
 
-function PublicProof() {
-  return (
-    <section id="kb-proof" className="section container kb-section" aria-labelledby="kb-proof-title">
-      <header className="kb-section__head reveal">
-        <p className="kb-kicker">Public proof</p>
-        <h2 id="kb-proof-title"><span className="about__chev">&gt;</span> {kbPublicProof.name}</h2>
-        <p>{kbPublicProof.text}</p>
-      </header>
-      <div className="kb-proof-links">
-        {kbPublicProof.links.map((link) => (
-          <a key={link.href} href={link.href} className="btn btn--ghost" target="_blank" rel="noreferrer">
-            {link.label} <ArrowUpRight size={15} className="icon ml-1" aria-hidden="true" />
-          </a>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 function ProjectMatrix() {
   return (
     <section id="kb-matrix" className="section container kb-section" aria-labelledby="kb-matrix-title">
@@ -282,7 +263,7 @@ export default function KnowledgeBasePage() {
     <div className="kb-page">
       <PageHero
         id="kb-top"
-        eyebrow={`${kbMeta.title} · Last reviewed ${kbMeta.lastReviewed}`}
+        eyebrow={`${kbMeta.title} · Updated ${kbMeta.lastReviewed}`}
         title={kbHero.title}
         subtitle={kbHero.subtitle}
         showScrollCue={false}
@@ -294,16 +275,14 @@ export default function KnowledgeBasePage() {
           <a href={contact.cvUrl} className="btn btn--primary" download>
             {labels.downloadCv} <FileDown size={15} className="icon ml-1" aria-hidden="true" />
           </a>
-          <a href={contact.emailHref} className="btn btn--ghost">
-            {labels.emailMe} <Mail size={15} className="icon ml-1" aria-hidden="true" />
+          <a href={contact.emailHref} className="kb-hero-email">
+            {labels.emailMe}
           </a>
         </div>
         <SectionIndex nav={kbSectionNav} />
       </PageHero>
 
       <SectionRail nav={kbSectionNav} heroId="kb-top" />
-
-      <PublicProof />
 
       <section id="kb-pillars" className="section container kb-section" aria-labelledby="kb-pillars-title">
         <header className="kb-section__head reveal">
@@ -338,7 +317,6 @@ export default function KnowledgeBasePage() {
             {"Here's "}<a href={contact.cvUrl} download>my CV</a>, or email{" "}
             <a href={contact.emailHref}>{contact.email}</a>.
           </p>
-          <p className="kb-closing__quiet">{kbClosing.quiet}</p>
         </div>
       </section>
     </div>

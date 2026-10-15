@@ -33,6 +33,10 @@ const BANNED_PHRASES = [
   "20+ years taking software",
   // capstone is Rolevoice (D10)
   "DeutschOn",
+  // retired /ai hero and closing wording (Oct 2026)
+  "20+ multi-vendor",
+  "AI Implementation Lead",
+  "Happy to compare notes",
 ];
 
 // Matched case-sensitively, unlike BANNED_PHRASES.

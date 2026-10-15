@@ -9,6 +9,14 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed (/ai hero copy, public proof box removed)
+- `/ai` hero: eyebrow "AI Field Guide · Updated Oct 2026", H1 "How I build and run AI workflows", new subline, and three proof points that state working rules (one source of truth, human approval for anything irreversible, checks before done) instead of career claims
+- Hero buttons: Download CV stays the primary button; Email is now a text link
+- Closing: "Hiring a Technical Project Manager / Implementation Lead who already works with AI every day?"; the "Happy to compare notes" line is removed
+- The Magic Kick "Public proof" box and its links are removed, along with its "Proof" entry in the section nav. Magic Kick stays in the pillar rows and the project matrix
+- Meta (`ai/index.html`, `useOgMeta.js`): title "AI Field Guide: How I build and run AI workflows | Roman Mazuryk" and a new description
+- Consistency guard bans "20+ multi-vendor", "AI Implementation Lead" and "Happy to compare notes"
+
 ### Changed (homepage v3: Technical Project Manager / Implementation Lead)
 - Title everywhere is "Technical Project Manager / Implementation Lead" (same as the CV and LinkedIn): meta, OG and Twitter tags, hero, footer tagline and copyright line, OG image alt
 - Hero: H1 is the name, the title sits directly under it, new subtitle, and two buttons: Download CV (download) and LinkedIn (new tab, `rel="noopener noreferrer"`). `PageHero` gets an optional `titleLine` prop

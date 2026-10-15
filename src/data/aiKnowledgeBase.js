@@ -5,33 +5,31 @@
 
 export const kbMeta = {
   title: "AI Field Guide",
-  lastReviewed: "30 Sep 2026",
+  lastReviewed: "Oct 2026",
   mentalModel:
     "The model is the engine. The harness is the car around it. Skills are the driving lessons. Memory is the logbook. Tools are the roads it can reach. Cost is the fuel budget.",
 };
 
 // Hero and closing copy approved by Roman; keep it verbatim.
 export const kbHero = {
-  title: "I help organisations move AI from pilot to everyday use, safely.",
+  title: "How I build and run AI workflows",
   subtitle:
-    "20+ years delivering software in regulated MedTech, pharma and logistics. This page shows how I build and run AI workflows in practice.",
+    "The practices, tools and projects behind my AI work, kept as a living reference. Written by a Technical Project Manager with 20+ years in regulated MedTech, pharma and logistics.",
   proofPoints: [
-    "20+ multi-vendor OR and imaging integrations delivered at Medintegro, from requirements to acceptance testing and go-live.",
-    "Owned a system rollout at PharmaLogis, a GDP and ISO 9001 certified pharma logistics provider, steering engineers and vendors.",
-    "Built and run my own AI operating system: a team of AI agents working daily from one versioned source of truth.",
+    "One source of truth: every AI tool I use reads the same versioned context first.",
+    "A human approves anything irreversible. AI drafts and proposes, I decide.",
+    "Checks before done: lint, build, tests and schema checks, and a baseline before any pilot is called a win.",
   ],
 };
 
 export const kbClosing = {
-  title: "Hiring a Technical PM or AI Implementation Lead?",
-  quiet: "Building an AI product or pilot? Happy to compare notes.",
+  title: "Hiring a Technical Project Manager / Implementation Lead who already works with AI every day?",
 };
 
 // In-page navigation (same component as /services). Pillars keep their numbers; other sections have none.
 export const kbSectionNav = {
   label: "On this page",
   items: [
-    { id: "kb-proof", label: "Proof" },
     { id: "harness", number: "01", label: "Harness" },
     { id: "skills", number: "02", label: "Skills" },
     { id: "memory", number: "03", label: "Memory" },
@@ -40,17 +38,6 @@ export const kbSectionNav = {
     { id: "kb-matrix", label: "Projects" },
     { id: "kb-glossary", label: "Glossary" },
     { id: "kb-contact", label: "Contact" },
-  ],
-};
-
-// Public repos only. No users or revenue claims.
-export const kbPublicProof = {
-  name: "Magic Kick",
-  text:
-    "The private-use planner I keep public as implementation proof. It has AI routes for coaching, weekly summaries and risk patterns, and is built with ADRs plus an issue-to-PR workflow.",
-  links: [
-    { label: "Code on GitHub", href: "https://github.com/romahawk/magic-kick" },
-    { label: "Live app", href: "https://magic-kick.vercel.app" },
   ],
 };
 
