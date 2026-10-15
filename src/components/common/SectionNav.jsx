@@ -1,11 +1,14 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
-// In-page navigation for long pages (/services, /ai), in two forms:
+const EMPTY_IDS = [];
+
+// In-page navigation for long pages. /services uses two forms:
 // - "index": a static list under the hero, shown below 1360px (phones, tablets, small laptops).
 // - "rail": a fixed list in the left margin, shown from 1360px. It fades in after the hero
 //   and highlights the section in view. Up to 1599px it shows numbers only (labels on hover
 //   and focus); from 1600px it shows full labels. Both are plain anchor lists, so they work
 //   without JS.
+// /ai uses SectionChips (below).
 
 // Horizontal band (as rootMargin) a section must cross to count as "in view".
 const ACTIVE_BAND = "-40% 0px -55% 0px";
@@ -80,6 +83,56 @@ export function SectionIndex({ nav }) {
     <nav className="sv2-index" aria-label={nav.label}>
       <p className="sv2-index__label">{nav.label}</p>
       <SectionLinks items={nav.items} active="" />
+    </nav>
+  );
+}
+
+const supportsScrollTargetGroup =
+  typeof CSS !== "undefined" && CSS.supports?.("scroll-target-group: auto");
+
+// The chip that :target-current marks, read back after scrolling so aria-current matches it.
+function useTargetCurrent(enabled, listRef) {
+  const [current, setCurrent] = useState("");
+
+  useEffect(() => {
+    if (!enabled) return undefined;
+    const sync = () => {
+      const link = listRef.current?.querySelector("a:target-current");
+      setCurrent(link ? link.getAttribute("href").slice(1) : "");
+    };
+    sync();
+    document.addEventListener("scrollend", sync);
+    return () => document.removeEventListener("scrollend", sync);
+  }, [enabled, listRef]);
+
+  return current;
+}
+
+// "chips": a horizontal strip of anchors under the hero (/ai). CSS makes it sticky from 768px.
+// Active chip: :target-current with scroll-target-group where supported (aria-current synced on
+// scrollend); elsewhere useActiveSection sets the is-active class and aria-current.
+export function SectionChips({ nav }) {
+  const ids = useMemo(() => nav.items.map((item) => item.id), [nav.items]);
+  const listRef = useRef(null);
+  const observed = useActiveSection(supportsScrollTargetGroup ? EMPTY_IDS : ids);
+  const targetCurrent = useTargetCurrent(supportsScrollTargetGroup, listRef);
+  const active = supportsScrollTargetGroup ? targetCurrent : observed;
+
+  return (
+    <nav className="kb-chips" aria-label={nav.label}>
+      <ol className="kb-chips__list container" ref={listRef}>
+        {nav.items.map((item) => (
+          <li key={item.id}>
+            <a
+              href={`#${item.id}`}
+              className={!supportsScrollTargetGroup && active === item.id ? "kb-chip is-active" : "kb-chip"}
+              aria-current={active === item.id ? "location" : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ol>
     </nav>
   );
 }

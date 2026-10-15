@@ -176,7 +176,7 @@
 /* Small text link to /services: the only Consulting entry point outside /services. */
 .footer__consulting-link {
   width: fit-content;
-  color: var(--muted);
+  color: var(--muted-strong); /* --muted is 4.47:1 on the light footer, under AA */
   font-size: 12px;
   font-weight: 600;
   text-decoration: underline;

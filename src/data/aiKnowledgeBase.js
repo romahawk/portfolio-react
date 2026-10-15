@@ -1,63 +1,126 @@
-// AI Field Guide: single source of truth for /ai.
+// /ai "How I implement AI": single source of truth for the page copy.
 // Edit content here; the page, project matrix and glossary are generated from it.
 // Status values for project applications: "In use" | "In build" | "Pre-beta". Only list work that exists today.
-// Verdict values for tools: "Use" | "Try" | "Skip"
+// Verdict values for tools: "Use" | "Try" | "Skip". Three tools per pillar.
+// Fixed decisions (A1 to A8): Rolevoice has no user, PR or check counts. The personal agent operating
+// system is described, never named or linked, with no agent counts or tool names. Magic Kick gets at
+// most one unlinked line in the field notes.
 
 export const kbMeta = {
-  title: "AI Field Guide",
-  lastReviewed: "30 Sep 2026",
-  mentalModel:
-    "The model is the engine. The harness is the car around it. Skills are the driving lessons. Memory is the logbook. Tools are the roads it can reach. Cost is the fuel budget.",
+  title: "How I implement AI",
+  updated: "Oct 2026",
 };
 
-// Hero and closing copy approved by Roman; keep it verbatim.
 export const kbHero = {
-  title: "I help organisations move AI from pilot to everyday use, safely.",
+  eyebrow: "AI in practice · Updated Oct 2026",
+  title: "How I implement AI",
   subtitle:
-    "20+ years delivering software in regulated MedTech, pharma and logistics. This page shows how I build and run AI workflows in practice.",
-  proofPoints: [
-    "20+ multi-vendor OR and imaging integrations delivered at Medintegro, from requirements to acceptance testing and go-live.",
-    "Owned a system rollout at PharmaLogis, a GDP and ISO 9001 certified pharma logistics provider, steering engineers and vendors.",
-    "Built and run my own AI operating system: a team of AI agents working daily from one versioned source of truth.",
+    "I run AI work the way I run regulated rollouts. One source of truth, clear approvals, and nothing ships without a check.",
+  workLink: { label: "See my implementation work", href: "/#work" },
+};
+
+export const kbPrinciples = {
+  kicker: "01 · How I work",
+  title: "Three rules, carried over from hospital go-lives and GDP logistics",
+  items: [
+    { lead: "One source of truth.", text: "Every AI tool reads the same current context. No re-explaining, no drift." },
+    { lead: "A human approves anything irreversible.", text: "AI drafts and proposes. I decide what gets written, sent or shipped." },
+    {
+      lead: "Checks, not trust.",
+      text: "Lint, build, tests and schema checks run before a task counts as done. A pilot runs against a baseline before anyone calls it a win.",
+    },
   ],
+  // Diagram nodes, left to right. "accent" fills the node, "outline" outlines it; the last node loops back to the second.
+  diagram: [
+    { label: "I write" },
+    { label: "One source of truth", tone: "accent" },
+    { label: "AI tools read it" },
+    { label: "Proposals" },
+    { label: "I approve", tone: "outline" },
+  ],
+  caption: "I write. One file feeds every AI tool. Agents only propose. I approve.",
+};
+
+export const kbProof = {
+  kicker: "02 · Proof",
+  title: "Two systems I run this way",
+  cards: [
+    {
+      title: "Rolevoice",
+      status: "Deployed, pre-pilot",
+      what: "AI-assisted foreign-language assessment for professionals. First pilot: German. My M.Sc. Computer Science capstone, due Dec 2026.",
+      bullets: [
+        "Built with an AI coding agent in small, reviewed pull requests. I merge every change.",
+        "Structured AI output is checked against a schema before anyone sees it.",
+        "Access rules were written and tested before the features.",
+      ],
+      footer: "No users yet. Results will be published after the pilot, not before.",
+    },
+    {
+      title: "My personal agent operating system",
+      status: "Running daily",
+      what: "The system my own work runs on: one private, versioned repository that every AI tool I use reads first.",
+      bullets: [
+        "Goals, decisions, projects and routines live in one Markdown repo under version control.",
+        "The context every tool reads is rebuilt on each commit by an automated check.",
+        "Agents are read-only. They drop proposals into an inbox, and I approve every write and every outbound action.",
+      ],
+      footer: "Private repository. Described here, not linked.",
+    },
+  ],
+};
+
+export const kbNotes = {
+  kicker: "03 · Field notes",
+  title: "My working notes",
+  intro: "The practices and tools behind the systems above. Written for builders. Open a row if you want the detail.",
+  termsTitle: "Terms",
+  practicesTitle: "Best practices",
+  pitfallsTitle: "Pitfalls",
+  projectsTitle: "In my projects",
+  toolsTitle: "Tools: use, try, skip",
+  matrixTitle: "Which pillar does what, per project",
+  matrixProjectColumn: "Project",
+  matrixEmpty: "n/a",
+  matrixEmptyLabel: "Not applicable",
+};
+
+export const kbGlossaryCopy = {
+  title: (count) => `Glossary: ${count} terms in one line`,
+  searchLabel: "Search terms",
+  countLabel: (count) => `${count} terms`,
+  showAll: (count) => `Show all ${count} terms`,
+  // Terms past this many are hidden="until-found" until searched, found in page or shown.
+  previewCount: 8,
+};
+
+export const kbMaintenance = {
+  title: "How this guide is maintained",
+  text:
+    "Status labels are literal: In use runs today, In build is being built, Pre-beta runs in a product that is not released yet. Plans are not listed until they are built. Tool verdicts reflect a solo builder working across a few repos. Your context may differ.",
 };
 
 export const kbClosing = {
-  title: "Hiring a Technical PM or AI Implementation Lead?",
-  quiet: "Building an AI product or pilot? Happy to compare notes.",
+  title: "Hiring a Technical Project Manager / Implementation Lead who already works with AI every day?",
 };
 
-// In-page navigation (same component as /services). Pillars keep their numbers; other sections have none.
+// Sticky chip strip. Ids are the section ids on the page.
 export const kbSectionNav = {
   label: "On this page",
   items: [
-    { id: "kb-proof", label: "Proof" },
-    { id: "harness", number: "01", label: "Harness" },
-    { id: "skills", number: "02", label: "Skills" },
-    { id: "memory", number: "03", label: "Memory" },
-    { id: "tools", number: "04", label: "Tools" },
-    { id: "cost", number: "05", label: "Cost" },
-    { id: "kb-matrix", label: "Projects" },
-    { id: "kb-glossary", label: "Glossary" },
-    { id: "kb-contact", label: "Contact" },
-  ],
-};
-
-// Public repos only. No users or revenue claims.
-export const kbPublicProof = {
-  name: "Magic Kick",
-  text:
-    "The private-use planner I keep public as implementation proof. It has AI routes for coaching, weekly summaries and risk patterns, and is built with ADRs plus an issue-to-PR workflow.",
-  links: [
-    { label: "Code on GitHub", href: "https://github.com/romahawk/magic-kick" },
-    { label: "Live app", href: "https://magic-kick.vercel.app" },
+    { id: "principles", label: "How I work" },
+    { id: "proof", label: "Proof" },
+    { id: "notes", label: "Field notes" },
+    { id: "glossary", label: "Glossary" },
+    { id: "contact", label: "Contact" },
   ],
 };
 
 // status: the project's own state, shown on the mobile project cards.
 export const kbProjects = [
-  { id: "learning-product", name: "AI learning product", status: "In build", note: "Capstone, Dec 2026" },
-  { id: "magic-kick", name: "Magic Kick", status: "In use", note: "Private-use planner, public as implementation proof" },
+  { id: "rolevoice", name: "Rolevoice", status: "Deployed, pre-pilot", note: "M.Sc. capstone, first pilot: German" },
+  // matrix: false keeps Magic Kick to its single field-notes line (A3).
+  { id: "magic-kick", name: "Magic Kick", status: "In use", note: "Private-use planner", matrix: false },
   { id: "alpharhythm", name: "AlphaRhythm", status: "Pre-beta", note: "Trading rule-compliance micro-SaaS" },
   { id: "proof-engine", name: "Proof Engine", status: "In build", note: "90-day plan tracker where tasks close only with evidence" },
   { id: "agent-os", name: "My personal agent operating system", status: "In use", note: "Markdown + Git strategic OS that agents read first" },
@@ -67,10 +130,9 @@ export const kbProjects = [
 export const kbPillars = [
   {
     id: "harness",
+    principle: "Plan first, build in small reviewable steps, verify before done.",
     number: "01",
-    icon: "Cpu",
     title: "Harness",
-    tagline: "What it does before it types",
     definition:
       "A harness is everything wrapped around the model that turns it into an agent: the loop that calls the model, the system prompt, the tools it may use, the permissions, and the rules for planning, checking and stopping. Claude Code is a harness. The same model behaves very differently inside a good or a bad one.",
     parts: [
@@ -97,23 +159,19 @@ export const kbPillars = [
       { project: "portfolio", status: "In use", text: "CLAUDE.md defines the orient → branch → lint → build → PR loop, a freeze list and architecture rules the agent must not break." },
       { project: "agent-os", status: "In use", text: "An entry file defines the protocol every agent follows before it touches a project." },
       { project: "magic-kick", status: "In use", text: "An issue-to-PR workflow: every change starts as a GitHub issue and lands as a pull request." },
-      { project: "learning-product", status: "In use", text: "Sessions start from docs/STATE.md and decisions.md; work ships as small, bounded issues." },
+      { project: "rolevoice", status: "In use", text: "Sessions start from docs/STATE.md and decisions.md; work ships as small, bounded issues." },
     ],
     tools: [
       { name: "Claude Code", href: "https://docs.claude.com/en/docs/claude-code/overview", verdict: "Use", note: "Primary harness." },
-      { name: "superpowers", href: "https://github.com/obra/superpowers", verdict: "Try", note: "Plan / TDD / debug discipline. The one harness pack worth adding." },
       { name: "learn-claude-code", href: "https://github.com/shareAI-lab/learn-claude-code", verdict: "Try", note: "Read it to understand how an agent loop is built." },
       { name: "andrej-karpathy-skills", href: "https://github.com/forrestchang/andrej-karpathy-skills", verdict: "Try", note: "Borrow principles into your own CLAUDE.md." },
-      { name: "ponytail", href: "https://github.com/DietrichGebert/ponytail", verdict: "Try", note: "Minimal-code bias. Test on one repo first." },
-      { name: "ECC / gstack", href: "https://github.com/affaan-m/everything-claude-code", verdict: "Skip", note: "Heavy packs that overlap with each other and with a custom OS." },
     ],
   },
   {
     id: "skills",
+    principle: "Turn a workflow into a skill after doing it by hand three times.",
     number: "02",
-    icon: "Sparkles",
     title: "Skills",
-    tagline: "The jobs it repeats",
     definition:
       "A skill is a packaged procedure: a folder with a SKILL.md (instructions) plus optional scripts, templates and references. Only its name and description sit in context until a task matches. Then the full instructions load. Skills turn a workflow you explained once into one the agent runs the same way every time.",
     parts: [
@@ -135,25 +193,21 @@ export const kbPillars = [
       "Two skills that cover the same job with different rules.",
     ],
     projects: [
-      { project: "learning-product", status: "In use", text: "A sync skill orients each strategy session from the repo's STATE and decision log, and flags what needs a ruling." },
+      { project: "rolevoice", status: "In use", text: "A sync skill orients each strategy session from the repo's STATE and decision log, and flags what needs a ruling." },
       { project: "alpharhythm", status: "Pre-beta", text: "A sync skill reads NEXT_SESSION_START and the decisions log before any work begins." },
-      { project: "agent-os", status: "In use", text: "Custom skills, packaged once and reused across Claude apps: recruiter research, VC-style pitch review, a German tutor." },
+      { project: "agent-os", status: "In use", text: "Custom skills, packaged once and reused: recruiter research, VC-style pitch review, a German tutor." },
     ],
     tools: [
       { name: "anthropics/skills", href: "https://github.com/anthropics/skills", verdict: "Use", note: "Reference for structure; skill-creator for building and testing." },
       { name: "claude-plugins-official", href: "https://github.com/anthropics/claude-plugins-official", verdict: "Use", note: "Official plugin directory. Browse before building." },
-      { name: "ui-ux-pro-max", href: "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill", verdict: "Try", note: "Pick this or taste-skill, not both." },
-      { name: "taste-skill", href: "https://github.com/leonxlnx/taste-skill", verdict: "Try", note: "Anti-generic frontend design rules." },
       { name: "awesome-claude-skills", href: "https://github.com/ComposioHQ/awesome-claude-skills", verdict: "Skip", note: "Bookmark as a directory; do not bulk-install." },
-      { name: "wshobson/agents", href: "https://github.com/wshobson/agents", verdict: "Skip", note: "Large subagent catalogue; more than a solo builder needs." },
     ],
   },
   {
     id: "memory",
+    principle: "One source of truth per fact.",
     number: "03",
-    icon: "Brain",
     title: "Memory",
-    tagline: "What survives the session",
     definition:
       "A model forgets everything when a session ends. Memory is how context carries over: what is loaded every time (project instructions), what is written down as state (plans, decisions), what is retrieved on demand (search, code indexes), and what the context window holds right now.",
     parts: [
@@ -177,25 +231,21 @@ export const kbPillars = [
     ],
     projects: [
       { project: "agent-os", status: "In use", text: "The strategic memory layer: goals, current focus, decision rules and a decision log in Markdown + Git." },
-      { project: "learning-product", status: "In use", text: "docs/STATE.md and decisions.md are the handover between strategy and build sessions." },
+      { project: "rolevoice", status: "In use", text: "docs/STATE.md and decisions.md are the handover between strategy and build sessions." },
       { project: "alpharhythm", status: "Pre-beta", text: "NEXT_SESSION_START.md and DECISIONS_LOG.md make every session resumable in one read." },
-      { project: "magic-kick", status: "In use", text: "Architecture decisions are recorded as ADRs in the repo." },
       { project: "proof-engine", status: "In build", text: "The 90-day plan lives as Markdown in my personal agent operating system; the app generates its data from it, so there is one source and two views." },
     ],
     tools: [
       { name: "CLAUDE.md", href: "https://docs.claude.com/en/docs/claude-code/memory", verdict: "Use", note: "Built in. Keep it lean." },
       { name: "repomix", href: "https://github.com/yamadashy/repomix", verdict: "Try", note: "Pack a repo into one file for a chat-based strategy session." },
-      { name: "planning-with-files", href: "https://github.com/OthmanAdi/planning-with-files", verdict: "Skip", note: "Good pattern, but I already run it with my own state files." },
       { name: "claude-mem", href: "https://github.com/thedotmack/claude-mem", verdict: "Skip", note: "Would compete with existing state files as a second source of truth." },
-      { name: "graphify / codegraph", href: "https://github.com/colbymchenry/codegraph", verdict: "Skip", note: "Pays off on large codebases; revisit when a repo outgrows direct reading." },
     ],
   },
   {
     id: "tools",
+    principle: "Least privilege. A human at the boundary for anything irreversible.",
     number: "04",
-    icon: "Wrench",
     title: "Tools",
-    tagline: "What it reaches past the terminal",
     definition:
       "Tools are the actions an agent can take beyond writing text: read files, run commands, search the web, call an API, drive a browser. MCP (Model Context Protocol) is the open standard for plugging external systems in as tools, so one integration works across agents.",
     parts: [
@@ -217,24 +267,19 @@ export const kbPillars = [
       "Scraping sites whose terms forbid it.",
     ],
     projects: [
-      { project: "magic-kick", status: "In use", text: "AI routes for coaching, weekly summaries and risk patterns." },
-      { project: "learning-product", status: "In build", text: "Claude via the Vercel AI SDK returns structured assessments checked against a schema." },
+      { project: "rolevoice", status: "In build", text: "Claude via the Vercel AI SDK returns structured assessments checked against a schema." },
     ],
     tools: [
       { name: "playwright-mcp", href: "https://github.com/microsoft/playwright-mcp", verdict: "Use", note: "Lets the agent test in a real browser." },
       { name: "gh CLI / github-mcp", href: "https://github.com/github/github-mcp-server", verdict: "Use", note: "Issue-driven work. The CLI is often enough." },
-      { name: "firecrawl", href: "https://github.com/firecrawl/firecrawl", verdict: "Try", note: "Clean web extraction. Respect site terms." },
       { name: "awesome-mcp-servers", href: "https://github.com/punkpeye/awesome-mcp-servers", verdict: "Skip", note: "Directory to search, not to install." },
-      { name: "multica / vibe-kanban", href: "https://github.com/BloopAI/vibe-kanban", verdict: "Skip", note: "Multi-agent orchestration: overkill at solo scale." },
-      { name: "cc-switch / claude-code-router", href: "https://github.com/musistudio/claude-code-router", verdict: "Skip", note: "Provider switching adds complexity without a need." },
     ],
   },
   {
     id: "cost",
+    principle: "A budget and a stop condition for every unattended run.",
     number: "05",
-    icon: "Gauge",
     title: "Cost",
-    tagline: "What it costs to run",
     definition:
       "Every agent action is paid in tokens: input (everything in context) and output (what the model writes). Cost is driven less by the question than by what the harness loads: instructions, tool definitions, file reads and long histories. On a subscription the same drivers show up as usage limits.",
     parts: [
@@ -262,8 +307,6 @@ export const kbPillars = [
       { name: "claude-hud", href: "https://github.com/jarrodwatts/claude-hud", verdict: "Use", note: "Shows context, tools and agents live in the status line." },
       { name: "claude-code-best-practice", href: "https://github.com/shanraisshan/claude-code-best-practice", verdict: "Try", note: "Reading material, not an install." },
       { name: "system-prompts-and-models-of-ai-tools", href: "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools", verdict: "Try", note: "Study how production agents are prompted." },
-      { name: "codex-plugin-cc", href: "https://github.com/openai/codex-plugin-cc", verdict: "Try", note: "Second-opinion review, only if you already pay for Codex." },
-      { name: "caveman", href: "https://github.com/juliusbrussee/caveman", verdict: "Skip", note: "Saves tokens by trading away readability." },
     ],
   },
 ];

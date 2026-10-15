@@ -21,12 +21,13 @@ const SERVICES = {
 };
 
 const KB = {
-  title: "AI Field Guide: Harness, Skills, Memory, Tools, Cost",
+  title: "How I implement AI | Roman Mazuryk, Technical Project Manager / Implementation Lead",
+  ogTitle: "How I implement AI · Roman Mazuryk",
   description:
-    "A practical reference for building with AI agents: terminology, best practices and tool choices, applied to real projects by Roman Mazuryk.",
+    "How a Technical Project Manager with 20+ years in regulated MedTech, pharma and logistics uses AI every day: one source of truth, approval gates, checks before anything ships. Hamburg area, open to remote across the EU.",
   url: "https://www.mazuryk.dev/ai",
   image: "https://www.mazuryk.dev/images/og/og-ai.png",
-  imageAlt: "AI Field Guide by Roman Mazuryk.",
+  imageAlt: "How I implement AI, by Roman Mazuryk.",
   ...IMAGE,
 };
 
@@ -50,17 +51,18 @@ function setCanonical(url) {
   if (el) el.setAttribute("href", url);
 }
 
-function applyMeta({ title, description, url, image, imageAlt = "", imageWidth = "1200", imageHeight = "630" }) {
+// ogTitle: a shorter share title for OG and Twitter; defaults to the page title.
+function applyMeta({ title, ogTitle = title, description, url, image, imageAlt = "", imageWidth = "1200", imageHeight = "630" }) {
   document.title = title;
   setMeta('meta[name="description"]', "content", description);
-  setMeta('meta[property="og:title"]', "content", title);
+  setMeta('meta[property="og:title"]', "content", ogTitle);
   setMeta('meta[property="og:description"]', "content", description);
   setMeta('meta[property="og:url"]', "content", url);
   setMeta('meta[property="og:image"]', "content", image);
   setMeta('meta[property="og:image:width"]', "content", imageWidth);
   setMeta('meta[property="og:image:height"]', "content", imageHeight);
   setMeta('meta[property="og:image:alt"]', "content", imageAlt);
-  setMeta('meta[name="twitter:title"]', "content", title);
+  setMeta('meta[name="twitter:title"]', "content", ogTitle);
   setMeta('meta[name="twitter:description"]', "content", description);
   setMeta('meta[name="twitter:image"]', "content", image);
   setMeta('meta[property="twitter:url"]', "content", url);

@@ -33,11 +33,18 @@ const BANNED_PHRASES = [
   "20+ years taking software",
   // capstone is Rolevoice (D10)
   "DeutschOn",
+  // retired /ai wording (ai-page-v2, Oct 2026): identity, hero claim, closing line, old capstone label
+  "AI Implementation Lead",
+  "20+ multi-vendor",
+  "Happy to compare notes",
+  "AI learning product",
+  "learning-product",
 ];
 
 // Matched case-sensitively, unlike BANNED_PHRASES.
 // employer is PharmaLogis, FlowLogics is the system: "Pharmalogis" is the wrong capitalisation.
-const BANNED_EXACT = ["Pharmalogis"];
+// "teacher accepts": the retired teacher-in-the-loop line for the capstone (Rolevoice is for professionals).
+const BANNED_EXACT = ["Pharmalogis", "teacher accepts"];
 
 const EM_DASH_FILES = ["src/content/site.js"];
 const EM_DASH = "—";

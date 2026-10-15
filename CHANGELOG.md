@@ -9,6 +9,20 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed (/ai v2: "How I implement AI")
+- `/ai` is rebuilt as "How I implement AI": hero (Download CV + "See my implementation work"), sticky chip strip, How I work (three rules + an inline SVG diagram with a visible caption and accessible name), Proof (Rolevoice and the personal agent operating system), Field notes, Glossary, maintenance note and a closing band (Download CV + email link)
+- Field notes are five native `<details name="pillar">` rows (exclusive, no JS) with the principle as the summary, plus the project matrix in its own `<details>`. Deep links such as `/ai#memory` open the matching row on load and on `hashchange`. Three tool verdicts per pillar; packs that need explaining are dropped
+- Glossary is a `<details>` with search; terms past the first 8 are `hidden="until-found"` (find-in-page reveals them; "Show all 31 terms" button; all shown where unsupported)
+- Chip strip is sticky from 768px with `scroll-target-group` / `:target-current` for the active chip, `useActiveSection` as the fallback, and a hairline via `@container scroll-state(stuck: top)`. Not sticky on mobile
+- Removed: the "> " heading prefix, the engine/car metaphor, per-pillar accent colours, the pillar navigator cards, the Magic Kick "Public proof" box and links, hero proof points, "In use" chips, the reveal fade outside the hero, the left section rail and "Happy to compare notes"
+- Capstone is "Rolevoice" in the data (id `rolevoice`). Magic Kick keeps one unlinked field-notes line and is left out of the matrix. The agent-OS skills row no longer names a tool
+- Meta: title, description, OG/Twitter title ("How I implement AI · Roman Mazuryk") in `ai/index.html` and `useOgMeta.js` (new optional `ogTitle`)
+- `content-visibility: auto` with `contain-intrinsic-size` on `#notes` and `#glossary`
+- Consistency guard bans "AI Implementation Lead", "20+ multi-vendor", "Happy to compare notes", "AI learning product", "learning-product" and (case-sensitive) "teacher accepts"
+
+### Fixed (footer Consulting link contrast)
+- The footer "Consulting" link uses `--muted-strong`: `--muted` was 4.47:1 on the light footer, under WCAG AA (Lighthouse A11y 96 → 100)
+
 ### Changed (homepage v3: Technical Project Manager / Implementation Lead)
 - Title everywhere is "Technical Project Manager / Implementation Lead" (same as the CV and LinkedIn): meta, OG and Twitter tags, hero, footer tagline and copyright line, OG image alt
 - Hero: H1 is the name, the title sits directly under it, new subtitle, and two buttons: Download CV (download) and LinkedIn (new tab, `rel="noopener noreferrer"`). `PageHero` gets an optional `titleLine` prop
