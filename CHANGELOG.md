@@ -14,6 +14,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 - Hero buttons: Download CV stays the primary button; Email is now a text link
 - Closing: "Hiring a Technical Project Manager / Implementation Lead who already works with AI every day?"; the "Happy to compare notes" line is removed
 - The Magic Kick "Public proof" box and its links are removed, along with its "Proof" entry in the section nav. Magic Kick stays in the pillar rows and the project matrix
+- Proof Engine is removed from the projects: its project entry and its Memory row, so it no longer appears in the matrix or the field notes
 - Meta (`ai/index.html`, `useOgMeta.js`): title "AI Field Guide: How I build and run AI workflows | Roman Mazuryk" and a new description
 - Consistency guard bans "20+ multi-vendor", "AI Implementation Lead" and "Happy to compare notes"
 

@@ -46,7 +46,6 @@ export const kbProjects = [
   { id: "learning-product", name: "AI learning product", status: "In build", note: "Capstone, Dec 2026" },
   { id: "magic-kick", name: "Magic Kick", status: "In use", note: "Private-use planner, public as implementation proof" },
   { id: "alpharhythm", name: "AlphaRhythm", status: "Pre-beta", note: "Trading rule-compliance micro-SaaS" },
-  { id: "proof-engine", name: "Proof Engine", status: "In build", note: "90-day plan tracker where tasks close only with evidence" },
   { id: "agent-os", name: "My personal agent operating system", status: "In use", note: "Markdown + Git strategic OS that agents read first" },
   { id: "portfolio", name: "mazuryk.dev", status: "In use", note: "This site" },
 ];
@@ -167,7 +166,6 @@ export const kbPillars = [
       { project: "learning-product", status: "In use", text: "docs/STATE.md and decisions.md are the handover between strategy and build sessions." },
       { project: "alpharhythm", status: "Pre-beta", text: "NEXT_SESSION_START.md and DECISIONS_LOG.md make every session resumable in one read." },
       { project: "magic-kick", status: "In use", text: "Architecture decisions are recorded as ADRs in the repo." },
-      { project: "proof-engine", status: "In build", text: "The 90-day plan lives as Markdown in my personal agent operating system; the app generates its data from it, so there is one source and two views." },
     ],
     tools: [
       { name: "CLAUDE.md", href: "https://docs.claude.com/en/docs/claude-code/memory", verdict: "Use", note: "Built in. Keep it lean." },
